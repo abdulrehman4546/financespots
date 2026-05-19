@@ -3,33 +3,36 @@ name: Deploy to mHosting
 on:
   push:
     branches:
-      - main   # Deploy automatically when you push to 'main' branch
+      - main
 
 jobs:
   deploy:
-    name: FTP Deploy
+    name: SFTP Deploy
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via FTP to mHosting
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          port: 21
-          local-dir: ./
-          server-dir: public_html/
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/node_modules/**
-            wp-content/uploads/**
-            wp-config.php
-            .claude/**
-            check-widgets.php
-            deploy-guide.html
+      - name: Deploy via SFTP (lftp)
+        run: |
+          sudo apt-get install -y lftp
+          lftp -c "
+          set sftp:auto-confirm yes;
+          set net:timeout 30;
+          set net:max-retries 3;
+          open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }};
+          mirror -R --parallel=4 \
+            --exclude='^\.git' \
+            --exclude='^\.github' \
+            --exclude='^\.claude' \
+            --exclude='wp-config\.php$' \
+            --exclude='wp-content/uploads/' \
+            --exclude='node_modules/' \
+            --exclude='financespots_export\.sql$' \
+            --exclude='wp-config-HOSTING\.php$' \
+            --exclude='check-widgets\.php$' \
+            --exclude='deploy-guide\.html$' \
+            ./ /public_html/;
+          bye;
+          "
