@@ -1,0 +1,2 @@
+Place your screenshot.png (1200x900px) in the theme root directory.
+Place og-default.png (1200x630px) in this images/ directory for Open Graph fallback.

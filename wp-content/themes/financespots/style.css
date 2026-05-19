@@ -1,0 +1,205 @@
+/*
+Theme Name: financespots
+Theme URI: https://financespots.com
+Author: FinanceSpots Team
+Author URI: https://financespots.com
+Description: A modern, AI-powered finance tools WordPress theme featuring glassmorphism design, animated sections, and a comprehensive suite of financial calculators and tools. Built for speed, SEO, and full Customizer editability.
+Version: 1.0.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 8.0
+License: GNU General Public License v2 or later
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: financespots
+Tags: finance, tools, calculator, responsive, customizer, modern, glassmorphism, animated
+*/
+
+/* This file intentionally minimal — all styles live in assets/css/style.css */
+
+/* ============================================================
+   BLOG NAV DROPDOWN
+   ============================================================ */
+.fs-nav-has-dropdown {
+    position: relative;
+}
+.fs-nav-dropdown-toggle {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.fs-nav-chevron {
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+}
+.fs-nav-has-dropdown:hover .fs-nav-chevron,
+.fs-nav-has-dropdown.is-open .fs-nav-chevron {
+    transform: rotate(180deg);
+}
+.fs-nav-dropdown {
+    display: none;
+    position: absolute;
+    top: calc(100% + 12px);
+    left: 50%;
+    transform: translateX(-50%);
+    min-width: 320px;
+    max-width: 380px;
+    background: #131929;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 14px;
+    box-shadow: 0 20px 60px rgba(0,0,0,0.5);
+    z-index: 9999;
+    padding: 8px 0;
+    list-style: none;
+    margin: 0;
+    animation: fsDropFade 0.2s ease;
+}
+@keyframes fsDropFade {
+    from { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+    to   { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+.fs-nav-has-dropdown:hover .fs-nav-dropdown,
+.fs-nav-has-dropdown.is-open .fs-nav-dropdown {
+    display: block;
+}
+/* Invisible bridge so hover doesn't break */
+.fs-nav-dropdown::before {
+    content: '';
+    position: absolute;
+    top: -12px;
+    left: 0;
+    right: 0;
+    height: 12px;
+}
+.fs-nav-dropdown li {
+    list-style: none;
+    margin: 0;
+}
+.fs-nav-dropdown__header a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #10B981 !important;
+    border-bottom: 1px solid rgba(255,255,255,0.07);
+    margin-bottom: 4px;
+}
+.fs-nav-dropdown li a {
+    display: block;
+    padding: 9px 20px;
+    font-size: 0.88rem;
+    color: #CBD5E1 !important;
+    text-decoration: none;
+    line-height: 1.4;
+    transition: background 0.15s, color 0.15s, padding-left 0.15s;
+    white-space: normal;
+}
+.fs-nav-dropdown li a:hover {
+    background: rgba(16,185,129,0.1);
+    color: #10B981 !important;
+    padding-left: 26px;
+}
+/* Mobile: dropdown shows as stacked list */
+@media (max-width: 991px) {
+    .fs-nav-dropdown {
+        position: static;
+        transform: none;
+        min-width: 100%;
+        border-radius: 8px;
+        margin-top: 4px;
+        box-shadow: none;
+        border-color: rgba(255,255,255,0.06);
+    }
+    .fs-nav-has-dropdown:hover .fs-nav-dropdown {
+        display: none;
+    }
+    .fs-nav-has-dropdown.is-open .fs-nav-dropdown {
+        display: block;
+    }
+}
+
+/* ============================================================
+   BLOG POST — Featured Image & Content Images
+   ============================================================ */
+/* Featured image hero */
+.fs-single-post__thumb {
+    border-radius: 16px;
+    overflow: hidden;
+    margin-bottom: 40px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.4);
+    aspect-ratio: 16/9;
+}
+.fs-single-post__thumb-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Content images */
+.fs-single-post__content img,
+.fs-prose img {
+    width: 100%;
+    height: auto;
+    border-radius: 12px;
+    margin: 28px 0 8px;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.35);
+    display: block;
+}
+.fs-single-post__content figure,
+.fs-prose figure,
+.fs-blog-img {
+    margin: 32px 0;
+}
+.fs-single-post__content figcaption,
+.fs-prose figcaption,
+.fs-blog-img figcaption {
+    text-align: center;
+    font-size: 0.82rem;
+    color: #64748B;
+    margin-top: 10px;
+    font-style: italic;
+    line-height: 1.5;
+}
+
+/* Single post title */
+.fs-single-post__title {
+    font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+    font-weight: 800;
+    line-height: 1.25;
+    color: #F1F5F9;
+    margin: 16px 0 20px;
+}
+
+/* Tables in blog */
+.fs-single-post__content table,
+.fs-prose table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 24px 0;
+    border-radius: 10px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+.fs-single-post__content table thead tr,
+.fs-prose table thead tr {
+    background: #1E3A5F;
+    color: #fff;
+}
+.fs-single-post__content table th,
+.fs-prose table th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 700;
+}
+.fs-single-post__content table td,
+.fs-prose table td {
+    padding: 10px 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+    color: #CBD5E1;
+}
+.fs-single-post__content table tbody tr:nth-child(odd),
+.fs-prose table tbody tr:nth-child(odd) {
+    background: rgba(255,255,255,0.02);
+}
