@@ -7,21 +7,11 @@ on:
 
 jobs:
   deploy:
-    name: SFTP Deploy
+    name: Trigger Deploy
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Test SFTP connection + list dirs
+      - name: Ping hosting webhook
         run: |
-          sudo apt-get install -y lftp
-          lftp -d -c "
-          set sftp:auto-confirm yes;
-          set net:timeout 60;
-          set net:max-retries 2;
-          open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }};
-          ls;
-          bye;
-          " 2>&1 | head -80
+          echo "Push to main detected — hosting webhook will auto-deploy"
+          echo "Commit: ${{ github.sha }}"
+          echo "By: ${{ github.actor }}"
