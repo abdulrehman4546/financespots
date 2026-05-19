@@ -54,3 +54,9 @@ php.ini
 # Our local deploy/check scripts
 check-widgets.php
 deploy-guide.html
+
+# Hosting config (credentials hain — kabhi commit mat karo)
+wp-config-HOSTING.php
+
+# Local database export
+*.sql
