@@ -14,25 +14,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Deploy via SFTP (lftp)
+      - name: Test SFTP connection + list dirs
         run: |
           sudo apt-get install -y lftp
-          lftp -c "
+          lftp -d -c "
           set sftp:auto-confirm yes;
-          set net:timeout 30;
-          set net:max-retries 3;
+          set net:timeout 60;
+          set net:max-retries 2;
           open sftp://${{ secrets.FTP_USERNAME }}:${{ secrets.FTP_PASSWORD }}@${{ secrets.FTP_SERVER }};
-          mirror -R --parallel=4 \
-            --exclude='^\.git' \
-            --exclude='^\.github' \
-            --exclude='^\.claude' \
-            --exclude='wp-config\.php$' \
-            --exclude='wp-content/uploads/' \
-            --exclude='node_modules/' \
-            --exclude='financespots_export\.sql$' \
-            --exclude='wp-config-HOSTING\.php$' \
-            --exclude='check-widgets\.php$' \
-            --exclude='deploy-guide\.html$' \
-            ./ /public_html/;
+          ls;
           bye;
-          "
+          " 2>&1 | head -80
