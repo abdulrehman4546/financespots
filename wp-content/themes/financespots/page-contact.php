@@ -227,7 +227,7 @@ document.getElementById('fs-contact-form').addEventListener('submit', function(e
     }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
         errEl.style.display = 'block';
-        errEl.textContent = '⚠ Please enter a valid email address.';
+        errEl.textContent = '&#9888; Please enter a valid email address.';
         return;
     }
 

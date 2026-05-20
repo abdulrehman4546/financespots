@@ -92,7 +92,7 @@ function fs_trust_strip_page(){
     ];
     $stats = $ts['stats'] ?? [
         ['num'=>'50,000+', 'lbl'=>'Monthly Users'],
-        ['num'=>'4.9★',    'lbl'=>'Average Rating'],
+        ['num'=>'4.9&#9733;',    'lbl'=>'Average Rating'],
         ['num'=>'30+',     'lbl'=>'Free Tools'],
         ['num'=>'100%',    'lbl'=>'Free Forever'],
     ];
@@ -136,11 +136,11 @@ function fs_trust_strip_page(){
     </style>
 
     <div class="fs-admin">
-        <h1>🏆 Trust Strip Settings</h1>
+        <h1>&#127942; Trust Strip Settings</h1>
         <p class="fs-a-sub">Control everything about the "As Featured In" scrolling strip on your homepage.</p>
 
         <?php if(isset($_GET['saved'])): ?>
-        <div class="fs-a-saved">✅ Settings saved! <a href="<?php echo esc_url(home_url('/')); ?>" target="_blank">View Homepage →</a></div>
+        <div class="fs-a-saved">&#9989; Settings saved! <a href="<?php echo esc_url(home_url('/')); ?>" target="_blank">View Homepage →</a></div>
         <?php endif; ?>
 
         <form method="post">
@@ -148,7 +148,7 @@ function fs_trust_strip_page(){
 
             <!-- General Settings -->
             <div class="fs-a-card">
-                <h2>⚙️ General Settings</h2>
+                <h2>&#9881;&#65039; General Settings</h2>
                 <div class="fs-a-field">
                     <label>Section Label Text</label>
                     <input type="text" name="ts_label" value="<?php echo esc_attr($label); ?>" placeholder="AS SEEN & TRUSTED BY READERS FROM">
@@ -171,7 +171,7 @@ function fs_trust_strip_page(){
 
             <!-- Media Outlets -->
             <div class="fs-a-card">
-                <h2>📰 Media Outlets (scrolling logos)</h2>
+                <h2>&#128240; Media Outlets (scrolling logos)</h2>
                 <p style="font-size:.83rem;color:#64748b;margin:-8px 0 14px;">Add, remove, or edit any outlet. Each needs a Name, short Icon text (1-3 chars), and a color.</p>
                 <table class="fs-a-table" id="outlets-table">
                     <thead><tr><th>#</th><th>Name</th><th>Icon (short)</th><th>Color</th><th>Preview</th><th></th></tr></thead>
@@ -183,7 +183,7 @@ function fs_trust_strip_page(){
                         <td><input type="text" name="outlet_icon[]" value="<?php echo esc_attr($o['icon']); ?>" placeholder="F" style="width:70px"></td>
                         <td><input type="color" name="outlet_color[]" value="<?php echo esc_attr($o['color']); ?>"></td>
                         <td><span style="background:<?php echo esc_attr($o['color']); ?>20;border:1px solid <?php echo esc_attr($o['color']); ?>50;color:<?php echo esc_attr($o['color']); ?>;padding:4px 12px;border-radius:6px;font-size:.75rem;font-weight:800;"><?php echo esc_html($o['icon']); ?> <?php echo esc_html($o['name']); ?></span></td>
-                        <td><button type="button" class="del-row" onclick="this.closest('tr').remove()">✕ Remove</button></td>
+                        <td><button type="button" class="del-row" onclick="this.closest('tr').remove()">&#10005; Remove</button></td>
                     </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -206,7 +206,7 @@ function fs_trust_strip_page(){
 
             <!-- Stats Bar -->
             <div class="fs-a-card">
-                <h2>📊 Stats Bar (shown below the strip)</h2>
+                <h2>&#128202; Stats Bar (shown below the strip)</h2>
                 <table class="fs-a-table" id="stats-table">
                     <thead><tr><th>#</th><th>Number / Value</th><th>Label</th><th></th></tr></thead>
                     <tbody id="stats-body">
@@ -215,7 +215,7 @@ function fs_trust_strip_page(){
                         <td style="color:#94a3b8;font-weight:700;"><?php echo $i+1; ?></td>
                         <td><input type="text" name="stat_num[]" value="<?php echo esc_attr($st['num']); ?>" placeholder="50,000+"></td>
                         <td><input type="text" name="stat_lbl[]" value="<?php echo esc_attr($st['lbl']); ?>" placeholder="Monthly Users"></td>
-                        <td><button type="button" class="del-row" onclick="this.closest('tr').remove()">✕ Remove</button></td>
+                        <td><button type="button" class="del-row" onclick="this.closest('tr').remove()">&#10005; Remove</button></td>
                     </tr>
                     <?php endforeach; ?>
                     </tbody>
@@ -223,7 +223,7 @@ function fs_trust_strip_page(){
                 <button type="button" class="fs-a-add-btn" onclick="fsAddStat()">+ Add Stat</button>
             </div>
 
-            <input type="submit" name="fs_trust_save" class="fs-a-save" value="💾 Save All Changes">
+            <input type="submit" name="fs_trust_save" class="fs-a-save" value="&#128190; Save All Changes">
         </form>
     </div>
 
@@ -241,7 +241,7 @@ function fs_trust_strip_page(){
             +'<td><input type="text" name="outlet_icon[]" placeholder="N" style="width:70px"></td>'
             +'<td><input type="color" name="outlet_color[]" value="'+c+'"></td>'
             +'<td><span style="color:#94a3b8;font-size:.8rem">Fill in name first</span></td>'
-            +'<td><button type="button" class="del-row" onclick="this.closest(\'tr\').remove()">✕ Remove</button></td>';
+            +'<td><button type="button" class="del-row" onclick="this.closest(\'tr\').remove()">&#10005; Remove</button></td>';
         document.getElementById('outlets-body').appendChild(tr);
     }
 
@@ -251,7 +251,7 @@ function fs_trust_strip_page(){
         tr.innerHTML = '<td style="color:#94a3b8;font-weight:700;">'+statCount+'</td>'
             +'<td><input type="text" name="stat_num[]" placeholder="e.g. 10,000+"></td>'
             +'<td><input type="text" name="stat_lbl[]" placeholder="e.g. Happy Users"></td>'
-            +'<td><button type="button" class="del-row" onclick="this.closest(\'tr\').remove()">✕ Remove</button></td>';
+            +'<td><button type="button" class="del-row" onclick="this.closest(\'tr\').remove()">&#10005; Remove</button></td>';
         document.getElementById('stats-body').appendChild(tr);
     }
     </script>

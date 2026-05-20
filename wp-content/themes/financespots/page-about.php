@@ -37,12 +37,12 @@ get_header();
                 </div>
                 <div class="fs-about-two-col__visual">
                     <div class="fs-about-mission-card">
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>No account required</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>No hidden fees or subscriptions</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>No data sold to third parties</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>All calculations run in your browser</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>Expert-written guides with every tool</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">✅</span><span>PDF export on every calculator</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No account required</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No hidden fees or subscriptions</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No data sold to third parties</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>All calculations run in your browser</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>Expert-written guides with every tool</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>PDF export on every calculator</span></div>
                     </div>
                 </div>
             </div>

@@ -20,9 +20,9 @@
             <div class="fs-nl2__trust">
                 <span class="fs-nl2__trust-item"><span class="fs-nl2__trust-dot"></span> 10,000+ Subscribers</span>
                 <span class="fs-nl2__trust-sep">·</span>
-                <span class="fs-nl2__trust-item">📬 Every Monday</span>
+                <span class="fs-nl2__trust-item">&#128236; Every Monday</span>
                 <span class="fs-nl2__trust-sep">·</span>
-                <span class="fs-nl2__trust-item">🔒 Zero Spam</span>
+                <span class="fs-nl2__trust-item">&#128274; Zero Spam</span>
             </div>
 
             <!-- Main content -->
@@ -32,7 +32,7 @@
                 <div class="fs-nl2__left">
                     <div class="fs-nl2__badge">
                         <span class="fs-nl2__badge-pulse"></span>
-                        📬 Weekly Finance Digest
+                        &#128236; Weekly Finance Digest
                     </div>
                     <h2 class="fs-nl2__title" id="newsletter-heading">
                         Stay <span class="fs-nl2__title-accent">One Step Ahead</span><br>of Your Finances
@@ -41,10 +41,10 @@
 
                     <!-- What you get -->
                     <div class="fs-nl2__perks">
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">📈</span> Weekly market & rate updates</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">🧮</span> New tool announcements first</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">💡</span> Actionable money-saving tips</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">📄</span> Exclusive finance guides</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128200;</span> Weekly market & rate updates</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#129518;</span> New tool announcements first</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128161;</span> Actionable money-saving tips</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128196;</span> Exclusive finance guides</div>
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@
 
                         <form class="fs-nl2__form" id="fs-nl2-form" novalidate>
                             <div class="fs-nl2__field">
-                                <span class="fs-nl2__field-icon">✉</span>
+                                <span class="fs-nl2__field-icon">&#9993;</span>
                                 <input type="email" id="fs-nl2-email" placeholder="Enter your email address" required>
                             </div>
                             <button type="submit" class="fs-nl2__btn" id="fs-nl2-btn">
@@ -71,9 +71,9 @@
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </button>
                             <div class="fs-nl2__success" id="fs-nl2-success" style="display:none">
-                                🎉 You're in! Check your inbox Monday morning.
+                                &#127881; You're in! Check your inbox Monday morning.
                             </div>
-                            <p class="fs-nl2__fine">🔒 No spam, ever. Unsubscribe in one click anytime.</p>
+                            <p class="fs-nl2__fine">&#128274; No spam, ever. Unsubscribe in one click anytime.</p>
                         </form>
 
                         <!-- Social proof avatars -->
@@ -219,13 +219,13 @@
                             Popular Tools
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/tools/mortgage-calculator/')); ?>">🏠 Mortgage Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/compound-interest-calculator/')); ?>">📈 Compound Interest</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/retirement-income-calculator/')); ?>">🏖️ Retirement Planner</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/loan-payoff-calculator/')); ?>">💳 Debt Payoff Tool</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/monthly-budget-planner/')); ?>">📋 Budget Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/mortgage-calculator/')); ?>">&#127968; Mortgage Calculator</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/compound-interest-calculator/')); ?>">&#128200; Compound Interest</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/retirement-income-calculator/')); ?>">&#127958;&#65039; Retirement Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/loan-payoff-calculator/')); ?>">&#128179; Debt Payoff Tool</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/monthly-budget-planner/')); ?>">&#128203; Budget Planner</a></li>
                             <li><a href="<?php echo esc_url(home_url('/tools/crypto-pl-calculator/')); ?>">₿ Crypto P&amp;L Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/income-tax-calculator/')); ?>">🧾 Tax Calculator 2026</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tools/income-tax-calculator/')); ?>">&#129534; Tax Calculator 2026</a></li>
                         </ul>
                     </div>
 
@@ -236,12 +236,12 @@
                             Company
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/')); ?>">🏠 Home</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/about/')); ?>">👋 About Us</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">📝 Finance Blog</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/all-tools/')); ?>">🧮 All Tools</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/pricing/')); ?>">⭐ PRO Plans</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">📩 Contact Us</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/')); ?>">&#127968; Home</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/about/')); ?>">&#128075; About Us</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">&#128221; Finance Blog</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/all-tools/')); ?>">&#129518; All Tools</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/pricing/')); ?>">&#11088; PRO Plans</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">&#128233; Contact Us</a></li>
                         </ul>
                     </div>
 
@@ -252,16 +252,16 @@
                             Legal & Info
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">🔒 Privacy Policy</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">📄 Terms of Service</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/#cookies')); ?>">🍪 Cookie Policy</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/#disclaimer')); ?>">⚠️ Disclaimer</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">&#128274; Privacy Policy</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">&#128196; Terms of Service</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/#cookies')); ?>">&#127850; Cookie Policy</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/#disclaimer')); ?>">&#9888;&#65039; Disclaimer</a></li>
                         </ul>
                         <!-- Trust badges -->
                         <div class="fsf__badges">
-                            <span class="fsf__badge">🔒 SSL Secured</span>
-                            <span class="fsf__badge">✅ Expert Verified</span>
-                            <span class="fsf__badge">🆓 Always Free</span>
+                            <span class="fsf__badge">&#128274; SSL Secured</span>
+                            <span class="fsf__badge">&#9989; Expert Verified</span>
+                            <span class="fsf__badge">&#127379; Always Free</span>
                         </div>
                     </div>
 

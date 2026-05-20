@@ -96,7 +96,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <div class="fs-hero__social-proof-text">
                         <span><?php esc_html_e( 'Trusted by', 'financespots' ); ?> <strong>500,000+</strong> <?php esc_html_e( 'investors worldwide', 'financespots' ); ?></span>
                         <div class="fs-hero__rating" aria-label="4.9 out of 5 stars">
-                            <span class="fs-hero__stars">★★★★★</span>
+                            <span class="fs-hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             <span>4.9/5</span>
                         </div>
                     </div>
@@ -154,7 +154,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                     <!-- AI Insight row -->
                     <div class="fs-portfolio-card__ai-row">
-                        <span class="fs-portfolio-card__ai-icon">🤖</span>
+                        <span class="fs-portfolio-card__ai-icon">&#129302;</span>
                         <span class="fs-portfolio-card__ai-text" id="fs-ai-insight-text">
                             AI Insight: Your portfolio is outperforming the S&amp;P 500 by 6.3% this month.
                         </span>
@@ -175,7 +175,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                     <!-- Mini card 2: AI Dashboard -->
                     <a href="<?php echo esc_url( $ai_dash_url ); ?>" class="fs-mini-card fs-mini-card--2" style="text-decoration:none;cursor:pointer;display:flex;">
-                        <div class="fs-mini-card__icon">🤖</div>
+                        <div class="fs-mini-card__icon">&#129302;</div>
                         <div class="fs-mini-card__info">
                             <span class="fs-mini-card__title">AI Dashboard</span>
                             <span class="fs-mini-card__sub">Open now →</span>
@@ -188,7 +188,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <a href="<?php echo esc_url( get_theme_mod( 'fs_badge1_url', '#tools' ) ); ?>"
                    class="fs-float-badge fs-float-badge--1"
                    id="fs-badge1">
-                    <span class="fs-float-badge__icon" aria-hidden="true">📈</span>
+                    <span class="fs-float-badge__icon" aria-hidden="true">&#128200;</span>
                     <span id="fs-badge1-text"><?php echo esc_html( get_theme_mod( 'fs_badge1_text', 'ROI up 24%' ) ); ?></span>
                 </a>
                 <?php endif; ?>
@@ -196,7 +196,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <a href="<?php echo esc_url( get_theme_mod( 'fs_badge3_url', '#security' ) ); ?>"
                    class="fs-float-badge fs-float-badge--3"
                    id="fs-badge3">
-                    <span class="fs-float-badge__icon" aria-hidden="true">🔒</span>
+                    <span class="fs-float-badge__icon" aria-hidden="true">&#128274;</span>
                     <span id="fs-badge3-text"><?php echo esc_html( get_theme_mod( 'fs_badge3_text', 'Bank-level Security' ) ); ?></span>
                 </a>
                 <?php endif; ?>
@@ -227,25 +227,25 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     [
                         'number' => get_theme_mod('fs_stat1_number','2500000'),
                         'label'  => get_theme_mod('fs_stat1_label','Calculations Done'),
-                        'icon'   => '📊',
+                        'icon'   => '&#128202;',
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat2_number','150'),
                         'label'  => get_theme_mod('fs_stat2_label','Finance Tools'),
-                        'icon'   => '🛠️',
+                        'icon'   => '&#128736;&#65039;',
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat3_number','500000'),
                         'label'  => get_theme_mod('fs_stat3_label','Active Users'),
-                        'icon'   => '👥',
+                        'icon'   => '&#128101;',
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat4_number','99'),
                         'label'  => get_theme_mod('fs_stat4_label','% Accuracy Rate'),
-                        'icon'   => '🎯',
+                        'icon'   => '&#127919;',
                         'suffix' => '%',
                     ],
                 ];
@@ -340,19 +340,19 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
             </p>
             <div class="fs-ai-promo__features">
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">🧠</div>
+                    <div class="fs-ai-promo__feature-icon">&#129504;</div>
                     <span><strong style="color:#e2e8f0">Real AI Chat</strong> — Ask any finance question, get instant expert answers powered by Claude AI</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">📊</div>
+                    <div class="fs-ai-promo__feature-icon">&#128202;</div>
                     <span><strong style="color:#e2e8f0">9 Powerful Panels</strong> — Budget, Debt Optimizer, Net Worth, Tax, Retirement, Investment & more</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">⚡</div>
+                    <div class="fs-ai-promo__feature-icon">&#9889;</div>
                     <span><strong style="color:#e2e8f0">Live Score</strong> — Get your personalized Financial Health Score in seconds</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">📄</div>
+                    <div class="fs-ai-promo__feature-icon">&#128196;</div>
                     <span><strong style="color:#e2e8f0">PDF Export</strong> — Download your complete financial report instantly</span>
                 </div>
             </div>
@@ -375,8 +375,8 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <div class="fs-ai-dash-card__dots">
                         <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
                     </div>
-                    <span class="fs-ai-dash-card__tab">⚡ FinanceSpots AI Dashboard</span>
-                    <span style="margin-left:auto;background:rgba(0,200,150,.15);color:#00C896;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;">🤖 AI Active</span>
+                    <span class="fs-ai-dash-card__tab">&#9889; FinanceSpots AI Dashboard</span>
+                    <span style="margin-left:auto;background:rgba(0,200,150,.15);color:#00C896;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;">&#129302; AI Active</span>
                 </div>
                 <div class="fs-ai-dash-card__body">
                     <!-- Metrics row -->
@@ -396,7 +396,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- Bars -->
                     <div class="fs-ai-bar-row">
-                        <div class="fs-ai-bar-label"><span>Emergency Fund</span><span style="color:#00C896">✅ 6 months</span></div>
+                        <div class="fs-ai-bar-label"><span>Emergency Fund</span><span style="color:#00C896">&#9989; 6 months</span></div>
                         <div class="fs-ai-bar-track"><div class="fs-ai-bar-fill" style="width:90%;background:linear-gradient(90deg,#00C896,#00A87A)"></div></div>
                     </div>
                     <div class="fs-ai-bar-row">
@@ -409,7 +409,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- AI Chat preview -->
                     <div class="fs-ai-chat-preview">
-                        <div class="fs-ai-chat-preview__label">🤖 AI Advisor — Abdul Rahman's Dashboard</div>
+                        <div class="fs-ai-chat-preview__label">&#129302; AI Advisor — Abdul Rahman's Dashboard</div>
                         <div class="fs-ai-chat-preview__msg">Your debt-to-income ratio of 28% is healthy. I recommend increasing your 401k contribution by $300/month to reach the IRS limit — this saves you $792/year in taxes at your 22% bracket.</div>
                     </div>
                 </div>
@@ -426,7 +426,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-features" id="features" aria-labelledby="features-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--primary">🚀 <?php esc_html_e( 'Why FinanceSpots', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--primary">&#128640; <?php esc_html_e( 'Why FinanceSpots', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="features-heading">
                 <?php esc_html_e( 'Built Different. Built Better.', 'financespots' ); ?>
             </h2>
@@ -456,7 +456,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--secondary">🗂️ <?php esc_html_e( '150+ Tools Available', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--secondary">&#128450;&#65039; <?php esc_html_e( '150+ Tools Available', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="categories-heading">
                 <?php esc_html_e( 'Explore by Category', 'financespots' ); ?>
             </h2>
@@ -471,13 +471,13 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'All Tools', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="popular" role="tab" aria-selected="false">
-                <?php esc_html_e( '🔥 Popular', 'financespots' ); ?>
+                <?php esc_html_e( '&#128293; Popular', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="new" role="tab" aria-selected="false">
-                <?php esc_html_e( '✨ New', 'financespots' ); ?>
+                <?php esc_html_e( '&#10024; New', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="ai" role="tab" aria-selected="false">
-                <?php esc_html_e( '🤖 AI Enhanced', 'financespots' ); ?>
+                <?php esc_html_e( '&#129302; AI Enhanced', 'financespots' ); ?>
             </button>
         </div>
 
@@ -540,7 +540,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-popular-tools" id="tools" aria-labelledby="tools-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--gold">⭐ <?php esc_html_e( 'Top Rated', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--gold">&#11088; <?php esc_html_e( 'Top Rated', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="tools-heading">
                 <?php esc_html_e( 'Most Popular Tools', 'financespots' ); ?>
             </h2>
@@ -609,7 +609,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-how-it-works" id="how-it-works" aria-labelledby="hiw-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--primary">🗺️ <?php esc_html_e( 'Simple Process', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--primary">&#128506;&#65039; <?php esc_html_e( 'Simple Process', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="hiw-heading">
                 <?php esc_html_e( 'How FinanceSpots Works', 'financespots' ); ?>
             </h2>
@@ -644,7 +644,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--gold">⭐ <?php esc_html_e( '4.9/5 Average Rating', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--gold">&#11088; <?php esc_html_e( '4.9/5 Average Rating', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="testimonials-heading">
                 <?php esc_html_e( 'Trusted by 500,000+ Users', 'financespots' ); ?>
             </h2>
@@ -658,7 +658,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php foreach ( fs_get_testimonials() as $i => $t ) : ?>
                 <article class="fs-testimonial-card fs-glass" data-animate="fade-up" data-delay="<?php echo $i * 100; ?>">
                     <div class="fs-testimonial-card__stars" aria-label="<?php echo esc_attr( sprintf( '%d out of 5 stars', $t['rating'] ) ); ?>">
-                        <?php echo str_repeat( '★', $t['rating'] ); ?>
+                        <?php echo str_repeat( '&#9733;', $t['rating'] ); ?>
                     </div>
                     <blockquote class="fs-testimonial-card__text">
                         <p><?php echo esc_html( $t['text'] ); ?></p>
@@ -709,7 +709,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         ];
         $stats = !empty($ts['stats']) ? $ts['stats'] : [
             ['num'=>'50,000+', 'lbl'=>'Monthly Users'],
-            ['num'=>'4.9★',    'lbl'=>'Average Rating'],
+            ['num'=>'4.9&#9733;',    'lbl'=>'Average Rating'],
             ['num'=>'30+',     'lbl'=>'Free Tools'],
             ['num'=>'100%',    'lbl'=>'Free Forever'],
         ];
@@ -799,7 +799,7 @@ if ( $blog_query->have_posts() ) :
 <section class="fs-blog" id="blog" aria-labelledby="blog-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--secondary">📝 <?php esc_html_e( 'Finance Insights', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--secondary">&#128221; <?php esc_html_e( 'Finance Insights', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="blog-heading">
                 <?php esc_html_e( 'Latest from the Blog', 'financespots' ); ?>
             </h2>

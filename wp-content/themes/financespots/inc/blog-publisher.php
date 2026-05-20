@@ -1557,14 +1557,14 @@ function fs_get_blog_data() {
 
 <h3>What Is a Taxable Event?</h3>
 <ul>
-<li>Selling crypto for USD or other fiat currency ✓</li>
-<li>Trading one cryptocurrency for another ✓</li>
-<li>Using crypto to purchase goods or services ✓</li>
-<li>Receiving crypto as payment for work (taxed as ordinary income at fair market value) ✓</li>
-<li>Staking or mining rewards received (taxed as ordinary income when received) ✓</li>
-<li>Simply holding ("HODLing") ✗ — not a taxable event</li>
-<li>Transferring between your own wallets ✗ — not a taxable event</li>
-<li>Buying crypto with fiat ✗ — not a taxable event</li>
+<li>Selling crypto for USD or other fiat currency &#10003;</li>
+<li>Trading one cryptocurrency for another &#10003;</li>
+<li>Using crypto to purchase goods or services &#10003;</li>
+<li>Receiving crypto as payment for work (taxed as ordinary income at fair market value) &#10003;</li>
+<li>Staking or mining rewards received (taxed as ordinary income when received) &#10003;</li>
+<li>Simply holding ("HODLing") &#10007; — not a taxable event</li>
+<li>Transferring between your own wallets &#10007; — not a taxable event</li>
+<li>Buying crypto with fiat &#10007; — not a taxable event</li>
 </ul>
 
 <h3>Short-Term vs. Long-Term Capital Gains</h3>

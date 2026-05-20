@@ -18,7 +18,7 @@ $is_pro  = fs_is_pro();
             <div class="fsp-hero__orb fsp-hero__orb--2"></div>
         </div>
         <div class="container" style="position:relative;z-index:2;text-align:center;">
-            <span class="fsp-badge">⭐ Upgrade to PRO</span>
+            <span class="fsp-badge">&#11088; Upgrade to PRO</span>
             <h1 class="fsp-hero__title">Simple, Transparent Pricing</h1>
             <p class="fsp-hero__sub">Start free forever. Upgrade when you need more power.</p>
 
@@ -39,7 +39,7 @@ $is_pro  = fs_is_pro();
 
             <?php if ( $is_pro ) : ?>
             <div class="fsp-already-pro">
-                <span>⭐</span>
+                <span>&#11088;</span>
                 <div>
                     <strong>You are already on PRO!</strong>
                     <span>Enjoy all premium features. Thank you for supporting FinanceSpots.</span>
@@ -52,7 +52,7 @@ $is_pro  = fs_is_pro();
                 <!-- FREE -->
                 <div class="fsp-plan">
                     <div class="fsp-plan__header">
-                        <div class="fsp-plan__icon">🆓</div>
+                        <div class="fsp-plan__icon">&#127379;</div>
                         <h2 class="fsp-plan__name">Free</h2>
                         <div class="fsp-plan__price">
                             <span class="fsp-plan__amount">$0</span>
@@ -80,7 +80,7 @@ $is_pro  = fs_is_pro();
                 <div class="fsp-plan fsp-plan--pro fsp-plan--monthly" id="plan-monthly">
                     <div class="fsp-plan__popular">Most Popular</div>
                     <div class="fsp-plan__header">
-                        <div class="fsp-plan__icon">⭐</div>
+                        <div class="fsp-plan__icon">&#11088;</div>
                         <h2 class="fsp-plan__name">PRO</h2>
                         <div class="fsp-plan__price">
                             <span class="fsp-plan__amount">$9</span>
@@ -95,7 +95,7 @@ $is_pro  = fs_is_pro();
                         <?php endforeach; ?>
                     </ul>
                     <?php if($is_pro): ?>
-                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>✓ Your Current Plan</button>
+                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; Your Current Plan</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--pro fsp-checkout-btn" data-plan="monthly">
                         <span>Get PRO Monthly — $9/mo</span>
@@ -108,7 +108,7 @@ $is_pro  = fs_is_pro();
                 <div class="fsp-plan fsp-plan--pro fsp-plan--yearly" id="plan-yearly" style="display:none;">
                     <div class="fsp-plan__popular">Best Value</div>
                     <div class="fsp-plan__header">
-                        <div class="fsp-plan__icon">⭐</div>
+                        <div class="fsp-plan__icon">&#11088;</div>
                         <h2 class="fsp-plan__name">PRO Yearly</h2>
                         <div class="fsp-plan__price">
                             <span class="fsp-plan__amount">$79</span>
@@ -123,7 +123,7 @@ $is_pro  = fs_is_pro();
                         <?php endforeach; ?>
                     </ul>
                     <?php if($is_pro): ?>
-                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>✓ Current Plan</button>
+                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; Current Plan</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--pro fsp-checkout-btn" data-plan="yearly">
                         <span>Get PRO Yearly — $79/yr</span>
@@ -135,7 +135,7 @@ $is_pro  = fs_is_pro();
                 <!-- LIFETIME -->
                 <div class="fsp-plan fsp-plan--lifetime">
                     <div class="fsp-plan__header">
-                        <div class="fsp-plan__icon">♾️</div>
+                        <div class="fsp-plan__icon">&#9854;&#65039;</div>
                         <h2 class="fsp-plan__name">Lifetime</h2>
                         <div class="fsp-plan__price">
                             <span class="fsp-plan__amount">$199</span>
@@ -151,7 +151,7 @@ $is_pro  = fs_is_pro();
                         <li class="yes">VIP support</li>
                     </ul>
                     <?php if($is_pro): ?>
-                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>✓ You have PRO</button>
+                    <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; You have PRO</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--lifetime fsp-checkout-btn" data-plan="lifetime">
                         <span>Get Lifetime — $199</span>
@@ -174,10 +174,10 @@ $is_pro  = fs_is_pro();
             <h2 class="fsp-compare__title">What's Included in PRO?</h2>
             <div class="fsp-features-grid">
                 <?php
-                $icons = ['💾','📄','📊','🏠','📈','🚫','📧','🚀'];
+                $icons = ['&#128190;','&#128196;','&#128202;','&#127968;','&#128200;','&#128683;','&#128231;','&#128640;'];
                 foreach ( $features as $i => $f ) : ?>
                 <div class="fsp-feature-card">
-                    <div class="fsp-feature-card__icon"><?php echo $icons[$i] ?? '⭐'; ?></div>
+                    <div class="fsp-feature-card__icon"><?php echo $icons[$i] ?? '&#11088;'; ?></div>
                     <div class="fsp-feature-card__text"><?php echo esc_html($f); ?></div>
                 </div>
                 <?php endforeach; ?>
@@ -195,7 +195,7 @@ $is_pro  = fs_is_pro();
                     ['Can I cancel anytime?', 'Yes! Monthly and yearly plans can be cancelled at any time from your account. You keep PRO access until the end of your billing period.'],
                     ['What payment methods are accepted?', 'We accept all major credit/debit cards (Visa, Mastercard, Amex) via Stripe. All payments are secure and encrypted.'],
                     ['Is there a free trial?', 'All core tools are free forever — no trial needed. You can use the free plan as long as you like before upgrading.'],
-                    ['What happens after I pay?', 'Your account is instantly upgraded to PRO. You will see a ⭐ PRO badge and all features unlock immediately.'],
+                    ['What happens after I pay?', 'Your account is instantly upgraded to PRO. You will see a &#11088; PRO badge and all features unlock immediately.'],
                     ['Can I upgrade from monthly to yearly?', 'Yes, you can switch plans at any time. Contact us and we will handle the upgrade with a prorated discount.'],
                 ];
                 foreach($faqs as [$q,$a]): ?>
@@ -219,7 +219,7 @@ $is_pro  = fs_is_pro();
                 <p>Join hundreds of users who use FinanceSpots PRO to make smarter financial decisions.</p>
                 <?php if(!$is_pro): ?>
                 <button class="fsp-cta__btn fsp-checkout-btn" data-plan="monthly">
-                    ⭐ Get PRO Now — Start at $9/month
+                    &#11088; Get PRO Now — Start at $9/month
                 </button>
                 <?php else: ?>
                 <a href="<?php echo esc_url(home_url('/')); ?>" class="fsp-cta__btn">Go to Tools →</a>
@@ -276,10 +276,10 @@ $is_pro  = fs_is_pro();
 
 .fsp-plan__features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;}
 .fsp-plan__features li{font-size:.84rem;padding-left:22px;position:relative;color:#CBD5E1;}
-.fsp-plan__features li::before{content:'✓';position:absolute;left:0;font-weight:800;}
+.fsp-plan__features li::before{content:'&#10003;';position:absolute;left:0;font-weight:800;}
 .fsp-plan__features li.yes::before{color:#10B981;}
 .fsp-plan__features li.no{color:#475569;}
-.fsp-plan__features li.no::before{content:'✕';color:#374151;}
+.fsp-plan__features li.no::before{content:'&#10005;';color:#374151;}
 
 .fsp-plan__btn{width:100%;padding:14px 20px;border-radius:12px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;}
 .fsp-plan__btn--free{background:rgba(255,255,255,.06);color:#CBD5E1;text-decoration:none;}
@@ -376,13 +376,13 @@ document.querySelectorAll('.fsp-checkout-btn').forEach(function(btn){
                 window.location.href = res.data.url;
             } else {
                 msg.className='fsp-checkout-msg error';
-                msg.textContent = '⚠ ' + (res.data || 'Payment error. Please try again.');
+                msg.textContent = '&#9888; ' + (res.data || 'Payment error. Please try again.');
                 document.querySelectorAll('.fsp-checkout-btn').forEach(function(b){ b.disabled=false; });
             }
         })
         .catch(function(){
             msg.className='fsp-checkout-msg error';
-            msg.textContent='⚠ Connection error. Please try again.';
+            msg.textContent='&#9888; Connection error. Please try again.';
             document.querySelectorAll('.fsp-checkout-btn').forEach(function(b){ b.disabled=false; });
         });
     });

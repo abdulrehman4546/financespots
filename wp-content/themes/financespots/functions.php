@@ -832,13 +832,13 @@ function fs_mod_url( $key, $default = '#' ) {
 /** Tool categories data */
 function fs_get_tool_categories() {
     return [
-        [ 'slug' => 'loans',       'icon' => '🏦', 'name' => 'Loan Calculators',       'desc' => 'Mortgage, auto, personal loans & more',        'count' => 18, 'color' => 'primary' ],
-        [ 'slug' => 'investment',  'icon' => '📈', 'name' => 'Investment Tools',        'desc' => 'ROI, compound interest, portfolio analysis',   'count' => 22, 'color' => 'secondary' ],
-        [ 'slug' => 'tax',         'icon' => '🧾', 'name' => 'Tax Calculators',         'desc' => 'Income tax, capital gains, deductions',        'count' => 15, 'color' => 'gold' ],
-        [ 'slug' => 'savings',     'icon' => '💰', 'name' => 'Savings Planners',        'desc' => 'Emergency funds, goals, retirement savings',   'count' => 12, 'color' => 'primary' ],
-        [ 'slug' => 'retirement',  'icon' => '🏖️', 'name' => 'Retirement Planning',    'desc' => '401k, IRA, pension, FIRE calculators',         'count' => 10, 'color' => 'secondary' ],
-        [ 'slug' => 'currency',    'icon' => '💱', 'name' => 'Currency Converters',     'desc' => 'Live forex rates & currency conversion',       'count' => 8,  'color' => 'gold' ],
-        [ 'slug' => 'budget',      'icon' => '📊', 'name' => 'Budget Analyzers',        'desc' => 'Monthly budgets, expense tracking, 50/30/20',  'count' => 14, 'color' => 'primary' ],
+        [ 'slug' => 'loans',       'icon' => '&#127974;', 'name' => 'Loan Calculators',       'desc' => 'Mortgage, auto, personal loans & more',        'count' => 18, 'color' => 'primary' ],
+        [ 'slug' => 'investment',  'icon' => '&#128200;', 'name' => 'Investment Tools',        'desc' => 'ROI, compound interest, portfolio analysis',   'count' => 22, 'color' => 'secondary' ],
+        [ 'slug' => 'tax',         'icon' => '&#129534;', 'name' => 'Tax Calculators',         'desc' => 'Income tax, capital gains, deductions',        'count' => 15, 'color' => 'gold' ],
+        [ 'slug' => 'savings',     'icon' => '&#128176;', 'name' => 'Savings Planners',        'desc' => 'Emergency funds, goals, retirement savings',   'count' => 12, 'color' => 'primary' ],
+        [ 'slug' => 'retirement',  'icon' => '&#127958;&#65039;', 'name' => 'Retirement Planning',    'desc' => '401k, IRA, pension, FIRE calculators',         'count' => 10, 'color' => 'secondary' ],
+        [ 'slug' => 'currency',    'icon' => '&#128177;', 'name' => 'Currency Converters',     'desc' => 'Live forex rates & currency conversion',       'count' => 8,  'color' => 'gold' ],
+        [ 'slug' => 'budget',      'icon' => '&#128202;', 'name' => 'Budget Analyzers',        'desc' => 'Monthly budgets, expense tracking, 50/30/20',  'count' => 14, 'color' => 'primary' ],
         [ 'slug' => 'crypto',      'icon' => '₿',  'name' => 'Crypto Tools',            'desc' => 'Crypto P&L, staking rewards, DCA calculator',  'count' => 11, 'color' => 'secondary' ],
     ];
 }
@@ -846,12 +846,12 @@ function fs_get_tool_categories() {
 /** Popular tools data — titles must exactly match DB post_title */
 function fs_get_popular_tools() {
     return [
-        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison — with PDF export.',    'icon' => '🎖️', 'badge' => '🔥 Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
-        [ 'name' => 'Mortgage Calculator',            'desc' => 'Calculate monthly payments, total interest, and full amortization schedule for any home loan.',               'icon' => '🏠', 'badge' => '⭐ Most Popular','badge_color' => 'secondary', 'cat' => 'loan-calculators' ],
-        [ 'name' => 'Compound Interest Calculator',   'desc' => 'See how your money grows over time with daily, monthly, or annual compounding.',                               'icon' => '📈', 'badge' => '📊 Popular',    'badge_color' => 'ai',        'cat' => 'investment-tools' ],
-        [ 'name' => 'Income Tax Calculator',          'desc' => 'Estimate federal and state income tax based on your income, deductions, and filing status.',                   'icon' => '🧾', 'badge' => '✅ 2026',       'badge_color' => 'gold',      'cat' => 'tax-calculators' ],
-        [ 'name' => '401k Calculator',                'desc' => 'Project your 401k balance at retirement with employer match, contribution rate, and growth assumptions.',      'icon' => '🏖️', 'badge' => '📅 Retirement', 'badge_color' => 'ai',        'cat' => 'retirement-planning' ],
-        [ 'name' => '50/30/20 Budget Calculator',     'desc' => 'Automatically allocate your income using the popular 50/30/20 budgeting rule and track your spending.',       'icon' => '📊', 'badge' => '💰 Free',       'badge_color' => 'secondary', 'cat' => 'budget-analyzers' ],
+        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison — with PDF export.',    'icon' => '&#127894;&#65039;', 'badge' => '&#128293; Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
+        [ 'name' => 'Mortgage Calculator',            'desc' => 'Calculate monthly payments, total interest, and full amortization schedule for any home loan.',               'icon' => '&#127968;', 'badge' => '&#11088; Most Popular','badge_color' => 'secondary', 'cat' => 'loan-calculators' ],
+        [ 'name' => 'Compound Interest Calculator',   'desc' => 'See how your money grows over time with daily, monthly, or annual compounding.',                               'icon' => '&#128200;', 'badge' => '&#128202; Popular',    'badge_color' => 'ai',        'cat' => 'investment-tools' ],
+        [ 'name' => 'Income Tax Calculator',          'desc' => 'Estimate federal and state income tax based on your income, deductions, and filing status.',                   'icon' => '&#129534;', 'badge' => '&#9989; 2026',       'badge_color' => 'gold',      'cat' => 'tax-calculators' ],
+        [ 'name' => '401k Calculator',                'desc' => 'Project your 401k balance at retirement with employer match, contribution rate, and growth assumptions.',      'icon' => '&#127958;&#65039;', 'badge' => '&#128197; Retirement', 'badge_color' => 'ai',        'cat' => 'retirement-planning' ],
+        [ 'name' => '50/30/20 Budget Calculator',     'desc' => 'Automatically allocate your income using the popular 50/30/20 budgeting rule and track your spending.',       'icon' => '&#128202;', 'badge' => '&#128176; Free',       'badge_color' => 'secondary', 'cat' => 'budget-analyzers' ],
     ];
 }
 
@@ -897,10 +897,10 @@ function fs_get_tool_url_by_title( $title, $cat_slug = '' ) {
 /** AI features data */
 function fs_get_ai_features() {
     return [
-        [ 'icon' => '🤖', 'title' => 'Smart Suggestions',      'desc' => 'AI analyzes your inputs and recommends optimal financial strategies tailored to your situation.' ],
-        [ 'icon' => '📡', 'title' => 'Real-Time Data',          'desc' => 'Live market rates, interest rates, and tax tables automatically updated daily.' ],
-        [ 'icon' => '🔮', 'title' => 'Predictive Modeling',     'desc' => 'Monte Carlo simulations and scenario analysis to stress-test your financial plans.' ],
-        [ 'icon' => '🛡️', 'title' => '100% Private',            'desc' => 'All calculations run in your browser. No data is stored or shared — ever.' ],
+        [ 'icon' => '&#129302;', 'title' => 'Smart Suggestions',      'desc' => 'AI analyzes your inputs and recommends optimal financial strategies tailored to your situation.' ],
+        [ 'icon' => '&#128225;', 'title' => 'Real-Time Data',          'desc' => 'Live market rates, interest rates, and tax tables automatically updated daily.' ],
+        [ 'icon' => '&#128302;', 'title' => 'Predictive Modeling',     'desc' => 'Monte Carlo simulations and scenario analysis to stress-test your financial plans.' ],
+        [ 'icon' => '&#128737;&#65039;', 'title' => '100% Private',            'desc' => 'All calculations run in your browser. No data is stored or shared — ever.' ],
     ];
 }
 
@@ -927,12 +927,12 @@ function fs_get_testimonials() {
 /** Why Us features */
 function fs_get_features() {
     return [
-        [ 'icon' => '⚡', 'title' => 'Instant Results',       'desc' => 'Every calculation is instant — no waiting, no server calls. Results update in real-time as you type.' ],
-        [ 'icon' => '🎯', 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
-        [ 'icon' => '🔓', 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation — completely free forever. No account required.' ],
-        [ 'icon' => '📱', 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
-        [ 'icon' => '🤝', 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
-        [ 'icon' => '🔄', 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
+        [ 'icon' => '&#9889;', 'title' => 'Instant Results',       'desc' => 'Every calculation is instant — no waiting, no server calls. Results update in real-time as you type.' ],
+        [ 'icon' => '&#127919;', 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
+        [ 'icon' => '&#128275;', 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation — completely free forever. No account required.' ],
+        [ 'icon' => '&#128241;', 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
+        [ 'icon' => '&#129309;', 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
+        [ 'icon' => '&#128260;', 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
     ];
 }
 
@@ -1063,13 +1063,13 @@ function fs_insert_all_tools() {
     }
 
     $categories = [
-        'loan-calculators'    => [ 'name' => 'Loan Calculators',    'icon' => '🏦' ],
-        'investment-tools'    => [ 'name' => 'Investment Tools',     'icon' => '📈' ],
-        'tax-calculators'     => [ 'name' => 'Tax Calculators',      'icon' => '🧾' ],
-        'savings-planners'    => [ 'name' => 'Savings Planners',     'icon' => '💰' ],
-        'retirement-planning' => [ 'name' => 'Retirement Planning',  'icon' => '🏖️' ],
-        'currency-converters' => [ 'name' => 'Currency Converters',  'icon' => '💱' ],
-        'budget-analyzers'    => [ 'name' => 'Budget Analyzers',     'icon' => '📊' ],
+        'loan-calculators'    => [ 'name' => 'Loan Calculators',    'icon' => '&#127974;' ],
+        'investment-tools'    => [ 'name' => 'Investment Tools',     'icon' => '&#128200;' ],
+        'tax-calculators'     => [ 'name' => 'Tax Calculators',      'icon' => '&#129534;' ],
+        'savings-planners'    => [ 'name' => 'Savings Planners',     'icon' => '&#128176;' ],
+        'retirement-planning' => [ 'name' => 'Retirement Planning',  'icon' => '&#127958;&#65039;' ],
+        'currency-converters' => [ 'name' => 'Currency Converters',  'icon' => '&#128177;' ],
+        'budget-analyzers'    => [ 'name' => 'Budget Analyzers',     'icon' => '&#128202;' ],
         'crypto-tools'        => [ 'name' => 'Crypto Tools',         'icon' => '₿'  ],
     ];
 
@@ -1243,7 +1243,7 @@ add_action( 'admin_init', 'fs_insert_all_tools' );
 function fs_tool_card_metabox() {
     add_meta_box(
         'fs_tool_card_settings',
-        '🃏 Tool Card Settings',
+        '&#127183; Tool Card Settings',
         'fs_tool_card_metabox_html',
         'fs_tool',
         'side',
@@ -1283,7 +1283,7 @@ function fs_tool_card_metabox_html( $post ) {
         <th style="padding:6px 0;font-size:12px">Card Icon (emoji)</th>
         <td style="padding:4px 0">
           <input type="text" name="fs_card_icon" value="<?php echo esc_attr($icon); ?>"
-                 placeholder="🧮" style="width:80px;font-size:18px;text-align:center">
+                 placeholder="&#129518;" style="width:80px;font-size:18px;text-align:center">
           <p style="margin:4px 0 0;font-size:11px;color:#666">Overrides the default icon. Leave blank to use category default.</p>
         </td>
       </tr>
@@ -1291,8 +1291,8 @@ function fs_tool_card_metabox_html( $post ) {
         <th style="padding:6px 0;font-size:12px">Badge Text</th>
         <td style="padding:4px 0">
           <input type="text" name="fs_card_badge" value="<?php echo esc_attr($badge); ?>"
-                 placeholder="🔥 New" style="width:140px;font-size:12px">
-          <p style="margin:4px 0 0;font-size:11px;color:#666">Shows as a small badge on the card (e.g. "🔥 New", "⭐ Popular", "🚀 Advanced").</p>
+                 placeholder="&#128293; New" style="width:140px;font-size:12px">
+          <p style="margin:4px 0 0;font-size:11px;color:#666">Shows as a small badge on the card (e.g. "&#128293; New", "&#11088; Popular", "&#128640; Advanced").</p>
         </td>
       </tr>
       <tr>
@@ -2467,17 +2467,17 @@ add_action( 'wp_ajax_nopriv_fs_ai_chat', 'fs_ai_chat_handler' );
 function fs_ai_fallback_response( $msg ) {
     $msg = strtolower( $msg );
     $responses = [
-        'emergency'   => '🛡️ Your emergency fund should cover 3-6 months of essential expenses (rent, food, utilities). Keep it in a high-yield savings account earning 4-5% APY. Never invest it in stocks — it must stay liquid and safe.',
-        'budget'      => '💳 Use the 50/30/20 rule: 50% for needs (rent, food), 30% for wants (dining, entertainment), 20% for savings and debt payoff. Track every dollar for 30 days to find leaks in your spending.',
-        'debt'        => '🔗 Two proven strategies: Avalanche (pay highest interest rate first — saves the most money) or Snowball (pay smallest balance first — builds momentum). Always pay at least the minimum on all debts.',
-        'invest'      => '📈 Start with: (1) Get your full employer 401k match, (2) Max your HSA if eligible, (3) Max Roth IRA ($7,000/yr), (4) Max 401k ($23,500/yr). Use low-cost index funds like VTI or VTSAX.',
-        'tax'         => '🧾 Biggest tax savers: 401k contributions reduce taxable income dollar-for-dollar. HSA gives triple tax benefit. Max both before April 15. At a 22% bracket, every $1,000 in 401k saves you $220 in taxes.',
-        'retirement'  => '🏖️ The 4% rule: At retirement, you can withdraw 4% of your portfolio yearly. To replace $5,000/month in retirement, you need $1.5M saved. Start early — $300/month at 25 becomes $1M by 65 at 7% returns.',
-        'savings'     => '💰 Automate your savings the day your paycheck arrives — pay yourself first. Even 1% more savings rate makes a huge difference over decades. Use a HYSA for short-term goals (4-5% APY).',
-        'credit'      => '💳 Improve your credit score: Pay on time (35% of score), keep utilization below 30% (30%), keep old accounts open (15%), limit new applications (10%). Check your free report at AnnualCreditReport.com.',
-        'mortgage'    => '🏠 Rule of thumb: Your mortgage payment should be under 28% of gross monthly income. Put 20% down to avoid PMI. At 7% rate, $300k mortgage = ~$2,000/month. Use our mortgage calculator for exact numbers.',
+        'emergency'   => '&#128737;&#65039; Your emergency fund should cover 3-6 months of essential expenses (rent, food, utilities). Keep it in a high-yield savings account earning 4-5% APY. Never invest it in stocks — it must stay liquid and safe.',
+        'budget'      => '&#128179; Use the 50/30/20 rule: 50% for needs (rent, food), 30% for wants (dining, entertainment), 20% for savings and debt payoff. Track every dollar for 30 days to find leaks in your spending.',
+        'debt'        => '&#128279; Two proven strategies: Avalanche (pay highest interest rate first — saves the most money) or Snowball (pay smallest balance first — builds momentum). Always pay at least the minimum on all debts.',
+        'invest'      => '&#128200; Start with: (1) Get your full employer 401k match, (2) Max your HSA if eligible, (3) Max Roth IRA ($7,000/yr), (4) Max 401k ($23,500/yr). Use low-cost index funds like VTI or VTSAX.',
+        'tax'         => '&#129534; Biggest tax savers: 401k contributions reduce taxable income dollar-for-dollar. HSA gives triple tax benefit. Max both before April 15. At a 22% bracket, every $1,000 in 401k saves you $220 in taxes.',
+        'retirement'  => '&#127958;&#65039; The 4% rule: At retirement, you can withdraw 4% of your portfolio yearly. To replace $5,000/month in retirement, you need $1.5M saved. Start early — $300/month at 25 becomes $1M by 65 at 7% returns.',
+        'savings'     => '&#128176; Automate your savings the day your paycheck arrives — pay yourself first. Even 1% more savings rate makes a huge difference over decades. Use a HYSA for short-term goals (4-5% APY).',
+        'credit'      => '&#128179; Improve your credit score: Pay on time (35% of score), keep utilization below 30% (30%), keep old accounts open (15%), limit new applications (10%). Check your free report at AnnualCreditReport.com.',
+        'mortgage'    => '&#127968; Rule of thumb: Your mortgage payment should be under 28% of gross monthly income. Put 20% down to avoid PMI. At 7% rate, $300k mortgage = ~$2,000/month. Use our mortgage calculator for exact numbers.',
         'crypto'      => '₿ Treat crypto as high-risk speculation — never invest more than 5-10% of your portfolio. It has no earnings, dividends, or intrinsic value. Stick to Bitcoin and Ethereum if you invest. Never invest emergency funds in crypto.',
-        'default'     => '🤖 Great question! For personalized numbers, use the panels in this dashboard. Key principles: (1) Build a 3-6 month emergency fund first, (2) Get your full employer 401k match, (3) Pay off high-rate debt over 7%, (4) Max tax-advantaged accounts, (5) Invest in index funds. Which area do you want to explore?',
+        'default'     => '&#129302; Great question! For personalized numbers, use the panels in this dashboard. Key principles: (1) Build a 3-6 month emergency fund first, (2) Get your full employer 401k match, (3) Pay off high-rate debt over 7%, (4) Max tax-advantaged accounts, (5) Invest in index funds. Which area do you want to explore?',
     ];
     foreach ( $responses as $key => $reply ) {
         if ( $key !== 'default' && strpos( $msg, $key ) !== false ) {
@@ -2552,7 +2552,7 @@ add_action( 'wp_footer', function() {
     <div class="fs-cookie-banner" id="fs-cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
         <div class="fs-cookie-banner__inner">
             <div class="fs-cookie-banner__text">
-                <span class="fs-cookie-banner__icon">🍪</span>
+                <span class="fs-cookie-banner__icon">&#127850;</span>
                 <div>
                     <strong>We use cookies</strong>
                     <span>We use cookies to improve your experience and show relevant ads. By continuing you agree to our <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a>.</span>
@@ -2609,13 +2609,13 @@ add_action( 'admin_menu', function() {
         }
         ?>
         <div class="wrap" style="font-family:-apple-system,sans-serif;max-width:650px;">
-            <h1 style="font-size:1.5rem;margin-bottom:6px;">💰 Google AdSense Settings</h1>
+            <h1 style="font-size:1.5rem;margin-bottom:6px;">&#128176; Google AdSense Settings</h1>
             <p style="color:#64748B;margin-bottom:20px;">Connect your AdSense account to start earning from ads.</p>
             <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:.875rem;">
                 <strong>How to get approved by Google AdSense:</strong><br>
-                1. Site must have original content (✅ 130+ tools + 11 blog posts)<br>
-                2. Privacy Policy page must exist (✅ done)<br>
-                3. Contact page must exist (✅ done)<br>
+                1. Site must have original content (&#9989; 130+ tools + 11 blog posts)<br>
+                2. Privacy Policy page must exist (&#9989; done)<br>
+                3. Contact page must exist (&#9989; done)<br>
                 4. Site must be live on a real domain (not localhost)<br>
                 5. Apply at <a href="https://adsense.google.com" target="_blank">adsense.google.com</a>
             </div>

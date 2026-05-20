@@ -10,13 +10,13 @@ $term_slug = $term ? $term->slug : '';
 $term_name = $term ? $term->name : 'Tools';
 
 $icons = [
-    'loan-calculators'    => '🏦',
-    'investment-tools'    => '📈',
-    'tax-calculators'     => '🧾',
-    'savings-planners'    => '💰',
-    'retirement-planning' => '🏖️',
-    'currency-converters' => '💱',
-    'budget-analyzers'    => '📊',
+    'loan-calculators'    => '&#127974;',
+    'investment-tools'    => '&#128200;',
+    'tax-calculators'     => '&#129534;',
+    'savings-planners'    => '&#128176;',
+    'retirement-planning' => '&#127958;&#65039;',
+    'currency-converters' => '&#128177;',
+    'budget-analyzers'    => '&#128202;',
     'crypto-tools'        => '₿',
 ];
 $descs = [
@@ -32,45 +32,45 @@ $descs = [
 
 // Per-tool-type icon map
 $type_icons = [
-    'loan_payment'   => '💵',
-    'amortization'   => '📅',
-    'refinance'      => '🔄',
-    'loan_compare'   => '⚖️',
-    'affordability'  => '🏠',
-    'compound'       => '📊',
-    'roi'            => '📈',
-    'dividend'       => '💸',
-    'dca'            => '🔁',
-    'portfolio'      => '🗂️',
-    'capital_gains'  => '💹',
-    'cagr'           => '🚀',
-    'pv'             => '⏮️',
-    'breakeven'      => '⚖️',
-    'inflation'      => '📉',
-    'sharpe'         => '📐',
-    'bond'           => '🏛️',
-    'options'        => '🎯',
-    'risk'           => '🛡️',
-    'income_tax'     => '🧾',
-    'self_emp_tax'   => '💼',
-    'savings_goal'   => '🎯',
-    'savings_52'     => '📆',
-    'retirement'     => '🏖️',
-    'fire'           => '🔥',
-    'budget'         => '📋',
-    'budget_503020'  => '📊',
-    'dti'            => '⚖️',
-    'net_worth'      => '💎',
-    'currency'       => '💱',
+    'loan_payment'   => '&#128181;',
+    'amortization'   => '&#128197;',
+    'refinance'      => '&#128260;',
+    'loan_compare'   => '&#9878;&#65039;',
+    'affordability'  => '&#127968;',
+    'compound'       => '&#128202;',
+    'roi'            => '&#128200;',
+    'dividend'       => '&#128184;',
+    'dca'            => '&#128257;',
+    'portfolio'      => '&#128450;&#65039;',
+    'capital_gains'  => '&#128185;',
+    'cagr'           => '&#128640;',
+    'pv'             => '&#9198;&#65039;',
+    'breakeven'      => '&#9878;&#65039;',
+    'inflation'      => '&#128201;',
+    'sharpe'         => '&#128208;',
+    'bond'           => '&#127963;&#65039;',
+    'options'        => '&#127919;',
+    'risk'           => '&#128737;&#65039;',
+    'income_tax'     => '&#129534;',
+    'self_emp_tax'   => '&#128188;',
+    'savings_goal'   => '&#127919;',
+    'savings_52'     => '&#128198;',
+    'retirement'     => '&#127958;&#65039;',
+    'fire'           => '&#128293;',
+    'budget'         => '&#128203;',
+    'budget_503020'  => '&#128202;',
+    'dti'            => '&#9878;&#65039;',
+    'net_worth'      => '&#128142;',
+    'currency'       => '&#128177;',
     'crypto_convert' => '₿',
-    'crypto_pnl'     => '📊',
-    'staking'        => '⛏️',
-    'mining'         => '⚙️',
-    'simple_calc'    => '🧮',
-    'va_loan_advanced'=> '🎖️',
+    'crypto_pnl'     => '&#128202;',
+    'staking'        => '&#9935;&#65039;',
+    'mining'         => '&#9881;&#65039;',
+    'simple_calc'    => '&#129518;',
+    'va_loan_advanced'=> '&#127894;&#65039;',
 ];
 
-$icon  = $icons[ $term_slug ] ?? '🛠️';
+$icon  = $icons[ $term_slug ] ?? '&#128736;&#65039;';
 $desc  = $descs[ $term_slug ] ?? 'Browse all available tools in this category.';
 $count = $term ? $term->count : 0;
 
@@ -111,7 +111,7 @@ if ( have_posts() ) {
                 <div class="fst-search__inner">
                     <input type="text" class="fst-search__input" id="fst-search-input"
                            placeholder="Search <?php echo esc_attr($term_name); ?>...">
-                    <button class="fst-search__btn">🔍</button>
+                    <button class="fst-search__btn">&#128269;</button>
                 </div>
             </div>
         </div>
@@ -121,10 +121,10 @@ if ( have_posts() ) {
     <div class="fst-stats-bar" style="margin-top:2rem">
         <div class="container">
             <div class="fst-stats-bar__inner">
-                <span class="fst-stats-bar__item">✅ <strong><?php echo $count; ?></strong> Free Tools</span>
-                <span class="fst-stats-bar__item">📄 <strong>PDF</strong> Export</span>
-                <span class="fst-stats-bar__item">⚡ <strong>Instant</strong> Results</span>
-                <span class="fst-stats-bar__item">🔒 <strong>No</strong> Signup</span>
+                <span class="fst-stats-bar__item">&#9989; <strong><?php echo $count; ?></strong> Free Tools</span>
+                <span class="fst-stats-bar__item">&#128196; <strong>PDF</strong> Export</span>
+                <span class="fst-stats-bar__item">&#9889; <strong>Instant</strong> Results</span>
+                <span class="fst-stats-bar__item">&#128274; <strong>No</strong> Signup</span>
             </div>
         </div>
     </div>
@@ -142,7 +142,7 @@ if ( have_posts() ) {
 
         <div class="fst-grid" id="fst-tools-grid">
             <?php foreach ( $all_posts as $p ) :
-                $t_icon  = get_post_meta( $p['id'], '_fs_card_icon',        true ) ?: ( $type_icons[ $p['type'] ] ?? '🧮' );
+                $t_icon  = get_post_meta( $p['id'], '_fs_card_icon',        true ) ?: ( $type_icons[ $p['type'] ] ?? '&#129518;' );
                 $card_bg = get_post_meta( $p['id'], '_fs_card_bg',          true ) ?: '#ffffff';
                 $badge   = get_post_meta( $p['id'], '_fs_card_badge',       true );
                 $c_link  = get_post_meta( $p['id'], '_fs_card_link',        true ) ?: $p['url'];
@@ -169,7 +169,7 @@ if ( have_posts() ) {
         </div>
 
         <div id="fst-no-results" class="fst-empty" style="display:none">
-            <div class="fst-empty__icon">🔍</div>
+            <div class="fst-empty__icon">&#128269;</div>
             <h3 class="fst-empty__title">No tools match your search</h3>
             <p class="fst-empty__desc">Try a different keyword or browse all tools below.</p>
             <button onclick="document.getElementById('fst-search-input').value='';filterTools()"
@@ -180,7 +180,7 @@ if ( have_posts() ) {
 
         <?php else : ?>
         <div class="fst-empty">
-            <div class="fst-empty__icon">🛠️</div>
+            <div class="fst-empty__icon">&#128736;&#65039;</div>
             <h3 class="fst-empty__title">No tools found in this category</h3>
             <p class="fst-empty__desc">Check back soon — we're adding new tools every week.</p>
             <a href="<?php echo esc_url( home_url('/') ); ?>"
@@ -204,7 +204,7 @@ if ( have_posts() ) {
             $all_terms = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => false ] );
             foreach ( $all_terms as $t ) :
                 if ( $t->slug === $term_slug ) continue;
-                $t_icon = $icons[ $t->slug ] ?? '🛠️';
+                $t_icon = $icons[ $t->slug ] ?? '&#128736;&#65039;';
                 $t_link = get_term_link( $t );
             ?>
             <a href="<?php echo esc_url( $t_link ); ?>"

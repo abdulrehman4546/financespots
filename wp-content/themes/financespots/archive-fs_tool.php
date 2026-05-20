@@ -6,13 +6,13 @@
 get_header();
 
 $cat_icons = [
-    'loan-calculators'    => '🏦',
-    'investment-tools'    => '📈',
-    'tax-calculators'     => '🧾',
-    'savings-planners'    => '💰',
-    'retirement-planning' => '🏖️',
-    'currency-converters' => '💱',
-    'budget-analyzers'    => '📊',
+    'loan-calculators'    => '&#127974;',
+    'investment-tools'    => '&#128200;',
+    'tax-calculators'     => '&#129534;',
+    'savings-planners'    => '&#128176;',
+    'retirement-planning' => '&#127958;&#65039;',
+    'currency-converters' => '&#128177;',
+    'budget-analyzers'    => '&#128202;',
     'crypto-tools'        => '₿',
 ];
 $cat_descs = [
@@ -40,7 +40,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
 <section class="fst-hero">
     <div class="container">
         <div class="fst-hero__inner">
-            <span class="fst-hero__icon">🛠️</span>
+            <span class="fst-hero__icon">&#128736;&#65039;</span>
             <h1 class="fst-hero__title">All Finance Tools</h1>
             <p class="fst-hero__sub">
                 <?php echo $total_tools ?: '110'; ?>+ free calculators across <?php echo count( (array) $categories ); ?> categories — instant results, no signup required
@@ -49,7 +49,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
                 <div class="fst-search__inner">
                     <input type="text" class="fst-search__input" id="fst-cat-search"
                            placeholder="Search categories...">
-                    <button class="fst-search__btn">🔍</button>
+                    <button class="fst-search__btn">&#128269;</button>
                 </div>
             </div>
         </div>
@@ -57,10 +57,10 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
     <div class="fst-stats-bar" style="margin-top:2rem">
         <div class="container">
             <div class="fst-stats-bar__inner">
-                <span class="fst-stats-bar__item">✅ <strong><?php echo $total_tools ?: '110'; ?>+</strong> Free Tools</span>
-                <span class="fst-stats-bar__item">📄 <strong>PDF</strong> Export on Every Tool</span>
-                <span class="fst-stats-bar__item">⚡ <strong>Instant</strong> Results</span>
-                <span class="fst-stats-bar__item">🔒 <strong>No</strong> Signup Needed</span>
+                <span class="fst-stats-bar__item">&#9989; <strong><?php echo $total_tools ?: '110'; ?>+</strong> Free Tools</span>
+                <span class="fst-stats-bar__item">&#128196; <strong>PDF</strong> Export on Every Tool</span>
+                <span class="fst-stats-bar__item">&#9889; <strong>Instant</strong> Results</span>
+                <span class="fst-stats-bar__item">&#128274; <strong>No</strong> Signup Needed</span>
             </div>
         </div>
     </div>
@@ -80,7 +80,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
 
         <div class="fst-cat-grid" id="fst-cat-grid">
             <?php foreach ( $categories as $cat ) :
-                $icon = $cat_icons[ $cat->slug ] ?? '🛠️';
+                $icon = $cat_icons[ $cat->slug ] ?? '&#128736;&#65039;';
                 $desc = $cat_descs[ $cat->slug ] ?? '';
                 $url  = get_term_link( $cat );
             ?>
@@ -98,7 +98,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
 
         <?php else : ?>
         <div class="fst-empty">
-            <div class="fst-empty__icon">🛠️</div>
+            <div class="fst-empty__icon">&#128736;&#65039;</div>
             <h3 class="fst-empty__title">Tools are loading…</h3>
             <p class="fst-empty__desc">Visit the WP admin panel once to initialize all tools automatically.</p>
         </div>
@@ -123,17 +123,17 @@ if ( $popular ) :
 <section style="padding:3rem 0 4rem;background:#fff;border-top:1px solid var(--fs-border)">
     <div class="container">
         <h2 style="font-size:1.5rem;font-weight:800;color:var(--fs-text);margin:0 0 1.5rem;text-align:center">
-            ⭐ Most Popular Tools
+            &#11088; Most Popular Tools
         </h2>
         <div class="fst-grid">
             <?php foreach ( $popular as $p ) :
                 $type = get_post_meta($p->ID, '_fs_tool_type', true) ?: 'simple_calc';
                 $type_icons = [
-                    'va_loan_advanced'=>'🎖️','loan_payment'=>'💵','compound'=>'📊','income_tax'=>'🧾',
-                    'budget'=>'📋','crypto_pnl'=>'₿','roi'=>'📈','savings_goal'=>'🎯',
-                    'retirement'=>'🏖️','currency'=>'💱','budget_503020'=>'📊','dca'=>'🔁',
+                    'va_loan_advanced'=>'&#127894;&#65039;','loan_payment'=>'&#128181;','compound'=>'&#128202;','income_tax'=>'&#129534;',
+                    'budget'=>'&#128203;','crypto_pnl'=>'₿','roi'=>'&#128200;','savings_goal'=>'&#127919;',
+                    'retirement'=>'&#127958;&#65039;','currency'=>'&#128177;','budget_503020'=>'&#128202;','dca'=>'&#128257;',
                 ];
-                $t_icon = $type_icons[$type] ?? '🧮';
+                $t_icon = $type_icons[$type] ?? '&#129518;';
             ?>
             <a href="<?php echo esc_url( get_permalink($p) ); ?>" class="fst-card">
                 <div class="fst-card__icon"><?php echo $t_icon; ?></div>

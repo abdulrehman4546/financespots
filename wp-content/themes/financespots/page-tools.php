@@ -5,7 +5,7 @@
     <!-- Hero -->
     <section style="padding:70px 0 50px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);">
         <div class="container">
-            <span style="display:inline-block;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#10B981;padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-bottom:16px;">🧮 Finance Tools</span>
+            <span style="display:inline-block;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#10B981;padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-bottom:16px;">&#129518; Finance Tools</span>
             <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin:0 0 14px;">All <?php echo wp_count_posts('fs_tool')->publish; ?>+ Free Tools</h1>
             <p style="color:#94A3B8;font-size:1rem;max-width:500px;margin:0 auto 28px;">Every calculator you need — mortgage, investing, taxes, retirement, budgeting and more. 100% free, no account needed.</p>
             <!-- Search -->
@@ -22,19 +22,19 @@
     <?php
     $cats = get_terms(['taxonomy'=>'fs_tool_cat','hide_empty'=>true,'orderby'=>'count','order'=>'DESC']);
     $cat_icons = [
-        'mortgage-calculators'   => ['🏠','Mortgage'],
-        'loan-calculators'       => ['🏦','Loans'],
-        'investment-calculators' => ['📈','Investing'],
-        'retirement-calculators' => ['🏖️','Retirement'],
-        'budget-calculators'     => ['💰','Budgeting'],
-        'tax-calculators'        => ['🧾','Taxes'],
-        'savings-calculators'    => ['💵','Savings'],
+        'mortgage-calculators'   => ['&#127968;','Mortgage'],
+        'loan-calculators'       => ['&#127974;','Loans'],
+        'investment-calculators' => ['&#128200;','Investing'],
+        'retirement-calculators' => ['&#127958;&#65039;','Retirement'],
+        'budget-calculators'     => ['&#128176;','Budgeting'],
+        'tax-calculators'        => ['&#129534;','Taxes'],
+        'savings-calculators'    => ['&#128181;','Savings'],
         'crypto-calculators'     => ['₿','Crypto'],
-        'currency-tools'         => ['🌍','Currency'],
-        'debt-calculators'       => ['📊','Debt'],
+        'currency-tools'         => ['&#127757;','Currency'],
+        'debt-calculators'       => ['&#128202;','Debt'],
     ];
     foreach($cats as $cat):
-        $icon_data = $cat_icons[$cat->slug] ?? ['🧮', $cat->name];
+        $icon_data = $cat_icons[$cat->slug] ?? ['&#129518;', $cat->name];
         $tools = get_posts(['post_type'=>'fs_tool','post_status'=>'publish','posts_per_page'=>-1,'tax_query'=>[['taxonomy'=>'fs_tool_cat','field'=>'term_id','terms'=>$cat->term_id]],'orderby'=>'title','order'=>'ASC']);
         if(empty($tools)) continue;
     ?>
@@ -64,7 +64,7 @@
     <?php endforeach; ?>
 
     <div id="fs-no-results" style="display:none;text-align:center;padding:60px 20px;color:#64748B;">
-        <div style="font-size:3rem;margin-bottom:12px;">🔍</div>
+        <div style="font-size:3rem;margin-bottom:12px;">&#128269;</div>
         <p style="font-size:1rem;">No tools found. Try a different search.</p>
     </div>
     </div>

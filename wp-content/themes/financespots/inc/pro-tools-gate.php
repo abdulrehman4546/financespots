@@ -27,7 +27,7 @@ function fs_get_default_pro_tools() {
 add_action( 'add_meta_boxes', function() {
     add_meta_box(
         'fs_pro_tool_box',
-        '⭐ PRO Tool Settings',
+        '&#11088; PRO Tool Settings',
         'fs_pro_tool_metabox_html',
         'page',
         'side',
@@ -114,9 +114,9 @@ function fs_render_pro_overlay( $tool_name, $current_url = '' ) {
         <div class="fs-pg-blur-bg" aria-hidden="true"></div>
         <div class="fs-pg-modal" role="dialog" aria-labelledby="fs-pg-title">
 
-            <div class="fs-pg-icon">🔒</div>
+            <div class="fs-pg-icon">&#128274;</div>
 
-            <div class="fs-pg-badge">⭐ PRO Feature</div>
+            <div class="fs-pg-badge">&#11088; PRO Feature</div>
 
             <h2 class="fs-pg-title" id="fs-pg-title">
                 <?php echo esc_html($tool_name); ?> is PRO
@@ -126,15 +126,15 @@ function fs_render_pro_overlay( $tool_name, $current_url = '' ) {
             </p>
 
             <div class="fs-pg-perks">
-                <div class="fs-pg-perk"><span>💾</span> Save your calculations</div>
-                <div class="fs-pg-perk"><span>📄</span> Export to PDF</div>
-                <div class="fs-pg-perk"><span>📊</span> Advanced scenarios</div>
-                <div class="fs-pg-perk"><span>🚫</span> Ad-free experience</div>
+                <div class="fs-pg-perk"><span>&#128190;</span> Save your calculations</div>
+                <div class="fs-pg-perk"><span>&#128196;</span> Export to PDF</div>
+                <div class="fs-pg-perk"><span>&#128202;</span> Advanced scenarios</div>
+                <div class="fs-pg-perk"><span>&#128683;</span> Ad-free experience</div>
             </div>
 
             <div class="fs-pg-actions">
                 <a href="<?php echo esc_url($pricing_url); ?>" class="fs-pg-btn-upgrade">
-                    ⭐ Upgrade to PRO — From $9/mo
+                    &#11088; Upgrade to PRO — From $9/mo
                 </a>
                 <?php if ( ! is_user_logged_in() ) : ?>
                 <p class="fs-pg-signin-note">
@@ -196,11 +196,11 @@ function fs_render_pro_overlay( $tool_name, $current_url = '' ) {
 function fs_render_inline_lock( $tool_name ) {
     ?>
     <div style="text-align:center;padding:32px 24px;max-width:320px;">
-        <div style="font-size:2.5rem;margin-bottom:10px;">🔒</div>
+        <div style="font-size:2.5rem;margin-bottom:10px;">&#128274;</div>
         <span style="display:inline-block;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.3);color:#F59E0B;padding:3px 12px;border-radius:20px;font-size:.72rem;font-weight:800;text-transform:uppercase;margin-bottom:10px;">PRO Feature</span>
         <h3 style="color:#fff;font-size:1.1rem;font-weight:800;margin:0 0 8px;"><?php echo esc_html($tool_name); ?></h3>
         <p style="color:#64748B;font-size:.82rem;margin-bottom:18px;line-height:1.6;">Upgrade to unlock this advanced tool.</p>
-        <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-block;background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:10px 22px;border-radius:10px;font-size:.875rem;font-weight:700;text-decoration:none;">⭐ Upgrade to PRO</a>
+        <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-block;background:linear-gradient(135deg,#10B981,#059669);color:#fff;padding:10px 22px;border-radius:10px;font-size:.875rem;font-weight:700;text-decoration:none;">&#11088; Upgrade to PRO</a>
     </div>
     <?php
 }
@@ -252,7 +252,7 @@ function fs_pro_tools_admin_page() {
     }
     ?>
     <div class="wrap" style="font-family:-apple-system,sans-serif;max-width:800px;">
-        <h1 style="font-size:1.5rem;margin-bottom:6px;">🔒 PRO Tools Management</h1>
+        <h1 style="font-size:1.5rem;margin-bottom:6px;">&#128274; PRO Tools Management</h1>
         <p style="color:#64748B;margin-bottom:24px;">Mark pages as PRO tools — non-PRO users will see a locked overlay on those pages.</p>
 
         <!-- Quick mark form -->
@@ -274,7 +274,7 @@ function fs_pro_tools_admin_page() {
                     <input type="text" name="tool_label" placeholder="e.g. Retirement Planner"
                            style="width:100%;padding:8px 12px;border:1.5px solid #E2E8F0;border-radius:8px;font-size:.875rem;">
                 </div>
-                <button name="fs_quick_mark" style="background:#10B981;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">🔒 Mark as PRO</button>
+                <button name="fs_quick_mark" style="background:#10B981;color:#fff;border:none;padding:9px 20px;border-radius:8px;font-weight:700;cursor:pointer;white-space:nowrap;">&#128274; Mark as PRO</button>
             </form>
         </div>
 
@@ -308,7 +308,7 @@ function fs_pro_tools_admin_page() {
                     </td>
                     <td style="padding:12px 16px;">
                         <span style="background:#FEF3C7;color:#D97706;padding:3px 10px;border-radius:20px;font-size:.75rem;font-weight:700;">
-                            🔒 <?php echo esc_html($label); ?>
+                            &#128274; <?php echo esc_html($label); ?>
                         </span>
                     </td>
                     <td style="padding:12px 16px;">
@@ -333,7 +333,7 @@ function fs_pro_tools_admin_page() {
 
         <!-- How to use -->
         <div style="background:#F0FDF4;border:1px solid #BBF7D0;border-radius:12px;padding:18px 20px;margin-top:20px;font-size:.85rem;">
-            <strong style="color:#059669;">💡 How to use Shortcode (for partial locking):</strong><br>
+            <strong style="color:#059669;">&#128161; How to use Shortcode (for partial locking):</strong><br>
             <code style="background:#D1FAE5;padding:4px 8px;border-radius:4px;display:inline-block;margin-top:6px;">[fs_pro_gate label="Tool Name"] your tool HTML here [/fs_pro_gate]</code><br>
             <span style="color:#047857;margin-top:6px;display:block;">Free users see a blur overlay. PRO users see the full tool.</span>
         </div>

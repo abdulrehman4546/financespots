@@ -26,7 +26,7 @@ get_header();
                 <?php
                 $categories = [
                     [
-                        'icon'  => '🏠',
+                        'icon'  => '&#127968;',
                         'title' => 'Mortgage & Home',
                         'desc'  => 'Calculate mortgage payments, compare loan terms, estimate affordability, and plan your home purchase with confidence.',
                         'color' => '#3B82F6',
@@ -34,7 +34,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '📈',
+                        'icon'  => '&#128200;',
                         'title' => 'Investing & Wealth',
                         'desc'  => 'Compound interest, investment returns, index fund projections, and portfolio growth calculators.',
                         'color' => '#10B981',
@@ -42,7 +42,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '💳',
+                        'icon'  => '&#128179;',
                         'title' => 'Debt Management',
                         'desc'  => 'Pay off debt faster using the avalanche or snowball method. See exactly when you will be debt-free.',
                         'color' => '#EF4444',
@@ -50,7 +50,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '🏖️',
+                        'icon'  => '&#127958;&#65039;',
                         'title' => 'Retirement Planning',
                         'desc'  => 'Plan your retirement savings, calculate your retirement number, and project your 401(k) and IRA growth.',
                         'color' => '#8B5CF6',
@@ -58,7 +58,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '📋',
+                        'icon'  => '&#128203;',
                         'title' => 'Budgeting',
                         'desc'  => 'Build a monthly budget, track spending, apply the 50/30/20 rule, and take full control of your money.',
                         'color' => '#06B6D4',
@@ -66,7 +66,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '📄',
+                        'icon'  => '&#128196;',
                         'title' => 'Loans & Credit',
                         'desc'  => 'Compare personal loans, auto loans, and student loans. Find the best rates and monthly payments.',
                         'color' => '#F59E0B',
@@ -82,7 +82,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '🧾',
+                        'icon'  => '&#129534;',
                         'title' => 'Taxes',
                         'desc'  => 'Estimate your federal and state income tax, find deductions, and plan ahead for tax season 2026.',
                         'color' => '#64748B',
@@ -90,7 +90,7 @@ get_header();
                         'link'  => home_url('/tools/'),
                     ],
                     [
-                        'icon'  => '🏦',
+                        'icon'  => '&#127974;',
                         'title' => 'Savings & Emergency Fund',
                         'desc'  => 'Calculate how much to save, build your emergency fund, and find the best high-yield savings rates.',
                         'color' => '#10B981',

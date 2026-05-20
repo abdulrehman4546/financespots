@@ -180,7 +180,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 
 <!-- ── Hero ── -->
 <div class="hero">
-  <div class="hero-badge">🎖️ MILITARY BENEFIT CALCULATOR</div>
+  <div class="hero-badge">&#127894;&#65039; MILITARY BENEFIT CALCULATOR</div>
   <h1>VA Loan <em>Funding Fee</em><br>Calculator 2026</h1>
   <p>Instant funding fee, full PITI payment, amortization schedule, VA vs Conventional comparison — all with PDF export.</p>
   <div class="hero-kpis">
@@ -194,12 +194,12 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 <!-- ── Tabs ── -->
 <div class="tabs-bar">
   <div class="tabs">
-    <button class="tab on" onclick="goTab('quick',this)">⚡ Quick Calc</button>
-    <button class="tab" onclick="goTab('piti',this)">🏠 Full PITI</button>
-    <button class="tab" onclick="goTab('compare',this)">⚖️ Scenarios</button>
-    <button class="tab" onclick="goTab('vsconv',this)">📊 VA vs Conv</button>
-    <button class="tab" onclick="goTab('amort',this)">📅 Amortization</button>
-    <button class="tab" onclick="goTab('guide',this)">📖 Fee Guide</button>
+    <button class="tab on" onclick="goTab('quick',this)">&#9889; Quick Calc</button>
+    <button class="tab" onclick="goTab('piti',this)">&#127968; Full PITI</button>
+    <button class="tab" onclick="goTab('compare',this)">&#9878;&#65039; Scenarios</button>
+    <button class="tab" onclick="goTab('vsconv',this)">&#128202; VA vs Conv</button>
+    <button class="tab" onclick="goTab('amort',this)">&#128197; Amortization</button>
+    <button class="tab" onclick="goTab('guide',this)">&#128214; Fee Guide</button>
   </div>
 </div>
 
@@ -214,7 +214,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   <div class="sh"><h2>Quick VA Funding Fee Estimate</h2><p>Instant results as you type — no button needed.</p></div>
 
   <div class="c">
-    <div class="c-title"><span>🏠</span> Loan Details</div>
+    <div class="c-title"><span>&#127968;</span> Loan Details</div>
     <div class="row2">
       <div class="fg"><label>Purchase Price</label><div class="iw pl"><span class="pre">$</span><input type="number" id="q_price" value="350000" oninput="Q()"></div></div>
       <div class="fg">
@@ -267,13 +267,13 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 
   <div id="q_exempt_box" style="display:none">
     <div class="exempt-banner">
-      <div class="eb-icon">🎖️</div>
+      <div class="eb-icon">&#127894;&#65039;</div>
       <div><div class="eb-title">You Are EXEMPT from the VA Funding Fee!</div>
       <div class="eb-desc">Veterans with 10%+ service-connected disability rating & surviving spouses pay $0 funding fee — saving thousands at closing.</div></div>
     </div>
   </div>
 
-  <div class="tip b"><span class="tip-i">💡</span><span><strong>5% Down Savings:</strong> Moving from 0%→5% down cuts your fee from 2.15%→1.50% — saving <strong id="q_tip_save">$2,275</strong> on a $350k loan.</span></div>
+  <div class="tip b"><span class="tip-i">&#128161;</span><span><strong>5% Down Savings:</strong> Moving from 0%→5% down cuts your fee from 2.15%→1.50% — saving <strong id="q_tip_save">$2,275</strong> on a $350k loan.</span></div>
 </div>
 
 <!-- Results -->
@@ -297,7 +297,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     <div class="rrow"><span class="rk">Total Cost</span><span class="rv" id="q_r8">$834,251</span></div>
 
     <div style="margin-top:1.1rem">
-      <div class="c-title" style="color:rgba(255,255,255,.35)"><span>📊</span> Cost Breakdown</div>
+      <div class="c-title" style="color:rgba(255,255,255,.35)"><span>&#128202;</span> Cost Breakdown</div>
       <div class="bbar">
         <div class="bseg" id="bb1" style="background:#00C896;width:96%"></div>
         <div class="bseg" id="bb2" style="background:#F59E0B;width:2%"></div>
@@ -313,11 +313,11 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 
     <!-- Payment chart -->
     <div style="margin-top:1.1rem">
-      <div class="c-title" style="color:rgba(255,255,255,.35)"><span>📈</span> Balance Over Time</div>
+      <div class="c-title" style="color:rgba(255,255,255,.35)"><span>&#128200;</span> Balance Over Time</div>
       <div class="chart-box"><canvas id="q_chart"></canvas></div>
     </div>
 
-    <button class="btn-pdf" onclick="pdfQuick()">📄 Download PDF Report</button>
+    <button class="btn-pdf" onclick="pdfQuick()">&#128196; Download PDF Report</button>
   </div>
 </div>
 </div>
@@ -331,7 +331,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 <div>
   <div class="sh"><h2>Full Monthly Payment (PITI)</h2><p>Taxes, insurance, HOA included for true cost of ownership.</p></div>
   <div class="c">
-    <div class="c-title"><span>🏠</span> Loan</div>
+    <div class="c-title"><span>&#127968;</span> Loan</div>
     <div class="row2">
       <div class="fg"><label>Purchase Price</label><div class="iw pl"><span class="pre">$</span><input type="number" id="p_price" value="350000" oninput="P()"></div></div>
       <div class="fg"><label>Down Payment %</label><div class="iw pr"><input type="number" id="p_down" value="0" oninput="P()"><span class="suf">%</span></div></div>
@@ -346,7 +346,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     </div>
   </div>
   <div class="c">
-    <div class="c-title"><span>💰</span> Monthly Expenses</div>
+    <div class="c-title"><span>&#128176;</span> Monthly Expenses</div>
     <div class="row2">
       <div class="fg"><label>Annual Property Tax</label><div class="iw pl"><span class="pre">$</span><input type="number" id="p_tax" value="4200" oninput="P()"></div></div>
       <div class="fg"><label>Annual Home Insurance</label><div class="iw pl"><span class="pre">$</span><input type="number" id="p_ins" value="1800" oninput="P()"></div></div>
@@ -371,7 +371,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
       <div class="rval" id="p_piti_disp">$2,970/mo</div>
       <div class="rsub">Principal + Interest + Tax + Insurance + HOA</div>
     </div>
-    <div class="c-title" style="color:rgba(255,255,255,.35);margin-top:.5rem"><span>📊</span> Breakdown</div>
+    <div class="c-title" style="color:rgba(255,255,255,.35);margin-top:.5rem"><span>&#128202;</span> Breakdown</div>
     <div class="bbar">
       <div class="bseg" id="pb1" style="background:#00C896;width:78%"></div>
       <div class="bseg" id="pb2" style="background:#3B82F6;width:12%"></div>
@@ -397,7 +397,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     </div>
     <!-- PITI Donut chart -->
     <div class="chart-box" style="height:170px"><canvas id="p_chart"></canvas></div>
-    <button class="btn-pdf" onclick="pdfPiti()">📄 Download PDF Report</button>
+    <button class="btn-pdf" onclick="pdfPiti()">&#128196; Download PDF Report</button>
   </div>
 </div>
 </div>
@@ -420,14 +420,14 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     </div>
   </div>
   <div class="c" style="overflow-x:auto">
-    <div class="c-title"><span>⚖️</span> Side-by-Side Results</div>
+    <div class="c-title"><span>&#9878;&#65039;</span> Side-by-Side Results</div>
     <table class="tbl" id="c_table"><thead></thead><tbody><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--muted)">Fill inputs above — auto calculates</td></tr></tbody></table>
   </div>
   <div class="c">
-    <div class="c-title"><span>📊</span> Fee vs Total Cost Chart</div>
+    <div class="c-title"><span>&#128202;</span> Fee vs Total Cost Chart</div>
     <div class="chart-box" style="height:220px"><canvas id="c_chart"></canvas></div>
   </div>
-  <button class="btn-pdf" onclick="pdfCompare()" style="max-width:260px">📄 Download Comparison PDF</button>
+  <button class="btn-pdf" onclick="pdfCompare()" style="max-width:260px">&#128196; Download Comparison PDF</button>
 </div>
 
 <!-- ══════════════════════
@@ -449,7 +449,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div id="v_winner" class="winner-banner" style="display:none">
-    <div style="font-size:2rem">🏆</div>
+    <div style="font-size:2rem">&#127942;</div>
     <div>
       <div style="font-size:.85rem;font-weight:800;color:#0F172A" id="v_winner_title">VA Loan Saves You More!</div>
       <div style="font-size:.82rem;color:#475569" id="v_winner_desc">Over 30 years, VA loan saves you $0 compared to conventional.</div>
@@ -458,7 +458,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 
   <div class="vs-grid">
     <div class="vs-card va">
-      <div class="vs-title va">🎖️ VA Loan</div>
+      <div class="vs-title va">&#127894;&#65039; VA Loan</div>
       <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_va_loan">—</span></div>
       <div class="vs-row"><span class="vk">Funding Fee</span><span class="vv" id="v_va_fee">—</span></div>
       <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_va_pi">—</span></div>
@@ -468,7 +468,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
       <div class="vs-row"><span class="vk">Total Cost</span><span class="vv" id="v_va_total">—</span></div>
     </div>
     <div class="vs-card conv">
-      <div class="vs-title conv">🏦 Conventional</div>
+      <div class="vs-title conv">&#127974; Conventional</div>
       <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_cv_loan">—</span></div>
       <div class="vs-row"><span class="vk">Funding Fee</span><span class="vv">$0</span></div>
       <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_cv_pi">—</span></div>
@@ -480,10 +480,10 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div class="c">
-    <div class="c-title"><span>📊</span> Monthly Cost Comparison</div>
+    <div class="c-title"><span>&#128202;</span> Monthly Cost Comparison</div>
     <div class="chart-box" style="height:220px"><canvas id="v_chart"></canvas></div>
   </div>
-  <button class="btn-pdf" onclick="pdfVsConv()" style="max-width:260px">📄 Download VA vs Conv PDF</button>
+  <button class="btn-pdf" onclick="pdfVsConv()" style="max-width:260px">&#128196; Download VA vs Conv PDF</button>
 </div>
 
 <!-- ══════════════════════
@@ -509,7 +509,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div class="c">
-    <div class="c-title"><span>📈</span> Balance & Interest Over Time</div>
+    <div class="c-title"><span>&#128200;</span> Balance & Interest Over Time</div>
     <div class="chart-box" style="height:220px"><canvas id="a_chart"></canvas></div>
   </div>
 
@@ -520,7 +520,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     </table>
   </div>
 
-  <button class="btn-pdf" onclick="pdfAmort()" style="max-width:260px;margin-top:1rem">📄 Download Amortization PDF</button>
+  <button class="btn-pdf" onclick="pdfAmort()" style="max-width:260px;margin-top:1rem">&#128196; Download Amortization PDF</button>
 </div>
 
 <!-- ══════════════════════
@@ -530,7 +530,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   <div class="sh"><h2>VA Funding Fee Rate Guide (2024–2026)</h2><p>Official rates from VA.gov — bookmark this page.</p></div>
 
   <div class="exempt-banner">
-    <div class="eb-icon">🎖️</div>
+    <div class="eb-icon">&#127894;&#65039;</div>
     <div>
       <div class="eb-title">Who Pays $0 Funding Fee? (Full Exemptions)</div>
       <div class="eb-desc">• Veterans receiving VA service-connected disability compensation (any rating)<br>
@@ -542,7 +542,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div class="c" style="overflow-x:auto;margin-bottom:1.25rem">
-    <div class="c-title"><span>🏠</span> Purchase & Construction Loans</div>
+    <div class="c-title"><span>&#127968;</span> Purchase & Construction Loans</div>
     <table class="guide-tbl">
       <thead><tr><th>Military Category</th><th>1st Use — 0% Down</th><th>1st Use — 5%+ Down</th><th>1st Use — 10%+ Down</th><th>Subsequent Use</th></tr></thead>
       <tbody>
@@ -553,7 +553,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div class="c" style="overflow-x:auto;margin-bottom:1.25rem">
-    <div class="c-title"><span>🔄</span> Refinance Loans</div>
+    <div class="c-title"><span>&#128260;</span> Refinance Loans</div>
     <table class="guide-tbl">
       <thead><tr><th>Loan Type</th><th>Regular Military</th><th>Reserves / Nat'l Guard</th></tr></thead>
       <tbody>
@@ -567,12 +567,12 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
 
   <div class="c">
-    <div class="c-title"><span>💡</span> Expert Strategy Tips</div>
-    <div class="tip g"><span class="tip-i">✅</span><span><strong>Roll it into the loan:</strong> Fund your fee inside the loan — no cash needed at closing. Your rate stays the same.</span></div>
-    <div class="tip b"><span class="tip-i">ℹ️</span><span><strong>No PMI — ever:</strong> VA loans never require Private Mortgage Insurance, saving $100–$300/month vs conventional, regardless of down payment.</span></div>
-    <div class="tip y"><span class="tip-i">⚠️</span><span><strong>Subsequent use penalty:</strong> Used a VA loan before? 0% down triggers 3.30% — but putting 5% down does NOT reduce this for subsequent use. Plan accordingly.</span></div>
-    <div class="tip g"><span class="tip-i">💰</span><span><strong>5% sweet spot:</strong> First-time users — 5% down cuts fee from 2.15%→1.50% (30% reduction). On a $400k loan that's $2,600 saved.</span></div>
-    <div class="tip r"><span class="tip-i">❗</span><span><strong>Check your rating:</strong> Even a pending disability claim can qualify for exemption. Always confirm your status before closing — you can get a refund if later approved.</span></div>
+    <div class="c-title"><span>&#128161;</span> Expert Strategy Tips</div>
+    <div class="tip g"><span class="tip-i">&#9989;</span><span><strong>Roll it into the loan:</strong> Fund your fee inside the loan — no cash needed at closing. Your rate stays the same.</span></div>
+    <div class="tip b"><span class="tip-i">ℹ&#65039;</span><span><strong>No PMI — ever:</strong> VA loans never require Private Mortgage Insurance, saving $100–$300/month vs conventional, regardless of down payment.</span></div>
+    <div class="tip y"><span class="tip-i">&#9888;&#65039;</span><span><strong>Subsequent use penalty:</strong> Used a VA loan before? 0% down triggers 3.30% — but putting 5% down does NOT reduce this for subsequent use. Plan accordingly.</span></div>
+    <div class="tip g"><span class="tip-i">&#128176;</span><span><strong>5% sweet spot:</strong> First-time users — 5% down cuts fee from 2.15%→1.50% (30% reduction). On a $400k loan that's $2,600 saved.</span></div>
+    <div class="tip r"><span class="tip-i">&#10071;</span><span><strong>Check your rating:</strong> Even a pending disability claim can qualify for exemption. Always confirm your status before closing — you can get a refund if later approved.</span></div>
   </div>
 </div>
 
@@ -658,7 +658,7 @@ function Q() {
   const f5 = baseLoan*getRate(type,mil,5)/100;
   $('q_tip_save').textContent = fmt(Math.max(f0-f5,0));
 
-  $('q_fee_disp').textContent    = exempt ? '$0 — EXEMPT 🎖️' : fmt(fee);
+  $('q_fee_disp').textContent    = exempt ? '$0 — EXEMPT &#127894;&#65039;' : fmt(fee);
   $('q_fee_pct_disp').textContent= exempt ? 'Disability exemption applied' : pct(feeRate)+' of base loan';
   $('q_r1').textContent = fmt(price);
   $('q_r2').textContent = fmt(downAmt)+' ('+dp+'%)';
@@ -848,7 +848,7 @@ function VS() {
   const diff = Math.abs(cvTotal-vaTotal);
 
   $('v_winner').style.display='flex';
-  $('v_winner_title').textContent = vaBetter ? '🏆 VA Loan Wins!' : '⚠️ Conventional May Be Better';
+  $('v_winner_title').textContent = vaBetter ? '&#127942; VA Loan Wins!' : '&#9888;&#65039; Conventional May Be Better';
   $('v_winner_desc').textContent  = vaBetter
     ? `VA loan saves you ${fmt(diff)} over ${term} years vs conventional.`
     : `Conventional saves ${fmt(diff)} — compare carefully based on your situation.`;

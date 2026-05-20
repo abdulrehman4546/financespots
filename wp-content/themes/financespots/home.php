@@ -39,13 +39,13 @@ get_header();
 
             <div class="fs-blog-grid">
                 <?php
-                $icons = ['Finance Guides'=>'🏠','Investing'=>'📈','Debt Management'=>'💳','Retirement'=>'🏖️','Budgeting'=>'📋','Loans'=>'📄','Cryptocurrency'=>'₿','Taxes'=>'🧾','Savings'=>'🏦'];
+                $icons = ['Finance Guides'=>'&#127968;','Investing'=>'&#128200;','Debt Management'=>'&#128179;','Retirement'=>'&#127958;&#65039;','Budgeting'=>'&#128203;','Loans'=>'&#128196;','Cryptocurrency'=>'₿','Taxes'=>'&#129534;','Savings'=>'&#127974;'];
 
                 while ( have_posts() ) : the_post();
                     $cats      = get_the_category();
                     $cat       = ! empty( $cats ) ? $cats[0] : null;
                     $cat_name  = $cat ? $cat->name : 'Finance';
-                    $icon      = $icons[ $cat_name ] ?? '📚';
+                    $icon      = $icons[ $cat_name ] ?? '&#128218;';
                     $excerpt   = get_the_excerpt() ?: wp_trim_words( get_the_content(), 28 );
                     $read_time = max( 3, (int) ( str_word_count( strip_tags( get_the_content() ) ) / 200 ) );
                     $has_thumb = has_post_thumbnail();
@@ -74,8 +74,8 @@ get_header();
                                 <?php echo esc_html( $cat_name ); ?>
                             </a>
                             <?php endif; ?>
-                            <span class="fs-blog-card__date">📅 <?php echo get_the_date( 'M j, Y' ); ?></span>
-                            <span class="fs-blog-card__read">⏱ <?php echo $read_time; ?> min read</span>
+                            <span class="fs-blog-card__date">&#128197; <?php echo get_the_date( 'M j, Y' ); ?></span>
+                            <span class="fs-blog-card__read">&#9201; <?php echo $read_time; ?> min read</span>
                         </div>
                         <h2 class="fs-blog-card__title">
                             <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>

@@ -382,12 +382,12 @@ function fs_calc_compound( $title ) { ?>
 </div>
 <!-- Stacked Area Chart -->
 <div id="ci-chart-wrap" style="display:none;margin-top:1.5rem;background:#fff;border:1.5px solid var(--fs-border);border-radius:12px;padding:1.25rem">
-  <h3 style="font-size:.9rem;font-weight:700;margin:0 0 1rem">📈 Investment Growth Over Time</h3>
+  <h3 style="font-size:.9rem;font-weight:700;margin:0 0 1rem">&#128200; Investment Growth Over Time</h3>
   <canvas id="ci-chart" height="160"></canvas>
 </div>
 <!-- Milestone table -->
 <div id="ci-milestones" style="display:none;margin-top:1.5rem">
-  <h3 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem">📊 Growth Milestones</h3>
+  <h3 style="font-size:.9rem;font-weight:700;margin-bottom:.75rem">&#128202; Growth Milestones</h3>
   <div class="fsc-table-wrap"><table class="fsc-table">
     <thead><tr><th>Year</th><th>Balance</th><th>Total Contributed</th><th>Interest Earned</th><th>Real Value</th></tr></thead>
     <tbody id="ci-milestone-tbody"></tbody>
@@ -1100,7 +1100,7 @@ function fs_calc_retirement( $title ) { ?>
 </div>
 <!-- Chart -->
 <div id="rt-chart-wrap" style="display:none;margin-top:1.5rem;background:#fff;border:1.5px solid var(--fs-border);border-radius:12px;padding:1.25rem">
-  <h3 style="font-size:.9rem;font-weight:700;margin:0 0 1rem">📈 Retirement Savings Growth</h3>
+  <h3 style="font-size:.9rem;font-weight:700;margin:0 0 1rem">&#128200; Retirement Savings Growth</h3>
   <canvas id="rt-chart" height="160"></canvas>
 </div>
 </div>
@@ -1140,7 +1140,7 @@ function calcRetirement(){
   document.getElementById('rt-match-earned').textContent=fmt(totalMatch);
   document.getElementById('rt-total').textContent=fmt(totalContrib);
   document.getElementById('rt-growth').textContent=fmt(growth);
-  document.getElementById('rt-status').innerHTML=onTrack?'<span style="color:#00C896;font-weight:800">✅ On Track!</span>':'<span style="color:#EF4444;font-weight:800">⚠️ Need More</span>';
+  document.getElementById('rt-status').innerHTML=onTrack?'<span style="color:#00C896;font-weight:800">&#9989; On Track!</span>':'<span style="color:#EF4444;font-weight:800">&#9888;&#65039; Need More</span>';
   document.getElementById('rt-years').textContent=years+' years';
   document.getElementById('rt-real').textContent=fmt(realNest);
   document.getElementById('rt-results').style.display='grid';
@@ -1689,7 +1689,7 @@ function fs_calc_mortgage() { ?>
     <div class="fsc-field"><label>Monthly HOA ($)</label><input type="number" id="mg-hoa" value="0"></div>
     <div style="display:flex;gap:.75rem;flex-wrap:wrap">
       <button class="fsc-btn" onclick="calcMortgage()" style="flex:1">Calculate Payment</button>
-      <button onclick="mgCompare()" style="flex:1;background:#F8FAFC;color:var(--fs-text);border:1.5px solid var(--fs-border);border-radius:8px;padding:.75rem;font-weight:700;cursor:pointer">⚖️ Compare Terms</button>
+      <button onclick="mgCompare()" style="flex:1;background:#F8FAFC;color:var(--fs-text);border:1.5px solid var(--fs-border);border-radius:8px;padding:.75rem;font-weight:700;cursor:pointer">&#9878;&#65039; Compare Terms</button>
     </div>
   </div>
   <div class="fsc-results" id="mg-results" style="display:none">
@@ -1706,13 +1706,13 @@ function fs_calc_mortgage() { ?>
 
 <!-- Payment Breakdown -->
 <div id="mg-breakdown" style="display:none;margin-top:1.5rem">
-  <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">📊 Monthly Payment Breakdown</h3>
+  <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">&#128202; Monthly Payment Breakdown</h3>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-bottom:1.5rem">
-    <div class="fsc-result-card"><div class="fsc-result-label">🏠 P&amp;I</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">🏛️ Property Tax</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-tax">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">🛡️ Insurance</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-ins">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">📋 PMI</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pmi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">🏢 HOA</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-hoa">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127968; P&amp;I</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pi">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127963;&#65039; Property Tax</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-tax">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#128737;&#65039; Insurance</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-ins">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#128203; PMI</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pmi">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127970; HOA</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-hoa">—</div></div>
   </div>
   <!-- Charts -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
@@ -1729,7 +1729,7 @@ function fs_calc_mortgage() { ?>
 
 <!-- Term Comparison Table -->
 <div id="mg-compare-table" style="display:none;margin-top:1.5rem">
-  <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">⚖️ Term Comparison</h3>
+  <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">&#9878;&#65039; Term Comparison</h3>
   <div class="fsc-table-wrap"><table class="fsc-table">
     <thead><tr><th>Term</th><th>Monthly P&amp;I</th><th>Total Interest</th><th>Total Cost</th><th>Interest Saved vs 30yr</th></tr></thead>
     <tbody id="mg-compare-tbody"></tbody>
@@ -2188,7 +2188,7 @@ function fs_calc_fha_loan() { ?>
   </div>
 </div>
 <div id="fha-note" style="display:none;margin-top:1.5rem;padding:1rem;background:#FFF8E7;border-left:4px solid #F59E0B;border-radius:8px;font-size:.88rem;color:#92400E">
-  <strong>💡 FHA MIP Note:</strong> With &lt;10% down, annual MIP lasts the life of the loan. With 10%+ down, MIP cancels after 11 years. At 20%+ down, no MIP is required.
+  <strong>&#128161; FHA MIP Note:</strong> With &lt;10% down, annual MIP lasts the life of the loan. With 10%+ down, MIP cancels after 11 years. At 20%+ down, no MIP is required.
 </div>
 </div>
 <script>
@@ -2401,7 +2401,7 @@ function fs_calc_commercial_loan() { ?>
   </div>
 </div>
 <div id="cm-dscr-note" style="display:none;margin-top:1rem;padding:1rem;border-left:4px solid #3B82F6;background:#EFF6FF;border-radius:8px;font-size:.88rem;color:#1E40AF">
-  <strong>📊 DSCR Guide:</strong> Most commercial lenders require DSCR ≥ 1.25. A DSCR of 1.25 means the property earns 25% more than the debt payment. Below 1.0 means the property cannot cover its debt.
+  <strong>&#128202; DSCR Guide:</strong> Most commercial lenders require DSCR ≥ 1.25. A DSCR of 1.25 means the property earns 25% more than the debt payment. Below 1.0 means the property cannot cover its debt.
 </div>
 </div>
 <script>
@@ -2424,7 +2424,7 @@ function calcCommercial(){
   document.getElementById('cm-dscr').textContent=dscr+'x';
   document.getElementById('cm-annual').textContent=fmt(annualDebt)+'/yr';
   document.getElementById('cm-fees').textContent=fmt(points);
-  document.getElementById('cm-qualify').textContent=qualifies?'✅ Yes ('+dscr+'x)':'❌ No ('+dscr+'x)';
+  document.getElementById('cm-qualify').textContent=qualifies?'&#9989; Yes ('+dscr+'x)':'&#10060; No ('+dscr+'x)';
   document.getElementById('cm-results').style.display='grid';
   document.getElementById('cm-dscr-note').style.display='block';
 }

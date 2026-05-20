@@ -183,7 +183,7 @@ function fs_leads_admin_page() {
     ];
     ?>
     <div class="wrap" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-        <h1 style="color:#1E293B;font-size:1.6rem;margin-bottom:24px;">📋 FinanceSpots — Leads</h1>
+        <h1 style="color:#1E293B;font-size:1.6rem;margin-bottom:24px;">&#128203; FinanceSpots — Leads</h1>
 
         <!-- Stats -->
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;max-width:600px;">
@@ -203,7 +203,7 @@ function fs_leads_admin_page() {
         <form method="post" action="<?php echo admin_url('admin-post.php');?>" style="margin-bottom:16px;">
             <?php wp_nonce_field('fs_export_leads');?>
             <input type="hidden" name="action" value="fs_export_leads_csv">
-            <button type="submit" style="background:#10B981;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.875rem;">⬇ Export CSV</button>
+            <button type="submit" style="background:#10B981;color:#fff;border:none;padding:9px 18px;border-radius:8px;font-weight:700;cursor:pointer;font-size:.875rem;">&#11015; Export CSV</button>
         </form>
 
         <!-- Table -->
@@ -248,7 +248,7 @@ function fs_leads_admin_page() {
                                     <?php endforeach;?>
                                 </select>
                                 <button name="fs_update_lead" style="background:#3B82F6;color:#fff;border:none;padding:5px 12px;border-radius:6px;cursor:pointer;font-size:.8rem;">Save</button>
-                                <a href="<?php echo wp_nonce_url(add_query_arg(['delete_lead'=>$lead->id]),  'fs_delete_lead');?>" onclick="return confirm('Delete this lead?')" style="background:#FEE2E2;color:#EF4444;padding:5px 10px;border-radius:6px;font-size:.8rem;text-decoration:none;">✕</a>
+                                <a href="<?php echo wp_nonce_url(add_query_arg(['delete_lead'=>$lead->id]),  'fs_delete_lead');?>" onclick="return confirm('Delete this lead?')" style="background:#FEE2E2;color:#EF4444;padding:5px 10px;border-radius:6px;font-size:.8rem;text-decoration:none;">&#10005;</a>
                             </form>
                         </td>
                     </tr>

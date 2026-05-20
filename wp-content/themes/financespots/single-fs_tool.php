@@ -37,16 +37,16 @@ while ( have_posts() ) : the_post();
     $cat        = $tool_cats ? $tool_cats[0] : null;
 
     $cat_icons = [
-        'loan-calculators'    => '🏦',
-        'investment-tools'    => '📈',
-        'tax-calculators'     => '🧾',
-        'savings-planners'    => '💰',
-        'retirement-planning' => '🏖️',
-        'currency-converters' => '💱',
-        'budget-analyzers'    => '📊',
+        'loan-calculators'    => '&#127974;',
+        'investment-tools'    => '&#128200;',
+        'tax-calculators'     => '&#129534;',
+        'savings-planners'    => '&#128176;',
+        'retirement-planning' => '&#127958;&#65039;',
+        'currency-converters' => '&#128177;',
+        'budget-analyzers'    => '&#128202;',
         'crypto-tools'        => '₿',
     ];
-    $icon = $cat ? ( $cat_icons[ $cat->slug ] ?? '🛠️' ) : '🛠️';
+    $icon = $cat ? ( $cat_icons[ $cat->slug ] ?? '&#128736;&#65039;' ) : '&#128736;&#65039;';
 ?>
 
 <section class="fst-tool-hero">

@@ -260,7 +260,7 @@ function fs_pro_admin_page() {
     ];
     ?>
     <div class="wrap" style="font-family:-apple-system,sans-serif;max-width:700px;">
-        <h1 style="font-size:1.5rem;margin-bottom:6px;">⭐ FinanceSpots PRO — Settings</h1>
+        <h1 style="font-size:1.5rem;margin-bottom:6px;">&#11088; FinanceSpots PRO — Settings</h1>
         <p style="color:#64748B;margin-bottom:24px;">Connect Stripe to start accepting payments. <a href="https://dashboard.stripe.com" target="_blank">Open Stripe Dashboard →</a></p>
 
         <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:.875rem;">
@@ -323,7 +323,7 @@ function fs_pro_users_page() {
     }
     ?>
     <div class="wrap" style="font-family:-apple-system,sans-serif;">
-        <h1 style="font-size:1.5rem;margin-bottom:20px;">⭐ PRO Users (<?php echo count($pros); ?>)</h1>
+        <h1 style="font-size:1.5rem;margin-bottom:20px;">&#11088; PRO Users (<?php echo count($pros); ?>)</h1>
         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:16px;overflow:hidden;">
         <table style="width:100%;border-collapse:collapse;font-size:.875rem;">
             <thead><tr style="background:#F8FAFC;border-bottom:2px solid #E2E8F0;">
@@ -370,5 +370,5 @@ add_action( 'init', function() {
 
 /* ── 10. PRO badge shortcode ── */
 add_shortcode( 'fs_pro_badge', function() {
-    return fs_is_pro() ? '<span class="fs-pro-badge">⭐ PRO</span>' : '';
+    return fs_is_pro() ? '<span class="fs-pro-badge">&#11088; PRO</span>' : '';
 });

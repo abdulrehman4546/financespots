@@ -124,7 +124,7 @@
                             <div class="fs-user-menu__info-name">
                                 <?php echo esc_html( $current_user->display_name ); ?>
                                 <?php if ( fs_is_pro() ) : ?>
-                                <span class="fs-pro-badge" style="font-size:.6rem;vertical-align:middle;margin-left:4px;">⭐ PRO</span>
+                                <span class="fs-pro-badge" style="font-size:.6rem;vertical-align:middle;margin-left:4px;">&#11088; PRO</span>
                                 <?php endif; ?>
                             </div>
                             <div class="fs-user-menu__info-email"><?php echo esc_html( $current_user->user_email ); ?></div>
@@ -505,7 +505,7 @@ document.getElementById('fs-login-form').addEventListener('submit', function(e){
     .then(function(r){return r.json();})
     .then(function(res){
         if(res.success){
-            fsShowMsg(msgEl,'success','✓ Signed in! Redirecting…');
+            fsShowMsg(msgEl,'success','&#10003; Signed in! Redirecting…');
             setTimeout(function(){ window.location.href = res.data.redirect; }, 800);
         } else {
             fsShowMsg(msgEl,'error', res.data || 'Login failed. Please try again.');
@@ -544,7 +544,7 @@ document.getElementById('fs-register-form').addEventListener('submit', function(
     .then(function(r){return r.json();})
     .then(function(res){
         if(res.success){
-            fsShowMsg(msgEl,'success','🎉 Account created! Redirecting…');
+            fsShowMsg(msgEl,'success','&#127881; Account created! Redirecting…');
             setTimeout(function(){ window.location.href = res.data.redirect; }, 1000);
         } else {
             fsShowMsg(msgEl,'error', res.data || 'Registration failed. Please try again.');
@@ -647,7 +647,7 @@ function financespots_fallback_menu() {
 
     echo '<li><a href="' . esc_url( home_url( '/about/' ) ) . '">About Us</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">Contact Us</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/pricing/' ) ) . '" style="color:#10B981!important;font-weight:700;">⭐ PRO</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/pricing/' ) ) . '" style="color:#10B981!important;font-weight:700;">&#11088; PRO</a></li>';
 
     echo '</ul>';
 }
