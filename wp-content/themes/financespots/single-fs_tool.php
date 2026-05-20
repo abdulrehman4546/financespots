@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template: Single Tool Page
  * @package financespots
@@ -84,12 +84,12 @@ while ( have_posts() ) : the_post();
                     <!-- Universal PDF Download Button -->
                     <div id="fs-pdf-bar" style="display:none;margin-top:1.5rem;padding:1rem 1.25rem;background:linear-gradient(135deg,#00C896,#3B82F6);border-radius:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
                         <div style="color:#fff">
-                            <div style="font-weight:700;font-size:.95rem">ðŸ“Š Results Ready!</div>
+                            <div style=”font-weight:700;font-size:.95rem”>&#x1F4CA; Results Ready!</div>
                             <div style="font-size:.8rem;opacity:.85">Save or share your calculation results</div>
                         </div>
                         <div style="display:flex;gap:.75rem;flex-wrap:wrap">
-                            <button onclick="fsPrintCalc()" style="background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:.5rem 1rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.35)'" onmouseout="this.style.background='rgba(255,255,255,.2)'">ðŸ–¨ï¸ Print</button>
-                            <button onclick="fsDownloadPDF()" style="background:#fff;color:#00C896;border:none;padding:.5rem 1.2rem;border-radius:8px;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .2s" onmouseover="this.style.background='#f0fdf9'" onmouseout="this.style.background='#fff'">â¬‡ï¸ Download PDF</button>
+                            <button onclick="fsPrintCalc()" style="background:rgba(255,255,255,.2);color:#fff;border:1.5px solid rgba(255,255,255,.5);padding:.5rem 1rem;border-radius:8px;font-weight:700;font-size:.85rem;cursor:pointer;transition:all .2s" onmouseover="this.style.background='rgba(255,255,255,.35)'" onmouseout="this.style.background='rgba(255,255,255,.2)'">&#x1F5A8; Print</button>
+                            <button onclick="fsDownloadPDF()" style="background:#fff;color:#00C896;border:none;padding:.5rem 1.2rem;border-radius:8px;font-weight:800;font-size:.85rem;cursor:pointer;transition:all .2s" onmouseover="this.style.background='#f0fdf9'" onmouseout="this.style.background='#fff'">&#x2B07; Download PDF</button>
                         </div>
                     </div>
                 </div>
