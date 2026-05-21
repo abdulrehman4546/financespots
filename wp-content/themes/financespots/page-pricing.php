@@ -276,10 +276,10 @@ $is_pro  = fs_is_pro();
 
 .fsp-plan__features{list-style:none;padding:0;margin:0 0 24px;display:flex;flex-direction:column;gap:10px;}
 .fsp-plan__features li{font-size:.84rem;padding-left:22px;position:relative;color:#CBD5E1;}
-.fsp-plan__features li::before{content:'&#10003;';position:absolute;left:0;font-weight:800;}
+.fsp-plan__features li::before{content:'\2713';position:absolute;left:0;font-weight:800;}
 .fsp-plan__features li.yes::before{color:#10B981;}
 .fsp-plan__features li.no{color:#475569;}
-.fsp-plan__features li.no::before{content:'&#10005;';color:#374151;}
+.fsp-plan__features li.no::before{content:'\2717';color:#374151;}
 
 .fsp-plan__btn{width:100%;padding:14px 20px;border-radius:12px;font-size:.9rem;font-weight:700;border:none;cursor:pointer;transition:all .25s;display:flex;align-items:center;justify-content:center;gap:8px;font-family:inherit;}
 .fsp-plan__btn--free{background:rgba(255,255,255,.06);color:#CBD5E1;text-decoration:none;}
