@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 // Allow both standalone access and WordPress include
 $is_wp = defined('ABSPATH');
 if ( ! $is_wp ) {
@@ -182,7 +182,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 <div class="hero">
   <div class="hero-badge">&#127894;&#65039; MILITARY BENEFIT CALCULATOR</div>
   <h1>VA Loan <em>Funding Fee</em><br>Calculator 2026</h1>
-  <p>Instant funding fee, full PITI payment, amortization schedule, VA vs Conventional comparison — all with PDF export.</p>
+  <p>Instant funding fee, full PITI payment, amortization schedule, VA vs Conventional comparison -- all with PDF export.</p>
   <div class="hero-kpis">
     <div class="kpi"><strong>0%</strong><span>Down Payment</span></div>
     <div class="kpi"><strong>$0</strong><span>PMI Required</span></div>
@@ -206,12 +206,12 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 <div class="wrap">
 
 <!-- ══════════════════════
-     TAB 1 — QUICK CALC
+     TAB 1 -- QUICK CALC
 ══════════════════════ -->
 <div class="panel on" id="p-quick">
 <div class="grid2">
 <div>
-  <div class="sh"><h2>Quick VA Funding Fee Estimate</h2><p>Instant results as you type — no button needed.</p></div>
+  <div class="sh"><h2>Quick VA Funding Fee Estimate</h2><p>Instant results as you type -- no button needed.</p></div>
 
   <div class="c">
     <div class="c-title"><span>&#127968;</span> Loan Details</div>
@@ -229,10 +229,10 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     <div class="row2">
       <div class="fg"><label>Loan Type</label>
         <select id="q_type" onchange="Q()">
-          <option value="p1">Purchase — 1st Time</option>
-          <option value="ps">Purchase — Subsequent</option>
-          <option value="c1">Cash-Out Refi — 1st</option>
-          <option value="cs">Cash-Out Refi — Sub</option>
+          <option value="p1">Purchase -- 1st Time</option>
+          <option value="ps">Purchase -- Subsequent</option>
+          <option value="c1">Cash-Out Refi -- 1st</option>
+          <option value="cs">Cash-Out Refi -- Sub</option>
           <option value="ir">IRRRL / Streamline</option>
           <option value="as">Loan Assumption</option>
         </select>
@@ -261,7 +261,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
         <button class="tg-btn" onclick="tg('q_dis',this,'sp');Q()">Surviving Spouse</button>
       </div>
     </div>
-    <button class="btn-go" onclick="Q()">Calculate ↗</button>
+    <button class="btn-go" onclick="Q()">Calculate &#x2197;</button>
     <button class="btn-reset" onclick="resetQ()">↺ Reset</button>
   </div>
 
@@ -269,11 +269,11 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
     <div class="exempt-banner">
       <div class="eb-icon">&#127894;&#65039;</div>
       <div><div class="eb-title">You Are EXEMPT from the VA Funding Fee!</div>
-      <div class="eb-desc">Veterans with 10%+ service-connected disability rating & surviving spouses pay $0 funding fee — saving thousands at closing.</div></div>
+      <div class="eb-desc">Veterans with 10%+ service-connected disability rating & surviving spouses pay $0 funding fee -- saving thousands at closing.</div></div>
     </div>
   </div>
 
-  <div class="tip b"><span class="tip-i">&#128161;</span><span><strong>5% Down Savings:</strong> Moving from 0%→5% down cuts your fee from 2.15%→1.50% — saving <strong id="q_tip_save">$2,275</strong> on a $350k loan.</span></div>
+  <div class="tip b"><span class="tip-i">&#128161;</span><span><strong>5% Down Savings:</strong> Moving from 0%&#x2192;5% down cuts your fee from 2.15%&#x2192;1.50% -- saving <strong id="q_tip_save">$2,275</strong> on a $350k loan.</span></div>
 </div>
 
 <!-- Results -->
@@ -324,7 +324,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 </div>
 
 <!-- ══════════════════════
-     TAB 2 — FULL PITI
+     TAB 2 -- FULL PITI
 ══════════════════════ -->
 <div class="panel" id="p-piti">
 <div class="grid2">
@@ -341,7 +341,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
       <div class="fg"><label>Loan Term</label><select id="p_term" onchange="P()"><option value="30">30 Years</option><option value="20">20 Years</option><option value="15">15 Years</option></select></div>
     </div>
     <div class="row2">
-      <div class="fg"><label>Loan Type</label><select id="p_type" onchange="P()"><option value="p1">Purchase — 1st Time</option><option value="ps">Purchase — Subsequent</option><option value="c1">Cash-Out — 1st</option><option value="cs">Cash-Out — Sub</option><option value="ir">IRRRL</option></select></div>
+      <div class="fg"><label>Loan Type</label><select id="p_type" onchange="P()"><option value="p1">Purchase -- 1st Time</option><option value="ps">Purchase -- Subsequent</option><option value="c1">Cash-Out -- 1st</option><option value="cs">Cash-Out -- Sub</option><option value="ir">IRRRL</option></select></div>
       <div class="fg"><label>Military</label><select id="p_mil" onchange="P()"><option value="r">Regular Military</option><option value="g">Reserves / Guard</option></select></div>
     </div>
   </div>
@@ -404,10 +404,10 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 </div>
 
 <!-- ══════════════════════
-     TAB 3 — SCENARIOS
+     TAB 3 -- SCENARIOS
 ══════════════════════ -->
 <div class="panel" id="p-compare">
-  <div class="sh"><h2>Down Payment Scenario Comparison</h2><p>0%, 5%, 10%, 20% down — which saves you most over time?</p></div>
+  <div class="sh"><h2>Down Payment Scenario Comparison</h2><p>0%, 5%, 10%, 20% down -- which saves you most over time?</p></div>
   <div class="c">
     <div class="row3">
       <div class="fg"><label>Purchase Price</label><div class="iw pl"><span class="pre">$</span><input type="number" id="c_price" value="350000" oninput="C()"></div></div>
@@ -421,7 +421,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   </div>
   <div class="c" style="overflow-x:auto">
     <div class="c-title"><span>&#9878;&#65039;</span> Side-by-Side Results</div>
-    <table class="tbl" id="c_table"><thead></thead><tbody><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--muted)">Fill inputs above — auto calculates</td></tr></tbody></table>
+    <table class="tbl" id="c_table"><thead></thead><tbody><tr><td colspan="5" style="text-align:center;padding:2rem;color:var(--muted)">Fill inputs above -- auto calculates</td></tr></tbody></table>
   </div>
   <div class="c">
     <div class="c-title"><span>&#128202;</span> Fee vs Total Cost Chart</div>
@@ -431,7 +431,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 </div>
 
 <!-- ══════════════════════
-     TAB 4 — VA vs CONV
+     TAB 4 -- VA vs CONV
 ══════════════════════ -->
 <div class="panel" id="p-vsconv">
   <div class="sh"><h2>VA Loan vs Conventional Loan</h2><p>See exactly how much VA saves you over 30 years.</p></div>
@@ -459,23 +459,23 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
   <div class="vs-grid">
     <div class="vs-card va">
       <div class="vs-title va">&#127894;&#65039; VA Loan</div>
-      <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_va_loan">—</span></div>
-      <div class="vs-row"><span class="vk">Funding Fee</span><span class="vv" id="v_va_fee">—</span></div>
-      <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_va_pi">—</span></div>
-      <div class="vs-row"><span class="vk">Monthly PMI</span><span class="vv" style="color:var(--green)">$0 — Never!</span></div>
-      <div class="vs-row"><span class="vk">Total Monthly</span><span class="vv" id="v_va_mo">—</span></div>
-      <div class="vs-row"><span class="vk">Total Interest</span><span class="vv" id="v_va_int">—</span></div>
-      <div class="vs-row"><span class="vk">Total Cost</span><span class="vv" id="v_va_total">—</span></div>
+      <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_va_loan">--</span></div>
+      <div class="vs-row"><span class="vk">Funding Fee</span><span class="vv" id="v_va_fee">--</span></div>
+      <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_va_pi">--</span></div>
+      <div class="vs-row"><span class="vk">Monthly PMI</span><span class="vv" style="color:var(--green)">$0 -- Never!</span></div>
+      <div class="vs-row"><span class="vk">Total Monthly</span><span class="vv" id="v_va_mo">--</span></div>
+      <div class="vs-row"><span class="vk">Total Interest</span><span class="vv" id="v_va_int">--</span></div>
+      <div class="vs-row"><span class="vk">Total Cost</span><span class="vv" id="v_va_total">--</span></div>
     </div>
     <div class="vs-card conv">
       <div class="vs-title conv">&#127974; Conventional</div>
-      <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_cv_loan">—</span></div>
+      <div class="vs-row"><span class="vk">Loan Amount</span><span class="vv" id="v_cv_loan">--</span></div>
       <div class="vs-row"><span class="vk">Funding Fee</span><span class="vv">$0</span></div>
-      <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_cv_pi">—</span></div>
-      <div class="vs-row"><span class="vk">Monthly PMI</span><span class="vv" id="v_cv_pmi">—</span></div>
-      <div class="vs-row"><span class="vk">Total Monthly</span><span class="vv" id="v_cv_mo">—</span></div>
-      <div class="vs-row"><span class="vk">Total Interest</span><span class="vv" id="v_cv_int">—</span></div>
-      <div class="vs-row"><span class="vk">Total Cost</span><span class="vv" id="v_cv_total">—</span></div>
+      <div class="vs-row"><span class="vk">Monthly P+I</span><span class="vv" id="v_cv_pi">--</span></div>
+      <div class="vs-row"><span class="vk">Monthly PMI</span><span class="vv" id="v_cv_pmi">--</span></div>
+      <div class="vs-row"><span class="vk">Total Monthly</span><span class="vv" id="v_cv_mo">--</span></div>
+      <div class="vs-row"><span class="vk">Total Interest</span><span class="vv" id="v_cv_int">--</span></div>
+      <div class="vs-row"><span class="vk">Total Cost</span><span class="vv" id="v_cv_total">--</span></div>
     </div>
   </div>
 
@@ -487,7 +487,7 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 </div>
 
 <!-- ══════════════════════
-     TAB 5 — AMORTIZATION
+     TAB 5 -- AMORTIZATION
 ══════════════════════ -->
 <div class="panel" id="p-amort">
   <div class="sh"><h2>Amortization Schedule</h2><p>Year-by-year breakdown. Add extra payments to see early payoff.</p></div>
@@ -524,27 +524,27 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 </div>
 
 <!-- ══════════════════════
-     TAB 6 — FEE GUIDE
+     TAB 6 -- FEE GUIDE
 ══════════════════════ -->
 <div class="panel" id="p-guide">
-  <div class="sh"><h2>VA Funding Fee Rate Guide (2024–2026)</h2><p>Official rates from VA.gov — bookmark this page.</p></div>
+  <div class="sh"><h2>VA Funding Fee Rate Guide (2024-2026)</h2><p>Official rates from VA.gov -- bookmark this page.</p></div>
 
   <div class="exempt-banner">
     <div class="eb-icon">&#127894;&#65039;</div>
     <div>
       <div class="eb-title">Who Pays $0 Funding Fee? (Full Exemptions)</div>
-      <div class="eb-desc">• Veterans receiving VA service-connected disability compensation (any rating)<br>
-      • Veterans rated eligible for compensation but receiving military retirement pay<br>
-      • Active-duty service members who have received a Purple Heart<br>
-      • Surviving spouses of veterans who died in service or from service-connected disability<br>
-      • Recipients of the Medal of Honor</div>
+      <div class="eb-desc">&#x2022; Veterans receiving VA service-connected disability compensation (any rating)<br>
+      &#x2022; Veterans rated eligible for compensation but receiving military retirement pay<br>
+      &#x2022; Active-duty service members who have received a Purple Heart<br>
+      &#x2022; Surviving spouses of veterans who died in service or from service-connected disability<br>
+      &#x2022; Recipients of the Medal of Honor</div>
     </div>
   </div>
 
   <div class="c" style="overflow-x:auto;margin-bottom:1.25rem">
     <div class="c-title"><span>&#127968;</span> Purchase & Construction Loans</div>
     <table class="guide-tbl">
-      <thead><tr><th>Military Category</th><th>1st Use — 0% Down</th><th>1st Use — 5%+ Down</th><th>1st Use — 10%+ Down</th><th>Subsequent Use</th></tr></thead>
+      <thead><tr><th>Military Category</th><th>1st Use -- 0% Down</th><th>1st Use -- 5%+ Down</th><th>1st Use -- 10%+ Down</th><th>Subsequent Use</th></tr></thead>
       <tbody>
         <tr><td>Regular Military (Active/Reserve)</td><td><span class="pill">2.15%</span></td><td><span class="pill">1.50%</span></td><td><span class="pill">1.25%</span></td><td><span class="pill">3.30%</span></td></tr>
         <tr><td>National Guard / Reserves</td><td><span class="pill">2.40%</span></td><td><span class="pill">1.75%</span></td><td><span class="pill">1.50%</span></td><td><span class="pill">3.30%</span></td></tr>
@@ -568,11 +568,11 @@ input[type=range]{width:100%;height:4px;accent-color:var(--green);cursor:pointer
 
   <div class="c">
     <div class="c-title"><span>&#128161;</span> Expert Strategy Tips</div>
-    <div class="tip g"><span class="tip-i">&#9989;</span><span><strong>Roll it into the loan:</strong> Fund your fee inside the loan — no cash needed at closing. Your rate stays the same.</span></div>
-    <div class="tip b"><span class="tip-i">ℹ&#65039;</span><span><strong>No PMI — ever:</strong> VA loans never require Private Mortgage Insurance, saving $100–$300/month vs conventional, regardless of down payment.</span></div>
-    <div class="tip y"><span class="tip-i">&#9888;&#65039;</span><span><strong>Subsequent use penalty:</strong> Used a VA loan before? 0% down triggers 3.30% — but putting 5% down does NOT reduce this for subsequent use. Plan accordingly.</span></div>
-    <div class="tip g"><span class="tip-i">&#128176;</span><span><strong>5% sweet spot:</strong> First-time users — 5% down cuts fee from 2.15%→1.50% (30% reduction). On a $400k loan that's $2,600 saved.</span></div>
-    <div class="tip r"><span class="tip-i">&#10071;</span><span><strong>Check your rating:</strong> Even a pending disability claim can qualify for exemption. Always confirm your status before closing — you can get a refund if later approved.</span></div>
+    <div class="tip g"><span class="tip-i">&#9989;</span><span><strong>Roll it into the loan:</strong> Fund your fee inside the loan -- no cash needed at closing. Your rate stays the same.</span></div>
+    <div class="tip b"><span class="tip-i">ℹ&#65039;</span><span><strong>No PMI -- ever:</strong> VA loans never require Private Mortgage Insurance, saving $100-$300/month vs conventional, regardless of down payment.</span></div>
+    <div class="tip y"><span class="tip-i">&#9888;&#65039;</span><span><strong>Subsequent use penalty:</strong> Used a VA loan before? 0% down triggers 3.30% -- but putting 5% down does NOT reduce this for subsequent use. Plan accordingly.</span></div>
+    <div class="tip g"><span class="tip-i">&#128176;</span><span><strong>5% sweet spot:</strong> First-time users -- 5% down cuts fee from 2.15%&#x2192;1.50% (30% reduction). On a $400k loan that's $2,600 saved.</span></div>
+    <div class="tip r"><span class="tip-i">&#10071;</span><span><strong>Check your rating:</strong> Even a pending disability claim can qualify for exemption. Always confirm your status before closing -- you can get a refund if later approved.</span></div>
   </div>
 </div>
 
@@ -658,7 +658,7 @@ function Q() {
   const f5 = baseLoan*getRate(type,mil,5)/100;
   $('q_tip_save').textContent = fmt(Math.max(f0-f5,0));
 
-  $('q_fee_disp').textContent    = exempt ? '$0 — EXEMPT &#127894;&#65039;' : fmt(fee);
+  $('q_fee_disp').textContent    = exempt ? '$0 -- EXEMPT &#127894;&#65039;' : fmt(fee);
   $('q_fee_pct_disp').textContent= exempt ? 'Disability exemption applied' : pct(feeRate)+' of base loan';
   $('q_r1').textContent = fmt(price);
   $('q_r2').textContent = fmt(downAmt)+' ('+dp+'%)';
@@ -851,7 +851,7 @@ function VS() {
   $('v_winner_title').textContent = vaBetter ? '&#127942; VA Loan Wins!' : '&#9888;&#65039; Conventional May Be Better';
   $('v_winner_desc').textContent  = vaBetter
     ? `VA loan saves you ${fmt(diff)} over ${term} years vs conventional.`
-    : `Conventional saves ${fmt(diff)} — compare carefully based on your situation.`;
+    : `Conventional saves ${fmt(diff)} -- compare carefully based on your situation.`;
 
   const fill = id => v => $(id).textContent=v;
   fill('v_va_loan')(fmt(vaLoan)); fill('v_va_fee')(fmt(vaFee)+' ('+pct(vaFeeRate)+')');
@@ -966,7 +966,7 @@ function pdfFooter(doc) {
     doc.setPage(i);
     doc.setFontSize(7);
     doc.setTextColor(150);
-    doc.text('FinanceSpots.com — VA Loan Calculator | For informational purposes only. Not financial advice.', 105, 290, {align:'center'});
+    doc.text('FinanceSpots.com -- VA Loan Calculator | For informational purposes only. Not financial advice.', 105, 290, {align:'center'});
     doc.text('Page '+i+' of '+pages, 196, 290, {align:'right'});
   }
 }
@@ -974,7 +974,7 @@ function pdfFooter(doc) {
 function pdfQuick() {
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF();
-  let y = pdfHeader(doc, 'VA Loan Funding Fee — Quick Analysis Report');
+  let y = pdfHeader(doc, 'VA Loan Funding Fee -- Quick Analysis Report');
 
   const price = +$('q_price').value||0;
   const dp    = +$('q_down').value||0;
@@ -1027,7 +1027,7 @@ function pdfQuick() {
 function pdfPiti() {
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF();
-  let y = pdfHeader(doc, 'VA Loan — Full PITI Monthly Payment Report');
+  let y = pdfHeader(doc, 'VA Loan -- Full PITI Monthly Payment Report');
 
   const price = +$('p_price').value||0;
   const dp    = +$('p_down').value||0;
@@ -1084,7 +1084,7 @@ function pdfPiti() {
 function pdfCompare() {
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF('landscape');
-  let y = pdfHeader(doc, 'VA Loan — Down Payment Scenario Comparison');
+  let y = pdfHeader(doc, 'VA Loan -- Down Payment Scenario Comparison');
 
   const price = +$('c_price').value||350000;
   const rate  = +$('c_rate').value||6.75;
@@ -1128,7 +1128,7 @@ function pdfCompare() {
 function pdfVsConv() {
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF();
-  let y = pdfHeader(doc, 'VA Loan vs Conventional Loan — Comparison Report');
+  let y = pdfHeader(doc, 'VA Loan vs Conventional Loan -- Comparison Report');
 
   const price  = +$('v_price').value||350000;
   const dp     = +$('v_down').value||0;
@@ -1152,7 +1152,7 @@ function pdfVsConv() {
       ['Monthly P+I', fmt(vaPi)+'/mo', fmt(cvPi)+'/mo', fmt(Math.abs(vaPi-cvPi))+'/mo'],
       ['Monthly PMI', '$0', fmt(pmi)+'/mo', fmt(pmi)+'/mo saved'],
       ['Total Monthly', fmt(vaPi)+'/mo', fmt(cvPi+pmi)+'/mo', fmt(Math.abs(vaPi-(cvPi+pmi)))+'/mo'],
-      ['Total Interest', fmt(vaPi*term*12-vaLoan), fmt(cvPi*term*12-baseLoan), '—'],
+      ['Total Interest', fmt(vaPi*term*12-vaLoan), fmt(cvPi*term*12-baseLoan), '--'],
       ['PMI Total Cost', '$0', fmt(cvPmiTotal), fmt(cvPmiTotal)+' saved'],
       ['TOTAL COST', fmt(vaTotal), fmt(cvTotal), fmt(Math.abs(vaTotal-cvTotal))+(vaTotal<cvTotal?' VA WINS':'')],
     ],
@@ -1170,7 +1170,7 @@ function pdfVsConv() {
 function pdfAmort() {
   const {jsPDF} = window.jspdf;
   const doc = new jsPDF();
-  let y = pdfHeader(doc, 'VA Loan — Amortization Schedule (Yearly Summary)');
+  let y = pdfHeader(doc, 'VA Loan -- Amortization Schedule (Yearly Summary)');
 
   const loan  = +$('a_loan').value||357525;
   const rate  = +$('a_rate').value||6.75;

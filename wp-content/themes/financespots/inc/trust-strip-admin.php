@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * FinanceSpots — Trust Strip Admin Panel
+ * FinanceSpots -- Trust Strip Admin Panel
  * Adds "FinanceSpots > Trust Strip" in WP Admin
  */
 if ( ! defined('ABSPATH') ) exit;
@@ -140,7 +140,7 @@ function fs_trust_strip_page(){
         <p class="fs-a-sub">Control everything about the "As Featured In" scrolling strip on your homepage.</p>
 
         <?php if(isset($_GET['saved'])): ?>
-        <div class="fs-a-saved">&#9989; Settings saved! <a href="<?php echo esc_url(home_url('/')); ?>" target="_blank">View Homepage →</a></div>
+        <div class="fs-a-saved">&#9989; Settings saved! <a href="<?php echo esc_url(home_url('/')); ?>" target="_blank">View Homepage &#x2192;</a></div>
         <?php endif; ?>
 
         <form method="post">
@@ -155,7 +155,7 @@ function fs_trust_strip_page(){
                 </div>
                 <div class="fs-a-row">
                     <div class="fs-a-field">
-                        <label>Scroll Speed (seconds per loop) — Lower = Faster <span class="fs-a-speed-val" id="speed-val"><?php echo $speed; ?>s</span></label>
+                        <label>Scroll Speed (seconds per loop) -- Lower = Faster <span class="fs-a-speed-val" id="speed-val"><?php echo $speed; ?>s</span></label>
                         <input type="range" name="ts_speed" min="5" max="120" value="<?php echo $speed; ?>" oninput="document.getElementById('speed-val').textContent=this.value+'s'">
                     </div>
                     <div class="fs-a-field">

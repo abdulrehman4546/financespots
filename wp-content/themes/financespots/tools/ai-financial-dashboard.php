@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * AI Financial Dashboard — Full-page tool template
+ * AI Financial Dashboard -- Full-page tool template
  * Loaded by single-fs_tool.php when tool_type = 'ai_dashboard'
  */
 ?>
@@ -157,7 +157,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
     <span style="font-size:.7rem;color:#64748B;">by Abdul Rahman</span>
   </div>
   <div style="display:flex;align-items:center;gap:.75rem">
-    <a href="<?php echo esc_url( home_url('/') ); ?>" style="color:#94A3B8;font-size:.78rem;text-decoration:none;font-weight:600;">← Home</a>
+    <a href="<?php echo esc_url( home_url('/') ); ?>" style="color:#94A3B8;font-size:.78rem;text-decoration:none;font-weight:600;">&#x2190; Home</a>
     <div class="ai-nav__badge">&#129302; AI-Powered</div>
   </div>
 </nav>
@@ -165,7 +165,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
 <!-- Hero -->
 <div class="ai-hero">
   <div style="position:relative;z-index:1">
-    <div class="ai-hero__tag">&#128994; AI Active — Real-Time Analysis</div>
+    <div class="ai-hero__tag">&#128994; AI Active -- Real-Time Analysis</div>
     <h1>AI Financial Dashboard</h1>
     <p>Your complete AI-powered financial command center. Analyze, plan, and optimize every aspect of your financial life in one place.</p>
     <div style="display:flex;justify-content:center;gap:1.5rem;flex-wrap:wrap;margin-top:1rem">
@@ -174,7 +174,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
           <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
           <circle id="hero-ring-1" cx="40" cy="40" r="34" fill="none" stroke="#00C896" stroke-width="8" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" transform="rotate(-90 40 40)" style="transition:stroke-dashoffset 1.5s ease"/>
         </svg>
-        <div class="ai-score-ring__val" id="hero-health">—</div>
+        <div class="ai-score-ring__val" id="hero-health">--</div>
         <div class="ai-score-ring__lbl">Health Score</div>
       </div>
       <div class="ai-score-ring">
@@ -182,7 +182,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
           <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
           <circle id="hero-ring-2" cx="40" cy="40" r="34" fill="none" stroke="#3B82F6" stroke-width="8" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" transform="rotate(-90 40 40)" style="transition:stroke-dashoffset 1.5s ease"/>
         </svg>
-        <div class="ai-score-ring__val" id="hero-savings">—</div>
+        <div class="ai-score-ring__val" id="hero-savings">--</div>
         <div class="ai-score-ring__lbl">Savings Rate</div>
       </div>
       <div class="ai-score-ring">
@@ -190,7 +190,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
           <circle cx="40" cy="40" r="34" fill="none" stroke="rgba(255,255,255,.1)" stroke-width="8"/>
           <circle id="hero-ring-3" cx="40" cy="40" r="34" fill="none" stroke="#8B5CF6" stroke-width="8" stroke-dasharray="213.6" stroke-dashoffset="213.6" stroke-linecap="round" transform="rotate(-90 40 40)" style="transition:stroke-dashoffset 1.5s ease"/>
         </svg>
-        <div class="ai-score-ring__val" id="hero-retire">—</div>
+        <div class="ai-score-ring__val" id="hero-retire">--</div>
         <div class="ai-score-ring__lbl">Retire Ready</div>
       </div>
     </div>
@@ -235,16 +235,16 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
       <div class="ai-section-title"><span>&#128202;</span> Financial Overview</div>
 
       <div class="ai-stats" id="overview-stats">
-        <div class="ai-stat"><div class="ai-stat__icon">&#128176;</div><div class="ai-stat__val" id="ov-income">—</div><div class="ai-stat__lbl">Monthly Income</div></div>
-        <div class="ai-stat"><div class="ai-stat__icon">&#128179;</div><div class="ai-stat__val" id="ov-expense">—</div><div class="ai-stat__lbl">Monthly Expenses</div></div>
-        <div class="ai-stat"><div class="ai-stat__icon">&#128200;</div><div class="ai-stat__val" id="ov-surplus">—</div><div class="ai-stat__lbl">Monthly Surplus</div><div class="ai-stat__change up" id="ov-surplus-pct">—</div></div>
-        <div class="ai-stat"><div class="ai-stat__icon">&#128142;</div><div class="ai-stat__val" id="ov-networth">—</div><div class="ai-stat__lbl">Net Worth</div></div>
-        <div class="ai-stat"><div class="ai-stat__icon">&#128279;</div><div class="ai-stat__val" id="ov-debt">—</div><div class="ai-stat__lbl">Total Debt</div></div>
-        <div class="ai-stat"><div class="ai-stat__icon">&#128737;&#65039;</div><div class="ai-stat__val" id="ov-efund">—</div><div class="ai-stat__lbl">Emergency Fund</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128176;</div><div class="ai-stat__val" id="ov-income">--</div><div class="ai-stat__lbl">Monthly Income</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128179;</div><div class="ai-stat__val" id="ov-expense">--</div><div class="ai-stat__lbl">Monthly Expenses</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128200;</div><div class="ai-stat__val" id="ov-surplus">--</div><div class="ai-stat__lbl">Monthly Surplus</div><div class="ai-stat__change up" id="ov-surplus-pct">--</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128142;</div><div class="ai-stat__val" id="ov-networth">--</div><div class="ai-stat__lbl">Net Worth</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128279;</div><div class="ai-stat__val" id="ov-debt">--</div><div class="ai-stat__lbl">Total Debt</div></div>
+        <div class="ai-stat"><div class="ai-stat__icon">&#128737;&#65039;</div><div class="ai-stat__val" id="ov-efund">--</div><div class="ai-stat__lbl">Emergency Fund</div></div>
       </div>
 
       <div class="ai-card">
-        <h3>&#9889; Quick Financial Profile — Enter to Unlock All Tools</h3>
+        <h3>&#9889; Quick Financial Profile -- Enter to Unlock All Tools</h3>
         <div class="ai-grid-2">
           <div>
             <div class="ai-field"><label>Monthly Take-Home Income ($)</label><input type="number" id="qp-income" value="6000" oninput="aiQuickCalc()"></div>
@@ -269,22 +269,22 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
           <div>
             <div style="font-size:.75rem;font-weight:600;color:var(--ai-muted);margin-bottom:.35rem">Emergency Fund</div>
             <div class="ai-score-bar"><div class="ai-score-bar__fill" id="bar-ef" style="background:var(--ai-primary);width:0%"></div></div>
-            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-ef-lbl">—</div>
+            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-ef-lbl">--</div>
           </div>
           <div>
             <div style="font-size:.75rem;font-weight:600;color:var(--ai-muted);margin-bottom:.35rem">Savings Rate</div>
             <div class="ai-score-bar"><div class="ai-score-bar__fill" id="bar-sr" style="background:var(--ai-blue);width:0%"></div></div>
-            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-sr-lbl">—</div>
+            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-sr-lbl">--</div>
           </div>
           <div>
             <div style="font-size:.75rem;font-weight:600;color:var(--ai-muted);margin-bottom:.35rem">Debt-to-Income</div>
             <div class="ai-score-bar"><div class="ai-score-bar__fill" id="bar-dti" style="background:var(--ai-orange);width:0%"></div></div>
-            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-dti-lbl">—</div>
+            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-dti-lbl">--</div>
           </div>
           <div>
             <div style="font-size:.75rem;font-weight:600;color:var(--ai-muted);margin-bottom:.35rem">Retirement Track</div>
             <div class="ai-score-bar"><div class="ai-score-bar__fill" id="bar-rt" style="background:var(--ai-purple);width:0%"></div></div>
-            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-rt-lbl">—</div>
+            <div style="font-size:.78rem;color:var(--ai-muted)" id="bar-rt-lbl">--</div>
           </div>
         </div>
         <div class="ai-insight" id="ai-overview-insight">
@@ -304,14 +304,14 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
     <div class="ai-panel" id="panel-health">
       <div class="ai-section-title"><span>&#10084;&#65039;</span> Financial Health Score</div>
       <div class="ai-card">
-        <h3>Rate Your Financial Health (1–10)</h3>
+        <h3>Rate Your Financial Health (1-10)</h3>
         <div class="ai-grid-2">
           <div>
             <div class="ai-field"><label>Emergency Fund (months of expenses)</label><input type="number" id="fh-ef" value="3" min="0" max="24" step=".5"></div>
             <div class="ai-field"><label>Savings Rate (%)</label><input type="number" id="fh-sr" value="15" min="0" max="100"></div>
             <div class="ai-field"><label>Debt-to-Income Ratio (%)</label><input type="number" id="fh-dti" value="28" min="0" max="100"></div>
             <div class="ai-field"><label>Investment Diversification</label>
-              <select id="fh-div"><option value="1">None — all cash</option><option value="3">1-2 asset classes</option><option value="6" selected>3-4 asset classes</option><option value="9">5+ asset classes</option></select></div>
+              <select id="fh-div"><option value="1">None -- all cash</option><option value="3">1-2 asset classes</option><option value="6" selected>3-4 asset classes</option><option value="9">5+ asset classes</option></select></div>
           </div>
           <div>
             <div class="ai-field"><label>Monthly Budget Adherence</label>
@@ -328,13 +328,13 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
       <div class="ai-card" id="health-results" style="display:none">
         <h3>&#129302; Your Financial Health Report</h3>
         <div style="text-align:center;padding:1rem 0">
-          <div style="font-size:4rem;font-weight:900;color:var(--ai-primary)" id="health-score">—</div>
-          <div style="font-size:1rem;font-weight:700;color:var(--ai-muted)" id="health-grade">—</div>
+          <div style="font-size:4rem;font-weight:900;color:var(--ai-primary)" id="health-score">--</div>
+          <div style="font-size:1rem;font-weight:700;color:var(--ai-muted)" id="health-grade">--</div>
         </div>
         <div id="health-breakdown"></div>
         <div class="ai-insight" id="health-insight">
           <div class="ai-insight__title">&#129302; AI Recommendations</div>
-          <div class="ai-insight__text" id="health-tips">—</div>
+          <div class="ai-insight__text" id="health-tips">--</div>
         </div>
       </div>
     </div>
@@ -374,7 +374,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Budget Recommendations</div>
-            <div class="ai-insight__text" id="budget-ai-text">—</div>
+            <div class="ai-insight__text" id="budget-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -407,16 +407,16 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
       <div id="nw-results" style="display:none">
         <div class="ai-card">
           <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;text-align:center;margin-bottom:1rem">
-            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">TOTAL ASSETS</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-primary)" id="nw-total-assets">—</div></div>
-            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">TOTAL LIABILITIES</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-red)" id="nw-total-liab">—</div></div>
-            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">NET WORTH</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-blue)" id="nw-net">—</div></div>
+            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">TOTAL ASSETS</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-primary)" id="nw-total-assets">--</div></div>
+            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">TOTAL LIABILITIES</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-red)" id="nw-total-liab">--</div></div>
+            <div><div style="font-size:.75rem;color:var(--ai-muted);font-weight:600">NET WORTH</div><div style="font-size:1.6rem;font-weight:900;color:var(--ai-blue)" id="nw-net">--</div></div>
           </div>
           <canvas id="nw-chart" height="120"></canvas>
         </div>
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Net Worth Analysis</div>
-            <div class="ai-insight__text" id="nw-ai-text">—</div>
+            <div class="ai-insight__text" id="nw-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -447,8 +447,8 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-field"><label>Extra Monthly Payment Budget ($)</label><input type="number" id="debt-extra" value="300"></div>
         <div class="ai-field"><label>Strategy</label>
           <select id="debt-strategy">
-            <option value="avalanche">&#127956;&#65039; Avalanche — Highest Rate First (Saves Most Interest)</option>
-            <option value="snowball">&#9924; Snowball — Smallest Balance First (Best Motivation)</option>
+            <option value="avalanche">&#127956;&#65039; Avalanche -- Highest Rate First (Saves Most Interest)</option>
+            <option value="snowball">&#9924; Snowball -- Smallest Balance First (Best Motivation)</option>
           </select></div>
         <button class="ai-btn" onclick="calcDebtOptimizer()">&#129302; Optimize Debt Payoff</button>
       </div>
@@ -467,7 +467,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Debt Strategy</div>
-            <div class="ai-insight__text" id="debt-ai-text">—</div>
+            <div class="ai-insight__text" id="debt-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -504,10 +504,10 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
       <div id="invest-results" style="display:none">
         <div class="ai-card">
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:1rem">
-            <div class="ai-stat"><div class="ai-stat__icon">&#127919;</div><div class="ai-stat__val" id="inv-proj">—</div><div class="ai-stat__lbl">Projected Value</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#128176;</div><div class="ai-stat__val" id="inv-contrib">—</div><div class="ai-stat__lbl">Total Contributed</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#128200;</div><div class="ai-stat__val" id="inv-gain">—</div><div class="ai-stat__lbl">Investment Gains</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#128260;</div><div class="ai-stat__val" id="inv-mult">—</div><div class="ai-stat__lbl">Money Multiple</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#127919;</div><div class="ai-stat__val" id="inv-proj">--</div><div class="ai-stat__lbl">Projected Value</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#128176;</div><div class="ai-stat__val" id="inv-contrib">--</div><div class="ai-stat__lbl">Total Contributed</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#128200;</div><div class="ai-stat__val" id="inv-gain">--</div><div class="ai-stat__lbl">Investment Gains</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#128260;</div><div class="ai-stat__val" id="inv-mult">--</div><div class="ai-stat__lbl">Money Multiple</div></div>
           </div>
           <canvas id="inv-chart" height="120" style="margin-top:1rem"></canvas>
         </div>
@@ -518,7 +518,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Portfolio Recommendations</div>
-            <div class="ai-insight__text" id="inv-ai-text">—</div>
+            <div class="ai-insight__text" id="inv-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -549,17 +549,17 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
       <div id="retire-results" style="display:none">
         <div class="ai-card">
           <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:1rem;margin-bottom:1rem">
-            <div class="ai-stat"><div class="ai-stat__icon">&#127919;</div><div class="ai-stat__val" id="rp-nest">—</div><div class="ai-stat__lbl">Nest Egg</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#128184;</div><div class="ai-stat__val" id="rp-monthly-inc">—</div><div class="ai-stat__lbl">Monthly Income</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#128202;</div><div class="ai-stat__val" id="rp-gap">—</div><div class="ai-stat__lbl">Income Gap</div></div>
-            <div class="ai-stat"><div class="ai-stat__icon">&#9889;</div><div class="ai-stat__val" id="rp-status">—</div><div class="ai-stat__lbl">Status</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#127919;</div><div class="ai-stat__val" id="rp-nest">--</div><div class="ai-stat__lbl">Nest Egg</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#128184;</div><div class="ai-stat__val" id="rp-monthly-inc">--</div><div class="ai-stat__lbl">Monthly Income</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#128202;</div><div class="ai-stat__val" id="rp-gap">--</div><div class="ai-stat__lbl">Income Gap</div></div>
+            <div class="ai-stat"><div class="ai-stat__icon">&#9889;</div><div class="ai-stat__val" id="rp-status">--</div><div class="ai-stat__lbl">Status</div></div>
           </div>
           <canvas id="retire-chart" height="120"></canvas>
         </div>
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Retirement Strategy</div>
-            <div class="ai-insight__text" id="retire-ai-text">—</div>
+            <div class="ai-insight__text" id="retire-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -598,7 +598,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Tax Optimization Tips</div>
-            <div class="ai-insight__text" id="tax-ai-text">—</div>
+            <div class="ai-insight__text" id="tax-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -640,7 +640,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         <div class="ai-card">
           <div class="ai-insight">
             <div class="ai-insight__title">&#129302; AI Emergency Fund Strategy</div>
-            <div class="ai-insight__text" id="ef-ai-text">—</div>
+            <div class="ai-insight__text" id="ef-ai-text">--</div>
           </div>
         </div>
       </div>
@@ -656,7 +656,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
         </div>
         <div class="ai-chat-input">
           <input type="text" id="ai-chat-input" placeholder="e.g. How much should I save for retirement?" onkeydown="if(event.key==='Enter')aiChat()">
-          <button onclick="aiChat()">Send →</button>
+          <button onclick="aiChat()">Send &#x2192;</button>
         </div>
         <!-- Quick prompts -->
         <div style="display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.75rem">
@@ -709,7 +709,7 @@ function aiQuickCalc(){
   document.getElementById('ov-income').textContent=fmt(income);
   document.getElementById('ov-expense').textContent=fmt(expense);
   document.getElementById('ov-surplus').textContent=fmt(surplus);
-  document.getElementById('ov-surplus-pct').textContent=(sr>=0?'↑ '+pct(sr)+' savings rate':'↓ Deficit');
+  document.getElementById('ov-surplus-pct').textContent=(sr>=0?'&#x2191; '+pct(sr)+' savings rate':'&#x2193; Deficit');
   document.getElementById('ov-networth').textContent=fmt(savings-debt);
   document.getElementById('ov-debt').textContent=fmt(debt);
   document.getElementById('ov-efund').textContent=efMonths.toFixed(1)+' mo';
@@ -738,10 +738,10 @@ function aiQuickCalc(){
 
   // AI Insight
   var tips=[];
-  if(efMonths<3) tips.push('&#9888;&#65039; Emergency fund covers only '+efMonths.toFixed(1)+' months — build to 6 months as your #1 priority.');
-  if(sr<10) tips.push('&#128179; Savings rate of '+pct(sr)+' is below 10% — aim to cut discretionary spending to reach 20%.');
-  if(dti>36) tips.push('&#128279; Debt-to-income of '+pct(dti)+' is above the 36% recommended limit — accelerate debt payoff.');
-  if(scores.rt<50) tips.push('&#127958;&#65039; Retirement is under-funded — increase monthly investing by $'+(Math.round((income*0.15-invest)/100)*100)+' to get on track.');
+  if(efMonths<3) tips.push('&#9888;&#65039; Emergency fund covers only '+efMonths.toFixed(1)+' months -- build to 6 months as your #1 priority.');
+  if(sr<10) tips.push('&#128179; Savings rate of '+pct(sr)+' is below 10% -- aim to cut discretionary spending to reach 20%.');
+  if(dti>36) tips.push('&#128279; Debt-to-income of '+pct(dti)+' is above the 36% recommended limit -- accelerate debt payoff.');
+  if(scores.rt<50) tips.push('&#127958;&#65039; Retirement is under-funded -- increase monthly investing by $'+(Math.round((income*0.15-invest)/100)*100)+' to get on track.');
   if(tips.length===0) tips.push('&#9989; Great financial health! Focus on optimizing investments and minimizing taxes to build long-term wealth.');
   document.getElementById('ai-insight-text').textContent=tips.join(' ');
 
@@ -796,10 +796,10 @@ function calcHealthScore(){
 
   var tips=[];
   if(ef<3) tips.push('&#128737;&#65039; Build emergency fund to 6 months of expenses first.');
-  if(sr<15) tips.push('&#128176; Increase savings rate to at least 15–20% of income.');
+  if(sr<15) tips.push('&#128176; Increase savings rate to at least 15-20% of income.');
   if(dti>36) tips.push('&#128179; Pay down high-interest debt to lower your DTI below 36%.');
-  if(ret<10) tips.push('&#127958;&#65039; Aim to contribute 10–15% of salary to retirement accounts.');
-  if(div<6) tips.push('&#128200; Diversify into more asset classes — consider index funds + REITs.');
+  if(ret<10) tips.push('&#127958;&#65039; Aim to contribute 10-15% of salary to retirement accounts.');
+  if(div<6) tips.push('&#128200; Diversify into more asset classes -- consider index funds + REITs.');
   if(credit<7) tips.push('&#128179; Improve credit score: pay on time, reduce utilization below 30%.');
   document.getElementById('health-tips').textContent=tips.length?tips.join(' '):'&#9989; You\'re in excellent financial shape! Consider fine-tuning your investment strategy.';
 
@@ -842,9 +842,9 @@ function calcAIBudget(){
   },options:{plugins:{legend:{position:'top'}},scales:{y:{max:70,ticks:{callback:function(v){return v+'%';}}}}}});
 
   var tips=[];
-  if(needs/income>0.55) tips.push('&#127968; Needs exceed 55% of income — consider refinancing, finding cheaper housing, or reducing fixed costs.');
-  if(wants/income>0.35) tips.push('&#127828; Discretionary spending is high — set a weekly entertainment budget to stay in the 30% range.');
-  if(saves/income<0.15) tips.push('&#128176; Savings rate below 15% — automate savings transfers on payday to remove the temptation to spend.');
+  if(needs/income>0.55) tips.push('&#127968; Needs exceed 55% of income -- consider refinancing, finding cheaper housing, or reducing fixed costs.');
+  if(wants/income>0.35) tips.push('&#127828; Discretionary spending is high -- set a weekly entertainment budget to stay in the 30% range.');
+  if(saves/income<0.15) tips.push('&#128176; Savings rate below 15% -- automate savings transfers on payday to remove the temptation to spend.');
   if(surplus<0) tips.push('&#128680; You\'re spending more than you earn! Cut at least '+fmt(-surplus)+'/month immediately to avoid debt spiral.');
   document.getElementById('budget-ai-text').textContent=tips.length?tips.join(' '):'&#9989; Great budgeting! Your spending is well-balanced. Focus on investing the surplus for long-term wealth.';
   document.getElementById('budget-results').style.display='block';
@@ -868,8 +868,8 @@ function calcNetWorth(){
   var income=parseFloat(document.getElementById('qp-income').value)||5000;
   var benchmark=income*12*age/10;
   var tips='Your net worth is '+fmt(net)+'. ';
-  tips+=net<benchmark?'At age '+age+', the benchmark is '+fmt(benchmark)+' — increase investments to close the gap. ':'You\'re ahead of the '+fmt(benchmark)+' age benchmark! ';
-  tips+=liab/assets>0.7?'Debt represents over 70% of your assets — prioritize paying down high-rate debt first. ':'Debt-to-asset ratio is healthy. ';
+  tips+=net<benchmark?'At age '+age+', the benchmark is '+fmt(benchmark)+' -- increase investments to close the gap. ':'You\'re ahead of the '+fmt(benchmark)+' age benchmark! ';
+  tips+=liab/assets>0.7?'Debt represents over 70% of your assets -- prioritize paying down high-rate debt first. ':'Debt-to-asset ratio is healthy. ';
   document.getElementById('nw-ai-text').textContent=tips;
   document.getElementById('nw-results').style.display='block';
 }
@@ -918,14 +918,14 @@ function calcDebtOptimizer(){
   });
   document.getElementById('debt-tbody').innerHTML=tbody;
 
-  var comparison='<div class="ai-result-row"><div class="ai-result-row__lbl">Strategy</div><div class="ai-result-row__val blue">'+document.getElementById('debt-strategy').options[document.getElementById('debt-strategy').selectedIndex].text.split('—')[0].trim()+'</div></div>';
+  var comparison='<div class="ai-result-row"><div class="ai-result-row__lbl">Strategy</div><div class="ai-result-row__val blue">'+document.getElementById('debt-strategy').options[document.getElementById('debt-strategy').selectedIndex].text.split('--')[0].trim()+'</div></div>';
   comparison+='<div class="ai-result-row"><div class="ai-result-row__lbl">Total Monthly Payment</div><div class="ai-result-row__val">'+fmt(totalPay)+'</div></div>';
   comparison+='<div class="ai-result-row"><div class="ai-result-row__lbl">Estimated Payoff</div><div class="ai-result-row__val green">'+months+' months ('+Math.round(months/12*10)/10+' years)</div></div>';
   comparison+='<div class="ai-result-row"><div class="ai-result-row__lbl">Total Interest Saved vs Min Only</div><div class="ai-result-row__val green">~'+fmt(extra*months*0.7)+'</div></div>';
   document.getElementById('debt-comparison').innerHTML=comparison;
 
   var totalDebt=debts.reduce(function(a,d){return a+d.bal;},0);
-  document.getElementById('debt-ai-text').textContent='With '+fmt(extra)+'/month extra, you\'ll pay off '+fmt(totalDebt)+' in debt in about '+months+' months. '+(strategy==='avalanche'?'The Avalanche method saves the most interest — stick with it even when progress feels slow initially.':'The Snowball method gives quick wins to stay motivated — celebrate each debt you eliminate!')+' Consider moving high-rate debt to a 0% balance transfer card if your credit score is 700+.';
+  document.getElementById('debt-ai-text').textContent='With '+fmt(extra)+'/month extra, you\'ll pay off '+fmt(totalDebt)+' in debt in about '+months+' months. '+(strategy==='avalanche'?'The Avalanche method saves the most interest -- stick with it even when progress feels slow initially.':'The Snowball method gives quick wins to stay motivated -- celebrate each debt you eliminate!')+' Consider moving high-rate debt to a 0% balance transfer card if your credit score is 700+.';
   document.getElementById('debt-results').style.display='block';
 }
 
@@ -963,7 +963,7 @@ function calcInvestment(){
   invPie=new Chart(ctx2,{type:'doughnut',data:{labels:['Stocks','Bonds','REITs','Cash'],datasets:[{data:[stocks,bonds,reits,cash],backgroundColor:['rgba(0,200,150,.8)','rgba(59,130,246,.8)','rgba(245,158,11,.8)','rgba(139,92,246,.8)'],borderWidth:0}]},options:{plugins:{legend:{position:'right'}},cutout:'60%'}});
 
   var tips='Your '+fmt(cur)+' portfolio is projected to grow to '+fmt(proj)+' in '+yrs+' years. ';
-  tips+=gain>contrib?'Investment gains ('+fmt(gain)+') exceed your total contributions — compound interest is working!':'Continue contributing monthly to accelerate growth. ';
+  tips+=gain>contrib?'Investment gains ('+fmt(gain)+') exceed your total contributions -- compound interest is working!':'Continue contributing monthly to accelerate growth. ';
   if(stocks>80) tips+=' Consider adding bonds or REITs to reduce volatility as you approach your goal.';
   if(stocks<40) tips+=' For '+yrs+'-year horizons, a higher stock allocation typically outperforms over time.';
   document.getElementById('inv-ai-text').textContent=tips;
@@ -1051,7 +1051,7 @@ function calcTaxOptimizer(){
 
   var max401k=23500,maxIRA=7000,maxHSA=(status==='mfj'?8300:4150);
   var tips=[];
-  if(k401<max401k) tips.push('&#128188; Increase 401k by '+fmt(max401k-k401)+' to max — saves '+fmt((max401k-k401)*marginal)+' in taxes at your '+Math.round(marginal*100)+'% rate.');
+  if(k401<max401k) tips.push('&#128188; Increase 401k by '+fmt(max401k-k401)+' to max -- saves '+fmt((max401k-k401)*marginal)+' in taxes at your '+Math.round(marginal*100)+'% rate.');
   if(ira<maxIRA) tips.push('&#128202; Max out IRA ('+fmt(maxIRA-ira)+' more) for additional tax savings.');
   if(hsa<maxHSA) tips.push('&#127973; HSA contribution of '+fmt(maxHSA-hsa)+' more = triple tax advantage (deductible, grows tax-free, withdrawals tax-free for medical).');
   if(itemized<stdDed) tips.push('&#128203; You\'re using the standard deduction ('+fmt(stdDed)+'). Bundle charitable donations in alternate years to exceed standard deduction and itemize.');
@@ -1083,12 +1083,12 @@ function calcEmergencyFund(){
   document.getElementById('ef-result-content').innerHTML=html;
   var tips='Your emergency fund should cover '+months+' months ('+fmt(target)+') based on your job stability and dependents. ';
   tips+=current>=target?'&#9989; You\'re fully funded! Keep it in a high-yield savings account at 4%+ APY. ':'Save '+fmt(save)+'/month in a HYSA to reach your goal in '+mthsToGoal+' months. ';
-  tips+='Never invest emergency funds — keep them liquid in FDIC-insured accounts. Once funded, invest any surplus.';
+  tips+='Never invest emergency funds -- keep them liquid in FDIC-insured accounts. Once funded, invest any surplus.';
   document.getElementById('ef-ai-text').textContent=tips;
   document.getElementById('ef-results').style.display='block';
 }
 
-/* ── AI Chat — Real Claude API via WordPress AJAX ── */
+/* ── AI Chat -- Real Claude API via WordPress AJAX ── */
 var aiTyping=false;
 
 function aiChat(){
@@ -1140,16 +1140,16 @@ function escHtml(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(
 
 function aiFallback(msg){
   var m=msg.toLowerCase();
-  if(m.match(/emergency|efund/)) return '&#128737;&#65039; Emergency fund = 3-6 months of essential expenses in a HYSA (4-5% APY). If self-employed or have dependents, aim for 6-12 months. Never invest it — it must stay liquid and instantly accessible.';
-  if(m.match(/budget|50.30.20|spending/)) return '&#128179; The 50/30/20 rule: 50% Needs (rent, food, utilities), 30% Wants (dining, entertainment), 20% Savings/Debt. Track every expense for 30 days to find spending leaks — most people discover $200-500/month they can redirect.';
-  if(m.match(/debt|loan|credit card/)) return '&#128279; Avalanche: Pay highest interest rate first (saves most money). Snowball: Pay smallest balance first (builds motivation). Both work — pick one and automate it. Always pay at least the minimum on every debt.';
+  if(m.match(/emergency|efund/)) return '&#128737;&#65039; Emergency fund = 3-6 months of essential expenses in a HYSA (4-5% APY). If self-employed or have dependents, aim for 6-12 months. Never invest it -- it must stay liquid and instantly accessible.';
+  if(m.match(/budget|50.30.20|spending/)) return '&#128179; The 50/30/20 rule: 50% Needs (rent, food, utilities), 30% Wants (dining, entertainment), 20% Savings/Debt. Track every expense for 30 days to find spending leaks -- most people discover $200-500/month they can redirect.';
+  if(m.match(/debt|loan|credit card/)) return '&#128279; Avalanche: Pay highest interest rate first (saves most money). Snowball: Pay smallest balance first (builds motivation). Both work -- pick one and automate it. Always pay at least the minimum on every debt.';
   if(m.match(/invest|stock|etf|index/)) return '&#128200; Order of operations: (1) Get full employer 401k match, (2) Max HSA if eligible, (3) Max Roth IRA $7,000/yr, (4) Max 401k $23,500/yr, (5) Taxable brokerage. Use VTI or VTSAX for simplicity. Time in market beats timing the market.';
   if(m.match(/tax|deduct|bracket/)) return '&#129534; Biggest tax reducers: 401k (pre-tax), HSA (triple tax benefit), business deductions. At 22% bracket, every $1,000 contributed to 401k saves you $220 in taxes. Bundle charitable donations in alternate years to exceed the standard deduction.';
-  if(m.match(/retire|pension|401k|ira/)) return '&#127958;&#65039; The 4% rule: At retirement, withdraw 4% of portfolio annually. Need $5,000/month income → need $1.5M saved. Max 401k ($23,500/yr) + IRA ($7,000/yr). Start early — $300/mo at age 25 = ~$1M by 65 at 7% returns.';
+  if(m.match(/retire|pension|401k|ira/)) return '&#127958;&#65039; The 4% rule: At retirement, withdraw 4% of portfolio annually. Need $5,000/month income &#x2192; need $1.5M saved. Max 401k ($23,500/yr) + IRA ($7,000/yr). Start early -- $300/mo at age 25 = ~$1M by 65 at 7% returns.';
   if(m.match(/crypto|bitcoin|btc/)) return '₿ Crypto = high-risk speculation. Limit to 5-10% max of your portfolio. Never invest emergency funds or retirement savings in crypto. If you do invest, stick to Bitcoin and Ethereum. Always use a hardware wallet for large amounts.';
   if(m.match(/mortgage|home|house|rent/)) return '&#127968; Rule: Housing costs should be under 28-30% of gross income. Save 20% down payment to avoid PMI. At 7% rate, a $350k mortgage costs ~$2,330/month. Run our mortgage calculator for your exact numbers.';
-  if(m.match(/credit score|fico/)) return '&#128179; Credit score factors: Payment history (35%), Utilization (30% — keep under 30%), Length of history (15%), Mix (10%), New credit (10%). Pay on time, pay down balances, and never close old accounts. Check your free report at AnnualCreditReport.com.';
-  return '&#129302; Great question! Key financial principles: (1) Emergency fund first — 3-6 months, (2) Get employer 401k match — it\'s free money, (3) Pay debt over 7% interest, (4) Max Roth IRA $7k/yr, (5) Invest in low-cost index funds. Which area do you want to go deeper on? Try the panels on the left for your personalized numbers.';
+  if(m.match(/credit score|fico/)) return '&#128179; Credit score factors: Payment history (35%), Utilization (30% -- keep under 30%), Length of history (15%), Mix (10%), New credit (10%). Pay on time, pay down balances, and never close old accounts. Check your free report at AnnualCreditReport.com.';
+  return '&#129302; Great question! Key financial principles: (1) Emergency fund first -- 3-6 months, (2) Get employer 401k match -- it\'s free money, (3) Pay debt over 7% interest, (4) Max Roth IRA $7k/yr, (5) Invest in low-cost index funds. Which area do you want to go deeper on? Try the panels on the left for your personalized numbers.';
 }
 
 function aiChatQ(q){
@@ -1171,7 +1171,7 @@ function aiExportPDF(){
   doc.text('Generated: '+new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'}),14,18);
   var y=32;
   var income=document.getElementById('ov-income').textContent;
-  if(income!=='—'){
+  if(income!=='--'){
     doc.setFontSize(12);doc.setFont('helvetica','bold');doc.setTextColor(20,20,40);
     doc.text('Financial Overview',14,y);y+=7;
     [['Monthly Income',income],['Monthly Expenses',document.getElementById('ov-expense').textContent],['Net Worth',document.getElementById('ov-networth').textContent],['Emergency Fund',document.getElementById('ov-efund').textContent]].forEach(function(r,i){

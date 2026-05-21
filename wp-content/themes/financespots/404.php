@@ -1,4 +1,4 @@
-<?php get_header(); ?>
+﻿<?php get_header(); ?>
 <div style="background:#0A0F1E;min-height:80vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;text-align:center;">
     <div style="max-width:480px;">
         <div style="font-size:5rem;font-weight:900;color:#10B981;line-height:1;margin-bottom:8px;">404</div>
@@ -10,7 +10,7 @@
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
             </button>
         </form>
-        <a href="<?php echo esc_url(home_url('/')); ?>" style="display:inline-block;background:rgba(255,255,255,.06);color:#CBD5E1;padding:11px 24px;border-radius:10px;text-decoration:none;font-size:.875rem;font-weight:600;margin-top:8px;">← Back to Homepage</a>
+        <a href="<?php echo esc_url(home_url('/')); ?>" style="display:inline-block;background:rgba(255,255,255,.06);color:#CBD5E1;padding:11px 24px;border-radius:10px;text-decoration:none;font-size:.875rem;font-weight:600;margin-top:8px;">&#x2190; Back to Homepage</a>
     </div>
 </div>
 <?php get_footer(); ?>

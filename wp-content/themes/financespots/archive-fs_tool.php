@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template: All Tools Archive  (/tools/)
  * @package financespots
@@ -43,7 +43,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
             <span class="fst-hero__icon">&#128736;&#65039;</span>
             <h1 class="fst-hero__title">All Finance Tools</h1>
             <p class="fst-hero__sub">
-                <?php echo $total_tools ?: '110'; ?>+ free calculators across <?php echo count( (array) $categories ); ?> categories — instant results, no signup required
+                <?php echo $total_tools ?: '110'; ?>+ free calculators across <?php echo count( (array) $categories ); ?> categories -- instant results, no signup required
             </p>
             <div class="fst-search">
                 <div class="fst-search__inner">
@@ -91,7 +91,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
                 <p style="font-size:.875rem;color:var(--fs-text-muted);margin:0;line-height:1.5">
                     <?php echo esc_html( $desc ); ?>
                 </p>
-                <span class="fst-cat-card__count"><?php echo $cat->count; ?> tools →</span>
+                <span class="fst-cat-card__count"><?php echo $cat->count; ?> tools &#x2192;</span>
             </a>
             <?php endforeach; ?>
         </div>
@@ -139,7 +139,7 @@ if ( $popular ) :
                 <div class="fst-card__icon"><?php echo $t_icon; ?></div>
                 <h3 class="fst-card__title"><?php echo esc_html($p->post_title); ?></h3>
                 <p class="fst-card__desc"><?php echo esc_html(get_the_excerpt($p)); ?></p>
-                <span class="fst-card__cta">Open Calculator →</span>
+                <span class="fst-card__cta">Open Calculator &#x2192;</span>
             </a>
             <?php endforeach; ?>
         </div>

@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Pricing
  */
@@ -98,7 +98,7 @@ $is_pro  = fs_is_pro();
                     <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; Your Current Plan</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--pro fsp-checkout-btn" data-plan="monthly">
-                        <span>Get PRO Monthly — $9/mo</span>
+                        <span>Get PRO Monthly -- $9/mo</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                     <?php endif; ?>
@@ -114,7 +114,7 @@ $is_pro  = fs_is_pro();
                             <span class="fsp-plan__amount">$79</span>
                             <span class="fsp-plan__period">/year</span>
                         </div>
-                        <p class="fsp-plan__desc">Best value — just $6.58/month billed annually.</p>
+                        <p class="fsp-plan__desc">Best value -- just $6.58/month billed annually.</p>
                     </div>
                     <ul class="fsp-plan__features">
                         <li class="yes">Everything in Free</li>
@@ -126,7 +126,7 @@ $is_pro  = fs_is_pro();
                     <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; Current Plan</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--pro fsp-checkout-btn" data-plan="yearly">
-                        <span>Get PRO Yearly — $79/yr</span>
+                        <span>Get PRO Yearly -- $79/yr</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                     <?php endif; ?>
@@ -154,7 +154,7 @@ $is_pro  = fs_is_pro();
                     <button class="fsp-plan__btn fsp-plan__btn--active" disabled>&#10003; You have PRO</button>
                     <?php else: ?>
                     <button class="fsp-plan__btn fsp-plan__btn--lifetime fsp-checkout-btn" data-plan="lifetime">
-                        <span>Get Lifetime — $199</span>
+                        <span>Get Lifetime -- $199</span>
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </button>
                     <?php endif; ?>
@@ -194,7 +194,7 @@ $is_pro  = fs_is_pro();
                 $faqs = [
                     ['Can I cancel anytime?', 'Yes! Monthly and yearly plans can be cancelled at any time from your account. You keep PRO access until the end of your billing period.'],
                     ['What payment methods are accepted?', 'We accept all major credit/debit cards (Visa, Mastercard, Amex) via Stripe. All payments are secure and encrypted.'],
-                    ['Is there a free trial?', 'All core tools are free forever — no trial needed. You can use the free plan as long as you like before upgrading.'],
+                    ['Is there a free trial?', 'All core tools are free forever -- no trial needed. You can use the free plan as long as you like before upgrading.'],
                     ['What happens after I pay?', 'Your account is instantly upgraded to PRO. You will see a &#11088; PRO badge and all features unlock immediately.'],
                     ['Can I upgrade from monthly to yearly?', 'Yes, you can switch plans at any time. Contact us and we will handle the upgrade with a prorated discount.'],
                 ];
@@ -219,10 +219,10 @@ $is_pro  = fs_is_pro();
                 <p>Join hundreds of users who use FinanceSpots PRO to make smarter financial decisions.</p>
                 <?php if(!$is_pro): ?>
                 <button class="fsp-cta__btn fsp-checkout-btn" data-plan="monthly">
-                    &#11088; Get PRO Now — Start at $9/month
+                    &#11088; Get PRO Now -- Start at $9/month
                 </button>
                 <?php else: ?>
-                <a href="<?php echo esc_url(home_url('/')); ?>" class="fsp-cta__btn">Go to Tools →</a>
+                <a href="<?php echo esc_url(home_url('/')); ?>" class="fsp-cta__btn">Go to Tools &#x2192;</a>
                 <?php endif; ?>
             </div>
         </div>

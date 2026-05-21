@@ -1,9 +1,9 @@
-</main><!-- /#main-content -->
+﻿</main><!-- /#main-content -->
 
 <!-- ===== SITE FOOTER ===== -->
 <footer class="fs-footer" role="contentinfo">
 
-    <!-- Newsletter CTA Band — Redesigned -->
+    <!-- Newsletter CTA Band -- Redesigned -->
     <section class="fs-nl2" aria-labelledby="newsletter-heading">
 
         <!-- Animated background -->
@@ -37,7 +37,7 @@
                     <h2 class="fs-nl2__title" id="newsletter-heading">
                         Stay <span class="fs-nl2__title-accent">One Step Ahead</span><br>of Your Finances
                     </h2>
-                    <p class="fs-nl2__desc">Join thousands of smart readers who get our weekly finance tips, market insights, tool updates, and money-saving strategies — free every Monday morning.</p>
+                    <p class="fs-nl2__desc">Join thousands of smart readers who get our weekly finance tips, market insights, tool updates, and money-saving strategies -- free every Monday morning.</p>
 
                     <!-- What you get -->
                     <div class="fs-nl2__perks">
@@ -59,7 +59,7 @@
                             </div>
                             <div class="fs-nl2__card-live">● LIVE</div>
                         </div>
-                        <p class="fs-nl2__card-quote">"Every week I share the best finance insights I find — the same tips I use personally. Join free."</p>
+                        <p class="fs-nl2__card-quote">"Every week I share the best finance insights I find -- the same tips I use personally. Join free."</p>
 
                         <form class="fs-nl2__form" id="fs-nl2-form" novalidate>
                             <div class="fs-nl2__field">
@@ -67,7 +67,7 @@
                                 <input type="email" id="fs-nl2-email" placeholder="Enter your email address" required>
                             </div>
                             <button type="submit" class="fs-nl2__btn" id="fs-nl2-btn">
-                                <span class="fs-nl2__btn-text">Subscribe Free — It's Monday's Best Email</span>
+                                <span class="fs-nl2__btn-text">Subscribe Free -- It's Monday's Best Email</span>
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </button>
                             <div class="fs-nl2__success" id="fs-nl2-success" style="display:none">
@@ -189,7 +189,7 @@
                             <span class="fsf__logo-dot"></span>
                             <span class="fsf__logo-light">finance</span><span class="fsf__logo-accent">spots</span>
                         </a>
-                        <p class="fsf__desc">Free, professional-grade financial calculators and tools — no account required. Built by Abdul Rahman to make smart money decisions accessible to everyone.</p>
+                        <p class="fsf__desc">Free, professional-grade financial calculators and tools -- no account required. Built by Abdul Rahman to make smart money decisions accessible to everyone.</p>
 
                         <!-- Mini stats -->
                         <div class="fsf__mini-stats">

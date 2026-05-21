@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /* =========================================================
@@ -183,7 +183,7 @@ function fs_leads_admin_page() {
     ];
     ?>
     <div class="wrap" style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;">
-        <h1 style="color:#1E293B;font-size:1.6rem;margin-bottom:24px;">&#128203; FinanceSpots — Leads</h1>
+        <h1 style="color:#1E293B;font-size:1.6rem;margin-bottom:24px;">&#128203; FinanceSpots -- Leads</h1>
 
         <!-- Stats -->
         <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:28px;max-width:600px;">

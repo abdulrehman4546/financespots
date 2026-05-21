@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Contact Us
  */
@@ -100,7 +100,7 @@ get_header();
                                 Are all tools really free?
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
-                            <div class="fs-faq-a">Yes — every calculator and tool on FinanceSpots is 100% free. No account, no credit card, no hidden fees. Ever.</div>
+                            <div class="fs-faq-a">Yes -- every calculator and tool on FinanceSpots is 100% free. No account, no credit card, no hidden fees. Ever.</div>
                         </div>
 
                         <div class="fs-faq-item">

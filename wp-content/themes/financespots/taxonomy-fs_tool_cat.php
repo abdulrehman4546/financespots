@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template: Tool Category Archive
  * @package financespots
@@ -97,7 +97,7 @@ if ( have_posts() ) {
             <a href="<?php echo esc_url( home_url( '/tools/' ) ); ?>"
                style="display:inline-flex;align-items:center;gap:.4rem;font-size:.82rem;font-weight:600;color:rgba(255,255,255,.4);text-decoration:none;margin-bottom:.5rem;transition:color .2s"
                onmouseover="this.style.color='#00C896'" onmouseout="this.style.color='rgba(255,255,255,.4)'">
-                ← All Tool Categories
+                &#x2190; All Tool Categories
             </a>
             <span class="fst-hero__icon"><?php echo $icon; ?></span>
             <h1 class="fst-hero__title"><?php echo esc_html( $term_name ); ?></h1>
@@ -163,7 +163,7 @@ if ( have_posts() ) {
                 <div class="fst-card__icon"><?php echo $t_icon; ?></div>
                 <h3 class="fst-card__title"><?php echo esc_html( $p['title'] ); ?></h3>
                 <p class="fst-card__desc"><?php echo esc_html( $p['desc'] ); ?></p>
-                <span class="fst-card__cta">Open Calculator →</span>
+                <span class="fst-card__cta">Open Calculator &#x2192;</span>
             </a>
             <?php endforeach; ?>
         </div>
@@ -182,7 +182,7 @@ if ( have_posts() ) {
         <div class="fst-empty">
             <div class="fst-empty__icon">&#128736;&#65039;</div>
             <h3 class="fst-empty__title">No tools found in this category</h3>
-            <p class="fst-empty__desc">Check back soon — we're adding new tools every week.</p>
+            <p class="fst-empty__desc">Check back soon -- we're adding new tools every week.</p>
             <a href="<?php echo esc_url( home_url('/') ); ?>"
                style="display:inline-block;padding:.75rem 1.5rem;background:var(--fs-primary);color:#fff;border-radius:8px;text-decoration:none;font-weight:700">
                 Back to Home

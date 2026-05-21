@@ -36,9 +36,9 @@ function financespots_setup() {
 
     register_nav_menus([
         'primary'   => __( 'Primary Navigation', 'financespots' ),
-        'footer-1'  => __( 'Footer Column 1 — Tools', 'financespots' ),
-        'footer-2'  => __( 'Footer Column 2 — Company', 'financespots' ),
-        'footer-3'  => __( 'Footer Column 3 — Resources', 'financespots' ),
+        'footer-1'  => __( 'Footer Column 1 -- Tools', 'financespots' ),
+        'footer-2'  => __( 'Footer Column 2 -- Company', 'financespots' ),
+        'footer-3'  => __( 'Footer Column 3 -- Resources', 'financespots' ),
     ]);
 }
 add_action( 'after_setup_theme', 'financespots_setup' );
@@ -107,7 +107,7 @@ function financespots_widgets_init() {
             'description' => __( 'Main sidebar shown on blog & tool pages.', 'financespots' ),
         ],
         [
-            'name'        => __( 'Homepage — Featured Tools', 'financespots' ),
+            'name'        => __( 'Homepage -- Featured Tools', 'financespots' ),
             'id'          => 'homepage-tools',
             'description' => __( 'Tool cards displayed in the Popular Tools section.', 'financespots' ),
         ],
@@ -181,7 +181,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     };
 
     /* === COLORS SECTION === */
-    $add_section( 'financespots_colors', __( 'FinanceSpots — Colors', 'financespots' ), 20 );
+    $add_section( 'financespots_colors', __( 'FinanceSpots -- Colors', 'financespots' ), 20 );
     $color( 'fs_color_primary',    'financespots_colors', __( 'Primary Accent Color', 'financespots' ),    '#00C896' );
     $color( 'fs_color_secondary',  'financespots_colors', __( 'Secondary Accent Color', 'financespots' ),  '#3B82F6' );
     $color( 'fs_color_gold',       'financespots_colors', __( 'Gold Accent Color', 'financespots' ),       '#F59E0B' );
@@ -191,14 +191,14 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
 
     /* === HERO SECTION === */
     /* === NAVBAR SECTION (new) === */
-    $add_section( 'financespots_navbar', __( 'FinanceSpots — Navbar Buttons', 'financespots' ), 25 );
+    $add_section( 'financespots_navbar', __( 'FinanceSpots -- Navbar Buttons', 'financespots' ), 25 );
     $text( 'fs_signin_label',   'financespots_navbar', __( 'Sign In Button Label', 'financespots' ),        __( 'Sign In', 'financespots' ) );
     $text( 'fs_signin_url',     'financespots_navbar', __( 'Sign In URL', 'financespots' ),                 '/wp-login.php', 'url' );
     $text( 'fs_cta_nav_label',  'financespots_navbar', __( 'Get Started Button Label', 'financespots' ),    __( 'Get Started Free', 'financespots' ) );
     $text( 'fs_cta_nav_url',    'financespots_navbar', __( 'Get Started Button URL', 'financespots' ),      '#tools', 'url' );
 
     /* === TICKER BAR ANIMATION CONTROLS === */
-    $add_section( 'financespots_ticker', __( 'FinanceSpots — Ticker Bar', 'financespots' ), 26 );
+    $add_section( 'financespots_ticker', __( 'FinanceSpots -- Ticker Bar', 'financespots' ), 26 );
 
     // Show/Hide ticker
     $wp_customize->add_setting( 'fs_ticker_enable', [ 'default' => '1', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
@@ -236,7 +236,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $wp_customize->add_setting( 'fs_ticker_speed', [ 'default' => '240', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
     $wp_customize->add_control( 'fs_ticker_speed', [
         'label'       => __( 'Scroll Speed (seconds for 1 full loop)', 'financespots' ),
-        'description' => __( 'Lower = faster. Range: 30–600s', 'financespots' ),
+        'description' => __( 'Lower = faster. Range: 30-600s', 'financespots' ),
         'section'     => 'financespots_ticker',
         'type'        => 'range',
         'input_attrs' => [ 'min' => 30, 'max' => 600, 'step' => 10 ],
@@ -289,20 +289,20 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     ] );
 
     /* === HERO SECTION (updated) === */
-    $add_section( 'financespots_hero', __( 'FinanceSpots — Hero Section', 'financespots' ), 30 );
+    $add_section( 'financespots_hero', __( 'FinanceSpots -- Hero Section', 'financespots' ), 30 );
     $text(     'fs_hero_badge',    'financespots_hero', __( 'Badge Text', 'financespots' ),          __( 'AI-POWERED FINANCE PLATFORM 2026', 'financespots' ) );
     $text(     'fs_hero_title_1',  'financespots_hero', __( 'Headline Line 1', 'financespots' ),     __( 'Smart Financial', 'financespots' ) );
     $text(     'fs_hero_title_2',  'financespots_hero', __( 'Headline Line 2', 'financespots' ),     __( 'Tools', 'financespots' ) );
     $text(     'fs_hero_title_3',  'financespots_hero', __( 'Headline Accent Word (blue)', 'financespots' ), __( 'Intelligent', 'financespots' ) );
     $text(     'fs_hero_title_4',  'financespots_hero', __( 'Headline Line 4', 'financespots' ),     __( 'Investing', 'financespots' ) );
-    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI — from portfolio analysis to tax optimization. 150+ tools, completely free.', 'financespots' ) );
+    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 150+ tools, completely free.', 'financespots' ) );
     $text(     'fs_hero_cta_text', 'financespots_hero', __( 'Primary CTA Text', 'financespots' ),   __( 'Explore All Tools', 'financespots' ) );
     $text(     'fs_hero_cta_url',  'financespots_hero', __( 'Primary CTA URL', 'financespots' ),    '#tools', 'url' );
     $text(     'fs_hero_cta2_text','financespots_hero', __( 'Secondary CTA Text', 'financespots' ), __( 'Watch Demo', 'financespots' ) );
     $text(     'fs_hero_cta2_url', 'financespots_hero', __( 'Secondary CTA URL', 'financespots' ),  '#how-it-works', 'url' );
 
     /* === PORTFOLIO CARD (new) === */
-    $add_section( 'financespots_portfolio', __( 'FinanceSpots — Portfolio Card', 'financespots' ), 32 );
+    $add_section( 'financespots_portfolio', __( 'FinanceSpots -- Portfolio Card', 'financespots' ), 32 );
     $text( 'fs_portfolio_label',   'financespots_portfolio', __( 'Card Label', 'financespots' ),           __( 'PORTFOLIO OVERVIEW', 'financespots' ) );
     $text( 'fs_portfolio_total',   'financespots_portfolio', __( 'Portfolio Total Value', 'financespots' ), '248420' );
     $text( 'fs_portfolio_change',  'financespots_portfolio', __( 'Change Text', 'financespots' ),          __( '+$18,420 this month (+8.2%)', 'financespots' ) );
@@ -337,7 +337,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $wp_customize->add_setting( 'fs_card_anim_speed', [ 'default' => '6', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
     $wp_customize->add_control( 'fs_card_anim_speed', [
         'label'       => __( 'Animation Speed (seconds)', 'financespots' ),
-        'description' => __( 'Lower = faster. Range: 2–20s', 'financespots' ),
+        'description' => __( 'Lower = faster. Range: 2-20s', 'financespots' ),
         'section'     => 'financespots_portfolio',
         'type'        => 'range',
         'input_attrs' => [ 'min' => 2, 'max' => 20, 'step' => 1 ],
@@ -348,7 +348,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $wp_customize->add_setting( 'fs_card_anim_float_px', [ 'default' => '8', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
     $wp_customize->add_control( 'fs_card_anim_float_px', [
         'label'       => __( 'Float Height (px)', 'financespots' ),
-        'description' => __( 'How many pixels the card moves up. Range: 2–30', 'financespots' ),
+        'description' => __( 'How many pixels the card moves up. Range: 2-30', 'financespots' ),
         'section'     => 'financespots_portfolio',
         'type'        => 'range',
         'input_attrs' => [ 'min' => 2, 'max' => 30, 'step' => 1 ],
@@ -421,7 +421,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $wp_customize->add_setting( 'fs_badge1_anim_speed', [ 'default' => '9', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
     $wp_customize->add_control( 'fs_badge1_anim_speed', [
         'label'       => __( 'Badge 1: Animation Speed (seconds)', 'financespots' ),
-        'description' => __( 'Lower = faster. Range: 1–20s', 'financespots' ),
+        'description' => __( 'Lower = faster. Range: 1-20s', 'financespots' ),
         'section'     => 'financespots_portfolio',
         'type'        => 'range',
         'input_attrs' => [ 'min' => 1, 'max' => 20, 'step' => 1 ],
@@ -440,7 +440,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $wp_customize->add_setting( 'fs_badge3_anim_speed', [ 'default' => '9', 'sanitize_callback' => 'absint', 'transport' => 'refresh' ] );
     $wp_customize->add_control( 'fs_badge3_anim_speed', [
         'label'       => __( 'Badge 2: Animation Speed (seconds)', 'financespots' ),
-        'description' => __( 'Lower = faster. Range: 1–20s', 'financespots' ),
+        'description' => __( 'Lower = faster. Range: 1-20s', 'financespots' ),
         'section'     => 'financespots_portfolio',
         'type'        => 'range',
         'input_attrs' => [ 'min' => 1, 'max' => 20, 'step' => 1 ],
@@ -448,7 +448,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     ] );
 
     /* === STATS SECTION === */
-    $add_section( 'financespots_stats', __( 'FinanceSpots — Stats/Counters', 'financespots' ), 40 );
+    $add_section( 'financespots_stats', __( 'FinanceSpots -- Stats/Counters', 'financespots' ), 40 );
     $text( 'fs_stat1_number', 'financespots_stats', __( 'Stat 1 Number', 'financespots' ),  '2500000' );
     $text( 'fs_stat1_label',  'financespots_stats', __( 'Stat 1 Label', 'financespots' ),   __( 'Calculations Done', 'financespots' ) );
     $text( 'fs_stat2_number', 'financespots_stats', __( 'Stat 2 Number', 'financespots' ),  '150' );
@@ -459,20 +459,20 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $text( 'fs_stat4_label',  'financespots_stats', __( 'Stat 4 Label', 'financespots' ),   __( '% Accuracy Rate', 'financespots' ) );
 
     /* === AI SECTION === */
-    $add_section( 'financespots_ai', __( 'FinanceSpots — AI Section', 'financespots' ), 50 );
+    $add_section( 'financespots_ai', __( 'FinanceSpots -- AI Section', 'financespots' ), 50 );
     $text(     'fs_ai_badge',    'financespots_ai', __( 'AI Badge Text', 'financespots' ),   __( 'AI-Powered Intelligence', 'financespots' ) );
     $text(     'fs_ai_title',    'financespots_ai', __( 'Section Title', 'financespots' ),   __( 'Smarter Finance Decisions with AI', 'financespots' ) );
     $textarea( 'fs_ai_desc',     'financespots_ai', __( 'Section Description', 'financespots' ), __( 'Our AI engine analyzes thousands of data points to give you personalized financial insights, optimize calculations, and suggest the best strategies for your goals.', 'financespots' ) );
 
     /* === NEWSLETTER SECTION === */
-    $add_section( 'financespots_newsletter', __( 'FinanceSpots — Newsletter CTA', 'financespots' ), 60 );
+    $add_section( 'financespots_newsletter', __( 'FinanceSpots -- Newsletter CTA', 'financespots' ), 60 );
     $text(     'fs_nl_title',  'financespots_newsletter', __( 'Section Title', 'financespots' ),    __( 'Stay Ahead of Your Finances', 'financespots' ) );
     $textarea( 'fs_nl_desc',   'financespots_newsletter', __( 'Description', 'financespots' ),      __( 'Get weekly finance tips, tool updates, and market insights delivered straight to your inbox.', 'financespots' ) );
     $text(     'fs_nl_btn',    'financespots_newsletter', __( 'Button Text', 'financespots' ),       __( 'Subscribe Free', 'financespots' ) );
     $text(     'fs_nl_action', 'financespots_newsletter', __( 'Form Action URL', 'financespots' ),  '#', 'url' );
 
     /* === FOOTER === */
-    $add_section( 'financespots_footer', __( 'FinanceSpots — Footer', 'financespots' ), 70 );
+    $add_section( 'financespots_footer', __( 'FinanceSpots -- Footer', 'financespots' ), 70 );
     $textarea( 'fs_footer_about',     'financespots_footer', __( 'About Text', 'financespots' ),   __( 'FinanceSpots is your all-in-one destination for free, AI-powered financial tools, calculators, and insights.', 'financespots' ) );
     $text(     'fs_footer_copyright', 'financespots_footer', __( 'Copyright Text', 'financespots' ), __( '© 2026 FinanceSpots. All rights reserved.', 'financespots' ) );
     $text(     'fs_social_twitter',   'financespots_footer', __( 'Twitter/X URL', 'financespots' ),  '#', 'url' );
@@ -627,17 +627,17 @@ add_action( 'wp_enqueue_scripts', 'financespots_dynamic_css', 20 );
 function fs_get_tool_faq_schema( $tool_type ) {
     $faqs = [
         'mortgage_calc'     => [
-            ['q'=>'What is a good mortgage rate in 2026?',         'a'=>'A competitive 30-year fixed rate in 2026 is 6.5%–7.5%. 15-year fixed rates are typically 0.5–1% lower. Your rate depends on credit score, down payment, and lender.'],
+            ['q'=>'What is a good mortgage rate in 2026?',         'a'=>'A competitive 30-year fixed rate in 2026 is 6.5%-7.5%. 15-year fixed rates are typically 0.5-1% lower. Your rate depends on credit score, down payment, and lender.'],
             ['q'=>'How much house can I afford?',                  'a'=>'Keep total housing costs (PITI) under 28% of gross monthly income. Total debt payments should stay below 43% DTI for conventional loan qualification.'],
             ['q'=>'What does PITI stand for in a mortgage?',       'a'=>'PITI = Principal, Interest, Taxes, Insurance. It is the true monthly cost of homeownership beyond just the loan payment itself.'],
         ],
         'auto_loan_calc'    => [
-            ['q'=>'What is a good auto loan rate in 2026?',        'a'=>'Rates of 5%–8% for new cars and 7%–12% for used are typical in 2026. Below 6% on a new car is considered excellent credit pricing.'],
+            ['q'=>'What is a good auto loan rate in 2026?',        'a'=>'Rates of 5%-8% for new cars and 7%-12% for used are typical in 2026. Below 6% on a new car is considered excellent credit pricing.'],
             ['q'=>'How much should I put down on a car?',          'a'=>'A 20% down payment for new cars and 10% for used cars is recommended to avoid negative equity (owing more than the car is worth).'],
-            ['q'=>'What loan term is best for an auto loan?',      'a'=>'36–48 months minimizes total interest. Terms over 60 months reduce monthly payments but increase total cost and risk of negative equity.'],
+            ['q'=>'What loan term is best for an auto loan?',      'a'=>'36-48 months minimizes total interest. Terms over 60 months reduce monthly payments but increase total cost and risk of negative equity.'],
         ],
         'personal_loan_calc'=> [
-            ['q'=>'What credit score do I need for a personal loan?','a'=>'Most lenders require 580–640 minimum. For rates below 10% APR, you typically need a score of 720 or higher.'],
+            ['q'=>'What credit score do I need for a personal loan?','a'=>'Most lenders require 580-640 minimum. For rates below 10% APR, you typically need a score of 720 or higher.'],
             ['q'=>'What is the difference between APR and interest rate?','a'=>'APR includes both the interest rate and origination fees, giving you the true annual cost of borrowing. Always compare APRs, not just rates.'],
             ['q'=>'Can I pay off a personal loan early?',          'a'=>'Most personal loans have no prepayment penalty. Paying extra reduces total interest significantly, especially early in the term.'],
         ],
@@ -647,50 +647,50 @@ function fs_get_tool_faq_schema( $tool_type ) {
             ['q'=>'Should I choose standard or income-driven repayment?','a'=>'Standard 10-year pays off fastest and costs least interest. Income-Driven plans offer lower payments but extend the term and increase total interest.'],
         ],
         'heloc_calc'        => [
-            ['q'=>'How much equity can I borrow?',                 'a'=>'Most lenders allow up to 80–85% combined LTV. With an $85% LTV on a $500k home with a $300k mortgage, you can borrow up to $125,000.'],
-            ['q'=>'What is the difference between HELOC and home equity loan?','a'=>'A home equity loan gives a fixed-rate lump sum. A HELOC is a revolving variable-rate credit line — like a credit card secured by your home.'],
+            ['q'=>'How much equity can I borrow?',                 'a'=>'Most lenders allow up to 80-85% combined LTV. With an $85% LTV on a $500k home with a $300k mortgage, you can borrow up to $125,000.'],
+            ['q'=>'What is the difference between HELOC and home equity loan?','a'=>'A home equity loan gives a fixed-rate lump sum. A HELOC is a revolving variable-rate credit line -- like a credit card secured by your home.'],
             ['q'=>'Is home equity loan interest tax deductible?',  'a'=>'It may be deductible if used to buy, build, or improve the home. Consult a tax advisor for your situation.'],
         ],
         'fha_loan_calc'     => [
-            ['q'=>'What is FHA Mortgage Insurance Premium (MIP)?','a'=>'FHA requires a 1.75% upfront MIP (rolled into the loan) and annual MIP of 0.55%–1.05% monthly based on loan size and LTV.'],
+            ['q'=>'What is FHA Mortgage Insurance Premium (MIP)?','a'=>'FHA requires a 1.75% upfront MIP (rolled into the loan) and annual MIP of 0.55%-1.05% monthly based on loan size and LTV.'],
             ['q'=>'How long do I pay MIP on an FHA loan?',        'a'=>'With under 10% down, MIP lasts the life of the loan. With 10%+ down, it cancels after 11 years.'],
-            ['q'=>'What is the minimum credit score for FHA?',    'a'=>'580 for 3.5% down; 500–579 requires 10% down; below 500 is ineligible for FHA financing.'],
+            ['q'=>'What is the minimum credit score for FHA?',    'a'=>'580 for 3.5% down; 500-579 requires 10% down; below 500 is ineligible for FHA financing.'],
         ],
         'balloon_calc'      => [
-            ['q'=>'What is a balloon loan?',                       'a'=>'A balloon loan has low monthly payments based on a 30-year amortization but the full remaining balance is due as a lump sum at the end of a shorter term (5–10 years).'],
+            ['q'=>'What is a balloon loan?',                       'a'=>'A balloon loan has low monthly payments based on a 30-year amortization but the full remaining balance is due as a lump sum at the end of a shorter term (5-10 years).'],
             ['q'=>'Who uses balloon loans?',                       'a'=>'Mostly commercial real estate investors who expect to sell or refinance before the balloon payment is due.'],
             ['q'=>'What happens if I cannot pay the balloon?',    'a'=>'You must refinance or sell. If neither is possible, you risk defaulting and the lender can foreclose on the property.'],
         ],
         'interest_only_calc'=> [
-            ['q'=>'What is an interest-only loan?',                'a'=>'You pay only interest for a set period (5–10 years), then fully amortizing P&I payments begin — which are higher than a traditional loan.'],
-            ['q'=>'Do interest-only loans build equity?',          'a'=>'No — your balance does not decrease during the IO period. Equity builds only through appreciation, not loan paydown.'],
-            ['q'=>'How much more does an IO loan cost?',           'a'=>'Total interest can be 10–20% more than a fully amortizing loan because principal is not reduced during the IO period.'],
+            ['q'=>'What is an interest-only loan?',                'a'=>'You pay only interest for a set period (5-10 years), then fully amortizing P&I payments begin -- which are higher than a traditional loan.'],
+            ['q'=>'Do interest-only loans build equity?',          'a'=>'No -- your balance does not decrease during the IO period. Equity builds only through appreciation, not loan paydown.'],
+            ['q'=>'How much more does an IO loan cost?',           'a'=>'Total interest can be 10-20% more than a fully amortizing loan because principal is not reduced during the IO period.'],
         ],
         'loan_payoff_calc'  => [
             ['q'=>'How much do extra mortgage payments save?',     'a'=>'On a $200k loan at 7%, an extra $200/month saves about 5 years and $60,000+ in interest. Even $50/month makes a meaningful difference.'],
-            ['q'=>'When is the best time to make extra payments?', 'a'=>'Early in the loan — payments are front-loaded with interest, so extra payments in years 1–5 save far more than the same amount in later years.'],
-            ['q'=>'Should I overpay my mortgage or invest?',       'a'=>'If your rate exceeds expected investment returns, overpaying wins. For low rates (3–4%), investing in the stock market often wins mathematically.'],
+            ['q'=>'When is the best time to make extra payments?', 'a'=>'Early in the loan -- payments are front-loaded with interest, so extra payments in years 1-5 save far more than the same amount in later years.'],
+            ['q'=>'Should I overpay my mortgage or invest?',       'a'=>'If your rate exceeds expected investment returns, overpaying wins. For low rates (3-4%), investing in the stock market often wins mathematically.'],
         ],
         'commercial_calc'   => [
             ['q'=>'What is DSCR and what is a good ratio?',       'a'=>'DSCR = Net Operating Income / Annual Debt Service. Most commercial lenders require 1.25 or higher, meaning the property earns 25% more than the loan payment.'],
-            ['q'=>'What are commercial real estate loan rates in 2026?','a'=>'Rates range from 6.5%–9% for stabilized properties, higher for construction or value-add. Rates depend on property type, LTV, and lender.'],
-            ['q'=>'What LTV do commercial lenders allow?',         'a'=>'Most cap LTV at 65–75% for investment properties. SBA loans allow up to 85–90% for owner-occupied commercial real estate.'],
+            ['q'=>'What are commercial real estate loan rates in 2026?','a'=>'Rates range from 6.5%-9% for stabilized properties, higher for construction or value-add. Rates depend on property type, LTV, and lender.'],
+            ['q'=>'What LTV do commercial lenders allow?',         'a'=>'Most cap LTV at 65-75% for investment properties. SBA loans allow up to 85-90% for owner-occupied commercial real estate.'],
         ],
         'bridge_calc'       => [
-            ['q'=>'What is a bridge loan?',                        'a'=>'Short-term financing (3–24 months) used to bridge the gap between buying a new property and selling an existing one, or while securing permanent financing.'],
-            ['q'=>'What are typical bridge loan rates?',           'a'=>'Bridge loan rates range from 8%–12%+ in 2026. They cost more than conventional loans due to the short term and higher lender risk.'],
-            ['q'=>'What fees come with a bridge loan?',            'a'=>'Typical costs: 1–3% origination fee, 0.5–2% exit fee, appraisal, and legal fees. Total fees can add 3–5% to the loan amount.'],
+            ['q'=>'What is a bridge loan?',                        'a'=>'Short-term financing (3-24 months) used to bridge the gap between buying a new property and selling an existing one, or while securing permanent financing.'],
+            ['q'=>'What are typical bridge loan rates?',           'a'=>'Bridge loan rates range from 8%-12%+ in 2026. They cost more than conventional loans due to the short term and higher lender risk.'],
+            ['q'=>'What fees come with a bridge loan?',            'a'=>'Typical costs: 1-3% origination fee, 0.5-2% exit fee, appraisal, and legal fees. Total fees can add 3-5% to the loan amount.'],
         ],
         'va_loan_advanced'  => [
             ['q'=>'What is the VA funding fee for 2026?',          'a'=>'2.15% for first-time use with 0% down (Regular Military), 3.30% for subsequent use. Veterans with 10%+ service-connected disability are exempt.'],
             ['q'=>'Who is exempt from the VA funding fee?',        'a'=>'Veterans receiving VA disability compensation, surviving spouses of veterans who died in service, and active duty Purple Heart recipients.'],
-            ['q'=>'Can I roll the VA funding fee into my loan?',   'a'=>'Yes — the VA funding fee can be financed into your loan amount so you pay nothing at closing. This is the most common approach.'],
+            ['q'=>'Can I roll the VA funding fee into my loan?',   'a'=>'Yes -- the VA funding fee can be financed into your loan amount so you pay nothing at closing. This is the most common approach.'],
         ],
     ];
 
     $items = $faqs[ $tool_type ] ?? [
-        ['q'=>'Is this calculator free to use?',                   'a'=>'Yes — all calculators on FinanceSpots are completely free, with no signup or subscription required. Results are instant.'],
-        ['q'=>'Can I download my results as a PDF?',               'a'=>'Yes — every calculator includes a "Download PDF Report" button after calculating. The PDF includes a branded results report with all key figures.'],
+        ['q'=>'Is this calculator free to use?',                   'a'=>'Yes -- all calculators on FinanceSpots are completely free, with no signup or subscription required. Results are instant.'],
+        ['q'=>'Can I download my results as a PDF?',               'a'=>'Yes -- every calculator includes a "Download PDF Report" button after calculating. The PDF includes a branded results report with all key figures.'],
         ['q'=>'How accurate are these calculators?',               'a'=>'Our calculators use standard financial formulas and are updated for 2026 rates and regulations. Always verify results with a licensed financial advisor for major decisions.'],
     ];
 
@@ -843,10 +843,10 @@ function fs_get_tool_categories() {
     ];
 }
 
-/** Popular tools data — titles must exactly match DB post_title */
+/** Popular tools data -- titles must exactly match DB post_title */
 function fs_get_popular_tools() {
     return [
-        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison — with PDF export.',    'icon' => '&#127894;&#65039;', 'badge' => '&#128293; Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
+        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison -- with PDF export.',    'icon' => '&#127894;&#65039;', 'badge' => '&#128293; Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
         [ 'name' => 'Mortgage Calculator',            'desc' => 'Calculate monthly payments, total interest, and full amortization schedule for any home loan.',               'icon' => '&#127968;', 'badge' => '&#11088; Most Popular','badge_color' => 'secondary', 'cat' => 'loan-calculators' ],
         [ 'name' => 'Compound Interest Calculator',   'desc' => 'See how your money grows over time with daily, monthly, or annual compounding.',                               'icon' => '&#128200;', 'badge' => '&#128202; Popular',    'badge_color' => 'ai',        'cat' => 'investment-tools' ],
         [ 'name' => 'Income Tax Calculator',          'desc' => 'Estimate federal and state income tax based on your income, deductions, and filing status.',                   'icon' => '&#129534;', 'badge' => '&#9989; 2026',       'badge_color' => 'gold',      'cat' => 'tax-calculators' ],
@@ -855,7 +855,7 @@ function fs_get_popular_tools() {
     ];
 }
 
-/** Resolve a tool's permalink by exact post title — cached per request */
+/** Resolve a tool's permalink by exact post title -- cached per request */
 function fs_get_tool_url_by_title( $title, $cat_slug = '' ) {
     static $cache = [];
     if ( isset( $cache[ $title ] ) ) return $cache[ $title ];
@@ -900,7 +900,7 @@ function fs_get_ai_features() {
         [ 'icon' => '&#129302;', 'title' => 'Smart Suggestions',      'desc' => 'AI analyzes your inputs and recommends optimal financial strategies tailored to your situation.' ],
         [ 'icon' => '&#128225;', 'title' => 'Real-Time Data',          'desc' => 'Live market rates, interest rates, and tax tables automatically updated daily.' ],
         [ 'icon' => '&#128302;', 'title' => 'Predictive Modeling',     'desc' => 'Monte Carlo simulations and scenario analysis to stress-test your financial plans.' ],
-        [ 'icon' => '&#128737;&#65039;', 'title' => '100% Private',            'desc' => 'All calculations run in your browser. No data is stored or shared — ever.' ],
+        [ 'icon' => '&#128737;&#65039;', 'title' => '100% Private',            'desc' => 'All calculations run in your browser. No data is stored or shared -- ever.' ],
     ];
 }
 
@@ -910,7 +910,7 @@ function fs_get_steps() {
         [ 'num' => '01', 'title' => 'Choose Your Tool',   'desc' => 'Browse 150+ finance tools organized by category. Use our smart search to find what you need instantly.' ],
         [ 'num' => '02', 'title' => 'Enter Your Data',    'desc' => 'Input your financial details into our clean, guided forms. Tooltips explain every field.' ],
         [ 'num' => '03', 'title' => 'Get AI Insights',    'desc' => 'Receive instant results plus AI-generated insights, comparisons, and personalized recommendations.' ],
-        [ 'num' => '04', 'title' => 'Plan & Take Action', 'desc' => 'Export your results, save scenarios, or share with your financial advisor — all for free.' ],
+        [ 'num' => '04', 'title' => 'Plan & Take Action', 'desc' => 'Export your results, save scenarios, or share with your financial advisor -- all for free.' ],
     ];
 }
 
@@ -927,9 +927,9 @@ function fs_get_testimonials() {
 /** Why Us features */
 function fs_get_features() {
     return [
-        [ 'icon' => '&#9889;', 'title' => 'Instant Results',       'desc' => 'Every calculation is instant — no waiting, no server calls. Results update in real-time as you type.' ],
+        [ 'icon' => '&#9889;', 'title' => 'Instant Results',       'desc' => 'Every calculation is instant -- no waiting, no server calls. Results update in real-time as you type.' ],
         [ 'icon' => '&#127919;', 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
-        [ 'icon' => '&#128275;', 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation — completely free forever. No account required.' ],
+        [ 'icon' => '&#128275;', 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation -- completely free forever. No account required.' ],
         [ 'icon' => '&#128241;', 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
         [ 'icon' => '&#129309;', 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
         [ 'icon' => '&#128260;', 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
@@ -1016,7 +1016,7 @@ function fs_register_tools_cpt() {
 }
 add_action( 'init', 'fs_register_tools_cpt' );
 
-// Force our taxonomy template — prevent WordPress from using index.php fallback
+// Force our taxonomy template -- prevent WordPress from using index.php fallback
 function fs_taxonomy_template_fix( $template ) {
     if ( is_tax( 'fs_tool_cat' ) ) {
         $custom = get_template_directory() . '/taxonomy-fs_tool_cat.php';
@@ -1052,7 +1052,7 @@ function fs_insert_all_tools() {
         $count = wp_count_posts( 'fs_tool' );
         $published = isset( $count->publish ) ? (int) $count->publish : 0;
         if ( $published >= 10 ) return; // tools exist, skip
-        // tools missing — reset flag and re-insert
+        // tools missing -- reset flag and re-insert
         delete_option( 'fs_tools_inserted_v1' );
     }
 
@@ -1237,7 +1237,7 @@ function fs_insert_all_tools() {
 add_action( 'admin_init', 'fs_insert_all_tools' );
 
 /* =========================================================
-   TOOL CARD META BOX — editable card fields in WP Admin
+   TOOL CARD META BOX -- editable card fields in WP Admin
    Fields: _fs_card_bg, _fs_card_icon, _fs_card_link, _fs_card_badge
    ========================================================= */
 function fs_tool_card_metabox() {
@@ -1355,7 +1355,7 @@ add_filter( 'manage_fs_tool_posts_columns', 'fs_tool_admin_columns' );
 function fs_tool_admin_column_content( $col, $post_id ) {
     if ( $col === 'fs_card_badge' ) {
         $v = get_post_meta( $post_id, '_fs_card_badge', true );
-        echo $v ? esc_html($v) : '<span style="color:#aaa">—</span>';
+        echo $v ? esc_html($v) : '<span style="color:#aaa">--</span>';
     }
     if ( $col === 'fs_card_bg' ) {
         $v = get_post_meta( $post_id, '_fs_card_bg', true ) ?: '#ffffff';
@@ -1363,13 +1363,13 @@ function fs_tool_admin_column_content( $col, $post_id ) {
     }
     if ( $col === 'fs_card_link' ) {
         $v = get_post_meta( $post_id, '_fs_card_link', true );
-        echo $v ? '<a href="' . esc_url($v) . '" target="_blank" style="font-size:11px">Custom ↗</a>' : '<span style="color:#aaa">Default</span>';
+        echo $v ? '<a href="' . esc_url($v) . '" target="_blank" style="font-size:11px">Custom &#x2197;</a>' : '<span style="color:#aaa">Default</span>';
     }
 }
 add_action( 'manage_fs_tool_posts_custom_column', 'fs_tool_admin_column_content', 10, 2 );
 
 /* =========================================================
-   LOAN CALCULATORS — SEO meta for all 18 tools
+   LOAN CALCULATORS -- SEO meta for all 18 tools
    ========================================================= */
 function fs_loan_tools_seo() {
     if ( get_option( 'fs_loan_seo_v1' ) ) return;
@@ -1380,109 +1380,109 @@ function fs_loan_tools_seo() {
     $seo_data = [
         'Mortgage Calculator' => [
             'kw'    => 'mortgage calculator',
-            'title' => 'Mortgage Calculator 2026 — Monthly Payment & Amortization | FinanceSpots',
+            'title' => 'Mortgage Calculator 2026 -- Monthly Payment & Amortization | FinanceSpots',
             'desc'  => 'Free mortgage calculator: enter home price, down payment, interest rate & term to instantly see monthly payment, total interest, and full amortization schedule. No signup.',
             'type'  => 'mortgage_calc',
         ],
         'Auto Loan Calculator' => [
             'kw'    => 'auto loan calculator',
-            'title' => 'Auto Loan Calculator 2026 — Car Payment & Total Cost | FinanceSpots',
+            'title' => 'Auto Loan Calculator 2026 -- Car Payment & Total Cost | FinanceSpots',
             'desc'  => 'Calculate your exact monthly car payment, total interest paid, and true cost of any auto loan. Includes trade-in value, taxes & fees. Free, instant results.',
             'type'  => 'auto_loan_calc',
         ],
         'Personal Loan Calculator' => [
             'kw'    => 'personal loan calculator',
-            'title' => 'Personal Loan Calculator 2026 — Monthly Payment Estimator | FinanceSpots',
+            'title' => 'Personal Loan Calculator 2026 -- Monthly Payment Estimator | FinanceSpots',
             'desc'  => 'Estimate personal loan payments for any amount and rate. Compare 2-7 year terms, see total interest cost, and decide which loan is right for you.',
             'type'  => 'personal_loan_calc',
         ],
         'Student Loan Calculator' => [
             'kw'    => 'student loan calculator',
-            'title' => 'Student Loan Calculator 2026 — Repayment & Interest | FinanceSpots',
+            'title' => 'Student Loan Calculator 2026 -- Repayment & Interest | FinanceSpots',
             'desc'  => 'Calculate student loan monthly payments, total interest, and payoff date. Supports federal and private loans with multiple repayment plans.',
             'type'  => 'student_loan_calc',
         ],
         'Home Equity Loan Calculator' => [
             'kw'    => 'home equity loan calculator',
-            'title' => 'Home Equity Loan Calculator 2026 — HELOC Payment Tool | FinanceSpots',
+            'title' => 'Home Equity Loan Calculator 2026 -- HELOC Payment Tool | FinanceSpots',
             'desc'  => 'Calculate home equity loan or HELOC payments. See how much you can borrow based on your home value and current mortgage balance.',
             'type'  => 'heloc_calc',
         ],
         'Debt Consolidation Calculator' => [
             'kw'    => 'debt consolidation calculator',
-            'title' => 'Debt Consolidation Calculator 2026 — Save Money & Simplify Debt | FinanceSpots',
-            'desc'  => 'See if debt consolidation saves money. Enter multiple debts and compare with a single consolidation loan — monthly savings and interest reduction.',
+            'title' => 'Debt Consolidation Calculator 2026 -- Save Money & Simplify Debt | FinanceSpots',
+            'desc'  => 'See if debt consolidation saves money. Enter multiple debts and compare with a single consolidation loan -- monthly savings and interest reduction.',
             'type'  => 'debt_consol_calc',
         ],
         'Loan Comparison Calculator' => [
             'kw'    => 'loan comparison calculator',
-            'title' => 'Loan Comparison Calculator 2026 — Compare Two Loans Side by Side | FinanceSpots',
+            'title' => 'Loan Comparison Calculator 2026 -- Compare Two Loans Side by Side | FinanceSpots',
             'desc'  => 'Compare two loan offers side by side. See which loan costs less in total interest and monthly payments. Free and instant.',
             'type'  => 'loan_compare',
         ],
         'Amortization Calculator' => [
             'kw'    => 'amortization calculator',
-            'title' => 'Amortization Calculator 2026 — Full Loan Schedule | FinanceSpots',
+            'title' => 'Amortization Calculator 2026 -- Full Loan Schedule | FinanceSpots',
             'desc'  => 'Generate a complete amortization schedule for any loan. See principal vs. interest each month and how extra payments accelerate payoff.',
             'type'  => 'amortization',
         ],
         'Refinance Calculator' => [
             'kw'    => 'mortgage refinance calculator',
-            'title' => 'Refinance Calculator 2026 — Should You Refinance? | FinanceSpots',
+            'title' => 'Refinance Calculator 2026 -- Should You Refinance? | FinanceSpots',
             'desc'  => 'Calculate refinance savings: monthly savings, break-even point, and lifetime interest reduction. Includes closing cost analysis. Free tool.',
             'type'  => 'refinance',
         ],
         'FHA Loan Calculator' => [
             'kw'    => 'FHA loan calculator',
-            'title' => 'FHA Loan Calculator 2026 — Payment + MIP Included | FinanceSpots',
+            'title' => 'FHA Loan Calculator 2026 -- Payment + MIP Included | FinanceSpots',
             'desc'  => 'Calculate FHA loan monthly payment including upfront MIP (1.75%) and annual MIP. Compare 3.5% down FHA vs. conventional loans instantly.',
             'type'  => 'fha_loan_calc',
         ],
         'VA Loan Calculator' => [
             'kw'    => 'VA loan calculator',
-            'title' => 'VA Loan Calculator 2026 — No PMI Military Loan Payment | FinanceSpots',
+            'title' => 'VA Loan Calculator 2026 -- No PMI Military Loan Payment | FinanceSpots',
             'desc'  => 'Calculate VA loan monthly payment with no PMI. Includes VA funding fee based on service type, down payment, and usage. Free for veterans.',
             'type'  => 'loan_payment',
         ],
         'Balloon Loan Calculator' => [
             'kw'    => 'balloon loan calculator',
-            'title' => 'Balloon Loan Calculator 2026 — Payment & Balloon Amount | FinanceSpots',
+            'title' => 'Balloon Loan Calculator 2026 -- Payment & Balloon Amount | FinanceSpots',
             'desc'  => 'Calculate balloon loan monthly payments and final balloon payment. See amortization for 5, 7, and 10-year balloon mortgages.',
             'type'  => 'balloon_calc',
         ],
         'Interest Only Calculator' => [
             'kw'    => 'interest only loan calculator',
-            'title' => 'Interest Only Loan Calculator 2026 — Payment Comparison | FinanceSpots',
+            'title' => 'Interest Only Loan Calculator 2026 -- Payment Comparison | FinanceSpots',
             'desc'  => 'Calculate interest-only loan payments and compare with fully amortizing loans. See the cost difference and when P&I payments begin.',
             'type'  => 'interest_only_calc',
         ],
         'Loan Payoff Calculator' => [
             'kw'    => 'loan payoff calculator',
-            'title' => 'Loan Payoff Calculator 2026 — Pay Off Faster With Extra Payments | FinanceSpots',
+            'title' => 'Loan Payoff Calculator 2026 -- Pay Off Faster With Extra Payments | FinanceSpots',
             'desc'  => 'See how extra monthly payments accelerate your loan payoff. Calculate exact payoff date, months saved, and total interest saved.',
             'type'  => 'loan_payoff_calc',
         ],
         'Monthly Payment Calculator' => [
             'kw'    => 'monthly payment calculator',
-            'title' => 'Monthly Payment Calculator 2026 — Any Loan, Instant Results | FinanceSpots',
-            'desc'  => 'Calculate the monthly payment for any loan amount, interest rate, and term. Simple and fast — no signup needed.',
+            'title' => 'Monthly Payment Calculator 2026 -- Any Loan, Instant Results | FinanceSpots',
+            'desc'  => 'Calculate the monthly payment for any loan amount, interest rate, and term. Simple and fast -- no signup needed.',
             'type'  => 'loan_payment',
         ],
         'Loan Affordability Calculator' => [
             'kw'    => 'how much loan can I afford',
-            'title' => 'Loan Affordability Calculator 2026 — How Much Can You Borrow? | FinanceSpots',
+            'title' => 'Loan Affordability Calculator 2026 -- How Much Can You Borrow? | FinanceSpots',
             'desc'  => 'Find out how much loan you can afford based on your income, debts, and desired monthly payment. Uses industry-standard DTI guidelines.',
             'type'  => 'affordability',
         ],
         'Commercial Loan Calculator' => [
             'kw'    => 'commercial loan calculator',
-            'title' => 'Commercial Loan Calculator 2026 — Business Real Estate Payments | FinanceSpots',
+            'title' => 'Commercial Loan Calculator 2026 -- Business Real Estate Payments | FinanceSpots',
             'desc'  => 'Calculate commercial real estate and business loan payments. Includes balloon payment, DSCR analysis, and total financing cost.',
             'type'  => 'commercial_calc',
         ],
         'Bridge Loan Calculator' => [
             'kw'    => 'bridge loan calculator',
-            'title' => 'Bridge Loan Calculator 2026 — Short-Term Financing Cost | FinanceSpots',
+            'title' => 'Bridge Loan Calculator 2026 -- Short-Term Financing Cost | FinanceSpots',
             'desc'  => 'Estimate bridge loan costs: interest-only payments, origination fees, and total cost of short-term bridge financing for real estate.',
             'type'  => 'bridge_calc',
         ],
@@ -1516,7 +1516,7 @@ function fs_loan_tools_seo() {
         update_post_meta( $post_id, 'rank_math_description',   $data['desc'] );
         update_post_meta( $post_id, 'rank_math_robots',        [ 'index', 'follow' ] );
 
-        // No custom schema — let RankMath handle it via its own UI
+        // No custom schema -- let RankMath handle it via its own UI
     }
 
     update_option( 'fs_loan_seo_v1', true );
@@ -1525,7 +1525,7 @@ add_action( 'admin_init', 'fs_loan_tools_seo', 25 );
 add_action( 'init',       'fs_loan_tools_seo', 45 );
 
 /* =========================================================
-   VA LOAN FUNDING FEE CALCULATOR — Advanced Page + SEO
+   VA LOAN FUNDING FEE CALCULATOR -- Advanced Page + SEO
    ========================================================= */
 function fs_create_va_loan_tool() {
     if ( get_option( 'fs_va_loan_tool_v2' ) ) return;
@@ -1541,7 +1541,7 @@ function fs_create_va_loan_tool() {
     $id = $existing ? $existing[0]->ID : 0;
 
     $focus_kw  = 'VA loan funding fee calculator';
-    $seo_title = 'VA Loan Funding Fee Calculator 2026 — Free Military Tool | FinanceSpots';
+    $seo_title = 'VA Loan Funding Fee Calculator 2026 -- Free Military Tool | FinanceSpots';
     $seo_desc  = 'Free VA loan funding fee calculator 2026. Instantly calculate your VA funding fee, monthly PITI payment, amortization schedule, and compare VA vs conventional loan savings. Built for US military veterans.';
     $content   = '<!-- fs_tool_type:va_loan_advanced -->
 <p>Use our free <strong>VA loan funding fee calculator</strong> to instantly estimate your VA funding fee, total loan amount, monthly payment (PITI), and amortization schedule. Compare VA loan vs conventional to see your exact savings.</p>
@@ -1569,7 +1569,7 @@ function fs_create_va_loan_tool() {
             'post_type'    => 'fs_tool',
             'post_title'   => 'VA Loan Funding Fee Calculator',
             'post_name'    => 'va-loan-funding-fee-calculator',
-            'post_excerpt' => 'Free VA loan funding fee calculator 2026. Estimate your VA funding fee, monthly payment, amortization schedule, and compare VA vs conventional loan — with PDF export.',
+            'post_excerpt' => 'Free VA loan funding fee calculator 2026. Estimate your VA funding fee, monthly payment, amortization schedule, and compare VA vs conventional loan -- with PDF export.',
             'post_content' => $content,
             'post_status'  => 'publish',
         ] );
@@ -1604,7 +1604,7 @@ function fs_create_va_loan_tool() {
     update_post_meta( $id, 'rank_math_twitter_title',        $seo_title );
     update_post_meta( $id, 'rank_math_twitter_description',  $seo_desc );
     update_post_meta( $id, 'rank_math_twitter_use_facebook', 'off' );
-    // No custom schema — let RankMath handle it via its own UI
+    // No custom schema -- let RankMath handle it via its own UI
 
     // ── Store the tool ID for homepage linking ──
     update_option( 'fs_va_loan_tool_id', $id );
@@ -1615,7 +1615,7 @@ add_action( 'admin_init', 'fs_create_va_loan_tool' );
 add_action( 'init',       'fs_create_va_loan_tool', 30 );
 
 /* =========================================================
-   AI FINANCIAL DASHBOARD — Tool Post Creation
+   AI FINANCIAL DASHBOARD -- Tool Post Creation
    ========================================================= */
 function fs_create_ai_dashboard_tool() {
     if ( get_option( 'fs_ai_dashboard_tool_v1' ) ) return;
@@ -1710,7 +1710,7 @@ function fs_rankmath_setup() {
         'capitalize_titles'          => 'on',
 
         // Homepage
-        'homepage_title'             => 'FinanceSpots — Free Financial Calculators & Tools 2026',
+        'homepage_title'             => 'FinanceSpots -- Free Financial Calculators & Tools 2026',
         'homepage_description'       => 'Free financial calculators for mortgages, VA loans, taxes, investments, crypto & more. 110+ expert-built tools with instant PDF export. Trusted by US veterans & investors.',
 
         // Posts
@@ -1719,16 +1719,16 @@ function fs_rankmath_setup() {
         'post_robots'                => [ 'index', 'follow' ],
 
         // fs_tool CPT
-        'fs_tool_title'              => '%title% Calculator — Free Online Tool 2026 | FinanceSpots',
-        'fs_tool_description'        => '%excerpt% Use our free %title% instantly — no signup required.',
+        'fs_tool_title'              => '%title% Calculator -- Free Online Tool 2026 | FinanceSpots',
+        'fs_tool_description'        => '%excerpt% Use our free %title% instantly -- no signup required.',
         'fs_tool_robots'             => [ 'index', 'follow' ],
         'fs_tool_default_rich_snippet' => 'WebApplication',
         'fs_tool_default_snippet_name' => '%title%',
         'fs_tool_default_snippet_desc' => '%excerpt%',
 
         // Taxonomy fs_tool_cat
-        'fs_tool_cat_title'          => '%term% Finance Tools — Free Calculators 2026 | FinanceSpots',
-        'fs_tool_cat_description'    => 'Browse free %term% — instant results, no signup, PDF export. Trusted by 50,000+ users.',
+        'fs_tool_cat_title'          => '%term% Finance Tools -- Free Calculators 2026 | FinanceSpots',
+        'fs_tool_cat_description'    => 'Browse free %term% -- instant results, no signup, PDF export. Trusted by 50,000+ users.',
         'fs_tool_cat_robots'         => [ 'index', 'follow' ],
 
         // Pages
@@ -1796,7 +1796,7 @@ function fs_rankmath_setup() {
 
         // Only set if not already customized
         if ( ! get_post_meta( $tool_id, 'rank_math_title', true ) ) {
-            update_post_meta( $tool_id, 'rank_math_title',       $tool_title . ' — Free Online Calculator 2026 | FinanceSpots' );
+            update_post_meta( $tool_id, 'rank_math_title',       $tool_title . ' -- Free Online Calculator 2026 | FinanceSpots' );
             update_post_meta( $tool_id, 'rank_math_description', $tool_desc ? $tool_desc : 'Use our free ' . $tool_title . ' instantly. No signup required. Get instant results with PDF export.' );
             update_post_meta( $tool_id, 'rank_math_focus_keyword', strtolower( $tool_title ) );
         }
@@ -1804,7 +1804,7 @@ function fs_rankmath_setup() {
         // Robots
         update_post_meta( $tool_id, 'rank_math_robots', [ 'index', 'follow' ] );
 
-        // No custom schema — let RankMath handle it via its own UI
+        // No custom schema -- let RankMath handle it via its own UI
 
         // OG / Twitter
         if ( ! get_post_meta( $tool_id, 'rank_math_og_title', true ) ) {
@@ -1818,7 +1818,7 @@ function fs_rankmath_setup() {
     /* ── 5. Homepage SEO (front page post if set) ── */
     $front_id = get_option('page_on_front');
     if ( $front_id ) {
-        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots — Free Financial Calculators & Tools 2026' );
+        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- Free Financial Calculators & Tools 2026' );
         update_post_meta( $front_id, 'rank_math_description',   'Free financial calculators: VA loans, mortgages, taxes, investments, crypto & more. 110+ expert tools with PDF export.' );
         update_post_meta( $front_id, 'rank_math_focus_keyword', 'free financial calculators' );
         update_post_meta( $front_id, 'rank_math_robots',        [ 'index', 'follow' ] );
@@ -1826,14 +1826,14 @@ function fs_rankmath_setup() {
 
     /* ── 6. Taxonomy SEO ── */
     $tax_seo = [
-        'loan-calculators'    => [ 'kw' => 'loan calculators free',          'title' => 'Free Loan Calculators 2026 — Mortgage, Auto, VA | FinanceSpots',        'desc' => 'Free loan calculators: mortgage, auto, VA loan, personal loan, student loan & more. Instant results with PDF export.' ],
-        'investment-tools'    => [ 'kw' => 'investment calculators free',     'title' => 'Free Investment Calculators 2026 — ROI, Compound Interest | FinanceSpots', 'desc' => 'Free investment tools: ROI, compound interest, dividend, portfolio analyzer & more. AI-enhanced results.' ],
-        'tax-calculators'     => [ 'kw' => 'free tax calculator 2026',        'title' => 'Free Tax Calculators 2026 — Income Tax, Capital Gains | FinanceSpots',    'desc' => 'Free tax calculators: income tax estimator, capital gains, self-employment tax & more. Updated for 2026.' ],
-        'savings-planners'    => [ 'kw' => 'savings calculator free',         'title' => 'Free Savings Calculators 2026 — Emergency Fund, Goals | FinanceSpots',    'desc' => 'Free savings planners: emergency fund, savings goal, CD calculator, high-yield savings & more.' ],
-        'retirement-planning' => [ 'kw' => 'retirement calculator free 2026', 'title' => 'Free Retirement Calculators 2026 — 401k, IRA, FIRE | FinanceSpots',       'desc' => 'Free retirement planning tools: 401k, IRA, FIRE, Social Security, pension calculators & more.' ],
-        'currency-converters' => [ 'kw' => 'currency converter free',         'title' => 'Free Currency Converter 2026 — Live Forex Rates | FinanceSpots',          'desc' => 'Free currency converters with live forex rates. Convert USD, EUR, GBP, JPY & 150+ currencies instantly.' ],
-        'budget-analyzers'    => [ 'kw' => 'budget calculator free',          'title' => 'Free Budget Calculators 2026 — 50/30/20 Rule | FinanceSpots',             'desc' => 'Free budget analyzers: 50/30/20 planner, monthly budget, expense tracker & more.' ],
-        'crypto-tools'        => [ 'kw' => 'crypto calculator free',          'title' => 'Free Crypto Calculators 2026 — Bitcoin, DCA, P&L | FinanceSpots',         'desc' => 'Free crypto tools: Bitcoin profit calculator, DCA simulator, staking rewards, crypto tax & more.' ],
+        'loan-calculators'    => [ 'kw' => 'loan calculators free',          'title' => 'Free Loan Calculators 2026 -- Mortgage, Auto, VA | FinanceSpots',        'desc' => 'Free loan calculators: mortgage, auto, VA loan, personal loan, student loan & more. Instant results with PDF export.' ],
+        'investment-tools'    => [ 'kw' => 'investment calculators free',     'title' => 'Free Investment Calculators 2026 -- ROI, Compound Interest | FinanceSpots', 'desc' => 'Free investment tools: ROI, compound interest, dividend, portfolio analyzer & more. AI-enhanced results.' ],
+        'tax-calculators'     => [ 'kw' => 'free tax calculator 2026',        'title' => 'Free Tax Calculators 2026 -- Income Tax, Capital Gains | FinanceSpots',    'desc' => 'Free tax calculators: income tax estimator, capital gains, self-employment tax & more. Updated for 2026.' ],
+        'savings-planners'    => [ 'kw' => 'savings calculator free',         'title' => 'Free Savings Calculators 2026 -- Emergency Fund, Goals | FinanceSpots',    'desc' => 'Free savings planners: emergency fund, savings goal, CD calculator, high-yield savings & more.' ],
+        'retirement-planning' => [ 'kw' => 'retirement calculator free 2026', 'title' => 'Free Retirement Calculators 2026 -- 401k, IRA, FIRE | FinanceSpots',       'desc' => 'Free retirement planning tools: 401k, IRA, FIRE, Social Security, pension calculators & more.' ],
+        'currency-converters' => [ 'kw' => 'currency converter free',         'title' => 'Free Currency Converter 2026 -- Live Forex Rates | FinanceSpots',          'desc' => 'Free currency converters with live forex rates. Convert USD, EUR, GBP, JPY & 150+ currencies instantly.' ],
+        'budget-analyzers'    => [ 'kw' => 'budget calculator free',          'title' => 'Free Budget Calculators 2026 -- 50/30/20 Rule | FinanceSpots',             'desc' => 'Free budget analyzers: 50/30/20 planner, monthly budget, expense tracker & more.' ],
+        'crypto-tools'        => [ 'kw' => 'crypto calculator free',          'title' => 'Free Crypto Calculators 2026 -- Bitcoin, DCA, P&L | FinanceSpots',         'desc' => 'Free crypto tools: Bitcoin profit calculator, DCA simulator, staking rewards, crypto tax & more.' ],
     ];
 
     foreach ( $tax_seo as $slug => $seo ) {
@@ -1869,7 +1869,7 @@ function fs_rankmath_tool_schema_defaults( $schemas, $post ) {
 add_filter( 'rank_math/schema/post_schemas', 'fs_rankmath_tool_schema_defaults', 10, 2 );
 
 /* =========================================================
-   COMPLETE SEO — All 110 Tools + 8 Categories + Homepage
+   COMPLETE SEO -- All 110 Tools + 8 Categories + Homepage
    Runs once on admin_init. Version-gated with fs_full_seo_v2.
    ========================================================= */
 function fs_complete_seo_all_pages() {
@@ -1916,8 +1916,8 @@ function fs_complete_seo_all_pages() {
          'Find your exact monthly car payment with our free auto loan calculator. Enter price, down payment, trade-in, sales tax & APR to see total cost and payoff date instantly.'],
         ['Personal Loan Calculator',
          'personal loan calculator',
-         'Personal Loan Calculator — Monthly Payment & APR',
-         'Estimate personal loan monthly payments for any amount and rate. Compare 1–7 year terms, see total interest cost, and calculate effective APR including origination fees. Free.'],
+         'Personal Loan Calculator -- Monthly Payment & APR',
+         'Estimate personal loan monthly payments for any amount and rate. Compare 1-7 year terms, see total interest cost, and calculate effective APR including origination fees. Free.'],
         ['Student Loan Calculator',
          'student loan repayment calculator',
          'Student Loan Calculator 2026 | FinanceSpots',
@@ -1932,7 +1932,7 @@ function fs_complete_seo_all_pages() {
          'See if consolidating debt saves money. Enter up to 5 debts and compare monthly minimums vs. a single consolidation loan. Calculate monthly savings and total interest reduction.'],
         ['Loan Comparison Calculator',
          'loan comparison calculator',
-         'Loan Comparison Calculator — Compare 2 Loans Free',
+         'Loan Comparison Calculator -- Compare 2 Loans Free',
          'Compare two loan offers side by side and see which costs less. Enter amount, rate, and term for each loan to find the lower monthly payment and total interest. Free tool.'],
         ['Amortization Calculator',
          'loan amortization calculator',
@@ -1940,15 +1940,15 @@ function fs_complete_seo_all_pages() {
          'Generate a full loan amortization schedule with one click. See principal vs. interest each month, how extra payments save years of payments, and your exact payoff date.'],
         ['Refinance Calculator',
          'mortgage refinance calculator',
-         'Refinance Calculator — Break-Even & Savings 2026',
+         'Refinance Calculator -- Break-Even & Savings 2026',
          'Should you refinance? Calculate monthly savings, break-even point in months, and lifetime interest reduction. Includes closing cost analysis. Free mortgage refinance tool.'],
         ['FHA Loan Calculator',
          'FHA loan calculator 2026',
-         'FHA Loan Calculator 2026 — Payment with MIP',
+         'FHA Loan Calculator 2026 -- Payment with MIP',
          'Calculate FHA loan monthly payment with 1.75% upfront MIP and annual MIP included. Compare 3.5% down FHA vs. conventional. Updated for 2026 FHA loan limits. Free.'],
         ['VA Loan Calculator',
          'VA loan calculator 2026',
-         'VA Loan Calculator 2026 — No PMI Payment Tool',
+         'VA Loan Calculator 2026 -- No PMI Payment Tool',
          'Calculate VA loan monthly payment with zero PMI. VA funding fee auto-calculated by service type and down payment. Free tool for veterans, active duty, and surviving spouses.'],
         ['Balloon Loan Calculator',
          'balloon mortgage calculator',
@@ -1960,7 +1960,7 @@ function fs_complete_seo_all_pages() {
          'Compare interest-only vs. fully amortizing loan payments. See IO savings now, the payment jump when IO ends, and total extra interest cost over the full loan term. Free.'],
         ['Loan Payoff Calculator',
          'loan payoff calculator extra payments',
-         'Loan Payoff Calculator — Pay Off Faster & Save',
+         'Loan Payoff Calculator -- Pay Off Faster & Save',
          'See how extra monthly or lump-sum payments cut your loan payoff time. Calculate exact months saved, interest avoided, and new payoff date for any loan type. Free tool.'],
         ['Monthly Payment Calculator',
          'monthly loan payment calculator',
@@ -1972,7 +1972,7 @@ function fs_complete_seo_all_pages() {
          'Find how much loan you can afford based on income and debts. Uses the 28/36 rule and 43% DTI limit used by most lenders. Get your max borrowing power in seconds. Free.'],
         ['Commercial Loan Calculator',
          'commercial real estate loan calculator',
-         'Commercial Loan Calculator — DSCR & Payments',
+         'Commercial Loan Calculator -- DSCR & Payments',
          'Calculate commercial loan monthly payments, balloon balance, DSCR ratio, and origination fees. Essential tool for real estate investors evaluating CRE financing options.'],
         ['Bridge Loan Calculator',
          'bridge loan cost calculator',
@@ -1992,11 +1992,11 @@ function fs_complete_seo_all_pages() {
          'Calculate return on investment for any asset or project. Enter total cost and total gain to instantly see ROI percentage, net profit, and annualized return. Free and instant.'],
         ['Compound Interest Calculator', 'compound interest calculator 2026',   'Compound Interest Calculator 2026 | FinanceSpots',
          'See how compound interest grows your money over time. Choose daily, monthly, or annual compounding, add regular contributions, and visualize long-term wealth growth. Free.'],
-        ['Portfolio Analyzer',           'investment portfolio analyzer',        'Portfolio Analyzer — Allocation & Returns | FinanceSpots',
+        ['Portfolio Analyzer',           'investment portfolio analyzer',        'Portfolio Analyzer -- Allocation & Returns | FinanceSpots',
          'Analyze your investment portfolio allocation, weighted returns, and risk exposure. Enter multiple holdings to see diversification score and performance breakdown. Free tool.'],
         ['Stock Return Calculator',      'stock total return calculator',        'Stock Return Calculator 2026 | FinanceSpots',
          'Calculate total stock return including price appreciation and dividends reinvested. See annualized CAGR and compare your actual return vs. the S&P 500 benchmark. Free.'],
-        ['Dividend Calculator',          'dividend yield calculator',            'Dividend Calculator — Yield, Income & DRIP Growth',
+        ['Dividend Calculator',          'dividend yield calculator',            'Dividend Calculator -- Yield, Income & DRIP Growth',
          'Calculate dividend income, yield, and projected growth with dividend reinvestment (DRIP). Plan your annual dividend income from any stock or ETF portfolio. Free tool.'],
         ['Investment Growth Calculator', 'investment growth calculator',         'Investment Growth Calculator 2026 | FinanceSpots',
          'Project investment portfolio growth with regular monthly contributions. See account balance over time, total contributions vs. gains, and future value. Free calculator.'],
@@ -2006,17 +2006,17 @@ function fs_complete_seo_all_pages() {
          'Evaluate your investment risk tolerance and recommended asset allocation. Answer questions about your goals and timeline to get your optimal stock, bond, and cash mix.'],
         ['Asset Allocation Calculator',  'asset allocation calculator by age',   'Asset Allocation Calculator 2026 | FinanceSpots',
          'Build the optimal portfolio mix based on age, risk tolerance, and investment goals. See recommended split between stocks, bonds, real estate, and cash. Free tool.'],
-        ['Bond Yield Calculator',        'bond yield to maturity calculator',    'Bond Yield Calculator — YTM & Current Yield 2026',
+        ['Bond Yield Calculator',        'bond yield to maturity calculator',    'Bond Yield Calculator -- YTM & Current Yield 2026',
          'Calculate bond current yield, yield to maturity (YTM), and fair price. Enter coupon rate, par value, market price, and years to maturity. Free bond yield calculator.'],
-        ['Options Profit Calculator',    'options profit loss calculator',       'Options Profit Calculator — Call & Put P&L',
+        ['Options Profit Calculator',    'options profit loss calculator',       'Options Profit Calculator -- Call & Put P&L',
          'Calculate options profit and loss for calls and puts. Enter strike price, premium paid, and current stock price to see max profit, max loss, and break-even. Free tool.'],
         ['Mutual Fund Calculator',       'mutual fund return calculator',        'Mutual Fund Calculator 2026 | FinanceSpots',
-         'Project mutual fund growth with expense ratio impact included. See how fees cost you over 10–30 years and compare high vs. low-fee fund performance. Free calculator.'],
+         'Project mutual fund growth with expense ratio impact included. See how fees cost you over 10-30 years and compare high vs. low-fee fund performance. Free calculator.'],
         ['ETF Calculator',               'ETF return calculator with dividends', 'ETF Return Calculator 2026 | FinanceSpots',
          'Calculate ETF total returns with dividends reinvested and expense ratio drag included. Compare ETF vs. mutual fund costs over 20 and 30 years. Free investment tool.'],
         ['Capital Gains Calculator',     'capital gains tax calculator 2026',    'Capital Gains Tax Calculator 2026 | FinanceSpots',
          'Calculate capital gains tax on investment profits. See short-term vs. long-term rates (0%, 15%, 20%), net proceeds after tax, and how to minimize your bill. 2026 rates.'],
-        ['CAGR Calculator',              'CAGR calculator',                      'CAGR Calculator — Compound Annual Growth Rate',
+        ['CAGR Calculator',              'CAGR calculator',                      'CAGR Calculator -- Compound Annual Growth Rate',
          'Calculate compound annual growth rate (CAGR) for any investment. Enter beginning value, ending value, and years to see annualized return. Free CAGR calculator 2026.'],
         ['Present Value Calculator',     'present value calculator',             'Present Value Calculator 2026 | FinanceSpots',
          'Calculate the present value of future cash flows or a lump sum payment. Useful for comparing investment options, valuing annuities, and bond pricing. Free NPV tool.'],
@@ -2024,9 +2024,9 @@ function fs_complete_seo_all_pages() {
          'Calculate the future value of any investment given interest rate and time. Add regular monthly contributions to see projected account balance at any point. Free tool.'],
         ['Break Even Calculator',        'break even point calculator',          'Break Even Calculator 2026 | FinanceSpots',
          'Find the break-even point for investments and businesses. Calculate units sold and revenue needed to cover all fixed and variable costs. Free break-even analysis tool.'],
-        ['Inflation Calculator',         'inflation calculator US',              'Inflation Calculator 2026 — Real Purchasing Power',
+        ['Inflation Calculator',         'inflation calculator US',              'Inflation Calculator 2026 -- Real Purchasing Power',
          'See how inflation erodes purchasing power over time. Calculate what past dollars are worth today, or project future value adjusted for expected inflation rate. Free.'],
-        ['Investment Fee Calculator',    'investment fee impact calculator',     'Investment Fee Calculator — Fee Drag on Wealth',
+        ['Investment Fee Calculator',    'investment fee impact calculator',     'Investment Fee Calculator -- Fee Drag on Wealth',
          'Calculate how investment fees erode your wealth over 30 years. Compare 0.5% vs. 1.5% expense ratios and see how much more you keep with a low-cost index fund. Free.'],
         ['Sharpe Ratio Calculator',      'Sharpe ratio calculator',              'Sharpe Ratio Calculator 2026 | FinanceSpots',
          'Calculate the Sharpe ratio to measure risk-adjusted investment return. Enter portfolio return, risk-free rate, and standard deviation to compare investments fairly.'],
@@ -2052,26 +2052,26 @@ function fs_complete_seo_all_pages() {
          'Calculate self-employment tax (15.3% on net earnings) and quarterly estimated payments. Includes the SE deduction on half of SE tax. Built for freelancers and 1099 workers.'],
         ['Property Tax Calculator',       'property tax calculator',             'Property Tax Calculator 2026 | FinanceSpots',
          'Estimate annual property tax based on home assessed value and local mill rate. Compare property tax by state and county. Essential free tool for every homeowner.'],
-        ['Sales Tax Calculator',          'sales tax calculator by state',       'Sales Tax Calculator 2026 — All 50 US States',
+        ['Sales Tax Calculator',          'sales tax calculator by state',       'Sales Tax Calculator 2026 -- All 50 US States',
          'Add or remove sales tax from any amount instantly. Supports all 50 US state rates. Calculate tax-inclusive and tax-exclusive prices for any purchase. Free tool.'],
         ['Tax Bracket Calculator',        'tax bracket calculator 2026',         'Tax Bracket Calculator 2026 | FinanceSpots',
          'See exactly which federal tax brackets apply to your income for 2026. View marginal rate, effective rate, and tax owed per bracket. Updated with 2026 IRS tax tables.'],
         ['Estate Tax Calculator',         'federal estate tax calculator',       'Estate Tax Calculator 2026 | FinanceSpots',
          'Estimate federal estate tax on inherited assets. The 2026 exemption is $13.61M per person. Calculate estate tax liability above the exemption threshold. Free tool.'],
-        ['AMT Calculator',                'alternative minimum tax calculator',  'AMT Calculator 2026 — Alternative Minimum Tax',
+        ['AMT Calculator',                'alternative minimum tax calculator',  'AMT Calculator 2026 -- Alternative Minimum Tax',
          'Check if you owe Alternative Minimum Tax in 2026. Enter income, deductions, and preferences to calculate tentative minimum tax and potential AMT liability. Free tool.'],
         ['Quarterly Tax Calculator',      'quarterly estimated tax calculator',  'Quarterly Tax Calculator 2026 | FinanceSpots',
-         'Calculate quarterly estimated tax payments for freelancers, self-employed workers, and 1099 contractors. Avoid IRS underpayment penalties with accurate Q1–Q4 estimates.'],
+         'Calculate quarterly estimated tax payments for freelancers, self-employed workers, and 1099 contractors. Avoid IRS underpayment penalties with accurate Q1-Q4 estimates.'],
         ['W-4 Calculator',                'W-4 withholding calculator 2026',     'W-4 Withholding Calculator 2026 | FinanceSpots',
          'Calculate the right W-4 withholding for 2026 to avoid a large tax bill or over-withholding. Based on the latest IRS W-4 form instructions. Free paycheck tax tool.'],
         ['IRS Penalty Calculator',        'IRS underpayment penalty calculator', 'IRS Penalty Calculator 2026 | FinanceSpots',
          'Estimate IRS underpayment penalty and interest for missed estimated tax payments. Calculate penalty per quarter using the federal short-term rate plus 3%. Free tool.'],
-        ['State Tax Calculator',          'state income tax calculator 2026',    'State Income Tax Calculator 2026 — All 50 States',
+        ['State Tax Calculator',          'state income tax calculator 2026',    'State Income Tax Calculator 2026 -- All 50 States',
          'Estimate state income tax for all 50 US states. See which states have zero income tax, flat rates, or progressive brackets. Compare state tax burden side by side.'],
         ['Tax Withholding Calculator',    'paycheck withholding calculator',     'Tax Withholding Calculator 2026 | FinanceSpots',
          'Check if your employer withholds the correct federal income tax from your paycheck. Avoid a surprise tax bill or over-withholding at the end of the year. Free tool.'],
         ['Effective Tax Rate Calculator', 'effective tax rate calculator',       'Effective Tax Rate Calculator 2026 | FinanceSpots',
-         'Calculate your effective (average) federal tax rate vs. marginal rate. See the true percentage of total income going to taxes — not just your top bracket. Free.'],
+         'Calculate your effective (average) federal tax rate vs. marginal rate. See the true percentage of total income going to taxes -- not just your top bracket. Free.'],
     ];
     foreach ( $taxes as $d ) {
         $id = $get_id( $d[0] );
@@ -2088,13 +2088,13 @@ function fs_complete_seo_all_pages() {
          'Plan how much to save each month to reach any financial goal on time. Enter goal amount, timeline, and interest rate to get your monthly savings target. Free tool.'],
         ['Retirement Savings Calculator',  'retirement savings calculator 2026',    'Retirement Savings Calculator 2026 | FinanceSpots',
          'Project retirement savings with regular contributions and employer match. See if you\'re on track to retire on time and how much you\'ll need at retirement. Free.'],
-        ['CD Calculator',                  'CD interest calculator 2026',           'CD Calculator 2026 — Certificate of Deposit Returns',
+        ['CD Calculator',                  'CD interest calculator 2026',           'CD Calculator 2026 -- Certificate of Deposit Returns',
          'Calculate CD returns at maturity with daily compounding. Compare 3-month to 5-year CDs. See APY vs. APR difference and find the best CD strategy for your savings goals.'],
         ['Money Market Calculator',        'money market account calculator',       'Money Market Calculator 2026 | FinanceSpots',
          'Project money market account and high-yield savings growth with monthly compounding. Compare rates from top online banks to maximize your cash returns. Free tool.'],
         ['Savings Rate Calculator',        'personal savings rate calculator',      'Savings Rate Calculator 2026 | FinanceSpots',
          'Calculate your savings rate as a percentage of gross and net income. Track progress toward the 20% savings rate benchmark recommended by financial planners. Free.'],
-        ['52 Week Savings Challenge',      '52 week savings challenge calculator',  '52 Week Savings Challenge 2026 — Save $1,378',
+        ['52 Week Savings Challenge',      '52 week savings challenge calculator',  '52 Week Savings Challenge 2026 -- Save $1,378',
          'Track the popular 52-week savings challenge. Start with $1 in week 1, increase by $1 each week, and save $1,378 by year-end. See your full weekly schedule. Free tool.'],
         ['Round Up Savings Calculator',    'round up savings calculator',           'Round Up Savings Calculator 2026 | FinanceSpots',
          'Estimate annual savings from rounding up everyday purchases to the nearest dollar. See how small round-ups compound into meaningful savings over time. Free tool.'],
@@ -2102,7 +2102,7 @@ function fs_complete_seo_all_pages() {
          'Calculate how much to save each month for your next vacation. Enter total trip cost and departure date to get a personalized monthly savings plan. Free travel tool.'],
         ['Down Payment Savings Calculator','down payment savings calculator',       'Down Payment Savings Calculator 2026 | FinanceSpots',
          'Calculate how long it takes to save a 3%, 10%, or 20% down payment on a home. Set a target home price and monthly savings amount to see your timeline. Free tool.'],
-        ['High Yield Savings Calculator',  'high yield savings account calculator', 'High Yield Savings Calculator 2026 — HYSA Tool',
+        ['High Yield Savings Calculator',  'high yield savings account calculator', 'High Yield Savings Calculator 2026 -- HYSA Tool',
          'Compare high-yield savings account returns vs. traditional savings. See how much more you earn at 4.5% APY vs. 0.5% on the same balance over 1, 5, and 10 years. Free.'],
         ['Savings Milestone Tracker',      'savings milestone tracker',             'Savings Milestone Tracker 2026 | FinanceSpots',
          'Track progress toward multiple savings milestones simultaneously. Enter your goals, deadlines, and current balances to see which goals are on track. Free savings tool.'],
@@ -2118,23 +2118,23 @@ function fs_complete_seo_all_pages() {
     $retirement = [
         ['401k Calculator',                  '401k calculator 2026',                  'Free 401k Calculator 2026 | FinanceSpots',
          'Project your 401k balance at retirement. Enter contribution rate, employer match, current balance, salary, and growth rate. See if you\'re saving enough for retirement.'],
-        ['IRA Calculator',                   'IRA calculator traditional vs Roth',    'IRA Calculator 2026 — Traditional vs Roth | FinanceSpots',
+        ['IRA Calculator',                   'IRA calculator traditional vs Roth',    'IRA Calculator 2026 -- Traditional vs Roth | FinanceSpots',
          'Calculate Traditional or Roth IRA growth to retirement. Compare tax-deferred vs. tax-free growth. See which IRA type saves more based on your current and future tax rate.'],
         ['Pension Calculator',               'pension calculator monthly benefit',    'Pension Calculator 2026 | FinanceSpots',
          'Estimate your monthly defined benefit pension at retirement. Enter years of service, average salary, and benefit multiplier. Compare pension vs. 401k scenarios. Free tool.'],
-        ['FIRE Calculator',                  'FIRE calculator early retirement',      'FIRE Calculator 2026 — Financial Independence Number',
+        ['FIRE Calculator',                  'FIRE calculator early retirement',      'FIRE Calculator 2026 -- Financial Independence Number',
          'Calculate your FIRE number (25x annual expenses) and early retirement date. See how your savings rate and investment returns determine when you can retire early. Free.'],
         ['Social Security Calculator',       'social security benefits calculator',   'Social Security Calculator 2026 | FinanceSpots',
          'Estimate Social Security benefits at claiming ages 62, 67, and 70. See the break-even point and how delaying benefits increases your lifetime retirement income. Free.'],
         ['Retirement Income Calculator',     'retirement income calculator 2026',     'Retirement Income Calculator 2026 | FinanceSpots',
          'Calculate sustainable monthly income from your retirement nest egg. Based on the 4% rule and withdrawal analysis. See how long your savings will last. Free tool.'],
-        ['RMD Calculator',                   'required minimum distribution calculator','RMD Calculator 2026 — IRA & 401k Withdrawals',
+        ['RMD Calculator',                   'required minimum distribution calculator','RMD Calculator 2026 -- IRA & 401k Withdrawals',
          'Calculate your Required Minimum Distribution from Traditional IRA, 401k, and inherited accounts. Updated with 2026 IRS life expectancy tables. Free RMD tool.'],
         ['Roth Conversion Calculator',       'Roth IRA conversion calculator 2026',   'Roth Conversion Calculator 2026 | FinanceSpots',
          'Calculate the tax cost and long-term benefit of converting a Traditional IRA to Roth. See break-even point and lifetime tax savings. 2026 Roth conversion strategy tool.'],
         ['Retirement Withdrawal Calculator', 'retirement withdrawal rate calculator',  'Retirement Withdrawal Calculator 2026 | FinanceSpots',
          'Calculate how long your retirement savings will last at different withdrawal rates. See the impact of inflation and investment returns on your retirement runway. Free.'],
-        ['Early Retirement Calculator',      'early retirement calculator 2026',       'Early Retirement Calculator 2026 — Retire Before 65',
+        ['Early Retirement Calculator',      'early retirement calculator 2026',       'Early Retirement Calculator 2026 -- Retire Before 65',
          'Plan for retirement before age 65. Calculate your savings target, required savings rate, and years to retirement. See how spending cuts accelerate your timeline. Free.'],
     ];
     foreach ( $retirement as $d ) {
@@ -2146,11 +2146,11 @@ function fs_complete_seo_all_pages() {
        6. CURRENCY CONVERTERS (8 tools)
        ═══════════════════════════════════════════════════════ */
     $currency = [
-        ['Live Currency Converter',    'currency converter 2026',             'Live Currency Converter 2026 — 150+ Currencies',
+        ['Live Currency Converter',    'currency converter 2026',             'Live Currency Converter 2026 -- 150+ Currencies',
          'Convert between 150+ world currencies with live exchange rates. Free currency calculator updated daily. Enter any amount and get instant results. No signup required.'],
         ['Historical Exchange Rate',   'historical exchange rate lookup',     'Historical Exchange Rate Calculator 2026 | FinanceSpots',
          'Look up historical exchange rates for any currency pair on any date. Useful for tax calculations, financial reporting, and investment analysis. Free historical forex tool.'],
-        ['Forex Pip Calculator',       'forex pip value calculator',          'Forex Pip Calculator 2026 — Pip Value Calculator',
+        ['Forex Pip Calculator',       'forex pip value calculator',          'Forex Pip Calculator 2026 -- Pip Value Calculator',
          'Calculate pip value for any forex pair and lot size. Essential for forex traders to size positions, calculate risk per trade, and measure profit/loss in account currency.'],
         ['Currency Strength Meter',    'currency strength meter 2026',        'Currency Strength Meter 2026 | FinanceSpots',
          'Compare the relative strength of USD, EUR, GBP, JPY, CAD, AUD, CHF, and more. See which currencies are strongest vs. weakest in real time. Free forex analysis tool.'],
@@ -2158,7 +2158,7 @@ function fs_complete_seo_all_pages() {
          'Calculate cross exchange rates between any two currencies without converting through USD. Useful for international business transactions and travel planning. Free tool.'],
         ['Travel Money Calculator',    'travel money calculator 2026',        'Travel Money Calculator 2026 | FinanceSpots',
          'Convert your travel budget to local currency for any destination. Calculate daily spending limits, total trip cost, and currency exchange amounts before you travel.'],
-        ['Cryptocurrency Converter',   'crypto to USD converter 2026',        'Cryptocurrency Converter 2026 — Crypto to Fiat',
+        ['Cryptocurrency Converter',   'crypto to USD converter 2026',        'Cryptocurrency Converter 2026 -- Crypto to Fiat',
          'Convert any cryptocurrency to USD, EUR, GBP, and more in real time. Supports Bitcoin, Ethereum, and 100+ altcoins with current prices. Fast and free crypto converter.'],
         ['Currency Comparison Tool',   'currency exchange rate comparison',   'Currency Comparison Tool 2026 | FinanceSpots',
          'Compare exchange rates from multiple sources for the same currency pair. Find the best rate for your transfer or exchange and save money on international payments. Free.'],
@@ -2176,7 +2176,7 @@ function fs_complete_seo_all_pages() {
          'Build a complete monthly budget with income and expense categories. Track spending, find savings opportunities, and take control of your personal finances. Free tool.'],
         ['50/30/20 Budget Calculator',      '50 30 20 budget rule calculator',      '50/30/20 Budget Calculator 2026 | FinanceSpots',
          'Apply the 50/30/20 budgeting rule to your income. Automatically split income into needs (50%), wants (30%), and savings (20%). Get an instant budget breakdown. Free.'],
-        ['Expense Tracker',                 'monthly expense tracker 2026',         'Expense Tracker 2026 — Track Daily Spending | FinanceSpots',
+        ['Expense Tracker',                 'monthly expense tracker 2026',         'Expense Tracker 2026 -- Track Daily Spending | FinanceSpots',
          'Track daily expenses by category and see where your money goes each month. Identify spending leaks and opportunities to save more. Free expense tracking tool.'],
         ['Income vs Expense Analyzer',      'income vs expense calculator',         'Income vs Expense Analyzer 2026 | FinanceSpots',
          'Get a clear picture of monthly income vs. expenses and calculate net cash flow. See your monthly surplus or deficit and identify areas to cut spending. Free tool.'],
@@ -2185,10 +2185,10 @@ function fs_complete_seo_all_pages() {
         ['Household Budget Calculator',     'family budget calculator 2026',        'Household Budget Calculator 2026 | FinanceSpots',
          'Plan a complete household budget for your family. Enter income for all earners and expenses by category to see monthly and annual budget summary. Free budget tool.'],
         ['Zero Based Budget Calculator',    'zero based budgeting calculator',      'Zero Based Budget Calculator 2026 | FinanceSpots',
-         'Assign every dollar of income a specific purpose with zero-based budgeting. End each month with $0 unallocated — every dollar works for you. Free budgeting tool.'],
+         'Assign every dollar of income a specific purpose with zero-based budgeting. End each month with $0 unallocated -- every dollar works for you. Free budgeting tool.'],
         ['Annual Budget Planner',           'annual budget planner 2026',           'Annual Budget Planner 2026 | FinanceSpots',
          'Plan your complete yearly budget and track spending against annual goals. Break down annual income and expenses by month and category for a full year. Free tool.'],
-        ['Net Worth Calculator',            'net worth calculator 2026',            'Net Worth Calculator 2026 — Assets Minus Liabilities',
+        ['Net Worth Calculator',            'net worth calculator 2026',            'Net Worth Calculator 2026 -- Assets Minus Liabilities',
          'Calculate your total net worth by entering all assets (home, investments, cash) and liabilities (mortgage, loans, credit cards). Track your wealth over time. Free.'],
         ['Cash Flow Calculator',            'monthly cash flow calculator',         'Cash Flow Calculator 2026 | FinanceSpots',
          'Calculate monthly cash flow from all income sources minus all expenses. Identify spending leaks and find opportunities to increase your positive cash flow. Free tool.'],
@@ -2198,7 +2198,7 @@ function fs_complete_seo_all_pages() {
          'Set and track a realistic monthly grocery budget for your household size. See average food costs by household size and find simple ways to cut food spending. Free.'],
         ['Entertainment Budget Calculator', 'entertainment budget calculator',      'Entertainment Budget Calculator 2026 | FinanceSpots',
          'Allocate a realistic discretionary entertainment budget without overspending. Calculate how much you can safely spend on dining, streaming, and fun each month. Free.'],
-        ['Savings Rate Calculator',         'savings rate calculator',              'Savings Rate Calculator 2026 — % of Income Saved',
+        ['Savings Rate Calculator',         'savings rate calculator',              'Savings Rate Calculator 2026 -- % of Income Saved',
          'Calculate your personal savings rate as a percentage of gross and net take-home pay. Compare to the recommended 20% savings rate benchmark and track progress. Free.'],
     ];
     foreach ( $budget as $d ) {
@@ -2212,7 +2212,7 @@ function fs_complete_seo_all_pages() {
     $crypto = [
         ['Crypto P&L Calculator',            'crypto profit loss calculator',       'Crypto P&L Calculator 2026 | FinanceSpots',
          'Calculate profit and loss on any cryptocurrency trade. Enter buy price, sell price, and quantity to see profit, ROI percentage, and net gain after fees. Free tool.'],
-        ['Staking Rewards Calculator',       'crypto staking rewards calculator',   'Staking Rewards Calculator 2026 — Crypto APY Tool',
+        ['Staking Rewards Calculator',       'crypto staking rewards calculator',   'Staking Rewards Calculator 2026 -- Crypto APY Tool',
          'Project crypto staking rewards and compound APY for Bitcoin, Ethereum, Cardano, and more. Calculate daily, monthly, and annual staking income. Free staking tool.'],
         ['Crypto DCA Calculator',            'Bitcoin DCA calculator 2026',         'Crypto DCA Calculator 2026 | FinanceSpots',
          'Simulate dollar cost averaging (DCA) into Bitcoin or any cryptocurrency over time. See average cost basis, total invested, and current portfolio value. Free tool.'],
@@ -2228,9 +2228,9 @@ function fs_complete_seo_all_pages() {
          'Estimate Ethereum gas fees for any transaction type. Enter gas limit and current gas price in Gwei to see transaction cost in ETH and USD. Free ETH gas tool.'],
         ['NFT ROI Calculator',               'NFT profit calculator 2026',          'NFT ROI Calculator 2026 | FinanceSpots',
          'Calculate return on investment for NFT purchases. Enter buy price, sell price, and marketplace fees to see net profit, ROI percentage, and return after gas fees.'],
-        ['Yield Farming Calculator',         'DeFi yield farming calculator 2026',  'Yield Farming Calculator 2026 — DeFi APY Tool',
+        ['Yield Farming Calculator',         'DeFi yield farming calculator 2026',  'Yield Farming Calculator 2026 -- DeFi APY Tool',
          'Project DeFi yield farming returns and calculate impermanent loss risk. Enter liquidity pool details, APY, and holding period to see net returns vs. hodling. Free.'],
-        ['Crypto Converter',                 'cryptocurrency converter to USD',     'Crypto Converter 2026 — Any Coin to USD, EUR, GBP',
+        ['Crypto Converter',                 'cryptocurrency converter to USD',     'Crypto Converter 2026 -- Any Coin to USD, EUR, GBP',
          'Convert any cryptocurrency to USD, EUR, GBP, and other fiat currencies. Supports Bitcoin, Ethereum, and 200+ altcoins with real-time prices. Fast and free tool.'],
     ];
     foreach ( $crypto as $d ) {
@@ -2239,47 +2239,47 @@ function fs_complete_seo_all_pages() {
     }
 
     /* ═══════════════════════════════════════════════════════
-       9. CATEGORY PAGES — term meta for RankMath
+       9. CATEGORY PAGES -- term meta for RankMath
        ═══════════════════════════════════════════════════════ */
     $categories_seo = [
         'loan-calculators' => [
             'kw'    => 'free loan calculators 2026',
-            'title' => 'Free Loan Calculators 2026 — Mortgage, Auto, VA & More | FinanceSpots',
+            'title' => 'Free Loan Calculators 2026 -- Mortgage, Auto, VA & More | FinanceSpots',
             'desc'  => 'Browse 18 free loan calculators: mortgage, auto loan, personal loan, FHA, VA, refinance, amortization, and more. Instant results, no signup, PDF export included.',
         ],
         'investment-tools' => [
             'kw'    => 'free investment calculators 2026',
-            'title' => 'Free Investment Tools 2026 — ROI, Compound Interest, Portfolio | FinanceSpots',
+            'title' => 'Free Investment Tools 2026 -- ROI, Compound Interest, Portfolio | FinanceSpots',
             'desc'  => 'Explore 22 free investment calculators: ROI, compound interest, dividend yield, CAGR, portfolio analyzer, Sharpe ratio, and more. Instant results, no signup required.',
         ],
         'tax-calculators' => [
             'kw'    => 'free tax calculators 2026',
-            'title' => 'Free Tax Calculators 2026 — Income Tax, Capital Gains & More | FinanceSpots',
+            'title' => 'Free Tax Calculators 2026 -- Income Tax, Capital Gains & More | FinanceSpots',
             'desc'  => '15 free tax calculators for 2026: income tax estimator, capital gains, self-employment tax, tax bracket finder, W-4 calculator, and more. Updated for 2026 IRS rules.',
         ],
         'savings-planners' => [
             'kw'    => 'free savings calculators 2026',
-            'title' => 'Free Savings Planners 2026 — Goals, Emergency Fund & CD | FinanceSpots',
+            'title' => 'Free Savings Planners 2026 -- Goals, Emergency Fund & CD | FinanceSpots',
             'desc'  => '12 free savings planning tools: emergency fund, savings goal, CD calculator, HYSA comparison, 52-week savings challenge, down payment planner, and more.',
         ],
         'retirement-planning' => [
             'kw'    => 'retirement planning calculators 2026',
-            'title' => 'Retirement Planning Calculators 2026 — 401k, IRA, FIRE | FinanceSpots',
+            'title' => 'Retirement Planning Calculators 2026 -- 401k, IRA, FIRE | FinanceSpots',
             'desc'  => '10 free retirement planning calculators: 401k, Roth IRA, FIRE number, Social Security benefits, RMD, Roth conversion, and retirement income. Updated for 2026.',
         ],
         'currency-converters' => [
             'kw'    => 'free currency converter 2026',
-            'title' => 'Free Currency Converters 2026 — Live Forex & Crypto Rates | FinanceSpots',
+            'title' => 'Free Currency Converters 2026 -- Live Forex & Crypto Rates | FinanceSpots',
             'desc'  => '8 free currency tools: live converter for 150+ currencies, historical exchange rates, forex pip calculator, travel money converter, and crypto converter. Always free.',
         ],
         'budget-analyzers' => [
             'kw'    => 'free budget calculators 2026',
-            'title' => 'Free Budget Calculators 2026 — Monthly Planner, 50/30/20 | FinanceSpots',
+            'title' => 'Free Budget Calculators 2026 -- Monthly Planner, 50/30/20 | FinanceSpots',
             'desc'  => '14 free budget analysis tools: monthly budget planner, 50/30/20 calculator, net worth tracker, DTI ratio, zero-based budget, expense tracker, and more.',
         ],
         'crypto-tools' => [
             'kw'    => 'free crypto calculators 2026',
-            'title' => 'Free Crypto Calculators 2026 — Bitcoin P&L, DCA, Tax & More | FinanceSpots',
+            'title' => 'Free Crypto Calculators 2026 -- Bitcoin P&L, DCA, Tax & More | FinanceSpots',
             'desc'  => '11 free crypto calculators: P&L calculator, DCA simulator, staking rewards, crypto tax, mining profitability, Ethereum gas fees, yield farming, and more.',
         ],
     ];
@@ -2298,7 +2298,7 @@ function fs_complete_seo_all_pages() {
     $front_id = get_option( 'page_on_front' );
     if ( $front_id ) {
         update_post_meta( $front_id, 'rank_math_focus_keyword', 'free financial calculators 2026' );
-        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots — 110+ Free Financial Calculators 2026 | No Signup' );
+        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- 110+ Free Financial Calculators 2026 | No Signup' );
         update_post_meta( $front_id, 'rank_math_description',   'FinanceSpots offers 110+ free financial calculators: mortgage, investment, tax, retirement, crypto, currency & budget tools. Instant results, PDF export, no signup required. Trusted by 50,000+ users.' );
         update_post_meta( $front_id, 'rank_math_robots',        [ 'index', 'follow' ] );
     }
@@ -2306,7 +2306,7 @@ function fs_complete_seo_all_pages() {
     /* ═══════════════════════════════════════════════════════
        11. TOOLS ARCHIVE PAGE (/tools/)
        ═══════════════════════════════════════════════════════ */
-    update_option( 'rank_math_title_fs_tool_archive',       'All Finance Tools 2026 — 110+ Free Calculators | FinanceSpots' );
+    update_option( 'rank_math_title_fs_tool_archive',       'All Finance Tools 2026 -- 110+ Free Calculators | FinanceSpots' );
     update_option( 'rank_math_description_fs_tool_archive', 'Browse all 110+ free finance calculators organized into 8 categories: loan calculators, investment tools, tax calculators, savings planners, retirement planning, crypto, currency, and budget tools.' );
 
     update_option( 'fs_full_seo_v4', true );
@@ -2325,7 +2325,7 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
             // Non-array entries (strings etc.) are safe to keep
             $clean[ $key ] = $value;
         }
-        // Drop arrays without @type — these are the broken schema records
+        // Drop arrays without @type -- these are the broken schema records
     }
     return $clean;
 }, 999, 2 );
@@ -2380,7 +2380,7 @@ function fs_enqueue_tool_scripts() {
 add_action( 'wp_enqueue_scripts', 'fs_enqueue_tool_scripts' );
 
 /* =========================================================
-   AI FINANCIAL ADVISOR — Real-Time Claude API Chat
+   AI FINANCIAL ADVISOR -- Real-Time Claude API Chat
    ========================================================= */
 
 // Admin settings page to store API key
@@ -2417,7 +2417,7 @@ function fs_ai_settings_page() {
     <?php
 }
 
-// AJAX handler — called from the dashboard AI chat
+// AJAX handler -- called from the dashboard AI chat
 function fs_ai_chat_handler() {
     check_ajax_referer( 'fs_ai_chat_nonce', 'nonce' );
 
@@ -2467,16 +2467,16 @@ add_action( 'wp_ajax_nopriv_fs_ai_chat', 'fs_ai_chat_handler' );
 function fs_ai_fallback_response( $msg ) {
     $msg = strtolower( $msg );
     $responses = [
-        'emergency'   => '&#128737;&#65039; Your emergency fund should cover 3-6 months of essential expenses (rent, food, utilities). Keep it in a high-yield savings account earning 4-5% APY. Never invest it in stocks — it must stay liquid and safe.',
+        'emergency'   => '&#128737;&#65039; Your emergency fund should cover 3-6 months of essential expenses (rent, food, utilities). Keep it in a high-yield savings account earning 4-5% APY. Never invest it in stocks -- it must stay liquid and safe.',
         'budget'      => '&#128179; Use the 50/30/20 rule: 50% for needs (rent, food), 30% for wants (dining, entertainment), 20% for savings and debt payoff. Track every dollar for 30 days to find leaks in your spending.',
-        'debt'        => '&#128279; Two proven strategies: Avalanche (pay highest interest rate first — saves the most money) or Snowball (pay smallest balance first — builds momentum). Always pay at least the minimum on all debts.',
+        'debt'        => '&#128279; Two proven strategies: Avalanche (pay highest interest rate first -- saves the most money) or Snowball (pay smallest balance first -- builds momentum). Always pay at least the minimum on all debts.',
         'invest'      => '&#128200; Start with: (1) Get your full employer 401k match, (2) Max your HSA if eligible, (3) Max Roth IRA ($7,000/yr), (4) Max 401k ($23,500/yr). Use low-cost index funds like VTI or VTSAX.',
         'tax'         => '&#129534; Biggest tax savers: 401k contributions reduce taxable income dollar-for-dollar. HSA gives triple tax benefit. Max both before April 15. At a 22% bracket, every $1,000 in 401k saves you $220 in taxes.',
-        'retirement'  => '&#127958;&#65039; The 4% rule: At retirement, you can withdraw 4% of your portfolio yearly. To replace $5,000/month in retirement, you need $1.5M saved. Start early — $300/month at 25 becomes $1M by 65 at 7% returns.',
-        'savings'     => '&#128176; Automate your savings the day your paycheck arrives — pay yourself first. Even 1% more savings rate makes a huge difference over decades. Use a HYSA for short-term goals (4-5% APY).',
+        'retirement'  => '&#127958;&#65039; The 4% rule: At retirement, you can withdraw 4% of your portfolio yearly. To replace $5,000/month in retirement, you need $1.5M saved. Start early -- $300/month at 25 becomes $1M by 65 at 7% returns.',
+        'savings'     => '&#128176; Automate your savings the day your paycheck arrives -- pay yourself first. Even 1% more savings rate makes a huge difference over decades. Use a HYSA for short-term goals (4-5% APY).',
         'credit'      => '&#128179; Improve your credit score: Pay on time (35% of score), keep utilization below 30% (30%), keep old accounts open (15%), limit new applications (10%). Check your free report at AnnualCreditReport.com.',
         'mortgage'    => '&#127968; Rule of thumb: Your mortgage payment should be under 28% of gross monthly income. Put 20% down to avoid PMI. At 7% rate, $300k mortgage = ~$2,000/month. Use our mortgage calculator for exact numbers.',
-        'crypto'      => '₿ Treat crypto as high-risk speculation — never invest more than 5-10% of your portfolio. It has no earnings, dividends, or intrinsic value. Stick to Bitcoin and Ethereum if you invest. Never invest emergency funds in crypto.',
+        'crypto'      => '₿ Treat crypto as high-risk speculation -- never invest more than 5-10% of your portfolio. It has no earnings, dividends, or intrinsic value. Stick to Bitcoin and Ethereum if you invest. Never invest emergency funds in crypto.',
         'default'     => '&#129302; Great question! For personalized numbers, use the panels in this dashboard. Key principles: (1) Build a 3-6 month emergency fund first, (2) Get your full employer 401k match, (3) Pay off high-rate debt over 7%, (4) Max tax-advantaged accounts, (5) Invest in index funds. Which area do you want to explore?',
     ];
     foreach ( $responses as $key => $reply ) {
@@ -2504,7 +2504,7 @@ add_action( 'wp_enqueue_scripts', 'fs_ai_chat_localize', 20 );
 function fs_rankmath_tool_title( $title, $post_id ) {
     if ( get_post_type( $post_id ) !== 'fs_tool' ) return $title;
     if ( $title ) return $title;
-    return get_the_title( $post_id ) . ' — Free Online Calculator 2026 | FinanceSpots';
+    return get_the_title( $post_id ) . ' -- Free Online Calculator 2026 | FinanceSpots';
 }
 add_filter( 'rank_math/title', 'fs_rankmath_tool_title', 10, 2 );
 
@@ -2624,8 +2624,8 @@ add_action( 'admin_menu', function() {
                 <table style="width:100%;border-collapse:collapse;">
                     <?php foreach([
                         ['fs_adsense_id',           'Publisher ID',         'ca-pub-XXXXXXXXXXXXXXXX', 'fs_adsense_publisher_id'],
-                        ['fs_adsense_slot_sidebar',  'Ad Slot — Sidebar',    'XXXXXXXXXX',              'fs_adsense_slot_sidebar'],
-                        ['fs_adsense_slot_inline',   'Ad Slot — Inline',     'XXXXXXXXXX',              'fs_adsense_slot_inline'],
+                        ['fs_adsense_slot_sidebar',  'Ad Slot -- Sidebar',    'XXXXXXXXXX',              'fs_adsense_slot_sidebar'],
+                        ['fs_adsense_slot_inline',   'Ad Slot -- Inline',     'XXXXXXXXXX',              'fs_adsense_slot_inline'],
                     ] as [$name,$label,$ph,$opt]): ?>
                     <tr style="border-bottom:1px solid #F1F5F9;">
                         <td style="padding:14px 0;width:200px;font-size:.875rem;font-weight:600;color:#374151;"><?php echo $label; ?></td>

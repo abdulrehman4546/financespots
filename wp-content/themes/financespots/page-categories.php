@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 /**
  * Template Name: Tool Categories
  */
@@ -13,7 +13,7 @@ get_header();
             <div class="fs-cats-hero__inner">
                 <span class="fs-badge fs-badge--green">&#128200; Finance Tools</span>
                 <h1 class="fs-cats-hero__title">All Financial Tool Categories</h1>
-                <p class="fs-cats-hero__desc">Browse our complete collection of free financial calculators and tools — organized by category. No signup required.</p>
+                <p class="fs-cats-hero__desc">Browse our complete collection of free financial calculators and tools -- organized by category. No signup required.</p>
             </div>
         </div>
     </section>
@@ -120,7 +120,7 @@ get_header();
                         <?php endforeach; ?>
                     </ul>
                     <a href="<?php echo esc_url($cat['link']); ?>" class="fs-cat-card__btn" style="--accent:<?php echo $cat['color']; ?>">
-                        Explore Tools <span>→</span>
+                        Explore Tools <span>&#x2192;</span>
                     </a>
                 </div>
                 <?php endforeach; ?>

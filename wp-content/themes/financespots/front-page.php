@@ -1,19 +1,19 @@
-<?php
+﻿<?php
 /**
- * Front Page Template — FinanceSpots Homepage
+ * Front Page Template -- FinanceSpots Homepage
  *
  * @package financespots
  */
 
 get_header();
 
-// AI Dashboard URL — used in hero mini-card and promo section
+// AI Dashboard URL -- used in hero mini-card and promo section
 $ai_dash_post = get_page_by_path( 'ai-financial-dashboard', OBJECT, 'fs_tool' );
 $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '/tool/ai-financial-dashboard/' );
 ?>
 
 <!-- ============================================================
-     SECTION 1: HERO — Advanced v3 (Portfolio Dashboard Style)
+     SECTION 1: HERO -- Advanced v3 (Portfolio Dashboard Style)
      ============================================================ -->
 <section class="fs-hero" id="home" aria-labelledby="hero-heading">
 
@@ -63,7 +63,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                 <!-- Subtitle -->
                 <p class="fs-hero__sub">
-                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial tools powered by AI — from portfolio analysis to tax optimization. 150+ tools, completely free.' ); ?>
+                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 150+ tools, completely free.' ); ?>
                 </p>
 
                 <!-- CTA Row -->
@@ -104,7 +104,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
             </div><!-- /.fs-hero__content -->
 
-            <!-- ══ RIGHT VISUAL — Portfolio Dashboard Card ══ -->
+            <!-- ══ RIGHT VISUAL -- Portfolio Dashboard Card ══ -->
             <div class="fs-hero__visual" aria-hidden="true">
 
                 <!-- Main portfolio card -->
@@ -178,7 +178,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                         <div class="fs-mini-card__icon">&#129302;</div>
                         <div class="fs-mini-card__info">
                             <span class="fs-mini-card__title">AI Dashboard</span>
-                            <span class="fs-mini-card__sub">Open now →</span>
+                            <span class="fs-mini-card__sub">Open now &#x2192;</span>
                         </div>
                     </a>
                 </div>
@@ -329,31 +329,31 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-ai-promo__content">
             <div class="fs-ai-promo__badge">
                 <span class="fs-ai-promo__badge-dot"></span>
-                New — AI-Powered Tool
+                New -- AI-Powered Tool
             </div>
             <h2 class="fs-ai-promo__title" id="ai-promo-heading">
                 Meet Your Personal<br>
                 <span class="accent">AI Financial Advisor</span>
             </h2>
             <p class="fs-ai-promo__desc">
-                One dashboard that analyzes your complete financial life — budget, debt, investments, taxes, retirement, and net worth. All powered by real AI, completely free. Built by Abdul Rahman for FinanceSpots.
+                One dashboard that analyzes your complete financial life -- budget, debt, investments, taxes, retirement, and net worth. All powered by real AI, completely free. Built by Abdul Rahman for FinanceSpots.
             </p>
             <div class="fs-ai-promo__features">
                 <div class="fs-ai-promo__feature">
                     <div class="fs-ai-promo__feature-icon">&#129504;</div>
-                    <span><strong style="color:#e2e8f0">Real AI Chat</strong> — Ask any finance question, get instant expert answers powered by Claude AI</span>
+                    <span><strong style="color:#e2e8f0">Real AI Chat</strong> -- Ask any finance question, get instant expert answers powered by Claude AI</span>
                 </div>
                 <div class="fs-ai-promo__feature">
                     <div class="fs-ai-promo__feature-icon">&#128202;</div>
-                    <span><strong style="color:#e2e8f0">9 Powerful Panels</strong> — Budget, Debt Optimizer, Net Worth, Tax, Retirement, Investment & more</span>
+                    <span><strong style="color:#e2e8f0">9 Powerful Panels</strong> -- Budget, Debt Optimizer, Net Worth, Tax, Retirement, Investment & more</span>
                 </div>
                 <div class="fs-ai-promo__feature">
                     <div class="fs-ai-promo__feature-icon">&#9889;</div>
-                    <span><strong style="color:#e2e8f0">Live Score</strong> — Get your personalized Financial Health Score in seconds</span>
+                    <span><strong style="color:#e2e8f0">Live Score</strong> -- Get your personalized Financial Health Score in seconds</span>
                 </div>
                 <div class="fs-ai-promo__feature">
                     <div class="fs-ai-promo__feature-icon">&#128196;</div>
-                    <span><strong style="color:#e2e8f0">PDF Export</strong> — Download your complete financial report instantly</span>
+                    <span><strong style="color:#e2e8f0">PDF Export</strong> -- Download your complete financial report instantly</span>
                 </div>
             </div>
             <div style="display:flex;align-items:center;flex-wrap:wrap;gap:.5rem">
@@ -362,7 +362,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                 </a>
                 <a href="<?php echo esc_url( $ai_dash_url ); ?>#ai-chat" class="fs-ai-promo__cta-ghost">
-                    Try AI Chat →
+                    Try AI Chat &#x2192;
                 </a>
             </div>
         </div>
@@ -409,8 +409,8 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- AI Chat preview -->
                     <div class="fs-ai-chat-preview">
-                        <div class="fs-ai-chat-preview__label">&#129302; AI Advisor — Abdul Rahman's Dashboard</div>
-                        <div class="fs-ai-chat-preview__msg">Your debt-to-income ratio of 28% is healthy. I recommend increasing your 401k contribution by $300/month to reach the IRS limit — this saves you $792/year in taxes at your 22% bracket.</div>
+                        <div class="fs-ai-chat-preview__label">&#129302; AI Advisor -- Abdul Rahman's Dashboard</div>
+                        <div class="fs-ai-chat-preview__msg">Your debt-to-income ratio of 28% is healthy. I recommend increasing your 401k contribution by $300/month to reach the IRS limit -- this saves you $792/year in taxes at your 22% bracket.</div>
                     </div>
                 </div>
             </div>
@@ -431,7 +431,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'Built Different. Built Better.', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'We studied Calculator.net, SmartAsset, and NerdWallet — then built something faster, smarter, and more beautiful than all of them.', 'financespots' ); ?>
+                <?php esc_html_e( 'We studied Calculator.net, SmartAsset, and NerdWallet -- then built something faster, smarter, and more beautiful than all of them.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -508,7 +508,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 onclick="window.location='<?php echo esc_js( $cat_url ); ?>'"
                 style="cursor:pointer"
             >
-                <a href="<?php echo esc_url( $cat_url ); ?>" class="fs-cat-card__link" aria-label="<?php echo esc_attr( $cat['name'] ) . ' — ' . esc_attr( $cat['count'] ) . ' tools'; ?>">
+                <a href="<?php echo esc_url( $cat_url ); ?>" class="fs-cat-card__link" aria-label="<?php echo esc_attr( $cat['name'] ) . ' -- ' . esc_attr( $cat['count'] ) . ' tools'; ?>">
                     <div class="fs-cat-card__icon-wrap" aria-hidden="true">
                         <span class="fs-cat-card__icon"><?php echo esc_html( $cat['icon'] ); ?></span>
                     </div>
@@ -545,7 +545,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'Most Popular Tools', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'The finance tools our users love most — handpicked, expert-verified, and AI-enhanced.', 'financespots' ); ?>
+                <?php esc_html_e( 'The finance tools our users love most -- handpicked, expert-verified, and AI-enhanced.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -688,9 +688,9 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
             </div>
         </div>
 
-        <!-- Trust Strip — DISABLED -->
+        <!-- Trust Strip -- DISABLED -->
         <?php if(false): // Trust strip hidden ?>
-        <!-- Trust Strip — Full Control via WP Admin > FinanceSpots > Trust Strip -->
+        <!-- Trust Strip -- Full Control via WP Admin > FinanceSpots > Trust Strip -->
         <?php
         $ts = get_option('fs_trust_settings', []);
         $label      = !empty($ts['label'])   ? $ts['label']   : 'AS SEEN & TRUSTED BY READERS FROM';

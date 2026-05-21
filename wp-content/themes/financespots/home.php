@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Blog Archive — shows when /blog/ is visited
+ * Blog Archive -- shows when /blog/ is visited
  */
 get_header();
 ?>
@@ -13,7 +13,7 @@ get_header();
             <div class="fs-blog-hero__inner">
                 <span class="fs-badge fs-badge--green">&#128240; Finance Blog</span>
                 <h1 class="fs-blog-hero__title">Expert Finance Guides & Tips</h1>
-                <p class="fs-blog-hero__desc">In-depth guides on investing, budgeting, debt payoff, retirement planning, taxes, and more — all backed by our free financial tools.</p>
+                <p class="fs-blog-hero__desc">In-depth guides on investing, budgeting, debt payoff, retirement planning, taxes, and more -- all backed by our free financial tools.</p>
 
                 <!-- Category Filter -->
                 <div class="fs-blog-cats">
@@ -82,7 +82,7 @@ get_header();
                         </h2>
                         <p class="fs-blog-card__excerpt"><?php echo esc_html( $excerpt ); ?></p>
                         <a href="<?php the_permalink(); ?>" class="fs-blog-card__link">
-                            Read Full Guide <span aria-hidden="true">→</span>
+                            Read Full Guide <span aria-hidden="true">&#x2192;</span>
                         </a>
                     </div>
                 </article>

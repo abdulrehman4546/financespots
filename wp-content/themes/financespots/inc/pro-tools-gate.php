@@ -1,8 +1,8 @@
-<?php
+﻿<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /* =========================================================
-   FinanceSpots — PRO Tool Gate System
+   FinanceSpots -- PRO Tool Gate System
    - Mark any page as PRO tool via meta box
    - Auto blur overlay for non-PRO users
    - [fs_pro_gate] shortcode for inline gating
@@ -122,7 +122,7 @@ function fs_render_pro_overlay( $tool_name, $current_url = '' ) {
                 <?php echo esc_html($tool_name); ?> is PRO
             </h2>
             <p class="fs-pg-desc">
-                Upgrade to FinanceSpots PRO to unlock this advanced tool plus 7 more premium features — starting at just $9/month.
+                Upgrade to FinanceSpots PRO to unlock this advanced tool plus 7 more premium features -- starting at just $9/month.
             </p>
 
             <div class="fs-pg-perks">
@@ -134,15 +134,15 @@ function fs_render_pro_overlay( $tool_name, $current_url = '' ) {
 
             <div class="fs-pg-actions">
                 <a href="<?php echo esc_url($pricing_url); ?>" class="fs-pg-btn-upgrade">
-                    &#11088; Upgrade to PRO — From $9/mo
+                    &#11088; Upgrade to PRO -- From $9/mo
                 </a>
                 <?php if ( ! is_user_logged_in() ) : ?>
                 <p class="fs-pg-signin-note">
-                    Already PRO? <button class="fs-pg-signin-link" id="fs-pg-open-login">Sign in to your account →</button>
+                    Already PRO? <button class="fs-pg-signin-link" id="fs-pg-open-login">Sign in to your account &#x2192;</button>
                 </p>
                 <?php endif; ?>
                 <a href="<?php echo esc_url( home_url('/') ); ?>" class="fs-pg-btn-free">
-                    ← Back to Free Tools
+                    &#x2190; Back to Free Tools
                 </a>
             </div>
 
@@ -253,7 +253,7 @@ function fs_pro_tools_admin_page() {
     ?>
     <div class="wrap" style="font-family:-apple-system,sans-serif;max-width:800px;">
         <h1 style="font-size:1.5rem;margin-bottom:6px;">&#128274; PRO Tools Management</h1>
-        <p style="color:#64748B;margin-bottom:24px;">Mark pages as PRO tools — non-PRO users will see a locked overlay on those pages.</p>
+        <p style="color:#64748B;margin-bottom:24px;">Mark pages as PRO tools -- non-PRO users will see a locked overlay on those pages.</p>
 
         <!-- Quick mark form -->
         <div style="background:#fff;border:1px solid #E2E8F0;border-radius:16px;padding:24px;margin-bottom:24px;">
@@ -263,7 +263,7 @@ function fs_pro_tools_admin_page() {
                 <div style="flex:1;min-width:200px;">
                     <label style="font-size:.78rem;font-weight:600;color:#64748B;display:block;margin-bottom:4px;">Select Page</label>
                     <select name="page_id" style="width:100%;padding:8px 12px;border:1.5px solid #E2E8F0;border-radius:8px;font-size:.875rem;">
-                        <option value="">— Choose a page —</option>
+                        <option value="">-- Choose a page --</option>
                         <?php foreach($all_pages as $p): ?>
                         <option value="<?php echo $p->ID; ?>"><?php echo esc_html($p->post_title); ?></option>
                         <?php endforeach; ?>
@@ -314,7 +314,7 @@ function fs_pro_tools_admin_page() {
                     <td style="padding:12px 16px;">
                         <a href="<?php echo esc_url(get_permalink($p->ID)); ?>" target="_blank"
                            style="color:#3B82F6;font-size:.8rem;text-decoration:none;">
-                            /<?php echo esc_html($p->post_name); ?>/ ↗
+                            /<?php echo esc_html($p->post_name); ?>/ &#x2197;
                         </a>
                     </td>
                     <td style="padding:12px 16px;display:flex;gap:6px;">

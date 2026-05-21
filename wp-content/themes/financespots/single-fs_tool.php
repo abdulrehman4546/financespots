@@ -5,7 +5,7 @@
  */
 require_once get_template_directory() . '/inc/calculators.php';
 
-// â”€â”€ Advanced VA Loan Calculator â€” full-page template â”€â”€
+// â"€â"€ Advanced VA Loan Calculator â€" full-page template â"€â"€
 if ( have_posts() ) {
     the_post();
     $tool_type = get_post_meta( get_the_ID(), '_fs_tool_type', true );
@@ -14,7 +14,7 @@ if ( have_posts() ) {
         get_header();
         $tool_id  = get_the_ID();
         $tool_url = get_permalink( $tool_id );
-        $seo_desc = 'Free VA loan funding fee calculator 2026. Calculate your VA funding fee, PITI monthly payment, amortization schedule, and VA vs conventional comparison â€” with PDF export.';
+        $seo_desc = 'Free VA loan funding fee calculator 2026. Calculate your VA funding fee, PITI monthly payment, amortization schedule, and VA vs conventional comparison â€" with PDF export.';
         // Output advanced calculator
         include get_template_directory() . '/tools/va-loan-calculator.php';
         get_footer();
@@ -54,7 +54,7 @@ while ( have_posts() ) : the_post();
         <div class="fst-tool-hero__inner">
             <?php if ( $cat ) : ?>
             <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="fst-breadcrumb">
-                â† <?php echo esc_html( $cat->name ); ?>
+                &#x2190; <?php echo esc_html( $cat->name ); ?>
             </a>
             <?php endif; ?>
             <div class="fst-tool-hero__content">
@@ -84,7 +84,7 @@ while ( have_posts() ) : the_post();
                     <!-- Universal PDF Download Button -->
                     <div id="fs-pdf-bar" style="display:none;margin-top:1.5rem;padding:1rem 1.25rem;background:linear-gradient(135deg,#00C896,#3B82F6);border-radius:12px;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.75rem">
                         <div style="color:#fff">
-                            <div style=”font-weight:700;font-size:.95rem”>&#x1F4CA; Results Ready!</div>
+                            <div style="font-weight:700;font-size:.95rem">&#x1F4CA; Results Ready!</div>
                             <div style="font-size:.8rem;opacity:.85">Save or share your calculation results</div>
                         </div>
                         <div style="display:flex;gap:.75rem;flex-wrap:wrap">
@@ -114,7 +114,7 @@ while ( have_posts() ) : the_post();
                     <h3 class="fst-sidebar-card__title">More <?php echo esc_html( $cat->name ); ?></h3>
                     <ul class="fst-related-list">
                         <?php foreach ( $related as $r ) : ?>
-                        <li><a href="<?php echo esc_url( get_permalink( $r ) ); ?>"><?php echo esc_html( $r->post_title ); ?> â†’</a></li>
+                        <li><a href="<?php echo esc_url( get_permalink( $r ) ); ?>"><?php echo esc_html( $r->post_title ); ?> &#x2192;</a></li>
                         <?php endforeach; ?>
                     </ul>
                 </div>
@@ -131,12 +131,12 @@ while ( have_posts() ) : the_post();
 </section>
 
 <?php
-/* â”€â”€ SEO Content Section â€” How to use + FAQ per tool â”€â”€ */
+/* â"€â"€ SEO Content Section â€" How to use + FAQ per tool â"€â"€ */
 $faq_data = [
     'mortgage_calc' => [
         'how'  => 'Enter your home price, down payment, interest rate, loan term, property tax, and insurance. Click "Calculate Payment" to see your full monthly PITI payment and total loan cost.',
         'faqs' => [
-            ['q'=>'What is a good mortgage rate in 2026?','a'=>'In 2026, a competitive 30-year fixed mortgage rate is between 6.5%â€“7.5% depending on your credit score, down payment, and lender. A 15-year fixed is typically 0.5â€“1% lower.'],
+            ['q'=>'What is a good mortgage rate in 2026?','a'=>'In 2026, a competitive 30-year fixed mortgage rate is between 6.5%â€"7.5% depending on your credit score, down payment, and lender. A 15-year fixed is typically 0.5â€"1% lower.'],
             ['q'=>'How much house can I afford?','a'=>'A common rule is to keep your total housing costs (PITI) below 28% of your gross monthly income, and total debt payments below 43% (the DTI limit for most conventional loans).'],
             ['q'=>'What is included in a mortgage payment?','a'=>'A full mortgage payment (PITI) includes Principal, Interest, Property Taxes (escrowed), and Homeowner\'s Insurance. HOA fees may also apply.'],
             ['q'=>'Is a 30-year or 15-year mortgage better?','a'=>'A 15-year mortgage has a higher monthly payment but saves significantly more on total interest and pays off faster. A 30-year mortgage offers lower payments and more flexibility.'],
@@ -145,17 +145,17 @@ $faq_data = [
     'auto_loan_calc' => [
         'how'  => 'Enter the vehicle price, down payment, trade-in value, sales tax rate, loan APR, and term. The calculator shows your exact monthly payment plus total car cost including interest.',
         'faqs' => [
-            ['q'=>'What is a good auto loan rate in 2026?','a'=>'Average auto loan rates in 2026 range from 5%â€“8% for new cars and 7%â€“12% for used cars, depending on credit score. Rates below 6% for new cars are considered excellent.'],
-            ['q'=>'Should I put a down payment on a car?','a'=>'Yes â€” a 20% down payment is recommended for new cars and 10% for used cars to avoid being "upside down" (owing more than the car is worth).'],
-            ['q'=>'What loan term is best for an auto loan?','a'=>'36â€“48 months minimizes total interest. Terms of 60â€“72 months lower monthly payments but increase total interest and the risk of negative equity.'],
-            ['q'=>'Does sales tax affect my auto loan?','a'=>'Yes â€” in most states, sales tax is added to the purchase price and can be rolled into the loan. This increases your loan amount and total interest paid.'],
+            ['q'=>'What is a good auto loan rate in 2026?','a'=>'Average auto loan rates in 2026 range from 5%â€"8% for new cars and 7%â€"12% for used cars, depending on credit score. Rates below 6% for new cars are considered excellent.'],
+            ['q'=>'Should I put a down payment on a car?','a'=>'Yes â€" a 20% down payment is recommended for new cars and 10% for used cars to avoid being "upside down" (owing more than the car is worth).'],
+            ['q'=>'What loan term is best for an auto loan?','a'=>'36â€"48 months minimizes total interest. Terms of 60â€"72 months lower monthly payments but increase total interest and the risk of negative equity.'],
+            ['q'=>'Does sales tax affect my auto loan?','a'=>'Yes â€" in most states, sales tax is added to the purchase price and can be rolled into the loan. This increases your loan amount and total interest paid.'],
         ],
     ],
     'personal_loan_calc' => [
         'how'  => 'Enter the loan amount, interest rate (APR), loan term, and any origination fee. The calculator shows monthly payment, total repayment, and effective APR after fees.',
         'faqs' => [
-            ['q'=>'What credit score do I need for a personal loan?','a'=>'Most lenders require a minimum credit score of 580â€“640. However, to get the best rates (below 10% APR), you typically need a score of 720 or higher.'],
-            ['q'=>'What is a good personal loan rate?','a'=>'Rates below 10% APR are considered good for personal loans. Average personal loan APR in 2026 is around 11%â€“12% for borrowers with good credit.'],
+            ['q'=>'What credit score do I need for a personal loan?','a'=>'Most lenders require a minimum credit score of 580â€"640. However, to get the best rates (below 10% APR), you typically need a score of 720 or higher.'],
+            ['q'=>'What is a good personal loan rate?','a'=>'Rates below 10% APR are considered good for personal loans. Average personal loan APR in 2026 is around 11%â€"12% for borrowers with good credit.'],
             ['q'=>'How is APR different from interest rate?','a'=>'APR (Annual Percentage Rate) includes the interest rate plus origination fees, making it a more accurate measure of the true cost of the loan.'],
             ['q'=>'Can I pay off a personal loan early?','a'=>'Most personal loans have no prepayment penalty. Paying extra reduces total interest significantly, especially early in the loan term.'],
         ],
@@ -163,27 +163,27 @@ $faq_data = [
     'student_loan_calc' => [
         'how'  => 'Enter your total loan balance, interest rate, and select a repayment plan. The calculator accounts for the grace period and shows your monthly payment, total interest, and payoff date.',
         'faqs' => [
-            ['q'=>'What are the current federal student loan rates for 2026?','a'=>'Federal student loan rates for 2024â€“25 are: 6.53% for undergrad Direct Loans, 8.08% for grad Direct Loans, and 9.08% for PLUS Loans.'],
+            ['q'=>'What are the current federal student loan rates for 2026?','a'=>'Federal student loan rates for 2024â€"25 are: 6.53% for undergrad Direct Loans, 8.08% for grad Direct Loans, and 9.08% for PLUS Loans.'],
             ['q'=>'What is the grace period on student loans?','a'=>'Most federal student loans offer a 6-month grace period after graduation before payments begin. Interest may still accrue during this time on unsubsidized loans.'],
             ['q'=>'What repayment plan should I choose?','a'=>'The Standard 10-year plan pays off loans fastest and minimizes interest. Income-Driven Repayment (IDR) plans offer lower payments but extend the term and increase total interest.'],
-            ['q'=>'Does interest accrue during the grace period?','a'=>'On unsubsidized federal loans, yes â€” interest accrues during the grace period. On subsidized loans, the government covers interest while you\'re in school and during grace.'],
+            ['q'=>'Does interest accrue during the grace period?','a'=>'On unsubsidized federal loans, yes â€" interest accrues during the grace period. On subsidized loans, the government covers interest while you\'re in school and during grace.'],
         ],
     ],
     'heloc_calc' => [
-        'how'  => 'Enter your home value, current mortgage balance, and max LTV allowed by your lender (typically 80â€“85%). The calculator shows your available equity and monthly payment.',
+        'how'  => 'Enter your home value, current mortgage balance, and max LTV allowed by your lender (typically 80â€"85%). The calculator shows your available equity and monthly payment.',
         'faqs' => [
-            ['q'=>'How much equity can I borrow against my home?','a'=>'Most lenders allow you to borrow up to 80â€“85% of your home\'s value minus your mortgage balance. With an 85% LTV on a $500k home with a $300k mortgage, you can borrow up to $125,000.'],
-            ['q'=>'What is the difference between a HELOC and home equity loan?','a'=>'A home equity loan gives you a lump sum with a fixed rate. A HELOC is a revolving credit line with a variable rate â€” like a credit card secured by your home.'],
+            ['q'=>'How much equity can I borrow against my home?','a'=>'Most lenders allow you to borrow up to 80â€"85% of your home\'s value minus your mortgage balance. With an 85% LTV on a $500k home with a $300k mortgage, you can borrow up to $125,000.'],
+            ['q'=>'What is the difference between a HELOC and home equity loan?','a'=>'A home equity loan gives you a lump sum with a fixed rate. A HELOC is a revolving credit line with a variable rate â€" like a credit card secured by your home.'],
             ['q'=>'Is home equity loan interest tax deductible?','a'=>'Interest may be deductible if the loan is used to buy, build, or substantially improve the home securing the loan. Consult a tax advisor for your specific situation.'],
-            ['q'=>'What is LTV and why does it matter?','a'=>'LTV (Loan-to-Value) is the ratio of your mortgage to your home\'s value. A lower LTV means more equity and better loan terms. Lenders typically require LTV below 80â€“85% for equity loans.'],
+            ['q'=>'What is LTV and why does it matter?','a'=>'LTV (Loan-to-Value) is the ratio of your mortgage to your home\'s value. A lower LTV means more equity and better loan terms. Lenders typically require LTV below 80â€"85% for equity loans.'],
         ],
     ],
     'fha_loan_calc' => [
         'how'  => 'Enter the purchase price, down payment percentage, interest rate, and loan term. The calculator automatically applies the 1.75% upfront MIP and annual MIP based on your down payment.',
         'faqs' => [
-            ['q'=>'What is FHA Mortgage Insurance Premium (MIP)?','a'=>'FHA loans require an upfront MIP of 1.75% (rolled into the loan) and an annual MIP of 0.55%â€“1.05% depending on loan size, term, and LTV ratio.'],
+            ['q'=>'What is FHA Mortgage Insurance Premium (MIP)?','a'=>'FHA loans require an upfront MIP of 1.75% (rolled into the loan) and an annual MIP of 0.55%â€"1.05% depending on loan size, term, and LTV ratio.'],
             ['q'=>'How long do I pay MIP on an FHA loan?','a'=>'With less than 10% down, you pay MIP for the life of the loan. With 10% or more down, MIP is canceled after 11 years. This is a key reason many borrowers refinance to conventional once they have 20% equity.'],
-            ['q'=>'What is the minimum credit score for an FHA loan?','a'=>'580 for 3.5% down payment. 500â€“579 requires 10% down. Below 500 is not eligible for FHA financing.'],
+            ['q'=>'What is the minimum credit score for an FHA loan?','a'=>'580 for 3.5% down payment. 500â€"579 requires 10% down. Below 500 is not eligible for FHA financing.'],
             ['q'=>'What are the FHA loan limits for 2026?','a'=>'FHA loan limits for 2026 are $524,225 for most areas (baseline) and up to $1,209,750 in high-cost areas. Check HUD.gov for your specific county.'],
         ],
     ],
@@ -199,36 +199,36 @@ $faq_data = [
     'interest_only_calc' => [
         'how'  => 'Enter the loan amount, interest rate, interest-only period, and total loan term. The calculator compares your interest-only payment vs. the fully amortizing payment and shows the total extra cost.',
         'faqs' => [
-            ['q'=>'What is an interest-only loan?','a'=>'An interest-only loan requires you to pay only the interest for a set period (typically 5â€“10 years), after which payments jump to cover both principal and interest over the remaining term.'],
-            ['q'=>'Are interest-only loans risky?','a'=>'Yes â€” your balance doesn\'t decrease during the IO period, so when P&I payments begin, they\'re higher than a traditional loan. You also build no equity during the IO period.'],
+            ['q'=>'What is an interest-only loan?','a'=>'An interest-only loan requires you to pay only the interest for a set period (typically 5â€"10 years), after which payments jump to cover both principal and interest over the remaining term.'],
+            ['q'=>'Are interest-only loans risky?','a'=>'Yes â€" your balance doesn\'t decrease during the IO period, so when P&I payments begin, they\'re higher than a traditional loan. You also build no equity during the IO period.'],
             ['q'=>'Who benefits from an interest-only loan?','a'=>'Investors who plan to sell before the IO period ends, high-income earners with irregular income, or buyers who want maximum short-term cash flow.'],
-            ['q'=>'How much more does an interest-only loan cost?','a'=>'Total interest on an IO loan can be 10â€“20% more than a fully amortizing loan because no principal is paid during the IO period.'],
+            ['q'=>'How much more does an interest-only loan cost?','a'=>'Total interest on an IO loan can be 10â€"20% more than a fully amortizing loan because no principal is paid during the IO period.'],
         ],
     ],
     'loan_payoff_calc' => [
         'how'  => 'Enter your current loan balance, interest rate, remaining term, and extra monthly payment (or a one-time lump sum). The calculator shows exactly how many months you save and total interest avoided.',
         'faqs' => [
             ['q'=>'How much do extra payments really save?','a'=>'On a $200,000 mortgage at 7%, an extra $200/month saves about 5 years and over $60,000 in interest. Even $50/month extra makes a significant difference over 30 years.'],
-            ['q'=>'When is the best time to make extra payments?','a'=>'Early in the loan term, because interest is front-loaded. Extra payments in year 1â€“5 save far more than the same amount paid in year 20.'],
-            ['q'=>'Should I pay extra on my mortgage or invest?','a'=>'If your mortgage rate is higher than expected investment returns, paying extra wins. If your rate is low (e.g., 3â€“4%) and you can earn 7%+ investing, investing often wins mathematically.'],
-            ['q'=>'Does my lender require a minimum for extra payments?','a'=>'No â€” most lenders accept any extra amount. Just specify it should go to principal, not future payments. Check your loan documents for any prepayment penalty.'],
+            ['q'=>'When is the best time to make extra payments?','a'=>'Early in the loan term, because interest is front-loaded. Extra payments in year 1â€"5 save far more than the same amount paid in year 20.'],
+            ['q'=>'Should I pay extra on my mortgage or invest?','a'=>'If your mortgage rate is higher than expected investment returns, paying extra wins. If your rate is low (e.g., 3â€"4%) and you can earn 7%+ investing, investing often wins mathematically.'],
+            ['q'=>'Does my lender require a minimum for extra payments?','a'=>'No â€" most lenders accept any extra amount. Just specify it should go to principal, not future payments. Check your loan documents for any prepayment penalty.'],
         ],
     ],
     'commercial_calc' => [
-        'how'  => 'Enter the loan amount, rate, amortization period, balloon term, and annual net operating income. The calculator shows monthly payment, balloon balance, and DSCR â€” the key metric lenders use.',
+        'how'  => 'Enter the loan amount, rate, amortization period, balloon term, and annual net operating income. The calculator shows monthly payment, balloon balance, and DSCR â€" the key metric lenders use.',
         'faqs' => [
             ['q'=>'What is DSCR and why does it matter?','a'=>'DSCR (Debt Service Coverage Ratio) = Net Operating Income / Annual Debt Service. Most commercial lenders require DSCR â‰¥ 1.25, meaning the property earns 25% more than the annual loan payment.'],
-            ['q'=>'What are typical commercial loan rates in 2026?','a'=>'Commercial loan rates range from 6.5%â€“9% for stabilized properties, and higher (9%â€“12%+) for construction or value-add deals, depending on the lender and property type.'],
+            ['q'=>'What are typical commercial loan rates in 2026?','a'=>'Commercial loan rates range from 6.5%â€"9% for stabilized properties, and higher (9%â€"12%+) for construction or value-add deals, depending on the lender and property type.'],
             ['q'=>'What is the difference between amortization and loan term?','a'=>'Amortization determines monthly payment size (e.g., 25 years). The loan term is when the balloon is due (e.g., 10 years). At term end, the remaining balance must be paid or refinanced.'],
-            ['q'=>'What LTV do commercial lenders allow?','a'=>'Most commercial lenders cap LTV at 65â€“75% for investment properties. SBA loans can go to 85â€“90% for owner-occupied commercial real estate.'],
+            ['q'=>'What LTV do commercial lenders allow?','a'=>'Most commercial lenders cap LTV at 65â€"75% for investment properties. SBA loans can go to 85â€"90% for owner-occupied commercial real estate.'],
         ],
     ],
     'bridge_calc' => [
         'how'  => 'Enter the bridge loan amount, interest rate, duration, payment type, origination fee, and exit fee. The calculator shows total cost and effective APR of the short-term financing.',
         'faqs' => [
-            ['q'=>'What is a bridge loan?','a'=>'A bridge loan is short-term financing (3â€“24 months) used to "bridge" the gap between buying a new property and selling an existing one, or while securing permanent financing.'],
-            ['q'=>'What are typical bridge loan rates?','a'=>'Bridge loan rates range from 8%â€“12% or higher in 2026. They\'re more expensive than conventional loans because of the short term and higher lender risk.'],
-            ['q'=>'What fees come with a bridge loan?','a'=>'Typically: 1â€“3% origination fee, 0.5â€“2% exit fee, appraisal, and legal fees. Total upfront and exit costs can add 3â€“5% to the loan amount.'],
+            ['q'=>'What is a bridge loan?','a'=>'A bridge loan is short-term financing (3â€"24 months) used to "bridge" the gap between buying a new property and selling an existing one, or while securing permanent financing.'],
+            ['q'=>'What are typical bridge loan rates?','a'=>'Bridge loan rates range from 8%â€"12% or higher in 2026. They\'re more expensive than conventional loans because of the short term and higher lender risk.'],
+            ['q'=>'What fees come with a bridge loan?','a'=>'Typically: 1â€"3% origination fee, 0.5â€"2% exit fee, appraisal, and legal fees. Total upfront and exit costs can add 3â€"5% to the loan amount.'],
             ['q'=>'When does a bridge loan make sense?','a'=>'When you\'re buying before selling, competing in a hot market, rehabilitating a property for permanent financing, or need to close quickly and conventional financing is too slow.'],
         ],
     ],
@@ -263,7 +263,7 @@ if ( $tool_faq ) : ?>
 
 <?php endwhile; ?>
 
-<!-- â”€â”€ Universal PDF / Print system â”€â”€ -->
+<!-- â"€â"€ Universal PDF / Print system â"€â"€ -->
 <script>
 /* Expose globally so calculators can call it directly */
 function fsPdfBarShow(){
@@ -299,7 +299,7 @@ function fsDownloadPDF(){
     cards.forEach(function(c){
         var lbl = c.querySelector('.fsc-result-label');
         var val = c.querySelector('.fsc-result-value');
-        if(lbl && val && val.textContent.trim() !== 'â€”'){
+        if(lbl && val && val.textContent.trim() !== 'â€"'){
             rows.push([lbl.textContent.trim(), val.textContent.trim()]);
         }
     });
@@ -339,7 +339,7 @@ function fsDownloadPDF(){
     doc.setFontSize(14); doc.setFont('helvetica','bold');
     doc.text('FinanceSpots', 14, 10);
     doc.setFontSize(10); doc.setFont('helvetica','normal');
-    doc.text('Free Financial Calculators â€” financespots.com', 14, 17);
+    doc.text('Free Financial Calculators â€" financespots.com', 14, 17);
 
     /* Tool title */
     y = 34;
@@ -400,7 +400,7 @@ function fsDownloadPDF(){
     doc.setFontSize(8); doc.setFont('helvetica','normal');
     doc.setTextColor(150,150,170);
     doc.text('Disclaimer: For informational purposes only. Consult a licensed financial advisor for major financial decisions.', 14, 285);
-    doc.text('Â© ' + new Date().getFullYear() + ' FinanceSpots.com â€” Free Financial Calculators', W-14, 285, {align:'right'});
+    doc.text('Â© ' + new Date().getFullYear() + ' FinanceSpots.com â€" Free Financial Calculators', W-14, 285, {align:'right'});
 
     var fname = toolTitle.replace(/[^a-z0-9]/gi,'_').toLowerCase() + '_results.pdf';
     doc.save(fname);

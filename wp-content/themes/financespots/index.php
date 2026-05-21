@@ -1,6 +1,6 @@
-<?php
+﻿<?php
 /**
- * Index Template — fallback for all views
+ * Index Template -- fallback for all views
  *
  * @package financespots
  */

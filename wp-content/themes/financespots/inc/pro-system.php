@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 /* =========================================================
@@ -43,7 +43,7 @@ function fs_get_plans() {
             'price'       => 79,
             'period'      => 'year',
             'stripe_price'=> get_option('fs_stripe_price_yearly', ''),
-            'badge'       => 'Best Value — Save 27%',
+            'badge'       => 'Best Value -- Save 27%',
             'popular'     => true,
         ],
         'lifetime' => [
@@ -209,7 +209,7 @@ function fs_stripe_webhook() {
     }
 
     if ( $type === 'customer.subscription.deleted' ) {
-        // Subscription cancelled — revoke PRO
+        // Subscription cancelled -- revoke PRO
         $sub     = $event['data']['object'];
         $user_id = intval( $sub['metadata']['user_id'] ?? 0 );
         if ( $user_id ) {
@@ -254,14 +254,14 @@ function fs_pro_admin_page() {
         'fs_stripe_secret_key'        => ['Stripe Secret Key',         'sk_live_...'],
         'fs_stripe_publishable_key'   => ['Stripe Publishable Key',    'pk_live_...'],
         'fs_stripe_webhook_secret'    => ['Stripe Webhook Secret',     'whsec_...'],
-        'fs_stripe_price_monthly'     => ['Price ID — Monthly ($9)',   'price_...'],
-        'fs_stripe_price_yearly'      => ['Price ID — Yearly ($79)',   'price_...'],
-        'fs_stripe_price_lifetime'    => ['Price ID — Lifetime ($199)','price_...'],
+        'fs_stripe_price_monthly'     => ['Price ID -- Monthly ($9)',   'price_...'],
+        'fs_stripe_price_yearly'      => ['Price ID -- Yearly ($79)',   'price_...'],
+        'fs_stripe_price_lifetime'    => ['Price ID -- Lifetime ($199)','price_...'],
     ];
     ?>
     <div class="wrap" style="font-family:-apple-system,sans-serif;max-width:700px;">
-        <h1 style="font-size:1.5rem;margin-bottom:6px;">&#11088; FinanceSpots PRO — Settings</h1>
-        <p style="color:#64748B;margin-bottom:24px;">Connect Stripe to start accepting payments. <a href="https://dashboard.stripe.com" target="_blank">Open Stripe Dashboard →</a></p>
+        <h1 style="font-size:1.5rem;margin-bottom:6px;">&#11088; FinanceSpots PRO -- Settings</h1>
+        <p style="color:#64748B;margin-bottom:24px;">Connect Stripe to start accepting payments. <a href="https://dashboard.stripe.com" target="_blank">Open Stripe Dashboard &#x2192;</a></p>
 
         <div style="background:#fff3cd;border:1px solid #ffc107;border-radius:10px;padding:14px 18px;margin-bottom:24px;font-size:.875rem;">
             <strong>Setup Steps:</strong><br>
@@ -346,7 +346,7 @@ function fs_pro_users_page() {
                     <td style="padding:12px 16px;">
                         <span style="background:#FEF3C7;color:#D97706;padding:3px 10px;border-radius:20px;font-size:.78rem;font-weight:700;text-transform:uppercase;"><?php echo esc_html($plan); ?></span>
                     </td>
-                    <td style="padding:12px 16px;color:#64748B;"><?php echo $since ? date('M j, Y', strtotime($since)) : '—'; ?></td>
+                    <td style="padding:12px 16px;color:#64748B;"><?php echo $since ? date('M j, Y', strtotime($since)) : '--'; ?></td>
                     <td style="padding:12px 16px;">
                         <a href="<?php echo wp_nonce_url(add_query_arg(['revoke'=>$u->ID]),'fs_revoke_pro'); ?>"
                            onclick="return confirm('Revoke PRO for <?php echo esc_js($u->display_name); ?>?')"

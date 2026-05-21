@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function fs_render_calculator( $tool_type, $tool_title ) {
@@ -164,11 +164,11 @@ function fs_calc_loan_payment( $type, $title ) { ?>
     <button class="fsc-btn" onclick="calcLoanPayment()">Calculate</button>
   </div>
   <div class="fsc-results" id="lp-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="lp-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Payment</div><div class="fsc-result-value" id="lp-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="lp-interest">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="lp-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Payment</div><div class="fsc-result-value" id="lp-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="lp-interest">--</div></div>
     <?php if($type==='affordability'):?>
-    <div class="fsc-result-card"><div class="fsc-result-label">Debt-to-Income</div><div class="fsc-result-value" id="lp-dti">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Debt-to-Income</div><div class="fsc-result-value" id="lp-dti">--</div></div>
     <?php endif;?>
   </div>
 </div>
@@ -206,10 +206,10 @@ function fs_calc_amortization( $title ) { ?>
     <button class="fsc-btn" onclick="calcAmort()">Generate Schedule</button>
   </div>
   <div class="fsc-results" id="am-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="am-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Paid</div><div class="fsc-result-value" id="am-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="am-interest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="am-payoff">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="am-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Paid</div><div class="fsc-result-value" id="am-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="am-interest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="am-payoff">--</div></div>
   </div>
 </div>
 <div class="fsc-table-wrap"><table class="fsc-table" id="am-table" style="display:none">
@@ -269,10 +269,10 @@ function fs_calc_refinance() { ?>
     <button class="fsc-btn" onclick="calcRefi()">Calculate Savings</button>
   </div>
   <div class="fsc-results" id="rf-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Savings</div><div class="fsc-result-value" id="rf-saving">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">New Payment</div><div class="fsc-result-value" id="rf-new-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even</div><div class="fsc-result-value" id="rf-break">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Lifetime Savings</div><div class="fsc-result-value" id="rf-life">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Savings</div><div class="fsc-result-value" id="rf-saving">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">New Payment</div><div class="fsc-result-value" id="rf-new-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even</div><div class="fsc-result-value" id="rf-break">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Lifetime Savings</div><div class="fsc-result-value" id="rf-life">--</div></div>
   </div>
 </div></div>
 <script>
@@ -321,15 +321,15 @@ function fs_calc_loan_compare() { ?>
 <div id="lc-results" style="display:none;margin-top:1.5rem">
 <div class="fsc-compare-grid">
   <div class="fsc-compare-col">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment A</div><div class="fsc-result-value" id="lca-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest A</div><div class="fsc-result-value" id="lca-int">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment A</div><div class="fsc-result-value" id="lca-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest A</div><div class="fsc-result-value" id="lca-int">--</div></div>
   </div>
   <div class="fsc-compare-col">
-    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Monthly Payment B</div><div class="fsc-result-value" id="lcb-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest B</div><div class="fsc-result-value" id="lcb-int">—</div></div>
+    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Monthly Payment B</div><div class="fsc-result-value" id="lcb-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest B</div><div class="fsc-result-value" id="lcb-int">--</div></div>
   </div>
 </div>
-<div class="fsc-result-card fsc-result-card--gold" style="margin-top:1rem"><div class="fsc-result-label">You Save With Loan A</div><div class="fsc-result-value" id="lc-diff">—</div></div>
+<div class="fsc-result-card fsc-result-card--gold" style="margin-top:1rem"><div class="fsc-result-label">You Save With Loan A</div><div class="fsc-result-value" id="lc-diff">--</div></div>
 </div>
 </div>
 <script>
@@ -372,12 +372,12 @@ function fs_calc_compound( $title ) { ?>
     <button class="fsc-btn" onclick="calcCompound()">Calculate Growth</button>
   </div>
   <div class="fsc-results" id="ci-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Future Value (Nominal)</div><div class="fsc-result-value" id="ci-final">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Real Value (Inflation-Adj.)</div><div class="fsc-result-value" id="ci-real">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Contributed</div><div class="fsc-result-value" id="ci-contrib">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Interest Earned</div><div class="fsc-result-value" id="ci-earned">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Growth Multiple</div><div class="fsc-result-value" id="ci-mult">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Rule of 72 Doubling</div><div class="fsc-result-value" id="ci-r72">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Future Value (Nominal)</div><div class="fsc-result-value" id="ci-final">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Real Value (Inflation-Adj.)</div><div class="fsc-result-value" id="ci-real">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Contributed</div><div class="fsc-result-value" id="ci-contrib">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Interest Earned</div><div class="fsc-result-value" id="ci-earned">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Growth Multiple</div><div class="fsc-result-value" id="ci-mult">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Rule of 72 Doubling</div><div class="fsc-result-value" id="ci-r72">--</div></div>
   </div>
 </div>
 <!-- Stacked Area Chart -->
@@ -468,10 +468,10 @@ function fs_calc_roi( $title ) { ?>
     <button class="fsc-btn" onclick="calcROI()">Calculate ROI</button>
   </div>
   <div class="fsc-results" id="roi-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total ROI</div><div class="fsc-result-value" id="roi-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Net Profit</div><div class="fsc-result-value" id="roi-profit">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annualized ROI (CAGR)</div><div class="fsc-result-value" id="roi-annual">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Money Multiple</div><div class="fsc-result-value" id="roi-mult">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total ROI</div><div class="fsc-result-value" id="roi-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Net Profit</div><div class="fsc-result-value" id="roi-profit">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annualized ROI (CAGR)</div><div class="fsc-result-value" id="roi-annual">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Money Multiple</div><div class="fsc-result-value" id="roi-mult">--</div></div>
   </div>
 </div></div>
 <script>
@@ -506,10 +506,10 @@ function fs_calc_dividend() { ?>
     <button class="fsc-btn" onclick="calcDividend()">Calculate</button>
   </div>
   <div class="fsc-results" id="dv-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Annual Income (Now)</div><div class="fsc-result-value" id="dv-annual">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Dividend Yield</div><div class="fsc-result-value" id="dv-yield">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annual Income (Yr <?php echo '10'; ?>)</div><div class="fsc-result-value" id="dv-future">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Dividends Collected</div><div class="fsc-result-value" id="dv-total">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Annual Income (Now)</div><div class="fsc-result-value" id="dv-annual">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Dividend Yield</div><div class="fsc-result-value" id="dv-yield">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annual Income (Yr <?php echo '10'; ?>)</div><div class="fsc-result-value" id="dv-future">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Dividends Collected</div><div class="fsc-result-value" id="dv-total">--</div></div>
   </div>
 </div></div>
 <script>
@@ -547,10 +547,10 @@ function fs_calc_dca( $title ) { ?>
     <button class="fsc-btn" onclick="calcDCA()">Calculate</button>
   </div>
   <div class="fsc-results" id="dca-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Portfolio Value</div><div class="fsc-result-value" id="dca-value">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Invested</div><div class="fsc-result-value" id="dca-invested">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Profit</div><div class="fsc-result-value" id="dca-profit">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="dca-roi">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Portfolio Value</div><div class="fsc-result-value" id="dca-value">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Invested</div><div class="fsc-result-value" id="dca-invested">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Profit</div><div class="fsc-result-value" id="dca-profit">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="dca-roi">--</div></div>
   </div>
 </div></div>
 <script>
@@ -590,9 +590,9 @@ function fs_calc_portfolio() { ?>
 </div>
 <div id="pf-results" style="display:none;margin-top:1.5rem">
   <div class="fsc-results" style="grid-template-columns:repeat(3,1fr)">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Value</div><div class="fsc-result-value" id="pf-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Weighted Return</div><div class="fsc-result-value" id="pf-return">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Assets</div><div class="fsc-result-value" id="pf-count">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Value</div><div class="fsc-result-value" id="pf-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Weighted Return</div><div class="fsc-result-value" id="pf-return">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Assets</div><div class="fsc-result-value" id="pf-count">--</div></div>
   </div>
   <div id="pf-breakdown" style="margin-top:1rem"></div>
 </div>
@@ -638,10 +638,10 @@ function fs_calc_capital_gains( $title ) { ?>
     <button class="fsc-btn" onclick="calcCapGains()">Calculate Tax</button>
   </div>
   <div class="fsc-results" id="cg-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Capital Gain</div><div class="fsc-result-value" id="cg-gain">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Tax Rate</div><div class="fsc-result-value" id="cg-rate">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Tax Owed</div><div class="fsc-result-value" id="cg-tax">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">After-Tax Profit</div><div class="fsc-result-value" id="cg-net">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Capital Gain</div><div class="fsc-result-value" id="cg-gain">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Tax Rate</div><div class="fsc-result-value" id="cg-rate">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Tax Owed</div><div class="fsc-result-value" id="cg-tax">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">After-Tax Profit</div><div class="fsc-result-value" id="cg-net">--</div></div>
   </div>
 </div></div>
 <script>
@@ -679,10 +679,10 @@ function fs_calc_cagr() { ?>
     <button class="fsc-btn" onclick="calcCAGR()">Calculate CAGR</button>
   </div>
   <div class="fsc-results" id="cagr-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">CAGR</div><div class="fsc-result-value" id="cagr-rate">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Growth</div><div class="fsc-result-value" id="cagr-growth">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Absolute Return</div><div class="fsc-result-value" id="cagr-abs">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Money Multiple</div><div class="fsc-result-value" id="cagr-mult">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">CAGR</div><div class="fsc-result-value" id="cagr-rate">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Growth</div><div class="fsc-result-value" id="cagr-growth">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Absolute Return</div><div class="fsc-result-value" id="cagr-abs">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Money Multiple</div><div class="fsc-result-value" id="cagr-mult">--</div></div>
   </div>
 </div></div>
 <script>
@@ -714,9 +714,9 @@ function fs_calc_pv() { ?>
     <button class="fsc-btn" onclick="calcPV()">Calculate Present Value</button>
   </div>
   <div class="fsc-results" id="pv-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Present Value</div><div class="fsc-result-value" id="pv-pv">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Discount Amount</div><div class="fsc-result-value" id="pv-disc">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Discount Factor</div><div class="fsc-result-value" id="pv-factor">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Present Value</div><div class="fsc-result-value" id="pv-pv">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Discount Amount</div><div class="fsc-result-value" id="pv-disc">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Discount Factor</div><div class="fsc-result-value" id="pv-factor">--</div></div>
   </div>
 </div></div>
 <script>
@@ -747,9 +747,9 @@ function fs_calc_breakeven() { ?>
     <button class="fsc-btn" onclick="calcBreakEven()">Calculate</button>
   </div>
   <div class="fsc-results" id="be-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Break-Even Units</div><div class="fsc-result-value" id="be-units">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Revenue</div><div class="fsc-result-value" id="be-rev">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Contribution Margin</div><div class="fsc-result-value" id="be-margin">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Break-Even Units</div><div class="fsc-result-value" id="be-units">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Revenue</div><div class="fsc-result-value" id="be-rev">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Contribution Margin</div><div class="fsc-result-value" id="be-margin">--</div></div>
   </div>
 </div></div>
 <script>
@@ -780,9 +780,9 @@ function fs_calc_inflation() { ?>
     <button class="fsc-btn" onclick="calcInflation()">Calculate</button>
   </div>
   <div class="fsc-results" id="inf-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Future Equivalent</div><div class="fsc-result-value" id="inf-future">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Purchasing Power Loss</div><div class="fsc-result-value" id="inf-loss">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Real Value Today's $</div><div class="fsc-result-value" id="inf-real">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Future Equivalent</div><div class="fsc-result-value" id="inf-future">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Purchasing Power Loss</div><div class="fsc-result-value" id="inf-loss">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Real Value Today's $</div><div class="fsc-result-value" id="inf-real">--</div></div>
   </div>
 </div></div>
 <script>
@@ -814,9 +814,9 @@ function fs_calc_sharpe() { ?>
     <button class="fsc-btn" onclick="calcSharpe()">Calculate</button>
   </div>
   <div class="fsc-results" id="sh-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Sharpe Ratio</div><div class="fsc-result-value" id="sh-ratio">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Excess Return</div><div class="fsc-result-value" id="sh-excess">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Rating</div><div class="fsc-result-value" id="sh-rating">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Sharpe Ratio</div><div class="fsc-result-value" id="sh-ratio">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Excess Return</div><div class="fsc-result-value" id="sh-excess">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Rating</div><div class="fsc-result-value" id="sh-rating">--</div></div>
   </div>
 </div></div>
 <script>
@@ -848,10 +848,10 @@ function fs_calc_bond() { ?>
     <button class="fsc-btn" onclick="calcBond()">Calculate</button>
   </div>
   <div class="fsc-results" id="bn-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Current Yield</div><div class="fsc-result-value" id="bn-cy">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annual Coupon</div><div class="fsc-result-value" id="bn-ac">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">YTM (approx)</div><div class="fsc-result-value" id="bn-ytm">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Premium/Discount</div><div class="fsc-result-value" id="bn-pd">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Current Yield</div><div class="fsc-result-value" id="bn-cy">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annual Coupon</div><div class="fsc-result-value" id="bn-ac">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">YTM (approx)</div><div class="fsc-result-value" id="bn-ytm">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Premium/Discount</div><div class="fsc-result-value" id="bn-pd">--</div></div>
   </div>
 </div></div>
 <script>
@@ -889,10 +889,10 @@ function fs_calc_options() { ?>
     <button class="fsc-btn" onclick="calcOptions()">Calculate P&amp;L</button>
   </div>
   <div class="fsc-results" id="op-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Profit / Loss</div><div class="fsc-result-value" id="op-pnl">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Price</div><div class="fsc-result-value" id="op-be">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Max Loss</div><div class="fsc-result-value" id="op-maxloss">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="op-roi">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Profit / Loss</div><div class="fsc-result-value" id="op-pnl">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Price</div><div class="fsc-result-value" id="op-be">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Max Loss</div><div class="fsc-result-value" id="op-maxloss">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="op-roi">--</div></div>
   </div>
 </div></div>
 <script>
@@ -932,10 +932,10 @@ function fs_calc_income_tax( $title ) { ?>
     <button class="fsc-btn" onclick="calcTax()">Calculate Tax</button>
   </div>
   <div class="fsc-results" id="tx-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Federal Tax</div><div class="fsc-result-value" id="tx-federal">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">State Tax</div><div class="fsc-result-value" id="tx-state-amt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Effective Rate</div><div class="fsc-result-value" id="tx-eff">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">After-Tax Income</div><div class="fsc-result-value" id="tx-net">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Federal Tax</div><div class="fsc-result-value" id="tx-federal">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">State Tax</div><div class="fsc-result-value" id="tx-state-amt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Effective Rate</div><div class="fsc-result-value" id="tx-eff">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">After-Tax Income</div><div class="fsc-result-value" id="tx-net">--</div></div>
   </div>
 </div></div>
 <script>
@@ -973,10 +973,10 @@ function fs_calc_self_emp_tax() { ?>
     <button class="fsc-btn" onclick="calcSETax()">Calculate</button>
   </div>
   <div class="fsc-results" id="se-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">SE Tax</div><div class="fsc-result-value" id="se-tax">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Quarterly Payment</div><div class="fsc-result-value" id="se-quarterly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Deductible SE Tax</div><div class="fsc-result-value" id="se-deduct">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Effective SE Rate</div><div class="fsc-result-value" id="se-rate">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">SE Tax</div><div class="fsc-result-value" id="se-tax">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Quarterly Payment</div><div class="fsc-result-value" id="se-quarterly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Deductible SE Tax</div><div class="fsc-result-value" id="se-deduct">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Effective SE Rate</div><div class="fsc-result-value" id="se-rate">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1009,10 +1009,10 @@ function fs_calc_savings_goal( $title ) { ?>
     <button class="fsc-btn" onclick="calcSavingsGoal()">Calculate</button>
   </div>
   <div class="fsc-results" id="sg-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Months to Goal</div><div class="fsc-result-value" id="sg-months">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Goal Date</div><div class="fsc-result-value" id="sg-date">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Saved</div><div class="fsc-result-value" id="sg-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Interest Earned</div><div class="fsc-result-value" id="sg-interest">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Months to Goal</div><div class="fsc-result-value" id="sg-months">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Goal Date</div><div class="fsc-result-value" id="sg-date">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Saved</div><div class="fsc-result-value" id="sg-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Interest Earned</div><div class="fsc-result-value" id="sg-interest">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1045,9 +1045,9 @@ function fs_calc_52week() { ?>
   <button class="fsc-btn" onclick="calc52()">Calculate Total</button>
 </div>
 <div class="fsc-results" id="sw-results" style="display:none;margin-top:1rem">
-  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Saved in 1 Year</div><div class="fsc-result-value" id="sw-total">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Average Per Week</div><div class="fsc-result-value" id="sw-avg">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Biggest Week</div><div class="fsc-result-value" id="sw-big">—</div></div>
+  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Saved in 1 Year</div><div class="fsc-result-value" id="sw-total">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Average Per Week</div><div class="fsc-result-value" id="sw-avg">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Biggest Week</div><div class="fsc-result-value" id="sw-big">--</div></div>
 </div>
 <div id="sw-table-wrap" style="display:none;margin-top:1.5rem;max-height:300px;overflow-y:auto">
   <table class="fsc-table"><thead><tr><th>Week</th><th>Save</th><th>Running Total</th></tr></thead><tbody id="sw-tbody"></tbody></table>
@@ -1088,14 +1088,14 @@ function fs_calc_retirement( $title ) { ?>
     <button class="fsc-btn" onclick="calcRetirement()">Calculate Retirement</button>
   </div>
   <div class="fsc-results" id="rt-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Nest Egg at Retirement</div><div class="fsc-result-value" id="rt-nest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Income (4% Rule)</div><div class="fsc-result-value" id="rt-income">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Employer Match Earned</div><div class="fsc-result-value" id="rt-match-earned">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Contributed (You)</div><div class="fsc-result-value" id="rt-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Investment Growth</div><div class="fsc-result-value" id="rt-growth">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">On Track?</div><div class="fsc-result-value" id="rt-status">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Years of Growth</div><div class="fsc-result-value" id="rt-years">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Real Value (Inflation-Adj.)</div><div class="fsc-result-value" id="rt-real">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Nest Egg at Retirement</div><div class="fsc-result-value" id="rt-nest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Income (4% Rule)</div><div class="fsc-result-value" id="rt-income">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Employer Match Earned</div><div class="fsc-result-value" id="rt-match-earned">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Contributed (You)</div><div class="fsc-result-value" id="rt-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Investment Growth</div><div class="fsc-result-value" id="rt-growth">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">On Track?</div><div class="fsc-result-value" id="rt-status">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Years of Growth</div><div class="fsc-result-value" id="rt-years">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Real Value (Inflation-Adj.)</div><div class="fsc-result-value" id="rt-real">--</div></div>
   </div>
 </div>
 <!-- Chart -->
@@ -1188,10 +1188,10 @@ function fs_calc_fire() { ?>
     <button class="fsc-btn" onclick="calcFIRE()">Calculate FIRE</button>
   </div>
   <div class="fsc-results" id="fi-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">FIRE Number</div><div class="fsc-result-value" id="fi-number">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Years to FIRE</div><div class="fsc-result-value" id="fi-years">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">FIRE Date</div><div class="fsc-result-value" id="fi-date">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Savings Rate</div><div class="fsc-result-value" id="fi-rate">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">FIRE Number</div><div class="fsc-result-value" id="fi-number">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Years to FIRE</div><div class="fsc-result-value" id="fi-years">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">FIRE Date</div><div class="fsc-result-value" id="fi-date">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Savings Rate</div><div class="fsc-result-value" id="fi-rate">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1242,10 +1242,10 @@ function fs_calc_budget( $title ) { ?>
   <button class="fsc-btn" style="margin-top:1rem" onclick="calcBudget()">Analyze Budget</button>
 </div>
 <div class="fsc-results" id="bg-results" style="display:none;margin-top:1.5rem">
-  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Income</div><div class="fsc-result-value" id="bg-income">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Total Expenses</div><div class="fsc-result-value" id="bg-expenses">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Monthly Surplus</div><div class="fsc-result-value" id="bg-surplus">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Savings Rate</div><div class="fsc-result-value" id="bg-saverate">—</div></div>
+  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Income</div><div class="fsc-result-value" id="bg-income">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Total Expenses</div><div class="fsc-result-value" id="bg-expenses">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Monthly Surplus</div><div class="fsc-result-value" id="bg-surplus">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Savings Rate</div><div class="fsc-result-value" id="bg-saverate">--</div></div>
 </div>
 </div>
 <script>
@@ -1277,10 +1277,10 @@ function fs_calc_503020() { ?>
     <button class="fsc-btn" onclick="calc503020()">Calculate</button>
   </div>
   <div class="fsc-results" id="b3-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Needs Budget</div><div class="fsc-result-value" id="b3-needs-amt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Wants Budget</div><div class="fsc-result-value" id="b3-wants-amt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Savings Budget</div><div class="fsc-result-value" id="b3-savings-amt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annual Savings</div><div class="fsc-result-value" id="b3-annual">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Needs Budget</div><div class="fsc-result-value" id="b3-needs-amt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Wants Budget</div><div class="fsc-result-value" id="b3-wants-amt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Savings Budget</div><div class="fsc-result-value" id="b3-savings-amt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annual Savings</div><div class="fsc-result-value" id="b3-annual">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1315,10 +1315,10 @@ function fs_calc_dti() { ?>
     <button class="fsc-btn" onclick="calcDTI()">Calculate DTI</button>
   </div>
   <div class="fsc-results" id="dti-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Front-End DTI</div><div class="fsc-result-value" id="dti-front">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Back-End DTI</div><div class="fsc-result-value" id="dti-back">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Monthly Debt</div><div class="fsc-result-value" id="dti-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Loan Qualification</div><div class="fsc-result-value" id="dti-qual">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Front-End DTI</div><div class="fsc-result-value" id="dti-front">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Back-End DTI</div><div class="fsc-result-value" id="dti-back">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Monthly Debt</div><div class="fsc-result-value" id="dti-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Loan Qualification</div><div class="fsc-result-value" id="dti-qual">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1331,7 +1331,7 @@ function calcDTI(){
   var other=parseFloat(document.getElementById('dti-other').value)||0;
   var front=mortgage/I*100;
   var back=(mortgage+car+student+cc+other)/I*100;
-  var qual=back<=36?'Excellent':back<=43?'Good – FHA/Conv':back<=50?'Borderline':' High Risk';
+  var qual=back<=36?'Excellent':back<=43?'Good - FHA/Conv':back<=50?'Borderline':' High Risk';
   var fmt=function(v){return '$'+v.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');};
   document.getElementById('dti-front').textContent=front.toFixed(1)+'%';
   document.getElementById('dti-back').textContent=back.toFixed(1)+'%';
@@ -1368,10 +1368,10 @@ function fs_calc_net_worth() { ?>
 </div>
 <button class="fsc-btn" style="margin-top:1rem" onclick="calcNetWorth()">Calculate Net Worth</button>
 <div class="fsc-results" id="nw-results" style="display:none;margin-top:1.5rem">
-  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Net Worth</div><div class="fsc-result-value" id="nw-net">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Total Assets</div><div class="fsc-result-value" id="nw-assets">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Total Liabilities</div><div class="fsc-result-value" id="nw-liabilities">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Debt Ratio</div><div class="fsc-result-value" id="nw-ratio">—</div></div>
+  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Net Worth</div><div class="fsc-result-value" id="nw-net">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Total Assets</div><div class="fsc-result-value" id="nw-assets">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Total Liabilities</div><div class="fsc-result-value" id="nw-liabilities">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Debt Ratio</div><div class="fsc-result-value" id="nw-ratio">--</div></div>
 </div>
 </div>
 <script>
@@ -1398,16 +1398,16 @@ function fs_calc_currency() { ?>
   <div class="fsc-inputs">
     <div class="fsc-field"><label>Amount</label><input type="number" id="cc-amount" value="1000"></div>
     <div class="fsc-field"><label>From Currency</label>
-      <select id="cc-from"><option value="1">USD – US Dollar</option><option value="0.93">EUR – Euro</option><option value="0.79">GBP – British Pound</option><option value="149.5">JPY – Japanese Yen</option><option value="1.36">CAD – Canadian Dollar</option><option value="1.54">AUD – Australian Dollar</option><option value="0.89">CHF – Swiss Franc</option><option value="7.24">CNY – Chinese Yuan</option><option value="83.5">INR – Indian Rupee</option><option value="5.05">BRL – Brazilian Real</option></select></div>
+      <select id="cc-from"><option value="1">USD - US Dollar</option><option value="0.93">EUR - Euro</option><option value="0.79">GBP - British Pound</option><option value="149.5">JPY - Japanese Yen</option><option value="1.36">CAD - Canadian Dollar</option><option value="1.54">AUD - Australian Dollar</option><option value="0.89">CHF - Swiss Franc</option><option value="7.24">CNY - Chinese Yuan</option><option value="83.5">INR - Indian Rupee</option><option value="5.05">BRL - Brazilian Real</option></select></div>
     <div class="fsc-field"><label>To Currency</label>
-      <select id="cc-to"><option value="0.93">EUR – Euro</option><option value="1">USD – US Dollar</option><option value="0.79">GBP – British Pound</option><option value="149.5">JPY – Japanese Yen</option><option value="1.36">CAD – Canadian Dollar</option><option value="1.54">AUD – Australian Dollar</option><option value="0.89">CHF – Swiss Franc</option><option value="7.24">CNY – Chinese Yuan</option><option value="83.5">INR – Indian Rupee</option><option value="5.05">BRL – Brazilian Real</option></select></div>
+      <select id="cc-to"><option value="0.93">EUR - Euro</option><option value="1">USD - US Dollar</option><option value="0.79">GBP - British Pound</option><option value="149.5">JPY - Japanese Yen</option><option value="1.36">CAD - Canadian Dollar</option><option value="1.54">AUD - Australian Dollar</option><option value="0.89">CHF - Swiss Franc</option><option value="7.24">CNY - Chinese Yuan</option><option value="83.5">INR - Indian Rupee</option><option value="5.05">BRL - Brazilian Real</option></select></div>
     <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:-.5rem">*Approximate rates for reference only</p>
     <button class="fsc-btn" onclick="calcCurrency()">Convert</button>
   </div>
   <div class="fsc-results" id="cc-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Converted Amount</div><div class="fsc-result-value" id="cc-converted">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Exchange Rate</div><div class="fsc-result-value" id="cc-rate">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Inverse Rate</div><div class="fsc-result-value" id="cc-inverse">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Converted Amount</div><div class="fsc-result-value" id="cc-converted">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Exchange Rate</div><div class="fsc-result-value" id="cc-rate">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Inverse Rate</div><div class="fsc-result-value" id="cc-inverse">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1450,8 +1450,8 @@ function fs_calc_crypto_convert( $title ) { ?>
     <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.5rem">*Approximate prices for reference</p>
   </div>
   <div class="fsc-results" id="crc-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Fiat Value</div><div class="fsc-result-value" id="crc-value">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Price Per Coin (USD)</div><div class="fsc-result-value" id="crc-price">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Fiat Value</div><div class="fsc-result-value" id="crc-value">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Price Per Coin (USD)</div><div class="fsc-result-value" id="crc-price">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1482,10 +1482,10 @@ function fs_calc_crypto_pnl() { ?>
     <button class="fsc-btn" onclick="calcCryptoPnL()">Calculate P&amp;L</button>
   </div>
   <div class="fsc-results" id="cp-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Net Profit</div><div class="fsc-result-value" id="cp-profit">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="cp-roi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Fees Paid</div><div class="fsc-result-value" id="cp-fee-amt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Price</div><div class="fsc-result-value" id="cp-be">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Net Profit</div><div class="fsc-result-value" id="cp-profit">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">ROI</div><div class="fsc-result-value" id="cp-roi">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Fees Paid</div><div class="fsc-result-value" id="cp-fee-amt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even Price</div><div class="fsc-result-value" id="cp-be">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1523,10 +1523,10 @@ function fs_calc_staking( $title ) { ?>
     <button class="fsc-btn" onclick="calcStaking()">Calculate Rewards</button>
   </div>
   <div class="fsc-results" id="sk-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Rewards</div><div class="fsc-result-value" id="sk-rewards">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Final Value</div><div class="fsc-result-value" id="sk-final">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Reward</div><div class="fsc-result-value" id="sk-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Effective APY</div><div class="fsc-result-value" id="sk-eff">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Rewards</div><div class="fsc-result-value" id="sk-rewards">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Final Value</div><div class="fsc-result-value" id="sk-final">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Reward</div><div class="fsc-result-value" id="sk-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Effective APY</div><div class="fsc-result-value" id="sk-eff">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1563,10 +1563,10 @@ function fs_calc_mining() { ?>
     <button class="fsc-btn" onclick="calcMining()">Calculate</button>
   </div>
   <div class="fsc-results" id="mn-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Daily Profit</div><div class="fsc-result-value" id="mn-daily">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Profit</div><div class="fsc-result-value" id="mn-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Daily Electricity Cost</div><div class="fsc-result-value" id="mn-elec-cost">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even BTC Price</div><div class="fsc-result-value" id="mn-be">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Daily Profit</div><div class="fsc-result-value" id="mn-daily">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Profit</div><div class="fsc-result-value" id="mn-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Daily Electricity Cost</div><div class="fsc-result-value" id="mn-elec-cost">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even BTC Price</div><div class="fsc-result-value" id="mn-be">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1600,17 +1600,17 @@ function fs_calc_risk() { ?>
 <p style="color:rgba(255,255,255,.7);margin-bottom:1.5rem">Answer the questions below to discover your investor risk profile.</p>
 <div class="fsc-inputs">
   <div class="fsc-field"><label>1. Investment time horizon</label>
-    <select id="rk-time"><option value="1">Less than 3 years</option><option value="2">3–5 years</option><option value="3" selected>5–10 years</option><option value="4">More than 10 years</option></select></div>
+    <select id="rk-time"><option value="1">Less than 3 years</option><option value="2">3-5 years</option><option value="3" selected>5-10 years</option><option value="4">More than 10 years</option></select></div>
   <div class="fsc-field"><label>2. If your portfolio dropped 20%, you would:</label>
     <select id="rk-drop"><option value="1">Sell everything</option><option value="2">Sell some</option><option value="3" selected>Hold steady</option><option value="4">Buy more</option></select></div>
   <div class="fsc-field"><label>3. Your primary goal is:</label>
     <select id="rk-goal"><option value="1">Capital preservation</option><option value="2" selected>Moderate growth</option><option value="3">Aggressive growth</option></select></div>
   <div class="fsc-field"><label>4. What % of savings are you investing?</label>
-    <select id="rk-pct"><option value="1">Less than 10%</option><option value="2" selected>10–30%</option><option value="3">30–60%</option><option value="4">Over 60%</option></select></div>
+    <select id="rk-pct"><option value="1">Less than 10%</option><option value="2" selected>10-30%</option><option value="3">30-60%</option><option value="4">Over 60%</option></select></div>
   <button class="fsc-btn" onclick="calcRisk()">Get My Risk Profile</button>
 </div>
 <div id="rk-results" style="display:none;margin-top:1.5rem">
-  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Risk Profile</div><div class="fsc-result-value" id="rk-profile">—</div></div>
+  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Risk Profile</div><div class="fsc-result-value" id="rk-profile">--</div></div>
   <div id="rk-allocation" style="margin-top:1rem"></div>
 </div>
 </div>
@@ -1642,8 +1642,8 @@ function fs_calc_simple( $title ) { ?>
     <button class="fsc-btn" onclick="calcSimple()">Calculate</button>
   </div>
   <div class="fsc-results" id="sc-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Result</div><div class="fsc-result-value" id="sc-result">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Amount</div><div class="fsc-result-value" id="sc-total">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Result</div><div class="fsc-result-value" id="sc-result">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Amount</div><div class="fsc-result-value" id="sc-total">--</div></div>
   </div>
 </div></div>
 <script>
@@ -1693,14 +1693,14 @@ function fs_calc_mortgage() { ?>
     </div>
   </div>
   <div class="fsc-results" id="mg-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Monthly Payment</div><div class="fsc-result-value" id="mg-total-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Principal &amp; Interest</div><div class="fsc-result-value" id="mg-pi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount</div><div class="fsc-result-value" id="mg-loan">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest Paid</div><div class="fsc-result-value" id="mg-int">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Cost (Life of Loan)</div><div class="fsc-result-value" id="mg-cost">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">LTV Ratio</div><div class="fsc-result-value" id="mg-ltv">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Interest-to-Principal Ratio</div><div class="fsc-result-value" id="mg-ipr">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Year</div><div class="fsc-result-value" id="mg-payoffyr">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Monthly Payment</div><div class="fsc-result-value" id="mg-total-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Principal &amp; Interest</div><div class="fsc-result-value" id="mg-pi">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount</div><div class="fsc-result-value" id="mg-loan">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest Paid</div><div class="fsc-result-value" id="mg-int">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Cost (Life of Loan)</div><div class="fsc-result-value" id="mg-cost">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">LTV Ratio</div><div class="fsc-result-value" id="mg-ltv">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Interest-to-Principal Ratio</div><div class="fsc-result-value" id="mg-ipr">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Year</div><div class="fsc-result-value" id="mg-payoffyr">--</div></div>
   </div>
 </div>
 
@@ -1708,11 +1708,11 @@ function fs_calc_mortgage() { ?>
 <div id="mg-breakdown" style="display:none;margin-top:1.5rem">
   <h3 style="font-size:1rem;font-weight:700;margin-bottom:1rem">&#128202; Monthly Payment Breakdown</h3>
   <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(130px,1fr));gap:.75rem;margin-bottom:1.5rem">
-    <div class="fsc-result-card"><div class="fsc-result-label">&#127968; P&amp;I</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">&#127963;&#65039; Property Tax</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-tax">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">&#128737;&#65039; Insurance</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-ins">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">&#128203; PMI</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pmi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">&#127970; HOA</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-hoa">—</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127968; P&amp;I</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pi">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127963;&#65039; Property Tax</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-tax">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#128737;&#65039; Insurance</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-ins">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#128203; PMI</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-pmi">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">&#127970; HOA</div><div class="fsc-result-value" style="font-size:1.1rem" id="mg-b-hoa">--</div></div>
   </div>
   <!-- Charts -->
   <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-bottom:1.5rem">
@@ -1807,7 +1807,7 @@ function calcMortgage(){
       backgroundColor:['#00C896','#3B82F6','#F59E0B','#EF4444','#8B5CF6','#6B7280']}]
   },options:{plugins:{legend:{position:'bottom',labels:{font:{size:10}}}},cutout:'60%'}});
 
-  /* Line chart — balance over time */
+  /* Line chart -- balance over time */
   var labels=[],balances=[];
   var bal=P;
   for(var m=0;m<=n;m+=Math.max(1,Math.floor(n/12))){
@@ -1849,7 +1849,7 @@ function mgCompare(){
       +'<td>'+fmt(M)+'/mo</td>'
       +'<td>'+fmt(totalInt)+'</td>'
       +'<td>'+fmt(totalCost)+'</td>'
-      +'<td style="color:'+(saved>0?'#00C896':'#6B7280')+';font-weight:700">'+(saved>0?fmt(saved)+' saved':'—')+'</td>'
+      +'<td style="color:'+(saved>0?'#00C896':'#6B7280')+';font-weight:700">'+(saved>0?fmt(saved)+' saved':'--')+'</td>'
       +'</tr>';
   });
   document.getElementById('mg-compare-tbody').innerHTML=rows;
@@ -1882,12 +1882,12 @@ function fs_calc_auto_loan() { ?>
     <button class="fsc-btn" onclick="calcAutoLoan()">Calculate Payment</button>
   </div>
   <div class="fsc-results" id="al-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="al-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount</div><div class="fsc-result-value" id="al-loan">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="al-interest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Cost of Car</div><div class="fsc-result-value" id="al-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Tax Amount</div><div class="fsc-result-value" id="al-taxamt">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="al-payoff">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="al-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount</div><div class="fsc-result-value" id="al-loan">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="al-interest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Cost of Car</div><div class="fsc-result-value" id="al-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Tax Amount</div><div class="fsc-result-value" id="al-taxamt">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="al-payoff">--</div></div>
   </div>
 </div>
 </div>
@@ -1939,12 +1939,12 @@ function fs_calc_personal_loan() { ?>
     <button class="fsc-btn" onclick="calcPersonalLoan()">Calculate</button>
   </div>
   <div class="fsc-results" id="pl-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="pl-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Repayment</div><div class="fsc-result-value" id="pl-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="pl-interest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fee</div><div class="fsc-result-value" id="pl-feeval">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Net Loan Received</div><div class="fsc-result-value" id="pl-net">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Effective APR</div><div class="fsc-result-value" id="pl-apr">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="pl-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Repayment</div><div class="fsc-result-value" id="pl-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="pl-interest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fee</div><div class="fsc-result-value" id="pl-feeval">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Net Loan Received</div><div class="fsc-result-value" id="pl-net">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Effective APR</div><div class="fsc-result-value" id="pl-apr">--</div></div>
   </div>
 </div>
 </div>
@@ -1992,12 +1992,12 @@ function fs_calc_student_loan() { ?>
     <button class="fsc-btn" onclick="calcStudentLoan()">Calculate Repayment</button>
   </div>
   <div class="fsc-results" id="sl-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="sl-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Repayment</div><div class="fsc-result-value" id="sl-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="sl-interest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Interest During Grace</div><div class="fsc-result-value" id="sl-grace-int">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="sl-payoff">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Balance After Grace</div><div class="fsc-result-value" id="sl-after-grace">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="sl-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Repayment</div><div class="fsc-result-value" id="sl-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="sl-interest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Interest During Grace</div><div class="fsc-result-value" id="sl-grace-int">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Payoff Date</div><div class="fsc-result-value" id="sl-payoff">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Balance After Grace</div><div class="fsc-result-value" id="sl-after-grace">--</div></div>
   </div>
 </div>
 </div>
@@ -2051,12 +2051,12 @@ function fs_calc_heloc() { ?>
     <button class="fsc-btn" onclick="calcHeloc()">Calculate</button>
   </div>
   <div class="fsc-results" id="he-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Max Available Equity</div><div class="fsc-result-value" id="he-equity">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="he-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="he-interest">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Current LTV</div><div class="fsc-result-value" id="he-cur-ltv">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Current Home Equity</div><div class="fsc-result-value" id="he-cur-equity">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">LTV After New Loan</div><div class="fsc-result-value" id="he-new-ltv">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Max Available Equity</div><div class="fsc-result-value" id="he-equity">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="he-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest</div><div class="fsc-result-value" id="he-interest">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Current LTV</div><div class="fsc-result-value" id="he-cur-ltv">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Current Home Equity</div><div class="fsc-result-value" id="he-cur-equity">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">LTV After New Loan</div><div class="fsc-result-value" id="he-new-ltv">--</div></div>
   </div>
 </div>
 </div>
@@ -2117,12 +2117,12 @@ function fs_calc_debt_consolidation() { ?>
 </div>
 <button class="fsc-btn" onclick="calcDebtConsol()">Calculate Savings</button>
 <div class="fsc-results" id="dc-results" style="display:none;margin-top:1.5rem">
-  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">New Monthly Payment</div><div class="fsc-result-value" id="dc-new-pay">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Old Monthly Minimums</div><div class="fsc-result-value" id="dc-old-pay">—</div></div>
-  <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Monthly Savings</div><div class="fsc-result-value" id="dc-monthly-save">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Total Debt</div><div class="fsc-result-value" id="dc-total-debt">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Interest Savings</div><div class="fsc-result-value" id="dc-int-save">—</div></div>
-  <div class="fsc-result-card"><div class="fsc-result-label">Payoff Sooner By</div><div class="fsc-result-value" id="dc-time-save">—</div></div>
+  <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">New Monthly Payment</div><div class="fsc-result-value" id="dc-new-pay">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Old Monthly Minimums</div><div class="fsc-result-value" id="dc-old-pay">--</div></div>
+  <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Monthly Savings</div><div class="fsc-result-value" id="dc-monthly-save">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Total Debt</div><div class="fsc-result-value" id="dc-total-debt">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Interest Savings</div><div class="fsc-result-value" id="dc-int-save">--</div></div>
+  <div class="fsc-result-card"><div class="fsc-result-label">Payoff Sooner By</div><div class="fsc-result-value" id="dc-time-save">--</div></div>
 </div>
 </div>
 <script>
@@ -2170,21 +2170,21 @@ function fs_calc_fha_loan() { ?>
     </div>
     <div class="fsc-field"><label>Credit Score Range</label>
       <select id="fha-credit">
-        <option value="580">580–619 (Min FHA)</option>
-        <option value="620" selected>620–679</option>
-        <option value="680">680–719</option>
+        <option value="580">580-619 (Min FHA)</option>
+        <option value="620" selected>620-679</option>
+        <option value="680">680-719</option>
         <option value="720">720+</option>
       </select>
     </div>
     <button class="fsc-btn" onclick="calcFha()">Calculate FHA Payment</button>
   </div>
   <div class="fsc-results" id="fha-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Monthly Payment</div><div class="fsc-result-value" id="fha-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Principal &amp; Interest</div><div class="fsc-result-value" id="fha-pi">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Upfront MIP (1.75%)</div><div class="fsc-result-value" id="fha-ufmip">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annual MIP / Month</div><div class="fsc-result-value" id="fha-amip">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Down Payment</div><div class="fsc-result-value" id="fha-dp">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount (+ UFMIP)</div><div class="fsc-result-value" id="fha-loan">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Total Monthly Payment</div><div class="fsc-result-value" id="fha-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Principal &amp; Interest</div><div class="fsc-result-value" id="fha-pi">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Upfront MIP (1.75%)</div><div class="fsc-result-value" id="fha-ufmip">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annual MIP / Month</div><div class="fsc-result-value" id="fha-amip">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Down Payment</div><div class="fsc-result-value" id="fha-dp">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Loan Amount (+ UFMIP)</div><div class="fsc-result-value" id="fha-loan">--</div></div>
   </div>
 </div>
 <div id="fha-note" style="display:none;margin-top:1.5rem;padding:1rem;background:#FFF8E7;border-left:4px solid #F59E0B;border-radius:8px;font-size:.88rem;color:#92400E">
@@ -2238,12 +2238,12 @@ function fs_calc_balloon_loan() { ?>
     <button class="fsc-btn" onclick="calcBalloon()">Calculate</button>
   </div>
   <div class="fsc-results" id="bl-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="bl-monthly">—</div></div>
-    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Balloon Payment Due</div><div class="fsc-result-value" id="bl-balloon-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Paid Before Balloon</div><div class="fsc-result-value" id="bl-paid-before">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Interest Paid Before Balloon</div><div class="fsc-result-value" id="bl-int-before">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Principal Paid Before Balloon</div><div class="fsc-result-value" id="bl-prin-before">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Balloon Due Date</div><div class="fsc-result-value" id="bl-due-date">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="bl-monthly">--</div></div>
+    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Balloon Payment Due</div><div class="fsc-result-value" id="bl-balloon-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Paid Before Balloon</div><div class="fsc-result-value" id="bl-paid-before">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Interest Paid Before Balloon</div><div class="fsc-result-value" id="bl-int-before">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Principal Paid Before Balloon</div><div class="fsc-result-value" id="bl-prin-before">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Balloon Due Date</div><div class="fsc-result-value" id="bl-due-date">--</div></div>
   </div>
 </div>
 </div>
@@ -2287,12 +2287,12 @@ function fs_calc_interest_only() { ?>
     <button class="fsc-btn" onclick="calcInterestOnly()">Compare Payments</button>
   </div>
   <div class="fsc-results" id="io-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Interest-Only Payment</div><div class="fsc-result-value" id="io-io-pay">—</div></div>
-    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">P&amp;I Payment (After IO)</div><div class="fsc-result-value" id="io-pi-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Traditional P&amp;I (Full Term)</div><div class="fsc-result-value" id="io-trad-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">IO Period Total Interest</div><div class="fsc-result-value" id="io-io-int">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest (IO Loan)</div><div class="fsc-result-value" id="io-total-int">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Extra Cost vs. Traditional</div><div class="fsc-result-value" id="io-extra">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Interest-Only Payment</div><div class="fsc-result-value" id="io-io-pay">--</div></div>
+    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">P&amp;I Payment (After IO)</div><div class="fsc-result-value" id="io-pi-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Traditional P&amp;I (Full Term)</div><div class="fsc-result-value" id="io-trad-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">IO Period Total Interest</div><div class="fsc-result-value" id="io-io-int">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest (IO Loan)</div><div class="fsc-result-value" id="io-total-int">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Extra Cost vs. Traditional</div><div class="fsc-result-value" id="io-extra">--</div></div>
   </div>
 </div>
 </div>
@@ -2335,12 +2335,12 @@ function fs_calc_loan_payoff() { ?>
     <button class="fsc-btn" onclick="calcLoanPayoff()">Calculate Payoff</button>
   </div>
   <div class="fsc-results" id="lpo-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">New Payoff Date</div><div class="fsc-result-value" id="lpo-new-date">—</div></div>
-    <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Months Saved</div><div class="fsc-result-value" id="lpo-months-saved">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Original Payoff Date</div><div class="fsc-result-value" id="lpo-orig-date">—</div></div>
-    <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Interest Saved</div><div class="fsc-result-value" id="lpo-int-saved">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">New Monthly Payment</div><div class="fsc-result-value" id="lpo-new-pay">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Original Monthly Payment</div><div class="fsc-result-value" id="lpo-orig-pay">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">New Payoff Date</div><div class="fsc-result-value" id="lpo-new-date">--</div></div>
+    <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Months Saved</div><div class="fsc-result-value" id="lpo-months-saved">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Original Payoff Date</div><div class="fsc-result-value" id="lpo-orig-date">--</div></div>
+    <div class="fsc-result-card fsc-result-card--gold"><div class="fsc-result-label">Interest Saved</div><div class="fsc-result-value" id="lpo-int-saved">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">New Monthly Payment</div><div class="fsc-result-value" id="lpo-new-pay">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Original Monthly Payment</div><div class="fsc-result-value" id="lpo-orig-pay">--</div></div>
   </div>
 </div>
 </div>
@@ -2392,12 +2392,12 @@ function fs_calc_commercial_loan() { ?>
     <button class="fsc-btn" onclick="calcCommercial()">Calculate</button>
   </div>
   <div class="fsc-results" id="cm-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="cm-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Balloon Balance Due</div><div class="fsc-result-value" id="cm-balloon">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">DSCR</div><div class="fsc-result-value" id="cm-dscr">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Annual Debt Service</div><div class="fsc-result-value" id="cm-annual">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fees</div><div class="fsc-result-value" id="cm-fees">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Loan Qualifies (DSCR≥1.25)</div><div class="fsc-result-value" id="cm-qualify">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Payment</div><div class="fsc-result-value" id="cm-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Balloon Balance Due</div><div class="fsc-result-value" id="cm-balloon">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">DSCR</div><div class="fsc-result-value" id="cm-dscr">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Annual Debt Service</div><div class="fsc-result-value" id="cm-annual">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fees</div><div class="fsc-result-value" id="cm-fees">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Loan Qualifies (DSCR≥1.25)</div><div class="fsc-result-value" id="cm-qualify">--</div></div>
   </div>
 </div>
 <div id="cm-dscr-note" style="display:none;margin-top:1rem;padding:1rem;border-left:4px solid #3B82F6;background:#EFF6FF;border-radius:8px;font-size:.88rem;color:#1E40AF">
@@ -2459,12 +2459,12 @@ function fs_calc_bridge_loan() { ?>
     <button class="fsc-btn" onclick="calcBridge()">Calculate Bridge Costs</button>
   </div>
   <div class="fsc-results" id="br-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Interest Payment</div><div class="fsc-result-value" id="br-monthly">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest Cost</div><div class="fsc-result-value" id="br-int-total">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fee</div><div class="fsc-result-value" id="br-orig-fee">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Exit Fee</div><div class="fsc-result-value" id="br-exit-fee">—</div></div>
-    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Total Cost of Loan</div><div class="fsc-result-value" id="br-total-cost">—</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Effective Annual Rate</div><div class="fsc-result-value" id="br-ear">—</div></div>
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Monthly Interest Payment</div><div class="fsc-result-value" id="br-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Total Interest Cost</div><div class="fsc-result-value" id="br-int-total">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Origination Fee</div><div class="fsc-result-value" id="br-orig-fee">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Exit Fee</div><div class="fsc-result-value" id="br-exit-fee">--</div></div>
+    <div class="fsc-result-card fsc-result-card--secondary"><div class="fsc-result-label">Total Cost of Loan</div><div class="fsc-result-value" id="br-total-cost">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Effective Annual Rate</div><div class="fsc-result-value" id="br-ear">--</div></div>
   </div>
 </div>
 </div>

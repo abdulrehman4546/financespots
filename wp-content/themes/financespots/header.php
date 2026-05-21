@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
@@ -296,7 +296,7 @@
                     </label>
                     <div class="fs-login-field__wrap">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
-                        <input type="password" id="fl-password" placeholder="••••••••" required autocomplete="current-password">
+                        <input type="password" id="fl-password" placeholder="&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;&#x2022;" required autocomplete="current-password">
                         <button type="button" class="fs-login-eye" onclick="fsTogglePwd('fl-password',this)" aria-label="Show password">
                             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
                         </button>
@@ -316,7 +316,7 @@
                 </button>
 
                 <p style="text-align:center;font-size:.8rem;color:#64748B;margin-top:4px;">
-                    No account? <button type="button" class="fs-login-switch" data-tab="register">Create one free →</button>
+                    No account? <button type="button" class="fs-login-switch" data-tab="register">Create one free &#x2192;</button>
                 </p>
             </form>
         </div>
