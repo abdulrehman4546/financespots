@@ -1525,6 +1525,77 @@ add_action( 'admin_init', 'fs_loan_tools_seo', 25 );
 add_action( 'init',       'fs_loan_tools_seo', 45 );
 
 /* =========================================================
+   MAIN PAGES SEO -- Homepage, About, Pricing, Tools, Blog
+   ========================================================= */
+function fs_main_pages_seo() {
+    if ( get_option( 'fs_main_pages_seo_v1' ) ) return;
+
+    $pages = [
+        // slug => [ title, description, focus_keyword ]
+        ''           => [
+            'title' => 'Free Financial Calculators & Tools 2026 | FinanceSpots',
+            'desc'  => 'FinanceSpots offers 110+ free financial calculators for mortgages, VA loans, taxes, investments, retirement, crypto & more. Instant results with PDF export. No signup needed.',
+            'kw'    => 'free financial calculators',
+        ],
+        'all-tools'  => [
+            'title' => 'All Financial Tools & Calculators 2026 | FinanceSpots',
+            'desc'  => 'Browse 110+ free finance tools: mortgage calculators, investment analyzers, tax estimators, retirement planners, crypto tools and more. Built for US investors & homebuyers.',
+            'kw'    => 'financial tools online',
+        ],
+        'blog'       => [
+            'title' => 'Personal Finance Blog 2026 -- Tips, Guides & Insights | FinanceSpots',
+            'desc'  => 'Expert personal finance tips, mortgage guides, investment strategies, tax advice and money-saving insights. Weekly updates from the FinanceSpots team.',
+            'kw'    => 'personal finance tips 2026',
+        ],
+        'about'      => [
+            'title' => 'About FinanceSpots -- Free Finance Tools Built for Everyone',
+            'desc'  => 'FinanceSpots was built by Abdul Rahman to make professional-grade financial tools free and accessible to everyone. Learn about our mission, tools and team.',
+            'kw'    => 'about financespots',
+        ],
+        'contact'    => [
+            'title' => 'Contact FinanceSpots -- Get in Touch',
+            'desc'  => 'Have a question or suggestion? Contact the FinanceSpots team. We respond within 24 hours.',
+            'kw'    => 'contact financespots',
+        ],
+        'pricing'    => [
+            'title' => 'FinanceSpots PRO Plans & Pricing 2026 -- Upgrade for $9/mo',
+            'desc'  => 'Upgrade to FinanceSpots PRO for unlimited calculation history, PDF exports, advanced mortgage scenarios, portfolio tracker and ad-free experience. Start at $9/month.',
+            'kw'    => 'financial calculator pro plan',
+        ],
+        'categories' => [
+            'title' => 'Financial Calculator Categories | FinanceSpots',
+            'desc'  => 'Explore financial calculators by category: loan calculators, investment tools, tax calculators, savings planners, retirement planning, budget analyzers and more.',
+            'kw'    => 'financial calculator categories',
+        ],
+    ];
+
+    foreach ( $pages as $slug => $seo ) {
+        if ( $slug === '' ) {
+            $page_id = (int) get_option( 'page_on_front' );
+            if ( ! $page_id ) {
+                $front = get_posts( [ 'post_type' => 'page', 'post_status' => 'publish', 'numberposts' => 1, 'orderby' => 'ID', 'order' => 'ASC' ] );
+                $page_id = $front ? $front[0]->ID : 0;
+            }
+        } else {
+            $page = get_page_by_path( $slug );
+            $page_id = $page ? $page->ID : 0;
+        }
+        if ( ! $page_id ) continue;
+
+        update_post_meta( $page_id, 'rank_math_title',         $seo['title'] );
+        update_post_meta( $page_id, 'rank_math_description',   $seo['desc'] );
+        update_post_meta( $page_id, 'rank_math_focus_keyword', $seo['kw'] );
+        update_post_meta( $page_id, 'rank_math_robots',        [ 'index', 'follow' ] );
+        update_post_meta( $page_id, 'rank_math_og_title',      $seo['title'] );
+        update_post_meta( $page_id, 'rank_math_og_description',$seo['desc'] );
+    }
+
+    update_option( 'fs_main_pages_seo_v1', true );
+}
+add_action( 'admin_init', 'fs_main_pages_seo', 20 );
+add_action( 'init',       'fs_main_pages_seo', 40 );
+
+/* =========================================================
    VA LOAN FUNDING FEE CALCULATOR -- Advanced Page + SEO
    ========================================================= */
 function fs_create_va_loan_tool() {
