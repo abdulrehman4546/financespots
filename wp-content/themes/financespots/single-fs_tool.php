@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template: Single Tool Page
  * @package financespots

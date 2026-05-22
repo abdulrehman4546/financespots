@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Blog Archive -- shows when /blog/ is visited
  */

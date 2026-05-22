@@ -1,4 +1,4 @@
-﻿</main><!-- /#main-content -->
+</main><!-- /#main-content -->
 
 <!-- ===== SITE FOOTER ===== -->
 <footer class="fs-footer" role="contentinfo">

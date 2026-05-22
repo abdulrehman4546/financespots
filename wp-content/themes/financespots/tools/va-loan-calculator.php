@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 // Allow both standalone access and WordPress include
 $is_wp = defined('ABSPATH');
 if ( ! $is_wp ) {

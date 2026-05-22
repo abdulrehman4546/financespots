@@ -1,4 +1,4 @@
-﻿<?php /** Template Name: Privacy Policy */ get_header(); ?>
+<?php /** Template Name: Privacy Policy */ get_header(); ?>
 <div style="background:#0A0F1E;min-height:100vh;padding:80px 0;">
 <div class="container" style="max-width:800px;">
 

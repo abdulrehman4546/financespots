@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * FinanceSpots Blog Publisher -- publishes 10 SEO blogs once, then deactivates.
  * Hooked to admin_init; runs only when ?fs_publish_blogs=1 is in the URL.

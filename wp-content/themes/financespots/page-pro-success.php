@@ -1,4 +1,4 @@
-﻿<?php /** Template Name: PRO Success */ get_header(); ?>
+<?php /** Template Name: PRO Success */ get_header(); ?>
 <div style="background:#0A0F1E;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;">
 <div style="text-align:center;max-width:520px;">
     <div style="font-size:4rem;margin-bottom:20px;animation:fsBounce .6s ease;">&#127881;</div>

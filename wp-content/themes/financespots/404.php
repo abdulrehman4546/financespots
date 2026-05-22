@@ -1,4 +1,4 @@
-﻿<?php get_header(); ?>
+<?php get_header(); ?>
 <div style="background:#0A0F1E;min-height:80vh;display:flex;align-items:center;justify-content:center;padding:40px 20px;text-align:center;">
     <div style="max-width:480px;">
         <div style="font-size:5rem;font-weight:900;color:#10B981;line-height:1;margin-bottom:8px;">404</div>

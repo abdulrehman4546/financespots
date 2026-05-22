@@ -1,4 +1,4 @@
-﻿<?php /** Template Name: All Tools */ get_header(); ?>
+<?php /** Template Name: All Tools */ get_header(); ?>
 
 <div style="background:#0A0F1E;min-height:100vh;">
 

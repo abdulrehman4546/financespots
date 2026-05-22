@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * FinanceSpots -- Trust Strip Admin Panel
  * Adds "FinanceSpots > Trust Strip" in WP Admin

@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Template: Tool Category Archive
  * @package financespots

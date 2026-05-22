@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 /**
  * Index Template -- fallback for all views
  *
