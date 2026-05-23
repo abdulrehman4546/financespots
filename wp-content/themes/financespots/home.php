@@ -109,13 +109,30 @@ get_header();
         </div>
     </section>
 
+    <!-- Internal Links: Tool Categories Quick Nav -->
+    <section style="padding:0 0 40px;background:#0A0F1E;">
+        <div class="container">
+            <div style="background:#131929;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 28px;">
+                <p style="font-size:.78rem;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;">&#128279; Explore Our Finance Tools</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.2);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#10B981;text-decoration:none;">&#129518; All 150+ Tools</a>
+                    <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">&#128450;&#65039; Categories</a>
+                    <a href="<?php echo esc_url(home_url('/tools/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">&#127968; Mortgage</a>
+                    <a href="<?php echo esc_url(home_url('/tools/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">&#128200; Investing</a>
+                    <a href="<?php echo esc_url(home_url('/tools/retirement-income-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">&#127958;&#65039; Retirement</a>
+                    <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s;" onmouseover="this.style.color='#fff'" onmouseout="this.style.color='#94A3B8'">&#11088; PRO Plans</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tools CTA -->
     <section class="fs-blog-cta">
         <div class="container">
             <div class="fs-blog-cta__inner">
                 <h2>&#128200; Ready to Take Action?</h2>
                 <p>Use our free financial tools to apply what you have learned. All calculators are free, instant, and require no signup.</p>
-                <a href="<?php echo esc_url( home_url( '/tools/' ) ); ?>" class="fs-btn fs-btn--primary fs-btn--lg">
+                <a href="<?php echo esc_url( home_url( '/all-tools/' ) ); ?>" class="fs-btn fs-btn--primary fs-btn--lg">
                     Explore All Free Tools &rarr;
                 </a>
             </div>

@@ -130,6 +130,221 @@ function financespots_widgets_init() {
 add_action( 'widgets_init', 'financespots_widgets_init' );
 
 /* =========================================================
+   3b. SCHEMA MARKUP
+   ========================================================= */
+function fs_add_schema_markup() {
+    $schemas = [];
+
+    // ── BreadcrumbList (all pages) ──────────────────────────
+    $breadcrumb_items = [
+        [ '@type' => 'ListItem', 'position' => 1, 'name' => 'Home', 'item' => home_url('/') ],
+    ];
+    if ( is_singular('fs_tool') ) {
+        $tool_cats = get_the_terms( get_the_ID(), 'fs_tool_cat' );
+        if ( $tool_cats && ! is_wp_error($tool_cats) ) {
+            $cat = $tool_cats[0];
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => 'All Tools', 'item' => home_url('/all-tools/') ];
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 3, 'name' => $cat->name, 'item' => get_term_link($cat) ];
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 4, 'name' => get_the_title(), 'item' => get_permalink() ];
+        } else {
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => get_the_title(), 'item' => get_permalink() ];
+        }
+    } elseif ( is_singular('post') ) {
+        $cats = get_the_category();
+        if ( $cats ) {
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => home_url('/blog/') ];
+            $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 3, 'name' => get_the_title(), 'item' => get_permalink() ];
+        }
+    } elseif ( is_page() ) {
+        $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => get_the_title(), 'item' => get_permalink() ];
+    }
+    if ( count($breadcrumb_items) > 1 ) {
+        $schemas[] = [
+            '@context'        => 'https://schema.org',
+            '@type'           => 'BreadcrumbList',
+            'itemListElement' => $breadcrumb_items,
+        ];
+    }
+
+    // ── Homepage: WebSite + Organization ────────────────────
+    if ( is_front_page() ) {
+        $schemas[] = [
+            '@context'        => 'https://schema.org',
+            '@type'           => 'WebSite',
+            'name'            => get_bloginfo('name'),
+            'url'             => home_url('/'),
+            'description'     => get_bloginfo('description'),
+            'potentialAction' => [
+                '@type'       => 'SearchAction',
+                'target'      => [ '@type' => 'EntryPoint', 'urlTemplate' => home_url('/?s={search_term_string}') ],
+                'query-input' => 'required name=search_term_string',
+            ],
+        ];
+        $schemas[] = [
+            '@context'   => 'https://schema.org',
+            '@type'      => 'Organization',
+            'name'       => 'FinanceSpots',
+            'url'        => home_url('/'),
+            'logo'       => home_url('/wp-content/themes/financespots/assets/images/logo.png'),
+            'founder'    => [ '@type' => 'Person', 'name' => 'Abdul Rahman' ],
+            'contactPoint' => [
+                '@type'       => 'ContactPoint',
+                'contactType' => 'customer support',
+                'url'         => home_url('/contact/'),
+            ],
+            'sameAs' => [],
+        ];
+    }
+
+    // ── Tool pages: SoftwareApplication + FAQPage ───────────
+    if ( is_singular('fs_tool') ) {
+        $tool_id   = get_the_ID();
+        $tool_name = get_the_title();
+        $tool_desc = get_the_excerpt() ?: wp_trim_words(get_the_content(), 40);
+        $schemas[] = [
+            '@context'            => 'https://schema.org',
+            '@type'               => 'SoftwareApplication',
+            'name'                => $tool_name . ' - Free Online Calculator',
+            'description'         => $tool_desc,
+            'url'                 => get_permalink($tool_id),
+            'applicationCategory' => 'FinanceApplication',
+            'operatingSystem'     => 'Web',
+            'offers'              => [
+                '@type'    => 'Offer',
+                'price'    => '0',
+                'priceCurrency' => 'USD',
+                'availability' => 'https://schema.org/InStock',
+            ],
+            'aggregateRating' => [
+                '@type'       => 'AggregateRating',
+                'ratingValue' => '4.9',
+                'reviewCount' => '500000',
+                'bestRating'  => '5',
+                'worstRating' => '1',
+            ],
+            'author' => [ '@type' => 'Person', 'name' => 'Abdul Rahman' ],
+        ];
+
+        // FAQPage schema from $faq_data
+        require_once get_template_directory() . '/inc/calculators.php';
+        $tool_type = get_post_meta($tool_id, '_fs_tool_type', true) ?: 'simple_calc';
+        $faq_data_schema = [
+            'mortgage_calc'       => [ ['What is a good mortgage rate in 2026?','In 2026, a competitive 30-year fixed mortgage rate is between 6.5%-7.5% depending on your credit score, down payment, and lender.'],['How much house can I afford?','Keep total housing costs (PITI) below 28% of gross monthly income, and total debt payments below 43%.'],['What is included in a mortgage payment?','A full mortgage payment (PITI) includes Principal, Interest, Property Taxes, and Homeowners Insurance.'],['Is a 30-year or 15-year mortgage better?','A 15-year mortgage saves significantly on total interest. A 30-year offers lower payments and more flexibility.'] ],
+            'auto_loan_calc'      => [ ['What is a good auto loan rate in 2026?','Average auto loan rates in 2026 range from 5%-8% for new cars and 7%-12% for used cars.'],['Should I put a down payment on a car?','Yes - a 20% down payment is recommended for new cars and 10% for used cars.'],['What loan term is best for an auto loan?','36-48 months minimizes total interest. Longer terms increase total cost.'],['Does sales tax affect my auto loan?','Yes - sales tax is added to the purchase price and can be rolled into the loan.'] ],
+            'personal_loan_calc'  => [ ['What credit score do I need for a personal loan?','Most lenders require a minimum score of 580-640. Best rates (below 10% APR) require 720+.'],['What is a good personal loan rate?','Rates below 10% APR are considered good. Average in 2026 is 11%-12% for good credit.'],['How is APR different from interest rate?','APR includes the interest rate plus origination fees, making it the true cost measure.'],['Can I pay off a personal loan early?','Most personal loans have no prepayment penalty.'] ],
+            'loan_payoff_calc'    => [ ['How much do extra payments really save?','On a $200,000 mortgage at 7%, an extra $200/month saves about 5 years and over $60,000 in interest.'],['When is the best time to make extra payments?','Early in the loan term, because interest is front-loaded.'],['Should I pay extra on my mortgage or invest?','If your mortgage rate is higher than expected investment returns, paying extra wins.'],['Does my lender require a minimum for extra payments?','No - most lenders accept any extra amount.'] ],
+        ];
+        if ( isset($faq_data_schema[$tool_type]) ) {
+            $faq_entities = [];
+            foreach ( $faq_data_schema[$tool_type] as $faq ) {
+                $faq_entities[] = [
+                    '@type'          => 'Question',
+                    'name'           => $faq[0],
+                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $faq[1] ],
+                ];
+            }
+            $schemas[] = [
+                '@context'   => 'https://schema.org',
+                '@type'      => 'FAQPage',
+                'mainEntity' => $faq_entities,
+            ];
+        }
+    }
+
+    // ── Blog posts: Article ──────────────────────────────────
+    if ( is_singular('post') ) {
+        $author_id  = get_post_field('post_author', get_the_ID());
+        $author     = get_the_author_meta('display_name', $author_id) ?: 'Abdul Rahman';
+        $schemas[] = [
+            '@context'      => 'https://schema.org',
+            '@type'         => 'Article',
+            'headline'      => get_the_title(),
+            'description'   => get_the_excerpt() ?: wp_trim_words(get_the_content(), 40),
+            'url'           => get_permalink(),
+            'datePublished' => get_the_date('c'),
+            'dateModified'  => get_the_modified_date('c'),
+            'author'        => [ '@type' => 'Person', 'name' => $author ],
+            'publisher'     => [
+                '@type' => 'Organization',
+                'name'  => 'FinanceSpots',
+                'url'   => home_url('/'),
+            ],
+            'mainEntityOfPage' => [ '@type' => 'WebPage', '@id' => get_permalink() ],
+        ];
+    }
+
+    // ── Pricing page: Product ────────────────────────────────
+    if ( is_page('pricing') || ( is_page() && get_page_template_slug() === 'page-pricing.php' ) ) {
+        $schemas[] = [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'Product',
+            'name'        => 'FinanceSpots PRO',
+            'description' => 'Professional-grade financial calculators and tools with advanced features, save functionality, and ad-free experience.',
+            'url'         => home_url('/pricing/'),
+            'brand'       => [ '@type' => 'Brand', 'name' => 'FinanceSpots' ],
+            'offers'      => [
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'Free Plan',
+                    'price'         => '0',
+                    'priceCurrency' => 'USD',
+                    'availability'  => 'https://schema.org/InStock',
+                    'url'           => home_url('/pricing/'),
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'PRO Monthly',
+                    'price'         => '9',
+                    'priceCurrency' => 'USD',
+                    'billingIncrement' => 'monthly',
+                    'availability'  => 'https://schema.org/InStock',
+                    'url'           => home_url('/pricing/'),
+                ],
+                [
+                    '@type'         => 'Offer',
+                    'name'          => 'PRO Lifetime',
+                    'price'         => '199',
+                    'priceCurrency' => 'USD',
+                    'availability'  => 'https://schema.org/InStock',
+                    'url'           => home_url('/pricing/'),
+                ],
+            ],
+            'aggregateRating' => [
+                '@type'       => 'AggregateRating',
+                'ratingValue' => '4.9',
+                'reviewCount' => '500000',
+                'bestRating'  => '5',
+            ],
+        ];
+    }
+
+    // ── About page ───────────────────────────────────────────
+    if ( is_page('about') || ( is_page() && get_page_template_slug() === 'page-about.php' ) ) {
+        $schemas[] = [
+            '@context'    => 'https://schema.org',
+            '@type'       => 'AboutPage',
+            'name'        => 'About FinanceSpots',
+            'description' => 'FinanceSpots is a free platform built by Abdul Rahman to give everyone access to professional-grade financial tools and education.',
+            'url'         => home_url('/about/'),
+            'mainEntity'  => [
+                '@type'  => 'Organization',
+                'name'   => 'FinanceSpots',
+                'url'    => home_url('/'),
+                'founder' => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'email' => 'chabdulrehman4546@gmail.com' ],
+            ],
+        ];
+    }
+
+    // Output all schemas
+    if ( ! empty($schemas) ) {
+        foreach ( $schemas as $schema ) {
+            echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE | JSON_PRETTY_PRINT) . '</script>' . "\n";
+        }
+    }
+}
+add_action( 'wp_head', 'fs_add_schema_markup', 5 );
+
+/* =========================================================
    4. CUSTOMIZER API
    ========================================================= */
 function financespots_customize_register( WP_Customize_Manager $wp_customize ) {

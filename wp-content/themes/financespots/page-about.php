@@ -102,6 +102,22 @@ get_header();
         </div>
     </section>
 
+    <!-- Internal Links Section -->
+    <section class="fs-about-section" style="padding:40px 0;">
+        <div class="container">
+            <div style="background:#131929;border:1px solid rgba(255,255,255,.08);border-radius:16px;padding:28px 32px;">
+                <h3 style="font-size:1rem;font-weight:700;color:#94A3B8;text-transform:uppercase;letter-spacing:.06em;margin:0 0 18px;">&#128279; Explore FinanceSpots</h3>
+                <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;">
+                    <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:12px 16px;text-decoration:none;color:#CBD5E1;font-size:.88rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'"><span style="font-size:1rem;">&#129518;</span> Browse All Tools</a>
+                    <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:12px 16px;text-decoration:none;color:#CBD5E1;font-size:.88rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'"><span style="font-size:1rem;">&#11088;</span> View Pricing Plans</a>
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:12px 16px;text-decoration:none;color:#CBD5E1;font-size:.88rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'"><span style="font-size:1rem;">&#128233;</span> Contact Us</a>
+                    <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:12px 16px;text-decoration:none;color:#CBD5E1;font-size:.88rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'"><span style="font-size:1rem;">&#128221;</span> Finance Blog</a>
+                    <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.18);border-radius:10px;padding:12px 16px;text-decoration:none;color:#CBD5E1;font-size:.88rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'"><span style="font-size:1rem;">&#128450;&#65039;</span> Tool Categories</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Tools CTA -->
     <section class="fs-about-cta">
         <div class="container">
@@ -109,7 +125,7 @@ get_header();
                 <h2>&#128200; Ready to Take Control of Your Finances?</h2>
                 <p>Join thousands of people using FinanceSpots to make smarter money decisions -- completely free.</p>
                 <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
-                    <a href="<?php echo esc_url(home_url('/tools/')); ?>" class="fs-btn fs-btn--primary fs-btn--lg">Explore All Free Tools &rarr;</a>
+                    <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" class="fs-btn fs-btn--primary fs-btn--lg">Explore All Free Tools &rarr;</a>
                     <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="fs-btn fs-btn--outline fs-btn--lg">Read Finance Guides</a>
                 </div>
             </div>

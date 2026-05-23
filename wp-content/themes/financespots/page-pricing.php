@@ -211,6 +211,21 @@ $is_pro  = fs_is_pro();
         </div>
     </section>
 
+    <!-- Internal Links -->
+    <section style="padding:0 0 40px;">
+        <div class="container">
+            <div style="background:#131929;border:1px solid rgba(255,255,255,.08);border-radius:14px;padding:22px 28px;">
+                <p style="font-size:.78rem;font-weight:700;color:#64748B;text-transform:uppercase;letter-spacing:.08em;margin:0 0 14px;">&#128279; More from FinanceSpots</p>
+                <div style="display:flex;flex-wrap:wrap;gap:10px;">
+                    <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s,border-color .2s;" onmouseover="this.style.color='#10B981';this.style.borderColor='rgba(16,185,129,.4)'" onmouseout="this.style.color='#94A3B8';this.style.borderColor='rgba(255,255,255,.1)'">&#129518; All Free Tools</a>
+                    <a href="<?php echo esc_url(home_url('/about/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s,border-color .2s;" onmouseover="this.style.color='#10B981';this.style.borderColor='rgba(16,185,129,.4)'" onmouseout="this.style.color='#94A3B8';this.style.borderColor='rgba(255,255,255,.1)'">&#128075; About FinanceSpots</a>
+                    <a href="<?php echo esc_url(home_url('/contact/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s,border-color .2s;" onmouseover="this.style.color='#10B981';this.style.borderColor='rgba(16,185,129,.4)'" onmouseout="this.style.color='#94A3B8';this.style.borderColor='rgba(255,255,255,.1)'">&#128233; Contact &amp; Support</a>
+                    <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:inline-flex;align-items:center;gap:6px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.1);border-radius:8px;padding:8px 14px;font-size:.84rem;font-weight:600;color:#94A3B8;text-decoration:none;transition:color .2s,border-color .2s;" onmouseover="this.style.color='#10B981';this.style.borderColor='rgba(16,185,129,.4)'" onmouseout="this.style.color='#94A3B8';this.style.borderColor='rgba(255,255,255,.1)'">&#128450;&#65039; Tool Categories</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- CTA -->
     <section class="fsp-cta">
         <div class="container">

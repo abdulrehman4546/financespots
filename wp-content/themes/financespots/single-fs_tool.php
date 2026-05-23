@@ -52,6 +52,18 @@ while ( have_posts() ) : the_post();
 <section class="fst-tool-hero">
     <div class="container">
         <div class="fst-tool-hero__inner">
+            <!-- Breadcrumb -->
+            <nav class="fst-breadcrumb-nav" aria-label="Breadcrumb" style="display:flex;align-items:center;gap:.4rem;flex-wrap:wrap;margin-bottom:.5rem;">
+                <a href="<?php echo esc_url(home_url('/')); ?>" style="font-size:.8rem;color:#64748B;text-decoration:none;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='#64748B'">Home</a>
+                <span style="color:#334155;font-size:.8rem;">&#x203A;</span>
+                <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="font-size:.8rem;color:#64748B;text-decoration:none;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='#64748B'">All Tools</a>
+                <?php if ( $cat ) : ?>
+                <span style="color:#334155;font-size:.8rem;">&#x203A;</span>
+                <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" style="font-size:.8rem;color:#64748B;text-decoration:none;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='#64748B'"><?php echo esc_html( $cat->name ); ?></a>
+                <?php endif; ?>
+                <span style="color:#334155;font-size:.8rem;">&#x203A;</span>
+                <span style="font-size:.8rem;color:#94A3B8;"><?php the_title(); ?></span>
+            </nav>
             <?php if ( $cat ) : ?>
             <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="fst-breadcrumb">
                 &#x2190; <?php echo esc_html( $cat->name ); ?>
@@ -261,9 +273,130 @@ if ( $tool_faq ) : ?>
 </section>
 <?php endif; ?>
 
+<?php
+/* ── Related Finance Topics + You Might Also Need ── */
+$cat_topic_data = [
+    'loan-calculators' => [
+        'topic' => 'Understanding loan payments and interest is foundational to smart borrowing. Whether you are financing a home, car, or personal expense, knowing your true cost helps you negotiate better rates and pay off debt faster. Always compare the APR -- not just the interest rate -- to understand the total cost.',
+        'links' => [
+            ['Mortgage Calculator', home_url('/tools/mortgage-calculator/')],
+            ['Auto Loan Calculator', home_url('/tools/auto-loan-calculator/')],
+            ['Personal Loan Calculator', home_url('/tools/personal-loan-calculator/')],
+            ['Loan Payoff Calculator', home_url('/tools/loan-payoff-calculator/')],
+        ],
+    ],
+    'investment-tools' => [
+        'topic' => 'Compound interest is the most powerful force in investing -- starting early and staying consistent consistently outperforms timing the market. Understanding investment return metrics like CAGR, IRR, and Sharpe ratio helps you evaluate opportunities objectively. Use our free calculators to model different scenarios before committing capital.',
+        'links' => [
+            ['Compound Interest Calculator', home_url('/tools/compound-interest-calculator/')],
+            ['Investment Return Calculator', home_url('/tools/investment-return-calculator/')],
+            ['Dividend Reinvestment Calculator', home_url('/tools/dividend-reinvestment-calculator/')],
+            ['Net Worth Calculator', home_url('/tools/net-worth-calculator/')],
+        ],
+    ],
+    'tax-calculators' => [
+        'topic' => 'Tax planning throughout the year -- not just in April -- can save thousands. Understanding your marginal vs effective tax rate, maximizing tax-advantaged accounts, and tracking deductible expenses are the three biggest levers for reducing your annual tax burden. Use our calculators to estimate before you file.',
+        'links' => [
+            ['Income Tax Calculator', home_url('/tools/income-tax-calculator/')],
+            ['Self-Employment Tax Calculator', home_url('/tools/self-employment-tax-calculator/')],
+            ['Capital Gains Tax Calculator', home_url('/tools/capital-gains-tax-calculator/')],
+            ['W-4 Withholding Calculator', home_url('/tools/w4-withholding-calculator/')],
+        ],
+    ],
+    'savings-planners' => [
+        'topic' => 'A fully funded emergency fund -- typically 3 to 6 months of expenses -- is the single most important financial safety net you can build. Beyond emergencies, automating savings through high-yield accounts and CDs maximizes growth with minimal effort. Calculate your target savings number before choosing an account.',
+        'links' => [
+            ['Emergency Fund Calculator', home_url('/tools/emergency-fund-calculator/')],
+            ['Savings Goal Calculator', home_url('/tools/savings-goal-calculator/')],
+            ['CD Calculator', home_url('/tools/cd-calculator/')],
+            ['High-Yield Savings Calculator', home_url('/tools/high-yield-savings-calculator/')],
+        ],
+    ],
+    'retirement-planning' => [
+        'topic' => 'Retirement planning requires knowing your "retirement number" -- the total portfolio value needed to sustain your lifestyle indefinitely. The 4% withdrawal rule is a common starting point, but your specific number depends on spending, inflation, and Social Security income. Start calculating early to understand how much to save each month.',
+        'links' => [
+            ['Retirement Income Calculator', home_url('/tools/retirement-income-calculator/')],
+            ['401k Calculator', home_url('/tools/401k-calculator/')],
+            ['IRA Calculator', home_url('/tools/ira-calculator/')],
+            ['Social Security Calculator', home_url('/tools/social-security-calculator/')],
+        ],
+    ],
+    'budget-analyzers' => [
+        'topic' => 'A budget is not a restriction -- it is a plan for your money to do exactly what you want it to do. The 50/30/20 rule (needs/wants/savings) is a proven starting framework, but personalizing your budget to your income and goals is what creates lasting financial change. Track expenses for 30 days before setting budget limits.',
+        'links' => [
+            ['Monthly Budget Planner', home_url('/tools/monthly-budget-planner/')],
+            ['50/30/20 Budget Calculator', home_url('/tools/503020-budget-calculator/')],
+            ['Expense Tracker', home_url('/tools/expense-tracker/')],
+            ['Savings Rate Calculator', home_url('/tools/savings-rate-calculator/')],
+        ],
+    ],
+    'crypto-tools' => [
+        'topic' => 'Cryptocurrency investing combines the volatility of a startup with 24/7 global trading -- making disciplined position sizing and tax tracking critical. Dollar-cost averaging reduces the impact of price swings, while accurate P&L tracking ensures you report gains correctly. Always calculate your cost basis before each trade.',
+        'links' => [
+            ['Crypto P&L Calculator', home_url('/tools/crypto-pl-calculator/')],
+            ['Bitcoin DCA Calculator', home_url('/tools/bitcoin-dca-calculator/')],
+            ['Crypto Tax Estimator', home_url('/tools/crypto-tax-estimator/')],
+            ['Compound Interest Calculator', home_url('/tools/compound-interest-calculator/')],
+        ],
+    ],
+];
+
+$topic_info = $cat ? ( $cat_topic_data[ $cat->slug ] ?? null ) : null;
+
+// "You Might Also Need" -- links to 3 other categories
+$other_cats = [
+    ['&#128200; Investing Tools', home_url('/tools/compound-interest-calculator/'), 'investment-tools'],
+    ['&#127968; Mortgage Calculators', home_url('/tools/mortgage-calculator/'), 'loan-calculators'],
+    ['&#127958;&#65039; Retirement Planner', home_url('/tools/retirement-income-calculator/'), 'retirement-planning'],
+    ['&#129534; Tax Calculators', home_url('/tools/income-tax-calculator/'), 'tax-calculators'],
+    ['&#128203; Budget Planner', home_url('/tools/monthly-budget-planner/'), 'budget-analyzers'],
+    ['&#8383; Crypto Tools', home_url('/tools/crypto-pl-calculator/'), 'crypto-tools'],
+];
+$current_cat_slug = $cat ? $cat->slug : '';
+$suggested = array_filter($other_cats, function($c) use ($current_cat_slug){ return $c[2] !== $current_cat_slug; });
+$suggested = array_values($suggested);
+?>
+
+<?php if ( $topic_info ) : ?>
+<section style="padding:2.5rem 0 2rem;background:#F1F5F9;border-top:1px solid #E2E8F0;">
+    <div class="container" style="max-width:860px;">
+        <h2 style="font-size:1.15rem;font-weight:800;color:#0F172A;margin:0 0 .75rem;">&#128218; Related Finance Topics</h2>
+        <p style="color:#475569;line-height:1.75;font-size:.94rem;margin:0 0 1.25rem;"><?php echo esc_html($topic_info['topic']); ?></p>
+        <div style="display:flex;flex-wrap:wrap;gap:.6rem;margin-bottom:1rem;">
+            <?php foreach(array_slice($topic_info['links'],0,4) as $l): ?>
+            <a href="<?php echo esc_url($l[1]); ?>" style="display:inline-flex;align-items:center;gap:5px;background:#fff;border:1.5px solid #CBD5E1;border-radius:8px;padding:7px 13px;font-size:.83rem;font-weight:600;color:#334155;text-decoration:none;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='#10B981';this.style.color='#059669'" onmouseout="this.style.borderColor='#CBD5E1';this.style.color='#334155'">
+                &#x2192; <?php echo esc_html($l[0]); ?>
+            </a>
+            <?php endforeach; ?>
+        </div>
+        <?php if ( $cat ) : ?>
+        <a href="<?php echo esc_url(get_term_link($cat)); ?>" style="font-size:.85rem;font-weight:700;color:#10B981;text-decoration:none;" onmouseover="this.style.textDecoration='underline'" onmouseout="this.style.textDecoration='none'">
+            See All <?php echo esc_html($cat->name); ?> Tools &#x2192;
+        </a>
+        <?php endif; ?>
+    </div>
+</section>
+<?php endif; ?>
+
+<section style="padding:2rem 0 2.5rem;background:#F8FAFC;border-top:1px solid #E2E8F0;">
+    <div class="container" style="max-width:860px;">
+        <h2 style="font-size:1.05rem;font-weight:800;color:#0F172A;margin:0 0 1rem;">&#128736;&#65039; You Might Also Need</h2>
+        <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;">
+            <?php foreach(array_slice($suggested,0,3) as $s): ?>
+            <a href="<?php echo esc_url($s[1]); ?>" style="display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#334155;font-size:.86rem;font-weight:600;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='#10B981';this.style.color='#059669'" onmouseout="this.style.borderColor='#E2E8F0';this.style.color='#334155'">
+                <?php echo $s[0]; ?>
+            </a>
+            <?php endforeach; ?>
+            <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:#ECFDF5;border:1.5px solid #BBF7D0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#15803D;font-size:.86rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">
+                &#128200; Browse All 150+ Tools &#x2192;
+            </a>
+        </div>
+    </div>
+</section>
+
 <?php endwhile; ?>
 
-<!-- â"€â"€ Universal PDF / Print system â"€â"€ -->
+<!-- Universal PDF / Print system -->
 <script>
 /* Expose globally so calculators can call it directly */
 function fsPdfBarShow(){
