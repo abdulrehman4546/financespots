@@ -9,6 +9,24 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 define( 'FINANCESPOTS_VERSION', '1.2.0' );
+
+/* =========================================================
+   GOOGLE ANALYTICS 4 -- G-5TZFXK7QYZ
+   ========================================================= */
+function fs_google_analytics() {
+    if ( is_admin() ) return;
+    ?>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5TZFXK7QYZ"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5TZFXK7QYZ');
+</script>
+    <?php
+}
+add_action( 'wp_head', 'fs_google_analytics', 1 );
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
 
