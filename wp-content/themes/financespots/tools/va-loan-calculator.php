@@ -1,7 +1,7 @@
 <?php
-// Allow both standalone access and WordPress include
-$is_wp = defined('ABSPATH');
-if ( ! $is_wp ) {
+if ( ! defined( 'ABSPATH' ) ) exit;
+$is_wp = true;
+if ( false ) {
 ?><!DOCTYPE html>
 <html lang="en">
 <head>

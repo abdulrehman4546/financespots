@@ -144,6 +144,7 @@ function fs_pro_success_handler() {
     $session_id = sanitize_text_field( $_GET['session_id'] );
     $secret_key = get_option( 'fs_stripe_secret_key', '' );
     if ( ! $secret_key || ! $session_id ) return;
+    if ( ! preg_match( '/^cs_[a-zA-Z0-9_]+$/', $session_id ) ) return;
 
     // Verify session with Stripe
     $response = wp_remote_get( 'https://api.stripe.com/v1/checkout/sessions/' . $session_id, [
