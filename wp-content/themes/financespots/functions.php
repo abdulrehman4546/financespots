@@ -2223,6 +2223,230 @@ function fs_fix_all_indexing_issues() {
 add_action( 'admin_init', 'fs_fix_all_indexing_issues', 5 );
 add_action( 'init',       'fs_fix_all_indexing_issues', 5 );
 
+/* =========================================================
+   CREATE 10 NEW BLOG POSTS — version-gated fs_blogs_v1
+   ========================================================= */
+function fs_create_blog_posts() {
+    if ( get_option('fs_blogs_v1') ) return;
+
+    $cat_id = get_cat_ID('Finance Tips');
+    if ( ! $cat_id ) $cat_id = wp_create_category('Finance Tips');
+
+    $img = [
+        'money'   => 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80',
+        'house'   => 'https://images.unsplash.com/photo-1560518883-ce09059eeffa?w=900&q=80',
+        'save'    => 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?w=900&q=80',
+        'invest'  => 'https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?w=900&q=80',
+        'credit'  => 'https://images.unsplash.com/photo-1563013544-824ae1b704d3?w=900&q=80',
+        'student' => 'https://images.unsplash.com/photo-1523050854058-8df90110c9f1?w=900&q=80',
+        'bitcoin' => 'https://images.unsplash.com/photo-1518546305927-5a555bb7020d?w=900&q=80',
+        'budget'  => 'https://images.unsplash.com/photo-1450101499163-c8848c66ca85?w=900&q=80',
+        'retire'  => 'https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?w=900&q=80',
+        'veteran' => 'https://images.unsplash.com/photo-1580130732478-4e339fb33746?w=900&q=80',
+        'chart'   => 'https://images.unsplash.com/photo-1535320903710-d993d3d77d29?w=900&q=80',
+        'laptop'  => 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=900&q=80',
+        'gold'    => 'https://images.unsplash.com/photo-1610375461246-83df859d849d?w=900&q=80',
+        'family'  => 'https://images.unsplash.com/photo-1511895426328-dc8714191011?w=900&q=80',
+        'realestate' => 'https://images.unsplash.com/photo-1570129477492-45c003edd2be?w=900&q=80',
+        'index'   => 'https://images.unsplash.com/photo-1543286386-2e659306cd6c?w=900&q=80',
+    ];
+
+    $fi = function($url,$alt,$cap='') {
+        $c = $cap ? "<p style='text-align:center;color:#64748b;font-size:.85rem;margin-top:6px'><em>$cap</em></p>" : '';
+        return "<figure style='margin:28px 0;text-align:center'><img src='$url' alt='$alt' style='max-width:100%;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,.12)' loading='lazy'/>$c</figure>";
+    };
+
+    $posts = [
+        [
+            'title'   => 'VA Loan Benefits: The Complete Guide for Veterans in 2026',
+            'slug'    => 'va-loan-benefits-complete-guide-veterans-2026',
+            'excerpt' => 'VA loans offer zero down payment, no PMI, and competitive rates. This complete guide covers every VA loan benefit, eligibility, and how to apply in 2026.',
+            'keyword' => 'VA loan benefits 2026',
+            'desc'    => 'VA loans offer zero down payment, no PMI, and competitive rates for veterans. Complete guide to VA loan benefits, eligibility, and application in 2026.',
+            'content' => '<p>If you served in the U.S. military, you have access to one of the most powerful home-buying tools in existence: the VA loan. Yet millions of veterans never use it — either because they do not know about it or think they do not qualify.</p>'
+                . $fi($img['veteran'],'US veteran in front of new home','VA loans reward your service with unmatched home-buying power.')
+                . '<h2>What Is a VA Loan?</h2><p>A VA loan is a mortgage guaranteed by the U.S. Department of Veterans Affairs, offered through private lenders. The VA backs a portion of the loan, allowing lenders to offer better terms than conventional mortgages. The program has helped over 28 million veterans become homeowners since 1944.</p>'
+                . '<h2>Top 5 VA Loan Benefits</h2><ul><li><strong>Zero down payment</strong> — buy a home with $0 down, even on a $600,000 property with full entitlement</li><li><strong>No PMI (Private Mortgage Insurance)</strong> — saves $100–$300/month compared to conventional loans with less than 20% down</li><li><strong>Lower interest rates</strong> — typically 0.25%–0.50% lower than conventional rates, saving $30,000+ over 30 years</li><li><strong>Easier credit qualification</strong> — many VA lenders approve scores as low as 580</li><li><strong>Lifetime benefit</strong> — use it again and again after each loan is paid off</li></ul>'
+                . $fi($img['house'],'Beautiful home purchased with VA loan zero down payment','No down payment, no PMI — VA loans make homeownership genuinely affordable for veterans.')
+                . '<h2>VA Loan Funding Fee 2026</h2><p>The only unique cost of a VA loan is the one-time funding fee — ranging from 1.25% to 3.3% of the loan amount. Veterans with a service-connected disability rating of 10% or more are completely exempt. Use our free <a href="' . home_url('/tools/va-loan-funding-fee-calculator/') . '">VA Loan Funding Fee Calculator</a> to see your exact cost.</p>'
+                . $fi($img['chart'],'VA loan vs conventional loan comparison chart','VA loans consistently beat conventional loans on cost for eligible veterans.')
+                . '<h2>Who Qualifies?</h2><p>You may be eligible if you served 90 consecutive days during wartime, 181 days during peacetime, 6+ years in the National Guard or Reserves, or are the surviving spouse of a veteran who died in service. You will need a Certificate of Eligibility (COE) — your lender can usually obtain this online in minutes.</p><p>Use our free <a href="' . home_url('/tools/va-loan-calculator/') . '">VA Loan Calculator</a> to run your numbers before talking to a lender.</p>'
+                . $fi($img['family'],'Veteran family moving into new home','Millions of veteran families have achieved homeownership through the VA loan program.'),
+        ],
+        [
+            'title'   => 'How to Save $10,000 in 6 Months: A Realistic Step-by-Step Plan',
+            'slug'    => 'how-to-save-10000-in-6-months-2026',
+            'excerpt' => 'Saving $10,000 in 6 months is possible on an average income. Here is a step-by-step plan that actually works — with math, automation, and income-boosting strategies.',
+            'keyword' => 'how to save 10000 in 6 months',
+            'desc'    => 'Save $10,000 in 6 months with this step-by-step plan. Includes budgeting strategies, automation tips, and income boosters that work on an average salary.',
+            'content' => '<p>Saving $10,000 in six months sounds like a lot. But it is completely achievable — the people who do it are not earning six figures, they just have a concrete plan. This guide gives you that plan.</p>'
+                . $fi($img['save'],'Person writing savings plan in notebook with cash on table','A clear plan is the difference between wishing you had $10,000 and actually having it.')
+                . '<h2>The Math: What You Need to Save</h2><p>To hit $10,000 in 6 months, you need to save <strong>$1,667 per month</strong> — about $417 per week. Everything in this guide is about making that number reachable for you.</p>'
+                . '<h2>Step 1: Track Every Dollar for Two Weeks</h2><p>Before cutting anything, find where your money actually goes. Download your last 60 days of bank and credit card statements. Categorize every transaction into: Housing, Food, Transport, Subscriptions, and Entertainment. Most people discover $300–$800 in forgotten spending. Use our free <a href="' . home_url('/tools/budget-analyzer/') . '">Budget Analyzer</a> to do this automatically.</p>'
+                . $fi($img['budget'],'Budget spreadsheet on desk with coffee — personal finance planning','Tracking your spending is not about shame — it is about making intentional choices.')
+                . '<h2>Step 2: Automate Savings First</h2><p>Do not save what is left over — there is never anything left over. On payday, automatically transfer $1,667 to a separate high-yield savings account before you spend anything. When the money is moved before you see it, you naturally adapt to spending less.</p>'
+                . '<h2>Step 3: Boost Your Income</h2><p>Cutting alone may not be enough. Even $300–$500/month in extra income makes the difference. Options: sell unused items on Facebook Marketplace ($200–$1,000), freelance your skills on evenings and weekends ($25/hr x 5 hrs/week = $500/month), request overtime, or try delivery apps on weekends.</p>'
+                . $fi($img['money'],'Savings jar filling with cash representing $10,000 savings goal progress','Every week you stay on track, the goal gets closer. Weekly check-ins keep you accountable.')
+                . '<p>Use our free <a href="' . home_url('/tools/savings-goal-calculator/') . '">Savings Goal Calculator</a> to set your exact timeline and see how small adjustments to your savings rate change when you hit your target.</p>',
+        ],
+        [
+            'title'   => 'How to Improve Your Credit Score Fast in 2026: 9 Proven Strategies',
+            'slug'    => 'how-to-improve-credit-score-fast-2026',
+            'excerpt' => 'A good credit score saves you tens of thousands of dollars over your lifetime. These 9 proven strategies can improve your score — some work within 30 days.',
+            'keyword' => 'how to improve credit score fast 2026',
+            'desc'    => '9 proven strategies to improve your credit score fast in 2026. Some work within 30 days. Learn what actually moves the needle on your FICO score.',
+            'content' => '<p>Your credit score determines whether you get approved for a mortgage, what interest rate you pay on a car loan, and sometimes whether you get the job you applied for. A difference of 100 points can cost — or save — tens of thousands of dollars over your lifetime.</p>'
+                . $fi($img['credit'],'Credit score meter showing improvement from poor to excellent','Your credit score is not permanent — it responds directly to the right financial habits.')
+                . '<h2>How FICO Scores Are Calculated</h2><ul><li><strong>35% — Payment History:</strong> Do you pay on time? This is the biggest factor.</li><li><strong>30% — Credit Utilization:</strong> How much of your available credit are you using?</li><li><strong>15% — Length of Credit History</strong></li><li><strong>10% — Credit Mix</strong></li><li><strong>10% — New Credit</strong></li></ul>'
+                . '<h2>Top 4 Fastest-Impact Strategies</h2>'
+                . '<h3>1. Pay Down Credit Card Balances</h3><p>This is the fastest way to boost your score. If your credit card is above 30% utilization, paying it down can add 40–70 points within one billing cycle. Ideal utilization is under 10%.</p>'
+                . $fi($img['money'],'Person paying off credit card balance online','Paying down credit card balances is the highest-ROI action for your credit score.')
+                . '<h3>2. Never Miss a Payment — Set Up Autopay</h3><p>Payment history is 35% of your score. One missed payment drops your score 90–110 points and stays for 7 years. Set autopay for at least the minimum on every account today.</p>'
+                . '<h3>3. Dispute Errors on Your Credit Report</h3><p>One in five Americans has a credit report error. Get your free report at AnnualCreditReport.com (all three bureaus). Common errors: accounts not yours, late payments that were on time, wrong balances. Dispute online — bureaus have 30 days to investigate.</p>'
+                . '<h3>4. Request a Credit Limit Increase</h3><p>Ask your card issuer for a higher limit. If they raise it without a hard inquiry, your utilization drops and your score goes up — without paying a cent.</p>'
+                . $fi($img['laptop'],'Person reviewing credit report on laptop to find errors','Check all three credit bureaus — Experian, Equifax, and TransUnion — for errors.')
+                . '<p>Use our free <a href="' . home_url('/tools/mortgage-calculator/') . '">Mortgage Calculator</a> to see how a higher credit score translates to lower monthly payments on your next home loan.</p>',
+        ],
+        [
+            'title'   => 'Index Fund Investing for Beginners: Build Wealth the Simple Way in 2026',
+            'slug'    => 'index-fund-investing-beginners-guide-2026',
+            'excerpt' => 'Index fund investing is the simplest, most proven way to build long-term wealth. This beginner guide explains how to start in 2026 — even with just $100.',
+            'keyword' => 'index fund investing for beginners 2026',
+            'desc'    => 'Index fund investing is the simplest proven path to long-term wealth. This beginner guide explains how to start in 2026 with any amount of money.',
+            'content' => '<p>Warren Buffett has consistently said that most people would be better off putting their money in a low-cost S&amp;P 500 index fund than trying to pick stocks. He has said it so often that people sometimes forget what radical advice it is from someone who made his fortune picking stocks. He is right, though.</p>'
+                . $fi($img['invest'],'Stock market chart showing long-term upward growth of index funds','Index funds have delivered average returns of ~10% per year historically.')
+                . '<h2>What Is an Index Fund?</h2><p>An index fund tracks a market index — like the S&amp;P 500, which includes the 500 largest U.S. companies. When you buy a share, you own a tiny piece of all 500 companies at once. When they grow, your investment grows.</p>'
+                . '<h2>Why Index Funds Beat Most Active Managers</h2><p>Over any 15-year period, roughly 90% of actively managed funds underperform their benchmark index — especially after fees. Index funds do not try to beat the market; they ARE the market.</p>'
+                . $fi($img['chart'],'Bar chart comparing index fund returns vs actively managed funds','Decades of data prove index funds outperform most actively managed funds after fees.')
+                . '<h2>The Cost Advantage</h2><p>Actively managed funds charge 0.5%–1.5% annually. Top index funds charge 0.03%–0.05%. On $10,000 invested for 30 years at 10% return: a 1% fee leaves you $132,000; a 0.05% fee leaves you $172,000. That 0.95% difference costs you $40,000.</p>'
+                . '<h2>Best Index Funds for Beginners 2026</h2><ul><li><strong>VTI (Vanguard Total Stock Market ETF)</strong> — 0.03% fee, covers entire U.S. market</li><li><strong>FZROX (Fidelity ZERO Total Market)</strong> — 0.00% fee, literally free to own</li><li><strong>IVV (iShares Core S&amp;P 500 ETF)</strong> — 0.03% fee, tracks S&amp;P 500</li></ul>'
+                . $fi($img['index'],'Investment portfolio dashboard showing index fund allocation and growth','A simple two-fund portfolio covers virtually the entire global stock market.')
+                . '<h2>How to Start in 4 Steps</h2><ol><li>Open a Fidelity, Vanguard, or Schwab account (free, no minimums)</li><li>Choose a Roth IRA for tax-free growth if eligible</li><li>Pick one or two low-cost index funds</li><li>Set up automatic monthly investments — even $100/month grows to $200,000+ in 30 years at historical rates</li></ol><p>Use our free <a href="' . home_url('/tools/investment-calculator/') . '">Investment Calculator</a> to see exactly how your money grows over time.</p>',
+        ],
+        [
+            'title'   => '50/30/20 Budget Rule: The Simplest Budgeting System That Actually Works',
+            'slug'    => '50-30-20-budget-rule-guide-2026',
+            'excerpt' => 'The 50/30/20 rule is the simplest budgeting method that works. This guide explains how to implement it in 2026 with real examples and a free budget calculator.',
+            'keyword' => '50 30 20 budget rule 2026',
+            'desc'    => 'The 50/30/20 budget rule is the simplest way to manage money and make financial progress. Learn how to apply it in 2026 with real examples.',
+            'content' => '<p>Most budgets fail not because people are bad with money, but because the budget is too complicated. Tracking 30 categories feels like homework — and the moment you miss a week, you abandon the whole system. The 50/30/20 rule fixes this. It is so simple you can explain it in one sentence, and it covers everything that matters.</p>'
+                . $fi($img['budget'],'Budget pie chart showing 50/30/20 split for needs wants and savings','Three numbers. That is all you need to build a budget that works.')
+                . '<h2>The Rule Explained</h2><ul><li><strong>50% — Needs:</strong> Rent, utilities, groceries, minimum debt payments, insurance, transportation to work</li><li><strong>30% — Wants:</strong> Restaurants, streaming, entertainment, vacations, hobbies, new clothes</li><li><strong>20% — Savings &amp; Debt Payoff:</strong> Emergency fund, retirement, investing, extra debt payments</li></ul>'
+                . '<h2>Real Example: $4,000/Month After Tax</h2><table style="width:100%;border-collapse:collapse;margin:20px 0"><tr style="background:#0f172a;color:#10B981"><th style="padding:10px">Category</th><th style="padding:10px">%</th><th style="padding:10px">Amount</th></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px">Needs</td><td style="padding:10px;text-align:center">50%</td><td style="padding:10px;text-align:center">$2,000</td></tr><tr style="background:#0f172a;color:#cbd5e1"><td style="padding:10px">Wants</td><td style="padding:10px;text-align:center">30%</td><td style="padding:10px;text-align:center">$1,200</td></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px">Savings</td><td style="padding:10px;text-align:center">20%</td><td style="padding:10px;text-align:center;color:#10B981;font-weight:700">$800</td></tr></table>'
+                . $fi($img['save'],'Person dividing money into three envelopes for needs wants and savings','The envelope method is a physical version of 50/30/20 — simple and effective.')
+                . '<h2>What If Needs Exceed 50%?</h2><p>In high cost-of-living cities, rent alone can eat 40–50% of income. If your needs genuinely exceed 50%, either reduce costs (roommate, cheaper area, refinance) or increase income. Do not cut the 20% savings to fund lifestyle — that borrows from your future.</p>'
+                . $fi($img['chart'],'Financial progress chart showing savings growth with 50/30/20 budgeting','Consistently saving 20% builds genuine financial security over any income level.')
+                . '<p>Use our free <a href="' . home_url('/tools/budget-analyzer/') . '">50/30/20 Budget Analyzer</a> to calculate your exact targets instantly.</p>',
+        ],
+        [
+            'title'   => 'How to Pay Off Student Loans Faster in 2026: 7 Strategies That Work',
+            'slug'    => 'how-to-pay-off-student-loans-faster-2026',
+            'excerpt' => 'Student loan debt holds millions of Americans back from building wealth. These 7 proven strategies will help you pay off your loans faster and save thousands in interest.',
+            'keyword' => 'how to pay off student loans faster 2026',
+            'desc'    => '7 proven strategies to pay off student loans faster in 2026 and save thousands in interest. Start building real wealth sooner.',
+            'content' => '<p>The average student loan borrower owes about $38,000 and carries that debt for 20 years. Over a standard 10-year plan at 6.5%, that loan costs over $13,000 in interest alone. These strategies help you pay it off much faster.</p>'
+                . $fi($img['student'],'College graduate holding diploma looking forward to financial freedom','Your degree was worth it — now here is how to get out from under the debt faster.')
+                . '<h2>Strategy 1: Pay More Than the Minimum</h2><p>Even an extra $100–$150/month makes a huge difference. On a $38,000 loan at 6.5%, an extra $150/month cuts payoff time by nearly 3 years and saves $4,000+ in interest. Important: specify that extra payments go to <strong>principal</strong>, not future payments.</p>'
+                . '<h2>Strategy 2: Refinance to a Lower Rate</h2><p>With good credit (700+) and stable income, refinancing can drop your rate from 6–7% to 4–5%. On $40,000, that saves $7,000+ in interest. Warning: refinancing federal loans into private loans loses income-driven repayment and PSLF eligibility.</p>'
+                . $fi($img['laptop'],'Person comparing student loan refinancing rates on laptop','Refinancing from 7% to 4.5% on $40,000 saves over $7,000 in total interest.')
+                . '<h2>Strategy 3: Apply Windfalls to Principal</h2><p>Tax refund? Bonus? Birthday money? Every windfall applied to principal eliminates months of future payments. A $2,000 tax refund applied to loans can save hundreds in interest and shorten repayment by months.</p>'
+                . '<h2>Strategy 4: Make Bi-Weekly Payments</h2><p>Pay half your monthly payment every two weeks. With 52 weeks per year, you make 26 half-payments — equivalent to 13 full payments instead of 12. That one extra payment per year shaves months off your timeline without feeling like a sacrifice.</p>'
+                . '<h2>Strategy 5: Explore PSLF</h2><p>If you work for a government agency or qualifying nonprofit, Public Service Loan Forgiveness forgives your remaining federal balance after 120 qualifying payments (10 years). If you owe $60,000+ and work in public service, this can be worth tens of thousands.</p>'
+                . $fi($img['money'],'Calendar with debt-free date circled — celebrating paying off student loans early','Every strategy compounds — use two or three together and your payoff date moves years earlier.')
+                . '<p>Use our free <a href="' . home_url('/tools/loan-payoff-calculator/') . '">Loan Payoff Calculator</a> to see how much faster you can be debt-free.</p>',
+        ],
+        [
+            'title'   => 'Bitcoin vs Gold: Which Is the Better Investment in 2026?',
+            'slug'    => 'bitcoin-vs-gold-better-investment-2026',
+            'excerpt' => 'Bitcoin and gold are both called stores of value — but they behave very differently. This honest comparison breaks down which is better for your portfolio in 2026.',
+            'keyword' => 'bitcoin vs gold investment 2026',
+            'desc'    => 'Bitcoin vs Gold — an honest comparison of returns, risk, volatility, and inflation protection in 2026. Which belongs in your portfolio?',
+            'content' => '<p>For decades, gold was the go-to store of value when everything else felt uncertain. Then Bitcoin arrived and a new debate began. Is Bitcoin digital gold? Is gold obsolete? This is an honest, data-driven answer.</p>'
+                . $fi($img['gold'],'Gold bars and Bitcoin coin side by side representing two store of value assets','Gold and Bitcoin both serve as stores of value — but their risk profiles are very different.')
+                . '<h2>Gold: The 5,000-Year Track Record</h2><p>Gold has held its value for over 5,000 years. It cannot be printed by governments and has industrial demand. From 2000–2025, gold returned ~580% — a compound annual growth rate of about 8.4%. Strengths: proven track record, low volatility, tangible, accepted globally. Weaknesses: no yield, storage costs if physical, slow price movement.</p>'
+                . '<h2>Bitcoin: The New Contender</h2><p>Bitcoin launched in 2009 with a fixed supply of 21 million coins — enforced by code, not government. Its returns have been spectacular but volatile. From 2015–2025: Bitcoin returned 20,000%+; gold returned ~85%. The cost: Bitcoin has seen 50–83% drawdowns regularly.</p>'
+                . $fi($img['bitcoin'],'Bitcoin price chart showing historical growth trajectory with volatility','Bitcoin\'s fixed supply is the core of its inflation-protection argument — but volatility is real.')
+                . '<h2>Performance Comparison</h2><table style="width:100%;border-collapse:collapse;margin:20px 0"><tr style="background:#0f172a;color:#10B981"><th style="padding:10px">Asset</th><th style="padding:10px">2015–2025 Return</th><th style="padding:10px">Worst Drawdown</th></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px">Bitcoin</td><td style="padding:10px;text-align:center;color:#10B981;font-weight:700">20,000%+</td><td style="padding:10px;text-align:center">-83%</td></tr><tr style="background:#0f172a;color:#cbd5e1"><td style="padding:10px">Gold</td><td style="padding:10px;text-align:center">~85%</td><td style="padding:10px;text-align:center">-20%</td></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px">S&amp;P 500</td><td style="padding:10px;text-align:center">~240%</td><td style="padding:10px;text-align:center">-34%</td></tr></table>'
+                . $fi($img['chart'],'10-year performance comparison chart of Bitcoin gold and S&P 500','Both assets serve a role in a diversified portfolio — allocation depends on risk tolerance.')
+                . '<h2>The Practical Answer: Both, In Right Proportions</h2><p>For most investors: Conservative — 5% gold, 1–2% Bitcoin. Moderate — 3% gold, 3–5% Bitcoin. Aggressive — 1% gold, 5–15% Bitcoin. Neither should replace your core stock market portfolio. Both are diversification tools.</p><p>Use our free <a href="' . home_url('/tools/bitcoin-profit-calculator/') . '">Bitcoin Profit Calculator</a> to model different investment scenarios.</p>',
+        ],
+        [
+            'title'   => 'Emergency Fund: How Much You Need and Where to Keep It in 2026',
+            'slug'    => 'emergency-fund-how-much-where-to-keep-2026',
+            'excerpt' => 'An emergency fund is the foundation of every strong financial plan. Learn how much to save, where to keep it, and how to build it fast in 2026.',
+            'keyword' => 'emergency fund how much 2026',
+            'desc'    => 'How much emergency fund do you need in 2026? Where to keep it? The fastest way to build it on any budget. Complete guide.',
+            'content' => '<p>Without an emergency fund, every financial setback turns into a crisis. Your car breaks down — you put it on a credit card at 22% interest. The emergency becomes debt. The debt becomes a monthly payment. The payment reduces what you can save next month. An emergency fund breaks that cycle before it starts.</p>'
+                . $fi($img['save'],'Emergency fund jar full of cash representing financial security','An emergency fund is not exciting — it is the financial equivalent of insurance.')
+                . '<h2>How Much Do You Need?</h2><ul><li><strong>Single income, stable job:</strong> 3 months of expenses</li><li><strong>Single income, variable/freelance:</strong> 6 months minimum</li><li><strong>Dual income household:</strong> 3 months</li><li><strong>Single parent or sole provider:</strong> 6+ months</li><li><strong>Self-employed or business owner:</strong> 6–12 months</li></ul><p>Calculate your monthly <em>expenses</em> (not income) and multiply by your target months. That is your goal.</p>'
+                . '<h2>Where to Keep It in 2026</h2><p>The right place: a <strong>high-yield savings account (HYSA)</strong>. The best HYSAs pay 4.5%–5% APY in 2026. On a $15,000 emergency fund, that is $675–$750/year in interest while the money waits. Top options: Marcus by Goldman Sachs, Ally Bank, SoFi, American Express HYSA — all FDIC insured, no fees, no minimums.</p>'
+                . $fi($img['chart'],'High yield savings account showing 4.8% APY interest — best place for emergency fund','In 2026, your emergency fund should be earning 4–5% APY while it sits waiting.')
+                . '<h2>Build It in 3 Stages</h2><ol><li><strong>$1,000 baby fund</strong> — first target, covers most single emergencies</li><li><strong>One month of expenses</strong> — handles short job disruptions</li><li><strong>Full 3–6 months</strong> — even $200/month gets you here in 12–18 months</li></ol>'
+                . $fi($img['money'],'Person reaching savings goal milestone — emergency fund complete','Build in stages — each milestone gives you more financial security and peace of mind.')
+                . '<p>Use our free <a href="' . home_url('/tools/emergency-fund-calculator/') . '">Emergency Fund Calculator</a> to calculate your exact target and see how long it takes at different savings rates.</p>',
+        ],
+        [
+            'title'   => 'First-Time Home Buyer Guide 2026: Everything You Need to Know',
+            'slug'    => 'first-time-home-buyer-guide-2026',
+            'excerpt' => 'Buying your first home is the biggest financial decision most people ever make. This guide covers saving for a down payment, getting pre-approved, and closing day.',
+            'keyword' => 'first time home buyer guide 2026',
+            'desc'    => 'Complete first-time home buyer guide for 2026. How to save for a down payment, get pre-approved, choose a mortgage, and avoid costly mistakes.',
+            'content' => '<p>Buying your first home is one of the most exciting and terrifying financial decisions you will ever make. This guide has no agenda — just the information you need to make the best decision for your situation.</p>'
+                . $fi($img['realestate'],'Beautiful house with sold sign — first time home buyer achievement','Preparation is everything — the buyers who succeed spend months getting ready before they look.')
+                . '<h2>Are You Actually Ready to Buy?</h2><p>Answer these honestly: Do you have stable income and job security? Is your credit score 620+? Do you have 3–20% of the home price for a down payment? Do you have 2–5% extra for closing costs? Do you have a 3–6 month emergency fund separate from the above? Do you plan to stay for 3–5 years? If you answered no to more than two, one more year of preparation will save enormous stress and money.</p>'
+                . '<h2>How Much House Can You Afford?</h2><p>Lenders approve you for more than you should spend. Use the 28/36 rule: monthly housing payment should not exceed 28% of gross monthly income; all debt combined should not exceed 36%. On $6,000/month gross income, maximum comfortable housing payment is $1,680. Use our free <a href="' . home_url('/tools/mortgage-calculator/') . '">Mortgage Calculator</a> to find the home price that fits.</p>'
+                . $fi($img['house'],'Family walking through new home during showing with real estate agent','Know your budget before you fall in love with a house — it protects you from overspending.')
+                . '<h2>Down Payment Options 2026</h2><ul><li><strong>Conventional:</strong> 3–20% down (less than 20% requires PMI)</li><li><strong>FHA:</strong> 3.5% down with 580+ credit score</li><li><strong>VA:</strong> 0% down for eligible veterans — no PMI</li><li><strong>USDA:</strong> 0% down in eligible rural areas</li></ul><p>Do not forget closing costs — typically 2–5% of the loan amount, due at signing.</p>'
+                . '<h2>Get Pre-Approved First</h2><p>Get pre-approval from 2–3 lenders before you look at homes. Even a 0.25% rate difference on a $300,000 mortgage saves over $16,000 over 30 years. Compare offers carefully.</p>'
+                . $fi($img['chart'],'Mortgage comparison showing how interest rate difference saves thousands over 30 years','Always compare multiple pre-approval offers — the rate difference is real money.')
+                . '<p>The biggest first-time buyer mistakes: draining your emergency fund for the down payment, buying the maximum you are approved for, and skipping the home inspection. A $400 inspection can reveal $40,000 in problems.</p>',
+        ],
+        [
+            'title'   => 'Retirement Planning 2026: How Much Do You Need and How to Get There',
+            'slug'    => 'retirement-planning-how-much-need-2026',
+            'excerpt' => 'How much money do you actually need to retire? The answer depends on your lifestyle and timeline. This guide breaks it down clearly for 2026.',
+            'keyword' => 'retirement planning 2026 how much do I need',
+            'desc'    => 'How much do you need to retire in 2026? The 4% rule, retirement number calculator, and the best accounts to use. Complete retirement planning guide.',
+            'content' => '<p>Retirement planning is the financial goal most people know they should be working on and feel most behind on. The numbers sound impossibly large. But you do not need it all figured out — you need a few key principles, your number, and a plan to move toward it.</p>'
+                . $fi($img['retire'],'Retired couple walking on beach enjoying financial freedom','Retirement is not an age — it is a financial number. Know your number and work backward.')
+                . '<h2>The 4% Rule: Your Retirement Number</h2><p>The 4% rule says: withdraw 4% of your portfolio in year one of retirement and adjust for inflation each year. Historically, this lasts 30+ years. <strong>Your retirement number = Annual expenses × 25</strong></p><ul><li>Spend $40,000/year → need $1,000,000</li><li>Spend $60,000/year → need $1,500,000</li><li>Spend $80,000/year → need $2,000,000</li></ul>'
+                . $fi($img['chart'],'Retirement savings compound growth chart over 30 years showing power of starting early','Starting at 25 vs 35 can mean $500,000+ more at retirement — time is the most powerful variable.')
+                . '<h2>Do Not Forget Social Security</h2><p>Social Security covers some retirement expenses. The average 2026 benefit is ~$1,900/month ($22,800/year). If you need $60,000/year total and get $22,800 from Social Security, your portfolio only needs to provide $37,200/year — meaning you need $930,000, not $1.5 million.</p>'
+                . '<h2>Best Retirement Accounts 2026</h2><ul><li><strong>401(k):</strong> Contribute up to $23,500 ($31,000 if 50+). Always get the full employer match first — that is 100% return.</li><li><strong>Roth IRA:</strong> $7,000/year ($8,000 if 50+). Tax-free growth and withdrawals. Best if you expect higher taxes in retirement.</li><li><strong>HSA:</strong> Triple tax-advantaged — pre-tax in, tax-free growth, tax-free out for medical. Excellent supplement after 65.</li></ul>'
+                . $fi($img['invest'],'Retirement account dashboard showing 401k and Roth IRA growing over decades','Max employer match first, then Roth IRA, then back to 401k — this order maximizes tax advantages.')
+                . '<h2>How Much to Save By Age</h2><table style="width:100%;border-collapse:collapse;margin:20px 0"><tr style="background:#0f172a;color:#10B981"><th style="padding:10px">Age</th><th style="padding:10px">Save This % of Income</th></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px;text-align:center">25</td><td style="padding:10px;text-align:center">10–15%</td></tr><tr style="background:#0f172a;color:#cbd5e1"><td style="padding:10px;text-align:center">35</td><td style="padding:10px;text-align:center">15–20%</td></tr><tr style="background:#1e293b;color:#cbd5e1"><td style="padding:10px;text-align:center">45</td><td style="padding:10px;text-align:center">20–25%</td></tr><tr style="background:#0f172a;color:#cbd5e1"><td style="padding:10px;text-align:center">55+</td><td style="padding:10px;text-align:center">25–35%+</td></tr></table>'
+                . '<p>Use our free <a href="' . home_url('/tools/retirement-calculator/') . '">Retirement Calculator</a> to find your exact number and how much to save each month to retire on your terms.</p>',
+        ],
+    ];
+
+    foreach ( $posts as $p ) {
+        if ( get_page_by_path( $p['slug'], OBJECT, 'post' ) ) continue;
+
+        $post_id = wp_insert_post([
+            'post_title'    => $p['title'],
+            'post_name'     => $p['slug'],
+            'post_content'  => $p['content'],
+            'post_excerpt'  => $p['excerpt'],
+            'post_status'   => 'publish',
+            'post_type'     => 'post',
+            'post_author'   => 1,
+            'post_category' => [ $cat_id ],
+            'tags_input'    => ['personal finance','financial tips','2026','money management'],
+        ]);
+
+        if ( ! is_wp_error($post_id) ) {
+            update_post_meta( $post_id, 'rank_math_title',         $p['title'] . ' | FinanceSpots' );
+            update_post_meta( $post_id, 'rank_math_description',   $p['desc'] );
+            update_post_meta( $post_id, 'rank_math_focus_keyword', $p['keyword'] );
+            update_post_meta( $post_id, 'rank_math_robots',        [ 'index', 'follow' ] );
+        }
+    }
+
+    update_option( 'fs_blogs_v1', true );
+}
+add_action( 'admin_init', 'fs_create_blog_posts', 25 );
+add_action( 'init',       'fs_create_blog_posts', 45 );
+
 /* ── RankMath: Set WebApplication as default schema for fs_tool CPT ── */
 function fs_rankmath_tool_schema_defaults( $schemas, $post ) {
     if ( ! isset( $post->post_type ) || $post->post_type !== 'fs_tool' ) return $schemas;
