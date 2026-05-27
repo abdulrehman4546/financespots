@@ -1,58 +1,43 @@
 <?php
-// Manual deploy script — DELETE after use!
-define('DEPLOY_PASS', 'fs2026deploy');
-define('REPO_ZIP', 'https://github.com/abdulrehman4546/financespots/archive/refs/heads/main.zip');
-define('DEPLOY_DIR', __DIR__);
+$pass = $_GET['pass'] ?? '';
+if ( $pass !== 'fs2026deploy' ) { http_response_code(403); die('Forbidden'); }
 
-if (($_GET['pass'] ?? '') !== DEPLOY_PASS) {
-    die('Access denied. Use: ?pass=fs2026deploy');
-}
+$repo     = 'Abdul-Rahman-dev/financespots';
+$branch   = 'main';
+$zip_url  = "https://github.com/{$repo}/archive/refs/heads/{$branch}.zip";
+$zip_file = sys_get_temp_dir() . '/fs_deploy.zip';
+$extract  = sys_get_temp_dir() . '/fs_deploy_extract';
+$root     = $_SERVER['DOCUMENT_ROOT'];
 
-echo "<pre>\n";
-echo "Starting manual deploy...\n"; flush();
+echo "<pre>Starting deploy...\n";
+$zip_data = file_get_contents( $zip_url );
+if ( ! $zip_data ) { die("ERROR: Could not download ZIP\n"); }
+file_put_contents( $zip_file, $zip_data );
+echo "Downloaded ZIP (" . number_format(strlen($zip_data)) . " bytes)\n";
 
-$zipPath = sys_get_temp_dir() . '/fs_deploy.zip';
-echo "Downloading repo ZIP from GitHub...\n"; flush();
-$zip = file_get_contents(REPO_ZIP);
-if (!$zip) die("ERROR: Could not download ZIP");
-file_put_contents($zipPath, $zip);
-echo "Downloaded (" . round(strlen($zip)/1024/1024, 1) . " MB)\n"; flush();
+if ( is_dir($extract) ) exec("rm -rf " . escapeshellarg($extract));
+$zip = new ZipArchive();
+if ( $zip->open($zip_file) !== true ) { die("ERROR: Could not open ZIP\n"); }
+$zip->extractTo($extract);
+$zip->close();
+echo "Extracted ZIP\n";
 
-$extractTo = sys_get_temp_dir() . '/fs_deploy_extract';
-if (is_dir($extractTo)) exec("rm -rf " . escapeshellarg($extractTo));
+$folders = glob($extract . '/*', GLOB_ONLYDIR);
+if ( empty($folders) ) { die("ERROR: No folder found\n"); }
+$src = $folders[0];
 
-$za = new ZipArchive();
-if ($za->open($zipPath) !== true) die("ERROR: Could not open ZIP");
-$za->extractTo($extractTo);
-$za->close();
-echo "Extracted ZIP\n"; flush();
+$skip = ['wp-config.php','manual-deploy.php','deploy.php','.htaccess'];
 
-$srcDir = $extractTo . '/financespots-main';
-if (!is_dir($srcDir)) die("ERROR: Source folder not found in ZIP");
-
-// Copy all files recursively, skipping sensitive files
-$skip = ['wp-config.php', 'deploy.php', 'manual-deploy.php'];
-$iterator = new RecursiveIteratorIterator(
-    new RecursiveDirectoryIterator($srcDir, RecursiveDirectoryIterator::SKIP_DOTS),
-    RecursiveIteratorIterator::SELF_FIRST
-);
-
-$count = 0;
-foreach ($iterator as $item) {
-    $relative = substr($item->getPathname(), strlen($srcDir) + 1);
-    if (in_array(basename($relative), $skip)) continue;
-    $dest = DEPLOY_DIR . '/' . $relative;
-    if ($item->isDir()) {
-        if (!is_dir($dest)) mkdir($dest, 0755, true);
-    } else {
-        copy($item->getPathname(), $dest);
-        $count++;
+function deploy_copy($s,$d,$skip,&$n){
+    foreach(scandir($s) as $i){
+        if($i==='.'||$i==='..') continue;
+        if(in_array($i,$skip)){echo "  SKIPPED: $i\n";continue;}
+        $sp=$s.'/'.$i; $dp=$d.'/'.$i;
+        if(is_dir($sp)){if(!is_dir($dp))mkdir($dp,0755,true);deploy_copy($sp,$dp,$skip,$n);}
+        else{copy($sp,$dp);$n++;}
     }
 }
-
-exec("rm -rf " . escapeshellarg($extractTo));
-unlink($zipPath);
-
-echo "Done! $count files deployed.\n";
-echo "\n*** DELETE this file now! ***\n";
-echo "</pre>";
+$n=0; deploy_copy($src,$root,$skip,$n);
+echo "Copied $n files\n";
+unlink($zip_file); exec("rm -rf ".escapeshellarg($extract));
+echo "Done! ".date('Y-m-d H:i:s')."\nVisit wp-admin to activate the indexing fix.\n</pre>";

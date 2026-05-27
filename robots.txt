@@ -1,0 +1,12 @@
+User-agent: *
+Allow: /
+
+Disallow: /wp-admin/
+Allow: /wp-admin/admin-ajax.php
+Disallow: /wp-includes/
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/uploads/wc-logs/
+Disallow: /?s=
+Disallow: /search/
+
+Sitemap: https://financespots.com/sitemap_index.xml

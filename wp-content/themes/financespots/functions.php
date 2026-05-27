@@ -2137,6 +2137,78 @@ function fs_rankmath_setup() {
 add_action( 'admin_init', 'fs_rankmath_setup', 20 );
 add_action( 'init',       'fs_rankmath_setup', 40 );
 
+/* =========================================================
+   FIX ALL NOINDEX + INDEXING ISSUES
+   Removes noindex from all published content, fixes blog
+   visibility, resets Rank Math robots to index/follow.
+   Version-gated: fs_fix_indexing_v2
+   ========================================================= */
+function fs_fix_all_indexing_issues() {
+    if ( get_option( 'fs_fix_indexing_v2' ) ) return;
+
+    global $wpdb;
+
+    /* 1. Make sure WordPress itself is not blocking search engines */
+    update_option( 'blog_public', '1' );
+
+    /* 2. Remove noindex from ALL published posts/pages/tools */
+    $wpdb->query(
+        "UPDATE {$wpdb->postmeta} pm
+         JOIN {$wpdb->posts} p ON p.ID = pm.post_id
+         SET pm.meta_value = 'a:2:{i:0;s:5:\"index\";i:1;s:6:\"follow\";}'
+         WHERE pm.meta_key = 'rank_math_robots'
+         AND pm.meta_value LIKE '%noindex%'
+         AND p.post_status = 'publish'"
+    );
+
+    /* 3. Set index/follow on ALL published content (belt and suspenders) */
+    $all_posts = $wpdb->get_col(
+        "SELECT ID FROM {$wpdb->posts}
+         WHERE post_status = 'publish'
+         AND post_type IN ('post','page','fs_tool')"
+    );
+    foreach ( $all_posts as $pid ) {
+        update_post_meta( (int)$pid, 'rank_math_robots', [ 'index', 'follow' ] );
+    }
+
+    /* 4. Fix all taxonomy terms — set index/follow */
+    $all_terms = $wpdb->get_col(
+        "SELECT term_id FROM {$wpdb->terms}"
+    );
+    foreach ( $all_terms as $tid ) {
+        update_term_meta( (int)$tid, 'rank_math_robots', [ 'index', 'follow' ] );
+    }
+
+    /* 5. Reset Rank Math title settings to force index on all types */
+    $titles = get_option( 'rank-math-options-titles', [] );
+    $titles['post_robots']       = [ 'index', 'follow' ];
+    $titles['page_robots']       = [ 'index', 'follow' ];
+    $titles['fs_tool_robots']    = [ 'index', 'follow' ];
+    $titles['fs_tool_cat_robots']= [ 'index', 'follow' ];
+    $titles['archive_robots']    = [ 'index', 'follow' ];
+    $titles['author_robots']     = [ 'noindex' ];
+    $titles['search_robots']     = [ 'noindex' ];
+    $titles['404_robots']        = [ 'noindex' ];
+    update_option( 'rank-math-options-titles', $titles );
+
+    /* 6. Make sure sitemap is enabled for all types */
+    $sitemap = get_option( 'rank-math-options-sitemap', [] );
+    $sitemap['post_sitemap']     = 'on';
+    $sitemap['page_sitemap']     = 'on';
+    $sitemap['fs_tool_sitemap']  = 'on';
+    $sitemap['fs_tool_cat_sitemap'] = 'on';
+    update_option( 'rank-math-options-sitemap', $sitemap );
+
+    /* 7. Ping search engines with sitemap */
+    $sitemap_url = home_url( '/sitemap_index.xml' );
+    wp_remote_get( 'https://www.google.com/ping?sitemap=' . urlencode( $sitemap_url ), [ 'timeout' => 5, 'blocking' => false ] );
+    wp_remote_get( 'https://www.bing.com/ping?sitemap=' . urlencode( $sitemap_url ),  [ 'timeout' => 5, 'blocking' => false ] );
+
+    update_option( 'fs_fix_indexing_v2', true );
+}
+add_action( 'admin_init', 'fs_fix_all_indexing_issues', 5 );
+add_action( 'init',       'fs_fix_all_indexing_issues', 5 );
+
 /* ── RankMath: Set WebApplication as default schema for fs_tool CPT ── */
 function fs_rankmath_tool_schema_defaults( $schemas, $post ) {
     if ( ! isset( $post->post_type ) || $post->post_type !== 'fs_tool' ) return $schemas;
