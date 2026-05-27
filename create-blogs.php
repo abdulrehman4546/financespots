@@ -5,8 +5,15 @@
  * Run once: https://financespots.com/create-blogs.php?pass=fs2026blogs
  */
 
+@ini_set('memory_limit', '512M');
+@ini_set('max_execution_time', '300');
+@set_time_limit(300);
+
 $pass = $_GET['pass'] ?? '';
 if ( $pass !== 'fs2026blogs' ) { http_response_code(403); die('Forbidden'); }
+
+// Which post to create (0-9), default all
+$num = isset($_GET['n']) ? (int)$_GET['n'] : -1;
 
 // Load WordPress
 define('ABSPATH_LOADED', true);
@@ -692,6 +699,11 @@ $posts = [
 
 $created = 0;
 $errors  = 0;
+
+// If ?n=X passed, only create that one post
+if ( $num >= 0 && isset($posts[$num]) ) {
+    $posts = [ $posts[$num] ];
+}
 
 foreach ( $posts as $i => $p ) {
     // Check if slug already exists
