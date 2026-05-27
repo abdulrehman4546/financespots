@@ -2150,7 +2150,15 @@ add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
    Version-gated: fs_fix_indexing_v2
    ========================================================= */
 function fs_fix_all_indexing_issues() {
-    if ( get_option( 'fs_fix_indexing_v2' ) ) return;
+    if ( get_option( 'fs_fix_indexing_v3' ) ) return;
+    delete_option( 'fs_fix_indexing_v2' );
+
+    /* 0. Fix siteurl and home if still pointing to localhost */
+    $current_url = get_option('siteurl');
+    if ( strpos($current_url, 'localhost') !== false || strpos($current_url, '127.0.0.1') !== false ) {
+        update_option( 'siteurl', 'https://financespots.com' );
+        update_option( 'home',    'https://financespots.com' );
+    }
 
     global $wpdb;
 
@@ -2210,7 +2218,7 @@ function fs_fix_all_indexing_issues() {
     wp_remote_get( 'https://www.google.com/ping?sitemap=' . urlencode( $sitemap_url ), [ 'timeout' => 5, 'blocking' => false ] );
     wp_remote_get( 'https://www.bing.com/ping?sitemap=' . urlencode( $sitemap_url ),  [ 'timeout' => 5, 'blocking' => false ] );
 
-    update_option( 'fs_fix_indexing_v2', true );
+    update_option( 'fs_fix_indexing_v3', true );
 }
 add_action( 'admin_init', 'fs_fix_all_indexing_issues', 5 );
 add_action( 'init',       'fs_fix_all_indexing_issues', 5 );
