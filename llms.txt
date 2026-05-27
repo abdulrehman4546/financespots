@@ -29,6 +29,19 @@ FinanceSpots is a free platform built by Abdul Rahman to give everyone access to
 - [About](https://financespots.com/about/): About FinanceSpots and Abdul Rahman
 - [Contact](https://financespots.com/contact/): Get in touch
 
+## Blog Posts
+
+- [VA Loan Benefits: The Complete Guide for Veterans in 2026](https://financespots.com/va-loan-benefits-complete-guide-veterans-2026/): Everything about VA loan benefits, eligibility, and the funding fee
+- [How to Save $10,000 in 6 Months](https://financespots.com/how-to-save-10000-in-6-months-2026/): Step-by-step plan to save $10,000 fast on an average income
+- [How to Improve Your Credit Score Fast in 2026](https://financespots.com/how-to-improve-credit-score-fast-2026/): 9 proven strategies — some work within 30 days
+- [Index Fund Investing for Beginners](https://financespots.com/index-fund-investing-beginners-guide-2026/): How to build long-term wealth with low-cost index funds
+- [50/30/20 Budget Rule Guide](https://financespots.com/50-30-20-budget-rule-guide-2026/): The simplest budgeting system that actually works
+- [How to Pay Off Student Loans Faster in 2026](https://financespots.com/how-to-pay-off-student-loans-faster-2026/): 7 strategies to eliminate student debt and save thousands in interest
+- [Bitcoin vs Gold: Which Is the Better Investment in 2026](https://financespots.com/bitcoin-vs-gold-better-investment-2026/): Honest data-driven comparison of returns, risk, and volatility
+- [Emergency Fund: How Much You Need and Where to Keep It](https://financespots.com/emergency-fund-how-much-where-to-keep-2026/): Complete emergency fund guide for 2026
+- [First-Time Home Buyer Guide 2026](https://financespots.com/first-time-home-buyer-guide-2026/): Everything you need to know from pre-approval to closing
+- [Retirement Planning 2026: How Much Do You Need](https://financespots.com/retirement-planning-how-much-need-2026/): The 4% rule, retirement accounts, and savings benchmarks by age
+
 ## Popular Tools
 
 - [VA Loan Calculator](https://financespots.com/tools/va-loan-calculator/): Calculate VA loan payments and funding fees for US veterans
