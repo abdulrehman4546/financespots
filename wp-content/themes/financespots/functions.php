@@ -2230,7 +2230,10 @@ function fs_create_blog_posts() {
     if ( get_option('fs_blogs_v1') ) return;
 
     $cat_id = get_cat_ID('Finance Tips');
-    if ( ! $cat_id ) $cat_id = wp_create_category('Finance Tips');
+    if ( ! $cat_id ) {
+        $term = wp_insert_term( 'Finance Tips', 'category', [ 'slug' => 'finance-tips' ] );
+        $cat_id = is_wp_error($term) ? 1 : $term['term_id'];
+    }
 
     $img = [
         'money'   => 'https://images.unsplash.com/photo-1579621970563-ebec7560ff3e?w=900&q=80',
