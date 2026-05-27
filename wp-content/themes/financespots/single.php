@@ -76,7 +76,7 @@ get_header();
                 <?php next_post_link( '<div class="fs-post-nav__next">%link</div>', '%title &rarr;' ); ?>
             </nav>
 
-            <?php if ( comments_open() || get_comments_number() ) comments_template(); ?>
+            <?php // Comments disabled site-wide ?>
 
         </article>
         <?php endwhile; ?>

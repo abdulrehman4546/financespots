@@ -91,9 +91,7 @@ function financespots_scripts() {
         'themeUrl'   => FINANCESPOTS_URI,
     ]);
 
-    if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
-        wp_enqueue_script( 'comment-reply' );
-    }
+    // Comments disabled site-wide
 }
 add_action( 'wp_enqueue_scripts', 'financespots_scripts' );
 
@@ -2149,6 +2147,16 @@ add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
    visibility, resets Rank Math robots to index/follow.
    Version-gated: fs_fix_indexing_v2
    ========================================================= */
+/* ── Disable comments site-wide ── */
+add_filter( 'comments_open',        '__return_false', 20, 2 );
+add_filter( 'pings_open',           '__return_false', 20, 2 );
+add_filter( 'comments_array',       '__return_empty_array', 10, 2 );
+add_action( 'admin_menu', function() { remove_menu_page('edit-comments.php'); } );
+add_action( 'wp_before_admin_bar_render', function() {
+    global $wp_admin_bar;
+    $wp_admin_bar->remove_menu('comments');
+} );
+
 function fs_fix_all_indexing_issues() {
     if ( get_option( 'fs_fix_indexing_v3' ) ) return;
     delete_option( 'fs_fix_indexing_v2' );
