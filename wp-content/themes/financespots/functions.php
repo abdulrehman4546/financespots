@@ -2137,6 +2137,12 @@ function fs_rankmath_setup() {
 add_action( 'admin_init', 'fs_rankmath_setup', 20 );
 add_action( 'init',       'fs_rankmath_setup', 40 );
 
+/* ── Add llms.txt reference to robots.txt via Rank Math filter ── */
+add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
+    $rules[] = 'LLMs: https://financespots.com/llms.txt';
+    return $rules;
+} );
+
 /* =========================================================
    FIX ALL NOINDEX + INDEXING ISSUES
    Removes noindex from all published content, fixes blog

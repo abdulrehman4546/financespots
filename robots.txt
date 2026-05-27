@@ -10,3 +10,4 @@ Disallow: /?s=
 Disallow: /search/
 
 Sitemap: https://financespots.com/sitemap_index.xml
+LLMs: https://financespots.com/llms.txt
