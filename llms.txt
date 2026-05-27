@@ -1,0 +1,51 @@
+# FinanceSpots
+
+> Free financial calculators and tools for mortgages, VA loans, taxes, investments, crypto, budgeting, and retirement planning. 110+ expert-built tools with instant PDF export. No signup required.
+
+## About
+
+FinanceSpots is a free platform built by Abdul Rahman to give everyone access to professional-grade financial tools and education. All calculators are free to use instantly — no account needed.
+
+- Site: https://financespots.com
+- Owner: Abdul Rahman
+- Contact: chabdulrehman4546@gmail.com
+
+## Tool Categories
+
+- [Loan Calculators](https://financespots.com/tools/loan-calculators/): Mortgage, VA loan, auto loan, personal loan, student loan calculators
+- [Investment Tools](https://financespots.com/tools/investment-tools/): ROI, compound interest, dividend, portfolio analyzer
+- [Tax Calculators](https://financespots.com/tools/tax-calculators/): Income tax estimator, capital gains, self-employment tax
+- [Savings Planners](https://financespots.com/tools/savings-planners/): Emergency fund, savings goal, CD calculator
+- [Retirement Planning](https://financespots.com/tools/retirement-planning/): 401k, IRA, FIRE, Social Security calculators
+- [Budget Analyzers](https://financespots.com/tools/budget-analyzers/): 50/30/20 planner, monthly budget, expense tracker
+- [Crypto Tools](https://financespots.com/tools/crypto-tools/): Bitcoin profit, DCA simulator, staking rewards, crypto tax
+- [Currency Converters](https://financespots.com/tools/currency-converters/): Live forex rates, 150+ currencies
+
+## Key Pages
+
+- [All Tools](https://financespots.com/all-tools/): Browse all 110+ financial calculators
+- [Blog](https://financespots.com/blog/): Financial tips, guides, and education
+- [Pricing](https://financespots.com/pricing/): Free vs Pro plan comparison
+- [About](https://financespots.com/about/): About FinanceSpots and Abdul Rahman
+- [Contact](https://financespots.com/contact/): Get in touch
+
+## Popular Tools
+
+- [VA Loan Calculator](https://financespots.com/tools/va-loan-calculator/): Calculate VA loan payments and funding fees for US veterans
+- [Mortgage Calculator](https://financespots.com/tools/mortgage-calculator/): Monthly payment, amortization schedule, total interest
+- [Compound Interest Calculator](https://financespots.com/tools/compound-interest-calculator/): Grow your savings with compound interest
+- [Income Tax Calculator](https://financespots.com/tools/income-tax-calculator/): Estimate your 2026 federal income tax
+- [Bitcoin Profit Calculator](https://financespots.com/tools/bitcoin-profit-calculator/): Calculate crypto gains and losses
+
+## Features
+
+- 110+ free financial calculators
+- Instant PDF export for all results
+- No signup or account required
+- Mobile-friendly and fast
+- AI-powered insights on results
+- Updated for 2026 tax rates and limits
+
+## Sitemap
+
+- https://financespots.com/sitemap_index.xml
