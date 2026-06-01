@@ -12,18 +12,18 @@ Disallow: /?s=
 Disallow: /search/
 Disallow: /*?s=
 
-# Block RSS/Atom feeds (waste crawl budget)
+# Block RSS/Atom feeds
 Disallow: /feed/
 Disallow: /*/feed/
 Disallow: /comments/feed/
 
-# Block pagination (thin/duplicate content)
+# Block pagination
 Disallow: /page/
 
 # Block author archives
 Disallow: /author/
 
-# Block tag feeds and category feeds
+# Block tag and category feeds
 Disallow: /tag/*/feed/
 Disallow: /category/*/feed/
 
