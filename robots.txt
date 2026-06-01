@@ -6,8 +6,26 @@ Allow: /wp-admin/admin-ajax.php
 Disallow: /wp-includes/
 Disallow: /wp-content/plugins/
 Disallow: /wp-content/uploads/wc-logs/
+
+# Block search and filter URLs
 Disallow: /?s=
 Disallow: /search/
+Disallow: /*?s=
+
+# Block RSS/Atom feeds (waste crawl budget)
+Disallow: /feed/
+Disallow: /*/feed/
+Disallow: /comments/feed/
+
+# Block pagination (thin/duplicate content)
+Disallow: /page/
+
+# Block author archives
+Disallow: /author/
+
+# Block tag feeds and category feeds
+Disallow: /tag/*/feed/
+Disallow: /category/*/feed/
 
 Sitemap: https://financespots.com/sitemap_index.xml
 LLMs: https://financespots.com/llms.txt

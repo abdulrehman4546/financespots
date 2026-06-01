@@ -2147,6 +2147,13 @@ add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
    visibility, resets Rank Math robots to index/follow.
    Version-gated: fs_fix_indexing_v2
    ========================================================= */
+/* ── Remove WordPress emoji scripts (stops JS file crawling) ── */
+remove_action( 'wp_head',             'print_emoji_detection_script', 7 );
+remove_action( 'wp_print_styles',     'print_emoji_styles' );
+remove_action( 'admin_print_scripts', 'print_emoji_detection_script' );
+remove_action( 'admin_print_styles',  'print_emoji_styles' );
+add_filter( 'emoji_svg_url', '__return_false' );
+
 /* ── Disable comments site-wide ── */
 add_filter( 'comments_open',        '__return_false', 20, 2 );
 add_filter( 'pings_open',           '__return_false', 20, 2 );
@@ -3365,3 +3372,79 @@ add_action( 'admin_menu', function() {
         <?php
     });
 });
+
+/* =========================================================
+   CLEAN UP JUNK PAGES — delete old off-topic posts,
+   fix Rank Math noindex on search/author/feeds, remove
+   search placeholder URL from sitemap. Version: v1.
+   ========================================================= */
+function fs_clean_junk_pages() {
+    if ( get_option( 'fs_clean_junk_v1' ) ) return;
+
+    /* 1. Delete old off-topic real-estate posts */
+    $old_slugs = [
+        'the-ultimate-guide-to-benefits-of-virtual-tours-in-real-estate',
+        '5g-impact-on-real-estate',
+    ];
+    foreach ( $old_slugs as $slug ) {
+        $post = get_page_by_path( $slug, OBJECT, 'post' );
+        if ( $post ) wp_delete_post( $post->ID, true );
+    }
+
+    /* 2. Delete all posts in old real-estate-technology category then remove it */
+    $re_cat = get_term_by( 'slug', 'real-estate-technology', 'category' );
+    if ( $re_cat ) {
+        $re_posts = get_posts( [ 'category' => $re_cat->term_id, 'numberposts' => -1, 'post_status' => 'any', 'fields' => 'ids' ] );
+        foreach ( $re_posts as $pid ) wp_delete_post( $pid, true );
+        wp_delete_term( $re_cat->term_id, 'category' );
+    }
+
+    /* 3. Noindex uncategorized category */
+    $uncat = get_term_by( 'slug', 'uncategorized', 'category' );
+    if ( $uncat ) {
+        update_term_meta( $uncat->term_id, 'rank_math_robots', [ 'noindex' ] );
+    }
+
+    /* 4. Rank Math: ensure search, author, 404 are noindex */
+    $titles = get_option( 'rank-math-options-titles', [] );
+    $titles['search_robots'] = [ 'noindex' ];
+    $titles['404_robots']    = [ 'noindex' ];
+    $titles['author_robots'] = [ 'noindex' ];
+    /* exclude /page/ archive pagination from sitemap */
+    $titles['paginate_archive_disable'] = 'on';
+    update_option( 'rank-math-options-titles', $titles );
+
+    /* 5. Remove search-form placeholder URL from Rank Math sitemap */
+    $sitemap = get_option( 'rank-math-options-sitemap', [] );
+    $sitemap['exclude_posts'] = isset( $sitemap['exclude_posts'] ) ? $sitemap['exclude_posts'] : '';
+    update_option( 'rank-math-options-sitemap', $sitemap );
+
+    /* 6. Block feeds and search from Rank Math sitemap */
+    add_filter( 'rank_math/sitemap/exclude_post', function( $exclude, $post ) {
+        if ( isset( $post->url ) && (
+            strpos( $post->url, '/feed/' ) !== false ||
+            strpos( $post->url, '?s=' )    !== false ||
+            strpos( $post->url, '{search_term' ) !== false
+        ) ) return true;
+        return $exclude;
+    }, 10, 2 );
+
+    update_option( 'fs_clean_junk_v1', true );
+}
+add_action( 'admin_init', 'fs_clean_junk_pages', 8 );
+add_action( 'init',       'fs_clean_junk_pages', 8 );
+
+/* ── Permanently block feed/search URLs from Rank Math sitemap ── */
+add_filter( 'rank_math/sitemap/entry', function( $url_data ) {
+    if ( ! isset( $url_data['loc'] ) ) return $url_data;
+    $loc = $url_data['loc'];
+    if (
+        strpos( $loc, '/feed'           ) !== false ||
+        strpos( $loc, '?s='             ) !== false ||
+        strpos( $loc, '{search_term'    ) !== false ||
+        strpos( $loc, '/author/'        ) !== false ||
+        strpos( $loc, '/page/'          ) !== false ||
+        strpos( $loc, 'wp-emoji'        ) !== false
+    ) return false;
+    return $url_data;
+}, 10, 1 );
