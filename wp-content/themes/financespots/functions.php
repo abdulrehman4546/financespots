@@ -2147,6 +2147,25 @@ add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
    visibility, resets Rank Math robots to index/follow.
    Version-gated: fs_fix_indexing_v2
    ========================================================= */
+/* ── Custom robots.txt rules via WordPress filter (overrides Rank Math dynamic output) ── */
+add_filter( 'robots_txt', function( $output, $public ) {
+    if ( ! $public ) return $output;
+    $output .= "\n# Block RSS/Atom feeds\n";
+    $output .= "Disallow: /feed/\n";
+    $output .= "Disallow: /*/feed/\n";
+    $output .= "Disallow: /comments/feed/\n";
+    $output .= "\n# Block pagination\n";
+    $output .= "Disallow: /page/\n";
+    $output .= "\n# Block author archives\n";
+    $output .= "Disallow: /author/\n";
+    $output .= "\n# Block tag and category feeds\n";
+    $output .= "Disallow: /tag/*/feed/\n";
+    $output .= "Disallow: /category/*/feed/\n";
+    $output .= "\n# AI crawler discovery\n";
+    $output .= "LLMs: https://financespots.com/llms.txt\n";
+    return $output;
+}, 99, 2 );
+
 /* ── Remove WordPress emoji scripts (stops JS file crawling) ── */
 remove_action( 'wp_head',             'print_emoji_detection_script', 7 );
 remove_action( 'wp_print_styles',     'print_emoji_styles' );
