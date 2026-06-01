@@ -2137,6 +2137,23 @@ add_action( 'init',       'fs_rankmath_setup', 40 );
 
 /* ── Add llms.txt reference to robots.txt via Rank Math filter ── */
 add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
+    $rules[] = '';
+    $rules[] = '# Block RSS/Atom feeds';
+    $rules[] = 'Disallow: /feed/';
+    $rules[] = 'Disallow: /*/feed/';
+    $rules[] = 'Disallow: /comments/feed/';
+    $rules[] = '';
+    $rules[] = '# Block pagination';
+    $rules[] = 'Disallow: /page/';
+    $rules[] = '';
+    $rules[] = '# Block author archives';
+    $rules[] = 'Disallow: /author/';
+    $rules[] = '';
+    $rules[] = '# Block tag and category feeds';
+    $rules[] = 'Disallow: /tag/*/feed/';
+    $rules[] = 'Disallow: /category/*/feed/';
+    $rules[] = '';
+    $rules[] = '# AI crawler discovery';
     $rules[] = 'LLMs: https://financespots.com/llms.txt';
     return $rules;
 } );
