@@ -3434,6 +3434,55 @@ function fs_clean_junk_pages() {
 add_action( 'admin_init', 'fs_clean_junk_pages', 8 );
 add_action( 'init',       'fs_clean_junk_pages', 8 );
 
+/* =========================================================
+   DELETE OLD V1 BLOG POSTS + FIX CATEGORIES
+   Old posts still live alongside new v3 posts — wastes
+   crawl budget and confuses Google. Version-gated: v1.
+   ========================================================= */
+function fs_delete_old_blog_posts() {
+    if ( get_option( 'fs_delete_old_blogs_v1' ) ) return;
+
+    /* Old v1 slugs — still live, thin content, replaced by v3 posts */
+    $old_slugs = [
+        'budget-planner-guide',
+        'compound-interest-guide',
+        'crypto-profit-guide',
+        'emergency-fund-guide',
+        'investment-calculator-guide',
+        'mortgage-calculator-guide',
+        'pay-off-debt-fast-guide',
+        'personal-loan-guide',
+        'retirement-planning-guide',
+        'tax-calculator-guide-2026',
+    ];
+
+    foreach ( $old_slugs as $slug ) {
+        $post = get_page_by_path( $slug, OBJECT, 'post' );
+        if ( $post ) wp_delete_post( $post->ID, true );
+    }
+
+    /* Noindex thin category archives */
+    $noindex_cats = [ 'budgeting', 'investing', 'loans', 'uncategorized' ];
+    foreach ( $noindex_cats as $cat_slug ) {
+        $term = get_term_by( 'slug', $cat_slug, 'category' );
+        if ( $term ) {
+            update_term_meta( $term->term_id, 'rank_math_robots', [ 'noindex' ] );
+        }
+    }
+
+    /* Noindex /pro-success/ page (thin upgrade page) */
+    $pro_page = get_page_by_path( 'pro-success', OBJECT, 'page' );
+    if ( $pro_page ) update_post_meta( $pro_page->ID, 'rank_math_robots', [ 'noindex' ] );
+
+    /* Force sitemap regeneration */
+    delete_transient( 'rank_math_sitemap_cache' );
+    do_action( 'rank_math/sitemap/clear_cache' );
+
+    update_option( 'fs_delete_old_blogs_v1', true );
+}
+add_action( 'admin_init', 'fs_delete_old_blog_posts', 9 );
+add_action( 'init',       'fs_delete_old_blog_posts', 9 );
+
 /* ── Permanently block feed/search URLs from Rank Math sitemap ── */
 add_filter( 'rank_math/sitemap/entry', function( $url_data ) {
     if ( ! isset( $url_data['loc'] ) ) return $url_data;
