@@ -2275,6 +2275,68 @@ add_action( 'admin_init', 'fs_fix_all_indexing_issues', 5 );
 add_action( 'init',       'fs_fix_all_indexing_issues', 5 );
 
 /* =========================================================
+   FORCE INDEX ALL TOOLS + PAGES — v4
+   Sets index/follow on every published post/page/tool,
+   regenerates sitemap cache, pings Google + Bing.
+   ========================================================= */
+function fs_force_index_all_v4() {
+    if ( get_option( 'fs_force_index_v4' ) ) return;
+
+    global $wpdb;
+
+    /* 1. index/follow on ALL published content */
+    $all_ids = $wpdb->get_col(
+        "SELECT ID FROM {$wpdb->posts}
+         WHERE post_status = 'publish'
+         AND post_type IN ('post','page','fs_tool')"
+    );
+    foreach ( $all_ids as $pid ) {
+        update_post_meta( (int)$pid, 'rank_math_robots',          [ 'index', 'follow' ] );
+        update_post_meta( (int)$pid, 'rank_math_advanced_robots', '' );
+    }
+
+    /* 2. index/follow on ALL taxonomy terms */
+    $all_terms = $wpdb->get_col( "SELECT term_id FROM {$wpdb->terms}" );
+    foreach ( $all_terms as $tid ) {
+        update_term_meta( (int)$tid, 'rank_math_robots', [ 'index', 'follow' ] );
+    }
+
+    /* 3. Force noindex ONLY on junk — search, author, 404 */
+    $titles = get_option( 'rank-math-options-titles', [] );
+    $titles['search_robots']          = [ 'noindex' ];
+    $titles['404_robots']             = [ 'noindex' ];
+    $titles['author_robots']          = [ 'noindex' ];
+    $titles['post_robots']            = [ 'index', 'follow' ];
+    $titles['page_robots']            = [ 'index', 'follow' ];
+    $titles['fs_tool_robots']         = [ 'index', 'follow' ];
+    $titles['fs_tool_cat_robots']     = [ 'index', 'follow' ];
+    $titles['category_robots']        = [ 'index', 'follow' ];
+    $titles['post_tag_robots']        = [ 'index', 'follow' ];
+    update_option( 'rank-math-options-titles', $titles );
+
+    /* 4. Ensure sitemap enabled for all types */
+    $sitemap = get_option( 'rank-math-options-sitemap', [] );
+    $sitemap['post_sitemap']          = 'on';
+    $sitemap['page_sitemap']          = 'on';
+    $sitemap['fs_tool_sitemap']       = 'on';
+    $sitemap['fs_tool_cat_sitemap']   = 'on';
+    $sitemap['include_images']        = 'on';
+    update_option( 'rank-math-options-sitemap', $sitemap );
+
+    /* 5. Clear Rank Math sitemap cache so it regenerates fresh */
+    $wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '%rank_math_sitemap%'" );
+
+    /* 6. Re-ping Google and Bing with fresh sitemap */
+    $sitemap_url = home_url( '/sitemap_index.xml' );
+    wp_remote_get( 'https://www.google.com/ping?sitemap=' . urlencode( $sitemap_url ), [ 'timeout' => 5, 'blocking' => false ] );
+    wp_remote_get( 'https://www.bing.com/ping?sitemap='   . urlencode( $sitemap_url ), [ 'timeout' => 5, 'blocking' => false ] );
+
+    update_option( 'fs_force_index_v4', true );
+}
+add_action( 'admin_init', 'fs_force_index_all_v4', 6 );
+add_action( 'init',       'fs_force_index_all_v4', 6 );
+
+/* =========================================================
    CREATE 10 NEW BLOG POSTS — version-gated fs_blogs_v3
    ========================================================= */
 function fs_create_blog_posts() {
