@@ -339,10 +339,12 @@ p { margin: 0; }
     box-shadow: 0 0 10px rgba(0,200,150,.70);
     animation: logoDotPulse 4s ease-in-out infinite;
     flex-shrink: 0;
+    will-change: opacity;
 }
 @keyframes logoDotPulse {
-    0%,100% { box-shadow: 0 0 8px rgba(0,200,150,.70); }
-    50%      { box-shadow: 0 0 18px rgba(0,200,150,1); }
+    /* Animate opacity instead of box-shadow to avoid repaint on every frame */
+    0%,100% { opacity: 0.85; }
+    50%      { opacity: 1; }
 }
 .fs-logo-word--light  { color: rgba(255,255,255,.92); }
 .fs-logo-word--accent { color: var(--fs-primary); }
@@ -621,6 +623,7 @@ p { margin: 0; }
     mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%);
     -webkit-mask-image: radial-gradient(ellipse 90% 90% at 50% 50%, black 40%, transparent 100%);
     animation: heroGridPan 60s linear infinite;
+    will-change: transform;
 }
 @keyframes heroGridPan {
     0%   { transform: translate(0, 0); }
@@ -748,9 +751,12 @@ p { margin: 0; }
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    /* gradientShift animates background-position which is composited for
+       -webkit-text-fill-color clipped text; no layout thrash but uses
+       a slower 10s cycle to reduce GPU pressure */
     animation:
         titleSlideIn .9s cubic-bezier(.22,1,.36,1) .35s both,
-        gradientShift 6s linear infinite;
+        gradientShift 10s linear infinite;
 }
 @keyframes titleSlideIn {
     from { opacity: 0; transform: translateY(24px); }
@@ -782,23 +788,23 @@ p { margin: 0; }
     animation: titleSlideIn .9s cubic-bezier(.22,1,.36,1) .65s both;
 }
 
-/* Primary CTA — glow pulse */
+/* Primary CTA — subtle scale pulse (transform-only, GPU-composited) */
 .fs-hero .fs-btn--primary {
     background: linear-gradient(135deg, var(--fs-primary) 0%, #00B884 100%);
-    box-shadow:
-        0 0 0 0 rgba(0,200,150,.50),
-        0 8px 24px rgba(0,200,150,.30);
+    box-shadow: 0 8px 24px rgba(0,200,150,.30);
     animation: ctaPulse 5s ease-in-out infinite 1.5s;
     padding: 15px 30px;
     font-size: 1rem;
     letter-spacing: .01em;
+    will-change: transform;
 }
 @keyframes ctaPulse {
-    0%,100% { box-shadow: 0 0 0 0 rgba(0,200,150,.50), 0 8px 24px rgba(0,200,150,.30); }
-    50%      { box-shadow: 0 0 0 10px rgba(0,200,150,0), 0 8px 32px rgba(0,200,150,.40); }
+    /* Use transform scale instead of box-shadow to avoid repaint */
+    0%,100% { transform: scale(1); }
+    50%      { transform: scale(1.03); }
 }
 .fs-hero .fs-btn--primary:hover {
-    box-shadow: 0 0 0 0 transparent, 0 12px 36px rgba(0,200,150,.55);
+    box-shadow: 0 12px 36px rgba(0,200,150,.55);
     transform: translateY(-3px);
 }
 
@@ -938,15 +944,17 @@ p { margin: 0; }
 .fs-calc-slider-fill--primary {
     background: linear-gradient(90deg, var(--fs-primary), #00E5B0);
     box-shadow: 0 0 8px rgba(0,200,150,.60);
+    /* Replaced box-shadow pulse (paint) with opacity pulse (compositor) */
     animation: sliderGlow 5s ease-in-out infinite;
+    will-change: opacity;
 }
 .fs-calc-slider-fill--secondary {
     background: linear-gradient(90deg, var(--fs-secondary), #818CF8);
     box-shadow: 0 0 8px rgba(59,130,246,.50);
 }
 @keyframes sliderGlow {
-    0%,100% { box-shadow: 0 0 8px rgba(0,200,150,.60); }
-    50%      { box-shadow: 0 0 16px rgba(0,200,150,.90); }
+    0%,100% { opacity: 0.80; }
+    50%      { opacity: 1; }
 }
 
 /* Interest rate row — inline */
@@ -1002,11 +1010,13 @@ p { margin: 0; }
     color: var(--fs-primary);
     letter-spacing: -.04em;
     text-shadow: 0 0 20px rgba(0,200,150,.40);
+    /* Replaced text-shadow pulse (paint) with opacity pulse (compositor) */
     animation: resultPulse 5s ease-in-out infinite;
+    will-change: opacity;
 }
 @keyframes resultPulse {
-    0%,100% { text-shadow: 0 0 20px rgba(0,200,150,.40); }
-    50%      { text-shadow: 0 0 35px rgba(0,200,150,.65); }
+    0%,100% { opacity: 0.88; }
+    50%      { opacity: 1; }
 }
 
 /* AI Tip */
@@ -1085,10 +1095,12 @@ a.fs-float-badge:hover {
     border-radius: 50%;
     animation: livePulse 3.5s ease-in-out infinite;
     flex-shrink: 0;
+    will-change: opacity;
 }
+/* Use opacity-only pulse (compositor path) instead of box-shadow (paint) */
 @keyframes livePulse {
-    0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,200,150,.5); }
-    50%      { opacity: .7; box-shadow: 0 0 0 5px rgba(0,200,150,0); }
+    0%,100% { opacity: 1; }
+    50%      { opacity: .45; }
 }
 
 /* Hero Wave */
@@ -1384,7 +1396,8 @@ a.fs-float-badge:hover {
 
 /* Hero CTA */
 .fs-hero__cta-group { margin-bottom: 36px; }
-.fs-btn--glow { box-shadow: 0 0 0 0 rgba(0,200,150,.5), 0 8px 24px rgba(0,200,150,.30); animation: ctaPulse 6s ease-in-out infinite 1.5s; }
+/* ctaPulse now uses transform-only (see definition above) */
+.fs-btn--glow { box-shadow: 0 8px 24px rgba(0,200,150,.30); animation: ctaPulse 6s ease-in-out infinite 1.5s; will-change: transform; }
 
 /* Play icon v3 */
 .fs-play-icon {
@@ -1787,10 +1800,12 @@ a.fs-float-badge:hover {
     border-radius: 50%;
     animation: pulse 3.5s ease-in-out infinite;
     flex-shrink: 0;
+    will-change: opacity;
 }
+/* Opacity-only pulse (compositor) instead of box-shadow (paint) */
 @keyframes pulse {
-    0%,100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,200,150,.4); }
-    50%      { opacity: .8; box-shadow: 0 0 0 8px rgba(0,200,150,0); }
+    0%,100% { opacity: 1; }
+    50%      { opacity: .45; }
 }
 .fs-ai-card__label { font-size: .82rem; color: rgba(255,255,255,.60); }
 
@@ -2350,8 +2365,17 @@ a.fs-float-badge:hover {
 /* ── 24. Accessibility ── */
 :focus-visible { outline: 2px solid var(--fs-primary); outline-offset: 3px; border-radius: 3px; }
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+        scroll-behavior: auto !important;
+    }
+    /* Immediately show scroll-animated elements without waiting */
     [data-animate] { opacity: 1 !important; transform: none !important; }
+    /* Stop background pan animations */
+    .fs-hero__grid { animation: none !important; }
+    /* Stop infinite particle canvas — handled in JS via matchMedia */
 }
 
 /* ── 25. WordPress Core ── */

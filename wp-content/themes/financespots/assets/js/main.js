@@ -110,6 +110,15 @@
        4. SCROLL ANIMATIONS — IntersectionObserver
        ============================================================ */
     function initScrollAnimations() {
+        // Immediately show all animated elements if reduced motion is preferred
+        // (CSS already handles opacity/transform, this removes the delay logic)
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+            document.querySelectorAll('[data-animate]').forEach(function (el) {
+                el.classList.add('animated');
+            });
+            return;
+        }
+
         if (!('IntersectionObserver' in window)) {
             // Fallback: show everything
             document.querySelectorAll('[data-animate]').forEach(function (el) {
@@ -201,6 +210,15 @@
     function initParticles() {
         var canvas = document.getElementById('fs-particles');
         if (!canvas) return;
+
+        // Skip particles on small screens (canvas is hidden anyway at ≤640px)
+        // and skip when the user has requested reduced motion.
+        var prefersReducedMotion = window.matchMedia &&
+            window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        if (prefersReducedMotion || window.innerWidth < 768) {
+            canvas.style.display = 'none';
+            return;
+        }
 
         var ctx       = canvas.getContext('2d');
         var particles = [];
@@ -341,7 +359,7 @@
     }
 
     /* ============================================================
-       6b. HERO CARD — Live Slider Animation
+       6b. HERO CARD — Live Slider Animation (RAF-based, ~15fps throttle)
        ============================================================ */
     function initHeroCardAnimation() {
         var resultEl = document.getElementById('fs-hero-result');
@@ -350,23 +368,30 @@
         var fills = document.querySelectorAll('.fs-hero__card .fs-calc-slider-fill');
         if (!fills.length) return;
 
+        // Skip if user prefers reduced motion
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
         var tick = 0;
+        var lastTime = 0;
+        var INTERVAL = 80; // ms between updates (~12fps)
 
-        setInterval(function () {
-            tick++;
-            // Animate home price slider (75% → 85% → 65% → 75%)
-            var wave = 75 + Math.sin(tick * 0.08) * 10;
-            if (fills[0]) fills[0].style.width = wave.toFixed(1) + '%';
+        function loop(now) {
+            if (now - lastTime >= INTERVAL) {
+                lastTime = now;
+                tick++;
+                var wave = 75 + Math.sin(tick * 0.08) * 10;
+                if (fills[0]) fills[0].style.width = wave.toFixed(1) + '%';
 
-            // Recalculate monthly payment mock
-            var price      = 350000 + (wave / 100) * 200000;
-            var principal  = price * 0.80;
-            var rate       = 0.068 / 12;
-            var n          = 360;
-            var payment    = principal * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
-
-            resultEl.textContent = '$' + Math.round(payment).toLocaleString('en-US');
-        }, 80);
+                var price     = 350000 + (wave / 100) * 200000;
+                var principal = price * 0.80;
+                var rate      = 0.068 / 12;
+                var n         = 360;
+                var payment   = principal * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
+                resultEl.textContent = '$' + Math.round(payment).toLocaleString('en-US');
+            }
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
     }
 
     /* ============================================================
@@ -595,6 +620,7 @@
     function initAIStreamAnimation() {
         var lines = document.querySelectorAll('.fs-ai-stream-line');
         if (!lines.length) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         var idx = 0;
         var texts = [
@@ -914,6 +940,7 @@
     function initAIInsightRotator() {
         var el = document.getElementById('fs-ai-insight-text');
         if (!el) return;
+        if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         var insights = [
             'AI Insight: Your portfolio is outperforming the S&P 500 by 6.3% this month.',
