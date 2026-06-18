@@ -765,7 +765,7 @@ p { margin: 0; }
 .fs-hero__sub {
     font-size: 1.08rem;
     line-height: 1.80;
-    color: rgba(255,255,255,.58);
+    color: rgba(255,255,255,.82);
     max-width: 500px;
     margin-bottom: 40px;
     animation: titleSlideIn .9s cubic-bezier(.22,1,.36,1) .5s both;
@@ -1160,7 +1160,7 @@ a.fs-float-badge:hover {
 .fs-hero__sub {
     font-size: 1.05rem;
     line-height: 1.80;
-    color: rgba(255,255,255,.52);
+    color: rgba(255,255,255,.82);
     max-width: 480px;
     margin-bottom: 36px;
 }
@@ -2678,3 +2678,25 @@ a.fs-float-badge:hover {
 @media (max-width: 360px) {
     .fst-cat-grid { grid-template-columns: 1fr; }
 }
+
+/* ── 27. Breadcrumbs ── */
+.fs-breadcrumbs { margin-bottom: 28px; }
+.fs-breadcrumbs__list { display: flex; align-items: center; flex-wrap: wrap; gap: 6px; list-style: none; padding: 0; margin: 0; font-size: .82rem; }
+.fs-breadcrumbs__item a { color: var(--fs-text-muted); text-decoration: none; transition: color .2s; }
+.fs-breadcrumbs__item a:hover { color: var(--fs-primary); }
+.fs-breadcrumbs__item--current { color: var(--fs-text-light); }
+.fs-breadcrumbs__sep { color: var(--fs-text-light); font-size: .75rem; }
+
+/* ── 28. Social Share Box ── */
+.fs-share-box { display: flex; align-items: center; gap: 14px; flex-wrap: wrap; margin: 36px 0 28px; padding: 18px 20px; background: var(--fs-bg-2); border: 1px solid var(--fs-border); border-radius: var(--fs-radius); }
+.fs-share-box__label { font-size: .82rem; font-weight: 700; color: var(--fs-text-muted); white-space: nowrap; }
+.fs-share-box__btns { display: flex; gap: 8px; flex-wrap: wrap; }
+.fs-share-btn { display: inline-flex; align-items: center; gap: 6px; padding: 7px 14px; border-radius: 8px; font-size: .8rem; font-weight: 600; text-decoration: none; border: none; cursor: pointer; font-family: inherit; transition: all .2s; }
+.fs-share-btn--x  { background: #000; color: #fff; }
+.fs-share-btn--x:hover  { background: #1a1a1a; }
+.fs-share-btn--li { background: #0A66C2; color: #fff; }
+.fs-share-btn--li:hover { background: #004182; }
+.fs-share-btn--fb { background: #1877F2; color: #fff; }
+.fs-share-btn--fb:hover { background: #1258b0; }
+.fs-share-btn--copy { background: var(--fs-bg); color: var(--fs-text); border: 1.5px solid var(--fs-border); }
+.fs-share-btn--copy:hover { background: var(--fs-primary); color: #fff; border-color: var(--fs-primary); }

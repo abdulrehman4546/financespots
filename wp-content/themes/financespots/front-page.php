@@ -63,7 +63,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                 <!-- Subtitle -->
                 <p class="fs-hero__sub">
-                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 150+ tools, completely free.' ); ?>
+                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 110+ tools, completely free.' ); ?>
                 </p>
 
                 <!-- CTA Row -->
@@ -78,7 +78,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                         <span class="fs-play-icon" aria-hidden="true">
                             <svg width="10" height="12" viewBox="0 0 10 12" fill="currentColor" aria-hidden="true"><path d="M0 0l10 6-10 6z"/></svg>
                         </span>
-                        <?php echo fs_mod( 'fs_hero_cta2_text', 'Watch Demo' ); ?>
+                        <?php echo fs_mod( 'fs_hero_cta2_text', 'How It Works' ); ?>
                     </a>
                 </div>
 
@@ -94,7 +94,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                         <?php endforeach; ?>
                     </div>
                     <div class="fs-hero__social-proof-text">
-                        <span><?php esc_html_e( 'Trusted by', 'financespots' ); ?> <strong>500,000+</strong> <?php esc_html_e( 'investors worldwide', 'financespots' ); ?></span>
+                        <span><?php esc_html_e( 'Trusted by', 'financespots' ); ?> <strong>50,000+</strong> <?php esc_html_e( 'users worldwide', 'financespots' ); ?></span>
                         <div class="fs-hero__rating" aria-label="4.9 out of 5 stars">
                             <span class="fs-hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
                             <span>4.9/5</span>
@@ -231,13 +231,13 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                         'suffix' => '+',
                     ],
                     [
-                        'number' => get_theme_mod('fs_stat2_number','150'),
+                        'number' => get_theme_mod('fs_stat2_number', (string) wp_count_posts('fs_tool')->publish ),
                         'label'  => get_theme_mod('fs_stat2_label','Finance Tools'),
                         'icon'   => '&#128736;&#65039;',
                         'suffix' => '+',
                     ],
                     [
-                        'number' => get_theme_mod('fs_stat3_number','500000'),
+                        'number' => get_theme_mod('fs_stat3_number','50000'),
                         'label'  => get_theme_mod('fs_stat3_label','Active Users'),
                         'icon'   => '&#128101;',
                         'suffix' => '+',
@@ -456,7 +456,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--secondary">&#128450;&#65039; <?php esc_html_e( '150+ Tools Available', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--secondary">&#128450;&#65039; <?php printf( esc_html__( '%d+ Tools Available', 'financespots' ), wp_count_posts('fs_tool')->publish ); ?></span>
             <h2 class="fs-section-title" id="categories-heading">
                 <?php esc_html_e( 'Explore by Category', 'financespots' ); ?>
             </h2>
@@ -527,7 +527,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
         <div class="fs-section-cta" data-animate="fade-up">
             <a href="#tools" class="fs-btn fs-btn--outline">
-                <?php esc_html_e( 'View All 150+ Tools', 'financespots' ); ?>
+                <?php printf( esc_html__( 'View All %d+ Tools', 'financespots' ), wp_count_posts('fs_tool')->publish ); ?>
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
             </a>
         </div>
@@ -646,7 +646,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--gold">&#11088; <?php esc_html_e( '4.9/5 Average Rating', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="testimonials-heading">
-                <?php esc_html_e( 'Trusted by 500,000+ Users', 'financespots' ); ?>
+                <?php esc_html_e( 'Trusted by 50,000+ Users', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
                 <?php esc_html_e( 'Real people, real results. See how FinanceSpots transforms financial decision-making.', 'financespots' ); ?>
@@ -869,12 +869,12 @@ if ( $blog_query->have_posts() ) :
 
         <h3 style="font-size:1.05rem;font-weight:700;color:#334155;margin:0 0 .85rem;text-align:center;">&#128200; Popular Tools to Try Now</h3>
         <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;">
-            <a href="<?php echo esc_url(home_url('/tools/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#1D4ED8;text-decoration:none;">&#127968; Mortgage Calculator</a>
-            <a href="<?php echo esc_url(home_url('/tools/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#15803D;text-decoration:none;">&#128200; Compound Interest</a>
-            <a href="<?php echo esc_url(home_url('/tools/retirement-income-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#7C3AED;text-decoration:none;">&#127958;&#65039; Retirement Planner</a>
-            <a href="<?php echo esc_url(home_url('/tools/income-tax-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#C2410C;text-decoration:none;">&#129534; Tax Calculator</a>
-            <a href="<?php echo esc_url(home_url('/tools/monthly-budget-planner/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0369A1;text-decoration:none;">&#128203; Budget Planner</a>
-            <a href="<?php echo esc_url(home_url('/tools/loan-payoff-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#BE123C;text-decoration:none;">&#128179; Debt Payoff Tool</a>
+            <a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#1D4ED8;text-decoration:none;">&#127968; Mortgage Calculator</a>
+            <a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#15803D;text-decoration:none;">&#128200; Compound Interest</a>
+            <a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#7C3AED;text-decoration:none;">&#127958;&#65039; Retirement Planner</a>
+            <a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#C2410C;text-decoration:none;">&#129534; Tax Calculator</a>
+            <a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0369A1;text-decoration:none;">&#128203; Budget Planner</a>
+            <a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#BE123C;text-decoration:none;">&#128179; Debt Payoff Tool</a>
         </div>
     </div>
 </section>

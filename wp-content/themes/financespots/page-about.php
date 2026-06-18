@@ -15,10 +15,10 @@ get_header();
                 <h1 class="fs-about-hero__title">We Make Financial<br><span class="fs-about-hero__accent">Clarity Simple</span></h1>
                 <p class="fs-about-hero__desc">FinanceSpots is a free platform built to give everyone -- regardless of income or background -- access to professional-grade financial tools and education.</p>
                 <div class="fs-about-hero__stats">
-                    <div class="fs-about-stat"><span class="fs-about-stat__num">30+</span><span class="fs-about-stat__lbl">Free Tools</span></div>
+                    <div class="fs-about-stat"><span class="fs-about-stat__num"><?php echo wp_count_posts('fs_tool')->publish; ?>+</span><span class="fs-about-stat__lbl">Free Tools</span></div>
                     <div class="fs-about-stat"><span class="fs-about-stat__num">10+</span><span class="fs-about-stat__lbl">Expert Guides</span></div>
                     <div class="fs-about-stat"><span class="fs-about-stat__num">100%</span><span class="fs-about-stat__lbl">Free Forever</span></div>
-                    <div class="fs-about-stat"><span class="fs-about-stat__num">0</span><span class="fs-about-stat__lbl">Ads or Upsells</span></div>
+                    <div class="fs-about-stat"><span class="fs-about-stat__num">No</span><span class="fs-about-stat__lbl">Display Ads</span></div>
                 </div>
             </div>
         </div>
