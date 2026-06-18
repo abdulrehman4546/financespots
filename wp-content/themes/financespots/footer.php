@@ -219,13 +219,13 @@
                             Popular Tools
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/tools/mortgage-calculator/')); ?>">&#127968; Mortgage Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/compound-interest-calculator/')); ?>">&#128200; Compound Interest</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/retirement-income-calculator/')); ?>">&#127958;&#65039; Retirement Planner</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/loan-payoff-calculator/')); ?>">&#128179; Debt Payoff Tool</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/monthly-budget-planner/')); ?>">&#128203; Budget Planner</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/crypto-pl-calculator/')); ?>">₿ Crypto P&amp;L Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tools/income-tax-calculator/')); ?>">&#129534; Tax Calculator 2026</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>">&#127968; Mortgage Calculator</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>">&#128200; Compound Interest</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>">&#127958;&#65039; Retirement Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>">&#128179; Debt Payoff Tool</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>">&#128203; Budget Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/crypto-pl-calculator/')); ?>">₿ Crypto P&amp;L Calculator</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>">&#129534; Tax Calculator 2026</a></li>
                         </ul>
                     </div>
 
