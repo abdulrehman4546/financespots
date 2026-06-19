@@ -279,64 +279,64 @@ $cat_topic_data = [
     'loan-calculators' => [
         'topic' => 'Understanding loan payments and interest is foundational to smart borrowing. Whether you are financing a home, car, or personal expense, knowing your true cost helps you negotiate better rates and pay off debt faster. Always compare the APR -- not just the interest rate -- to understand the total cost.',
         'links' => [
-            ['Mortgage Calculator', home_url('/tools/mortgage-calculator/')],
-            ['Auto Loan Calculator', home_url('/tools/auto-loan-calculator/')],
-            ['Personal Loan Calculator', home_url('/tools/personal-loan-calculator/')],
-            ['Loan Payoff Calculator', home_url('/tools/loan-payoff-calculator/')],
+            ['Mortgage Calculator', home_url('/tool/mortgage-calculator/')],
+            ['Auto Loan Calculator', home_url('/tool/auto-loan-calculator/')],
+            ['Personal Loan Calculator', home_url('/tool/personal-loan-calculator/')],
+            ['Loan Payoff Calculator', home_url('/tool/loan-payoff-calculator/')],
         ],
     ],
     'investment-tools' => [
         'topic' => 'Compound interest is the most powerful force in investing -- starting early and staying consistent consistently outperforms timing the market. Understanding investment return metrics like CAGR, IRR, and Sharpe ratio helps you evaluate opportunities objectively. Use our free calculators to model different scenarios before committing capital.',
         'links' => [
-            ['Compound Interest Calculator', home_url('/tools/compound-interest-calculator/')],
-            ['Investment Return Calculator', home_url('/tools/investment-return-calculator/')],
-            ['Dividend Reinvestment Calculator', home_url('/tools/dividend-reinvestment-calculator/')],
-            ['Net Worth Calculator', home_url('/tools/net-worth-calculator/')],
+            ['Compound Interest Calculator', home_url('/tool/compound-interest-calculator/')],
+            ['ROI Calculator', home_url('/tool/roi-calculator/')],
+            ['Dividend Calculator', home_url('/tool/dividend-calculator/')],
+            ['Net Worth Calculator', home_url('/tool/net-worth-calculator/')],
         ],
     ],
     'tax-calculators' => [
         'topic' => 'Tax planning throughout the year -- not just in April -- can save thousands. Understanding your marginal vs effective tax rate, maximizing tax-advantaged accounts, and tracking deductible expenses are the three biggest levers for reducing your annual tax burden. Use our calculators to estimate before you file.',
         'links' => [
-            ['Income Tax Calculator', home_url('/tools/income-tax-calculator/')],
-            ['Self-Employment Tax Calculator', home_url('/tools/self-employment-tax-calculator/')],
-            ['Capital Gains Tax Calculator', home_url('/tools/capital-gains-tax-calculator/')],
-            ['W-4 Withholding Calculator', home_url('/tools/w4-withholding-calculator/')],
+            ['Income Tax Calculator', home_url('/tool/income-tax-calculator/')],
+            ['Self-Employment Tax Calculator', home_url('/tool/self-employment-tax-calculator/')],
+            ['Capital Gains Tax Calculator', home_url('/tool/capital-gains-tax-calculator/')],
+            ['Tax Withholding Calculator', home_url('/tool/tax-withholding-calculator/')],
         ],
     ],
     'savings-planners' => [
         'topic' => 'A fully funded emergency fund -- typically 3 to 6 months of expenses -- is the single most important financial safety net you can build. Beyond emergencies, automating savings through high-yield accounts and CDs maximizes growth with minimal effort. Calculate your target savings number before choosing an account.',
         'links' => [
-            ['Emergency Fund Calculator', home_url('/tools/emergency-fund-calculator/')],
-            ['Savings Goal Calculator', home_url('/tools/savings-goal-calculator/')],
-            ['CD Calculator', home_url('/tools/cd-calculator/')],
-            ['High-Yield Savings Calculator', home_url('/tools/high-yield-savings-calculator/')],
+            ['Emergency Fund Calculator', home_url('/tool/emergency-fund-calculator/')],
+            ['Savings Goal Calculator', home_url('/tool/savings-goal-calculator/')],
+            ['CD Calculator', home_url('/tool/cd-calculator/')],
+            ['High-Yield Savings Calculator', home_url('/tool/high-yield-savings-calculator/')],
         ],
     ],
     'retirement-planning' => [
         'topic' => 'Retirement planning requires knowing your "retirement number" -- the total portfolio value needed to sustain your lifestyle indefinitely. The 4% withdrawal rule is a common starting point, but your specific number depends on spending, inflation, and Social Security income. Start calculating early to understand how much to save each month.',
         'links' => [
-            ['Retirement Income Calculator', home_url('/tools/retirement-income-calculator/')],
-            ['401k Calculator', home_url('/tools/401k-calculator/')],
-            ['IRA Calculator', home_url('/tools/ira-calculator/')],
-            ['Social Security Calculator', home_url('/tools/social-security-calculator/')],
+            ['Retirement Income Calculator', home_url('/tool/retirement-income-calculator/')],
+            ['401k Calculator', home_url('/tool/401k-calculator/')],
+            ['IRA Calculator', home_url('/tool/ira-calculator/')],
+            ['Social Security Calculator', home_url('/tool/social-security-calculator/')],
         ],
     ],
     'budget-analyzers' => [
         'topic' => 'A budget is not a restriction -- it is a plan for your money to do exactly what you want it to do. The 50/30/20 rule (needs/wants/savings) is a proven starting framework, but personalizing your budget to your income and goals is what creates lasting financial change. Track expenses for 30 days before setting budget limits.',
         'links' => [
-            ['Monthly Budget Planner', home_url('/tools/monthly-budget-planner/')],
-            ['50/30/20 Budget Calculator', home_url('/tools/503020-budget-calculator/')],
-            ['Expense Tracker', home_url('/tools/expense-tracker/')],
-            ['Savings Rate Calculator', home_url('/tools/savings-rate-calculator/')],
+            ['Monthly Budget Planner', home_url('/tool/monthly-budget-planner/')],
+            ['50/30/20 Budget Calculator', home_url('/tool/50-30-20-budget-calculator/')],
+            ['Expense Tracker', home_url('/tool/expense-tracker/')],
+            ['Savings Rate Calculator', home_url('/tool/savings-rate-calculator/')],
         ],
     ],
     'crypto-tools' => [
         'topic' => 'Cryptocurrency investing combines the volatility of a startup with 24/7 global trading -- making disciplined position sizing and tax tracking critical. Dollar-cost averaging reduces the impact of price swings, while accurate P&L tracking ensures you report gains correctly. Always calculate your cost basis before each trade.',
         'links' => [
-            ['Crypto P&L Calculator', home_url('/tools/crypto-pl-calculator/')],
-            ['Bitcoin DCA Calculator', home_url('/tools/bitcoin-dca-calculator/')],
-            ['Crypto Tax Estimator', home_url('/tools/crypto-tax-estimator/')],
-            ['Compound Interest Calculator', home_url('/tools/compound-interest-calculator/')],
+            ['Crypto P&L Calculator', home_url('/tool/crypto-pl-calculator/')],
+            ['Crypto DCA Calculator', home_url('/tool/crypto-dca-calculator/')],
+            ['Crypto Tax Calculator', home_url('/tool/crypto-tax-calculator/')],
+            ['Compound Interest Calculator', home_url('/tool/compound-interest-calculator/')],
         ],
     ],
 ];
@@ -345,12 +345,12 @@ $topic_info = $cat ? ( $cat_topic_data[ $cat->slug ] ?? null ) : null;
 
 // "You Might Also Need" -- links to 3 other categories
 $other_cats = [
-    ['&#128200; Investing Tools', home_url('/tools/compound-interest-calculator/'), 'investment-tools'],
-    ['&#127968; Mortgage Calculators', home_url('/tools/mortgage-calculator/'), 'loan-calculators'],
-    ['&#127958;&#65039; Retirement Planner', home_url('/tools/retirement-income-calculator/'), 'retirement-planning'],
-    ['&#129534; Tax Calculators', home_url('/tools/income-tax-calculator/'), 'tax-calculators'],
-    ['&#128203; Budget Planner', home_url('/tools/monthly-budget-planner/'), 'budget-analyzers'],
-    ['&#8383; Crypto Tools', home_url('/tools/crypto-pl-calculator/'), 'crypto-tools'],
+    ['&#128200; Investing Tools', home_url('/tool/compound-interest-calculator/'), 'investment-tools'],
+    ['&#127968; Mortgage Calculators', home_url('/tool/mortgage-calculator/'), 'loan-calculators'],
+    ['&#127958;&#65039; Retirement Planner', home_url('/tool/retirement-income-calculator/'), 'retirement-planning'],
+    ['&#129534; Tax Calculators', home_url('/tool/income-tax-calculator/'), 'tax-calculators'],
+    ['&#128203; Budget Planner', home_url('/tool/monthly-budget-planner/'), 'budget-analyzers'],
+    ['&#8383; Crypto Tools', home_url('/tool/crypto-pl-calculator/'), 'crypto-tools'],
 ];
 $current_cat_slug = $cat ? $cat->slug : '';
 $suggested = array_filter($other_cats, function($c) use ($current_cat_slug){ return $c[2] !== $current_cat_slug; });
