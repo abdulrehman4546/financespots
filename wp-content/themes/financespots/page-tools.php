@@ -6,8 +6,8 @@
     <section style="padding:70px 0 50px;text-align:center;border-bottom:1px solid rgba(255,255,255,.06);">
         <div class="container">
             <span style="display:inline-block;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#10B981;padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-bottom:16px;">&#129518; Finance Tools</span>
-            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin:0 0 14px;">All <?php echo wp_count_posts('fs_tool')->publish; ?>+ Free Tools</h1>
-            <p style="color:#94A3B8;font-size:1rem;max-width:500px;margin:0 auto 28px;">Every calculator you need -- mortgage, investing, taxes, retirement, budgeting and more. 100% free, no account needed.</p>
+            <h1 style="font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin:0 0 14px;">Free Financial Calculators &amp; Tools (2026)</h1>
+            <p style="color:#94A3B8;font-size:1rem;max-width:500px;margin:0 auto 28px;">Every calculator you need — mortgage, investment, tax, retirement, crypto, budgeting and more. 100% free, no account needed.</p>
             <!-- Search -->
             <div style="max-width:440px;margin:0 auto;position:relative;">
                 <input type="text" id="fs-tool-search" placeholder="Search tools..." style="width:100%;background:#131929;border:1.5px solid rgba(255,255,255,.1);border-radius:50px;padding:14px 20px 14px 48px;color:#F1F5F9;font-size:.95rem;outline:none;box-sizing:border-box;" onfocus="this.style.borderColor='#10B981'" onblur="this.style.borderColor='rgba(255,255,255,.1)'">

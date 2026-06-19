@@ -3651,3 +3651,30 @@ add_action( 'init', function() {
     do_action( 'rank_math/sitemap/clear_cache' );
     update_option( 'fs_fix_blog_dates_v1', true );
 } );
+
+/* ── One-shot: assign blog posts to correct categories (FIX 6) ── */
+add_action( 'init', function() {
+    if ( get_option( 'fs_assign_cats_v1' ) ) return;
+    $map = [
+        'va-loan-benefits-complete-guide-veterans-2026'  => 'loans',
+        'how-to-save-10000-in-6-months-2026'             => 'savings',
+        'how-to-improve-credit-score-fast-2026'          => 'finance-tips',
+        'index-fund-investing-beginners-guide-2026'      => 'investing',
+        '50-30-20-budget-rule-guide-2026'                => 'budgeting',
+        'how-to-pay-off-student-loans-faster-2026'       => 'debt-management',
+        'bitcoin-vs-gold-better-investment-2026'         => 'cryptocurrency',
+        'emergency-fund-how-much-where-to-keep-2026'     => 'savings',
+        'first-time-home-buyer-guide-2026'               => 'loans',
+        'retirement-planning-how-much-need-2026'         => 'retirement',
+    ];
+    foreach ( $map as $post_slug => $cat_slug ) {
+        $post = get_page_by_path( $post_slug, OBJECT, 'post' );
+        $term = get_term_by( 'slug', $cat_slug, 'category' );
+        if ( $post && $term ) {
+            wp_set_post_categories( $post->ID, [ $term->term_id ] );
+        }
+    }
+    delete_transient( 'rank_math_sitemap_cache' );
+    do_action( 'rank_math/sitemap/clear_cache' );
+    update_option( 'fs_assign_cats_v1', true );
+}, 20 );
