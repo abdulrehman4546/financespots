@@ -3620,3 +3620,34 @@ add_filter( 'rank_math/sitemap/entry', function( $url_data ) {
     ) return false;
     return $url_data;
 }, 10, 1 );
+
+/* ── One-shot: spread blog post publish dates naturally over 3 weeks ── */
+add_action( 'init', function() {
+    if ( get_option( 'fs_fix_blog_dates_v1' ) ) return;
+    $updates = [
+        'va-loan-benefits-complete-guide-veterans-2026'  => '2026-05-28 09:14:22',
+        'how-to-save-10000-in-6-months-2026'             => '2026-05-31 11:37:45',
+        'how-to-improve-credit-score-fast-2026'          => '2026-06-02 08:52:10',
+        'index-fund-investing-beginners-guide-2026'      => '2026-06-04 14:21:33',
+        '50-30-20-budget-rule-guide-2026'                => '2026-06-06 10:05:57',
+        'how-to-pay-off-student-loans-faster-2026'       => '2026-06-08 16:44:19',
+        'bitcoin-vs-gold-better-investment-2026'         => '2026-06-10 09:31:08',
+        'emergency-fund-how-much-where-to-keep-2026'     => '2026-06-12 13:18:42',
+        'first-time-home-buyer-guide-2026'               => '2026-06-15 11:02:55',
+        'retirement-planning-how-much-need-2026'         => '2026-06-17 15:29:37',
+    ];
+    foreach ( $updates as $slug => $date ) {
+        $post = get_page_by_path( $slug, OBJECT, 'post' );
+        if ( $post ) {
+            wp_update_post( [
+                'ID'            => $post->ID,
+                'post_date'     => $date,
+                'post_date_gmt' => get_gmt_from_date( $date ),
+                'edit_date'     => true,
+            ] );
+        }
+    }
+    delete_transient( 'rank_math_sitemap_cache' );
+    do_action( 'rank_math/sitemap/clear_cache' );
+    update_option( 'fs_fix_blog_dates_v1', true );
+} );
