@@ -3585,8 +3585,8 @@ add_action( 'init', function() {
 }, 20 );
 
 /* ── 301 redirects for old deleted guide pages ── */
-add_action( 'wp', function( $wp ) {
-    if ( ! is_404() ) return;
+add_action( 'init', function() {
+    if ( ! isset( $_SERVER['REQUEST_URI'] ) ) return;
     $redirects = [
         'mortgage-calculator-guide'    => '/first-time-home-buyer-guide-2026/',
         'compound-interest-guide'      => '/index-fund-investing-beginners-guide-2026/',
@@ -3599,9 +3599,9 @@ add_action( 'wp', function( $wp ) {
         'retirement-planning-guide'    => '/retirement-planning-how-much-need-2026/',
         'pay-off-debt-fast-guide'      => '/how-to-pay-off-student-loans-faster-2026/',
     ];
-    $req = trim( $wp->request, '/' );
-    if ( isset( $redirects[ $req ] ) ) {
-        wp_redirect( home_url( $redirects[ $req ] ), 301 );
+    $path = trim( parse_url( $_SERVER['REQUEST_URI'], PHP_URL_PATH ), '/' );
+    if ( isset( $redirects[ $path ] ) ) {
+        wp_redirect( home_url( $redirects[ $path ] ), 301 );
         exit;
     }
 }, 1 );
