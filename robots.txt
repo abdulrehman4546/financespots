@@ -17,8 +17,8 @@ Disallow: /feed/
 Disallow: /*/feed/
 Disallow: /comments/feed/
 
-# Block pagination
-Disallow: /page/
+# Block numeric pagination (allow page slugs like /pricing/, /about/)
+Disallow: /page/[0-9]
 
 # Block author archives
 Disallow: /author/

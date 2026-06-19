@@ -980,53 +980,10 @@ function financespots_head_meta() {
         $url         = $site_url;
         $image       = $logo_url;
     }
-    ?>
-<!-- Open Graph -->
-<meta property="og:type"        content="website" />
-<meta property="og:site_name"   content="<?php echo esc_attr( $site_name ); ?>" />
-<meta property="og:title"       content="<?php echo $title; ?>" />
-<meta property="og:description" content="<?php echo $description; ?>" />
-<meta property="og:url"         content="<?php echo $url; ?>" />
-<meta property="og:image"       content="<?php echo esc_url( $image ); ?>" />
-<meta property="og:image:width"  content="1200" />
-<meta property="og:image:height" content="630" />
-<!-- Twitter Card -->
-<meta name="twitter:card"        content="summary_large_image" />
-<meta name="twitter:title"       content="<?php echo $title; ?>" />
-<meta name="twitter:description" content="<?php echo $description; ?>" />
-<meta name="twitter:image"       content="<?php echo esc_url( $image ); ?>" />
-<!-- Schema.org -->
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "WebSite",
-      "@id": "<?php echo $site_url; ?>#website",
-      "url": "<?php echo $site_url; ?>",
-      "name": "<?php echo esc_js( $site_name ); ?>",
-      "description": "<?php echo esc_js( $site_desc ); ?>",
-      "potentialAction": {
-        "@type": "SearchAction",
-        "target": {"@type":"EntryPoint","urlTemplate":"<?php echo $site_url; ?>?s={search_term_string}"},
-        "query-input": "required name=search_term_string"
-      }
-    },
-    {
-      "@type": "Organization",
-      "@id": "<?php echo $site_url; ?>#organization",
-      "name": "<?php echo esc_js( $site_name ); ?>",
-      "url": "<?php echo $site_url; ?>",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "<?php echo esc_js( $logo_url ); ?>"
-      }
-    }
-  ]
+    // OG, Twitter Card, and Schema.org JSON-LD are handled by Rank Math SEO plugin.
+    // Removed duplicate output that was conflicting with Rank Math's structured data.
 }
-</script>
-    <?php
-}
+
 add_action( 'wp_head', 'financespots_head_meta' );
 
 /* =========================================================
@@ -2049,7 +2006,7 @@ function fs_rankmath_setup() {
 
         // Enable taxonomies
         'fs_tool_cat_sitemap'     => 'on',
-        'category_sitemap'        => 'off',
+        'category_sitemap'        => 'on',
 
         // Priority
         'post_priority'           => '0.5',
@@ -2143,8 +2100,8 @@ add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
     $rules[] = 'Disallow: /*/feed/';
     $rules[] = 'Disallow: /comments/feed/';
     $rules[] = '';
-    $rules[] = '# Block pagination';
-    $rules[] = 'Disallow: /page/';
+    $rules[] = '# Block numeric pagination only (not page slugs)';
+    $rules[] = 'Disallow: /page/[0-9]';
     $rules[] = '';
     $rules[] = '# Block author archives';
     $rules[] = 'Disallow: /author/';
@@ -2171,8 +2128,8 @@ add_filter( 'robots_txt', function( $output, $public ) {
     $output .= "Disallow: /feed/\n";
     $output .= "Disallow: /*/feed/\n";
     $output .= "Disallow: /comments/feed/\n";
-    $output .= "\n# Block pagination\n";
-    $output .= "Disallow: /page/\n";
+    $output .= "\n# Block numeric pagination only (not page slugs)\n";
+    $output .= "Disallow: /page/[0-9]\n";
     $output .= "\n# Block author archives\n";
     $output .= "Disallow: /author/\n";
     $output .= "\n# Block tag and category feeds\n";
@@ -3576,8 +3533,8 @@ function fs_delete_old_blog_posts() {
         if ( $post ) wp_delete_post( $post->ID, true );
     }
 
-    /* Noindex thin category archives */
-    $noindex_cats = [ 'budgeting', 'investing', 'loans', 'uncategorized' ];
+    /* Noindex only truly empty/thin categories — real content categories stay indexed */
+    $noindex_cats = [ 'uncategorized' ];
     foreach ( $noindex_cats as $cat_slug ) {
         $term = get_term_by( 'slug', $cat_slug, 'category' );
         if ( $term ) {
@@ -3598,6 +3555,35 @@ function fs_delete_old_blog_posts() {
 add_action( 'admin_init', 'fs_delete_old_blog_posts', 9 );
 add_action( 'init',       'fs_delete_old_blog_posts', 9 );
 
+/* ── Ensure every newly published post/tool/page always gets index/follow ── */
+add_action( 'save_post', function( $post_id, $post ) {
+    if ( wp_is_post_revision( $post_id ) ) return;
+    if ( wp_is_post_autosave( $post_id ) ) return;
+    if ( $post->post_status !== 'publish' ) return;
+    $allowed = [ 'post', 'page', 'fs_tool' ];
+    if ( ! in_array( $post->post_type, $allowed, true ) ) return;
+    // Only set if not already explicitly set
+    $existing = get_post_meta( $post_id, 'rank_math_robots', true );
+    if ( empty( $existing ) || ! in_array( 'index', (array) $existing, true ) ) {
+        update_post_meta( $post_id, 'rank_math_robots', [ 'index', 'follow' ] );
+    }
+}, 20, 2 );
+
+/* ── Re-index categories that were previously noindexed ── */
+add_action( 'init', function() {
+    if ( get_option( 'fs_reindex_cats_v1' ) ) return;
+    $reindex = [ 'budgeting', 'investing', 'loans', 'finance-guides', 'savings', 'retirement' ];
+    foreach ( $reindex as $slug ) {
+        $term = get_term_by( 'slug', $slug, 'category' );
+        if ( $term ) {
+            update_term_meta( $term->term_id, 'rank_math_robots', [ 'index', 'follow' ] );
+        }
+    }
+    delete_transient( 'rank_math_sitemap_cache' );
+    do_action( 'rank_math/sitemap/clear_cache' );
+    update_option( 'fs_reindex_cats_v1', true );
+}, 20 );
+
 /* ── Permanently block feed/search URLs from Rank Math sitemap ── */
 add_filter( 'rank_math/sitemap/entry', function( $url_data ) {
     if ( ! isset( $url_data['loc'] ) ) return $url_data;
@@ -3607,7 +3593,7 @@ add_filter( 'rank_math/sitemap/entry', function( $url_data ) {
         strpos( $loc, '?s='             ) !== false ||
         strpos( $loc, '{search_term'    ) !== false ||
         strpos( $loc, '/author/'        ) !== false ||
-        strpos( $loc, '/page/'          ) !== false ||
+        preg_match( '#/page/\d+#', $loc ) ||
         strpos( $loc, 'wp-emoji'        ) !== false
     ) return false;
     return $url_data;
