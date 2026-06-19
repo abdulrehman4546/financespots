@@ -1,4 +1,17 @@
 
+# BEGIN Old Guide Redirects (301)
+Redirect 301 /mortgage-calculator-guide/ https://financespots.com/first-time-home-buyer-guide-2026/
+Redirect 301 /compound-interest-guide/ https://financespots.com/index-fund-investing-beginners-guide-2026/
+Redirect 301 /investment-calculator-guide/ https://financespots.com/index-fund-investing-beginners-guide-2026/
+Redirect 301 /emergency-fund-guide/ https://financespots.com/emergency-fund-how-much-where-to-keep-2026/
+Redirect 301 /tax-calculator-guide-2026/ https://financespots.com/tool/income-tax-calculator/
+Redirect 301 /crypto-profit-guide/ https://financespots.com/bitcoin-vs-gold-better-investment-2026/
+Redirect 301 /personal-loan-guide/ https://financespots.com/how-to-pay-off-student-loans-faster-2026/
+Redirect 301 /budget-planner-guide/ https://financespots.com/50-30-20-budget-rule-guide-2026/
+Redirect 301 /retirement-planning-guide/ https://financespots.com/retirement-planning-how-much-need-2026/
+Redirect 301 /pay-off-debt-fast-guide/ https://financespots.com/how-to-pay-off-student-loans-faster-2026/
+# END Old Guide Redirects
+
 # BEGIN WordPress
 # The directives (lines) between "BEGIN WordPress" and "END WordPress" are
 # dynamically generated, and should only be modified via WordPress filters.
