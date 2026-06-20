@@ -2298,7 +2298,7 @@ a.fs-float-badge:hover {
         padding-top: 10px;
     }
     .fs-hero__content { padding-right: 0; }
-    .fs-hero__visual  { max-width: 500px; margin: 0 auto; width: 100%; }
+    .fs-hero__visual  { max-width: 500px; margin: 0 auto; width: 100%; overflow: hidden; }
     .fs-float-badge--3 { display: none; }
     .fs-float-badge--1 { top: -14px; right: 10px; }
     .fs-hero__cta-group    { justify-content: center; }
@@ -2329,10 +2329,19 @@ a.fs-float-badge:hover {
 
 @media (max-width: 640px) {
     :root { --fs-header-h: 64px; }
-    .fs-hero { padding: 70px 0 100px; }
-    .fs-hero__visual { transform: scale(0.72); transform-origin: top center; opacity: 0.85; }
-    .fs-hero__visual canvas { display: none; }
-    .fs-hero__title { font-size: clamp(2.2rem, 9vw, 3rem); }
+    .fs-hero { padding: 70px 0 60px; }
+
+    /* Hero inner: single column, no excess min-height on small screens */
+    .fs-hero__inner { min-height: 0; gap: 28px; }
+
+    /* Hero visual: hide completely on small mobile — scale() doesn't reduce
+       layout footprint and causes horizontal overflow at this breakpoint */
+    .fs-hero__visual { display: none; }
+
+    .fs-hero__title { font-size: clamp(2rem, 9vw, 2.8rem); }
+
+    /* Stat cards: 2 columns on mobile (matches inherited 900px rule explicitly) */
+    .fs-stats__grid { grid-template-columns: repeat(2, 1fr); }
 
     .fs-categories__grid { grid-template-columns: repeat(2, 1fr); }
     .fs-tools__grid  { grid-template-columns: 1fr; }
@@ -2348,13 +2357,26 @@ a.fs-float-badge:hover {
     .fs-footer__grid { grid-template-columns: 1fr; }
     .fs-footer__bottom-inner { flex-direction: column; text-align: center; }
 
-    .fs-hero__cta-group { flex-direction: column; }
+    /* CTA buttons: full-width stacked column */
+    .fs-hero__cta-group { flex-direction: column; align-items: stretch; }
     .fs-hero__cta-group .fs-btn { width: 100%; justify-content: center; }
 
     .fs-trust-strip__logos { gap: 24px; }
 
     .fs-post-nav { grid-template-columns: 1fr; }
     .fs-back-to-top { bottom: 20px; right: 20px; }
+}
+
+/* Tablet (641px – 900px): show hero visual at reduced scale with clipped overflow */
+@media (max-width: 900px) and (min-width: 641px) {
+    .fs-hero__visual {
+        transform: scale(0.80);
+        transform-origin: top center;
+        /* Use negative margin to reclaim the dead whitespace scale() leaves behind */
+        margin-bottom: calc((1 - 0.80) * -1 * 100%);
+        overflow: hidden;
+    }
+    .fs-hero__visual canvas { display: none; }
 }
 
 @media (max-width: 420px) {
