@@ -96,7 +96,7 @@
 
     <style>
     /* ── Newsletter v2 ── */
-    .fs-nl2{position:relative;padding:80px 0;overflow:hidden;background:#050A14;}
+    .fs-nl2{position:relative;padding:60px 0;overflow:hidden;background:#050A14;}
     .fs-nl2__bg{position:absolute;inset:0;pointer-events:none;}
     .fs-nl2__grid{position:absolute;inset:0;background-image:linear-gradient(rgba(16,185,129,.04) 1px,transparent 1px),linear-gradient(90deg,rgba(16,185,129,.04) 1px,transparent 1px);background-size:60px 60px;}
     .fs-nl2__orb{position:absolute;border-radius:50%;filter:blur(80px);}
@@ -277,7 +277,7 @@
     .fsf__topbar{height:3px;background:linear-gradient(90deg,#10B981,#3B82F6,#8B5CF6,#10B981);background-size:200% 100%;animation:fsf-bar 4s linear infinite;}
     @keyframes fsf-bar{0%{background-position:0%}100%{background-position:200%}}
 
-    .fsf__main{padding:64px 0 48px;}
+    .fsf__main{padding:48px 0 36px;}
     .fsf__grid{display:grid;grid-template-columns:1.6fr 1fr 1fr 1fr;gap:48px;}
     @media(max-width:1024px){.fsf__grid{grid-template-columns:1fr 1fr;gap:36px;}}
     @media(max-width:600px){.fsf__grid{grid-template-columns:1fr;gap:28px;}}
