@@ -193,7 +193,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 </a>
                 <?php endif; ?>
                 <?php if ( get_theme_mod( 'fs_badge3_enable', '1' ) ) : ?>
-                <a href="<?php echo esc_url( get_theme_mod( 'fs_badge3_url', '#security' ) ); ?>"
+                <a href="<?php echo esc_url( get_theme_mod( 'fs_badge3_url', '/about/' ) ); ?>"
                    class="fs-float-badge fs-float-badge--3"
                    id="fs-badge3">
                     <span class="fs-float-badge__icon" aria-hidden="true">&#128274;</span>
@@ -275,52 +275,6 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
      SECTION 2.5: AI FINANCIAL DASHBOARD PROMO
      ============================================================ -->
 <section class="fs-ai-promo" id="ai-dashboard" aria-labelledby="ai-promo-heading">
-<style>
-.fs-ai-promo{background:linear-gradient(135deg,#0F172A 0%,#1E293B 60%,#0F172A 100%);padding:5rem 0;position:relative;overflow:hidden;}
-.fs-ai-promo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,200,150,.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(59,130,246,.1) 0%,transparent 55%);pointer-events:none;}
-.fs-ai-promo .container{position:relative;z-index:1;}
-.fs-ai-promo__inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
-@media(max-width:900px){.fs-ai-promo__inner{grid-template-columns:1fr;gap:2.5rem;}.fs-ai-promo__preview{order:-1;}}
-.fs-ai-promo__badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,200,150,.12);border:1px solid rgba(0,200,150,.3);color:#00C896;font-size:.75rem;font-weight:700;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:.06em;}
-.fs-ai-promo__badge-dot{width:7px;height:7px;background:#00C896;border-radius:50%;animation:fs-pulse 1.5s infinite;}
-@keyframes fs-pulse{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.5;transform:scale(1.4);}}
-.fs-ai-promo__title{font-size:clamp(1.8rem,3.5vw,2.6rem);font-weight:900;color:#fff;line-height:1.15;margin-bottom:1rem;}
-.fs-ai-promo__title .accent{background:linear-gradient(135deg,#00C896,#3B82F6);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;}
-.fs-ai-promo__desc{color:#94A3B8;font-size:1rem;line-height:1.7;margin-bottom:1.75rem;max-width:480px;}
-.fs-ai-promo__features{display:flex;flex-direction:column;gap:.75rem;margin-bottom:2rem;}
-.fs-ai-promo__feature{display:flex;align-items:center;gap:.75rem;color:#CBD5E1;font-size:.92rem;}
-.fs-ai-promo__feature-icon{width:32px;height:32px;background:rgba(0,200,150,.15);border:1px solid rgba(0,200,150,.25);border-radius:8px;display:flex;align-items:center;justify-content:center;font-size:1rem;flex-shrink:0;}
-.fs-ai-promo__cta{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,#00C896,#00A87A);color:#0F172A;font-weight:800;font-size:1rem;padding:.9rem 2rem;border-radius:12px;text-decoration:none;transition:all .25s;box-shadow:0 4px 20px rgba(0,200,150,.3);}
-.fs-ai-promo__cta:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,200,150,.45);color:#0F172A;}
-.fs-ai-promo__cta-ghost{display:inline-flex;align-items:center;gap:.5rem;color:#94A3B8;font-size:.9rem;font-weight:600;text-decoration:none;margin-left:1.25rem;transition:color .2s;}
-.fs-ai-promo__cta-ghost:hover{color:#fff;}
-
-/* Preview card */
-.fs-ai-promo__preview{position:relative;}
-.fs-ai-dash-card{background:rgba(30,41,59,.9);border:1px solid rgba(51,65,85,.8);border-radius:20px;overflow:hidden;box-shadow:0 25px 60px rgba(0,0,0,.5),0 0 0 1px rgba(0,200,150,.08);backdrop-filter:blur(8px);}
-.fs-ai-dash-card__header{background:rgba(15,23,42,.9);padding:.85rem 1.25rem;display:flex;align-items:center;gap:.75rem;border-bottom:1px solid rgba(51,65,85,.6);}
-.fs-ai-dash-card__dots span{width:11px;height:11px;border-radius:50%;display:inline-block;margin-right:4px;}
-.fs-ai-dash-card__dots .dot-r{background:#EF4444;}
-.fs-ai-dash-card__dots .dot-y{background:#F59E0B;}
-.fs-ai-dash-card__dots .dot-g{background:#00C896;}
-.fs-ai-dash-card__tab{font-size:.72rem;font-weight:700;color:#94A3B8;letter-spacing:.05em;margin-left:.25rem;}
-.fs-ai-dash-card__body{padding:1.25rem;}
-.fs-ai-metric-row{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem;margin-bottom:1rem;}
-.fs-ai-metric{background:rgba(15,23,42,.7);border:1px solid rgba(51,65,85,.5);border-radius:10px;padding:.85rem;text-align:center;}
-.fs-ai-metric__val{font-size:1.2rem;font-weight:900;margin-bottom:.2rem;}
-.fs-ai-metric__val.green{color:#00C896;}
-.fs-ai-metric__val.blue{color:#3B82F6;}
-.fs-ai-metric__val.purple{color:#8B5CF6;}
-.fs-ai-metric__lbl{font-size:.65rem;font-weight:600;color:#64748B;text-transform:uppercase;letter-spacing:.05em;}
-.fs-ai-bar-row{margin-bottom:.7rem;}
-.fs-ai-bar-label{display:flex;justify-content:space-between;font-size:.75rem;color:#94A3B8;font-weight:600;margin-bottom:.3rem;}
-.fs-ai-bar-track{background:rgba(255,255,255,.07);border-radius:20px;height:7px;overflow:hidden;}
-.fs-ai-bar-fill{height:100%;border-radius:20px;transition:width 2s ease;}
-.fs-ai-chat-preview{background:rgba(0,200,150,.06);border:1px solid rgba(0,200,150,.18);border-radius:10px;padding:.8rem 1rem;margin-top:.85rem;}
-.fs-ai-chat-preview__label{font-size:.65rem;font-weight:700;color:#00C896;text-transform:uppercase;letter-spacing:.06em;margin-bottom:.45rem;}
-.fs-ai-chat-preview__msg{font-size:.78rem;color:#CBD5E1;line-height:1.55;}
-.fs-ai-promo__glow{position:absolute;top:-40px;right:-40px;width:220px;height:220px;background:radial-gradient(circle,rgba(0,200,150,.15) 0%,transparent 70%);pointer-events:none;}
-</style>
 
 <div class="container">
     <div class="fs-ai-promo__inner">
@@ -505,8 +459,6 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 data-animate="fade-up"
                 data-delay="<?php echo $i * 80; ?>"
                 data-category="<?php echo esc_attr( $cat['slug'] ); ?>"
-                onclick="window.location='<?php echo esc_js( $cat_url ); ?>'"
-                style="cursor:pointer"
             >
                 <a href="<?php echo esc_url( $cat_url ); ?>" class="fs-cat-card__link" aria-label="<?php echo esc_attr( $cat['name'] ) . ' -- ' . esc_attr( $cat['count'] ) . ' tools'; ?>">
                     <div class="fs-cat-card__icon-wrap" aria-hidden="true">
@@ -560,8 +512,6 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 class="fs-tool-card"
                 data-animate="fade-up"
                 data-delay="<?php echo $i * 100; ?>"
-                onclick="window.location='<?php echo esc_js( $tool_url ); ?>'"
-                style="cursor:pointer"
             >
                 <div class="fs-tool-card__header">
                     <div class="fs-tool-card__icon-wrap" aria-hidden="true">
@@ -573,7 +523,6 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 </div>
                 <div class="fs-tool-card__body">
                     <a href="<?php echo esc_url($cat_url); ?>" class="fs-tool-card__category"
-                       onclick="event.stopPropagation()"
                        style="text-decoration:none;color:inherit">
                         <?php echo esc_html( $cat_label ); ?>
                     </a>
@@ -581,11 +530,11 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <p class="fs-tool-card__desc"><?php echo esc_html( $tool['desc'] ); ?></p>
                 </div>
                 <div class="fs-tool-card__footer">
-                    <a href="<?php echo esc_url( $tool_url ); ?>" class="fs-tool-card__link" onclick="event.stopPropagation()">
+                    <a href="<?php echo esc_url( $tool_url ); ?>" class="fs-tool-card__link">
                         <?php esc_html_e( 'Use Tool', 'financespots' ); ?>
                         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                     </a>
-                    <button class="fs-tool-card__save" aria-label="Save tool" onclick="event.stopPropagation()">
+                    <button class="fs-tool-card__save" aria-label="Save tool">
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>
                     </button>
                 </div>
