@@ -805,10 +805,10 @@ if ( $blog_query->have_posts() ) :
 <!-- ============================================================
      SECTION: EXPLORE BY CATEGORY (Internal Linking)
      ============================================================ -->
-<section class="fs-explore-cats" aria-labelledby="explore-cats-heading" style="padding:3rem 0 2.5rem;background:#F8FAFC;border-top:1px solid #E2E8F0;">
+<section class="fs-explore-cats" aria-labelledby="explore-cats-heading" style="padding:2rem 0 1.75rem;background:#F8FAFC;border-top:1px solid #E2E8F0;">
     <div class="container">
-        <h2 id="explore-cats-heading" style="font-size:1.4rem;font-weight:800;color:#0F172A;margin:0 0 1.25rem;text-align:center;">&#x1F4CA; Explore FinanceSpots</h2>
-        <div style="display:flex;flex-wrap:wrap;gap:.75rem;justify-content:center;margin-bottom:1.75rem;">
+        <h2 id="explore-cats-heading" style="font-size:1.4rem;font-weight:800;color:#0F172A;margin:0 0 .9rem;text-align:center;">&#x1F4CA; Explore FinanceSpots</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;margin-bottom:1.25rem;">
             <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#128450;&#65039; Browse Categories</a>
             <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#129518; All Tools</a>
             <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#128221; Finance Blog</a>
@@ -816,7 +816,7 @@ if ( $blog_query->have_posts() ) :
             <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#11088; PRO Pricing</a>
         </div>
 
-        <h3 style="font-size:1.05rem;font-weight:700;color:#334155;margin:0 0 .85rem;text-align:center;">&#128200; Popular Tools to Try Now</h3>
+        <h3 style="font-size:1.05rem;font-weight:700;color:#334155;margin:0 0 .6rem;text-align:center;">&#128200; Popular Tools to Try Now</h3>
         <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;">
             <a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#1D4ED8;text-decoration:none;">&#127968; Mortgage Calculator</a>
             <a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#15803D;text-decoration:none;">&#128200; Compound Interest</a>

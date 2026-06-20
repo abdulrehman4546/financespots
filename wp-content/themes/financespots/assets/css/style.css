@@ -189,11 +189,11 @@ p { margin: 0; }
 /* ── 7. Section Shared ── */
 .fs-section-header {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 44px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 16px;
+    gap: 12px;
 }
 .fs-section-title {
     font-size: clamp(1.8rem, 3.5vw, 2.8rem);
@@ -209,7 +209,7 @@ p { margin: 0; }
 }
 .fs-section-cta {
     text-align: center;
-    margin-top: 52px;
+    margin-top: 36px;
 }
 
 /* ═══════════════════════════════════════════════════════════
@@ -1113,7 +1113,7 @@ a.fs-float-badge:hover {
 .fs-hero__wave svg { width: 100%; height: 90px; }
 
 /* ── Hero v3 specific overrides ── */
-.fs-hero { padding: 80px 0 130px; }
+.fs-hero { padding: 80px 0 80px; }
 
 .fs-hero__vignette {
     position: absolute;
@@ -1436,7 +1436,7 @@ a.fs-float-badge:hover {
 .fs-stat-card {
     position: relative;
     text-align: center;
-    padding: 44px 28px 40px;
+    padding: 32px 24px 28px;
     border-right: 1px solid rgba(148,163,184,.10);
     background: #fff;
     overflow: hidden;
@@ -1527,13 +1527,13 @@ a.fs-float-badge:hover {
 
 /* ── 11. FEATURES SECTION ── */
 .fs-features {
-    padding: 100px 0;
+    padding: 70px 0;
     background: var(--fs-bg);
 }
 .fs-features__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 18px;
 }
 .fs-feature-card {
     background: var(--fs-card-bg);
@@ -1565,7 +1565,7 @@ a.fs-float-badge:hover {
 
 /* ── 12. CATEGORIES SECTION ── */
 .fs-categories {
-    padding: 100px 0;
+    padding: 70px 0;
     background: var(--fs-bg-2);
     position: relative;
     overflow: hidden;
@@ -1585,7 +1585,7 @@ a.fs-float-badge:hover {
     gap: 8px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 48px;
+    margin-bottom: 32px;
 }
 .fs-filter-tab {
     padding: 9px 20px;
@@ -1656,11 +1656,11 @@ a.fs-float-badge:hover {
 .fs-cat-card:hover .fs-cat-card__count { gap: 9px; }
 
 /* ── 13. POPULAR TOOLS SECTION ── */
-.fs-popular-tools { padding: 100px 0; background: var(--fs-bg); }
+.fs-popular-tools { padding: 70px 0; background: var(--fs-bg); }
 .fs-tools__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
+    gap: 18px;
 }
 .fs-tool-card {
     background: var(--fs-card-bg);
@@ -1751,7 +1751,7 @@ a.fs-float-badge:hover {
 
 /* ── 14. AI SECTION ── */
 .fs-ai-section {
-    padding: 100px 0;
+    padding: 70px 0;
     background: linear-gradient(180deg, #0F172A 0%, #1E293B 100%);
     position: relative;
     overflow: hidden;
@@ -1867,11 +1867,11 @@ a.fs-float-badge:hover {
 .fs-ai-feature__desc  { font-size: .85rem; color: rgba(255,255,255,.60); line-height: 1.55; }
 
 /* ── 15. HOW IT WORKS ── */
-.fs-how-it-works { padding: 100px 0; background: var(--fs-bg); }
+.fs-how-it-works { padding: 70px 0; background: var(--fs-bg); }
 .fs-steps {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 32px;
+    gap: 24px;
     position: relative;
     margin-top: 20px;
 }
@@ -1907,7 +1907,7 @@ a.fs-float-badge:hover {
 
 /* ── 16. TESTIMONIALS ── */
 .fs-testimonials {
-    padding: 100px 0;
+    padding: 70px 0;
     background: var(--fs-bg-2);
     position: relative;
     overflow: hidden;
@@ -1925,8 +1925,8 @@ a.fs-float-badge:hover {
 .fs-testimonials__track {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    gap: 24px;
-    margin-bottom: 40px;
+    gap: 18px;
+    margin-bottom: 28px;
 }
 .fs-testimonial-card {
     border-radius: var(--fs-radius-lg);
@@ -2006,11 +2006,11 @@ a.fs-float-badge:hover {
 .fs-trust-logo:hover { opacity: .85; }
 
 /* ── 17. BLOG SECTION ── */
-.fs-blog { padding: 100px 0; background: var(--fs-bg); }
+.fs-blog { padding: 70px 0; background: var(--fs-bg); }
 .fs-blog__grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 28px;
+    gap: 20px;
 }
 .fs-blog-card {
     background: var(--fs-card-bg);
@@ -2109,7 +2109,7 @@ a.fs-float-badge:hover {
 /* ── 19. FOOTER ── */
 .fs-footer { background: #0A0F1E; color: rgba(255,255,255,.75); }
 
-.fs-footer__main { padding: 72px 0 48px; }
+.fs-footer__main { padding: 52px 0 36px; }
 .fs-footer__grid {
     display: grid;
     grid-template-columns: 2fr 1fr 1fr 1fr;
@@ -2329,10 +2329,39 @@ a.fs-float-badge:hover {
 
 @media (max-width: 640px) {
     :root { --fs-header-h: 64px; }
-    .fs-hero { padding: 70px 0 60px; }
+    .fs-hero { padding: 48px 0 40px; }
 
     /* Hero inner: single column, no excess min-height on small screens */
-    .fs-hero__inner { min-height: 0; gap: 28px; }
+    .fs-hero__inner { min-height: 0; gap: 20px; }
+
+    /* Section padding: max 36px on mobile */
+    .fs-features,
+    .fs-categories,
+    .fs-popular-tools,
+    .fs-how-it-works,
+    .fs-testimonials,
+    .fs-blog { padding: 36px 0; }
+
+    .fs-ai-promo { padding: 2.25rem 0; }
+
+    /* Section header tighter on mobile */
+    .fs-section-header { margin-bottom: 28px; gap: 10px; }
+
+    /* Card gaps: 12px on mobile */
+    .fs-features__grid { gap: 12px; }
+    .fs-tools__grid    { gap: 12px; }
+    .fs-blog__grid     { gap: 12px; }
+    .fs-testimonials__track { gap: 12px; }
+    .fs-categories__grid { gap: 12px; }
+
+    /* Steps gap on mobile */
+    .fs-steps { gap: 16px; }
+
+    /* Section CTA less margin-top on mobile */
+    .fs-section-cta { margin-top: 24px; }
+
+    /* Footer top padding on mobile */
+    .fs-footer__main { padding: 36px 0 24px; }
 
     /* Hero visual: hide completely on small mobile — scale() doesn't reduce
        layout footprint and causes horizontal overflow at this breakpoint */
@@ -2749,10 +2778,10 @@ a.fs-float-badge:hover {
 .fs-share-btn--copy:hover { background: var(--fs-primary); color: #fff; border-color: var(--fs-primary); }
 
 /* ── 27. AI Promo Section (moved from front-page.php inline style) ── */
-.fs-ai-promo{background:linear-gradient(135deg,#0F172A 0%,#1E293B 60%,#0F172A 100%);padding:5rem 0;position:relative;overflow:hidden;}
+.fs-ai-promo{background:linear-gradient(135deg,#0F172A 0%,#1E293B 60%,#0F172A 100%);padding:3.5rem 0;position:relative;overflow:hidden;}
 .fs-ai-promo::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(0,200,150,.12) 0%,transparent 55%),radial-gradient(ellipse at 80% 30%,rgba(59,130,246,.1) 0%,transparent 55%);pointer-events:none;}
 .fs-ai-promo .container{position:relative;z-index:1;}
-.fs-ai-promo__inner{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;}
+.fs-ai-promo__inner{display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;}
 @media(max-width:900px){.fs-ai-promo__inner{grid-template-columns:1fr;gap:2.5rem;}.fs-ai-promo__preview{order:-1;}}
 .fs-ai-promo__badge{display:inline-flex;align-items:center;gap:.5rem;background:rgba(0,200,150,.12);border:1px solid rgba(0,200,150,.3);color:#00C896;font-size:.75rem;font-weight:700;padding:.35rem 1rem;border-radius:20px;margin-bottom:1.25rem;text-transform:uppercase;letter-spacing:.06em;}
 .fs-ai-promo__badge-dot{width:7px;height:7px;background:#00C896;border-radius:50%;animation:fs-pulse 1.5s infinite;}
