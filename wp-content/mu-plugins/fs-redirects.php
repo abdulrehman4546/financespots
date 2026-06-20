@@ -3,6 +3,7 @@
  * Plugin Name: FinanceSpots Old Guide Redirects
  * Description: 301 redirects for deleted v1 guide pages
  */
+defined( 'ABSPATH' ) || exit;
 add_action( 'init', function () {
     if ( ! isset( $_SERVER['REQUEST_URI'] ) ) return;
     $map = [

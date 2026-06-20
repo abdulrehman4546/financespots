@@ -62,7 +62,7 @@ while ( have_posts() ) : the_post();
                 <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" style="font-size:.8rem;color:#64748B;text-decoration:none;" onmouseover="this.style.color='#10B981'" onmouseout="this.style.color='#64748B'"><?php echo esc_html( $cat->name ); ?></a>
                 <?php endif; ?>
                 <span style="color:#334155;font-size:.8rem;">&#x203A;</span>
-                <span style="font-size:.8rem;color:#94A3B8;"><?php the_title(); ?></span>
+                <span style="font-size:.8rem;color:#94A3B8;"><?php echo esc_html( get_the_title() ); ?></span>
             </nav>
             <?php if ( $cat ) : ?>
             <a href="<?php echo esc_url( get_term_link( $cat ) ); ?>" class="fst-breadcrumb">
@@ -70,9 +70,9 @@ while ( have_posts() ) : the_post();
             </a>
             <?php endif; ?>
             <div class="fst-tool-hero__content">
-                <span class="fst-tool-hero__icon"><?php echo $icon; ?></span>
+                <span class="fst-tool-hero__icon"><?php echo esc_html( $icon ); ?></span>
                 <div>
-                    <h1 class="fst-tool-hero__title"><?php the_title(); ?></h1>
+                    <h1 class="fst-tool-hero__title"><?php echo esc_html( get_the_title() ); ?></h1>
                     <p class="fst-tool-hero__desc"><?php echo esc_html( get_the_excerpt() ); ?></p>
                 </div>
             </div>
@@ -384,7 +384,7 @@ $suggested = array_values($suggested);
         <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.65rem;">
             <?php foreach(array_slice($suggested,0,3) as $s): ?>
             <a href="<?php echo esc_url($s[1]); ?>" style="display:flex;align-items:center;gap:8px;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#334155;font-size:.86rem;font-weight:600;transition:border-color .2s,color .2s;" onmouseover="this.style.borderColor='#10B981';this.style.color='#059669'" onmouseout="this.style.borderColor='#E2E8F0';this.style.color='#334155'">
-                <?php echo $s[0]; ?>
+                <?php echo esc_html( $s[0] ); ?>
             </a>
             <?php endforeach; ?>
             <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:#ECFDF5;border:1.5px solid #BBF7D0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#15803D;font-size:.86rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">

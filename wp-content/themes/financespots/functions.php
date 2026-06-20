@@ -938,9 +938,6 @@ function financespots_head_meta() {
         $image       = get_the_post_thumbnail_url( $post, 'large' ) ?: $logo_url;
         $tool_type   = get_post_meta( $post->ID, '_fs_tool_type', true );
 
-        // Output tool-specific SEO
-        echo '<meta name="keywords" content="' . esc_attr( $rm_kw ) . ', finance calculator, free tool" />' . "\n";
-
         // Schema.org WebApplication for tools
         $schema = [
             '@context' => 'https://schema.org',
@@ -1840,7 +1837,7 @@ function fs_create_va_loan_tool() {
     update_post_meta( $id, 'rank_math_title',                $seo_title );
     update_post_meta( $id, 'rank_math_description',          $seo_desc );
     update_post_meta( $id, 'rank_math_robots',               [ 'index', 'follow' ] );
-    update_post_meta( $id, 'rank_math_canonical_url',        home_url( '/tools/va-loan-funding-fee-calculator/' ) );
+    update_post_meta( $id, 'rank_math_canonical_url',        home_url( '/tool/va-loan-funding-fee-calculator/' ) );
     update_post_meta( $id, 'rank_math_og_title',             $seo_title );
     update_post_meta( $id, 'rank_math_og_description',       $seo_desc );
     update_post_meta( $id, 'rank_math_twitter_title',        $seo_title );
@@ -2092,28 +2089,6 @@ function fs_rankmath_setup() {
 add_action( 'admin_init', 'fs_rankmath_setup', 20 );
 add_action( 'init',       'fs_rankmath_setup', 40 );
 
-/* ── Add llms.txt reference to robots.txt via Rank Math filter ── */
-add_filter( 'rank_math/robotstxt/extra_rules', function( $rules ) {
-    $rules[] = '';
-    $rules[] = '# Block RSS/Atom feeds';
-    $rules[] = 'Disallow: /feed/';
-    $rules[] = 'Disallow: /*/feed/';
-    $rules[] = 'Disallow: /comments/feed/';
-    $rules[] = '';
-    $rules[] = '# Block numeric pagination only (not page slugs)';
-    $rules[] = 'Disallow: /page/[0-9]';
-    $rules[] = '';
-    $rules[] = '# Block author archives';
-    $rules[] = 'Disallow: /author/';
-    $rules[] = '';
-    $rules[] = '# Block tag and category feeds';
-    $rules[] = 'Disallow: /tag/*/feed/';
-    $rules[] = 'Disallow: /category/*/feed/';
-    $rules[] = '';
-    $rules[] = '# AI crawler discovery';
-    $rules[] = 'LLMs: https://financespots.com/llms.txt';
-    return $rules;
-} );
 
 /* =========================================================
    FIX ALL NOINDEX + INDEXING ISSUES
@@ -2245,7 +2220,6 @@ function fs_fix_all_indexing_issues() {
     update_option( 'fs_fix_indexing_v3', true );
 }
 add_action( 'admin_init', 'fs_fix_all_indexing_issues', 5 );
-add_action( 'init',       'fs_fix_all_indexing_issues', 5 );
 
 /* =========================================================
    FORCE INDEX ALL TOOLS + PAGES — v4

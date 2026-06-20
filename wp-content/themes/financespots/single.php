@@ -55,7 +55,7 @@ get_header();
                 </div>
                 <?php endif; ?>
 
-                <h1 class="fs-single-post__title"><?php the_title(); ?></h1>
+                <h1 class="fs-single-post__title"><?php echo esc_html( get_the_title() ); ?></h1>
 
                 <div class="fs-single-post__meta">
                     <time datetime="<?php echo get_the_date( 'c' ); ?>">

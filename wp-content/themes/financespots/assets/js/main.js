@@ -389,9 +389,16 @@
                 var payment   = principal * (rate * Math.pow(1 + rate, n)) / (Math.pow(1 + rate, n) - 1);
                 resultEl.textContent = '$' + Math.round(payment).toLocaleString('en-US');
             }
-            requestAnimationFrame(loop);
+            heroAnimId = requestAnimationFrame(loop);
         }
-        requestAnimationFrame(loop);
+        var heroAnimId = requestAnimationFrame(loop);
+        document.addEventListener('visibilitychange', function() {
+            if (document.hidden) {
+                cancelAnimationFrame(heroAnimId);
+            } else {
+                heroAnimId = requestAnimationFrame(loop);
+            }
+        });
     }
 
     /* ============================================================
@@ -525,6 +532,8 @@
                 card.style.opacity = '1';
                 card.style.transform = '';
             });
+            clearInterval(autoTimer);
+            startAuto();
         }, 300));
     }
 

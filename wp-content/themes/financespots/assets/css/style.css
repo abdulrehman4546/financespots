@@ -492,7 +492,7 @@ p { margin: 0; }
     visibility: hidden;
     transform: translateY(-8px);
     transition: all var(--fs-transition);
-    z-index: 500;
+    z-index: 1200;
 }
 .fs-search-overlay.open {
     opacity: 1;

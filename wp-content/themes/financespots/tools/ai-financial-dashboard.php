@@ -3,6 +3,7 @@
  * AI Financial Dashboard -- Full-page tool template
  * Loaded by single-fs_tool.php when tool_type = 'ai_dashboard'
  */
+defined( 'ABSPATH' ) || exit;
 ?>
 <!DOCTYPE html>
 <html <?php language_attributes(); ?>>
