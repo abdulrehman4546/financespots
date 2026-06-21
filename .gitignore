@@ -3,7 +3,7 @@ wp-config.php
 wp-config-local.php
 
 # WordPress uploads (user media - too large for git)
-wp-content/uploads/
+# wp-content/uploads/
 
 # WordPress cache
 wp-content/cache/
