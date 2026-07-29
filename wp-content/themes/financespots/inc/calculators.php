@@ -1834,15 +1834,16 @@ function mgCompare(){
   var P=price-down;
   if(!P)return;
   var terms=[10,15,20,30];
-  var base30M,base30Int;
+  var n30=30*12;
+  var M30=rate===0?P/n30:P*(rate*Math.pow(1+rate,n30))/(Math.pow(1+rate,n30)-1);
+  var base30Int=M30*n30-P;
   var rows='';
   terms.forEach(function(yr){
     var n=yr*12;
     var M=rate===0?P/n:P*(rate*Math.pow(1+rate,n))/(Math.pow(1+rate,n)-1);
     var totalInt=M*n-P;
     var totalCost=M*n;
-    if(yr===30){base30M=M;base30Int=totalInt;}
-    var saved=base30Int!==undefined?base30Int-totalInt:0;
+    var saved=base30Int-totalInt;
     var fmt=function(v){return '$'+Math.round(v).toLocaleString();};
     rows+='<tr>'
       +'<td><strong>'+yr+' yr</strong></td>'
