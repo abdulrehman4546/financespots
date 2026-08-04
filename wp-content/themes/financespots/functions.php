@@ -8,10 +8,27 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.4.0' );
+define( 'FINANCESPOTS_VERSION', '1.5.1' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
+
+/* =========================================================
+   0. HERO IMAGE HELPER
+   Falls back to the first <img> inside post_content when no
+   featured image has been set, so post headers, related-post
+   cards, and blog grids never render blank.
+   ========================================================= */
+function fs_get_post_hero_image( $post_id ) {
+    if ( has_post_thumbnail( $post_id ) ) {
+        return get_the_post_thumbnail_url( $post_id, 'full' );
+    }
+    $content = get_post_field( 'post_content', $post_id );
+    if ( $content && preg_match( '/<img[^>]+src=["\']([^"\']+)["\']/i', $content, $m ) ) {
+        return $m[1];
+    }
+    return '';
+}
 
 /* =========================================================
    1. THEME SETUP

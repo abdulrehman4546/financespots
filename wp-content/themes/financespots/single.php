@@ -67,9 +67,10 @@ get_header();
                     <span><?php printf( esc_html__( '%d min read', 'financespots' ), max( 1, ceil( str_word_count( strip_tags( get_the_content() ) ) / 200 ) ) ); ?></span>
                 </div>
 
-                <?php if ( has_post_thumbnail() ) : ?>
+                <?php $fs_hero_img = fs_get_post_hero_image( get_the_ID() ); ?>
+                <?php if ( $fs_hero_img ) : ?>
                 <div class="fs-single-post__thumb">
-                    <?php the_post_thumbnail( 'full', [ 'class' => 'fs-single-post__thumb-img', 'alt' => get_the_title() ] ); ?>
+                    <img src="<?php echo esc_url( $fs_hero_img ); ?>" alt="<?php echo esc_attr( get_the_title() ); ?>" class="fs-single-post__thumb-img" loading="eager" width="900" height="500" />
                 </div>
                 <?php endif; ?>
             </header>
@@ -119,6 +120,60 @@ get_header();
                     <p class="fs-author-box__bio"><?php echo esc_html( get_the_author_meta( 'description' ) ); ?></p>
                 </div>
             </div>
+
+            <!-- Related Posts (topic cluster) -->
+            <?php
+            $fs_related_cats = get_the_category();
+            $fs_related_args = [
+                'post_type'           => 'post',
+                'posts_per_page'      => 3,
+                'post__not_in'        => [ get_the_ID() ],
+                'ignore_sticky_posts' => true,
+                'orderby'             => 'date',
+                'order'               => 'DESC',
+            ];
+            if ( $fs_related_cats ) {
+                $fs_related_args['category__in'] = wp_list_pluck( $fs_related_cats, 'term_id' );
+            }
+            $fs_related_query = new WP_Query( $fs_related_args );
+            // Fall back to latest posts (any category) if this post's category has no siblings yet.
+            if ( ! $fs_related_query->have_posts() && $fs_related_cats ) {
+                unset( $fs_related_args['category__in'] );
+                $fs_related_query = new WP_Query( $fs_related_args );
+            }
+            if ( $fs_related_query->have_posts() ) :
+            ?>
+            <section class="fs-related-posts" aria-labelledby="fs-related-heading">
+                <h2 class="fs-related-posts__title" id="fs-related-heading">You Might Also Like</h2>
+                <div class="fs-blog__grid fs-related-posts__grid">
+                    <?php while ( $fs_related_query->have_posts() ) : $fs_related_query->the_post(); ?>
+                    <article class="fs-blog-card">
+                        <?php $fs_r_img = fs_get_post_hero_image( get_the_ID() ); ?>
+                        <?php if ( $fs_r_img ) : ?>
+                        <a href="<?php the_permalink(); ?>" class="fs-blog-card__thumb-link" tabindex="-1" aria-hidden="true">
+                            <img src="<?php echo esc_url( $fs_r_img ); ?>" alt="<?php the_title_attribute(); ?>" class="fs-blog-card__thumb" loading="lazy" />
+                        </a>
+                        <?php endif; ?>
+                        <div class="fs-blog-card__body">
+                            <div class="fs-blog-card__meta">
+                                <time datetime="<?php echo get_the_date( 'c' ); ?>" class="fs-blog-card__date"><?php echo get_the_date(); ?></time>
+                                <?php
+                                $fs_r_cats = get_the_category();
+                                if ( $fs_r_cats ) echo '<span class="fs-blog-card__cat">' . esc_html( $fs_r_cats[0]->name ) . '</span>';
+                                ?>
+                            </div>
+                            <h3 class="fs-blog-card__title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+                            <p class="fs-blog-card__excerpt"><?php echo esc_html( wp_trim_words( get_the_excerpt(), 18 ) ); ?></p>
+                            <a href="<?php the_permalink(); ?>" class="fs-blog-card__link">
+                                Read Article
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+                            </a>
+                        </div>
+                    </article>
+                    <?php endwhile; wp_reset_postdata(); ?>
+                </div>
+            </section>
+            <?php endif; ?>
 
             <!-- Post Navigation -->
             <nav class="fs-post-nav" aria-label="<?php esc_attr_e( 'Post navigation', 'financespots' ); ?>">
