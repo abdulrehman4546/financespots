@@ -58,5 +58,8 @@ deploy-guide.html
 # Hosting config (credentials hain — kabhi commit mat karo)
 wp-config-HOSTING.php
 
+# Deploy secrets (webhook secret + manual-deploy password) — kabhi commit mat karo
+deploy-secrets.php
+
 # Local database export
 *.sql

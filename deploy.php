@@ -5,7 +5,17 @@
  * Then GitHub will call it on every push to main branch
  */
 
-define('DEPLOY_SECRET', 'fs_deploy_2026_secret_xK9mP');
+// DEPLOY_SECRET must be defined in deploy-secrets.php (gitignored, never
+// committed, uploaded to the server by hand). It must exactly match the
+// "Secret" configured on the GitHub webhook (repo Settings -> Webhooks).
+// Rotate both together if this secret is ever compromised.
+if ( file_exists( __DIR__ . '/deploy-secrets.php' ) ) {
+    require_once __DIR__ . '/deploy-secrets.php';
+}
+if ( ! defined( 'DEPLOY_SECRET' ) ) {
+    http_response_code(500);
+    die('DEPLOY_SECRET is not configured. Create deploy-secrets.php on the server (see deploy-secrets.example.php).');
+}
 define('REPO_ZIP',      'https://github.com/abdulrehman4546/financespots/archive/refs/heads/main.zip');
 define('DEPLOY_DIR',    __DIR__);
 define('LOG_FILE',      __DIR__ . '/deploy.log');

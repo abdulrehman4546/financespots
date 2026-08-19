@@ -1,6 +1,17 @@
 <?php
+// MANUAL_DEPLOY_PASSWORD must be defined in deploy-secrets.php (gitignored,
+// never committed, uploaded to the server by hand). Rotate it any time it
+// may have leaked — see deploy-secrets.example.php for the format.
+if ( file_exists( __DIR__ . '/deploy-secrets.php' ) ) {
+    require_once __DIR__ . '/deploy-secrets.php';
+}
+if ( ! defined( 'MANUAL_DEPLOY_PASSWORD' ) ) {
+    http_response_code(500);
+    die('MANUAL_DEPLOY_PASSWORD is not configured. Create deploy-secrets.php on the server (see deploy-secrets.example.php).');
+}
+
 $pass = $_GET['pass'] ?? '';
-if ( $pass !== 'fs2026deploy' ) { http_response_code(403); die('Forbidden'); }
+if ( ! hash_equals( MANUAL_DEPLOY_PASSWORD, $pass ) ) { http_response_code(403); die('Forbidden'); }
 
 $repo     = 'abdulrehman4546/financespots';
 $branch   = 'main';
@@ -49,7 +60,7 @@ if ( empty($folders) ) { die("ERROR: No folder found after extraction\n"); }
 $src = $folders[0];
 echo "Source: $src\n";
 
-$skip = ['wp-config.php','manual-deploy.php','deploy.php','.htaccess'];
+$skip = ['wp-config.php','deploy-secrets.php','manual-deploy.php','deploy.php','.htaccess'];
 
 function deploy_copy($s,$d,$skip,&$n){
     foreach(scandir($s) as $i){
