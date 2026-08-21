@@ -198,6 +198,9 @@ a.fs-contact-info-val:hover{color:#10B981;}
 </style>
 
 <script>
+var fsContactNonce = <?php echo wp_json_encode( wp_create_nonce( 'fs_contact_nonce' ) ); ?>;
+var fsContactAjax  = <?php echo wp_json_encode( admin_url( 'admin-ajax.php' ) ); ?>;
+
 function fsFaqToggle(btn){
     var a = btn.nextElementSibling;
     var isOpen = btn.classList.contains('open');
@@ -222,24 +225,46 @@ document.getElementById('fs-contact-form').addEventListener('submit', function(e
     sucEl.style.display = 'none';
 
     if(!name || !email || !subject || !message){
+        errEl.textContent = '⚠ Please fill in all required fields correctly.';
         errEl.style.display = 'block';
         return;
     }
     if(!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+        errEl.textContent = '⚠ Please enter a valid email address.';
         errEl.style.display = 'block';
-        errEl.textContent = '&#9888; Please enter a valid email address.';
         return;
     }
 
-    // Simulate send
     btn.disabled = true;
     btn.querySelector('.fc-submit-text').textContent = 'Sending...';
-    setTimeout(function(){
-        btn.disabled = false;
-        btn.querySelector('.fc-submit-text').textContent = 'Send Message';
-        sucEl.style.display = 'block';
-        document.getElementById('fs-contact-form').reset();
-    }, 1200);
+
+    var fd = new FormData();
+    fd.append('action', 'fs_contact_submit');
+    fd.append('nonce', fsContactNonce);
+    fd.append('name', name);
+    fd.append('email', email);
+    fd.append('subject', subject);
+    fd.append('message', message);
+
+    fetch(fsContactAjax, { method: 'POST', body: fd })
+        .then(function(r){ return r.json(); })
+        .then(function(res){
+            btn.disabled = false;
+            btn.querySelector('.fc-submit-text').textContent = 'Send Message';
+            if (res.success) {
+                sucEl.style.display = 'block';
+                document.getElementById('fs-contact-form').reset();
+            } else {
+                errEl.textContent = '⚠ ' + (res.data || 'Something went wrong. Please try again.');
+                errEl.style.display = 'block';
+            }
+        })
+        .catch(function(){
+            btn.disabled = false;
+            btn.querySelector('.fc-submit-text').textContent = 'Send Message';
+            errEl.textContent = '⚠ Connection error. Please try again.';
+            errEl.style.display = 'block';
+        });
 });
 </script>
 

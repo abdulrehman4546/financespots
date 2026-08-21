@@ -391,13 +391,13 @@ document.querySelectorAll('.fsp-checkout-btn').forEach(function(btn){
                 window.location.href = res.data.url;
             } else {
                 msg.className='fsp-checkout-msg error';
-                msg.textContent = '&#9888; ' + (res.data || 'Payment error. Please try again.');
+                msg.textContent = '⚠ ' + (res.data || 'Payment error. Please try again.');
                 document.querySelectorAll('.fsp-checkout-btn').forEach(function(b){ b.disabled=false; });
             }
         })
         .catch(function(){
             msg.className='fsp-checkout-msg error';
-            msg.textContent='&#9888; Connection error. Please try again.';
+            msg.textContent='⚠ Connection error. Please try again.';
             document.querySelectorAll('.fsp-checkout-btn').forEach(function(b){ b.disabled=false; });
         });
     });

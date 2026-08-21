@@ -261,7 +261,54 @@ function fs_leads_admin_page() {
     <?php
 }
 
-/* ── 5. CSV Export ── */
+/* ── 5. AJAX: Contact Form ── */
+add_action( 'wp_ajax_nopriv_fs_contact_submit', 'fs_ajax_contact_submit' );
+add_action( 'wp_ajax_fs_contact_submit',        'fs_ajax_contact_submit' );
+
+function fs_ajax_contact_submit() {
+    check_ajax_referer( 'fs_contact_nonce', 'nonce' );
+
+    $name    = sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) );
+    $email   = sanitize_email(      wp_unslash( $_POST['email']   ?? '' ) );
+    $subject = sanitize_text_field( wp_unslash( $_POST['subject'] ?? '' ) );
+    $message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+
+    if ( ! $name || ! $email || ! $subject || ! $message ) {
+        wp_send_json_error( 'Please fill in all required fields.' );
+    }
+    if ( ! is_email( $email ) ) {
+        wp_send_json_error( 'Please enter a valid email address.' );
+    }
+
+    $subjects = [
+        'general'      => 'General Question',
+        'tool'         => 'Tool / Calculator Issue',
+        'suggestion'   => 'Feature Suggestion',
+        'bug'          => 'Report a Bug',
+        'partnership'  => 'Partnership / Collaboration',
+        'other'        => 'Other',
+    ];
+    $subject_label = $subjects[ $subject ] ?? 'Other';
+
+    $to      = get_option( 'admin_email' );
+    $email_subject = sprintf( '[FinanceSpots Contact] %s — %s', $subject_label, $name );
+    $body = "New message from the FinanceSpots contact form:\n\n"
+          . "Name: {$name}\n"
+          . "Email: {$email}\n"
+          . "Topic: {$subject_label}\n\n"
+          . "Message:\n{$message}\n";
+    $headers = [ 'Reply-To: ' . $name . ' <' . $email . '>' ];
+
+    $sent = wp_mail( $to, $email_subject, $body, $headers );
+
+    if ( ! $sent ) {
+        wp_send_json_error( 'Sorry, something went wrong sending your message. Please try again or email us directly.' );
+    }
+
+    wp_send_json_success( [ 'message' => 'Thank you! Your message has been sent. We will reply within 24 hours.' ] );
+}
+
+/* ── 6. CSV Export ── */
 add_action( 'admin_post_fs_export_leads_csv', 'fs_export_leads_csv' );
 function fs_export_leads_csv() {
     if ( ! current_user_can('manage_options') ) wp_die('No access');

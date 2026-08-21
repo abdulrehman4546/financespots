@@ -38,16 +38,14 @@
     <?php
     $cats = get_terms(['taxonomy'=>'fs_tool_cat','hide_empty'=>true,'orderby'=>'count','order'=>'DESC']);
     $cat_icons = [
-        'mortgage-calculators'   => ['&#127968;','Mortgage'],
-        'loan-calculators'       => ['&#127974;','Loans'],
-        'investment-calculators' => ['&#128200;','Investing'],
-        'retirement-calculators' => ['&#127958;&#65039;','Retirement'],
-        'budget-calculators'     => ['&#128176;','Budgeting'],
-        'tax-calculators'        => ['&#129534;','Taxes'],
-        'savings-calculators'    => ['&#128181;','Savings'],
-        'crypto-calculators'     => ['₿','Crypto'],
-        'currency-tools'         => ['&#127757;','Currency'],
-        'debt-calculators'       => ['&#128202;','Debt'],
+        'loan-calculators'      => ['&#127968;','Loans'],
+        'investment-tools'      => ['&#128200;','Investing'],
+        'retirement-planning'   => ['&#127958;&#65039;','Retirement'],
+        'budget-analyzers'      => ['&#128176;','Budgeting'],
+        'tax-calculators'       => ['&#129534;','Taxes'],
+        'savings-planners'      => ['&#128181;','Savings'],
+        'crypto-tools'          => ['₿','Crypto'],
+        'currency-converters'   => ['&#127757;','Currency'],
     ];
     foreach($cats as $cat):
         $icon_data = $cat_icons[$cat->slug] ?? ['&#129518;', $cat->name];

@@ -24,102 +24,52 @@ get_header();
             <div class="fs-cats-grid">
 
                 <?php
-                $categories = [
-                    [
-                        'icon'  => '&#127968;',
-                        'title' => 'Mortgage & Home',
-                        'desc'  => 'Calculate mortgage payments, compare loan terms, estimate affordability, and plan your home purchase with confidence.',
-                        'color' => '#3B82F6',
-                        'tools' => ['Mortgage Calculator', 'Home Affordability', 'Refinance Calculator', 'Amortization Schedule'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#128200;',
-                        'title' => 'Investing & Wealth',
-                        'desc'  => 'Compound interest, investment returns, index fund projections, and portfolio growth calculators.',
-                        'color' => '#10B981',
-                        'tools' => ['Compound Interest', 'Investment Calculator', 'Stock Return Calculator', 'Dividend Calculator'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#128179;',
-                        'title' => 'Debt Management',
-                        'desc'  => 'Pay off debt faster using the avalanche or snowball method. See exactly when you will be debt-free.',
-                        'color' => '#EF4444',
-                        'tools' => ['Debt Payoff Calculator', 'Credit Card Payoff', 'Debt Avalanche', 'Debt Snowball'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#127958;&#65039;',
-                        'title' => 'Retirement Planning',
-                        'desc'  => 'Plan your retirement savings, calculate your retirement number, and project your 401(k) and IRA growth.',
-                        'color' => '#8B5CF6',
-                        'tools' => ['Retirement Calculator', '401k Calculator', 'IRA Calculator', 'Social Security Estimator'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#128203;',
-                        'title' => 'Budgeting',
-                        'desc'  => 'Build a monthly budget, track spending, apply the 50/30/20 rule, and take full control of your money.',
-                        'color' => '#06B6D4',
-                        'tools' => ['Budget Planner', '50/30/20 Calculator', 'Expense Tracker', 'Savings Rate Calculator'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#128196;',
-                        'title' => 'Loans & Credit',
-                        'desc'  => 'Compare personal loans, auto loans, and student loans. Find the best rates and monthly payments.',
-                        'color' => '#F59E0B',
-                        'tools' => ['Personal Loan Calculator', 'Auto Loan Calculator', 'Student Loan Calculator', 'APR Calculator'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '₿',
-                        'title' => 'Cryptocurrency',
-                        'desc'  => 'Track your crypto profits and losses, calculate DCA returns, and estimate tax liability on trades.',
-                        'color' => '#F97316',
-                        'tools' => ['Crypto P&L Calculator', 'Bitcoin DCA Calculator', 'Crypto Tax Estimator', 'Portfolio Tracker'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#129534;',
-                        'title' => 'Taxes',
-                        'desc'  => 'Estimate your federal and state income tax, find deductions, and plan ahead for tax season 2026.',
-                        'color' => '#64748B',
-                        'tools' => ['Income Tax Calculator', 'Tax Bracket Calculator', 'Self-Employment Tax', 'Capital Gains Tax'],
-                        'link'  => home_url('/tools/'),
-                    ],
-                    [
-                        'icon'  => '&#127974;',
-                        'title' => 'Savings & Emergency Fund',
-                        'desc'  => 'Calculate how much to save, build your emergency fund, and find the best high-yield savings rates.',
-                        'color' => '#10B981',
-                        'tools' => ['Emergency Fund Calculator', 'Savings Goal Calculator', 'High-Yield Savings', 'CD Calculator'],
-                        'link'  => home_url('/tools/'),
-                    ],
+                // Icon/color/description are curated per real fs_tool_cat slug; everything
+                // else (link, count, sample tools) is pulled live from the taxonomy so this
+                // grid can never drift out of sync with what tools actually exist.
+                $cat_meta = [
+                    'loan-calculators'     => [ 'icon' => '&#127968;',        'color' => '#3B82F6', 'desc' => 'Calculate mortgage and loan payments, compare terms, estimate affordability, and plan your next purchase with confidence.' ],
+                    'investment-tools'     => [ 'icon' => '&#128200;',        'color' => '#10B981', 'desc' => 'Compound interest, investment returns, portfolio growth, and every calculator you need to grow your wealth.' ],
+                    'retirement-planning'  => [ 'icon' => '&#127958;&#65039;', 'color' => '#8B5CF6', 'desc' => 'Plan your retirement savings, calculate your retirement number, and project your 401(k) and IRA growth.' ],
+                    'budget-analyzers'     => [ 'icon' => '&#128203;',        'color' => '#06B6D4', 'desc' => 'Build a monthly budget, track spending, apply the 50/30/20 rule, and take full control of your money.' ],
+                    'tax-calculators'      => [ 'icon' => '&#129534;',        'color' => '#64748B', 'desc' => 'Estimate your federal and state income tax, find deductions, and plan ahead for tax season 2026.' ],
+                    'crypto-tools'         => [ 'icon' => '₿',                'color' => '#F97316', 'desc' => 'Track your crypto profits and losses, calculate DCA returns, and estimate tax liability on trades.' ],
+                    'savings-planners'     => [ 'icon' => '&#127974;',        'color' => '#10B981', 'desc' => 'Calculate how much to save, build your emergency fund, and find the best high-yield savings rates.' ],
+                    'currency-converters'  => [ 'icon' => '&#128176;',        'color' => '#EAB308', 'desc' => 'Convert currencies, track exchange rates, and plan travel or international payments with live rates.' ],
                 ];
-                foreach($categories as $cat):
+
+                $cat_terms = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC' ] );
+                foreach ( $cat_terms as $term ):
+                    $meta = $cat_meta[ $term->slug ] ?? [ 'icon' => '&#129518;', 'color' => '#64748B', 'desc' => $term->description ?: 'Free calculators in this category.' ];
+                    $sample_tools = get_posts( [
+                        'post_type'      => 'fs_tool',
+                        'post_status'    => 'publish',
+                        'posts_per_page' => 4,
+                        'orderby'        => 'title',
+                        'order'          => 'ASC',
+                        'tax_query'      => [ [ 'taxonomy' => 'fs_tool_cat', 'field' => 'term_id', 'terms' => $term->term_id ] ],
+                    ] );
                 ?>
                 <div class="fs-cat-card">
                     <div class="fs-cat-card__top">
-                        <div class="fs-cat-card__icon" style="background:<?php echo $cat['color']; ?>22;border-color:<?php echo $cat['color']; ?>44;">
-                            <span><?php echo $cat['icon']; ?></span>
+                        <div class="fs-cat-card__icon" style="background:<?php echo esc_attr( $meta['color'] ); ?>22;border-color:<?php echo esc_attr( $meta['color'] ); ?>44;">
+                            <span><?php echo $meta['icon']; ?></span>
                         </div>
                         <div>
-                            <h2 class="fs-cat-card__title"><?php echo esc_html($cat['title']); ?></h2>
-                            <span class="fs-cat-card__count"><?php echo count($cat['tools']); ?> tools</span>
+                            <h2 class="fs-cat-card__title"><?php echo esc_html( $term->name ); ?></h2>
+                            <span class="fs-cat-card__count"><?php echo intval( $term->count ); ?> tools</span>
                         </div>
                     </div>
-                    <p class="fs-cat-card__desc"><?php echo esc_html($cat['desc']); ?></p>
+                    <p class="fs-cat-card__desc"><?php echo esc_html( $meta['desc'] ); ?></p>
                     <ul class="fs-cat-card__tools">
-                        <?php foreach($cat['tools'] as $tool): ?>
+                        <?php foreach ( $sample_tools as $tool ): ?>
                         <li>
                             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-                            <?php echo esc_html($tool); ?>
+                            <?php echo esc_html( $tool->post_title ); ?>
                         </li>
                         <?php endforeach; ?>
                     </ul>
-                    <a href="<?php echo esc_url($cat['link']); ?>" class="fs-cat-card__btn" style="--accent:<?php echo $cat['color']; ?>">
+                    <a href="<?php echo esc_url( get_term_link( $term ) ); ?>" class="fs-cat-card__btn" style="--accent:<?php echo esc_attr( $meta['color'] ); ?>">
                         Explore Tools <span>&#x2192;</span>
                     </a>
                 </div>
@@ -141,7 +91,7 @@ get_header();
                 <a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>" style="display:flex;align-items:center;gap:8px;background:#131929;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px;text-decoration:none;color:#CBD5E1;font-size:.85rem;font-weight:600;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(6,182,212,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">&#128203; Budget Planner</a>
                 <a href="<?php echo esc_url(home_url('/tool/crypto-pl-calculator/')); ?>" style="display:flex;align-items:center;gap:8px;background:#131929;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px;text-decoration:none;color:#CBD5E1;font-size:.85rem;font-weight:600;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(249,115,22,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">&#8383; Crypto P&amp;L Calculator</a>
                 <a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>" style="display:flex;align-items:center;gap:8px;background:#131929;border:1px solid rgba(255,255,255,.07);border-radius:10px;padding:12px 14px;text-decoration:none;color:#CBD5E1;font-size:.85rem;font-weight:600;transition:border-color .2s;" onmouseover="this.style.borderColor='rgba(239,68,68,.4)'" onmouseout="this.style.borderColor='rgba(255,255,255,.07)'">&#128179; Debt Payoff Tool</a>
-                <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:12px 14px;text-decoration:none;color:#10B981;font-size:.85rem;font-weight:700;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'">&#128200; See All 150+ Tools &#x2192;</a>
+                <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:rgba(16,185,129,.06);border:1px solid rgba(16,185,129,.2);border-radius:10px;padding:12px 14px;text-decoration:none;color:#10B981;font-size:.85rem;font-weight:700;transition:background .2s;" onmouseover="this.style.background='rgba(16,185,129,.12)'" onmouseout="this.style.background='rgba(16,185,129,.06)'">&#128200; See All <?php echo intval( wp_count_posts('fs_tool')->publish ); ?>+ Tools &#x2192;</a>
             </div>
         </div>
     </section>

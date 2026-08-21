@@ -5,7 +5,7 @@
 <div style="text-align:center;margin-bottom:48px;">
     <span style="display:inline-block;background:rgba(16,185,129,.1);border:1px solid rgba(16,185,129,.25);color:#10B981;padding:6px 18px;border-radius:50px;font-size:.82rem;font-weight:700;margin-bottom:16px;">Legal</span>
     <h1 style="font-size:2.2rem;font-weight:900;color:#fff;margin:0 0 12px;">Privacy Policy</h1>
-    <p style="color:#64748B;font-size:.9rem;">Last updated: <?php echo date('F j, Y'); ?></p>
+    <p style="color:#64748B;font-size:.9rem;">Last updated: August 19, 2026</p>
 </div>
 
 <div style="background:#131929;border:1px solid rgba(255,255,255,.08);border-radius:20px;padding:40px;">
