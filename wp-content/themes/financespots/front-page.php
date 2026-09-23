@@ -154,7 +154,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                     <!-- AI Insight row -->
                     <div class="fs-portfolio-card__ai-row">
-                        <span class="fs-portfolio-card__ai-icon">&#129302;</span>
+                        <span class="fs-portfolio-card__ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
                         <span class="fs-portfolio-card__ai-text" id="fs-ai-insight-text">
                             AI Insight: Your portfolio is outperforming the S&amp;P 500 by 6.3% this month.
                         </span>
@@ -175,7 +175,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 
                     <!-- Mini card 2: AI Dashboard -->
                     <a href="<?php echo esc_url( $ai_dash_url ); ?>" class="fs-mini-card fs-mini-card--2" style="text-decoration:none;cursor:pointer;display:flex;">
-                        <div class="fs-mini-card__icon">&#129302;</div>
+                        <div class="fs-mini-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V5a4 4 0 018 0v3"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg></div>
                         <div class="fs-mini-card__info">
                             <span class="fs-mini-card__title">AI Dashboard</span>
                             <span class="fs-mini-card__sub">Open now &#x2192;</span>
@@ -188,7 +188,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <a href="<?php echo esc_url( get_theme_mod( 'fs_badge1_url', '#tools' ) ); ?>"
                    class="fs-float-badge fs-float-badge--1"
                    id="fs-badge1">
-                    <span class="fs-float-badge__icon" aria-hidden="true">&#128200;</span>
+                    <span class="fs-float-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
                     <span id="fs-badge1-text"><?php echo esc_html( get_theme_mod( 'fs_badge1_text', 'ROI up 24%' ) ); ?></span>
                 </a>
                 <?php endif; ?>
@@ -196,7 +196,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <a href="<?php echo esc_url( get_theme_mod( 'fs_badge3_url', '/about/' ) ); ?>"
                    class="fs-float-badge fs-float-badge--3"
                    id="fs-badge3">
-                    <span class="fs-float-badge__icon" aria-hidden="true">&#128274;</span>
+                    <span class="fs-float-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
                     <span id="fs-badge3-text"><?php echo esc_html( get_theme_mod( 'fs_badge3_text', 'Bank-level Security' ) ); ?></span>
                 </a>
                 <?php endif; ?>
@@ -223,29 +223,32 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="container">
             <div class="fs-stats__grid">
                 <?php
+                $fs_stat_svg = function( $path ) {
+                    return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
+                };
                 $stats = [
                     [
                         'number' => get_theme_mod('fs_stat1_number','2500000'),
                         'label'  => get_theme_mod('fs_stat1_label','Calculations Done'),
-                        'icon'   => '&#128202;',
+                        'icon'   => $fs_stat_svg('<path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14"/><path d="M8 21h8M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/>'),
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat2_number', (string) wp_count_posts('fs_tool')->publish ),
                         'label'  => get_theme_mod('fs_stat2_label','Finance Tools'),
-                        'icon'   => '&#128736;&#65039;',
+                        'icon'   => $fs_stat_svg('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat3_number','50000'),
                         'label'  => get_theme_mod('fs_stat3_label','Active Users'),
-                        'icon'   => '&#128101;',
+                        'icon'   => $fs_stat_svg('<circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 8.5a3 3 0 010 5.8M20 20c0-2.8-2-5-4.5-5.7"/>'),
                         'suffix' => '+',
                     ],
                     [
                         'number' => get_theme_mod('fs_stat4_number','99'),
                         'label'  => get_theme_mod('fs_stat4_label','% Accuracy Rate'),
-                        'icon'   => '&#127919;',
+                        'icon'   => $fs_stat_svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
                         'suffix' => '%',
                     ],
                 ];
@@ -253,7 +256,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 ?>
                 <div class="fs-stat-card" data-animate="fade-up">
                     <div class="fs-stat-card__icon-wrap" aria-hidden="true">
-                        <span class="fs-stat-card__icon"><?php echo esc_html( $s['icon'] ); ?></span>
+                        <span class="fs-stat-card__icon"><?php echo $s['icon']; ?></span>
                     </div>
                     <div class="fs-stat-card__number">
                         <span
@@ -294,19 +297,19 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
             </p>
             <div class="fs-ai-promo__features">
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">&#129504;</div>
+                    <div class="fs-ai-promo__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M21 11.5a8.38 8.38 0 01-.9 3.8 8.5 8.5 0 01-7.6 4.7 8.38 8.38 0 01-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 01-.9-3.8 8.5 8.5 0 014.7-7.6 8.38 8.38 0 013.8-.9h.5a8.48 8.48 0 018 8v.5z"/></svg></div>
                     <span><strong style="color:#e2e8f0">Real AI Chat</strong> -- Ask any finance question, get instant expert answers powered by Claude AI</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">&#128202;</div>
+                    <div class="fs-ai-promo__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="17" y="3" width="4" height="17" rx="1"/></svg></div>
                     <span><strong style="color:#e2e8f0">9 Powerful Panels</strong> -- Budget, Debt Optimizer, Net Worth, Tax, Retirement, Investment & more</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">&#9889;</div>
+                    <div class="fs-ai-promo__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></div>
                     <span><strong style="color:#e2e8f0">Live Score</strong> -- Get your personalized Financial Health Score in seconds</span>
                 </div>
                 <div class="fs-ai-promo__feature">
-                    <div class="fs-ai-promo__feature-icon">&#128196;</div>
+                    <div class="fs-ai-promo__feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></div>
                     <span><strong style="color:#e2e8f0">PDF Export</strong> -- Download your complete financial report instantly</span>
                 </div>
             </div>
@@ -329,8 +332,8 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <div class="fs-ai-dash-card__dots">
                         <span class="dot-r"></span><span class="dot-y"></span><span class="dot-g"></span>
                     </div>
-                    <span class="fs-ai-dash-card__tab">&#9889; FinanceSpots AI Dashboard</span>
-                    <span style="margin-left:auto;background:rgba(0,200,150,.15);color:#00C896;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;">&#129302; AI Active</span>
+                    <span class="fs-ai-dash-card__tab"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg> FinanceSpots AI Dashboard</span>
+                    <span style="margin-left:auto;background:rgba(0,200,150,.15);color:#00C896;font-size:.65rem;font-weight:700;padding:.2rem .6rem;border-radius:10px;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="11" height="11" style="vertical-align:-1px"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg> AI Active</span>
                 </div>
                 <div class="fs-ai-dash-card__body">
                     <!-- Metrics row -->
@@ -350,7 +353,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- Bars -->
                     <div class="fs-ai-bar-row">
-                        <div class="fs-ai-bar-label"><span>Emergency Fund</span><span style="color:#00C896">&#9989; 6 months</span></div>
+                        <div class="fs-ai-bar-label"><span>Emergency Fund</span><span style="color:#00C896"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="11" height="11" style="vertical-align:-1px"><path d="M20 6L9 17l-5-5"/></svg> 6 months</span></div>
                         <div class="fs-ai-bar-track"><div class="fs-ai-bar-fill" style="width:90%;background:linear-gradient(90deg,#00C896,#00A87A)"></div></div>
                     </div>
                     <div class="fs-ai-bar-row">
@@ -363,7 +366,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- AI Chat preview -->
                     <div class="fs-ai-chat-preview">
-                        <div class="fs-ai-chat-preview__label">&#129302; AI Advisor -- Abdul Rahman's Dashboard</div>
+                        <div class="fs-ai-chat-preview__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg> AI Advisor -- Abdul Rahman's Dashboard</div>
                         <div class="fs-ai-chat-preview__msg">Your debt-to-income ratio of 28% is healthy. I recommend increasing your 401k contribution by $300/month to reach the IRS limit -- this saves you $792/year in taxes at your 22% bracket.</div>
                     </div>
                 </div>
@@ -380,7 +383,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-features" id="features" aria-labelledby="features-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--primary">&#128640; <?php esc_html_e( 'Why FinanceSpots', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--primary"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg> <?php esc_html_e( 'Why FinanceSpots', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="features-heading">
                 <?php esc_html_e( 'Built Different. Built Better.', 'financespots' ); ?>
             </h2>
@@ -392,7 +395,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-features__grid">
             <?php foreach ( fs_get_features() as $i => $f ) : ?>
             <article class="fs-feature-card" data-animate="fade-up" data-delay="<?php echo $i * 100; ?>">
-                <div class="fs-feature-card__icon" aria-hidden="true"><?php echo esc_html( $f['icon'] ); ?></div>
+                <div class="fs-feature-card__icon" aria-hidden="true"><?php echo $f['icon']; ?></div>
                 <h3 class="fs-feature-card__title"><?php echo esc_html( $f['title'] ); ?></h3>
                 <p class="fs-feature-card__desc"><?php echo esc_html( $f['desc'] ); ?></p>
             </article>
@@ -410,7 +413,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--secondary">&#128450;&#65039; <?php printf( esc_html__( '%d+ Tools Available', 'financespots' ), wp_count_posts('fs_tool')->publish ); ?></span>
+            <span class="fs-badge fs-badge--secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <?php printf( esc_html__( '%d+ Tools Available', 'financespots' ), wp_count_posts('fs_tool')->publish ); ?></span>
             <h2 class="fs-section-title" id="categories-heading">
                 <?php esc_html_e( 'Explore by Category', 'financespots' ); ?>
             </h2>
@@ -425,13 +428,13 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'All Tools', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="popular" role="tab" aria-selected="false">
-                <?php esc_html_e( '&#128293; Popular', 'financespots' ); ?>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px;margin-right:.25rem" aria-hidden="true"><path d="M8.5 14.5A2.5 2.5 0 0011 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 11-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 002.5 2.5z"/></svg><?php esc_html_e( 'Popular', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="new" role="tab" aria-selected="false">
-                <?php esc_html_e( '&#10024; New', 'financespots' ); ?>
+                <svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-2px;margin-right:.25rem" aria-hidden="true"><path d="M9.5 3l1 3 3 1-3 1-1 3-1-3-3-1 3-1z"/><path d="M18 13l.7 2 2 .7-2 .7-.7 2-.7-2-2-.7 2-.7z"/></svg><?php esc_html_e( 'New', 'financespots' ); ?>
             </button>
             <button class="fs-filter-tab" data-filter="ai" role="tab" aria-selected="false">
-                <?php esc_html_e( '&#129302; AI Enhanced', 'financespots' ); ?>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px;margin-right:.25rem" aria-hidden="true"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg><?php esc_html_e( 'AI Enhanced', 'financespots' ); ?>
             </button>
         </div>
 
@@ -462,7 +465,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
             >
                 <a href="<?php echo esc_url( $cat_url ); ?>" class="fs-cat-card__link" aria-label="<?php echo esc_attr( $cat['name'] ) . ' -- ' . esc_attr( $cat['count'] ) . ' tools'; ?>">
                     <div class="fs-cat-card__icon-wrap" aria-hidden="true">
-                        <span class="fs-cat-card__icon"><?php echo esc_html( $cat['icon'] ); ?></span>
+                        <span class="fs-cat-card__icon"><?php echo $cat['icon']; ?></span>
                     </div>
                     <div class="fs-cat-card__content">
                         <h3 class="fs-cat-card__name"><?php echo esc_html( $cat['name'] ); ?></h3>
@@ -492,7 +495,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-popular-tools" id="tools" aria-labelledby="tools-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--gold">&#11088; <?php esc_html_e( 'Top Rated', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> <?php esc_html_e( 'Top Rated', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="tools-heading">
                 <?php esc_html_e( 'Most Popular Tools', 'financespots' ); ?>
             </h2>
@@ -515,7 +518,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
             >
                 <div class="fs-tool-card__header">
                     <div class="fs-tool-card__icon-wrap" aria-hidden="true">
-                        <span class="fs-tool-card__icon"><?php echo esc_html( $tool['icon'] ); ?></span>
+                        <span class="fs-tool-card__icon"><?php echo $tool['icon']; ?></span>
                     </div>
                     <span class="fs-tool-badge fs-tool-badge--<?php echo esc_attr( $tool['badge_color'] ); ?>">
                         <?php echo esc_html( $tool['badge'] ); ?>
@@ -558,7 +561,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <section class="fs-how-it-works" id="how-it-works" aria-labelledby="hiw-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--primary">&#128506;&#65039; <?php esc_html_e( 'Simple Process', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M9 20l-6 2V6l6-2 6 2 6-2v16l-6 2-6-2z"/><path d="M9 4v16M15 6v16"/></svg> <?php esc_html_e( 'Simple Process', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="hiw-heading">
                 <?php esc_html_e( 'How FinanceSpots Works', 'financespots' ); ?>
             </h2>
@@ -593,7 +596,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--gold">&#11088; <?php esc_html_e( '4.9/5 Average Rating', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> <?php esc_html_e( '4.9/5 Average Rating', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="testimonials-heading">
                 <?php esc_html_e( 'Trusted by 50,000+ Users', 'financespots' ); ?>
             </h2>
@@ -748,7 +751,7 @@ if ( $blog_query->have_posts() ) :
 <section class="fs-blog" id="blog" aria-labelledby="blog-heading">
     <div class="container">
         <div class="fs-section-header" data-animate="fade-up">
-            <span class="fs-badge fs-badge--secondary">&#128221; <?php esc_html_e( 'Finance Insights', 'financespots' ); ?></span>
+            <span class="fs-badge fs-badge--secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg> <?php esc_html_e( 'Finance Insights', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="blog-heading">
                 <?php esc_html_e( 'Latest from the Blog', 'financespots' ); ?>
             </h2>
@@ -807,23 +810,23 @@ if ( $blog_query->have_posts() ) :
      ============================================================ -->
 <section class="fs-explore-cats" aria-labelledby="explore-cats-heading" style="padding:2rem 0 1.75rem;background:#F8FAFC;border-top:1px solid #E2E8F0;">
     <div class="container">
-        <h2 id="explore-cats-heading" style="font-size:1.4rem;font-weight:800;color:#0F172A;margin:0 0 .9rem;text-align:center;">&#x1F4CA; Explore FinanceSpots</h2>
+        <h2 id="explore-cats-heading" style="font-size:1.4rem;font-weight:800;color:#0F172A;margin:0 0 .9rem;text-align:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="18" height="18" style="vertical-align:-3px" aria-hidden="true"><rect x="3" y="12" width="4" height="8" rx="1"/><rect x="10" y="7" width="4" height="13" rx="1"/><rect x="17" y="3" width="4" height="17" rx="1"/></svg> Explore FinanceSpots</h2>
         <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;margin-bottom:1.25rem;">
-            <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#128450;&#65039; Browse Categories</a>
-            <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#129518; All Tools</a>
-            <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#128221; Finance Blog</a>
-            <a href="<?php echo esc_url(home_url('/about/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#128075; About Us</a>
-            <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'">&#11088; PRO Pricing</a>
+            <a href="<?php echo esc_url(home_url('/categories/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M3 7a2 2 0 012-2h4l2 2h8a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2z"/></svg> Browse Categories</a>
+            <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> All Tools</a>
+            <a href="<?php echo esc_url(home_url('/blog/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg> Finance Blog</a>
+            <a href="<?php echo esc_url(home_url('/about/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> About Us</a>
+            <a href="<?php echo esc_url(home_url('/pricing/')); ?>" style="display:inline-flex;align-items:center;gap:.4rem;background:#fff;border:1.5px solid #E2E8F0;border-radius:10px;padding:.6rem 1.1rem;font-size:.88rem;font-weight:700;color:#0F172A;text-decoration:none;transition:border-color .2s;" onmouseover="this.style.borderColor='#10B981'" onmouseout="this.style.borderColor='#E2E8F0'"><svg viewBox="0 0 24 24" fill="currentColor" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> PRO Pricing</a>
         </div>
 
-        <h3 style="font-size:1.05rem;font-weight:700;color:#334155;margin:0 0 .6rem;text-align:center;">&#128200; Popular Tools to Try Now</h3>
+        <h3 style="font-size:1.05rem;font-weight:700;color:#334155;margin:0 0 .6rem;text-align:center;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15" style="vertical-align:-2px" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg> Popular Tools to Try Now</h3>
         <div style="display:flex;flex-wrap:wrap;gap:.65rem;justify-content:center;">
-            <a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#1D4ED8;text-decoration:none;">&#127968; Mortgage Calculator</a>
-            <a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#15803D;text-decoration:none;">&#128200; Compound Interest</a>
-            <a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#7C3AED;text-decoration:none;">&#127958;&#65039; Retirement Planner</a>
-            <a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#C2410C;text-decoration:none;">&#129534; Tax Calculator</a>
-            <a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0369A1;text-decoration:none;">&#128203; Budget Planner</a>
-            <a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#BE123C;text-decoration:none;">&#128179; Debt Payoff Tool</a>
+            <a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#EFF6FF;border:1px solid #BFDBFE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#1D4ED8;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Mortgage Calculator</a>
+            <a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDF4;border:1px solid #BBF7D0;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#15803D;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg> Compound Interest</a>
+            <a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F5F3FF;border:1px solid #DDD6FE;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#7C3AED;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Retirement Planner</a>
+            <a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#C2410C;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6"/></svg> Tax Calculator</a>
+            <a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0369A1;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="6" y="4" width="12" height="18" rx="2"/><path d="M9 2h6v4H9z"/><path d="M9 11h6M9 15h6"/></svg> Budget Planner</a>
+            <a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#BE123C;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Debt Payoff Tool</a>
         </div>
     </div>
 </section>

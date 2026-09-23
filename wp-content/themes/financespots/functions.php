@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.5.1' );
+define( 'FINANCESPOTS_VERSION', '1.5.5' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -1014,29 +1014,38 @@ function fs_mod_url( $key, $default = '#' ) {
     return esc_url( get_theme_mod( $key, $default ) );
 }
 
-/** Tool categories data */
+/** Tool categories data. 'icon' holds a raw inline SVG string (rendered
+ *  unescaped in front-page.php) instead of an emoji, so it inherits the
+ *  card's text color and matches the rest of the site's line-icon style. */
 function fs_get_tool_categories() {
+    $svg = function( $path ) {
+        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
+    };
     return [
-        [ 'slug' => 'loans',       'icon' => '&#127974;', 'name' => 'Loan Calculators',       'desc' => 'Mortgage, auto, personal loans & more',        'count' => 18, 'color' => 'primary' ],
-        [ 'slug' => 'investment',  'icon' => '&#128200;', 'name' => 'Investment Tools',        'desc' => 'ROI, compound interest, portfolio analysis',   'count' => 22, 'color' => 'secondary' ],
-        [ 'slug' => 'tax',         'icon' => '&#129534;', 'name' => 'Tax Calculators',         'desc' => 'Income tax, capital gains, deductions',        'count' => 15, 'color' => 'gold' ],
-        [ 'slug' => 'savings',     'icon' => '&#128176;', 'name' => 'Savings Planners',        'desc' => 'Emergency funds, goals, retirement savings',   'count' => 12, 'color' => 'primary' ],
-        [ 'slug' => 'retirement',  'icon' => '&#127958;&#65039;', 'name' => 'Retirement Planning',    'desc' => '401k, IRA, pension, FIRE calculators',         'count' => 10, 'color' => 'secondary' ],
-        [ 'slug' => 'currency',    'icon' => '&#128177;', 'name' => 'Currency Converters',     'desc' => 'Live forex rates & currency conversion',       'count' => 8,  'color' => 'gold' ],
-        [ 'slug' => 'budget',      'icon' => '&#128202;', 'name' => 'Budget Analyzers',        'desc' => 'Monthly budgets, expense tracking, 50/30/20',  'count' => 14, 'color' => 'primary' ],
-        [ 'slug' => 'crypto',      'icon' => '₿',  'name' => 'Crypto Tools',            'desc' => 'Crypto P&L, staking rewards, DCA calculator',  'count' => 11, 'color' => 'secondary' ],
+        [ 'slug' => 'loans',       'icon' => $svg('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>'), 'name' => 'Loan Calculators',       'desc' => 'Mortgage, auto, personal loans & more',        'count' => 19, 'color' => 'primary' ],
+        [ 'slug' => 'investment',  'icon' => $svg('<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>'), 'name' => 'Investment Tools',        'desc' => 'ROI, compound interest, portfolio analysis',   'count' => 23, 'color' => 'secondary' ],
+        [ 'slug' => 'tax',         'icon' => $svg('<path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h4"/>'), 'name' => 'Tax Calculators',         'desc' => 'Income tax, capital gains, deductions',        'count' => 15, 'color' => 'gold' ],
+        [ 'slug' => 'savings',     'icon' => $svg('<circle cx="12" cy="12" r="9"/><path d="M9 12h6M12 9v6"/>'), 'name' => 'Savings Planners',        'desc' => 'Emergency funds, goals, retirement savings',   'count' => 12, 'color' => 'primary' ],
+        [ 'slug' => 'retirement',  'icon' => $svg('<path d="M4 18a8 8 0 0116 0"/><path d="M4 18h16"/><circle cx="12" cy="9" r="1"/>'), 'name' => 'Retirement Planning',    'desc' => '401k, IRA, pension, FIRE calculators',         'count' => 10, 'color' => 'secondary' ],
+        [ 'slug' => 'currency',    'icon' => $svg('<path d="M7 7h11l-3-3M17 17H6l3 3"/>'), 'name' => 'Currency Converters',     'desc' => 'Live forex rates & currency conversion',       'count' => 8,  'color' => 'gold' ],
+        [ 'slug' => 'budget',      'icon' => $svg('<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 12v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/>'), 'name' => 'Budget Analyzers',        'desc' => 'Monthly budgets, expense tracking, 50/30/20',  'count' => 13, 'color' => 'primary' ],
+        [ 'slug' => 'crypto',      'icon' => $svg('<circle cx="12" cy="12" r="9"/><path d="M9 9.5c0-1 .9-1.8 3-1.8s3 .8 3 1.8-1 1.5-3 1.8-3 .8-3 1.9 1 1.8 3 1.8 3-.8 3-1.8"/>'), 'name' => 'Crypto Tools',            'desc' => 'Crypto P&L, staking rewards, DCA calculator',  'count' => 11, 'color' => 'secondary' ],
     ];
 }
 
-/** Popular tools data -- titles must exactly match DB post_title */
+/** Popular tools data -- titles must exactly match DB post_title.
+ *  'icon' holds a raw inline SVG string (rendered unescaped in front-page.php). */
 function fs_get_popular_tools() {
+    $svg = function( $path ) {
+        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
+    };
     return [
-        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison -- with PDF export.',    'icon' => '&#127894;&#65039;', 'badge' => '&#128293; Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
-        [ 'name' => 'Mortgage Calculator',            'desc' => 'Calculate monthly payments, total interest, and full amortization schedule for any home loan.',               'icon' => '&#127968;', 'badge' => '&#11088; Most Popular','badge_color' => 'secondary', 'cat' => 'loan-calculators' ],
-        [ 'name' => 'Compound Interest Calculator',   'desc' => 'See how your money grows over time with daily, monthly, or annual compounding.',                               'icon' => '&#128200;', 'badge' => '&#128202; Popular',    'badge_color' => 'ai',        'cat' => 'investment-tools' ],
-        [ 'name' => 'Income Tax Calculator',          'desc' => 'Estimate federal and state income tax based on your income, deductions, and filing status.',                   'icon' => '&#129534;', 'badge' => '&#9989; 2026',       'badge_color' => 'gold',      'cat' => 'tax-calculators' ],
-        [ 'name' => '401k Calculator',                'desc' => 'Project your 401k balance at retirement with employer match, contribution rate, and growth assumptions.',      'icon' => '&#127958;&#65039;', 'badge' => '&#128197; Retirement', 'badge_color' => 'ai',        'cat' => 'retirement-planning' ],
-        [ 'name' => '50/30/20 Budget Calculator',     'desc' => 'Automatically allocate your income using the popular 50/30/20 budgeting rule and track your spending.',       'icon' => '&#128202;', 'badge' => '&#128176; Free',       'badge_color' => 'secondary', 'cat' => 'budget-analyzers' ],
+        [ 'name' => 'VA Loan Funding Fee Calculator', 'desc' => 'Calculate VA funding fee, monthly PITI, amortization & VA vs Conventional comparison -- with PDF export.',    'icon' => $svg('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><circle cx="12" cy="15" r="2"/>'), 'badge' => 'Advanced',   'badge_color' => 'primary',   'cat' => 'loan-calculators' ],
+        [ 'name' => 'Mortgage Calculator',            'desc' => 'Calculate monthly payments, total interest, and full amortization schedule for any home loan.',               'icon' => $svg('<path d="M3 11l9-7 9 7"/><path d="M5 10v10h14V10"/><path d="M9 20v-6h6v6"/>'), 'badge' => 'Most Popular','badge_color' => 'secondary', 'cat' => 'loan-calculators' ],
+        [ 'name' => 'Compound Interest Calculator',   'desc' => 'See how your money grows over time with daily, monthly, or annual compounding.',                               'icon' => $svg('<path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/>'), 'badge' => 'Popular',    'badge_color' => 'ai',        'cat' => 'investment-tools' ],
+        [ 'name' => 'Income Tax Calculator',          'desc' => 'Estimate federal and state income tax based on your income, deductions, and filing status.',                   'icon' => $svg('<path d="M6 2h9l3 3v17H6z"/><path d="M9 8h6M9 12h6M9 16h4"/>'), 'badge' => '2026',       'badge_color' => 'gold',      'cat' => 'tax-calculators' ],
+        [ 'name' => '401k Calculator',                'desc' => 'Project your 401k balance at retirement with employer match, contribution rate, and growth assumptions.',      'icon' => $svg('<path d="M4 18a8 8 0 0116 0"/><path d="M4 18h16"/><circle cx="12" cy="9" r="1"/>'), 'badge' => 'Retirement', 'badge_color' => 'ai',        'cat' => 'retirement-planning' ],
+        [ 'name' => '50/30/20 Budget Calculator',     'desc' => 'Automatically allocate your income using the popular 50/30/20 budgeting rule and track your spending.',       'icon' => $svg('<ellipse cx="12" cy="7" rx="7" ry="3"/><path d="M5 7v5c0 1.66 3.13 3 7 3s7-1.34 7-3V7"/><path d="M5 12v5c0 1.66 3.13 3 7 3s7-1.34 7-3v-5"/>'), 'badge' => 'Free',       'badge_color' => 'secondary', 'cat' => 'budget-analyzers' ],
     ];
 }
 
@@ -1109,15 +1118,19 @@ function fs_get_testimonials() {
     ];
 }
 
-/** Why Us features */
+/** Why Us features. 'icon' holds a raw inline SVG string (rendered
+ *  unescaped in front-page.php). */
 function fs_get_features() {
+    $svg = function( $path ) {
+        return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">' . $path . '</svg>';
+    };
     return [
-        [ 'icon' => '&#9889;', 'title' => 'Instant Results',       'desc' => 'Every calculation is instant -- no waiting, no server calls. Results update in real-time as you type.' ],
-        [ 'icon' => '&#127919;', 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
-        [ 'icon' => '&#128275;', 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation -- completely free forever. No account required.' ],
-        [ 'icon' => '&#128241;', 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
-        [ 'icon' => '&#129309;', 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
-        [ 'icon' => '&#128260;', 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
+        [ 'icon' => $svg('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'), 'title' => 'Instant Results',       'desc' => 'Every calculation is instant -- no waiting, no server calls. Results update in real-time as you type.' ],
+        [ 'icon' => $svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'), 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
+        [ 'icon' => $svg('<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>'), 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation -- completely free forever. No account required.' ],
+        [ 'icon' => $svg('<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/>'), 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
+        [ 'icon' => $svg('<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>'), 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
+        [ 'icon' => $svg('<path d="M21 12a9 9 0 11-2.64-6.36"/><path d="M21 3v6h-6"/>'), 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
     ];
 }
 
@@ -1713,7 +1726,7 @@ add_action( 'init',       'fs_loan_tools_seo', 45 );
    MAIN PAGES SEO -- Homepage, About, Pricing, Tools, Blog
    ========================================================= */
 function fs_main_pages_seo() {
-    if ( get_option( 'fs_main_pages_seo_v1' ) ) return;
+    if ( get_option( 'fs_main_pages_seo_v2' ) ) return;
 
     $pages = [
         // slug => [ title, description, focus_keyword ]
@@ -1752,6 +1765,19 @@ function fs_main_pages_seo() {
             'desc'  => 'Explore financial calculators by category: loan calculators, investment tools, tax calculators, savings planners, retirement planning, budget analyzers and more.',
             'kw'    => 'financial calculator categories',
         ],
+        // Added: these two pages previously had no RankMath meta of their own,
+        // so they fell back to stale/incorrect defaults (privacy-policy was even
+        // showing an unrelated site's title/description). See SEO audit notes.
+        'privacy-policy' => [
+            'title' => 'FinanceSpots Privacy Policy: How We Protect Your Data',
+            'desc'  => 'Read how FinanceSpots collects, uses, and protects your personal information when you use our 110+ free financial calculators and tools.',
+            'kw'    => 'financespots privacy policy',
+        ],
+        'terms-of-service' => [
+            'title' => 'FinanceSpots Terms of Service & Usage Agreement',
+            'desc'  => 'Review the terms and conditions for using FinanceSpots free calculators, the PRO subscription, refund policy, and acceptable use guidelines.',
+            'kw'    => 'financespots terms of service',
+        ],
     ];
 
     foreach ( $pages as $slug => $seo ) {
@@ -1775,7 +1801,7 @@ function fs_main_pages_seo() {
         update_post_meta( $page_id, 'rank_math_og_description',$seo['desc'] );
     }
 
-    update_option( 'fs_main_pages_seo_v1', true );
+    update_option( 'fs_main_pages_seo_v2', true );
 }
 add_action( 'admin_init', 'fs_main_pages_seo', 20 );
 add_action( 'init',       'fs_main_pages_seo', 40 );
@@ -1784,7 +1810,9 @@ add_action( 'init',       'fs_main_pages_seo', 40 );
    VA LOAN FUNDING FEE CALCULATOR -- Advanced Page + SEO
    ========================================================= */
 function fs_create_va_loan_tool() {
-    if ( get_option( 'fs_va_loan_tool_v2' ) ) return;
+    if ( get_option( 'fs_va_loan_tool_v3' ) ) return;
+    // v3: re-sync title (was stuck on stale "2025") and canonical (was
+    // incorrectly pointing at /tools/... which 404s; correct URL is /tool/...).
 
     // Check if already exists
     $existing = get_posts( [
@@ -1864,11 +1892,175 @@ function fs_create_va_loan_tool() {
 
     // ── Store the tool ID for homepage linking ──
     update_option( 'fs_va_loan_tool_id', $id );
-    update_option( 'fs_va_loan_tool_v2', true );
+    update_option( 'fs_va_loan_tool_v3', true );
     flush_rewrite_rules();
 }
 add_action( 'admin_init', 'fs_create_va_loan_tool' );
 add_action( 'init',       'fs_create_va_loan_tool', 30 );
+
+/* =========================================================
+   SEO AUDIT FIXES -- September 2026 technical/on-page pass
+   Narrowly targeted, idempotent, version-gated. Does NOT touch
+   fs_full_seo_v4's arrays/guard (see note above that function).
+   ========================================================= */
+function fs_seo_audit_fixes_v1() {
+    if ( get_option( 'fs_seo_audit_fixes_v1' ) ) return;
+
+    /* ── 1. Category archive pages (fs_tool_cat terms): title/description
+           were 69-78 chars / 148-166 chars -- both over the ~60/~158 char
+           SERP display limits and getting truncated. Shortened all 8. ── */
+    $categories_seo = [
+        'loan-calculators' => [
+            'title' => 'Free Loan Calculators 2026: Mortgage & Auto | FinanceSpots',
+            'desc'  => 'Browse 18 free loan calculators for mortgage, auto, personal, FHA, VA, refinance & amortization. Instant results, no signup, free PDF export included.',
+        ],
+        'investment-tools' => [
+            'title' => 'Free Investment Calculators 2026: ROI & More | FinanceSpots',
+            'desc'  => 'Explore 22 free investment calculators: ROI, compound interest, dividend yield, CAGR, portfolio analyzer & Sharpe ratio. Instant results, no signup.',
+        ],
+        'tax-calculators' => [
+            'title' => 'Free Tax Calculators 2026: Income Tax & More | FinanceSpots',
+            'desc'  => '15 free tax calculators for 2026: income tax estimator, capital gains, self-employment tax, tax bracket finder & W-4 calculator. Updated for 2026 IRS rules.',
+        ],
+        'savings-planners' => [
+            'title' => 'Free Savings Planners 2026: Goals & Fund | FinanceSpots',
+            'desc'  => '12 free savings tools: emergency fund, savings goal, CD calculator, HYSA comparison, 52-week challenge & down payment planner. Start saving today.',
+        ],
+        'retirement-planning' => [
+            'title' => 'Retirement Calculators 2026: 401k, IRA, FIRE | FinanceSpots',
+            'desc'  => '10 free retirement calculators: 401k, Roth IRA, FIRE number, Social Security, RMD, Roth conversion & retirement income. Updated for 2026.',
+        ],
+        'currency-converters' => [
+            'title' => 'Free Currency Converters 2026: Live Forex | FinanceSpots',
+            'desc'  => '8 free currency tools: live converter for 150+ currencies, historical rates, forex pip calculator & travel money converter. Always free to use.',
+        ],
+        'budget-analyzers' => [
+            'title' => 'Free Budget Calculators 2026: 50/30/20 & More | FinanceSpots',
+            'desc'  => '14 free budget tools: monthly budget planner, 50/30/20 calculator, net worth tracker, DTI ratio, zero-based budget & expense tracker. Try one now.',
+        ],
+        'crypto-tools' => [
+            'title' => 'Free Crypto Calculators 2026: P&L, DCA, Tax | FinanceSpots',
+            'desc'  => '11 free crypto calculators: P&L calculator, DCA simulator, staking rewards, crypto tax, mining profitability & Ethereum gas fees. Fast and free.',
+        ],
+    ];
+    foreach ( $categories_seo as $slug => $seo ) {
+        $term = get_term_by( 'slug', $slug, 'fs_tool_cat' );
+        if ( ! $term ) continue;
+        update_term_meta( $term->term_id, 'rank_math_title',       $seo['title'] );
+        update_term_meta( $term->term_id, 'rank_math_description', $seo['desc'] );
+    }
+
+    /* ── 2. Tool pages: 60 of 111 fs_tool meta descriptions were 161-176
+           characters (over Google's ~155-160 char display limit), risking
+           mid-sentence truncation in search results. Trimmed the trailing
+           low-value "Free tool." style clause on each -- titles, focus
+           keywords, and content are untouched. ── */
+    $tool_desc_fixes = [
+        '50-30-20-budget-calculator' => 'Apply the 50/30/20 budgeting rule to your income. Automatically split income into needs (50%), wants (30%), and savings (20%). Get an instant budget breakdown.',
+        '52-week-savings-challenge' => 'Track the popular 52-week savings challenge. Start with $1 in week 1, increase by $1 each week, and save $1,378 by year-end. See your full weekly schedule.',
+        'amt-calculator' => 'Check if you owe Alternative Minimum Tax in 2026. Enter income, deductions, and preferences to calculate tentative minimum tax and potential AMT liability.',
+        'annual-budget-planner' => 'Plan your complete yearly budget and track spending against annual goals. Break down annual income and expenses by month and category for a full year.',
+        'asset-allocation-calculator' => 'Build the optimal portfolio mix based on age, risk tolerance, and investment goals. See recommended split between stocks, bonds, real estate, and cash.',
+        'bill-payment-planner' => 'Schedule monthly bill payments to avoid late fees. Enter due dates and amounts to create a personalized bill payment calendar and never miss a payment again.',
+        'bitcoin-halving-countdown' => 'See the countdown to the next Bitcoin halving event, expected block reward after halving, and historical price performance around past halvings.',
+        'bond-yield-calculator' => 'Calculate bond current yield, yield to maturity (YTM), and fair price. Enter coupon rate, par value, market price, and years to maturity.',
+        'break-even-calculator' => 'Find the break-even point for investments and businesses. Calculate units sold and revenue needed to cover all fixed and variable costs.',
+        'bridge-loan-calculator' => 'Estimate total bridge loan cost including monthly interest, origination fee, exit fee, and effective APR. Compare 3 to 24-month bridge financing scenarios.',
+        'cagr-calculator' => 'Calculate compound annual growth rate (CAGR) for any investment. Enter beginning value, ending value, and years to see annualized return.',
+        'cash-flow-calculator' => 'Calculate monthly cash flow from all income sources minus all expenses. Identify spending leaks and find opportunities to increase your positive cash flow.',
+        'cross-rate-calculator' => 'Calculate cross exchange rates between any two currencies without converting through USD. Useful for international business transactions and travel planning.',
+        'crypto-dca-calculator' => 'Simulate dollar cost averaging (DCA) into Bitcoin or any cryptocurrency over time. See average cost basis, total invested, and current portfolio value.',
+        'crypto-pl-calculator' => 'Calculate profit and loss on any cryptocurrency trade. Enter buy price, sell price, and quantity to see profit, ROI percentage, and net gain after fees.',
+        'crypto-portfolio-tracker' => 'Track your total crypto portfolio value, allocation percentages, and profit/loss. Enter coin holdings and average buy price to see your P&L instantly.',
+        'currency-strength-meter' => 'Compare the relative strength of USD, EUR, GBP, JPY, CAD, AUD, CHF, and more. See which currencies are strongest vs. weakest in real time.',
+        'debt-to-income-ratio' => 'Calculate your debt-to-income (DTI) ratio for mortgage and loan qualification. Most lenders require DTI below 43%. See your DTI and how to improve it.',
+        'dividend-calculator' => 'Calculate dividend income, yield, and projected growth with dividend reinvestment (DRIP). Plan your annual dividend income from any stock or ETF portfolio.',
+        'down-payment-savings-calculator' => 'Calculate how long it takes to save a 3%, 10%, or 20% down payment on a home. Set a target home price and monthly savings amount to see your timeline.',
+        'entertainment-budget-calculator' => 'Allocate a realistic discretionary entertainment budget without overspending. Calculate how much you can safely spend on dining, streaming, and fun each month.',
+        'estate-tax-calculator' => 'Estimate federal estate tax on inherited assets. The 2026 exemption is $13.61M per person. Calculate estate tax liability above the exemption threshold.',
+        'etf-calculator' => 'Calculate ETF total returns with dividends reinvested and expense ratio drag included. Compare ETF vs. mutual fund costs over 20 and 30 years.',
+        'fha-loan-calculator' => 'Calculate FHA loan monthly payment with 1.75% upfront MIP and annual MIP included. Compare 3.5% down FHA vs. conventional. Updated for 2026 FHA loan limits.',
+        'future-value-calculator' => 'Calculate the future value of any investment given interest rate and time. Add regular monthly contributions to see projected account balance at any point.',
+        'grocery-budget-calculator' => 'Set and track a realistic monthly grocery budget for your household size. See average food costs by household size and find simple ways to cut food spending.',
+        'high-yield-savings-calculator' => 'Compare high-yield savings account returns vs. traditional savings. See how much more you earn at 4.5% APY vs. 0.5% on the same balance over 1, 5, and 10 years.',
+        'historical-exchange-rate' => 'Look up historical exchange rates for any currency pair on any date. Useful for tax calculations, financial reporting, and investment analysis.',
+        'home-equity-loan-calculator' => 'Find out how much home equity you can borrow. Calculate HELOC and HELoan payments based on home value, mortgage balance, and lender LTV limit.',
+        'household-budget-calculator' => 'Plan a complete household budget for your family. Enter income for all earners and expenses by category to see monthly and annual budget summary.',
+        'income-tax-calculator' => 'Estimate your 2026 federal income tax. Enter income, filing status, and deductions to instantly see tax owed, effective tax rate, and marginal tax bracket.',
+        'income-vs-expense-analyzer' => 'Get a clear picture of monthly income vs. expenses and calculate net cash flow. See your monthly surplus or deficit and identify areas to cut spending.',
+        'inflation-calculator' => 'See how inflation erodes purchasing power over time. Calculate what past dollars are worth today, or project future value adjusted for expected inflation rate.',
+        'investment-fee-calculator' => 'Calculate how investment fees erode your wealth over 30 years. Compare 0.5% vs. 1.5% expense ratios and see how much more you keep with a low-cost index fund.',
+        'investment-growth-calculator' => 'Project investment portfolio growth with regular monthly contributions. See account balance over time, total contributions vs. gains, and future value.',
+        'irs-penalty-calculator' => 'Estimate IRS underpayment penalty and interest for missed estimated tax payments. Calculate penalty per quarter using the federal short-term rate plus 3%.',
+        'loan-comparison-calculator' => 'Compare two loan offers side by side and see which costs less. Enter amount, rate, and term for each loan to find the lower monthly payment and total interest.',
+        'loan-payoff-calculator' => 'See how extra monthly or lump-sum payments cut your loan payoff time. Calculate exact months saved, interest avoided, and new payoff date for any loan type.',
+        'money-market-calculator' => 'Project money market account and high-yield savings growth with monthly compounding. Compare rates from top online banks to maximize your cash returns.',
+        'monthly-budget-planner' => 'Build a complete monthly budget with income and expense categories. Track spending, find savings opportunities, and take control of your personal finances.',
+        'mutual-fund-calculator' => 'Project mutual fund growth with expense ratio impact included. See how fees cost you over 10–30 years and compare high vs. low-fee fund performance.',
+        'net-worth-calculator' => 'Calculate your total net worth by entering all assets (home, investments, cash) and liabilities (mortgage, loans, credit cards). Track your wealth over time.',
+        'options-profit-calculator' => 'Calculate options profit and loss for calls and puts. Enter strike price, premium paid, and current stock price to see max profit, max loss, and break-even.',
+        'pension-calculator' => 'Estimate your monthly defined benefit pension at retirement. Enter years of service, average salary, and benefit multiplier. Compare pension vs. 401k scenarios.',
+        'portfolio-rebalancing-tool' => 'Calculate exact buy and sell trades needed to rebalance your portfolio. Enter current holdings and target allocation percentages to see amounts to trade.',
+        'present-value-calculator' => 'Calculate the present value of future cash flows or a lump sum payment. Useful for comparing investment options, valuing annuities, and bond pricing.',
+        'refinance-calculator' => 'Should you refinance? Calculate monthly savings, break-even point in months, and lifetime interest reduction. Includes closing cost analysis.',
+        'retirement-income-calculator' => 'Calculate sustainable monthly income from your retirement nest egg. Based on the 4% rule and withdrawal analysis. See how long your savings will last.',
+        'roi-calculator' => 'Calculate return on investment for any asset or project. Enter total cost and total gain to instantly see ROI percentage, net profit, and annualized return.',
+        'round-up-savings-calculator' => 'Estimate annual savings from rounding up everyday purchases to the nearest dollar. See how small round-ups compound into meaningful savings over time.',
+        'savings-goal-calculator' => 'Plan how much to save each month to reach any financial goal on time. Enter goal amount, timeline, and interest rate to get your monthly savings target.',
+        'savings-milestone-tracker' => 'Track progress toward multiple savings milestones simultaneously. Enter your goals, deadlines, and current balances to see which goals are on track.',
+        'savings-rate-calculator' => 'Calculate your personal savings rate as a percentage of gross and net take-home pay. Compare to the recommended 20% savings rate benchmark and track progress.',
+        'social-security-calculator' => 'Estimate Social Security benefits at claiming ages 62, 67, and 70. See the break-even point and how delaying benefits increases your lifetime retirement income.',
+        'staking-rewards-calculator' => 'Project crypto staking rewards and compound APY for Bitcoin, Ethereum, Cardano, and more. Calculate daily, monthly, and annual staking income.',
+        'tax-withholding-calculator' => 'Check if your employer withholds the correct federal income tax from your paycheck. Avoid a surprise tax bill or over-withholding at the end of the year.',
+        'vacation-savings-calculator' => 'Calculate how much to save each month for your next vacation. Enter total trip cost and departure date to get a personalized monthly savings plan.',
+        'w-4-calculator' => 'Calculate the right W-4 withholding for 2026 to avoid a large tax bill or over-withholding. Based on the latest IRS W-4 form instructions.',
+        'yield-farming-calculator' => 'Project DeFi yield farming returns and calculate impermanent loss risk. Enter liquidity pool details, APY, and holding period to see net returns vs. hodling.',
+        'zero-based-budget-calculator' => 'Assign every dollar of income a specific purpose with zero-based budgeting. End each month with $0 unallocated — every dollar works for you.',    ];
+    foreach ( $tool_desc_fixes as $slug => $desc ) {
+        $tool = get_page_by_path( $slug, OBJECT, 'fs_tool' );
+        if ( $tool ) update_post_meta( $tool->ID, 'rank_math_description', $desc );
+    }
+
+    /* ── 3. Duplicate title fix: "Capital Gains Calculator" (investment-tools)
+           and "Capital Gains Tax Calculator" (tax-calculators) both shared the
+           exact title "Capital Gains Tax Calculator 2026 | FinanceSpots" and a
+           near-identical focus keyword -- classic keyword cannibalization.
+           Differentiate the investment-tools one. ── */
+    $capital_gains = get_page_by_path( 'capital-gains-calculator', OBJECT, 'fs_tool' );
+    if ( $capital_gains ) {
+        update_post_meta( $capital_gains->ID, 'rank_math_title',         'Capital Gains Calculator 2026 | FinanceSpots' );
+        update_post_meta( $capital_gains->ID, 'rank_math_focus_keyword', 'capital gains calculator 2026' );
+    }
+
+    /* ── 4. Homepage meta description was 174 chars (over the display
+           limit); shortened while keeping the same message. Title was
+           already a good 54 chars and is left untouched. ── */
+    $front_id = (int) get_option( 'page_on_front' );
+    if ( $front_id ) {
+        update_post_meta( $front_id, 'rank_math_description', 'FinanceSpots offers 110+ free financial calculators for mortgages, taxes, investments, retirement, and crypto. Instant results, PDF export, no signup needed.' );
+    }
+
+    /* ── 5. Blog post meta description had a typo baked in ("Benefits:Complete"
+           -- missing space, likely from a manual RankMath edit) and no
+           closing punctuation. Corrected to a clean, properly spaced version
+           at the same target length. Title/body copy untouched. ── */
+    $va_post = get_page_by_path( 'va-loan-benefits-complete-guide-veterans-2026', OBJECT, 'post' );
+    if ( $va_post ) {
+        update_post_meta( $va_post->ID, 'rank_math_description', 'Complete VA loan guide for veterans: zero down payment, no PMI, funding fees, VA appraisal & comparison to conventional mortgages in 2026.' );
+    }
+
+    /* ── 6. /pro-success/ is a post-checkout confirmation page (thin,
+           transactional, sometimes shows a failure message) -- reinforce
+           noindex so it can't surface in search results. ── */
+    $pro_page = get_page_by_path( 'pro-success', OBJECT, 'page' );
+    if ( $pro_page ) update_post_meta( $pro_page->ID, 'rank_math_robots', [ 'noindex' ] );
+
+    delete_transient( 'rank_math_sitemap_cache' );
+    do_action( 'rank_math/sitemap/clear_cache' );
+    update_option( 'fs_seo_audit_fixes_v1', true );
+}
+add_action( 'admin_init', 'fs_seo_audit_fixes_v1', 45 );
+add_action( 'init',       'fs_seo_audit_fixes_v1', 45 );
 
 /* =========================================================
    AI FINANCIAL DASHBOARD -- Tool Post Creation
@@ -2121,7 +2313,7 @@ add_filter( 'robots_txt', function( $output, $public ) {
     $output .= "Disallow: /*/feed/\n";
     $output .= "Disallow: /comments/feed/\n";
     $output .= "\n# Block numeric pagination only (not page slugs)\n";
-    $output .= "Disallow: /page/[0-9]\n";
+    $output .= "Disallow: */page/\n";
     $output .= "\n# Block author archives\n";
     $output .= "Disallow: /author/\n";
     $output .= "\n# Block tag and category feeds\n";
@@ -2665,6 +2857,15 @@ add_filter( 'rank_math/schema/post_schemas', 'fs_rankmath_tool_schema_defaults',
 /* =========================================================
    COMPLETE SEO -- All 110 Tools + 8 Categories + Homepage
    Runs once on admin_init. Version-gated with fs_full_seo_v2.
+
+   NOTE (SEO audit): do NOT bump this guard to v5 to "fix" description
+   lengths below -- the homepage/category description overrides in this
+   function are now stale (fs_main_pages_seo() and fs_seo_audit_fixes_v1()
+   are the current live source of truth for those, and run at a later
+   'init' priority, so re-running this would clobber the corrected
+   homepage/category meta). The ~60 overlong tool descriptions were
+   corrected directly in fs_seo_audit_fixes_v1() instead, without
+   touching this array or its version flag.
    ========================================================= */
 function fs_complete_seo_all_pages() {
     if ( get_option( 'fs_full_seo_v4' ) ) return;
@@ -2808,8 +3009,8 @@ function fs_complete_seo_all_pages() {
          'Project mutual fund growth with expense ratio impact included. See how fees cost you over 10-30 years and compare high vs. low-fee fund performance. Free calculator.'],
         ['ETF Calculator',               'ETF return calculator with dividends', 'ETF Return Calculator 2026 | FinanceSpots',
          'Calculate ETF total returns with dividends reinvested and expense ratio drag included. Compare ETF vs. mutual fund costs over 20 and 30 years. Free investment tool.'],
-        ['Capital Gains Calculator',     'capital gains tax calculator 2026',    'Capital Gains Tax Calculator 2026 | FinanceSpots',
-         'Calculate capital gains tax on investment profits. See short-term vs. long-term rates (0%, 15%, 20%), net proceeds after tax, and how to minimize your bill. 2026 rates.'],
+        ['Capital Gains Calculator',     'capital gains calculator 2026',    'Capital Gains Calculator 2026 | FinanceSpots',
+         'Calculate capital gains tax on investment profits. See short-term vs. long-term rates (0%, 15%, 20%), net proceeds after tax, and how to minimize your bill.'],
         ['CAGR Calculator',              'CAGR calculator',                      'CAGR Calculator -- Compound Annual Growth Rate',
          'Calculate compound annual growth rate (CAGR) for any investment. Enter beginning value, ending value, and years to see annualized return. Free CAGR calculator 2026.'],
         ['Present Value Calculator',     'present value calculator',             'Present Value Calculator 2026 | FinanceSpots',
@@ -3124,6 +3325,52 @@ add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
     return $clean;
 }, 999, 2 );
 
+/* ── FAQPage schema for blog posts with an FAQ section ──
+   All 10 blog posts have a real "Frequently Asked Questions" section
+   (7-8 Q&A pairs each), but it's hand-built HTML, not RankMath's FAQ
+   block, so RankMath never generates FAQPage schema for it. Parse the
+   Q&A pairs out of post_content (matching the known
+   "<span>Q.</span>Question</p><p>Answer</p>" markup produced by the
+   blog content generator) and add FAQPage schema at render time --
+   no content edits, no DB writes required. ── */
+add_filter( 'rank_math/json_ld', function( $data, $jsonld ) {
+    if ( ! is_singular( 'post' ) ) return $data;
+    $post = get_queried_object();
+    if ( ! $post || empty( $post->post_content ) ) return $data;
+
+    if ( ! preg_match_all(
+        '/<span[^>]*>Q\.<\/span>\s*(.*?)<\/p>\s*<p[^>]*>(.*?)<\/p>/is',
+        $post->post_content,
+        $matches,
+        PREG_SET_ORDER
+    ) ) {
+        return $data;
+    }
+
+    $faq_items = [];
+    foreach ( $matches as $m ) {
+        $q = trim( wp_strip_all_tags( $m[1] ) );
+        $a = trim( wp_strip_all_tags( $m[2] ) );
+        if ( $q === '' || $a === '' ) continue;
+        $faq_items[] = [
+            '@type'          => 'Question',
+            'name'           => $q,
+            'acceptedAnswer' => [
+                '@type' => 'Answer',
+                'text'  => $a,
+            ],
+        ];
+    }
+    if ( empty( $faq_items ) ) return $data;
+
+    $data['fsFaqPage'] = [
+        '@type'      => 'FAQPage',
+        '@id'        => get_permalink( $post ) . '#faq',
+        'mainEntity' => $faq_items,
+    ];
+    return $data;
+}, 20, 2 );
+
 /* ── One-time: delete ALL bad schema postmeta from DB (runs on both frontend + admin) ── */
 function fs_cleanup_bad_schema() {
     if ( get_option( 'fs_schema_cleanup_v3' ) ) return;
@@ -3346,7 +3593,7 @@ add_action( 'wp_footer', function() {
     <div class="fs-cookie-banner" id="fs-cookie-banner" role="dialog" aria-label="Cookie consent" style="display:none;">
         <div class="fs-cookie-banner__inner">
             <div class="fs-cookie-banner__text">
-                <span class="fs-cookie-banner__icon">&#127850;</span>
+                <span class="fs-cookie-banner__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="13" cy="15" r="1"/></svg></span>
                 <div>
                     <strong>We use cookies</strong>
                     <span>We use cookies to improve your experience and show relevant ads. By continuing you agree to our <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a>.</span>

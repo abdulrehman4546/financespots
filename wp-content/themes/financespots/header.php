@@ -125,7 +125,7 @@
                             <div class="fs-user-menu__info-name">
                                 <?php echo esc_html( $current_user->display_name ); ?>
                                 <?php if ( fs_is_pro() ) : ?>
-                                <span class="fs-pro-badge" style="font-size:.6rem;vertical-align:middle;margin-left:4px;">&#11088; PRO</span>
+                                <span class="fs-pro-badge" style="font-size:.6rem;vertical-align:middle;margin-left:4px;"><svg viewBox="0 0 24 24" fill="currentColor" width="10" height="10" style="vertical-align:-1px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> PRO</span>
                                 <?php endif; ?>
                             </div>
                             <div class="fs-user-menu__info-email"><?php echo esc_html( $current_user->user_email ); ?></div>
@@ -269,7 +269,7 @@
                 <span class="fs-logo-dot"></span>
                 <span class="fs-logo-word fs-logo-word--light">finance</span><span class="fs-logo-word fs-logo-word--accent">spots</span>
             </span>
-            <h2 class="fs-login-modal__title" id="fs-login-title">Welcome Back</h2>
+            <p class="fs-login-modal__title" id="fs-login-title" role="heading" aria-level="2">Welcome Back</p>
             <p class="fs-login-modal__sub">Sign in to your FinanceSpots account</p>
         </div>
 
@@ -506,7 +506,7 @@ document.getElementById('fs-login-form').addEventListener('submit', function(e){
     .then(function(r){return r.json();})
     .then(function(res){
         if(res.success){
-            fsShowMsg(msgEl,'success','&#10003; Signed in! Redirecting…');
+            fsShowMsg(msgEl,'success','Signed in! Redirecting…');
             setTimeout(function(){ window.location.href = res.data.redirect; }, 800);
         } else {
             fsShowMsg(msgEl,'error', res.data || 'Login failed. Please try again.');
@@ -545,7 +545,7 @@ document.getElementById('fs-register-form').addEventListener('submit', function(
     .then(function(r){return r.json();})
     .then(function(res){
         if(res.success){
-            fsShowMsg(msgEl,'success','&#127881; Account created! Redirecting…');
+            fsShowMsg(msgEl,'success','Account created! Redirecting…');
             setTimeout(function(){ window.location.href = res.data.redirect; }, 1000);
         } else {
             fsShowMsg(msgEl,'error', res.data || 'Registration failed. Please try again.');
@@ -627,7 +627,24 @@ function financespots_fallback_menu() {
     echo '<ul class="fs-nav-list">';
 
     echo '<li><a href="' . esc_url( home_url( '/' ) ) . '">Home</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/all-tools/' ) ) . '">Tools</a></li>';
+
+    // Tools with sub-menu (uses theme's built-in .sub-menu system)
+    echo '<li>';
+    echo '<a href="' . esc_url( home_url( '/all-tools/' ) ) . '">';
+    echo 'Tools';
+    echo '<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true" style="margin-left:3px;opacity:.6;"><path d="M6 9l6 6 6-6"/></svg>';
+    echo '</a>';
+
+    $tool_cats = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true, 'orderby' => 'count', 'order' => 'DESC' ] );
+    if ( ! empty( $tool_cats ) && ! is_wp_error( $tool_cats ) ) {
+        echo '<ul class="sub-menu">';
+        echo '<li><a href="' . esc_url( home_url( '/all-tools/' ) ) . '" style="color:#10B981!important;font-weight:700;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg> View All Tools</a></li>';
+        foreach ( $tool_cats as $tc ) {
+            echo '<li><a href="' . esc_url( get_term_link( $tc ) ) . '">' . esc_html( $tc->name ) . ' <span style="opacity:.55;font-size:.85em;">(' . intval( $tc->count ) . ')</span></a></li>';
+        }
+        echo '</ul>';
+    }
+    echo '</li>';
 
     // Blog with sub-menu (uses theme's built-in .sub-menu system)
     echo '<li>';
@@ -638,7 +655,7 @@ function financespots_fallback_menu() {
 
     if ( ! empty( $blog_posts ) ) {
         echo '<ul class="sub-menu">';
-        echo '<li><a href="' . esc_url( home_url( '/blog/' ) ) . '" style="color:#10B981!important;font-weight:700;">&#128240; All Blog Posts</a></li>';
+        echo '<li><a href="' . esc_url( home_url( '/blog/' ) ) . '" style="color:#10B981!important;font-weight:700;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg> All Blog Posts</a></li>';
         foreach ( $blog_posts as $bp ) {
             echo '<li><a href="' . esc_url( get_permalink( $bp->ID ) ) . '">' . esc_html( $bp->post_title ) . '</a></li>';
         }
@@ -648,7 +665,7 @@ function financespots_fallback_menu() {
 
     echo '<li><a href="' . esc_url( home_url( '/about/' ) ) . '">About Us</a></li>';
     echo '<li><a href="' . esc_url( home_url( '/contact/' ) ) . '">Contact Us</a></li>';
-    echo '<li><a href="' . esc_url( home_url( '/pricing/' ) ) . '" style="color:#10B981!important;font-weight:700;">&#11088; PRO</a></li>';
+    echo '<li><a href="' . esc_url( home_url( '/pricing/' ) ) . '" style="color:#10B981!important;font-weight:700;"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> PRO</a></li>';
 
     echo '</ul>';
 }

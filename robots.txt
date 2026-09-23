@@ -18,7 +18,11 @@ Disallow: /*/feed/
 Disallow: /comments/feed/
 
 # Block numeric pagination (allow page slugs like /pricing/, /about/)
-Disallow: /page/[0-9]
+# Note: robots.txt doesn't support [0-9] character classes -- only * and $
+# are valid wildcards, so that pattern never matched anything. Using a
+# leading-* wildcard instead so it works whether pagination is at the site
+# root (/page/2/) or nested (/tools/loan-calculators/page/2/, /blog/page/2/).
+Disallow: */page/
 
 # Block author archives
 Disallow: /author/

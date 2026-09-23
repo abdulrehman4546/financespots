@@ -151,7 +151,7 @@ get_header();
                         <?php $fs_r_img = fs_get_post_hero_image( get_the_ID() ); ?>
                         <?php if ( $fs_r_img ) : ?>
                         <a href="<?php the_permalink(); ?>" class="fs-blog-card__thumb-link" tabindex="-1" aria-hidden="true">
-                            <img src="<?php echo esc_url( $fs_r_img ); ?>" alt="<?php the_title_attribute(); ?>" class="fs-blog-card__thumb" loading="lazy" />
+                            <img src="<?php echo esc_url( $fs_r_img ); ?>" alt="<?php the_title_attribute(); ?>" class="fs-blog-card__thumb" loading="lazy" width="400" height="200" />
                         </a>
                         <?php endif; ?>
                         <div class="fs-blog-card__body">

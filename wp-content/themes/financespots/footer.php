@@ -20,9 +20,9 @@
             <div class="fs-nl2__trust">
                 <span class="fs-nl2__trust-item"><span class="fs-nl2__trust-dot"></span> 10,000+ Subscribers</span>
                 <span class="fs-nl2__trust-sep">·</span>
-                <span class="fs-nl2__trust-item">&#128236; Every Monday</span>
+                <span class="fs-nl2__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Every Monday</span>
                 <span class="fs-nl2__trust-sep">·</span>
-                <span class="fs-nl2__trust-item">&#128274; Zero Spam</span>
+                <span class="fs-nl2__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Zero Spam</span>
             </div>
 
             <!-- Main content -->
@@ -32,7 +32,7 @@
                 <div class="fs-nl2__left">
                     <div class="fs-nl2__badge">
                         <span class="fs-nl2__badge-pulse"></span>
-                        &#128236; Weekly Finance Digest
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Weekly Finance Digest
                     </div>
                     <h2 class="fs-nl2__title" id="newsletter-heading">
                         Stay <span class="fs-nl2__title-accent">One Step Ahead</span><br>of Your Finances
@@ -41,10 +41,10 @@
 
                     <!-- What you get -->
                     <div class="fs-nl2__perks">
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128200;</span> Weekly market & rate updates</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#129518;</span> New tool announcements first</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128161;</span> Actionable money-saving tips</div>
-                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon">&#128196;</span> Exclusive finance guides</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span> Weekly market & rate updates</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span> New tool announcements first</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M9 18h6M10 22h4M12 2a7 7 0 00-4 12.6c.4.3.6.8.6 1.4h6.8c0-.6.2-1.1.6-1.4A7 7 0 0012 2z"/></svg></span> Actionable money-saving tips</div>
+                        <div class="fs-nl2__perk"><span class="fs-nl2__perk-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg></span> Exclusive finance guides</div>
                     </div>
                 </div>
 
@@ -57,13 +57,13 @@
                                 <div class="fs-nl2__card-name">Abdul Rahman</div>
                                 <div class="fs-nl2__card-role">FinanceSpots Founder</div>
                             </div>
-                            <div class="fs-nl2__card-live">&#128240; Weekly</div>
+                            <div class="fs-nl2__card-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Weekly</div>
                         </div>
                         <p class="fs-nl2__card-quote">"Every week I share the best finance insights I find -- the same tips I use personally. Join free."</p>
 
                         <form class="fs-nl2__form" id="fs-nl2-form" novalidate>
                             <div class="fs-nl2__field">
-                                <span class="fs-nl2__field-icon">&#9993;</span>
+                                <span class="fs-nl2__field-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="15" height="15"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg></span>
                                 <input type="email" id="fs-nl2-email" placeholder="Enter your email address" required>
                             </div>
                             <button type="submit" class="fs-nl2__btn" id="fs-nl2-btn">
@@ -71,9 +71,9 @@
                                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                             </button>
                             <div class="fs-nl2__success" id="fs-nl2-success" style="display:none">
-                                &#127881; You're in! Check your inbox Monday morning.
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px"><path d="M20 6L9 17l-5-5"/></svg> You're in! Check your inbox Monday morning.
                             </div>
-                            <p class="fs-nl2__fine">&#128274; No spam, ever. Unsubscribe in one click anytime.</p>
+                            <p class="fs-nl2__fine"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> No spam, ever. Unsubscribe in one click anytime.</p>
                         </form>
 
                         <!-- Social proof avatars -->
@@ -206,13 +206,13 @@
                             Popular Tools
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>">&#127968; Mortgage Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>">&#128200; Compound Interest</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>">&#127958;&#65039; Retirement Planner</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>">&#128179; Debt Payoff Tool</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>">&#128203; Budget Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/mortgage-calculator/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Mortgage Calculator</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/compound-interest-calculator/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg> Compound Interest</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/retirement-income-calculator/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Retirement Planner</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Debt Payoff Tool</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="6" y="4" width="12" height="18" rx="2"/><path d="M9 2h6v4H9z"/><path d="M9 11h6M9 15h6"/></svg> Budget Planner</a></li>
                             <li><a href="<?php echo esc_url(home_url('/tool/crypto-pl-calculator/')); ?>">₿ Crypto P&amp;L Calculator</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>">&#129534; Tax Calculator 2026</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6"/></svg> Tax Calculator 2026</a></li>
                         </ul>
                     </div>
 
@@ -223,12 +223,12 @@
                             Company
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/')); ?>">&#127968; Home</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/about/')); ?>">&#128075; About Us</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>">&#128221; Finance Blog</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/all-tools/')); ?>">&#129518; All Tools</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/pricing/')); ?>">&#11088; PRO Plans</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/contact/')); ?>">&#128233; Contact Us</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> Home</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/about/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> About Us</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/blog/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg> Finance Blog</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/all-tools/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> All Tools</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/pricing/')); ?>"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> PRO Plans</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/contact/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M2 7l10 6 10-6"/></svg> Contact Us</a></li>
                         </ul>
                     </div>
 
@@ -239,16 +239,16 @@
                             Legal & Info
                         </h4>
                         <ul class="fsf__links">
-                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">&#128274; Privacy Policy</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>">&#128196; Terms of Service</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/#cookies')); ?>">&#127850; Cookie Policy</a></li>
-                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/#disclaimer')); ?>">&#9888;&#65039; Disclaimer</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> Privacy Policy</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><path d="M14 2v6h6"/></svg> Terms of Service</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/privacy-policy/#cookies')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="13" cy="15" r="1"/></svg> Cookie Policy</a></li>
+                            <li><a href="<?php echo esc_url(home_url('/terms-of-service/#disclaimer')); ?>"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M12 2L2 20h20z"/><path d="M12 9v5M12 17h.01"/></svg> Disclaimer</a></li>
                         </ul>
                         <!-- Trust badges -->
                         <div class="fsf__badges">
-                            <span class="fsf__badge">&#128274; SSL Secured</span>
-                            <span class="fsf__badge">&#9989; Expert Verified</span>
-                            <span class="fsf__badge">&#127379; Always Free</span>
+                            <span class="fsf__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg> SSL Secured</span>
+                            <span class="fsf__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M20 6L9 17l-5-5"/></svg> Expert Verified</span>
+                            <span class="fsf__badge"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M20.59 13.41L11 3.83A2 2 0 009.59 3.24L3 3v6.59a2 2 0 00.59 1.41l9.58 9.58a2 2 0 002.83 0l6.59-6.59a2 2 0 000-2.83z"/><circle cx="7.5" cy="7.5" r="1.5"/></svg> Always Free</span>
                         </div>
                     </div>
 
