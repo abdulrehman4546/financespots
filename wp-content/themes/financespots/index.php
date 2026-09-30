@@ -19,6 +19,8 @@ get_header();
             </header>
             <?php endif; ?>
 
+            <?php do_action( 'fs_archive_heading' ); ?>
+
             <div class="fs-posts-grid">
             <?php
             while ( have_posts() ) :

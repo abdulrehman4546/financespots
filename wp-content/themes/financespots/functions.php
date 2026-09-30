@@ -171,10 +171,11 @@ function fs_add_schema_markup() {
             $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => 'Blog', 'item' => home_url('/blog/') ];
             $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 3, 'name' => get_the_title(), 'item' => get_permalink() ];
         }
-    } elseif ( is_page() ) {
+    } elseif ( is_page() && ! is_front_page() ) {
         $breadcrumb_items[] = [ '@type' => 'ListItem', 'position' => 2, 'name' => get_the_title(), 'item' => get_permalink() ];
     }
-    if ( count($breadcrumb_items) > 1 ) {
+    // Rank Math already emits a BreadcrumbList; only output ours when it is not active.
+    if ( count($breadcrumb_items) > 1 && ! class_exists( 'RankMath' ) ) {
         $schemas[] = [
             '@context'        => 'https://schema.org',
             '@type'           => 'BreadcrumbList',
@@ -182,89 +183,40 @@ function fs_add_schema_markup() {
         ];
     }
 
-    // ── Homepage: WebSite + Organization ────────────────────
-    if ( is_front_page() ) {
-        $schemas[] = [
-            '@context'        => 'https://schema.org',
-            '@type'           => 'WebSite',
-            'name'            => get_bloginfo('name'),
-            'url'             => home_url('/'),
-            'description'     => get_bloginfo('description'),
-            'potentialAction' => [
-                '@type'       => 'SearchAction',
-                'target'      => [ '@type' => 'EntryPoint', 'urlTemplate' => home_url('/?s={search_term_string}') ],
-                'query-input' => 'required name=search_term_string',
-            ],
-        ];
-        $schemas[] = [
-            '@context'   => 'https://schema.org',
-            '@type'      => 'Organization',
-            'name'       => 'FinanceSpots',
-            'url'        => home_url('/'),
-            'logo'       => home_url('/wp-content/themes/financespots/assets/images/logo.png'),
-            'founder'    => [ '@type' => 'Person', 'name' => 'Abdul Rahman' ],
-            'contactPoint' => [
-                '@type'       => 'ContactPoint',
-                'contactType' => 'customer support',
-                'url'         => home_url('/contact/'),
-            ],
-            'sameAs' => [],
-        ];
-    }
+    // Homepage WebSite + Organization come from Rank Math (cleaned in inc/seo-hardening.php).
 
-    // ── Tool pages: SoftwareApplication + FAQPage ───────────
+    // ── Tool pages: one WebApplication + one FAQPage ─────────
     if ( is_singular('fs_tool') ) {
-        $tool_id   = get_the_ID();
-        $tool_name = get_the_title();
-        $tool_desc = get_the_excerpt() ?: wp_trim_words(get_the_content(), 40);
-        $schemas[] = [
+        $tool_id      = get_the_ID();
+        $tool_content = fs_tool_content_for( $tool_id );
+        $tool_type    = get_post_meta( $tool_id, '_fs_tool_type', true ) ?: 'simple_calc';
+        $app = [
             '@context'            => 'https://schema.org',
-            '@type'               => 'SoftwareApplication',
-            'name'                => $tool_name . ' - Free Online Calculator',
-            'description'         => $tool_desc,
-            'url'                 => get_permalink($tool_id),
+            '@type'               => 'WebApplication',
+            '@id'                 => get_permalink( $tool_id ) . '#tool',
+            'name'                => get_the_title(),
+            'description'         => get_the_excerpt() ?: wp_trim_words( get_the_content(), 40 ),
+            'url'                 => get_permalink( $tool_id ),
             'applicationCategory' => 'FinanceApplication',
-            'operatingSystem'     => 'Web',
-            'offers'              => [
-                '@type'    => 'Offer',
-                'price'    => '0',
-                'priceCurrency' => 'USD',
-                'availability' => 'https://schema.org/InStock',
-            ],
-            'aggregateRating' => [
-                '@type'       => 'AggregateRating',
-                'ratingValue' => '4.9',
-                'reviewCount' => '500000',
-                'bestRating'  => '5',
-                'worstRating' => '1',
-            ],
-            'author' => [ '@type' => 'Person', 'name' => 'Abdul Rahman' ],
+            'operatingSystem'     => 'Any (web browser)',
+            'inLanguage'          => 'en-US',
+            'isAccessibleForFree' => true,
+            'offers'              => [ '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'USD' ],
+            'author'              => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'url' => home_url( '/about/' ) ],
+            'publisher'           => [ '@type' => 'Organization', 'name' => 'FinanceSpots', 'url' => home_url( '/' ) ],
+            'dateModified'        => get_the_modified_date( 'c' ),
         ];
-
-        // FAQPage schema from $faq_data
-        require_once get_template_directory() . '/inc/calculators.php';
-        $tool_type = get_post_meta($tool_id, '_fs_tool_type', true) ?: 'simple_calc';
-        $faq_data_schema = [
-            'mortgage_calc'       => [ ['What is a good mortgage rate in 2026?','In 2026, a competitive 30-year fixed mortgage rate is between 6.5%-7.5% depending on your credit score, down payment, and lender.'],['How much house can I afford?','Keep total housing costs (PITI) below 28% of gross monthly income, and total debt payments below 43%.'],['What is included in a mortgage payment?','A full mortgage payment (PITI) includes Principal, Interest, Property Taxes, and Homeowners Insurance.'],['Is a 30-year or 15-year mortgage better?','A 15-year mortgage saves significantly on total interest. A 30-year offers lower payments and more flexibility.'] ],
-            'auto_loan_calc'      => [ ['What is a good auto loan rate in 2026?','Average auto loan rates in 2026 range from 5%-8% for new cars and 7%-12% for used cars.'],['Should I put a down payment on a car?','Yes - a 20% down payment is recommended for new cars and 10% for used cars.'],['What loan term is best for an auto loan?','36-48 months minimizes total interest. Longer terms increase total cost.'],['Does sales tax affect my auto loan?','Yes - sales tax is added to the purchase price and can be rolled into the loan.'] ],
-            'personal_loan_calc'  => [ ['What credit score do I need for a personal loan?','Most lenders require a minimum score of 580-640. Best rates (below 10% APR) require 720+.'],['What is a good personal loan rate?','Rates below 10% APR are considered good. Average in 2026 is 11%-12% for good credit.'],['How is APR different from interest rate?','APR includes the interest rate plus origination fees, making it the true cost measure.'],['Can I pay off a personal loan early?','Most personal loans have no prepayment penalty.'] ],
-            'loan_payoff_calc'    => [ ['How much do extra payments really save?','On a $200,000 mortgage at 7%, an extra $200/month saves about 5 years and over $60,000 in interest.'],['When is the best time to make extra payments?','Early in the loan term, because interest is front-loaded.'],['Should I pay extra on my mortgage or invest?','If your mortgage rate is higher than expected investment returns, paying extra wins.'],['Does my lender require a minimum for extra payments?','No - most lenders accept any extra amount.'] ],
-        ];
-        if ( isset($faq_data_schema[$tool_type]) ) {
-            $faq_entities = [];
-            foreach ( $faq_data_schema[$tool_type] as $faq ) {
-                $faq_entities[] = [
-                    '@type'          => 'Question',
-                    'name'           => $faq[0],
-                    'acceptedAnswer' => [ '@type' => 'Answer', 'text' => $faq[1] ],
-                ];
-            }
-            $schemas[] = [
-                '@context'   => 'https://schema.org',
-                '@type'      => 'FAQPage',
-                'mainEntity' => $faq_entities,
-            ];
+        if ( $tool_content ) {
+            $app['keywords'] = implode( ', ', array_merge( [ $tool_content['focus'] ], $tool_content['secondary'] ) );
         }
+        $schemas[] = $app;
+
+        $faq_schema = $tool_content ? fs_tool_content_faq_schema( $tool_content ) : null;
+        if ( ! $faq_schema ) {
+            $legacy = fs_get_tool_faq_schema( $tool_type );
+            if ( ! empty( $legacy['mainEntity'] ) ) $faq_schema = [ '@context' => 'https://schema.org' ] + $legacy;
+        }
+        if ( $faq_schema ) $schemas[] = $faq_schema;
     }
 
     // ── Blog posts: Article ──────────────────────────────────
@@ -324,12 +276,6 @@ function fs_add_schema_markup() {
                     'availability'  => 'https://schema.org/InStock',
                     'url'           => home_url('/pricing/'),
                 ],
-            ],
-            'aggregateRating' => [
-                '@type'       => 'AggregateRating',
-                'ratingValue' => '4.9',
-                'reviewCount' => '500000',
-                'bestRating'  => '5',
             ],
         ];
     }
@@ -955,33 +901,7 @@ function financespots_head_meta() {
         $image       = get_the_post_thumbnail_url( $post, 'large' ) ?: $logo_url;
         $tool_type   = get_post_meta( $post->ID, '_fs_tool_type', true );
 
-        // Schema.org WebApplication for tools
-        $schema = [
-            '@context' => 'https://schema.org',
-            '@graph'   => [
-                [
-                    '@type'               => 'WebApplication',
-                    '@id'                 => $url . '#tool',
-                    'name'                => get_the_title(),
-                    'description'         => wp_strip_all_tags( get_the_excerpt() ),
-                    'url'                 => $url,
-                    'applicationCategory' => 'FinanceApplication',
-                    'operatingSystem'     => 'Web Browser',
-                    'offers'              => [ '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'USD' ],
-                    'publisher'           => [ '@type' => 'Organization', 'name' => $site_name, 'url' => $site_url ],
-                ],
-                [
-                    '@type'       => 'BreadcrumbList',
-                    'itemListElement' => [
-                        [ '@type' => 'ListItem', 'position' => 1, 'name' => 'Home',  'item' => $site_url ],
-                        [ '@type' => 'ListItem', 'position' => 2, 'name' => 'Tools', 'item' => home_url('/tools/') ],
-                        [ '@type' => 'ListItem', 'position' => 3, 'name' => get_the_title(), 'item' => $url ],
-                    ],
-                ],
-                fs_get_tool_faq_schema( $tool_type ),
-            ],
-        ];
-        echo '<script type="application/ld+json">' . wp_json_encode( $schema, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ) . '</script>' . "\n";
+        // Tool structured data (WebApplication, BreadcrumbList, FAQPage) is output once by fs_add_schema_markup().
 
     } elseif ( is_singular() && isset( $post ) ) {
         $title       = esc_attr( get_the_title() );
@@ -3396,6 +3316,7 @@ add_action( 'admin_init', 'fs_cleanup_bad_schema', 1 );
 /* ── Enqueue Chart.js on tool pages only ── */
 function fs_enqueue_tool_scripts() {
     if ( is_singular( 'fs_tool' ) ) {
+        wp_enqueue_script( 'fs-loan-engine', get_template_directory_uri() . '/assets/js/fs-loan-engine.js', [], filemtime( get_template_directory() . '/assets/js/fs-loan-engine.js' ), true );
         wp_enqueue_script( 'chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', [], '4.4.0', true );
         wp_enqueue_script( 'jspdf',   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',  [], '2.5.1', true );
     }
@@ -3557,6 +3478,12 @@ function fs_rankmath_tool_desc( $desc, $post_id ) {
     return $excerpt ?: 'Use our free ' . get_the_title( $post_id ) . ' instantly. No signup required. PDF export included.';
 }
 add_filter( 'rank_math/description', 'fs_rankmath_tool_desc', 10, 2 );
+
+/* ── SEO hardening (headers, social image, meta limits, sitemap, schema) ── */
+require_once get_template_directory() . '/inc/seo-hardening.php';
+require_once get_template_directory() . '/inc/calculators-loans.php';
+require_once get_template_directory() . '/inc/calculators-loans-2.php';
+require_once get_template_directory() . '/inc/tool-content.php';
 
 /* ── Blog Publisher ── */
 require_once get_template_directory() . '/inc/blog-publisher.php';

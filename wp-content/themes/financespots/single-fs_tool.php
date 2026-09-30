@@ -105,6 +105,7 @@ while ( have_posts() ) : the_post();
                         </div>
                     </div>
                 </div>
+            <?php $fs_content = fs_tool_content_for( get_the_ID() ); if ( $fs_content ) fs_render_tool_quick_answer( $fs_content ); ?>
             </div>
 
             <!-- Sidebar -->
@@ -247,6 +248,10 @@ $faq_data = [
 ];
 
 $tool_faq = $faq_data[ $tool_type ] ?? null;
+if ( $fs_content ) {
+    fs_render_tool_content( $fs_content );
+    $tool_faq = null;
+}
 if ( $tool_faq ) : ?>
 <section style="padding:3rem 0 2rem;background:#F8FAFC;border-top:1px solid var(--fs-border)">
     <div class="container" style="max-width:860px">
@@ -391,6 +396,19 @@ $suggested = array_values($suggested);
                 &#128200; Browse All 150+ Tools &#x2192;
             </a>
         </div>
+    </div>
+</section>
+
+<section style="padding:1.5rem 0 2rem;background:#fff;border-top:1px solid #E2E8F0;">
+    <div class="container" style="max-width:860px;">
+        <p style="font-size:.85rem;color:#475569;margin:0 0 .5rem;">
+            <strong>Built by</strong> <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">Abdul Rahman</a>
+            &middot; <strong>Last reviewed:</strong> <time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date( 'F j, Y' ) ); ?></time>
+            &middot; <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Report an error</a>
+        </p>
+        <p style="font-size:.8rem;color:#64748B;margin:0;line-height:1.6;">
+            <strong>Disclaimer:</strong> This calculator provides estimates for educational purposes only and is not financial, tax, or legal advice. Results depend on the figures you enter and on simplified assumptions; actual rates, taxes, and outcomes will differ. Consult a qualified professional before making financial decisions.
+        </p>
     </div>
 </section>
 

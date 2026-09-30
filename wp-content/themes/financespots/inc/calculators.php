@@ -2,6 +2,23 @@
 if ( ! defined( 'ABSPATH' ) ) exit;
 
 function fs_render_calculator( $tool_type, $tool_title ) {
+    /* v2 loan calculators (shared engine: assets/js/fs-loan-engine.js) */
+    $v2 = [
+        'mortgage_calc'      => 'fs_calc2_mortgage',
+        'auto_loan_calc'     => 'fs_calc2_auto_loan',
+        'personal_loan_calc' => 'fs_calc2_personal_loan',
+        'student_loan_calc'  => 'fs_calc2_student_loan',
+        'heloc_calc'         => 'fs_calc2_heloc',
+        'debt_consol_calc'   => 'fs_calc2_debt_consolidation',
+        'loan_compare'       => 'fs_calc2_loan_compare',
+        'amortization'       => 'fs_calc2_amortization',
+        'refinance'          => 'fs_calc2_refinance',
+        'fha_loan_calc'      => 'fs_calc2_fha_loan',
+    ];
+    if ( isset( $v2[ $tool_type ] ) && function_exists( $v2[ $tool_type ] ) ) {
+        call_user_func( $v2[ $tool_type ] );
+        return;
+    }
     switch ( $tool_type ) {
 
         case 'loan_payment':
