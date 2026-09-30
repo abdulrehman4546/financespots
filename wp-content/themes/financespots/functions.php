@@ -472,7 +472,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $text(     'fs_hero_title_2',  'financespots_hero', __( 'Headline Line 2', 'financespots' ),     __( 'Tools', 'financespots' ) );
     $text(     'fs_hero_title_3',  'financespots_hero', __( 'Headline Accent Word (blue)', 'financespots' ), __( 'Intelligent', 'financespots' ) );
     $text(     'fs_hero_title_4',  'financespots_hero', __( 'Headline Line 4', 'financespots' ),     __( 'Investing', 'financespots' ) );
-    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 150+ tools, completely free.', 'financespots' ) );
+    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 110+ tools, completely free.', 'financespots' ) );
     $text(     'fs_hero_cta_text', 'financespots_hero', __( 'Primary CTA Text', 'financespots' ),   __( 'Explore All Tools', 'financespots' ) );
     $text(     'fs_hero_cta_url',  'financespots_hero', __( 'Primary CTA URL', 'financespots' ),    '#tools', 'url' );
     $text(     'fs_hero_cta2_text','financespots_hero', __( 'Secondary CTA Text', 'financespots' ), __( 'Watch Demo', 'financespots' ) );
@@ -1021,7 +1021,7 @@ function fs_get_ai_features() {
 /** How it works steps */
 function fs_get_steps() {
     return [
-        [ 'num' => '01', 'title' => 'Choose Your Tool',   'desc' => 'Browse 150+ finance tools organized by category. Use our smart search to find what you need instantly.' ],
+        [ 'num' => '01', 'title' => 'Choose Your Tool',   'desc' => 'Browse 110+ finance tools organized by category. Use our smart search to find what you need instantly.' ],
         [ 'num' => '02', 'title' => 'Enter Your Data',    'desc' => 'Input your financial details into our clean, guided forms. Tooltips explain every field.' ],
         [ 'num' => '03', 'title' => 'Get AI Insights',    'desc' => 'Receive instant results plus AI-generated insights, comparisons, and personalized recommendations.' ],
         [ 'num' => '04', 'title' => 'Plan & Take Action', 'desc' => 'Export your results, save scenarios, or share with your financial advisor -- all for free.' ],

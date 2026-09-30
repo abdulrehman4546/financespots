@@ -393,7 +393,7 @@ $suggested = array_values($suggested);
             </a>
             <?php endforeach; ?>
             <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:#ECFDF5;border:1.5px solid #BBF7D0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#15803D;font-size:.86rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">
-                &#128200; Browse All 150+ Tools &#x2192;
+                &#128200; Browse All 110+ Tools &#x2192;
             </a>
         </div>
     </div>
