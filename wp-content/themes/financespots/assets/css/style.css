@@ -1151,10 +1151,10 @@ a.fs-float-badge:hover {
 
 /* Title v3 */
 .fs-hero__title {
-    font-size: clamp(3rem, 6vw, 5.2rem);
-    font-weight: 900;
-    line-height: 1.02;
-    letter-spacing: -.05em;
+    font-size: clamp(2.6rem, 5vw, 4rem);
+    font-weight: 750;
+    line-height: 1.15;
+    letter-spacing: -.02em;
     margin-bottom: 24px;
 }
 .fs-hero__title-line--white  { color: #fff; display: block; }
@@ -2451,7 +2451,7 @@ a.fs-float-badge:hover {
     .fs-hero__cta-group    { justify-content: center; }
     .fs-hero__social-proof { justify-content: center; }
     .fs-hero__badge        { justify-content: center; }
-    .fs-hero__title        { font-size: clamp(2.6rem, 8vw, 4rem); }
+    .fs-hero__title        { font-size: clamp(2.1rem, 6vw, 2.8rem); }
 
     .fs-stats__grid { grid-template-columns: repeat(2, 1fr); }
     .fs-stat-card { border-right: none; border-bottom: 1px solid var(--fs-border); }
@@ -2514,7 +2514,7 @@ a.fs-float-badge:hover {
        layout footprint and causes horizontal overflow at this breakpoint */
     .fs-hero__visual { display: none; }
 
-    .fs-hero__title { font-size: clamp(2rem, 9vw, 2.8rem); }
+    .fs-hero__title { font-size: clamp(1.9rem, 7vw, 2.3rem); }
 
     /* Stat cards: 2 columns on mobile (matches inherited 900px rule explicitly) */
     .fs-stats__grid { grid-template-columns: repeat(2, 1fr); }

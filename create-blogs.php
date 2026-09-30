@@ -498,7 +498,7 @@ $posts = [
 
 <h2>Which Is Better for Inflation Protection?</h2>
 <p>Gold has a longer, more proven track record as an inflation hedge. During the 2021–2023 inflation surge, gold held up but did not spike dramatically. Bitcoin, during the same period, crashed from $60,000 to $16,000 — not ideal inflation-hedge behavior in the short term.</p>
-<p>However, Bitcoin advocates argue that over a longer horizon (10+ years), Bitcoin's supply constraints make it a superior inflation hedge. The debate continues, and the data is still limited given Bitcoin's short history.</p>
+<p>However, Bitcoin advocates argue that over a longer horizon (10+ years), Bitcoin\'s supply constraints make it a superior inflation hedge. The debate continues, and the data is still limited given Bitcoin\'s short history.</p>
 
 ' . img_tag($img['chart'], 'Comparison chart of Bitcoin gold and S&P 500 performance over 10 years', 'Both assets serve a role in a diversified portfolio — the allocation depends on your risk tolerance.') . '
 
