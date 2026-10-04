@@ -87,7 +87,7 @@ add_filter( 'rank_math/sitemap/entry', function ( $url, $type, $object ) {
         'personal-loan-guide', 'budget-planner-guide', 'retirement-planning-guide',
         'pay-off-debt-fast-guide',
     ];
-    if ( 'post' === $type && isset( $object->post_name ) && in_array( $object->post_name, $redirected, true ) ) {
+    if ( ( 'post' === $type || 'page' === $type ) && isset( $object->post_name ) && ( in_array( $object->post_name, $redirected, true ) || 'pro-success' === $object->post_name ) ) {
         return false;
     }
     if ( 'term' === $type && isset( $object->count ) && (int) $object->count === 0 ) {
@@ -165,3 +165,31 @@ add_filter( 'the_content', function ( $content ) {
         return $tag;
     }, $content );
 }, 30 );
+
+/**
+ * Rank Math caches sitemap XML on disk and in transients. After slugs or
+ * exclusions change, the cached files can list stale URLs (old redirected
+ * guide slugs) and omit the real posts. Clear the cache once per version.
+ * Change $version below whenever the sitemap rules above change.
+ *
+ * Deliberately avoids WP_Filesystem (it can fatal on hosts that fall back to
+ * the FTP method) and records the version first, so it can never retry in a loop.
+ */
+add_action( 'init', function () {
+    $version = '2026-10-03-b';
+    if ( get_option( 'fs_sitemap_flush_version' ) === $version ) return;
+    update_option( 'fs_sitemap_flush_version', $version, false );
+    try {
+        $dir = trailingslashit( wp_upload_dir()['basedir'] ) . 'rank-math/';
+        if ( class_exists( '\\RankMath\\Sitemap\\Cache' ) ) {
+            $dir = \RankMath\Sitemap\Cache::get_cache_directory();
+        }
+        foreach ( (array) glob( $dir . '*.xml' ) as $file ) {
+            if ( is_file( $file ) ) @unlink( $file );
+        }
+        global $wpdb;
+        $wpdb->query( "DELETE FROM {$wpdb->options} WHERE option_name LIKE '\_transient\_sitemap\_%' OR option_name LIKE '\_transient\_timeout\_sitemap\_%'" );
+    } catch ( \Throwable $e ) {
+        // Cache will expire on its own; never block a page load over this.
+    }
+}, 99 );
