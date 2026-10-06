@@ -205,3 +205,5 @@
 .fsc-wrap[id^="fs-"] .fsc-result-label { font-size: .7rem; }
 .fsc-wrap[id^="fs-"] .fsc-results { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 @media (max-width: 480px) { .fsc-wrap[id^="fs-"] { padding: 1.1rem; } .fsc-wrap[id^="fs-"] .fsc-results { grid-template-columns: 1fr; } }
+.fsl-bar { height: 10px; background: #E2E8F0; border-radius: 99px; margin-top: 1rem; overflow: hidden; }
+.fsl-bar span { display: block; height: 100%; background: linear-gradient(90deg,#00C896,#3B82F6); border-radius: 99px; transition: width .4s ease; }

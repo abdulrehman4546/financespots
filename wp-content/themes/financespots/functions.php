@@ -3483,6 +3483,7 @@ add_filter( 'rank_math/description', 'fs_rankmath_tool_desc', 10, 2 );
 require_once get_template_directory() . '/inc/seo-hardening.php';
 require_once get_template_directory() . '/inc/calculators-loans.php';
 require_once get_template_directory() . '/inc/calculators-loans-2.php';
+require_once get_template_directory() . '/inc/calculators-money.php';
 require_once get_template_directory() . '/inc/tool-content.php';
 
 /* ── Blog Publisher ── */

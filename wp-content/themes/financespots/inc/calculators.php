@@ -15,6 +15,24 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'refinance'          => 'fs_calc2_refinance',
         'fha_loan_calc'      => 'fs_calc2_fha_loan',
     ];
+    /* v2 money calculators, chosen by tool slug so tools that merely share an old generic type are untouched */
+    $v2_by_slug = [
+        'income-tax-calculator'          => 'fs_calc2_income_tax',
+        'capital-gains-tax-calculator'   => 'fs_calc2_capital_gains',
+        'compound-interest-calculator'   => 'fs_calc2_compound',
+        'retirement-savings-calculator'  => 'fs_calc2_retirement',
+        '401k-calculator'                => 'fs_calc2_401k',
+        'savings-goal-calculator'        => 'fs_calc2_savings_goal',
+        'emergency-fund-calculator'      => 'fs_calc2_emergency_fund',
+        'roi-calculator'                 => 'fs_calc2_roi',
+        'net-worth-calculator'           => 'fs_calc2_net_worth',
+        '50-30-20-budget-calculator'     => 'fs_calc2_budget_503020',
+    ];
+    $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
+    if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {
+        call_user_func( $v2_by_slug[ $slug ] );
+        return;
+    }
     if ( isset( $v2[ $tool_type ] ) && function_exists( $v2[ $tool_type ] ) ) {
         call_user_func( $v2[ $tool_type ] );
         return;

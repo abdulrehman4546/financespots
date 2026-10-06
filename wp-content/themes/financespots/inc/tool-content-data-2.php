@@ -1,0 +1,486 @@
+<?php
+/**
+ * Editorial content + keywords, batch 2: income tax, capital gains, compound
+ * interest, retirement, 401(k), savings goal, emergency fund, ROI, net worth,
+ * 50/30/20 budget. Same fields as tool-content-data.php. Every example number
+ * comes from the matching calculator in calculators-money.php with the
+ * default inputs (or the stated inputs). 2026 figures: IRS Rev. Proc. 2025-32,
+ * IRS 2026 retirement limits, SSA 2026 wage base.
+ *
+ * @package financespots
+ */
+defined( 'ABSPATH' ) || exit;
+
+function fs_tool_content_data_2() {
+    return [
+
+    /* ───────────────────────── INCOME TAX ───────────────────────── */
+    'income-tax-calculator' => [
+        'focus'     => 'income tax calculator',
+        'secondary' => [ 'federal income tax calculator', 'income tax calculator 2026', 'take home pay calculator', 'tax bracket calculator', 'how much federal tax will I owe' ],
+        'title'     => 'Income Tax Calculator 2026: Federal & FICA',
+        'meta'      => 'Free 2026 income tax calculator: estimate federal tax, Social Security and Medicare, state tax and take-home pay for every filing status, with a bracket breakdown.',
+        'excerpt'   => 'Estimate your 2026 federal income tax, FICA, state tax and take-home pay, with a bracket-by-bracket breakdown for every filing status.',
+        'answer'    => 'On an $85,000 salary with $6,000 of pre-tax 401(k) savings and the standard deduction, a single filer has $62,900 of taxable income in 2026. Federal income tax is $8,550 (10.1% of gross), Social Security and Medicare add $6,503, and take-home pay is about $63,948 a year, or $5,329 a month.',
+        'steps'     => [
+            'Enter your gross annual income before any taxes or deductions.',
+            'Choose your filing status: single, married filing jointly, head of household, or married filing separately.',
+            'Enter pre-tax deductions such as 401(k) or HSA contributions. These lower your federal taxable income.',
+            'Leave itemized deductions at $0 to use the standard deduction. Enter a number only if your itemized total is higher.',
+            'Add your state’s income tax rate, then read your federal tax, FICA, total taxes and take-home pay.',
+        ],
+        'formula'   => '<p><strong>Taxable income = gross income − pre-tax deductions − (standard or itemized deduction)</strong></p><p>Federal tax is progressive: each slice of taxable income is taxed at its own bracket rate, and you add the slices. The 2026 standard deduction is <strong>$16,100</strong> for single and married filing separately, <strong>$32,200</strong> for married filing jointly, and <strong>$24,150</strong> for head of household.</p><table><thead><tr><th>Rate</th><th>Single</th><th>Married filing jointly</th></tr></thead><tbody><tr><td>10%</td><td>up to $12,400</td><td>up to $24,800</td></tr><tr><td>12%</td><td>to $50,400</td><td>to $100,800</td></tr><tr><td>22%</td><td>to $105,700</td><td>to $211,400</td></tr><tr><td>24%</td><td>to $201,775</td><td>to $403,550</td></tr><tr><td>32%</td><td>to $256,225</td><td>to $512,450</td></tr><tr><td>35%</td><td>to $640,600</td><td>to $768,700</td></tr><tr><td>37%</td><td>over $640,600</td><td>over $768,700</td></tr></tbody></table><p><strong>FICA:</strong> Social Security is 6.2% of wages up to the 2026 wage base of $184,500, and Medicare is 1.45% of all wages plus 0.9% on wages above $200,000 (single) or $250,000 (married filing jointly).</p>',
+        'example'   => '<p>Single filer, $85,000 salary, $6,000 pre-tax 401(k), standard deduction:</p><ul><li>Taxable income: $85,000 − $6,000 − $16,100 = <strong>$62,900</strong></li><li>10% on the first $12,400 = $1,240</li><li>12% on the next $38,000 = $4,560</li><li>22% on the remaining $12,500 = $2,750</li><li>Federal income tax: <strong>$8,550</strong> (10.1% of gross income, even though the marginal bracket is 22%)</li><li>Social Security and Medicare: <strong>$6,503</strong></li><li>Take-home pay: <strong>$63,948 a year</strong> ($5,329 a month)</li></ul><p>A married couple filing jointly with $150,000 of income and no pre-tax deductions has $117,800 of taxable income, owes $15,340 in federal tax and $11,475 in FICA, and takes home about $123,185.</p>',
+        'sections'  => [
+            [ 'Marginal rate vs effective rate', '<p>Your marginal rate is the rate on your last dollar of taxable income. Your effective rate is your total tax divided by your total income. In the example above the marginal bracket is 22%, but the federal effective rate is only 10.1%, because the first $50,400 of taxable income is taxed at 10% and 12%. Earning more never pushes your whole income into a higher bracket; only the income above each threshold is taxed at the higher rate.</p>' ],
+            [ 'Standard deduction or itemize?', '<p>Most taxpayers take the standard deduction because it is large. You itemize only if mortgage interest, state and local taxes (subject to a cap), charitable gifts and medical costs above the threshold add up to more than $16,100 (single) or $32,200 (married filing jointly). The calculator uses whichever is larger. Taxpayers age 65 or older or who are blind get an additional standard deduction, which this estimate does not add.</p>' ],
+            [ 'Social Security and Medicare (FICA)', '<p>FICA is separate from income tax and is taken from every paycheck: 6.2% for Social Security up to $184,500 of wages and 1.45% for Medicare with no cap. High earners pay an extra 0.9% Medicare tax on wages above $200,000 (single) or $250,000 (married filing jointly). Self-employed people pay both halves, which is covered by our self-employment tax calculator. Pre-tax 401(k) contributions reduce income tax but not FICA wages.</p>' ],
+            [ 'How to lower your tax bill legally', '<ul><li>Contribute to a traditional 401(k), 403(b) or HSA, which reduce taxable income.</li><li>Claim every credit you qualify for, such as the Child Tax Credit and education credits.</li><li>Bunch deductions into one year if you are close to the itemizing threshold.</li><li>Hold investments more than a year so gains get long-term capital gains rates.</li></ul><p>This calculator does not include tax credits or the recent deductions for tips, overtime and seniors, so your actual bill may be lower.</p>' ],
+            [ 'State income tax', '<p>Nine states have no tax on wage income: Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming. Other states use flat or graduated rates. Enter your state’s effective rate to estimate it; for exact numbers, use your state revenue department’s calculator.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Gross income', 'Your total pay before taxes and deductions.' ],
+            [ 'Taxable income', 'Income left after deductions; the amount the brackets apply to.' ],
+            [ 'Marginal tax rate', 'The rate on your next dollar of taxable income.' ],
+            [ 'Effective tax rate', 'Total tax divided by total income.' ],
+            [ 'Standard deduction', 'A flat amount that reduces taxable income for all filers who do not itemize.' ],
+            [ 'FICA', 'Social Security and Medicare payroll taxes.' ],
+        ],
+        'faqs'      => [
+            [ 'How much federal income tax will I pay on $85,000 in 2026?', 'A single filer with $6,000 of pre-tax 401(k) contributions and the standard deduction has $62,900 of taxable income and owes about $8,550 in federal income tax, an effective rate of 10.1% of gross income. Without the 401(k) contribution the tax is higher, about $9,870.' ],
+            [ 'What are the 2026 federal tax brackets?', 'For a single filer: 10% up to $12,400, 12% to $50,400, 22% to $105,700, 24% to $201,775, 32% to $256,225, 35% to $640,600 and 37% above that. For married filing jointly the thresholds are $24,800, $100,800, $211,400, $403,550, $512,450 and $768,700.' ],
+            [ 'What is the standard deduction for 2026?', '$16,100 for single filers and married filing separately, $32,200 for married filing jointly, and $24,150 for heads of household.' ],
+            [ 'What is take-home pay on $85,000?', 'With $6,000 pre-tax 401(k) savings and no state income tax, about $63,948 a year or $5,329 a month. A state income tax would lower this further.' ],
+            [ 'Does moving into a higher bracket mean all my income is taxed more?', 'No. Only the income above each bracket threshold is taxed at the higher rate. A raise can never reduce your take-home pay because of brackets.' ],
+            [ 'How much is Social Security tax in 2026?', 'Employees pay 6.2% on wages up to $184,500, which is a maximum of $11,439, plus 1.45% Medicare tax on all wages. Employers pay a matching amount.' ],
+            [ 'Does a 401(k) contribution reduce my taxes?', 'A traditional 401(k) contribution lowers your federal and most state taxable income, so it lowers income tax. It does not reduce Social Security or Medicare wages. Roth 401(k) contributions do not reduce current taxes.' ],
+            [ 'Is this calculator exact?', 'It is a close estimate for wage income using 2026 brackets and the standard or itemized deduction. It leaves out tax credits, other income types, additional deductions and state-specific rules, so use it for planning, not filing.' ],
+        ],
+        'sources'   => [
+            [ 'Tax Foundation: 2026 tax brackets and standard deductions', 'https://taxfoundation.org/data/all/federal/2026-tax-brackets/' ],
+            [ 'SSA: 2026 Social Security wage base and COLA', 'https://www.ssa.gov/news/en/press/releases/2025-10-24.html' ],
+            [ 'IRS Topic 409: Capital gains and losses', 'https://www.irs.gov/taxtopics/tc409' ],
+        ],
+        'related'   => [ 'self-employment-tax-calculator', 'capital-gains-tax-calculator', '401k-calculator', 'net-worth-calculator' ],
+    ],
+
+    /* ───────────────────────── CAPITAL GAINS ───────────────────────── */
+    'capital-gains-tax-calculator' => [
+        'focus'     => 'capital gains tax calculator',
+        'secondary' => [ 'long-term capital gains tax calculator', 'capital gains tax rates 2026', 'short-term capital gains tax', 'stock sale tax calculator', 'net investment income tax' ],
+        'title'     => 'Capital Gains Tax Calculator (2026 Rates)',
+        'meta'      => 'Free 2026 capital gains tax calculator: see your 0%, 15% or 20% long-term rate, short-term tax, the 3.8% NIIT, state tax and profit after tax on a sale.',
+        'excerpt'   => 'Work out the tax on selling stocks, crypto or property using 2026 long-term and short-term rates, stacked on top of your other income.',
+        'answer'    => 'Long-term capital gains (assets held over a year) are taxed at 0%, 15% or 20% depending on your total taxable income. A $15,000 gain for a single filer with $70,000 of other taxable income is taxed at 15%, or $2,250. If the same asset were held a year or less, the gain is taxed as ordinary income, costing about $3,300.',
+        'steps'     => [
+            'Enter what you paid (your cost basis) and the sale price, then any selling costs.',
+            'Choose long-term if you held the asset more than one year, otherwise short-term.',
+            'Pick your filing status and enter your other taxable income, which is your income after deductions, before this sale.',
+            'Add your state’s tax rate on gains and any capital losses you can use to offset the gain.',
+            'Read your federal tax, any 3.8% net investment income tax, and your profit after tax.',
+        ],
+        'formula'   => '<p><strong>Gain = sale price − selling costs − cost basis − capital losses</strong></p><p><strong>Long-term:</strong> the gain is stacked on top of your other taxable income. The part that falls below the 0% threshold is untaxed, the part up to the 15% limit is taxed at 15%, and anything above is taxed at 20%.</p><table><thead><tr><th>2026 filing status</th><th>0% rate up to</th><th>15% rate up to</th></tr></thead><tbody><tr><td>Single</td><td>$49,450</td><td>$545,500</td></tr><tr><td>Married filing jointly</td><td>$98,900</td><td>$613,700</td></tr><tr><td>Head of household</td><td>$66,200</td><td>$579,600</td></tr><tr><td>Married filing separately</td><td>$49,450</td><td>$306,850</td></tr></tbody></table><p><strong>Short-term:</strong> taxed at your ordinary income rate. <strong>NIIT:</strong> an extra 3.8% applies to the lesser of your net investment income or the amount your income exceeds $200,000 (single, head of household), $250,000 (married filing jointly) or $125,000 (married filing separately).</p>',
+        'example'   => '<p>Single filer buys stock for $20,000 and sells it for $35,000, a $15,000 gain:</p><table><thead><tr><th>Situation</th><th>Rate on the gain</th><th>Tax</th></tr></thead><tbody><tr><td>Held over a year, other taxable income $70,000</td><td>15%</td><td>$2,250</td></tr><tr><td>Held over a year, other taxable income $30,000 (gain ends at $45,000)</td><td>0%</td><td>$0</td></tr><tr><td>Held one year or less, other taxable income $70,000</td><td>22% (ordinary)</td><td>$3,300</td></tr></tbody></table><p>With $300,000 of other income and a $300,000 gain, $245,500 is taxed at 15%, $54,500 at 20% and the net investment income tax adds $11,400, for $47,725 of federal tax.</p>',
+        'sections'  => [
+            [ 'Short-term vs long-term', '<p>The holding period starts the day after you buy and ends on the day you sell. Hold for one year and a day or longer for long-term treatment. The difference matters: a taxpayer in the 24% bracket pays 15% on a long-term gain and 24% on a short-term gain. If a sale is close to the one-year mark, waiting a few days can save real money.</p>' ],
+            [ 'How the 0%, 15% and 20% rates stack', '<p>Long-term gains do not use your income bracket directly. The IRS adds your gain on top of your other taxable income and applies the capital gains thresholds. That is why someone with $30,000 of other income can sell $15,000 of stock and pay nothing, while someone with $70,000 pays 15% on the same gain.</p>' ],
+            [ 'Net investment income tax', '<p>High earners owe an additional 3.8% on investment income when modified adjusted gross income passes $200,000 (single) or $250,000 (married filing jointly). The thresholds are not indexed to inflation. The calculator estimates it from the income you enter.</p>' ],
+            [ 'Losses, home sales and special cases', '<ul><li><strong>Losses:</strong> capital losses offset gains, and up to $3,000 a year can offset ordinary income, with the rest carried forward.</li><li><strong>Home sale:</strong> up to $250,000 of gain ($500,000 for married couples) can be excluded if you owned and lived in the home for 2 of the last 5 years.</li><li><strong>Crypto:</strong> the IRS treats cryptocurrency as property, so the same holding-period rules apply.</li><li><strong>Inherited assets:</strong> usually get a stepped-up basis to the value at the date of death.</li><li><strong>Collectibles:</strong> gains on art and coins can be taxed up to 28%.</li></ul>' ],
+            [ 'Ways to reduce capital gains tax', '<p>Hold investments longer than a year, harvest losses to offset gains, give appreciated shares to charity instead of cash, and use tax-advantaged accounts like IRAs and 401(k)s, where gains are not taxed each year. Watch the wash-sale rule, which disallows a loss if you buy the same security within 30 days.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Cost basis', 'What you paid for an asset, plus fees and improvements.' ],
+            [ 'Long-term gain', 'Profit on an asset held more than one year.' ],
+            [ 'Short-term gain', 'Profit on an asset held one year or less, taxed as ordinary income.' ],
+            [ 'NIIT', 'Net investment income tax: an extra 3.8% for higher incomes.' ],
+            [ 'Tax-loss harvesting', 'Selling losing investments to offset gains.' ],
+            [ 'Wash sale', 'Buying the same security within 30 days of selling it at a loss; the loss is disallowed.' ],
+        ],
+        'faqs'      => [
+            [ 'What is the capital gains tax rate for 2026?', 'Long-term gains are taxed at 0%, 15% or 20%. For a single filer, 0% applies up to $49,450 of taxable income, 15% up to $545,500 and 20% above. For married couples filing jointly the limits are $98,900 and $613,700. Short-term gains are taxed at ordinary rates from 10% to 37%.' ],
+            [ 'How much tax do I pay on a $15,000 stock gain?', 'For a single filer with $70,000 of other taxable income, a long-term gain is taxed at 15%, about $2,250. A short-term gain is taxed at 22%, about $3,300. With $30,000 of other taxable income the long-term gain can be tax-free.' ],
+            [ 'What is the difference between short-term and long-term gains?', 'Long-term applies to assets held more than a year and has lower rates (0%, 15%, 20%). Short-term applies to assets held a year or less and is taxed like wages.' ],
+            [ 'Do I pay capital gains tax on my home?', 'Often not. You can exclude up to $250,000 of gain, or $500,000 if married filing jointly, when you owned and lived in the home for at least 2 of the 5 years before the sale.' ],
+            [ 'What is the net investment income tax?', 'A 3.8% tax on investment income for people whose modified adjusted gross income is above $200,000 (single) or $250,000 (married filing jointly).' ],
+            [ 'Can capital losses reduce my taxes?', 'Yes. Losses first offset capital gains. If losses exceed gains, up to $3,000 a year can reduce other income, and the rest carries forward to future years.' ],
+            [ 'Is cryptocurrency taxed as capital gains?', 'Yes. The IRS treats crypto as property, so selling or trading it can create a capital gain or loss using the same short-term and long-term rules.' ],
+            [ 'Does this calculator include state tax?', 'It lets you enter a state rate on gains. States tax gains differently, and a few have no income tax, so check your state’s rules for exact amounts.' ],
+        ],
+        'sources'   => [
+            [ 'IRS Topic 409: Capital gains and losses', 'https://www.irs.gov/taxtopics/tc409' ],
+            [ 'IRS Topic 559: Net investment income tax', 'https://www.irs.gov/taxtopics/tc559' ],
+            [ 'Tax Foundation: 2026 tax brackets', 'https://taxfoundation.org/data/all/federal/2026-tax-brackets/' ],
+        ],
+        'related'   => [ 'income-tax-calculator', 'roi-calculator', 'net-worth-calculator', 'compound-interest-calculator' ],
+    ],
+
+    /* ───────────────────────── COMPOUND INTEREST ───────────────────────── */
+    'compound-interest-calculator' => [
+        'focus'     => 'compound interest calculator',
+        'secondary' => [ 'compound interest calculator with monthly contributions', 'investment growth calculator', 'how compound interest works', 'rule of 72', 'future value calculator' ],
+        'title'     => 'Compound Interest Calculator with Deposits',
+        'meta'      => 'Free compound interest calculator: see how a starting amount and monthly deposits grow with daily, monthly or annual compounding, adjusted for inflation.',
+        'excerpt'   => 'See how a starting balance and regular deposits grow over time with compound interest, with year-by-year results and an inflation-adjusted value.',
+        'answer'    => 'Investing $10,000 today and adding $500 a month at a 7% annual return grows to about $300,851 in 20 years, compounded monthly. You contribute $130,000 and the other $170,851 is growth. After 3% yearly inflation, that balance is worth about $166,574 in today’s dollars.',
+        'steps'     => [
+            'Enter your starting amount and how much you will add each month.',
+            'Choose whether deposits happen at the start or end of each month.',
+            'Enter the expected annual interest rate and the number of years.',
+            'Pick how often interest compounds: daily, monthly, quarterly or annually.',
+            'Add inflation to see what the future balance is worth in today’s money, then review the chart and the year-by-year table.',
+        ],
+        'formula'   => '<p>For a lump sum: <strong>A = P × (1 + r/n)<sup>n × t</sup></strong>, where P is the starting amount, r the annual rate, n the number of compounding periods a year and t the years.</p><p>With monthly deposits, the calculator steps through every month: it converts the annual rate to an equivalent monthly rate <strong>i = (1 + r/n)<sup>n/12</sup> − 1</strong>, grows the balance by i each month and adds your deposit. This keeps the result correct for any compounding frequency.</p><p><strong>Rule of 72:</strong> divide 72 by the annual rate to estimate the years to double. At 7%, that is about 10.3 years; the exact figure is 9.9.</p>',
+        'example'   => '<p>$10,000 start, $500 added at the end of each month, 7% a year compounded monthly, 20 years, 3% inflation:</p><ul><li>Future value: <strong>$300,851</strong></li><li>Total you put in: <strong>$130,000</strong> ($10,000 + 240 × $500)</li><li>Interest earned: <strong>$170,851</strong> (56.8% of the final balance)</li><li>Value in today’s dollars: <strong>$166,574</strong></li></ul><p>Compounding annually instead of monthly, the same plan ends at about $292,465. The extra compounding periods add roughly $8,400.</p>',
+        'sections'  => [
+            [ 'Why compounding is so powerful', '<p>Simple interest pays only on your original amount. Compound interest pays on your original amount plus the interest already earned, so growth accelerates. In the example, the balance passes $100,000 after about 10 years but adds more than $170,000 in the next ten. Time matters more than almost anything else: starting 10 years earlier can double the end result without saving more each month.</p>' ],
+            [ 'Compounding frequency', '<p>The more often interest compounds, the more you earn, but the difference is smaller than most people expect. At 7%, $10,000 grows to $19,672 after 10 years with annual compounding and $20,097 with monthly compounding; the effect is larger with higher rates and longer periods. Savings accounts often compound daily; most investments grow continuously through price changes rather than fixed compounding.</p>' ],
+            [ 'Choose a realistic return', '<p>Returns are not guaranteed. The stock market has averaged roughly 10% a year before inflation over the very long run, with large swings, while high-yield savings accounts pay up to about 4.5% in October 2026 and the national average savings rate is well under 1%. Use a lower, conservative rate for planning and test a range such as 4%, 6% and 8%.</p>' ],
+            [ 'Inflation and real returns', '<p>A dollar in 20 years buys less than a dollar today. The inflation-adjusted figure shows what your future balance could buy in today’s terms. With 3% inflation, $300,851 in 20 years has the buying power of $166,574 now. Planning in real dollars gives a more honest picture of the goal you need to hit.</p>' ],
+            [ 'Compound interest works against you on debt', '<p>The same math punishes borrowers. A credit card balance at 22% APR roughly doubles in about 3 years if you make no payments. Paying down high-interest debt is a guaranteed return equal to the interest rate.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Principal', 'The amount you start with.' ],
+            [ 'APY', 'Annual percentage yield: the effective yearly rate after compounding.' ],
+            [ 'Compounding period', 'How often earned interest is added to the balance.' ],
+            [ 'Real return', 'Return after subtracting inflation.' ],
+            [ 'Rule of 72', 'A shortcut: years to double ≈ 72 ÷ annual rate.' ],
+        ],
+        'faqs'      => [
+            [ 'How do you calculate compound interest?', 'Multiply the principal by (1 + rate ÷ compounding periods) raised to the number of periods. With regular deposits, add each deposit and grow the balance period by period. The calculator does this month by month.' ],
+            [ 'How much will $500 a month grow to in 20 years?', 'At a 7% annual return compounded monthly, $500 a month with a $10,000 start grows to about $300,851, of which $130,000 is your deposits and $170,851 is interest. Without the $10,000 start, $500 a month alone grows to about $260,000.' ],
+            [ 'What is the rule of 72?', 'Divide 72 by your annual return to estimate how many years it takes to double. At 7%, it takes about 10.3 years; at 10%, about 7.2 years.' ],
+            [ 'Is it better to compound daily or monthly?', 'Daily compounding earns slightly more, but the difference is small. The interest rate and the time you stay invested matter far more.' ],
+            [ 'What interest rate should I use?', 'Use a rate that fits your investment: around 4% for a high-yield savings account, and a conservative 5–7% for a diversified stock portfolio over decades. Test several rates, because actual returns vary every year.' ],
+            [ 'Does inflation affect compound interest?', 'Yes. Inflation reduces what your future money can buy. The inflation-adjusted value on this page shows your balance in today’s dollars.' ],
+            [ 'Should deposits be at the start or end of the month?', 'Start-of-month deposits earn interest one month sooner, so they grow slightly more. Use the option that matches when your money actually goes in.' ],
+        ],
+        'sources'   => [
+            [ 'Investor.gov (SEC): Compound interest calculator', 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' ],
+            [ 'Bankrate: Average savings account interest rates', 'https://www.bankrate.com/banking/savings/average-savings-interest-rates/' ],
+        ],
+        'related'   => [ 'retirement-savings-calculator', 'savings-goal-calculator', 'roi-calculator', '401k-calculator' ],
+    ],
+
+    /* ───────────────────────── RETIREMENT SAVINGS ───────────────────────── */
+    'retirement-savings-calculator' => [
+        'focus'     => 'retirement savings calculator',
+        'secondary' => [ 'retirement calculator', 'how much do I need to retire', 'am I saving enough for retirement', '4% rule calculator', 'retirement nest egg calculator' ],
+        'title'     => 'Retirement Savings Calculator: Am I on Track?',
+        'meta'      => 'Free retirement calculator: find how much you need to retire, whether your savings are on track after Social Security and inflation, and the extra to save each month.',
+        'excerpt'   => 'Find out how much you need to retire, whether you are on track, and how much more to save each month to close any gap.',
+        'answer'    => 'To retire at 65 with $70,000 a year in today’s dollars and $2,000 a month from Social Security, a 35-year-old needs about $2.79 million in future dollars at a 4% withdrawal rate. Saving $800 a month on top of $60,000 today projects about $1.25 million, a shortfall of about $1.54 million, which closes with roughly $1,444 more saved per month.',
+        'steps'     => [
+            'Enter your current age, retirement age, savings so far and how much you save each month.',
+            'Set an expected annual return and inflation rate. Conservative defaults are 6.5% and 3%.',
+            'Enter the yearly income you want in retirement, in today’s dollars.',
+            'Add your expected Social Security benefit per month. The average retired worker gets about $2,032 in 2026.',
+            'Pick a safe withdrawal rate. The 4% rule is the common starting point. Read whether you are on track and how much extra to save.',
+        ],
+        'formula'   => '<p><strong>Projected savings = current savings × (1 + i)<sup>n</sup> + monthly saving × [((1 + i)<sup>n</sup> − 1) ÷ i]</strong>, with i the monthly return and n the months until retirement.</p><p><strong>Income needed from savings = desired income − Social Security.</strong> That figure is inflated to the retirement date, then divided by the withdrawal rate to get the <strong>nest egg you need</strong>.</p><p><strong>Extra monthly saving = shortfall ÷ [((1 + i)<sup>n</sup> − 1) ÷ i]</strong>.</p>',
+        'example'   => '<p>Age 35, retire at 65, $60,000 saved, $800 a month, 6.5% return, 3% inflation, $70,000 a year wanted, $2,000 a month from Social Security, 4% withdrawal rate:</p><ul><li>Projected savings at 65: <strong>$1,250,483</strong> (worth $515,182 in today’s dollars)</li><li>Savings needed: <strong>$2,791,352</strong> (income gap $46,000 a year, inflated to $111,650 by age 65)</li><li>Shortfall: <strong>$1,540,869</strong></li><li>Extra to save: <strong>about $1,444 a month</strong></li><li>Income the projected savings can support: about <strong>$44,607 a year</strong> in today’s dollars, with Social Security added</li></ul>',
+        'sections'  => [
+            [ 'How much do you need to retire?', '<p>A common starting point is the 4% rule: you can withdraw about 4% of your portfolio in the first year of retirement and adjust for inflation afterward, and the money has historically lasted 30 years. That makes the target roughly 25 times the yearly income your savings must provide. The calculator subtracts Social Security first, because it covers part of your spending. Retiring earlier, living longer, or having a bear market early in retirement all argue for a lower withdrawal rate such as 3.5%.</p>' ],
+            [ 'Why inflation changes the target', '<p>Spending $70,000 a year today costs about $170,000 in 30 years at 3% inflation. That is why the nest egg needed is larger than a today’s-dollars number suggests. The “same amount in today’s dollars” figure shows what your projected balance could buy now.</p>' ],
+            [ 'Social Security in your plan', '<p>The Social Security Administration pays the average retired worker about $2,032 a month in 2026 after a 2.8% cost-of-living increase. Your benefit depends on your earnings history and the age you claim: full retirement age is 67 for people born in 1960 or later, and claiming at 62 permanently reduces it while waiting until 70 increases it. Check your estimate in your account at ssa.gov.</p>' ],
+            [ 'What to do if you are behind', '<ul><li>Raise your monthly savings, even by 1% of pay a year.</li><li>Capture any employer match first; it is an instant return.</li><li>Work two to three years longer, which adds savings, shortens the withdrawal period and raises Social Security.</li><li>Lower the target by planning a smaller retirement budget.</li><li>Use catch-up contributions from age 50: $8,000 extra to a 401(k) and $1,100 extra to an IRA in 2026.</li></ul>' ],
+            [ 'Limits of any retirement calculator', '<p>Returns are uncertain, inflation varies, and health costs and taxes change. Treat the result as a direction, not a promise, and re-run it every year. A fee-only financial planner can build a plan around your exact situation.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Nest egg', 'The savings you need at retirement to fund spending.' ],
+            [ 'Withdrawal rate', 'The percentage of your portfolio you take out each year.' ],
+            [ '4% rule', 'A guideline that a 4% first-year withdrawal, adjusted for inflation, historically lasted 30 years.' ],
+            [ 'Full retirement age', 'The age you receive your full Social Security benefit, 67 for people born in 1960 or later.' ],
+            [ 'Catch-up contribution', 'Extra retirement contributions allowed from age 50.' ],
+        ],
+        'faqs'      => [
+            [ 'How much money do I need to retire?', 'A rough rule is 25 times the yearly income you need from savings. If you want $70,000 a year and Social Security provides $24,000, you need $46,000 from savings, so about $1.15 million in today’s dollars, or more in future dollars after inflation.' ],
+            [ 'Am I saving enough for retirement?', 'Compare your projected savings with the nest egg required. In the example, $800 a month at age 35 projects $1.25 million against a need of $2.79 million, so more saving or later retirement is needed.' ],
+            [ 'What is the 4% rule?', 'It says you can withdraw 4% of your portfolio in the first year of retirement and increase that amount with inflation each year, and your money should last about 30 years based on historical data. It is a guideline, not a guarantee.' ],
+            [ 'How much will Social Security pay?', 'The average retired worker receives about $2,032 a month in 2026. Your amount depends on your earnings and when you claim. See ssa.gov for your estimate.' ],
+            [ 'What return should I assume?', 'Many planners use 5–7% a year before inflation for a diversified portfolio over decades. Use a lower number to be conservative and test several.' ],
+            [ 'How much should I save each month?', 'The calculator shows the extra monthly amount needed to reach your target. A common guideline is to save 15% of gross income, including any employer match, over a career.' ],
+            [ 'Can I retire early?', 'Lower the retirement age and watch the gap grow: you save for fewer years and need the money to last longer. Remember Medicare begins at 65, so plan for health insurance before then.' ],
+        ],
+        'sources'   => [
+            [ 'SSA: 2026 cost-of-living adjustment and average benefit', 'https://www.ssa.gov/news/en/press/releases/2025-10-24.html' ],
+            [ 'IRS: 2026 401(k) and IRA limits', 'https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500' ],
+            [ 'Investor.gov: Retirement planning', 'https://www.investor.gov/introduction-investing/getting-started/retirement-planning' ],
+        ],
+        'related'   => [ '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'savings-goal-calculator' ],
+    ],
+
+    /* ───────────────────────── 401(k) ───────────────────────── */
+    '401k-calculator' => [
+        'focus'     => '401k calculator',
+        'secondary' => [ '401k calculator with employer match', '401k contribution limits 2026', '401k growth calculator', '401k catch-up contribution', 'how much should I contribute to my 401k' ],
+        'title'     => '401(k) Calculator with Employer Match (2026)',
+        'meta'      => 'Free 401(k) calculator: project your balance at retirement with employer match, salary raises and the 2026 limits ($24,500, plus catch-up from age 50).',
+        'excerpt'   => 'Project your 401(k) balance with employer match, yearly raises and the 2026 contribution limits, and see any match you are leaving behind.',
+        'answer'    => 'A 35-year-old earning $90,000, contributing 8% with a 50% match up to 6% of salary, a 3% raise each year and a 7% return reaches about $1.63 million by 65, which is about $672,647 in today’s dollars. The 2026 employee limit is $24,500, plus $8,000 catch-up at 50 and $11,250 at ages 60–63.',
+        'steps'     => [
+            'Enter your age, retirement age, salary and current 401(k) balance.',
+            'Enter the percentage of salary you contribute.',
+            'Enter your employer match: the percentage they match, and the cap as a percentage of your salary (for example 50% up to 6%).',
+            'Set your expected raise, investment return and inflation.',
+            'Check the “match left unclaimed” result and the contribution limit for your age.',
+        ],
+        'formula'   => '<p><strong>Your contribution = salary × contribution %</strong>, capped at the IRS limit for your age.</p><p><strong>Employer match = the smaller of (salary × your %) and (salary × match cap %), multiplied by the match rate.</strong> For a 50% match up to 6%, contributing 6% or more of pay earns an employer contribution of 3% of salary.</p><p>Each year the balance grows by the return and the contributions are added; the salary then rises by your raise percentage.</p>',
+        'example'   => '<p>Age 35, retire at 65, $90,000 salary, $40,000 balance, 8% contribution, employer matches 50% up to 6%, 3% raises, 7% return, 3% inflation:</p><ul><li>This year you contribute <strong>$7,200</strong> and your employer adds <strong>$2,700</strong></li><li>You capture the full match (nothing left unclaimed)</li><li>Balance at 65: <strong>$1,632,691</strong>, or <strong>$672,647</strong> in today’s dollars</li><li>Of that, you contribute $342,543 over 30 years and growth is about $1,121,694</li></ul><p>If you contributed only 3% of salary, you would capture just half the employer match and leave $1,350 a year unclaimed.</p>',
+        'sections'  => [
+            [ '2026 401(k) contribution limits', '<p>The IRS raised the 2026 employee deferral limit to <strong>$24,500</strong> for 401(k), 403(b), most 457 plans and the Thrift Savings Plan. People 50 and older can add a catch-up of <strong>$8,000</strong>, for $32,500 in total. Under SECURE 2.0, ages 60 to 63 can add a higher catch-up of <strong>$11,250</strong>, for $35,750. IRAs have a separate limit of $7,500 in 2026, with a $1,100 catch-up. Higher earners must make catch-up contributions as Roth contributions starting in 2026; check with your plan.</p>' ],
+            [ 'Get the full employer match', '<p>An employer match is an immediate return on your money. If your employer matches 50% of the first 6% you contribute, contributing 6% earns a free 3% of salary every year. Not contributing enough to earn the full match leaves free money behind, so this is the first priority for most savers. Check your plan’s vesting schedule: you may need to stay several years before the match is fully yours.</p>' ],
+            [ 'Traditional or Roth 401(k)?', '<p>Traditional contributions reduce your taxable income now and are taxed when you withdraw. Roth contributions are made after tax and grow tax-free. A traditional 401(k) tends to favor people who expect a lower tax rate in retirement; a Roth often favors those who expect a higher one or want tax-free income later. Many people split between the two.</p>' ],
+            [ 'How much should you contribute?', '<p>A common target is 15% of gross income including the employer match. If that is too much now, start at the match level and raise your contribution by 1% each year or with every raise. Increasing contributions automatically is one of the easiest ways to build wealth.</p>' ],
+            [ 'Fees and investments', '<p>Plan fees reduce growth. Compare the expense ratios of your plan’s funds: low-cost index funds often charge under 0.2%. A 1% annual fee difference can cost hundreds of thousands of dollars over a career, so check the fee disclosure in your plan documents.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Employer match', 'Money your employer contributes based on what you contribute.' ],
+            [ 'Vesting', 'The schedule that decides when employer contributions become yours.' ],
+            [ 'Elective deferral limit', 'The most an employee can contribute from pay in a year ($24,500 in 2026).' ],
+            [ 'Catch-up contribution', 'Extra contributions allowed from age 50 ($8,000 in 2026).' ],
+            [ 'Roth 401(k)', 'A 401(k) option funded with after-tax money, with tax-free qualified withdrawals.' ],
+        ],
+        'faqs'      => [
+            [ 'What is the 401(k) contribution limit for 2026?', '$24,500 for employee contributions. People 50 and older can add $8,000, and those aged 60 to 63 can add $11,250 instead, under SECURE 2.0.' ],
+            [ 'How much should I contribute to my 401(k)?', 'At least enough to earn the full employer match, and ideally around 15% of gross income including the match. Increase by 1% a year if you can’t reach that right away.' ],
+            [ 'How does an employer 401(k) match work?', 'The employer adds money based on what you contribute, such as 50 cents for every dollar you contribute up to 6% of your salary. Contributing 6% of $90,000 ($5,400) earns a $2,700 match.' ],
+            [ 'How much will my 401(k) be worth at retirement?', 'It depends on your salary, contributions, match, return and years. In the example above, a 35-year-old contributing 8% with a match reaches about $1.63 million by 65, about $672,647 in today’s dollars.' ],
+            [ 'Is a Roth 401(k) better than a traditional 401(k)?', 'Neither is always better. Traditional gives a tax break now; Roth gives tax-free withdrawals later. Your expected future tax rate and need for flexibility decide it.' ],
+            [ 'What happens to my 401(k) if I change jobs?', 'You can leave it in the old plan if the balance allows, roll it into your new employer’s plan or an IRA, or cash out. Cashing out before 59½ usually triggers income tax and a 10% penalty.' ],
+            [ 'Can I withdraw from my 401(k) early?', 'Withdrawals before age 59½ generally face a 10% penalty plus income tax, with some exceptions. Loans and hardship withdrawals have their own rules.' ],
+        ],
+        'sources'   => [
+            [ 'IRS: 401(k) limit increases to $24,500 for 2026', 'https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500' ],
+            [ 'IRS: Retirement topics, catch-up contributions', 'https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-catch-up-contributions' ],
+        ],
+        'related'   => [ 'retirement-savings-calculator', 'compound-interest-calculator', 'income-tax-calculator', 'net-worth-calculator' ],
+    ],
+
+    /* ───────────────────────── SAVINGS GOAL ───────────────────────── */
+    'savings-goal-calculator' => [
+        'focus'     => 'savings goal calculator',
+        'secondary' => [ 'how long to save for a goal', 'savings calculator with interest', 'how much to save per month', 'savings plan calculator', 'high yield savings calculator' ],
+        'title'     => 'Savings Goal Calculator: How Long to Save',
+        'meta'      => 'Free savings goal calculator: find how long it takes to reach your goal, or how much to save each month to hit it by a date, with interest from your account.',
+        'excerpt'   => 'Find out how long it takes to reach a savings goal, or exactly how much to save each month to hit it by your deadline.',
+        'answer'    => 'To save $20,000 starting with $2,500 in an account paying 4% APY, saving $400 a month gets you there in 3 years 5 months, with about $1,479 coming from interest. To reach the same goal in exactly 3 years, you need about $451 a month.',
+        'steps'     => [
+            'Enter your goal amount and what you have saved already.',
+            'Enter the APY of the account where you keep the money.',
+            'Enter what you can save per month to see when you will reach the goal.',
+            'Enter a deadline in months to see the monthly amount you need.',
+            'Compare the two and adjust either number until the plan fits your budget.',
+        ],
+        'formula'   => '<p><strong>Time to goal:</strong> each month the balance becomes balance × (1 + i) + deposit, where i is the monthly rate <strong>(1 + APY)<sup>1/12</sup> − 1</strong>, repeated until the balance reaches the goal.</p><p><strong>Monthly deposit for a deadline:</strong> <strong>M = (Goal − Current × (1 + i)<sup>n</sup>) × i ÷ ((1 + i)<sup>n</sup> − 1)</strong>, where n is the number of months. If the account earns 0%, this simplifies to (Goal − Current) ÷ n.</p>',
+        'example'   => '<p>Goal $20,000, $2,500 saved, 4% APY:</p><ul><li>Saving <strong>$400 a month</strong>: reached in <strong>3 years 5 months</strong> (41 months), with $16,400 in deposits and about $1,479 in interest</li><li>To reach it in <strong>36 months</strong>: save about <strong>$451 a month</strong></li><li>With no interest at all, 36 months would require $486 a month, so a 4% account saves you about $35 a month</li></ul>',
+        'sections'  => [
+            [ 'Set a goal you can measure', '<p>Good savings goals have a number, a deadline and a reason: “$20,000 for a house down payment in 3 years.” The calculator turns the goal into a monthly amount. If the amount is too high, you have three levers: lengthen the deadline, lower the goal, or raise your income or savings. Seeing the options side by side makes the trade-off concrete.</p>' ],
+            [ 'Where to keep savings you will need soon', '<p>Money you need within a few years belongs in insured, low-risk accounts, not the stock market. High-yield savings accounts, money market accounts and certificates of deposit are FDIC-insured up to $250,000 per depositor, per bank. In October 2026, the best high-yield accounts pay up to about 4.5% APY, while the national average savings rate is under 1%, so shopping around is worth real money.</p>' ],
+            [ 'APY vs APR', '<p>APY includes the effect of compounding; APR does not. When comparing savings accounts, compare APY. This calculator takes APY and compounds monthly.</p>' ],
+            [ 'Make saving automatic', '<p>The most reliable way to hit a goal is to automate it: set a transfer for payday into a separate savings account. Naming the account after the goal helps, and so does raising the transfer each time your pay rises.</p>' ],
+        ],
+        'terms'     => [
+            [ 'APY', 'Annual percentage yield, including compounding.' ],
+            [ 'FDIC insurance', 'Federal insurance on deposits up to $250,000 per depositor, per bank, per ownership category.' ],
+            [ 'High-yield savings account', 'A savings account that pays well above the national average, often at online banks.' ],
+            [ 'CD', 'Certificate of deposit: a fixed-rate deposit locked for a set term.' ],
+        ],
+        'faqs'      => [
+            [ 'How long will it take to save $20,000?', 'Starting with $2,500 and saving $400 a month in a 4% APY account, it takes 3 years 5 months. Saving more per month shortens it; saving $451 a month reaches it in 3 years.' ],
+            [ 'How much should I save each month to reach my goal?', 'Subtract what you have saved from the goal, then use the deadline formula that includes interest. The calculator does it for you: for $20,000 in 36 months from $2,500 at 4%, it is about $451 a month.' ],
+            [ 'Does interest make a big difference?', 'Over a few years, modestly. On a three-year goal at 4%, interest provides about $1,479, which saves roughly $35 a month compared with earning nothing. Over longer periods the effect grows.' ],
+            [ 'What is a good savings rate?', 'The best online high-yield savings accounts pay up to about 4.5% APY in October 2026. The Bankrate national average is about 0.66% and the FDIC reports a lower figure, so compare accounts.' ],
+            [ 'Is my savings account insured?', 'Deposits at FDIC-insured banks are protected up to $250,000 per depositor, per bank, per ownership category. Credit union deposits are insured similarly by the NCUA.' ],
+            [ 'Should I invest instead of save?', 'For goals within about five years, savings accounts and CDs protect your principal. For long-term goals like retirement, investing has historically earned more, with more risk.' ],
+        ],
+        'sources'   => [
+            [ 'Bankrate: Average savings account interest rates', 'https://www.bankrate.com/banking/savings/average-savings-interest-rates/' ],
+            [ 'FDIC: National rates and rate caps', 'https://www.fdic.gov/national-rates-and-rate-caps' ],
+        ],
+        'related'   => [ 'emergency-fund-calculator', 'compound-interest-calculator', '50-30-20-budget-calculator', 'net-worth-calculator' ],
+    ],
+
+    /* ───────────────────────── EMERGENCY FUND ───────────────────────── */
+    'emergency-fund-calculator' => [
+        'focus'     => 'emergency fund calculator',
+        'secondary' => [ 'how much emergency fund do I need', 'emergency fund 3 to 6 months', 'where to keep emergency fund', 'how to build an emergency fund', 'emergency savings goal' ],
+        'title'     => 'Emergency Fund Calculator: How Much to Save',
+        'meta'      => 'Free emergency fund calculator: add up your essential costs, choose 3 to 12 months of cover, and see your target, progress and how long it takes to build.',
+        'excerpt'   => 'Add up your essential monthly costs to see how big your emergency fund should be and how long it will take to build.',
+        'answer'    => 'Most households should keep 3 to 6 months of essential expenses in an emergency fund. With $3,200 of essential costs a month, 6 months means a $19,200 target. Starting with $2,000 and adding $300 a month at 4% APY, you reach it in about 4 years 4 months.',
+        'steps'     => [
+            'Enter your essential monthly costs: housing, utilities, groceries, insurance, minimum debt payments and transportation.',
+            'Choose how many months you want to cover: 3 for stable dual incomes, 6 as a typical goal, 9 or 12 for one income, variable pay or self-employment.',
+            'Enter what you have in emergency savings today.',
+            'Enter what you can add each month and your account’s APY.',
+            'Read your target, the gap, and the time to reach it.',
+        ],
+        'formula'   => '<p><strong>Target = essential monthly expenses × months of coverage</strong></p><p><strong>Gap = target − current savings.</strong> The time to reach the target steps forward month by month: balance × (1 + monthly interest) + your monthly deposit, until it reaches the target.</p><p>Essential expenses are costs you must pay even without income: housing, utilities, food, insurance, minimum debt payments, transportation. Leave out dining out, subscriptions and travel.</p>',
+        'example'   => '<p>Essential costs: rent $1,500, utilities and phone $300, groceries $500, insurance and health $350, minimum debt payments $300, transportation $250 = <strong>$3,200 a month</strong>.</p><ul><li>6 months of cover: target <strong>$19,200</strong></li><li>Saved today: $2,000, so you have 0.6 months of cover and still need <strong>$17,200</strong></li><li>Adding $300 a month at 4% APY: the target is reached in <strong>4 years 4 months</strong></li><li>A smaller first step: one month of expenses is $3,200</li></ul>',
+        'sections'  => [
+            [ 'How big should your emergency fund be?', '<p>The usual advice is three to six months of essential expenses. Choose the longer end if you have one income, variable or commission pay, dependents, a home with maintenance risk, or work in a field where a job search takes time. Dual-income households with stable jobs and good insurance can sometimes accept three months. Self-employed people often aim for nine to twelve.</p>' ],
+            [ 'Start small', '<p>The full target can feel out of reach. Begin with a starter fund of $500 to $1,000 to cover a flat tire or small medical bill, then grow to one month of expenses, then three, then your final goal. Each step reduces the chance you reach for a credit card.</p>' ],
+            [ 'Where to keep it', '<p>An emergency fund should be safe and accessible: a high-yield savings account or money market account at an FDIC-insured bank, separate from your everyday checking. High-yield accounts pay up to about 4.5% APY in October 2026 against a national average under 1%. Avoid investing your emergency fund in stocks, because a market drop and a job loss often arrive together.</p>' ],
+            [ 'What counts as an emergency', '<p>Job loss, urgent medical or dental bills, essential car or home repairs, and emergency travel. Sales, vacations and predictable annual costs (insurance premiums, holiday gifts) are not emergencies; save for them in separate sinking funds. Replenish the fund after you use it.</p>' ],
+            [ 'Emergency fund or pay off debt first?', '<p>A common order is: a starter fund of about $1,000, then pay off high-interest debt, then build the full three to six months. Without any cushion, a surprise bill goes on a credit card and sets you back. If your debt rate is above 15% to 20%, paying it down is a very high return.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Essential expenses', 'Costs you must pay even without income.' ],
+            [ 'Starter fund', 'A small first emergency cushion, often $500 to $1,000.' ],
+            [ 'Sinking fund', 'Money set aside for a known future cost.' ],
+            [ 'Liquid', 'Easy to turn into cash quickly without losing value.' ],
+        ],
+        'faqs'      => [
+            [ 'How much emergency fund do I need?', 'Three to six months of essential expenses is the common guideline. With $3,200 of essentials a month, that is $9,600 to $19,200. One income or variable pay calls for six to twelve months.' ],
+            [ 'Where should I keep my emergency fund?', 'In an FDIC-insured high-yield savings or money market account, separate from daily spending. It should be safe and available within a day or two.' ],
+            [ 'Should I invest my emergency fund?', 'No. Emergencies often happen when markets are down. Keep it in cash-like, insured accounts.' ],
+            [ 'How long will it take to build an emergency fund?', 'With $2,000 saved and $300 added monthly at 4% APY, a $19,200 fund takes about 4 years 4 months. Adding $600 a month cuts it to roughly 2 years 4 months.' ],
+            [ 'Should I pay off debt or build an emergency fund first?', 'Build a small starter fund first (around $1,000), then focus on high-interest debt, then fill the full fund. This avoids new debt when surprises happen.' ],
+            [ 'Do I count my car payment and credit card minimums?', 'Yes, include minimum debt payments and any bill you must pay to keep your home, transportation and insurance in place.' ],
+            [ 'When should I use my emergency fund?', 'For true emergencies such as job loss, urgent medical bills or essential repairs. Then rebuild it as a priority.' ],
+        ],
+        'sources'   => [
+            [ 'CFPB: An essential guide to building an emergency fund', 'https://www.consumerfinance.gov/an-essential-guide-to-building-an-emergency-fund/' ],
+            [ 'FDIC: National rates and rate caps', 'https://www.fdic.gov/national-rates-and-rate-caps' ],
+            [ 'Bankrate: Average savings account interest rates', 'https://www.bankrate.com/banking/savings/average-savings-interest-rates/' ],
+        ],
+        'related'   => [ 'savings-goal-calculator', '50-30-20-budget-calculator', 'debt-consolidation-calculator', 'net-worth-calculator' ],
+    ],
+
+    /* ───────────────────────── ROI ───────────────────────── */
+    'roi-calculator' => [
+        'focus'     => 'ROI calculator',
+        'secondary' => [ 'return on investment calculator', 'annualized return calculator', 'how to calculate ROI', 'investment return calculator', 'CAGR calculator' ],
+        'title'     => 'ROI Calculator: Return & Annualized Return',
+        'meta'      => 'Free ROI calculator: get total return, net profit, annualized return (CAGR) and money multiple for any investment, including fees, income and inflation.',
+        'excerpt'   => 'Calculate return on investment, net profit and annualized return, including fees, dividends and inflation.',
+        'answer'    => 'ROI measures profit as a percentage of what you invested: (final value + income − costs − amount invested) ÷ amount invested. Turning $10,000 into $14,500 over 3 years is a 45% total ROI, a $4,500 profit and an annualized return of 13.19% a year.',
+        'steps'     => [
+            'Enter the amount you invested and the final value (or sale price).',
+            'Add any income received, such as dividends, interest or rent, and any fees or costs.',
+            'Enter how long you held the investment in years and months.',
+            'Optionally add yearly inflation to see the return after inflation.',
+            'Read the total ROI, net profit, annualized return and money multiple.',
+        ],
+        'formula'   => '<p><strong>ROI = (final value + income − costs − initial investment) ÷ initial investment × 100</strong></p><p><strong>Annualized return (CAGR) = (ending value ÷ initial investment)<sup>1 ÷ years</sup> − 1</strong>, where ending value includes income and subtracts costs.</p><p><strong>Money multiple = ending value ÷ initial investment.</strong> <strong>Real return = (1 + annualized return) ÷ (1 + inflation) − 1.</strong></p>',
+        'example'   => '<p>$10,000 invested, worth $14,500 after 3 years, no income or fees:</p><ul><li>Net profit: <strong>$4,500</strong></li><li>Total ROI: <strong>45%</strong></li><li>Money multiple: <strong>1.45x</strong></li><li>Annualized return: <strong>13.19% a year</strong> (1.45<sup>1/3</sup> − 1)</li></ul><p>If the same investment fell to $5,000, ROI is −50%, and it would then need to gain 100% to get back to $10,000.</p>',
+        'sections'  => [
+            [ 'Why total ROI can mislead', '<p>A 45% ROI sounds great, but over what period? 45% in 3 years is very different from 45% in 15 years. Annualized return (CAGR) puts investments of different lengths on the same footing. Always compare annualized returns, not total ROI, when the holding periods differ.</p>' ],
+            [ 'Include fees, income and taxes', '<p>True return counts everything: purchase and sale commissions, management fees, dividends or rent received, and, for a complete picture, taxes. Enter fees and income in the calculator to see the net effect. A 1% yearly fee can reduce your result by a quarter or more over decades.</p>' ],
+            [ 'Losses need bigger gains to recover', '<p>A 50% loss requires a 100% gain to break even, and a 20% loss requires a 25% gain. The calculator shows the gain needed to recover when your result is negative.</p>' ],
+            [ 'ROI, risk and inflation', '<p>ROI says nothing about risk: two investments with the same ROI can have very different volatility. Inflation also erodes returns; the “annualized after inflation” figure shows the growth in buying power. For a longer discussion of risk, compare your result with a low-risk benchmark such as a high-yield savings account.</p>' ],
+        ],
+        'terms'     => [
+            [ 'ROI', 'Return on investment: profit divided by the amount invested.' ],
+            [ 'CAGR', 'Compound annual growth rate: the steady yearly rate that gives the same result.' ],
+            [ 'Money multiple', 'Ending value divided by the amount invested.' ],
+            [ 'Real return', 'Return after adjusting for inflation.' ],
+        ],
+        'faqs'      => [
+            [ 'How do you calculate ROI?', 'Subtract your initial investment from the final value (adding income and subtracting costs), divide by the initial investment and multiply by 100. For $10,000 grown to $14,500, ROI is 45%.' ],
+            [ 'What is a good ROI?', 'It depends on risk and time. Broad stock market indexes have returned roughly 10% a year before inflation over the long run, but with large swings. Compare any investment with that benchmark and with low-risk savings rates.' ],
+            [ 'What is the difference between ROI and annualized return?', 'ROI is the total return over the whole holding period. Annualized return converts it to a yearly rate, which lets you compare investments held for different lengths of time.' ],
+            [ 'How do I calculate ROI on real estate?', 'Include purchase price, closing costs, improvements, rental income and selling costs, then use the same formula. For leveraged real estate, return on the cash you put in is the more useful measure.' ],
+            [ 'Can ROI be negative?', 'Yes. A negative ROI means a loss. A −50% ROI means the investment lost half its value and would need to double to recover.' ],
+            [ 'Does ROI include taxes?', 'Not by default. Capital gains and income taxes lower your after-tax return, so use our capital gains calculator to estimate them.' ],
+        ],
+        'sources'   => [
+            [ 'Investor.gov (SEC): Compound interest calculator', 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' ],
+            [ 'IRS Topic 409: Capital gains and losses', 'https://www.irs.gov/taxtopics/tc409' ],
+        ],
+        'related'   => [ 'compound-interest-calculator', 'capital-gains-tax-calculator', 'net-worth-calculator', 'retirement-savings-calculator' ],
+    ],
+
+    /* ───────────────────────── NET WORTH ───────────────────────── */
+    'net-worth-calculator' => [
+        'focus'     => 'net worth calculator',
+        'secondary' => [ 'how to calculate net worth', 'average net worth by age', 'median net worth by age', 'assets minus liabilities', 'what is a good net worth' ],
+        'title'     => 'Net Worth Calculator with Age Comparison',
+        'meta'      => 'Free net worth calculator: add your assets and debts, see your net worth, debt-to-asset ratio and how you compare with the median for your age (Federal Reserve data).',
+        'excerpt'   => 'Add up what you own and what you owe to see your net worth, and compare it with the median for your age group.',
+        'answer'    => 'Net worth is everything you own (assets) minus everything you owe (liabilities). A household with $463,000 of assets and $267,000 of debt has a net worth of $196,000. The Federal Reserve’s 2022 survey puts the median net worth at $135,300 for ages 35 to 44, so that household is about $60,700 above the median.',
+        'steps'     => [
+            'List your assets: cash and savings, taxable investments, retirement accounts, home value, vehicles and anything else you own.',
+            'List your liabilities: mortgage, auto loans, student loans, credit cards and other debts.',
+            'Choose your age group to see the median for comparison.',
+            'Read your net worth, your debt as a percentage of assets and your net worth without home equity.',
+            'Recalculate every few months to track progress.',
+        ],
+        'formula'   => '<p><strong>Net worth = total assets − total liabilities</strong></p><p><strong>Debt-to-asset ratio = total liabilities ÷ total assets.</strong> <strong>Net worth excluding home equity = net worth − (home value − mortgage)</strong>, which shows what you have built outside your house.</p>',
+        'example'   => '<p>Assets: cash $15,000, taxable investments $20,000, retirement $60,000, home $350,000, vehicles $18,000 = <strong>$463,000</strong>. Liabilities: mortgage $240,000, auto loan $9,000, student loans $15,000, credit cards $3,000 = <strong>$267,000</strong>.</p><ul><li>Net worth: <strong>$196,000</strong></li><li>Debt as a share of assets: <strong>57.7%</strong></li><li>Net worth without home equity: <strong>$86,000</strong></li><li>Median for ages 35–44: $135,300, so this household is <strong>$60,700 above the median</strong></li></ul>',
+        'sections'  => [
+            [ 'What counts as an asset or a liability', '<p>Assets are things of value you own that you could sell: bank balances, investments, retirement accounts, real estate, vehicles and valuables. Use realistic market values, not what you paid. Liabilities are everything you owe: mortgage, car loans, student loans, credit card balances, personal loans and unpaid bills. Do not count future income or Social Security.</p>' ],
+            [ 'Median net worth by age', '<p>The Federal Reserve’s 2022 Survey of Consumer Finances reports these medians: under 35, $39,040; 35 to 44, $135,300; 45 to 54, $246,700; 55 to 64, $364,270; 65 to 74, $410,000; 75 and older, $334,700. The median is the midpoint, so half of households have more and half have less. The average is far higher because a few very wealthy households pull it up, so the median is the fairer comparison. These numbers are a benchmark, not a target; your income, region and goals matter more.</p>' ],
+            [ 'How to grow your net worth', '<ul><li>Spend less than you earn and invest the difference.</li><li>Pay down high-interest debt first.</li><li>Capture any employer retirement match.</li><li>Keep an emergency fund so a surprise does not become debt.</li><li>Invest consistently in low-cost diversified funds.</li></ul>' ],
+            [ 'Why track it', '<p>Net worth is a scoreboard that moves slowly. A single month of market ups and downs matters little. Checking every quarter or once a year shows whether your habits are working, and the debt-to-asset ratio shows how much of what you own is truly yours.</p>' ],
+            [ 'A negative net worth is common', '<p>Many young people, especially with student loans, start with a negative net worth. It improves as you pay down debt and build savings. Focus on the trend, not the number.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Asset', 'Something you own that has value.' ],
+            [ 'Liability', 'Money you owe.' ],
+            [ 'Liquid net worth', 'Net worth in cash and investments you can sell quickly.' ],
+            [ 'Median', 'The middle value: half of households have more, half less.' ],
+            [ 'Home equity', 'Home value minus the mortgage balance.' ],
+        ],
+        'faqs'      => [
+            [ 'How do you calculate net worth?', 'Add up everything you own, subtract everything you owe, and the result is your net worth. For $463,000 of assets and $267,000 of debt, net worth is $196,000.' ],
+            [ 'What is the median net worth by age?', 'From the Federal Reserve’s 2022 Survey of Consumer Finances: under 35, $39,040; 35–44, $135,300; 45–54, $246,700; 55–64, $364,270; 65–74, $410,000; 75 and older, $334,700.' ],
+            [ 'What is a good net worth?', 'A common benchmark is the median for your age group, but a good net worth depends on your goals. A simple guide is to aim to have saved about one times your salary by 30 and about ten times by retirement; treat this as a rough guide only.' ],
+            [ 'Should I include my home in net worth?', 'Yes, at its market value, with the mortgage as a liability. Many people also track net worth without home equity to see their liquid wealth.' ],
+            [ 'Can net worth be negative?', 'Yes, when debts exceed assets. This is common early in a career, especially with student loans, and improves as you pay debt down and save.' ],
+            [ 'How often should I calculate net worth?', 'Every quarter or twice a year is plenty. Daily changes in investment values are not worth tracking.' ],
+            [ 'How is net worth different from income?', 'Income is what you earn each year. Net worth is what you have accumulated. A high earner can have a low net worth if they spend everything.' ],
+        ],
+        'sources'   => [
+            [ 'Federal Reserve: Survey of Consumer Finances', 'https://www.federalreserve.gov/econres/scfindex.htm' ],
+        ],
+        'related'   => [ 'retirement-savings-calculator', 'emergency-fund-calculator', 'debt-consolidation-calculator', 'savings-goal-calculator' ],
+    ],
+
+    /* ───────────────────────── 50/30/20 ───────────────────────── */
+    '50-30-20-budget-calculator' => [
+        'focus'     => '50/30/20 budget calculator',
+        'secondary' => [ '50 30 20 rule', '50/30/20 budget', 'budget calculator', 'needs wants savings calculator', 'how to budget monthly income' ],
+        'title'     => '50/30/20 Budget Calculator',
+        'meta'      => 'Free 50/30/20 budget calculator: split your take-home pay into needs, wants and savings, adjust the percentages, and compare with what you actually spend.',
+        'excerpt'   => 'Split your take-home pay into needs, wants and savings with the 50/30/20 rule, then compare it with your real spending.',
+        'answer'    => 'The 50/30/20 rule splits your after-tax income into 50% needs, 30% wants and 20% savings and debt repayment. On $5,000 of monthly take-home pay, that is $2,500 for needs, $1,500 for wants and $1,000 for savings, or $12,000 saved a year.',
+        'steps'     => [
+            'Enter your monthly take-home pay after taxes and payroll deductions.',
+            'Keep the default 50 / 30 / 20 split or change the percentages. They must total 100%.',
+            'Optionally enter what you actually spend on needs, wants and savings.',
+            'Compare your spending with the targets and see where you are over or under.',
+            'Adjust the plan until it fits your life and your goals.',
+        ],
+        'formula'   => '<p><strong>Needs = take-home pay × 50%</strong>, <strong>Wants = take-home pay × 30%</strong>, <strong>Savings and debt payoff = take-home pay × 20%</strong>.</p><p>Compare each target with your actual spending: <strong>difference = actual − target</strong>. For needs and wants, a negative difference means you are under budget; for savings, a positive difference means you are saving more than planned.</p>',
+        'example'   => '<p>Monthly take-home pay of $5,000:</p><table><thead><tr><th>Category</th><th>Share</th><th>Monthly</th></tr></thead><tbody><tr><td>Needs</td><td>50%</td><td>$2,500</td></tr><tr><td>Wants</td><td>30%</td><td>$1,500</td></tr><tr><td>Savings and extra debt payments</td><td>20%</td><td>$1,000</td></tr></tbody></table><p>That is <strong>$12,000 a year</strong> of savings. If you spend $2,800 on needs, you are $300 over the needs target; the calculator suggests shifting some from wants.</p>',
+        'sections'  => [
+            [ 'What counts as a need, a want or savings', '<p><strong>Needs</strong> are costs you must pay: rent or mortgage, utilities, groceries, insurance, transportation to work, and minimum debt payments. <strong>Wants</strong> are optional: dining out, streaming, travel, hobbies, upgrades. <strong>Savings</strong> includes your emergency fund, retirement contributions and extra debt payments above the minimum. If a category is unclear, ask whether you could skip it for a month without serious consequences.</p>' ],
+            [ 'Where the rule comes from', '<p>Senator Elizabeth Warren and her daughter Amelia Warren Tyagi popularized the 50/30/20 rule in their 2005 book <em>All Your Worth</em>. It was designed as a simple starting point, not a law. It works best as a quick check that your spending is roughly balanced.</p>' ],
+            [ 'Adjusting for your situation', '<p>In high-cost cities, needs can take 60% or more of take-home pay. A 60/20/20 or 60/10/30 split is fine as long as savings stay at a level that builds an emergency fund and retirement. If your income is low, 70/20/10 may be realistic at first. If you have high-interest debt, you can move wants into debt payments for a time.</p>' ],
+            [ 'Use take-home pay, not gross', '<p>The rule applies to income after taxes, so use the amount that lands in your bank account. If you contribute to a 401(k) through payroll, include it as savings even though it never reaches your checking account, or add it back to your income to keep the math honest.</p>' ],
+            [ 'Tips to make it work', '<ul><li>Automate your savings on payday so you spend what is left.</li><li>Review your last three months of statements to find your real numbers.</li><li>Trim the biggest needs first: housing, transport and insurance.</li><li>Revisit the budget whenever your income or expenses change.</li></ul>' ],
+        ],
+        'terms'     => [
+            [ 'Take-home pay', 'Income after taxes and payroll deductions.' ],
+            [ 'Needs', 'Essential costs you must pay.' ],
+            [ 'Wants', 'Optional spending.' ],
+            [ 'Zero-based budget', 'A method where every dollar is assigned a job.' ],
+        ],
+        'faqs'      => [
+            [ 'What is the 50/30/20 rule?', 'A budgeting guideline that divides after-tax income into 50% needs, 30% wants and 20% savings and debt repayment.' ],
+            [ 'How do I calculate 50/30/20 on my income?', 'Multiply your monthly take-home pay by 0.5, 0.3 and 0.2. For $5,000, that is $2,500, $1,500 and $1,000.' ],
+            [ 'Is rent a need or a want?', 'Housing is a need. If your rent is far above the 50% needs target, consider whether a cheaper home or roommates would help.' ],
+            [ 'Where does debt payoff go?', 'Minimum payments are needs. Extra payments above the minimum count toward the 20% savings and debt category.' ],
+            [ 'Do I use gross or net income?', 'Net, meaning take-home pay after taxes and payroll deductions.' ],
+            [ 'What if I cannot afford 20% savings?', 'Start with what you can, even 5% or 10%, and raise it as income grows. A smaller regular amount beats nothing.' ],
+            [ 'Is the 50/30/20 rule right for everyone?', 'No. It is a starting point. High cost of living, low income or large debts may call for different percentages.' ],
+        ],
+        'sources'   => [
+            [ 'CFPB: Budgeting tools and guides', 'https://www.consumerfinance.gov/consumer-tools/budgeting/' ],
+        ],
+        'related'   => [ 'emergency-fund-calculator', 'savings-goal-calculator', 'debt-consolidation-calculator', 'net-worth-calculator' ],
+    ],
+
+    ];
+}
