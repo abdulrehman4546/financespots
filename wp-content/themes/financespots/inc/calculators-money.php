@@ -644,3 +644,170 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   11. PROPERTY TAX CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_property_tax() { ?>
+<div class="fsc-wrap" id="fs-pt">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'pt-value', 'Home market value ($)', 400000, [ 'min' => 1000, 'step' => 5000 ] ); ?>
+    <?php fsl_field( 'pt-rate', 'Property tax rate (% of assessed value)', 1.0, [ 'min' => 0, 'max' => 5, 'step' => 0.01, 'hint' => 'Check your county assessor’s rate. Effective rates range from about 0.3% to over 2% depending on the state and county.' ] ); ?>
+    <?php fsl_field( 'pt-ratio', 'Assessment ratio (% of market value)', 100, [ 'min' => 1, 'max' => 100, 'step' => 1, 'hint' => 'Some areas assess at a fraction of market value. Use 100 if unsure.' ] ); ?>
+    <?php fsl_field( 'pt-exempt', 'Exemptions, such as homestead ($)', 0, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_field( 'pt-growth', 'Yearly increase in assessed value (%)', 3, [ 'min' => 0, 'max' => 15, 'step' => 0.1, 'hint' => 'Some states cap annual increases for homesteads.' ] ); ?>
+    <?php fsl_field( 'pt-years', 'Project for (years)', 10, [ 'min' => 1, 'max' => 40, 'step' => 1 ] ); ?>
+    <button type="button" class="fsc-btn" id="pt-go">Calculate property tax</button>
+    <p class="fsl-error" id="pt-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="pt-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'pt-annual', 'Property tax per year', 'primary' );
+      fsl_card( 'pt-month', 'Per month (escrow amount)' );
+      fsl_card( 'pt-assessed', 'Taxable assessed value' );
+      fsl_card( 'pt-mill', 'Rate per $1,000 of value' );
+      fsl_card( 'pt-total', 'Total over the projection', 'gold' );
+      fsl_card( 'pt-last', 'Tax in the final year', 'secondary' );
+      ?>
+    </div>
+    <p class="fsl-note" id="pt-note"></p>
+  </div>
+</div>
+<div id="pt-tbl" style="display:none;margin-top:1.5rem">
+  <h3 class="fsl-h3">Year-by-year projection</h3>
+  <div class="fsc-table-wrap fsl-sched-wrap"><table class="fsc-table fsl-cmp"><thead><tr><th>Year</th><th>Assessed value</th><th>Tax</th><th>Per month</th></tr></thead><tbody id="pt-body"></tbody></table></div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var v=$('pt-value'), rate=$('pt-rate')/100, ratio=$('pt-ratio')/100, ex=$('pt-exempt'), g=$('pt-growth')/100, Y=Math.max(1,Math.round($('pt-years')));
+    if(!FSL.valid(v>0,'pt-err','Enter your home value.'))return;
+    var assessed=Math.max(v*ratio-ex,0), tax=assessed*rate, rows='', total=0, a=v*ratio, last=0;
+    for(var y=1;y<=Y;y++){ var t=Math.max(a-ex,0)*rate; total+=t; last=t; rows+='<tr><td>'+y+'</td><td>'+M(Math.max(a-ex,0))+'</td><td>'+M(t)+'</td><td>'+M(t/12)+'</td></tr>'; a*=1+g; }
+    FSL.set('pt-annual',M(tax)); FSL.set('pt-month',M(tax/12)+'/mo'); FSL.set('pt-assessed',M(assessed)); FSL.set('pt-mill','$'+(rate*ratio*1000).toFixed(2));
+    FSL.set('pt-total',M(total)+' over '+Y+' years'); FSL.set('pt-last',M(last));
+    FSL.show('pt-results','grid'); FSL.show('pt-tbl'); FSL.el('pt-body').innerHTML=rows;
+    FSL.set('pt-note','At '+(rate*100).toFixed(2)+'% on '+M(assessed)+' of assessed value, your bill is '+M(tax)+' a year. If your assessed value rises '+(g*100)+'% a year, the bill grows to about '+M(last)+' by year '+Y+'. Property tax is usually collected monthly with your mortgage payment through escrow.');
+  }
+  FSL.el('pt-go').addEventListener('click',calc); FSL.bind('fs-pt',calc); calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   12. IRA CALCULATOR (Traditional vs Roth, 2026 limits)
+───────────────────────────────────────────── */
+function fs_calc2_ira() { ?>
+<div class="fsc-wrap" id="fs-ira">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <div class="fsl-row2">
+      <?php fsl_field( 'ira-age', 'Your age', 35, [ 'min' => 18, 'max' => 75, 'step' => 1 ] ); ?>
+      <?php fsl_field( 'ira-ret', 'Retire at', 65, [ 'min' => 40, 'max' => 80, 'step' => 1 ] ); ?>
+    </div>
+    <?php fsl_field( 'ira-bal', 'Current IRA balance ($)', 25000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_field( 'ira-contrib', 'Contribution per year ($)', 7500, [ 'min' => 0, 'step' => 100, 'hint' => '2026 limit: $7,500, or $8,600 at age 50 or older.' ] ); ?>
+    <?php fsl_field( 'ira-return', 'Expected annual return (%)', 7, [ 'min' => 0, 'max' => 15, 'step' => 0.1 ] ); ?>
+    <?php fsl_field( 'ira-now', 'Your tax rate today (%)', 22, [ 'min' => 0, 'max' => 45, 'step' => 1, 'hint' => 'Your marginal federal + state rate.' ] ); ?>
+    <?php fsl_field( 'ira-later', 'Your expected tax rate in retirement (%)', 15, [ 'min' => 0, 'max' => 45, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'ira-inf', 'Inflation (%)', 3, [ 'min' => 0, 'max' => 10, 'step' => 0.1 ] ); ?>
+    <button type="button" class="fsc-btn" id="ira-go">Compare Traditional and Roth</button>
+    <p class="fsl-error" id="ira-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ira-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ira-win', 'Better choice for these inputs', 'primary' );
+      fsl_card( 'ira-bal-ret', 'IRA balance at retirement' );
+      fsl_card( 'ira-roth', 'Roth: spendable after tax' );
+      fsl_card( 'ira-trad', 'Traditional: spendable after tax' );
+      fsl_card( 'ira-sav', 'Tax saved each year with Traditional' );
+      fsl_card( 'ira-limit', '2026 contribution limit for you', 'secondary' );
+      fsl_card( 'ira-real', 'Roth value in today’s dollars' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ira-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var age=$('ira-age'), ret=$('ira-ret'), bal=$('ira-bal'), c=$('ira-contrib'), r=$('ira-return')/100, tn=$('ira-now')/100, tl=$('ira-later')/100, inf=$('ira-inf')/100;
+    if(!FSL.valid(ret>age,'ira-err','Retirement age must be higher than your current age.'))return;
+    var yrs=ret-age, limit=7500+(age>=50?1100:0), cc=Math.min(c,limit);
+    /* contributions at the start of each year */
+    var b=bal; for(var y=0;y<yrs;y++){ b=(b+cc)*(1+r); }
+    var roth=b, trad=b*(1-tl), sav=cc*tn;
+    FSL.set('ira-bal-ret',M(b)); FSL.set('ira-roth',M(roth)); FSL.set('ira-trad',M(trad)); FSL.set('ira-sav',M(sav)+' a year');
+    FSL.set('ira-limit',M(limit)+(age>=50?' (incl. catch-up)':'')); FSL.set('ira-real',M(roth/Math.pow(1+inf,yrs)));
+    var win=tn>tl?'Traditional (tax rate drops in retirement)':(tn<tl?'Roth (tax rate rises in retirement)':'Roth and Traditional are about equal');
+    FSL.set('ira-win',win); FSL.show('ira-results','grid');
+    var n=[]; if(c>limit)n.push('Your contribution is above the 2026 limit of '+M(limit)+', so the calculator caps it.');
+    n.push('Same pre-tax contribution in both accounts: Roth grows tax-free but gives no deduction, while Traditional saves '+M(sav)+' of tax each year (if deductible) and is taxed on withdrawal. The simple rule: Traditional wins when your tax rate in retirement is lower than today, Roth wins when it is higher. Traditional contributions may be tax-deductible and are taxed on withdrawal. Roth contributions are not deductible but qualified withdrawals are tax-free. Roth IRA eligibility phases out for single filers with income between $153,000 and $168,000 and for married couples filing jointly between $242,000 and $252,000 in 2026.');
+    FSL.set('ira-note',n.join(' '));
+  }
+  FSL.el('ira-go').addEventListener('click',calc); FSL.bind('fs-ira',calc); calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   13. NFT ROI CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_nft_roi() { ?>
+<div class="fsc-wrap" id="fs-nft">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'nft-buy', 'Purchase or mint price ($)', 500, [ 'min' => 0, 'step' => 10 ] ); ?>
+    <?php fsl_field( 'nft-gas-buy', 'Gas / network fee when buying ($)', 15, [ 'min' => 0, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'nft-sell', 'Sale price ($)', 900, [ 'min' => 0, 'step' => 10 ] ); ?>
+    <?php fsl_field( 'nft-gas-sell', 'Gas / network fee when selling ($)', 10, [ 'min' => 0, 'step' => 1 ] ); ?>
+    <div class="fsl-row2">
+      <?php fsl_field( 'nft-mkt', 'Marketplace fee (%)', 2.5, [ 'min' => 0, 'max' => 20, 'step' => 0.1, 'hint' => 'Check your marketplace’s current fee.' ] ); ?>
+      <?php fsl_field( 'nft-roy', 'Creator royalty (%)', 5, [ 'min' => 0, 'max' => 20, 'step' => 0.1 ] ); ?>
+    </div>
+    <?php fsl_field( 'nft-months', 'Held (months)', 6, [ 'min' => 0, 'max' => 240, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'nft-tax', 'Tax rate on gains (%)', 15, [ 'min' => 0, 'max' => 45, 'step' => 1, 'hint' => 'NFTs can be taxed as collectibles at up to 28% if held over a year.' ] ); ?>
+    <button type="button" class="fsc-btn" id="nft-go">Calculate NFT ROI</button>
+    <p class="fsl-error" id="nft-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="nft-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'nft-roi', 'ROI after fees', 'primary' );
+      fsl_card( 'nft-profit', 'Net profit before tax' );
+      fsl_card( 'nft-after', 'Profit after tax', 'gold' );
+      fsl_card( 'nft-fees', 'Total fees and royalties' );
+      fsl_card( 'nft-be', 'Break-even sale price', 'secondary' );
+      fsl_card( 'nft-ann', 'Annualized return' );
+      ?>
+    </div>
+    <p class="fsl-note" id="nft-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var buy=$('nft-buy'), gb=$('nft-gas-buy'), sell=$('nft-sell'), gs=$('nft-gas-sell'), mk=$('nft-mkt')/100, ry=$('nft-roy')/100, mo=$('nft-months'), tax=$('nft-tax')/100;
+    var cost=buy+gb;
+    if(!FSL.valid(cost>0,'nft-err','Enter what you paid for the NFT.'))return;
+    var fees=sell*(mk+ry)+gs, net=sell-fees, profit=net-cost, taxAmt=profit>0?profit*tax:0;
+    var roi=profit/cost*100, yrs=mo/12, ann=(yrs>0&&net>0)?(Math.pow(net/cost,1/yrs)-1)*100:NaN;
+    var be=(cost+gs)/(1-mk-ry);
+    FSL.set('nft-roi',FSL.pct(roi,1)); FSL.set('nft-profit',(profit>=0?'+':'-')+M(Math.abs(profit),2)); FSL.set('nft-after',(profit-taxAmt>=0?'+':'-')+M(Math.abs(profit-taxAmt),2));
+    FSL.set('nft-fees',M(fees+gb,2)); FSL.set('nft-be',M(be,2)); FSL.set('nft-ann',isFinite(ann)?FSL.pct(ann,1)+' per year':'--');
+    FSL.show('nft-results','grid');
+    FSL.set('nft-note',profit>=0?'After '+M(fees+gb,2)+' of fees and royalties you keep '+M(profit,2)+' before tax. You must sell above '+M(be,2)+' just to break even.':'This sale loses '+M(-profit,2)+' after fees. The break-even price is '+M(be,2)+'. A capital loss may offset other gains on your tax return.');
+  }
+  FSL.el('nft-go').addEventListener('click',calc); FSL.bind('fs-nft',calc); calc();
+});
+</script>
+<?php }

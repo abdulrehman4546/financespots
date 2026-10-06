@@ -27,6 +27,9 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'roi-calculator'                 => 'fs_calc2_roi',
         'net-worth-calculator'           => 'fs_calc2_net_worth',
         '50-30-20-budget-calculator'     => 'fs_calc2_budget_503020',
+        'property-tax-calculator'        => 'fs_calc2_property_tax',
+        'ira-calculator'                 => 'fs_calc2_ira',
+        'nft-roi-calculator'             => 'fs_calc2_nft_roi',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {
