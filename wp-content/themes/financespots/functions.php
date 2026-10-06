@@ -472,7 +472,7 @@ function financespots_customize_register( WP_Customize_Manager $wp_customize ) {
     $text(     'fs_hero_title_2',  'financespots_hero', __( 'Headline Line 2', 'financespots' ),     __( 'Tools', 'financespots' ) );
     $text(     'fs_hero_title_3',  'financespots_hero', __( 'Headline Accent Word (blue)', 'financespots' ), __( 'Intelligent', 'financespots' ) );
     $text(     'fs_hero_title_4',  'financespots_hero', __( 'Headline Line 4', 'financespots' ),     __( 'Investing', 'financespots' ) );
-    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 110+ tools, completely free.', 'financespots' ) );
+    $textarea( 'fs_hero_sub',      'financespots_hero', __( 'Sub-headline', 'financespots' ),        __( 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 55+ tools, completely free.', 'financespots' ) );
     $text(     'fs_hero_cta_text', 'financespots_hero', __( 'Primary CTA Text', 'financespots' ),   __( 'Explore All Tools', 'financespots' ) );
     $text(     'fs_hero_cta_url',  'financespots_hero', __( 'Primary CTA URL', 'financespots' ),    '#tools', 'url' );
     $text(     'fs_hero_cta2_text','financespots_hero', __( 'Secondary CTA Text', 'financespots' ), __( 'Watch Demo', 'financespots' ) );
@@ -1021,7 +1021,7 @@ function fs_get_ai_features() {
 /** How it works steps */
 function fs_get_steps() {
     return [
-        [ 'num' => '01', 'title' => 'Choose Your Tool',   'desc' => 'Browse 110+ finance tools organized by category. Use our smart search to find what you need instantly.' ],
+        [ 'num' => '01', 'title' => 'Choose Your Tool',   'desc' => 'Browse 55+ finance tools organized by category. Use our smart search to find what you need instantly.' ],
         [ 'num' => '02', 'title' => 'Enter Your Data',    'desc' => 'Input your financial details into our clean, guided forms. Tooltips explain every field.' ],
         [ 'num' => '03', 'title' => 'Get AI Insights',    'desc' => 'Receive instant results plus AI-generated insights, comparisons, and personalized recommendations.' ],
         [ 'num' => '04', 'title' => 'Plan & Take Action', 'desc' => 'Export your results, save scenarios, or share with your financial advisor -- all for free.' ],
@@ -1652,12 +1652,12 @@ function fs_main_pages_seo() {
         // slug => [ title, description, focus_keyword ]
         ''           => [
             'title' => 'Free Financial Calculators & Tools 2026 | FinanceSpots',
-            'desc'  => 'FinanceSpots offers 110+ free financial calculators for mortgages, VA loans, taxes, investments, retirement, crypto & more. Instant results with PDF export. No signup needed.',
+            'desc'  => 'FinanceSpots offers 55+ free financial calculators for mortgages, VA loans, taxes, investments, retirement, crypto & more. Instant results with PDF export. No signup needed.',
             'kw'    => 'free financial calculators',
         ],
         'all-tools'  => [
             'title' => 'All Financial Tools & Calculators 2026 | FinanceSpots',
-            'desc'  => 'Browse 110+ free finance tools: mortgage calculators, investment analyzers, tax estimators, retirement planners, crypto tools and more. Built for US investors & homebuyers.',
+            'desc'  => 'Browse 55+ free finance tools: mortgage calculators, investment analyzers, tax estimators, retirement planners, crypto tools and more. Built for US investors & homebuyers.',
             'kw'    => 'financial tools online',
         ],
         'blog'       => [
@@ -1690,7 +1690,7 @@ function fs_main_pages_seo() {
         // showing an unrelated site's title/description). See SEO audit notes.
         'privacy-policy' => [
             'title' => 'FinanceSpots Privacy Policy: How We Protect Your Data',
-            'desc'  => 'Read how FinanceSpots collects, uses, and protects your personal information when you use our 110+ free financial calculators and tools.',
+            'desc'  => 'Read how FinanceSpots collects, uses, and protects your personal information when you use our 55+ free financial calculators and tools.',
             'kw'    => 'financespots privacy policy',
         ],
         'terms-of-service' => [
@@ -1957,7 +1957,7 @@ function fs_seo_audit_fixes_v1() {
            already a good 54 chars and is left untouched. ── */
     $front_id = (int) get_option( 'page_on_front' );
     if ( $front_id ) {
-        update_post_meta( $front_id, 'rank_math_description', 'FinanceSpots offers 110+ free financial calculators for mortgages, taxes, investments, retirement, and crypto. Instant results, PDF export, no signup needed.' );
+        update_post_meta( $front_id, 'rank_math_description', 'FinanceSpots offers 55+ free financial calculators for mortgages, taxes, investments, retirement, and crypto. Instant results, PDF export, no signup needed.' );
     }
 
     /* ── 5. Blog post meta description had a typo baked in ("Benefits:Complete"
@@ -2079,7 +2079,7 @@ function fs_rankmath_setup() {
 
         // Homepage
         'homepage_title'             => 'FinanceSpots -- Free Financial Calculators & Tools 2026',
-        'homepage_description'       => 'Free financial calculators for mortgages, VA loans, taxes, investments, crypto & more. 110+ expert-built tools with instant PDF export. Trusted by US veterans & investors.',
+        'homepage_description'       => 'Free financial calculators for mortgages, VA loans, taxes, investments, crypto & more. 55+ expert-built tools with instant PDF export. Trusted by US veterans & investors.',
 
         // Posts
         'post_title'                 => '%title% | FinanceSpots',
@@ -2187,7 +2187,7 @@ function fs_rankmath_setup() {
     $front_id = get_option('page_on_front');
     if ( $front_id ) {
         update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- Free Financial Calculators & Tools 2026' );
-        update_post_meta( $front_id, 'rank_math_description',   'Free financial calculators: VA loans, mortgages, taxes, investments, crypto & more. 110+ expert tools with PDF export.' );
+        update_post_meta( $front_id, 'rank_math_description',   'Free financial calculators: VA loans, mortgages, taxes, investments, crypto & more. 55+ expert tools with PDF export.' );
         update_post_meta( $front_id, 'rank_math_focus_keyword', 'free financial calculators' );
         update_post_meta( $front_id, 'rank_math_robots',        [ 'index', 'follow' ] );
     }
@@ -2255,7 +2255,7 @@ add_action( 'init', function() {
             'first_name'   => 'Abdul',
             'last_name'    => 'Rahman',
         ] );
-        update_user_meta( $user->ID, 'description', 'Abdul Rahman is the founder of FinanceSpots — a free platform offering 110+ professional financial calculators for mortgages, VA loans, investments, taxes, and more.' );
+        update_user_meta( $user->ID, 'description', 'Abdul Rahman is the founder of FinanceSpots — a free platform offering 55+ professional financial calculators for mortgages, VA loans, investments, taxes, and more.' );
     }
     update_option( 'fs_author_name_fixed', true );
 }, 15 );
@@ -3213,16 +3213,16 @@ function fs_complete_seo_all_pages() {
     $front_id = get_option( 'page_on_front' );
     if ( $front_id ) {
         update_post_meta( $front_id, 'rank_math_focus_keyword', 'free financial calculators 2026' );
-        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- 110+ Free Financial Calculators 2026 | No Signup' );
-        update_post_meta( $front_id, 'rank_math_description',   'FinanceSpots offers 110+ free financial calculators: mortgage, investment, tax, retirement, crypto, currency & budget tools. Instant results, PDF export, no signup required. Trusted by 50,000+ users.' );
+        update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- 55+ Free Financial Calculators 2026 | No Signup' );
+        update_post_meta( $front_id, 'rank_math_description',   'FinanceSpots offers 55+ free financial calculators: mortgage, investment, tax, retirement, crypto, currency & budget tools. Instant results, PDF export, no signup required. Trusted by 50,000+ users.' );
         update_post_meta( $front_id, 'rank_math_robots',        [ 'index', 'follow' ] );
     }
 
     /* ═══════════════════════════════════════════════════════
        11. TOOLS ARCHIVE PAGE (/tools/)
        ═══════════════════════════════════════════════════════ */
-    update_option( 'rank_math_title_fs_tool_archive',       'All Finance Tools 2026 -- 110+ Free Calculators | FinanceSpots' );
-    update_option( 'rank_math_description_fs_tool_archive', 'Browse all 110+ free finance calculators organized into 8 categories: loan calculators, investment tools, tax calculators, savings planners, retirement planning, crypto, currency, and budget tools.' );
+    update_option( 'rank_math_title_fs_tool_archive',       'All Finance Tools 2026 -- 55+ Free Calculators | FinanceSpots' );
+    update_option( 'rank_math_description_fs_tool_archive', 'Browse all 55+ free finance calculators organized into 8 categories: loan calculators, investment tools, tax calculators, savings planners, retirement planning, crypto, currency, and budget tools.' );
 
     update_option( 'fs_full_seo_v4', true );
 }
@@ -3485,6 +3485,7 @@ require_once get_template_directory() . '/inc/calculators-loans.php';
 require_once get_template_directory() . '/inc/calculators-loans-2.php';
 require_once get_template_directory() . '/inc/calculators-money.php';
 require_once get_template_directory() . '/inc/tool-content.php';
+require_once get_template_directory() . '/inc/tool-redirects.php';
 
 /* ── Blog Publisher ── */
 require_once get_template_directory() . '/inc/blog-publisher.php';

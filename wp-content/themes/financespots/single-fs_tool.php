@@ -135,7 +135,7 @@ while ( have_posts() ) : the_post();
 
                 <div class="fst-sidebar-card fst-sidebar-card--cta">
                     <h3 class="fst-sidebar-card__title">Explore All Tools</h3>
-                    <a href="<?php echo esc_url( home_url( '/tools/' ) ); ?>" class="fsc-btn" style="width:100%;text-align:center">Browse 110+ Tools</a>
+                    <a href="<?php echo esc_url( home_url( '/tools/' ) ); ?>" class="fsc-btn" style="width:100%;text-align:center">Browse 55+ Tools</a>
                 </div>
             </aside>
 
@@ -305,7 +305,6 @@ $cat_topic_data = [
             ['Income Tax Calculator', home_url('/tool/income-tax-calculator/')],
             ['Self-Employment Tax Calculator', home_url('/tool/self-employment-tax-calculator/')],
             ['Capital Gains Tax Calculator', home_url('/tool/capital-gains-tax-calculator/')],
-            ['Tax Withholding Calculator', home_url('/tool/tax-withholding-calculator/')],
         ],
     ],
     'savings-planners' => [
@@ -313,17 +312,13 @@ $cat_topic_data = [
         'links' => [
             ['Emergency Fund Calculator', home_url('/tool/emergency-fund-calculator/')],
             ['Savings Goal Calculator', home_url('/tool/savings-goal-calculator/')],
-            ['CD Calculator', home_url('/tool/cd-calculator/')],
-            ['High-Yield Savings Calculator', home_url('/tool/high-yield-savings-calculator/')],
         ],
     ],
     'retirement-planning' => [
         'topic' => 'Retirement planning requires knowing your "retirement number" -- the total portfolio value needed to sustain your lifestyle indefinitely. The 4% withdrawal rule is a common starting point, but your specific number depends on spending, inflation, and Social Security income. Start calculating early to understand how much to save each month.',
         'links' => [
-            ['Retirement Income Calculator', home_url('/tool/retirement-income-calculator/')],
             ['401k Calculator', home_url('/tool/401k-calculator/')],
             ['IRA Calculator', home_url('/tool/ira-calculator/')],
-            ['Social Security Calculator', home_url('/tool/social-security-calculator/')],
         ],
     ],
     'budget-analyzers' => [
@@ -331,16 +326,12 @@ $cat_topic_data = [
         'links' => [
             ['Monthly Budget Planner', home_url('/tool/monthly-budget-planner/')],
             ['50/30/20 Budget Calculator', home_url('/tool/50-30-20-budget-calculator/')],
-            ['Expense Tracker', home_url('/tool/expense-tracker/')],
-            ['Savings Rate Calculator', home_url('/tool/savings-rate-calculator/')],
         ],
     ],
     'crypto-tools' => [
         'topic' => 'Cryptocurrency investing combines the volatility of a startup with 24/7 global trading -- making disciplined position sizing and tax tracking critical. Dollar-cost averaging reduces the impact of price swings, while accurate P&L tracking ensures you report gains correctly. Always calculate your cost basis before each trade.',
         'links' => [
             ['Crypto P&L Calculator', home_url('/tool/crypto-pl-calculator/')],
-            ['Crypto DCA Calculator', home_url('/tool/crypto-dca-calculator/')],
-            ['Crypto Tax Calculator', home_url('/tool/crypto-tax-calculator/')],
             ['Compound Interest Calculator', home_url('/tool/compound-interest-calculator/')],
         ],
     ],
@@ -352,7 +343,7 @@ $topic_info = $cat ? ( $cat_topic_data[ $cat->slug ] ?? null ) : null;
 $other_cats = [
     ['&#128200; Investing Tools', home_url('/tool/compound-interest-calculator/'), 'investment-tools'],
     ['&#127968; Mortgage Calculators', home_url('/tool/mortgage-calculator/'), 'loan-calculators'],
-    ['&#127958;&#65039; Retirement Planner', home_url('/tool/retirement-income-calculator/'), 'retirement-planning'],
+    ['&#127958;&#65039; Retirement Planner', home_url('/tool/retirement-savings-calculator/'), 'retirement-planning'],
     ['&#129534; Tax Calculators', home_url('/tool/income-tax-calculator/'), 'tax-calculators'],
     ['&#128203; Budget Planner', home_url('/tool/monthly-budget-planner/'), 'budget-analyzers'],
     ['&#8383; Crypto Tools', home_url('/tool/crypto-pl-calculator/'), 'crypto-tools'],
@@ -393,7 +384,7 @@ $suggested = array_values($suggested);
             </a>
             <?php endforeach; ?>
             <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" style="display:flex;align-items:center;gap:8px;background:#ECFDF5;border:1.5px solid #BBF7D0;border-radius:10px;padding:12px 14px;text-decoration:none;color:#15803D;font-size:.86rem;font-weight:600;transition:background .2s;" onmouseover="this.style.background='#D1FAE5'" onmouseout="this.style.background='#ECFDF5'">
-                &#128200; Browse All 110+ Tools &#x2192;
+                &#128200; Browse All 55+ Tools &#x2192;
             </a>
         </div>
     </div>

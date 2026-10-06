@@ -224,7 +224,7 @@ body{background:var(--ai-dark);color:var(--ai-text);font-family:-apple-system,Bl
     </div>
     <div style="margin-top:auto;padding-top:1rem">
       <button onclick="aiExportPDF()" class="ai-btn-sec" style="width:100%;margin-bottom:.5rem">&#11015;&#65039; Export Report PDF</button>
-      <a href="<?php echo esc_url(home_url('/tools/')); ?>" class="ai-btn-sec" style="display:block;text-align:center;text-decoration:none;width:100%">&#128736;&#65039; All 110+ Tools</a>
+      <a href="<?php echo esc_url(home_url('/tools/')); ?>" class="ai-btn-sec" style="display:block;text-align:center;text-decoration:none;width:100%">&#128736;&#65039; All 55+ Tools</a>
     </div>
   </aside>
 

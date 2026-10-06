@@ -176,7 +176,7 @@ add_filter( 'the_content', function ( $content ) {
  * the FTP method) and records the version first, so it can never retry in a loop.
  */
 add_action( 'init', function () {
-    $version = '2026-10-03-b';
+    $version = '2026-10-06-a';
     if ( get_option( 'fs_sitemap_flush_version' ) === $version ) return;
     update_option( 'fs_sitemap_flush_version', $version, false );
     try {
@@ -193,3 +193,26 @@ add_action( 'init', function () {
         // Cache will expire on its own; never block a page load over this.
     }
 }, 99 );
+
+/**
+ * The site no longer claims "110+" tools: duplicate tools were redirected
+ * (see inc/tool-redirects.php), leaving about 55 distinct ones. Rewrite the
+ * stored Rank Math titles/descriptions once. Options are updated through the
+ * API (not raw SQL) because they are serialized.
+ */
+add_action( 'init', function () {
+    $version = '2026-10-06-count';
+    if ( get_option( 'fs_toolcount_fix' ) === $version ) return;
+    update_option( 'fs_toolcount_fix', $version, false );
+    global $wpdb;
+    $wpdb->query( "UPDATE {$wpdb->postmeta} SET meta_value = REPLACE( meta_value, '110+', '55+' ) WHERE meta_key LIKE 'rank\\_math\\_%' AND meta_value LIKE '%110+%'" );
+    foreach ( [ 'rank_math_title_fs_tool_archive', 'rank_math_description_fs_tool_archive' ] as $name ) {
+        $val = get_option( $name );
+        if ( is_string( $val ) && false !== strpos( $val, '110+' ) ) update_option( $name, str_replace( '110+', '55+', $val ) );
+    }
+    $titles = get_option( 'rank-math-options-titles' );
+    if ( is_array( $titles ) ) {
+        array_walk_recursive( $titles, function ( &$v ) { if ( is_string( $v ) ) $v = str_replace( '110+', '55+', $v ); } );
+        update_option( 'rank-math-options-titles', $titles );
+    }
+}, 95 );

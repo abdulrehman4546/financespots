@@ -1,6 +1,6 @@
 # FinanceSpots
 
-> Free financial calculators and tools for mortgages, VA loans, taxes, investments, crypto, budgeting, and retirement planning. 110+ expert-built tools with instant PDF export. No signup required.
+> Free financial calculators and tools for mortgages, VA loans, taxes, investments, crypto, budgeting, and retirement planning. 55+ expert-built tools with instant PDF export. No signup required.
 
 ## About
 
@@ -23,7 +23,7 @@ FinanceSpots is a free platform built by Abdul Rahman to give everyone access to
 
 ## Key Pages
 
-- [All Tools](https://financespots.com/all-tools/): Browse all 110+ financial calculators
+- [All Tools](https://financespots.com/all-tools/): Browse all 55+ financial calculators
 - [Blog](https://financespots.com/blog/): Financial tips, guides, and education
 - [Pricing](https://financespots.com/pricing/): Free vs Pro plan comparison
 - [About](https://financespots.com/about/): About FinanceSpots and Abdul Rahman
@@ -52,7 +52,7 @@ FinanceSpots is a free platform built by Abdul Rahman to give everyone access to
 
 ## Features
 
-- 110+ free financial calculators
+- 55+ free financial calculators
 - Instant PDF export for all results
 - No signup or account required
 - Mobile-friendly and fast
