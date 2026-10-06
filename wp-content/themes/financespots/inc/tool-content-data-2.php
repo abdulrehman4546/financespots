@@ -19,7 +19,7 @@ function fs_tool_content_data_2() {
         'focus'     => 'income tax calculator',
         'secondary' => [ 'federal income tax calculator', 'income tax calculator 2026', 'take home pay calculator', 'tax bracket calculator', 'how much federal tax will I owe' ],
         'title'     => 'Income Tax Calculator 2026: Federal & FICA',
-        'meta'      => 'Free 2026 income tax calculator: estimate federal tax, Social Security and Medicare, state tax and take-home pay for every filing status, with a bracket breakdown.',
+        'meta'      => 'Free 2026 income tax calculator: estimate federal tax, Social Security and Medicare, state tax and take-home pay for every filing status.',
         'excerpt'   => 'Estimate your 2026 federal income tax, FICA, state tax and take-home pay, with a bracket-by-bracket breakdown for every filing status.',
         'answer'    => 'On an $85,000 salary with $6,000 of pre-tax 401(k) savings and the standard deduction, a single filer has $62,900 of taxable income in 2026. Federal income tax is $8,550 (10.1% of gross), Social Security and Medicare add $6,503, and take-home pay is about $63,948 a year, or $5,329 a month.',
         'steps'     => [
@@ -166,7 +166,7 @@ function fs_tool_content_data_2() {
         'focus'     => 'retirement savings calculator',
         'secondary' => [ 'retirement calculator', 'how much do I need to retire', 'am I saving enough for retirement', '4% rule calculator', 'retirement nest egg calculator' ],
         'title'     => 'Retirement Savings Calculator: Am I on Track?',
-        'meta'      => 'Free retirement calculator: find how much you need to retire, whether your savings are on track after Social Security and inflation, and the extra to save each month.',
+        'meta'      => 'Free retirement calculator: see how much you need to retire, if you are on track after Social Security and inflation, and the extra to save monthly.',
         'excerpt'   => 'Find out how much you need to retire, whether you are on track, and how much more to save each month to close any gap.',
         'answer'    => 'To retire at 65 with $70,000 a year in today’s dollars and $2,000 a month from Social Security, a 35-year-old needs about $2.79 million in future dollars at a 4% withdrawal rate. Saving $800 a month on top of $60,000 today projects about $1.25 million, a shortfall of about $1.54 million, which closes with roughly $1,444 more saved per month.',
         'steps'     => [
@@ -261,7 +261,7 @@ function fs_tool_content_data_2() {
         'focus'     => 'savings goal calculator',
         'secondary' => [ 'how long to save for a goal', 'savings calculator with interest', 'how much to save per month', 'savings plan calculator', 'high yield savings calculator' ],
         'title'     => 'Savings Goal Calculator: How Long to Save',
-        'meta'      => 'Free savings goal calculator: find how long it takes to reach your goal, or how much to save each month to hit it by a date, with interest from your account.',
+        'meta'      => 'Free savings goal calculator: find how long it takes to reach your goal, or how much to save monthly to hit it by a date, with account interest.',
         'excerpt'   => 'Find out how long it takes to reach a savings goal, or exactly how much to save each month to hit it by your deadline.',
         'answer'    => 'To save $20,000 starting with $2,500 in an account paying 4% APY, saving $400 a month gets you there in 3 years 5 months, with about $1,479 coming from interest. To reach the same goal in exactly 3 years, you need about $451 a month.',
         'steps'     => [
@@ -396,7 +396,7 @@ function fs_tool_content_data_2() {
         'focus'     => 'net worth calculator',
         'secondary' => [ 'how to calculate net worth', 'average net worth by age', 'median net worth by age', 'assets minus liabilities', 'what is a good net worth' ],
         'title'     => 'Net Worth Calculator with Age Comparison',
-        'meta'      => 'Free net worth calculator: add your assets and debts, see your net worth, debt-to-asset ratio and how you compare with the median for your age (Federal Reserve data).',
+        'meta'      => 'Free net worth calculator: add assets and debts, see your net worth, debt ratio and how you compare with the median for your age (Federal Reserve).',
         'excerpt'   => 'Add up what you own and what you owe to see your net worth, and compare it with the median for your age group.',
         'answer'    => 'Net worth is everything you own (assets) minus everything you owe (liabilities). A household with $463,000 of assets and $267,000 of debt has a net worth of $196,000. The Federal Reserve’s 2022 survey puts the median net worth at $135,300 for ages 35 to 44, so that household is about $60,700 above the median.',
         'steps'     => [
