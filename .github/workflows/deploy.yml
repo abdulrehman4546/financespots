@@ -33,15 +33,20 @@ jobs:
             **/.DS_Store
             **/node_modules/**
 
-      # Root-level housekeeping files (whitelist only: nothing else in public_html is touched).
-      # Overwrites the retired maintenance scripts with a 410 stub and publishes llms.txt.
+      # Root-level housekeeping files. Plain curl upload of a fixed whitelist (no directory
+      # listing, which the host resets). Overwrites the retired maintenance scripts with a
+      # 410 stub and publishes llms.txt. Nothing else in public_html is touched.
       - name: Upload root housekeeping files
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.5
-        with:
-          server: ${{ secrets.FTP_SERVER }}
-          username: ${{ secrets.FTP_USERNAME }}
-          password: ${{ secrets.FTP_PASSWORD }}
-          protocol: ftps
-          local-dir: ./deploy-root/
-          server-dir: /public_html/
-          state-name: .ftp-deploy-root-state.json
+        env:
+          FTP_SERVER: ${{ secrets.FTP_SERVER }}
+          FTP_USERNAME: ${{ secrets.FTP_USERNAME }}
+          FTP_PASSWORD: ${{ secrets.FTP_PASSWORD }}
+        run: |
+          NETRC="$(mktemp)"; chmod 600 "$NETRC"
+          printf 'machine %s login %s password %s\n' "$FTP_SERVER" "$FTP_USERNAME" "$FTP_PASSWORD" > "$NETRC"
+          for f in fix-uploads.php create-blogs.php llms.txt; do
+            curl -sS --fail --ssl-reqd --retry 3 --retry-delay 3 --netrc-file "$NETRC" \
+              -T "deploy-root/$f" "ftp://$FTP_SERVER/public_html/$f"
+            echo "uploaded $f"
+          done
+          rm -f "$NETRC"
