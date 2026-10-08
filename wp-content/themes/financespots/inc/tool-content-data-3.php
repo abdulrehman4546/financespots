@@ -96,7 +96,7 @@ function fs_tool_content_data_3() {
             [ 'CFPB: What is a debt-to-income ratio?', 'https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-why-is-the-43-debt-to-income-ratio-important-en-1791/' ],
             [ 'CFPB: Ability-to-repay and qualified mortgage rule', 'https://www.consumerfinance.gov/rules-policy/regulations/1026/43/' ],
         ],
-        'related'   => [ 'debt-to-income-ratio', 'mortgage-calculator', 'auto-loan-calculator', 'personal-loan-calculator' ],
+        'related'   => [ 'debt-to-income-ratio-calculator', 'mortgage-calculator', 'auto-loan-calculator', 'personal-loan-calculator' ],
     ],
 
     /* ───────────────────────── INTEREST ONLY ───────────────────────── */

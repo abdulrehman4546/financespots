@@ -37,6 +37,7 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'bridge-loan-calculator'         => 'fs_calc2_bridge',
         'commercial-loan-calculator'     => 'fs_calc2_commercial',
         'debt-to-income-ratio'           => 'fs_calc2_dti',
+        'debt-to-income-ratio-calculator' => 'fs_calc2_dti',   /* live slug; the local database still has the shorter one */
         'self-employment-tax-calculator' => 'fs_calc2_se_tax',
         'monthly-budget-planner'         => 'fs_calc2_budget_planner',
         'dividend-calculator'            => 'fs_calc2_dividend',
