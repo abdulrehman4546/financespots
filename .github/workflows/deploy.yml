@@ -1,34 +1,11 @@
-name: Deploy theme to hosting (FTP)
 
-on:
-  push:
-    branches:
-      - main
-  workflow_dispatch:
-
-concurrency:
-  group: deploy-main
-  cancel-in-progress: false
-
-jobs:
-  deploy:
-    name: Upload theme via FTPS
-    runs-on: ubuntu-latest
-    steps:
-      - name: Check out code
-        uses: actions/checkout@v4
-
-      - name: Upload wp-content/themes/financespots
+      - name: Upload root housekeeping files
         uses: SamKirkland/FTP-Deploy-Action@v4.3.5
         with:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
           protocol: ftps
-          local-dir: ./wp-content/themes/financespots/
-          server-dir: ${{ secrets.FTP_THEME_DIR }}
-          exclude: |
-            **/.git*
-            **/.git*/**
-            **/.DS_Store
-            **/node_modules/**
+          local-dir: ./deploy-root/
+          server-dir: /public_html/
+          state-name: .ftp-deploy-root-state.json
