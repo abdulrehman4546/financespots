@@ -1,0 +1,60 @@
+/* ═══ Brand polish: two-colour gradient buttons and accent text ═══
+   Palette: emerald #00C896 -> blue #3B82F6 (the two brand colours). */
+:root {
+    --fs-grad: linear-gradient(120deg, #00C896 0%, #3B82F6 100%);
+    --fs-grad-rev: linear-gradient(120deg, #3B82F6 0%, #00C896 100%);
+    --fs-grad-glow: 0 10px 28px rgba(0,200,150,.30), 0 4px 14px rgba(59,130,246,.28);
+}
+
+/* ── Primary buttons ── */
+.fs-btn--primary, .fs-hero .fs-btn--primary, .fsc-btn, .fs-cookie-btn--accept, .fs-login-submit, .fs-btn--nav {
+    background: var(--fs-grad) !important; background-size: 160% 100% !important; background-position: 0 50%;
+    color: #fff !important; border: 0 !important;
+    font-weight: 800; letter-spacing: .02em; text-shadow: 0 1px 0 rgba(0,0,0,.12);
+    box-shadow: var(--fs-grad-glow) !important;
+    transition: background-position .35s ease, transform .2s ease, box-shadow .25s ease;
+}
+.fs-btn--primary:hover, .fs-hero .fs-btn--primary:hover, .fsc-btn:hover, .fs-cookie-btn--accept:hover, .fs-btn--nav:hover {
+    background-position: 100% 50% !important; transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(0,200,150,.38), 0 6px 18px rgba(59,130,246,.36) !important;
+}
+.fs-btn--primary:active, .fsc-btn:active { transform: translateY(0); }
+.fs-btn--primary:focus-visible, .fsc-btn:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+
+/* ── Outline / ghost buttons: gradient border, gradient label ── */
+.fs-btn--outline, .fs-btn--ghost, .fs-btn-signin, .fsl-csv, .fsl-linkbtn {
+    position: relative; border: 2px solid transparent !important;
+    background: linear-gradient(#0B1224, #0B1224) padding-box, var(--fs-grad) border-box !important;
+    color: #7FE8C9 !important; font-weight: 700; letter-spacing: .02em;
+    transition: transform .2s ease, box-shadow .25s ease, color .2s;
+}
+.fs-btn--outline:hover, .fs-btn--ghost:hover, .fs-btn-signin:hover, .fsl-csv:hover, .fsl-linkbtn:hover {
+    color: #fff !important; transform: translateY(-2px); box-shadow: 0 8px 22px rgba(0,200,150,.22), 0 4px 12px rgba(59,130,246,.2);
+}
+.fst-tool-body .fsl-csv, .fst-tool-body .fsl-linkbtn { background: linear-gradient(#fff, #fff) padding-box, var(--fs-grad) border-box !important; color: #0F766E !important; }
+.fst-tool-body .fsl-csv:hover { color: #0F766E !important; }
+
+/* ── Gradient accent text ── */
+.fs-hero__title-accent, .fs-gradient-text, .fs-section-title em, .fs-section-title .accent {
+    background: var(--fs-grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+}
+.fs-hero__title-accent { display: inline-block; padding-bottom: .08em; }
+.fs-mega__title, .fst-answer__label, .fs-search-suggestions__label {
+    background: var(--fs-grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+}
+.fsc-result-card--primary .fsc-result-value {
+    background: var(--fs-grad); -webkit-background-clip: text; background-clip: text;
+    -webkit-text-fill-color: transparent; color: transparent;
+}
+.fs-logo-word--accent { background: var(--fs-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
+
+/* result cards get a thin gradient edge */
+.fsc-result-card--primary { border: 1.5px solid transparent !important;
+    background: linear-gradient(135deg, rgba(0,200,150,.10), rgba(59,130,246,.08)) padding-box, var(--fs-grad) border-box !important; }
+
+/* gradient divider under tool and section headings */
+.fst-content h2::after { content: ""; display: block; width: 46px; height: 3px; margin-top: 8px; border-radius: 3px; background: var(--fs-grad); }
+
+@media (prefers-reduced-motion: reduce) { .fs-btn--primary, .fsc-btn, .fs-btn--outline, .fs-btn--ghost { transition: none; } .fs-hero .fs-btn--primary { animation: none; } }

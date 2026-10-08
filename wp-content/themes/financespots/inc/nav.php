@@ -166,6 +166,7 @@ add_action( 'wp_enqueue_scripts', function () {
     $dir = get_template_directory();
     $uri = get_template_directory_uri();
     wp_enqueue_style( 'fs-nav', $uri . '/assets/css/nav.css', [ 'financespots-style' ], filemtime( $dir . '/assets/css/nav.css' ) );
+    wp_enqueue_style( 'fs-polish', $uri . '/assets/css/polish.css', [ 'fs-nav' ], filemtime( $dir . '/assets/css/polish.css' ) );
     wp_enqueue_script( 'fs-nav', $uri . '/assets/js/nav.js', [], filemtime( $dir . '/assets/js/nav.js' ), true );
 }, 30 );
 
