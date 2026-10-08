@@ -30,6 +30,16 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'property-tax-calculator'        => 'fs_calc2_property_tax',
         'ira-calculator'                 => 'fs_calc2_ira',
         'nft-roi-calculator'             => 'fs_calc2_nft_roi',
+        'loan-payoff-calculator'         => 'fs_calc2_loan_payoff',
+        'loan-affordability-calculator'  => 'fs_calc2_loan_affordability',
+        'interest-only-calculator'       => 'fs_calc2_interest_only',
+        'balloon-loan-calculator'        => 'fs_calc2_balloon',
+        'bridge-loan-calculator'         => 'fs_calc2_bridge',
+        'commercial-loan-calculator'     => 'fs_calc2_commercial',
+        'debt-to-income-ratio'           => 'fs_calc2_dti',
+        'self-employment-tax-calculator' => 'fs_calc2_se_tax',
+        'monthly-budget-planner'         => 'fs_calc2_budget_planner',
+        'dividend-calculator'            => 'fs_calc2_dividend',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {

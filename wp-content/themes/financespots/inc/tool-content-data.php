@@ -503,6 +503,8 @@ function fs_tool_content_data() {
 
     require_once get_template_directory() . '/inc/tool-content-data-2.php';
     $data = array_merge( $data, fs_tool_content_data_2() );
+    require_once get_template_directory() . '/inc/tool-content-data-3.php';
+    $data = array_merge( $data, fs_tool_content_data_3() );
 
     return $data;
 }
