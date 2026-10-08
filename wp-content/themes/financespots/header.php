@@ -17,6 +17,8 @@
 <!-- ═══════════════════════════════════════════════════
      LIVE MARKET TICKER BAR
      ═══════════════════════════════════════════════════ -->
+<?php /* The market ticker showed hard-coded, stale prices (misleading on a finance site). Off unless a real data feed is wired in: add_filter( 'fs_show_market_ticker', '__return_true' ); */ ?>
+<?php if ( apply_filters( 'fs_show_market_ticker', false ) ) : ?>
 <div class="fs-ticker" id="fs-ticker" role="marquee" aria-label="<?php esc_attr_e( 'Live market prices', 'financespots' ); ?>">
     <div class="fs-ticker__inner">
         <div class="fs-ticker__track" id="fs-ticker-track">
@@ -58,6 +60,7 @@
     <div class="fs-ticker__fade fs-ticker__fade--left"  aria-hidden="true"></div>
     <div class="fs-ticker__fade fs-ticker__fade--right" aria-hidden="true"></div>
 </div>
+<?php endif; ?>
 
 <!-- ═══════════════════════════════════════════════════
      MAIN NAVBAR
@@ -84,14 +87,17 @@
              role="navigation"
              aria-label="<?php esc_attr_e( 'Primary Navigation', 'financespots' ); ?>">
             <?php
-            wp_nav_menu([
-                'theme_location' => 'primary',
-                'menu_id'        => 'primary-menu',
-                'menu_class'     => 'fs-nav-list',
-                'container'      => false,
-                'fallback_cb'    => 'financespots_fallback_menu',
-                'walker'         => class_exists('FinanceSpots_Walker_Nav') ? new FinanceSpots_Walker_Nav() : null,
-            ]);
+            if ( has_nav_menu( 'primary' ) ) {
+                wp_nav_menu([
+                    'theme_location' => 'primary',
+                    'menu_id'        => 'primary-menu',
+                    'menu_class'     => 'fs-nav-list',
+                    'container'      => false,
+                    'walker'         => class_exists('FinanceSpots_Walker_Nav') ? new FinanceSpots_Walker_Nav() : null,
+                ]);
+            } else {
+                fs_render_desktop_nav();
+            }
             ?>
         </nav>
 
@@ -162,9 +168,9 @@
             <?php endif; ?>
 
             <!-- Get Started CTA -->
-            <a href="<?php echo esc_url( get_theme_mod( 'fs_cta_nav_url', '#tools' ) ); ?>"
+            <a href="<?php echo esc_url( fs_nav_cta_url() ); ?>"
                class="fs-btn fs-btn--primary fs-btn--nav">
-                <?php echo esc_html( get_theme_mod( 'fs_cta_nav_label', __( 'Get Started Free', 'financespots' ) ) ); ?>
+                <?php echo esc_html( fs_nav_cta_label() ); ?>
             </a>
 
             <!-- Mobile hamburger -->
@@ -209,12 +215,16 @@
                     <?php esc_html_e( 'Popular:', 'financespots' ); ?>
                 </span>
                 <?php
-                $suggestions = [ 'Mortgage Calculator', 'Compound Interest', 'Tax Estimator', 'Retirement Planner', 'Budget Planner' ];
-                foreach ( $suggestions as $s ) :
+                $suggestions = [
+                    'Mortgage Calculator' => '/tool/mortgage-calculator/', 'Income Tax' => '/tool/income-tax-calculator/',
+                    'Compound Interest' => '/tool/compound-interest-calculator/', 'Retirement Savings' => '/tool/retirement-savings-calculator/',
+                    'Budget Planner' => '/tool/monthly-budget-planner/',
+                ];
+                foreach ( $suggestions as $label => $path ) :
                 ?>
-                <a href="<?php echo esc_url( home_url( '/?s=' . urlencode( $s ) ) ); ?>"
+                <a href="<?php echo esc_url( home_url( $path ) ); ?>"
                    class="fs-search-suggestion-pill">
-                    <?php echo esc_html( $s ); ?>
+                    <?php echo esc_html( $label ); ?>
                 </a>
                 <?php endforeach; ?>
             </div>
@@ -225,12 +235,11 @@
     <div class="fs-mobile-nav" id="fs-mobile-nav" aria-hidden="true">
         <div class="fs-mobile-nav__inner">
             <?php
-            wp_nav_menu([
-                'theme_location' => 'primary',
-                'menu_class'     => 'fs-mobile-nav-list',
-                'container'      => false,
-                'fallback_cb'    => 'financespots_fallback_menu',
-            ]);
+            if ( has_nav_menu( 'primary' ) ) {
+                wp_nav_menu([ 'theme_location' => 'primary', 'menu_class' => 'fs-mobile-nav-list', 'container' => false ]);
+            } else {
+                fs_render_mobile_nav();
+            }
             ?>
             <div class="fs-mobile-nav__actions">
                 <?php if ( is_user_logged_in() ) : ?>
@@ -243,9 +252,9 @@
                     Sign In
                 </button>
                 <?php endif; ?>
-                <a href="<?php echo esc_url( get_theme_mod( 'fs_cta_nav_url', '#tools' ) ); ?>"
+                <a href="<?php echo esc_url( fs_nav_cta_url() ); ?>"
                    class="fs-btn fs-btn--primary fs-btn--full">
-                    <?php echo esc_html( get_theme_mod( 'fs_cta_nav_label', __( 'Get Started Free', 'financespots' ) ) ); ?>
+                    <?php echo esc_html( fs_nav_cta_label() ); ?>
                 </a>
             </div>
         </div>

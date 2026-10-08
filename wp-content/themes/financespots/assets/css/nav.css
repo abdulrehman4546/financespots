@@ -1,0 +1,104 @@
+/* ═══ Primary navigation: Calculators mega menu + mobile drawer ═══ */
+:root { --fs-ticker-h: 0px; }               /* the fake market ticker was removed */
+.fs-header { height: 68px; }
+.fs-header__inner { gap: 16px; }
+
+/* top-level items */
+.fs-header .fs-nav-list { gap: 4px; }
+.fs-header .fs-nav-list > li.fs-nav-item { position: static; }
+.fs-header .fs-nav-link {
+    position: relative; display: inline-flex; align-items: center; gap: 6px;
+    padding: 9px 14px; border: 0; background: transparent; cursor: pointer;
+    font: 600 .9rem/1 inherit; font-family: inherit; letter-spacing: .005em;
+    color: rgba(255,255,255,.72); border-radius: 10px; text-decoration: none; white-space: nowrap;
+    transition: color .18s, background .18s;
+}
+.fs-header .fs-nav-link:hover,
+.fs-header .fs-nav-item.is-open > .fs-nav-link { color: #fff; background: rgba(255,255,255,.07); }
+.fs-header .fs-nav-item.is-current > .fs-nav-link { color: #fff; }
+.fs-header .fs-nav-item.is-current > .fs-nav-link::after {
+    content: ""; position: absolute; left: 14px; right: 14px; bottom: 2px; height: 2px; border-radius: 2px; background: #00C896;
+}
+.fs-header .fs-nav-trigger svg { transition: transform .2s; opacity: .7; }
+.fs-header .fs-nav-item.is-open > .fs-nav-trigger svg { transform: rotate(180deg); opacity: 1; }
+.fs-header .fs-nav-link:focus-visible,
+.fs-mega a:focus-visible, .fs-mnav button:focus-visible, .fs-mnav a:focus-visible { outline: 2px solid #00C896; outline-offset: 2px; }
+
+/* mega panel */
+.fs-mega {
+    position: absolute; left: 0; right: 0; top: 100%;
+    padding-top: 8px; opacity: 0; visibility: hidden; transform: translateY(-6px);
+    transition: opacity .16s ease, transform .16s ease, visibility 0s linear .16s; z-index: 1001;
+}
+.fs-nav-item.is-open > .fs-mega { opacity: 1; visibility: visible; transform: none; transition-delay: 0s; }
+.fs-mega__panel {
+    max-width: 1080px; margin: 0 auto; background: #0F1629; border: 1px solid rgba(255,255,255,.09);
+    border-radius: 18px; box-shadow: 0 30px 70px rgba(0,0,0,.55); overflow: hidden;
+}
+.fs-mega__grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 0 26px; padding: 24px 28px 14px; }
+.fs-mega__title {
+    display: inline-block; margin-bottom: 8px; font-size: .72rem; font-weight: 800; letter-spacing: .09em;
+    text-transform: uppercase; color: #00C896; text-decoration: none;
+}
+.fs-mega__title:hover { color: #6EFFD9; }
+.fs-mega__col { display: flex; flex-direction: column; gap: 16px; }
+.fs-mega__guides { padding-top: 14px; border-top: 1px solid rgba(255,255,255,.08); }
+.fs-mega__list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1px; }
+.fs-mega__list a {
+    display: block; padding: 5px 10px; margin-left: -10px; border-radius: 8px; font-size: .86rem; font-weight: 500;
+    color: rgba(255,255,255,.75); text-decoration: none; transition: background .15s, color .15s;
+}
+.fs-mega__list a:hover { background: rgba(0,200,150,.12); color: #fff; }
+.fs-mega__foot {
+    display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 14px 30px;
+    background: rgba(255,255,255,.04); border-top: 1px solid rgba(255,255,255,.07); font-size: .83rem; color: rgba(255,255,255,.55);
+}
+.fs-mega__all { font-weight: 700; color: #00C896; text-decoration: none; white-space: nowrap; }
+.fs-mega__all:hover { color: #6EFFD9; }
+@media (max-width: 1100px) { .fs-mega__grid { grid-template-columns: repeat(2, 1fr); row-gap: 18px; } }
+
+/* header CTA */
+.fs-btn--nav { padding: 10px 18px; font-size: .88rem; }
+
+/* mobile drawer */
+.fs-mobile-nav { top: var(--fs-header-h, 68px); z-index: 1000; border-left: 0; }
+.fs-mobile-nav__inner { padding: 18px 20px 120px; }
+.fs-mnav { list-style: none; margin: 0; padding: 0; }
+.fs-mnav__item { border-bottom: 1px solid rgba(255,255,255,.08); }
+.fs-mnav__toggle, .fs-mnav__subtoggle {
+    width: 100%; display: flex; align-items: center; justify-content: space-between; background: none; border: 0; cursor: pointer;
+    font-family: inherit; color: rgba(255,255,255,.88); text-align: left;
+}
+.fs-mnav__toggle { padding: 16px 2px; font-size: 1.05rem; font-weight: 700; }
+.fs-mnav__subtoggle { padding: 12px 4px; font-size: .95rem; font-weight: 600; color: rgba(255,255,255,.72); }
+.fs-mnav svg { transition: transform .2s; flex-shrink: 0; opacity: .7; }
+.fs-mnav button[aria-expanded="true"] svg { transform: rotate(180deg); }
+.fs-mnav__link { display: block; padding: 16px 2px; font-size: 1.05rem; font-weight: 700; color: rgba(255,255,255,.88); text-decoration: none; }
+.fs-mnav__panel { padding: 0 0 14px 8px; }
+.fs-mnav__group { border-top: 1px solid rgba(255,255,255,.05); }
+.fs-mnav__sub { list-style: none; margin: 0; padding: 0 0 10px 6px; }
+.fs-mnav__sub a { display: block; padding: 9px 4px; font-size: .92rem; color: rgba(255,255,255,.62); text-decoration: none; }
+.fs-mnav__sub a:hover, .fs-mnav__link:hover { color: #00C896; }
+.fs-mnav__more, .fs-mnav__all { color: #00C896 !important; font-weight: 700; }
+.fs-mnav__all { display: block; padding: 12px 4px 4px; font-size: .92rem; text-decoration: none; }
+.fs-mnav [hidden] { display: none !important; }
+
+/* cookie banner: compact bar on phones */
+@media (max-width: 600px) {
+    .fs-cookie-banner { padding: 0 10px 10px; }
+    .fs-cookie-banner__inner { flex-direction: column; align-items: stretch; gap: 12px; padding: 14px 16px; }
+    .fs-cookie-banner__icon { display: none; }
+    .fs-cookie-banner__text span { font-size: .8rem; line-height: 1.45; }
+    .fs-cookie-banner__actions { display: grid; grid-template-columns: 1fr 1fr; }
+}
+
+@media (prefers-reduced-motion: reduce) { .fs-mega, .fs-header .fs-nav-link, .fs-mnav svg { transition: none; } }
+
+/* Mobile: a backdrop-filter on the header turns it into the containing block for the fixed
+   drawer, which clipped the menu to the 68px header. Drop the filter on small screens. */
+@media (max-width: 900px) {
+    .fs-header, .fs-header.scrolled {
+        -webkit-backdrop-filter: none; backdrop-filter: none; background: #0A0F1E;
+    }
+    .fs-mobile-nav { position: fixed; top: 68px; left: 0; right: 0; bottom: 0; height: calc(100vh - 68px); height: calc(100dvh - 68px); background: #0A0F1E; }
+}

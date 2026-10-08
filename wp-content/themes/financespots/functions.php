@@ -3488,6 +3488,7 @@ require_once get_template_directory() . '/inc/calculators-money-2.php';
 require_once get_template_directory() . '/inc/tool-content.php';
 require_once get_template_directory() . '/inc/tool-redirects.php';
 require_once get_template_directory() . '/inc/housekeeping.php';
+require_once get_template_directory() . '/inc/nav.php';
 
 /* ── Blog Publisher ── */
 require_once get_template_directory() . '/inc/blog-publisher.php';
