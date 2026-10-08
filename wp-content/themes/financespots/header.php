@@ -87,7 +87,7 @@
              role="navigation"
              aria-label="<?php esc_attr_e( 'Primary Navigation', 'financespots' ); ?>">
             <?php
-            if ( has_nav_menu( 'primary' ) ) {
+            if ( apply_filters( 'fs_use_wp_menu', false ) && has_nav_menu( 'primary' ) ) {
                 wp_nav_menu([
                     'theme_location' => 'primary',
                     'menu_id'        => 'primary-menu',
@@ -235,7 +235,7 @@
     <div class="fs-mobile-nav" id="fs-mobile-nav" aria-hidden="true">
         <div class="fs-mobile-nav__inner">
             <?php
-            if ( has_nav_menu( 'primary' ) ) {
+            if ( apply_filters( 'fs_use_wp_menu', false ) && has_nav_menu( 'primary' ) ) {
                 wp_nav_menu([ 'theme_location' => 'primary', 'menu_class' => 'fs-mobile-nav-list', 'container' => false ]);
             } else {
                 fs_render_mobile_nav();
