@@ -82,23 +82,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </a>
                 </div>
 
-                <!-- Social proof -->
+                <!-- Facts, not claims -->
                 <div class="fs-hero__social-proof">
-                    <div class="fs-hero__avatars" aria-hidden="true">
-                        <?php
-                        $colors = ['#00C896','#3B82F6','#F59E0B','#EF4444','#8B5CF6'];
-                        $initials = ['S','M','P','D','+'];
-                        foreach ($initials as $idx => $init) :
-                        ?>
-                        <span class="fs-avatar" style="background:<?php echo $colors[$idx]; ?>"><?php echo $init; ?></span>
-                        <?php endforeach; ?>
-                    </div>
                     <div class="fs-hero__social-proof-text">
-                        <span><?php esc_html_e( 'Trusted by', 'financespots' ); ?> <strong>50,000+</strong> <?php esc_html_e( 'users worldwide', 'financespots' ); ?></span>
-                        <div class="fs-hero__rating" aria-label="4.9 out of 5 stars">
-                            <span class="fs-hero__stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-                            <span>4.9/5</span>
-                        </div>
+                        <span><strong><?php echo (int) wp_count_posts( 'fs_tool' )->publish; ?>+</strong> <?php esc_html_e( 'free calculators. Formulas, examples and sources shown on every tool. No sign-up needed.', 'financespots' ); ?></span>
                     </div>
                 </div>
 
@@ -110,10 +97,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <!-- Main portfolio card -->
                 <div class="fs-portfolio-card" id="fs-portfolio-card">
                     <div class="fs-portfolio-card__header">
-                        <span class="fs-portfolio-card__label">PORTFOLIO OVERVIEW</span>
+                        <span class="fs-portfolio-card__label">EXAMPLE PORTFOLIO</span>
                         <span class="fs-portfolio-live">
                             <span class="fs-live-dot"></span>
-                            Live
+                            Sample data
                         </span>
                     </div>
 
@@ -156,23 +143,13 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     <div class="fs-portfolio-card__ai-row">
                         <span class="fs-portfolio-card__ai-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg></span>
                         <span class="fs-portfolio-card__ai-text" id="fs-ai-insight-text">
-                            AI Insight: Your portfolio is outperforming the S&amp;P 500 by 6.3% this month.
+                            Example insight shown with sample data, not real results.
                         </span>
                     </div>
                 </div>
 
                 <!-- Secondary mini cards -->
                 <div class="fs-hero__mini-cards">
-                    <!-- Mini card 1: BTC -->
-                    <div class="fs-mini-card fs-mini-card--1">
-                        <div class="fs-mini-card__top">
-                            <span class="fs-mini-card__name">Bitcoin</span>
-                            <span class="fs-mini-card__badge fs-mini-card__badge--up">+3.4%</span>
-                        </div>
-                        <div class="fs-mini-card__price" id="fs-btc-price">$103,240</div>
-                        <canvas class="fs-mini-chart" id="fs-mini-chart-1" width="120" height="36" aria-hidden="true"></canvas>
-                    </div>
-
                     <!-- Mini card 2: AI Dashboard -->
                     <a href="<?php echo esc_url( $ai_dash_url ); ?>" class="fs-mini-card fs-mini-card--2" style="text-decoration:none;cursor:pointer;display:flex;">
                         <div class="fs-mini-card__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="18" height="18"><rect x="4" y="8" width="16" height="12" rx="2"/><path d="M8 8V5a4 4 0 018 0v3"/><circle cx="9" cy="14" r="1"/><circle cx="15" cy="14" r="1"/></svg></div>
@@ -184,20 +161,13 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 </div>
 
                 <!-- Floating badges -->
-                <?php if ( get_theme_mod( 'fs_badge1_enable', '1' ) ) : ?>
-                <a href="<?php echo esc_url( get_theme_mod( 'fs_badge1_url', '#tools' ) ); ?>"
-                   class="fs-float-badge fs-float-badge--1"
-                   id="fs-badge1">
-                    <span class="fs-float-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><path d="M3 17l6-6 4 4 8-8"/><path d="M15 7h6v6"/></svg></span>
-                    <span id="fs-badge1-text"><?php echo esc_html( get_theme_mod( 'fs_badge1_text', 'ROI up 24%' ) ); ?></span>
-                </a>
-                <?php endif; ?>
+                
                 <?php if ( get_theme_mod( 'fs_badge3_enable', '1' ) ) : ?>
                 <a href="<?php echo esc_url( get_theme_mod( 'fs_badge3_url', '/about/' ) ); ?>"
                    class="fs-float-badge fs-float-badge--3"
                    id="fs-badge3">
                     <span class="fs-float-badge__icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg></span>
-                    <span id="fs-badge3-text"><?php echo esc_html( get_theme_mod( 'fs_badge3_text', 'Bank-level Security' ) ); ?></span>
+                    <span id="fs-badge3-text"><?php echo esc_html( 'No sign-up needed' ); ?></span>
                 </a>
                 <?php endif; ?>
 
@@ -228,26 +198,26 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 };
                 $stats = [
                     [
-                        'number' => get_theme_mod('fs_stat1_number','2500000'),
-                        'label'  => get_theme_mod('fs_stat1_label','Calculations Done'),
+                        'number' => '0',
+                        'label'  => 'Sign-ups Required',
                         'icon'   => $fs_stat_svg('<path d="M4 19V5a2 2 0 012-2h12a2 2 0 012 2v14"/><path d="M8 21h8M9 9h1M9 13h1M9 17h1M14 9h1M14 13h1M14 17h1"/>'),
                         'suffix' => '+',
                     ],
                     [
-                        'number' => get_theme_mod('fs_stat2_number', (string) wp_count_posts('fs_tool')->publish ),
-                        'label'  => get_theme_mod('fs_stat2_label','Finance Tools'),
+                        'number' => (string) wp_count_posts('fs_tool')->publish,
+                        'label'  => 'Free Calculators',
                         'icon'   => $fs_stat_svg('<rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>'),
                         'suffix' => '+',
                     ],
                     [
-                        'number' => get_theme_mod('fs_stat3_number','50000'),
-                        'label'  => get_theme_mod('fs_stat3_label','Active Users'),
+                        'number' => (string) max( 1, (int) wp_count_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true ] ) ),
+                        'label'  => 'Tool Categories',
                         'icon'   => $fs_stat_svg('<circle cx="9" cy="8" r="3.2"/><path d="M2.5 20c0-3.5 3-6 6.5-6s6.5 2.5 6.5 6"/><path d="M16 8.5a3 3 0 010 5.8M20 20c0-2.8-2-5-4.5-5.7"/>'),
                         'suffix' => '+',
                     ],
                     [
-                        'number' => get_theme_mod('fs_stat4_number','99'),
-                        'label'  => get_theme_mod('fs_stat4_label','% Accuracy Rate'),
+                        'number' => '100',
+                        'label'  => '% Free to Use',
                         'icon'   => $fs_stat_svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'),
                         'suffix' => '%',
                     ],
@@ -590,6 +560,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <!-- ============================================================
      SECTION 8: TESTIMONIALS
      ============================================================ -->
+<?php /* Testimonials removed: they were not from verified users. Re-add only real, attributable reviews. */ if ( false ) : ?>
 <section class="fs-testimonials" id="testimonials" aria-labelledby="testimonials-heading">
     <div class="fs-testimonials__bg" aria-hidden="true">
         <div class="fs-testimonials__bg-orb"></div>
@@ -733,6 +704,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <?php endif; // end trust strip hidden ?>
     </div>
 </section>
+<?php endif; ?>
 
 <!-- ============================================================
      SECTION 9: BLOG POSTS (latest 3)

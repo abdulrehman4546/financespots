@@ -123,7 +123,7 @@ get_header();
         <div class="container">
             <div class="fs-about-cta__inner">
                 <h2>&#128200; Ready to Take Control of Your Finances?</h2>
-                <p>Join thousands of people using FinanceSpots to make smarter money decisions -- completely free.</p>
+                <p>Use FinanceSpots to check the numbers behind your money decisions -- completely free.</p>
                 <div style="display:flex;gap:14px;flex-wrap:wrap;justify-content:center;">
                     <a href="<?php echo esc_url(home_url('/all-tools/')); ?>" class="fs-btn fs-btn--primary fs-btn--lg">Explore All Free Tools &rarr;</a>
                     <a href="<?php echo esc_url(home_url('/blog/')); ?>" class="fs-btn fs-btn--outline fs-btn--lg">Read Finance Guides</a>

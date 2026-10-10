@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.5.6' );
+define( 'FINANCESPOTS_VERSION', '1.5.7' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -2096,7 +2096,7 @@ function fs_rankmath_setup() {
 
         // Taxonomy fs_tool_cat
         'fs_tool_cat_title'          => '%term% Finance Tools -- Free Calculators 2026 | FinanceSpots',
-        'fs_tool_cat_description'    => 'Browse free %term% -- instant results, no signup, PDF export. Trusted by 50,000+ users.',
+        'fs_tool_cat_description'    => 'Browse free %term% -- instant results, no signup, PDF export.',
         'fs_tool_cat_robots'         => [ 'index', 'follow' ],
 
         // Pages
@@ -3214,7 +3214,7 @@ function fs_complete_seo_all_pages() {
     if ( $front_id ) {
         update_post_meta( $front_id, 'rank_math_focus_keyword', 'free financial calculators 2026' );
         update_post_meta( $front_id, 'rank_math_title',         'FinanceSpots -- 55+ Free Financial Calculators 2026 | No Signup' );
-        update_post_meta( $front_id, 'rank_math_description',   'FinanceSpots offers 55+ free financial calculators: mortgage, investment, tax, retirement, crypto, currency & budget tools. Instant results, PDF export, no signup required. Trusted by 50,000+ users.' );
+        update_post_meta( $front_id, 'rank_math_description',   'FinanceSpots offers 55+ free financial calculators: mortgage, investment, tax, retirement, crypto, currency & budget tools. Instant results, PDF export, no signup required.' );
         update_post_meta( $front_id, 'rank_math_robots',        [ 'index', 'follow' ] );
     }
 

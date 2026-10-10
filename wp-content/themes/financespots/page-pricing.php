@@ -231,7 +231,7 @@ $is_pro  = fs_is_pro();
         <div class="container">
             <div class="fsp-cta__inner">
                 <h2>Ready to Go PRO?</h2>
-                <p>Join hundreds of users who use FinanceSpots PRO to make smarter financial decisions.</p>
+                <p>Use FinanceSpots PRO to go further with your financial planning.</p>
                 <?php if(!$is_pro): ?>
                 <button class="fsp-cta__btn fsp-checkout-btn" data-plan="monthly">
                     &#11088; Get PRO Now -- Start at $9/month

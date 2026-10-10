@@ -18,7 +18,7 @@
 
             <!-- Top trust bar -->
             <div class="fs-nl2__trust">
-                <span class="fs-nl2__trust-item"><span class="fs-nl2__trust-dot"></span> 10,000+ Subscribers</span>
+                <span class="fs-nl2__trust-item"><span class="fs-nl2__trust-dot"></span> Free every Monday</span>
                 <span class="fs-nl2__trust-sep">·</span>
                 <span class="fs-nl2__trust-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Every Monday</span>
                 <span class="fs-nl2__trust-sep">·</span>
@@ -37,7 +37,7 @@
                     <h2 class="fs-nl2__title" id="newsletter-heading">
                         Stay <span class="fs-nl2__title-accent">One Step Ahead</span><br>of Your Finances
                     </h2>
-                    <p class="fs-nl2__desc">Join thousands of smart readers who get our weekly finance tips, market insights, tool updates, and money-saving strategies -- free every Monday morning.</p>
+                    <p class="fs-nl2__desc">Get our weekly finance tips, market insights, tool updates, and money-saving strategies -- free every Monday morning.</p>
 
                     <!-- What you get -->
                     <div class="fs-nl2__perks">
@@ -85,7 +85,7 @@
                                 <div class="fs-nl2__av" style="background:#F59E0B">ZK</div>
                                 <div class="fs-nl2__av" style="background:#EF4444">MN</div>
                             </div>
-                            <span class="fs-nl2__social-text">Joined by <strong>10,000+</strong> finance readers</span>
+                            <span class="fs-nl2__social-text">Free, unsubscribe any time</span>
                         </div>
                     </div>
                 </div>

@@ -952,11 +952,11 @@
         if (window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
         var insights = [
-            'AI Insight: Your portfolio is outperforming the S&P 500 by 6.3% this month.',
-            'AI Alert: Consider rebalancing — tech sector now 42% of your portfolio.',
-            'AI Suggestion: Current market conditions favor defensive stocks.',
-            'AI Forecast: Based on your risk profile, 70/30 allocation is optimal now.',
-            'AI Tip: Dollar-cost averaging into BTC could reduce volatility exposure.',
+            'Example: Your portfolio is outperforming the S&P 500 by 6.3% this month.',
+            'Example: Consider rebalancing — tech sector now 42% of your portfolio.',
+            'Example: Current market conditions favor defensive stocks.',
+            'Example: Based on your risk profile, 70/30 allocation is optimal now.',
+            'Example: Dollar-cost averaging into BTC could reduce volatility exposure.',
         ];
         var idx = 0;
 
