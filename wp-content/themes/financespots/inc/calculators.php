@@ -41,6 +41,8 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'self-employment-tax-calculator' => 'fs_calc2_se_tax',
         'monthly-budget-planner'         => 'fs_calc2_budget_planner',
         'dividend-calculator'            => 'fs_calc2_dividend',
+        'balance-transfer-calculator'    => 'fs_calc2_balance_transfer',
+        'student-loan-rap-calculator'    => 'fs_calc2_student_rap',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {
