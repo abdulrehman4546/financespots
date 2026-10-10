@@ -1447,32 +1447,46 @@ function fs_calc_currency() { ?>
 <div class="fsc-wrap">
 <div class="fsc-grid">
   <div class="fsc-inputs">
-    <div class="fsc-field"><label>Amount</label><input type="number" id="cc-amount" value="1000"></div>
-    <div class="fsc-field"><label>From Currency</label>
-      <select id="cc-from"><option value="1">USD - US Dollar</option><option value="0.93">EUR - Euro</option><option value="0.79">GBP - British Pound</option><option value="149.5">JPY - Japanese Yen</option><option value="1.36">CAD - Canadian Dollar</option><option value="1.54">AUD - Australian Dollar</option><option value="0.89">CHF - Swiss Franc</option><option value="7.24">CNY - Chinese Yuan</option><option value="83.5">INR - Indian Rupee</option><option value="5.05">BRL - Brazilian Real</option></select></div>
-    <div class="fsc-field"><label>To Currency</label>
-      <select id="cc-to"><option value="0.93">EUR - Euro</option><option value="1">USD - US Dollar</option><option value="0.79">GBP - British Pound</option><option value="149.5">JPY - Japanese Yen</option><option value="1.36">CAD - Canadian Dollar</option><option value="1.54">AUD - Australian Dollar</option><option value="0.89">CHF - Swiss Franc</option><option value="7.24">CNY - Chinese Yuan</option><option value="83.5">INR - Indian Rupee</option><option value="5.05">BRL - Brazilian Real</option></select></div>
-    <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:-.5rem">*Approximate rates for reference only</p>
-    <button class="fsc-btn" onclick="calcCurrency()">Convert</button>
+    <div class="fsc-field"><label for="cc-amount">Amount</label><input type="number" id="cc-amount" value="1000" min="0" step="any"></div>
+    <div class="fsc-field"><label for="cc-from">From currency</label><select id="cc-from"></select></div>
+    <div class="fsc-field"><label for="cc-to">To currency</label><select id="cc-to"></select></div>
+    <p id="cc-status" style="font-size:.8rem;color:rgba(255,255,255,.55);margin:-.25rem 0 .75rem">Loading rates...</p>
+    <button class="fsc-btn" type="button" id="cc-go">Convert</button>
+    <button class="fsc-btn fsc-btn--sm" type="button" id="cc-swap" style="margin-left:.5rem">Swap</button>
   </div>
-  <div class="fsc-results" id="cc-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Converted Amount</div><div class="fsc-result-value" id="cc-converted">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Exchange Rate</div><div class="fsc-result-value" id="cc-rate">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Inverse Rate</div><div class="fsc-result-value" id="cc-inverse">--</div></div>
+  <div class="fsc-results" id="cc-results" style="display:none" aria-live="polite">
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Converted amount</div><div class="fsc-result-value" id="cc-converted">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Exchange rate</div><div class="fsc-result-value" id="cc-rate">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Inverse rate</div><div class="fsc-result-value" id="cc-inverse">--</div></div>
   </div>
 </div></div>
 <script>
-function calcCurrency(){
-  var amt=parseFloat(document.getElementById('cc-amount').value)||0;
-  var from=parseFloat(document.getElementById('cc-from').value)||1;
-  var to=parseFloat(document.getElementById('cc-to').value)||1;
-  var rate=to/from;
-  var result=amt*rate;
-  document.getElementById('cc-converted').textContent=result.toFixed(4);
-  document.getElementById('cc-rate').textContent='1 = '+rate.toFixed(4);
-  document.getElementById('cc-inverse').textContent='1 = '+(1/rate).toFixed(4);
-  document.getElementById('cc-results').style.display='grid';
-}
+(function(){
+  var NAMES={USD:'US Dollar',EUR:'Euro',GBP:'British Pound',JPY:'Japanese Yen',CAD:'Canadian Dollar',AUD:'Australian Dollar',CHF:'Swiss Franc',CNY:'Chinese Yuan',INR:'Indian Rupee',MXN:'Mexican Peso',BRL:'Brazilian Real',SGD:'Singapore Dollar',HKD:'Hong Kong Dollar',NZD:'New Zealand Dollar',SEK:'Swedish Krona',NOK:'Norwegian Krone',KRW:'South Korean Won',ZAR:'South African Rand',TRY:'Turkish Lira',PHP:'Philippine Peso'};
+  /* approximate fallback, used only if the live request fails */
+  var rates={USD:1,EUR:0.89,GBP:0.76,JPY:158,CAD:1.37,AUD:1.5,CHF:0.8,CNY:7.2,INR:85,MXN:19,BRL:5.6,SGD:1.3,HKD:7.8,NZD:1.65,SEK:10,NOK:10.5,KRW:1380,ZAR:18,TRY:40,PHP:57};
+  var live=false;
+  function $(i){return document.getElementById(i);}
+  function fill(){['cc-from','cc-to'].forEach(function(id,k){var el=$(id),keep=el.value;el.innerHTML='';Object.keys(NAMES).forEach(function(c){var o=document.createElement('option');o.value=c;o.textContent=c+' - '+NAMES[c];el.appendChild(o);});el.value=keep||(k?'EUR':'USD');});}
+  function num(v,d){return v.toLocaleString('en-US',{minimumFractionDigits:d,maximumFractionDigits:d});}
+  function calc(){
+    var a=parseFloat($('cc-amount').value)||0,f=$('cc-from').value,t=$('cc-to').value,r=rates[t]/rates[f];
+    var d=r<0.01?6:4;
+    $('cc-converted').textContent=num(a*r,r>50?2:4)+' '+t;
+    $('cc-rate').textContent='1 '+f+' = '+num(r,d)+' '+t;
+    $('cc-inverse').textContent='1 '+t+' = '+num(1/r,d)+' '+f;
+    $('cc-results').style.display='grid';
+  }
+  fill();$('cc-from').value='USD';$('cc-to').value='EUR';
+  $('cc-go').addEventListener('click',calc);
+  $('cc-swap').addEventListener('click',function(){var a=$('cc-from').value;$('cc-from').value=$('cc-to').value;$('cc-to').value=a;calc();});
+  ['cc-amount','cc-from','cc-to'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+  calc();
+  fetch('https://api.frankfurter.dev/v1/latest?base=USD').then(function(r){return r.json();}).then(function(j){
+    if(j&&j.rates){Object.keys(NAMES).forEach(function(c){if(c==='USD')rates.USD=1;else if(j.rates[c])rates[c]=j.rates[c];});live=true;
+      $('cc-status').textContent='Rates: European Central Bank reference rates via Frankfurter, '+j.date+'. Mid-market rates; banks and card networks add a margin.';calc();}
+  }).catch(function(){$('cc-status').textContent='Live rates are unavailable right now, so approximate reference rates are shown. Do not use them for transactions.';});
+})();
 </script>
 <?php }
 
@@ -1483,38 +1497,45 @@ function fs_calc_crypto_convert( $title ) { ?>
 <div class="fsc-wrap">
 <div class="fsc-grid">
   <div class="fsc-inputs">
-    <div class="fsc-field"><label>Amount</label><input type="number" id="crc-amount" value="1" step="0.0001"></div>
-    <div class="fsc-field"><label>Cryptocurrency</label>
+    <div class="fsc-field"><label for="crc-amount">Amount</label><input type="number" id="crc-amount" value="1" step="any" min="0"></div>
+    <div class="fsc-field"><label for="crc-coin">Cryptocurrency</label>
       <select id="crc-coin">
-        <option value="104000">Bitcoin (BTC)</option>
-        <option value="2500">Ethereum (ETH)</option>
-        <option value="0.5">XRP</option>
-        <option value="1">USDT (Tether)</option>
-        <option value="400">BNB</option>
-        <option value="150">Solana (SOL)</option>
-        <option value="0.35">Cardano (ADA)</option>
-        <option value="32">Dogecoin (DOGE)</option>
+        <option value="bitcoin">Bitcoin (BTC)</option><option value="ethereum">Ethereum (ETH)</option><option value="ripple">XRP</option>
+        <option value="tether">Tether (USDT)</option><option value="binancecoin">BNB</option><option value="solana">Solana (SOL)</option>
+        <option value="cardano">Cardano (ADA)</option><option value="dogecoin">Dogecoin (DOGE)</option>
       </select></div>
-    <div class="fsc-field"><label>To Fiat</label>
-      <select id="crc-fiat"><option value="1">USD</option><option value="0.93">EUR</option><option value="0.79">GBP</option><option value="83.5">INR</option><option value="1.36">CAD</option></select></div>
-    <button class="fsc-btn" onclick="calcCryptoConvert()">Convert</button>
-    <p style="font-size:.8rem;color:rgba(255,255,255,.5);margin-top:.5rem">*Approximate prices for reference</p>
+    <div class="fsc-field"><label for="crc-fiat">To currency</label>
+      <select id="crc-fiat"><option value="usd">USD</option><option value="eur">EUR</option><option value="gbp">GBP</option><option value="inr">INR</option><option value="cad">CAD</option><option value="pkr">PKR</option></select></div>
+    <p id="crc-status" style="font-size:.8rem;color:rgba(255,255,255,.55);margin:-.25rem 0 .75rem">Loading prices...</p>
+    <button class="fsc-btn" type="button" id="crc-go">Convert</button>
   </div>
-  <div class="fsc-results" id="crc-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Fiat Value</div><div class="fsc-result-value" id="crc-value">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Price Per Coin (USD)</div><div class="fsc-result-value" id="crc-price">--</div></div>
+  <div class="fsc-results" id="crc-results" style="display:none" aria-live="polite">
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Value</div><div class="fsc-result-value" id="crc-value">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Price per coin</div><div class="fsc-result-value" id="crc-price">--</div></div>
   </div>
 </div></div>
 <script>
-function calcCryptoConvert(){
-  var amt=parseFloat(document.getElementById('crc-amount').value)||0;
-  var coin=parseFloat(document.getElementById('crc-coin').value)||0;
-  var fiat=parseFloat(document.getElementById('crc-fiat').value)||1;
-  var value=amt*coin*fiat;
-  document.getElementById('crc-value').textContent=value.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
-  document.getElementById('crc-price').textContent='$'+coin.toFixed(2).replace(/\B(?=(\d{3})+(?!\d))/g,',');
-  document.getElementById('crc-results').style.display='grid';
-}
+(function(){
+  function $(i){return document.getElementById(i);}
+  /* approximate fallback prices in USD and USD->fiat rates, used only if the live request fails */
+  var prices={bitcoin:{usd:80000,eur:71000,gbp:60500,inr:6800000,cad:110000,pkr:22400000},ethereum:{usd:2500,eur:2200,gbp:1900,inr:212000,cad:3400,pkr:700000},ripple:{usd:2,eur:1.8,gbp:1.5,inr:170,cad:2.7,pkr:560},tether:{usd:1,eur:0.89,gbp:0.76,inr:85,cad:1.37,pkr:280},binancecoin:{usd:600,eur:535,gbp:455,inr:51000,cad:820,pkr:168000},solana:{usd:150,eur:134,gbp:114,inr:12750,cad:205,pkr:42000},cardano:{usd:0.6,eur:0.53,gbp:0.46,inr:51,cad:0.82,pkr:168},dogecoin:{usd:0.15,eur:0.13,gbp:0.11,inr:12.7,cad:0.2,pkr:42}};
+  var live=false;
+  function fmt(v){var d=v>=100?2:(v>=1?4:6);return v.toLocaleString('en-US',{minimumFractionDigits:d>4?4:2,maximumFractionDigits:d});}
+  function calc(){
+    var a=parseFloat($('crc-amount').value)||0,c=$('crc-coin').value,f=$('crc-fiat').value,p=(prices[c]||{})[f];
+    if(!p){$('crc-value').textContent='Price unavailable';$('crc-results').style.display='grid';return;}
+    $('crc-value').textContent=fmt(a*p)+' '+f.toUpperCase();
+    $('crc-price').textContent=fmt(p)+' '+f.toUpperCase();
+    $('crc-results').style.display='grid';
+  }
+  $('crc-go').addEventListener('click',calc);
+  ['crc-amount','crc-coin','crc-fiat'].forEach(function(i){$(i).addEventListener('input',calc);$(i).addEventListener('change',calc);});
+  calc();
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids='+Object.keys(prices).join(',')+'&vs_currencies=usd,eur,gbp,inr,cad,pkr').then(function(r){return r.json();}).then(function(j){
+    if(j&&j.bitcoin){Object.keys(j).forEach(function(k){prices[k]=Object.assign(prices[k]||{},j[k]);});live=true;
+      $('crc-status').textContent='Prices: CoinGecko, fetched '+new Date().toLocaleTimeString()+'. Crypto prices move constantly and exchange prices differ slightly.';calc();}
+  }).catch(function(){$('crc-status').textContent='Live prices are unavailable right now, so rough reference prices are shown. They may be far from the real price.';});
+})();
 </script>
 <?php }
 
@@ -1606,40 +1627,45 @@ function fs_calc_mining() { ?>
 <div class="fsc-wrap">
 <div class="fsc-grid">
   <div class="fsc-inputs">
-    <div class="fsc-field"><label>Hash Rate (TH/s)</label><input type="number" id="mn-hash" value="110" step="1"></div>
-    <div class="fsc-field"><label>Power Consumption (W)</label><input type="number" id="mn-power" value="3250"></div>
-    <div class="fsc-field"><label>Electricity Cost ($/kWh)</label><input type="number" id="mn-elec" value="0.12" step="0.01"></div>
-    <div class="fsc-field"><label>BTC Price ($)</label><input type="number" id="mn-btc" value="104000"></div>
-    <div class="fsc-field"><label>Pool Fee (%)</label><input type="number" id="mn-fee" value="1" step="0.1"></div>
-    <button class="fsc-btn" onclick="calcMining()">Calculate</button>
+    <div class="fsc-field"><label for="mn-hash">Your hash rate (TH/s)</label><input type="number" id="mn-hash" value="110" step="any" min="0"></div>
+    <div class="fsc-field"><label for="mn-power">Power use (watts)</label><input type="number" id="mn-power" value="3250" min="0"></div>
+    <div class="fsc-field"><label for="mn-elec">Electricity cost ($ per kWh)</label><input type="number" id="mn-elec" value="0.12" step="0.01" min="0"></div>
+    <div class="fsc-field"><label for="mn-btc">Bitcoin price ($)</label><input type="number" id="mn-btc" value="80000" min="0"></div>
+    <div class="fsc-field"><label for="mn-net">Network hash rate (EH/s)</label><input type="number" id="mn-net" value="900" step="any" min="1"><small style="color:rgba(255,255,255,.55)">Look up the current figure on mempool.space; it changes constantly.</small></div>
+    <div class="fsc-field"><label for="mn-reward">Block reward (BTC)</label><input type="number" id="mn-reward" value="3.125" step="any" min="0"></div>
+    <div class="fsc-field"><label for="mn-fee">Pool fee (%)</label><input type="number" id="mn-fee" value="1" step="0.1" min="0"></div>
+    <button class="fsc-btn" type="button" id="mn-go">Calculate</button>
   </div>
-  <div class="fsc-results" id="mn-results" style="display:none">
-    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Daily Profit</div><div class="fsc-result-value" id="mn-daily">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Monthly Profit</div><div class="fsc-result-value" id="mn-monthly">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Daily Electricity Cost</div><div class="fsc-result-value" id="mn-elec-cost">--</div></div>
-    <div class="fsc-result-card"><div class="fsc-result-label">Break-Even BTC Price</div><div class="fsc-result-value" id="mn-be">--</div></div>
+  <div class="fsc-results" id="mn-results" style="display:none" aria-live="polite">
+    <div class="fsc-result-card fsc-result-card--primary"><div class="fsc-result-label">Daily profit</div><div class="fsc-result-value" id="mn-daily">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Monthly profit (30 days)</div><div class="fsc-result-value" id="mn-monthly">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Bitcoin mined per day</div><div class="fsc-result-value" id="mn-btcday">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Daily revenue</div><div class="fsc-result-value" id="mn-rev">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Daily electricity cost</div><div class="fsc-result-value" id="mn-elec-cost">--</div></div>
+    <div class="fsc-result-card"><div class="fsc-result-label">Break-even Bitcoin price</div><div class="fsc-result-value" id="mn-be">--</div></div>
   </div>
 </div></div>
 <script>
-function calcMining(){
-  var H=parseFloat(document.getElementById('mn-hash').value)||0;
-  var W=parseFloat(document.getElementById('mn-power').value)||0;
-  var E=parseFloat(document.getElementById('mn-elec').value)||0;
-  var BTC=parseFloat(document.getElementById('mn-btc').value)||0;
-  var fee=parseFloat(document.getElementById('mn-fee').value)/100;
-  // Approximate BTC mined per day: H(TH/s) * 86400 / difficulty_factor
-  var btcPerDay=H*86400/(85000000000000)*6.25*(1-fee); // simplified estimate
-  var revenuePerDay=btcPerDay*BTC;
-  var elecPerDay=W/1000*24*E;
-  var profitPerDay=revenuePerDay-elecPerDay;
-  var bePrice=elecPerDay/btcPerDay;
-  var fmt=function(v){return v>=0?'$'+v.toFixed(2):'−$'+Math.abs(v).toFixed(2);};
-  document.getElementById('mn-daily').textContent=fmt(profitPerDay);
-  document.getElementById('mn-monthly').textContent=fmt(profitPerDay*30);
-  document.getElementById('mn-elec-cost').textContent='$'+elecPerDay.toFixed(2);
-  document.getElementById('mn-be').textContent='$'+bePrice.toFixed(0).replace(/\B(?=(\d{3})+(?!\d))/g,',');
-  document.getElementById('mn-results').style.display='grid';
-}
+(function(){
+  function $(i){return document.getElementById(i);}
+  function usd(v){return (v<0?'-$':'$')+Math.abs(v).toLocaleString('en-US',{minimumFractionDigits:2,maximumFractionDigits:2});}
+  function calc(){
+    var H=parseFloat($('mn-hash').value)||0,W=parseFloat($('mn-power').value)||0,E=parseFloat($('mn-elec').value)||0,B=parseFloat($('mn-btc').value)||0,
+        N=parseFloat($('mn-net').value)||1,R=parseFloat($('mn-reward').value)||0,F=(parseFloat($('mn-fee').value)||0)/100;
+    /* share of the network x 144 blocks a day x block reward, less the pool fee (transaction fees ignored) */
+    var btcDay=H/(N*1e6)*144*R*(1-F), rev=btcDay*B, cost=W/1000*24*E, profit=rev-cost;
+    $('mn-daily').textContent=usd(profit); $('mn-monthly').textContent=usd(profit*30);
+    $('mn-btcday').textContent=btcDay.toFixed(8)+' BTC'; $('mn-rev').textContent=usd(rev); $('mn-elec-cost').textContent=usd(cost);
+    $('mn-be').textContent=btcDay>0?'$'+Math.round(cost/btcDay).toLocaleString('en-US'):'--';
+    $('mn-results').style.display='grid';
+  }
+  $('mn-go').addEventListener('click',calc);
+  ['mn-hash','mn-power','mn-elec','mn-btc','mn-net','mn-reward','mn-fee'].forEach(function(i){$(i).addEventListener('input',calc);});
+  calc();
+  fetch('https://api.coingecko.com/api/v3/simple/price?ids=bitcoin&vs_currencies=usd').then(function(r){return r.json();}).then(function(j){
+    if(j&&j.bitcoin&&j.bitcoin.usd){$('mn-btc').value=Math.round(j.bitcoin.usd);calc();}
+  }).catch(function(){});
+})();
 </script>
 <?php }
 
