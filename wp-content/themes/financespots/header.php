@@ -138,7 +138,7 @@
                         </div>
                     </div>
                     <div class="fs-user-menu__divider"></div>
-                    <?php if ( ! fs_is_pro() ) : ?>
+                    <?php if ( ! fs_is_pro() && get_option( 'fs_pro_sales_enabled', 0 ) ) : ?>
                     <a href="<?php echo esc_url( home_url('/pricing/') ); ?>" class="fs-user-menu__item fs-user-menu__item--upgrade">
                         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
                         Upgrade to PRO

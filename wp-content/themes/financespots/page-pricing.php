@@ -7,6 +7,9 @@ get_header();
 $plans   = fs_get_plans();
 $features = fs_pro_features();
 $is_pro  = fs_is_pro();
+/* Paid plans stay hidden until the PRO features exist. Turn on with: update_option( 'fs_pro_sales_enabled', 1 ) */
+$pro_open = (bool) get_option( 'fs_pro_sales_enabled', 0 );
+$tool_count = (int) wp_count_posts( 'fs_tool' )->publish;
 ?>
 
 <div class="fsp-page">
@@ -18,11 +21,12 @@ $is_pro  = fs_is_pro();
             <div class="fsp-hero__orb fsp-hero__orb--2"></div>
         </div>
         <div class="container" style="position:relative;z-index:2;text-align:center;">
-            <span class="fsp-badge">&#11088; Upgrade to PRO</span>
-            <h1 class="fsp-hero__title">Simple, Transparent Pricing</h1>
-            <p class="fsp-hero__sub">Start free forever. Upgrade when you need more power.</p>
+<span class="fsp-badge"><?php echo $pro_open ? '&#11088; Upgrade to PRO' : 'Free to use'; ?></span>
+<h1 class="fsp-hero__title"><?php echo $pro_open ? 'Simple, Transparent Pricing' : 'Free Calculators, No Sign-up'; ?></h1>
+<p class="fsp-hero__sub"><?php echo $pro_open ? 'Start free forever. Upgrade when you need more power.' : 'Every calculator on FinanceSpots is free. A PRO plan is planned but is not available yet.'; ?></p>
 
-            <!-- Toggle monthly/yearly -->
+<!-- Toggle monthly/yearly -->
+<?php if ( $pro_open ) : ?>
             <div class="fsp-toggle" id="fsp-toggle">
                 <button class="fsp-toggle__btn active" data-period="monthly">Monthly</button>
                 <button class="fsp-toggle__btn" data-period="yearly">
@@ -30,6 +34,7 @@ $is_pro  = fs_is_pro();
                     <span class="fsp-toggle__save">Save 27%</span>
                 </button>
             </div>
+<?php endif; ?>
         </div>
     </section>
 
@@ -61,22 +66,26 @@ $is_pro  = fs_is_pro();
                         <p class="fsp-plan__desc">All core calculators, no credit card needed.</p>
                     </div>
                     <ul class="fsp-plan__features">
-                        <li class="yes">30+ finance calculators</li>
+<li class="yes"><?php echo $tool_count; ?>+ finance calculators</li>
                         <li class="yes">All tools free to use</li>
                         <li class="yes">Mobile friendly</li>
-                        <li class="yes">PDF export (basic)</li>
-                        <li class="no">Save calculations</li>
-                        <li class="no">Calculation history</li>
-                        <li class="no">Advanced scenarios</li>
-                        <li class="no">Ad-free experience</li>
-                        <li class="no">Priority support</li>
+<li class="yes">Formulas, worked examples and sources</li>
+<li class="yes">No account needed</li>
+<?php if ( $pro_open ) : ?>
+<li class="no">Save calculations</li>
+<li class="no">Calculation history</li>
+<li class="no">Advanced scenarios</li>
+<li class="no">Ad-free experience</li>
+<li class="no">Priority support</li>
+<?php endif; ?>
                     </ul>
                     <a href="<?php echo esc_url( home_url('/#tools') ); ?>" class="fsp-plan__btn fsp-plan__btn--free">
                         Start Free
                     </a>
                 </div>
 
-                <!-- PRO MONTHLY -->
+<?php if ( $pro_open ) : ?>
+<!-- PRO MONTHLY -->
                 <div class="fsp-plan fsp-plan--pro fsp-plan--monthly" id="plan-monthly">
                     <div class="fsp-plan__popular">Most Popular</div>
                     <div class="fsp-plan__header">
@@ -160,7 +169,23 @@ $is_pro  = fs_is_pro();
                     <?php endif; ?>
                 </div>
 
-            </div><!-- /.fsp-plans -->
+<?php else : ?>
+<div class="fsp-plan">
+<div class="fsp-plan__header">
+<div class="fsp-plan__icon">&#11088;</div>
+<h2 class="fsp-plan__name">PRO</h2>
+<div class="fsp-plan__price"><span class="fsp-plan__amount">Coming soon</span></div>
+<p class="fsp-plan__desc">Not available yet. Nothing to buy today.</p>
+</div>
+<ul class="fsp-plan__features">
+<li class="no">Planned: saving and bookmarking calculations</li>
+<li class="no">Planned: PDF export of results</li>
+<li class="no">Planned: calculation history</li>
+</ul>
+<span class="fsp-plan__btn fsp-plan__btn--active" style="cursor:default">Not available yet</span>
+</div>
+<?php endif; ?>
+</div><!-- /.fsp-plans -->
 
             <!-- Error/loading message -->
             <div class="fsp-checkout-msg" id="fsp-checkout-msg" style="display:none;"></div>
@@ -169,7 +194,8 @@ $is_pro  = fs_is_pro();
     </section>
 
     <!-- Feature comparison -->
-    <section class="fsp-compare">
+<?php if ( $pro_open ) : ?>
+<section class="fsp-compare">
         <div class="container">
             <h2 class="fsp-compare__title">What's Included in PRO?</h2>
             <div class="fsp-features-grid">
@@ -185,13 +211,19 @@ $is_pro  = fs_is_pro();
         </div>
     </section>
 
-    <!-- FAQ -->
+    <?php endif; ?>
+<!-- FAQ -->
     <section class="fsp-faq">
         <div class="container">
             <h2 class="fsp-compare__title">Frequently Asked Questions</h2>
             <div class="fsp-faq__list">
                 <?php
-                $faqs = [
+$faqs = ! $pro_open ? [
+['Is FinanceSpots really free?', 'Yes. Every calculator is free to use and needs no account.'],
+['Will there be a paid plan?', 'A PRO plan is planned, but it is not available yet and there is nothing to buy today.'],
+['Where do your numbers and formulas come from?', 'Each calculator shows its formula, a worked example and links to official sources such as the IRS, CFPB and Federal Student Aid.'],
+['Is this financial advice?', 'No. The calculators are educational estimates. Speak with a licensed professional for advice about your situation.'],
+] : [
                     ['Can I cancel anytime?', 'Yes! Monthly and yearly plans can be cancelled at any time from your account. You keep PRO access until the end of your billing period.'],
                     ['What payment methods are accepted?', 'We accept all major credit/debit cards (Visa, Mastercard, Amex) via Stripe. All payments are secure and encrypted.'],
                     ['Is there a free trial?', 'All core tools are free forever -- no trial needed. You can use the free plan as long as you like before upgrading.'],
@@ -230,10 +262,12 @@ $is_pro  = fs_is_pro();
     <section class="fsp-cta">
         <div class="container">
             <div class="fsp-cta__inner">
-                <h2>Ready to Go PRO?</h2>
+<h2><?php echo $pro_open ? 'Ready to Go PRO?' : 'Ready to run the numbers?'; ?></h2>
                 <p>Use FinanceSpots PRO to go further with your financial planning.</p>
-                <?php if(!$is_pro): ?>
-                <button class="fsp-cta__btn fsp-checkout-btn" data-plan="monthly">
+<?php if ( ! $pro_open ) : ?>
+<a href="<?php echo esc_url( home_url( '/all-tools/' ) ); ?>" class="fsp-cta__btn">Browse free calculators &#x2192;</a>
+<?php elseif(!$is_pro): ?>
+<button class="fsp-cta__btn fsp-checkout-btn" data-plan="monthly">
                     &#11088; Get PRO Now -- Start at $9/month
                 </button>
                 <?php else: ?>
