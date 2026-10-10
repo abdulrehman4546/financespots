@@ -388,7 +388,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'Built Different. Built Better.', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'We studied Calculator.net, SmartAsset, and NerdWallet -- then built something faster, smarter, and more beautiful than all of them.', 'financespots' ); ?>
+                <?php esc_html_e( 'Free calculators with the formula, a worked example and the sources shown, so you can check every result.', 'financespots' ); ?>
             </p>
         </div>
 
