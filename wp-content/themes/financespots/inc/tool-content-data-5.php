@@ -1,0 +1,275 @@
+<?php
+/**
+ * Editorial content + keywords, batch 5: CAGR, present value, inflation, bond yield, break-even,
+ * dollar-cost averaging, Sharpe ratio, options profit, portfolio analyzer, FIRE.
+ * Example numbers come from the matching calculators in calculators.php with their default inputs.
+ *
+ * @package financespots
+ */
+defined( 'ABSPATH' ) || exit;
+
+function fs_tool_content_data_5() {
+    return [
+
+    'cagr-calculator' => [
+        'focus'     => 'cagr calculator',
+        'secondary' => [ 'compound annual growth rate calculator', 'how to calculate cagr', 'cagr formula', 'investment growth rate calculator' ],
+        'title'     => 'CAGR Calculator: Compound Annual Growth Rate',
+        'meta'      => 'Free CAGR calculator: enter a starting value, ending value and years to get the compound annual growth rate, total growth and money multiple.',
+        'excerpt'   => 'Find the steady yearly growth rate that turns a starting value into an ending value over a set number of years.',
+        'answer'    => 'An investment that grows from $10,000 to $35,000 in 10 years has a CAGR of about 13.35% a year. That is a total gain of 250%, an absolute gain of $25,000 and a 3.5x money multiple.',
+        'steps'     => [ 'Enter the beginning value of the investment.', 'Enter the ending value.', 'Enter the number of years between them.', 'Read the CAGR, total growth, absolute return and money multiple.' ],
+        'formula'   => '<p><strong>CAGR = (Ending value ÷ Beginning value)<sup>1 ÷ years</sup> − 1</strong></p><p>It is the single steady rate that would grow the starting amount to the ending amount if growth were smooth every year.</p>',
+        'example'   => '<p>$10,000 growing to $35,000 over 10 years:</p><ul><li>Ratio: 35,000 ÷ 10,000 = <strong>3.5</strong></li><li>CAGR: 3.5<sup>0.1</sup> − 1 = <strong>13.35%</strong> a year</li><li>Total growth: <strong>250%</strong>; absolute gain <strong>$25,000</strong>; multiple <strong>3.50x</strong></li></ul>',
+        'sections'  => [
+            [ 'What CAGR tells you', '<p>Real returns bounce around from year to year. CAGR smooths them into one number, which makes it easy to compare two investments, two funds or a company’s revenue over different periods.</p>' ],
+            [ 'What CAGR does not tell you', '<p>It hides volatility. Two investments can have the same CAGR but very different ups and downs along the way. It also ignores contributions and withdrawals made during the period, so use it for a single lump sum. For regular deposits, use the compound interest calculator.</p>' ],
+            [ 'CAGR vs average return', '<p>An investment that gains 50% then loses 50% has an average return of 0% but ends 25% lower. CAGR gives the true compounded result, which is why it is the better measure over several years.</p>' ],
+        ],
+        'terms'     => [ [ 'CAGR', 'Compound annual growth rate, the steady yearly rate that links a start and end value.' ], [ 'Money multiple', 'Ending value divided by starting value.' ], [ 'Absolute return', 'The plain dollar gain or loss.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate CAGR?', 'Divide the ending value by the beginning value, raise the result to the power of one divided by the number of years, then subtract 1.' ],
+            [ 'What is a good CAGR?', 'It depends on the asset and risk. Broad stock market indexes have historically returned roughly 7% to 10% a year over long periods before inflation, but no return is guaranteed.' ],
+            [ 'Can CAGR be negative?', 'Yes. If the ending value is lower than the beginning value, CAGR is negative.' ],
+            [ 'Does CAGR include dividends?', 'Only if you include them in the ending value. Use a total-return value to include reinvested dividends.' ],
+        ],
+        'sources'   => [ [ 'Investor.gov: Save and invest', 'https://www.investor.gov/introduction-investing/investing-basics/save-and-invest' ] ],
+        'related'   => [ 'compound-interest-calculator', 'roi-calculator', 'inflation-calculator', 'present-value-calculator' ],
+    ],
+
+    'present-value-calculator' => [
+        'focus'     => 'present value calculator',
+        'secondary' => [ 'present value formula', 'discount rate calculator', 'time value of money calculator', 'how to calculate present value' ],
+        'title'     => 'Present Value Calculator: Discount a Future Amount',
+        'meta'      => 'Free present value calculator: find what a future sum is worth today for any discount rate and number of years, with the discount factor.',
+        'excerpt'   => 'Work out what a future amount of money is worth in today’s dollars at a chosen discount rate.',
+        'answer'    => 'With an 8% discount rate, $50,000 received in 10 years is worth about $23,159.67 today. The discount is $26,840.33 and the discount factor is 0.4632.',
+        'steps'     => [ 'Enter the future value you expect to receive.', 'Enter the discount rate per year.', 'Enter the number of years until you receive it.', 'Read the present value, the discount amount and the discount factor.' ],
+        'formula'   => '<p><strong>Present value = Future value ÷ (1 + r)<sup>n</sup></strong>, where r is the yearly discount rate and n is the number of years.</p><p>The discount factor is 1 ÷ (1 + r)<sup>n</sup>.</p>',
+        'example'   => '<p>$50,000 in 10 years at an 8% discount rate:</p><ul><li>Discount factor: <strong>0.4632</strong></li><li>Present value: <strong>$23,159.67</strong></li><li>Discount: <strong>$26,840.33</strong></li></ul>',
+        'sections'  => [
+            [ 'Why money today is worth more', '<p>A dollar today can be invested and earn a return, so it is worth more than a dollar later. Present value reverses that growth to express a future amount in today’s money.</p>' ],
+            [ 'Choosing a discount rate', '<p>Use the return you could earn on a similar investment, or a rate that reflects risk. A higher rate makes the present value smaller. Try a few rates to see how sensitive the result is.</p>' ],
+            [ 'Where it is used', '<p>Comparing a lump sum today against payments later, valuing a bond or a business, and judging whether a settlement offer is fair.</p>' ],
+        ],
+        'terms'     => [ [ 'Discount rate', 'The yearly rate used to convert future money into today’s value.' ], [ 'Discount factor', 'The multiplier applied to a future amount to get its present value.' ], [ 'Time value of money', 'The idea that money available now is worth more than the same amount later.' ] ],
+        'faqs'      => [
+            [ 'What is present value?', 'It is the value today of money you will receive in the future, after discounting for the return you could earn in the meantime.' ],
+            [ 'How do you calculate present value?', 'Divide the future value by one plus the discount rate, raised to the number of years.' ],
+            [ 'What discount rate should I use?', 'Use the return you could realistically earn on an alternative investment of similar risk.' ],
+            [ 'What is the difference between present value and future value?', 'Future value grows a sum forward in time; present value discounts a future sum back to today.' ],
+        ],
+        'sources'   => [ [ 'Investor.gov: Compound interest calculator and basics', 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' ] ],
+        'related'   => [ 'compound-interest-calculator', 'cagr-calculator', 'inflation-calculator', 'bond-yield-calculator' ],
+    ],
+
+    'inflation-calculator' => [
+        'focus'     => 'inflation calculator',
+        'secondary' => [ 'purchasing power calculator', 'value of money over time', 'future value with inflation', 'how inflation affects savings' ],
+        'title'     => 'Inflation Calculator: Future Cost and Purchasing Power',
+        'meta'      => 'Free inflation calculator: see what today’s money will cost in the future and how much purchasing power you lose at a given inflation rate.',
+        'excerpt'   => 'See how inflation raises prices over time and how much your money’s buying power shrinks.',
+        'answer'    => 'At 3.5% inflation for 20 years, something that costs $10,000 today would cost about $19,897.89. Put the other way, $10,000 would only buy what $5,025.66 buys today, a purchasing-power loss of about 49.7%.',
+        'steps'     => [ 'Enter the amount in today’s dollars.', 'Enter the yearly inflation rate you expect.', 'Enter the number of years.', 'Read the future equivalent cost, the purchasing-power loss and the real value in today’s dollars.' ],
+        'formula'   => '<p><strong>Future cost = Amount × (1 + inflation)<sup>years</sup></strong> and <strong>Real value = Amount ÷ (1 + inflation)<sup>years</sup></strong>.</p><p>Purchasing-power loss = 1 − 1 ÷ (1 + inflation)<sup>years</sup>.</p>',
+        'example'   => '<p>$10,000 at 3.5% inflation for 20 years:</p><ul><li>Future equivalent: <strong>$19,897.89</strong></li><li>Real value in today’s dollars: <strong>$5,025.66</strong></li><li>Purchasing-power loss: <strong>49.7%</strong></li></ul>',
+        'sections'  => [
+            [ 'Why inflation matters for savings', '<p>If your savings earn less than inflation, their buying power falls even though the balance rises. A 3.5% rate halves purchasing power in about 20 years.</p>' ],
+            [ 'Which inflation rate to use', '<p>U.S. inflation has varied widely. The Bureau of Labor Statistics publishes the Consumer Price Index (CPI). For long-term planning many people test a range such as 2%, 3% and 4%.</p>' ],
+            [ 'Protecting against inflation', '<p>Investments that have historically kept pace with inflation include a diversified stock portfolio, Treasury Inflation-Protected Securities (TIPS) and Series I savings bonds. Compare with our compound interest calculator.</p>' ],
+        ],
+        'terms'     => [ [ 'Inflation', 'The general rise in prices over time.' ], [ 'Purchasing power', 'How much a unit of money can buy.' ], [ 'CPI', 'Consumer Price Index, the main U.S. measure of inflation.' ], [ 'TIPS', 'Treasury bonds whose principal adjusts with inflation.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate the effect of inflation?', 'Multiply today’s amount by one plus the inflation rate, raised to the number of years, to find the future cost.' ],
+            [ 'What is a normal inflation rate?', 'The Federal Reserve targets about 2% a year over time, though actual rates move above and below that.' ],
+            [ 'How fast does inflation halve the value of money?', 'Roughly 72 divided by the rate. At 3.5% it takes about 20 years.' ],
+            [ 'Where can I find the official rate?', 'The Bureau of Labor Statistics publishes the CPI every month.' ],
+        ],
+        'sources'   => [ [ 'U.S. Bureau of Labor Statistics: Consumer Price Index', 'https://www.bls.gov/cpi/' ] ],
+        'related'   => [ 'compound-interest-calculator', 'present-value-calculator', 'retirement-savings-calculator', 'cagr-calculator' ],
+    ],
+
+    'bond-yield-calculator' => [
+        'focus'     => 'bond yield calculator',
+        'secondary' => [ 'current yield calculator', 'yield to maturity calculator', 'bond ytm calculator', 'how to calculate bond yield' ],
+        'title'     => 'Bond Yield Calculator: Current Yield and YTM',
+        'meta'      => 'Free bond yield calculator: enter face value, coupon, price and years to maturity to get current yield, approximate yield to maturity and discount or premium.',
+        'excerpt'   => 'Work out a bond’s current yield and approximate yield to maturity from its price and coupon.',
+        'answer'    => 'A $1,000 bond with a 5% coupon trading at $950 with 10 years left pays $50 a year, a current yield of 5.26%. Its approximate yield to maturity is 5.64%, and it trades at a $50 discount.',
+        'steps'     => [ 'Enter the bond’s face value and annual coupon rate.', 'Enter the current market price.', 'Enter the years to maturity.', 'Read the current yield, annual coupon, approximate YTM and discount or premium.' ],
+        'formula'   => '<p><strong>Current yield = annual coupon ÷ price.</strong></p><p><strong>Approximate YTM = [coupon + (face − price) ÷ years] ÷ [(face + price) ÷ 2]</strong>. The exact yield to maturity needs iteration, so this is a close estimate.</p>',
+        'example'   => '<p>$1,000 face, 5% coupon, $950 price, 10 years:</p><ul><li>Annual coupon: <strong>$50</strong></li><li>Current yield: 50 ÷ 950 = <strong>5.26%</strong></li><li>Approximate YTM: 55 ÷ 975 = <strong>5.64%</strong></li><li>Price: <strong>$50 discount</strong> to face value</li></ul>',
+        'sections'  => [
+            [ 'Current yield vs yield to maturity', '<p>Current yield only looks at the coupon relative to the price. Yield to maturity also counts the gain (or loss) when the bond returns its face value at maturity, so it is the fuller measure of return if you hold to the end.</p>' ],
+            [ 'Prices and rates move opposite', '<p>When market interest rates rise, existing bonds fall in price, and the yield of a bought-at-discount bond rises. When rates fall, prices go up.</p>' ],
+            [ 'Risks to consider', '<p>Credit risk (the issuer may not pay), interest-rate risk and inflation risk all matter. Treasury securities have the least credit risk. FINRA publishes plain-language bond guides.</p>' ],
+        ],
+        'terms'     => [ [ 'Coupon', 'The yearly interest a bond pays, as a percent of face value.' ], [ 'Face value', 'The amount repaid at maturity, usually $1,000.' ], [ 'YTM', 'Yield to maturity, the total annualized return if held until it matures.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate bond yield?', 'Current yield is the annual coupon divided by the market price. Yield to maturity also includes the gain or loss to face value at maturity.' ],
+            [ 'Why is my bond’s yield higher than its coupon?', 'You bought it below face value, so you earn the coupon plus the gain when it matures at face value.' ],
+            [ 'Is this YTM exact?', 'It is an approximation. Exact YTM is found by solving the price formula, and usually differs by a few hundredths of a percent.' ],
+            [ 'Are bond returns guaranteed?', 'Only if held to maturity and the issuer pays. Prices can fall before then.' ],
+        ],
+        'sources'   => [ [ 'FINRA: Bonds', 'https://www.finra.org/investors/investing/investment-products/bonds' ], [ 'U.S. Treasury: Interest rate statistics', 'https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics' ] ],
+        'related'   => [ 'present-value-calculator', 'compound-interest-calculator', 'inflation-calculator', 'roi-calculator' ],
+    ],
+
+    'break-even-calculator' => [
+        'focus'     => 'break even calculator',
+        'secondary' => [ 'break even point calculator', 'break even analysis', 'break even formula', 'contribution margin calculator' ],
+        'title'     => 'Break-Even Calculator: Units and Revenue to Cover Costs',
+        'meta'      => 'Free break-even calculator: enter fixed costs, variable cost and price per unit to find the break-even units, revenue and contribution margin.',
+        'excerpt'   => 'Find how many units you must sell, and how much revenue you need, before a product or business makes a profit.',
+        'answer'    => 'With $10,000 of fixed costs, $25 variable cost and a $50 price per unit, the contribution margin is $25 a unit. You break even at 400 units, or $20,000 of revenue.',
+        'steps'     => [ 'Enter your total fixed costs for the period.', 'Enter the variable cost to make or deliver one unit.', 'Enter the selling price per unit.', 'Read the break-even units, break-even revenue and contribution margin.' ],
+        'formula'   => '<p><strong>Break-even units = Fixed costs ÷ (Price − Variable cost per unit)</strong>. The denominator is the contribution margin per unit.</p><p><strong>Break-even revenue = Break-even units × Price.</strong> The calculator rounds units up to a whole number.</p>',
+        'example'   => '<p>$10,000 fixed, $25 variable, $50 price:</p><ul><li>Contribution margin: <strong>$25</strong> per unit</li><li>Break-even units: 10,000 ÷ 25 = <strong>400</strong></li><li>Break-even revenue: <strong>$20,000</strong></li></ul>',
+        'sections'  => [
+            [ 'Fixed vs variable costs', '<p>Fixed costs (rent, salaries, software) stay the same whatever you sell. Variable costs (materials, shipping, payment fees) rise with each unit. Separating them correctly is the key to a reliable result.</p>' ],
+            [ 'Using the result', '<p>If break-even is higher than you can realistically sell, raise the price, cut costs or reduce fixed spending. Selling above break-even produces profit equal to contribution margin times the extra units.</p>' ],
+            [ 'Limits of the model', '<p>It assumes a constant price and variable cost. Discounts, volume pricing and step-up costs change the picture, so test several prices.</p>' ],
+        ],
+        'terms'     => [ [ 'Fixed costs', 'Costs that do not change with sales volume.' ], [ 'Variable cost', 'Cost that rises with each unit sold.' ], [ 'Contribution margin', 'Price minus variable cost per unit.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate the break-even point?', 'Divide fixed costs by the contribution margin per unit (price minus variable cost).' ],
+            [ 'What is contribution margin?', 'The amount each unit sold contributes toward covering fixed costs and profit.' ],
+            [ 'How can I lower my break-even point?', 'Raise the price, reduce variable cost per unit, or cut fixed costs.' ],
+            [ 'Can break-even be used for investments?', 'Yes, for example to find the price an asset must reach to cover fees or premiums.' ],
+        ],
+        'sources'   => [ [ 'U.S. Small Business Administration: Calculate your startup costs', 'https://www.sba.gov/business-guide/plan-your-business/calculate-your-startup-costs' ] ],
+        'related'   => [ 'roi-calculator', 'commercial-loan-calculator', 'monthly-budget-planner', 'cagr-calculator' ],
+    ],
+
+    'dollar-cost-averaging' => [
+        'focus'     => 'dollar cost averaging calculator',
+        'secondary' => [ 'dca calculator', 'what is dollar cost averaging', 'dollar cost averaging vs lump sum', 'monthly investment calculator' ],
+        'title'     => 'Dollar-Cost Averaging Calculator (DCA)',
+        'meta'      => 'Free dollar-cost averaging calculator: see what regular monthly investments could grow to at an expected annual return, with total invested and ROI.',
+        'excerpt'   => 'Estimate what investing a fixed amount every month could grow to over a set number of months.',
+        'answer'    => 'Investing $200 a month for 24 months at an assumed 25% annual return would grow to about $6,147. You would have put in $4,800, for a profit of about $1,347 and an ROI of about 28.1%. That return is an assumption, not a forecast.',
+        'steps'     => [ 'Enter the monthly amount you plan to invest.', 'Enter the number of months.', 'Enter the annual return you want to test.', 'Read the portfolio value, total invested, profit and ROI.' ],
+        'formula'   => '<p><strong>Value = Monthly amount × [(1 + r)<sup>n</sup> − 1] ÷ r</strong>, where r is the monthly rate (annual rate ÷ 12) and n is the number of months. <strong>Invested = monthly amount × months.</strong></p>',
+        'example'   => '<p>$200 a month, 24 months, 25% a year assumed:</p><ul><li>Total invested: <strong>$4,800</strong></li><li>Value: <strong>$6,147</strong></li><li>Profit: <strong>$1,347</strong>, ROI <strong>28.1%</strong></li></ul><p>Try a lower return such as 7% to see a more conservative result for a broad stock fund.</p>',
+        'sections'  => [
+            [ 'What dollar-cost averaging is', '<p>You invest a fixed amount on a regular schedule regardless of price. You buy more shares when prices are low and fewer when high, which smooths your average cost and removes the pressure of timing the market.</p>' ],
+            [ 'DCA vs lump sum', '<p>Historically, investing a lump sum right away has beaten spreading it out more often than not, because markets rise more often than they fall. DCA mainly reduces regret and risk if prices drop right after you invest, and it matches how most people actually earn and save.</p>' ],
+            [ 'Use realistic returns', '<p>The default return is deliberately high for a volatile asset. For diversified stock funds, tests at 5% to 8% are more typical. Returns are never guaranteed, and the calculator uses a constant rate while real prices fluctuate.</p>' ],
+        ],
+        'terms'     => [ [ 'Dollar-cost averaging', 'Investing a fixed amount at regular intervals.' ], [ 'Average cost', 'Total spent divided by total units bought.' ], [ 'ROI', 'Profit as a percentage of the amount invested.' ] ],
+        'faqs'      => [
+            [ 'What is dollar-cost averaging?', 'It is investing the same amount on a regular schedule, such as monthly, regardless of the price.' ],
+            [ 'Is DCA better than lump-sum investing?', 'A lump sum has usually done better historically, but DCA lowers the risk of investing everything just before a drop and suits steady monthly savers.' ],
+            [ 'Does DCA guarantee profit?', 'No. It does not protect against losses if prices keep falling.' ],
+            [ 'What return should I enter?', 'Use a conservative assumption. Treat very high returns as a best case, not a plan.' ],
+        ],
+        'sources'   => [ [ 'Investor.gov: Dollar-cost averaging', 'https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging' ] ],
+        'related'   => [ 'compound-interest-calculator', 'roi-calculator', 'retirement-savings-calculator', 'cagr-calculator' ],
+    ],
+
+    'sharpe-ratio-calculator' => [
+        'focus'     => 'sharpe ratio calculator',
+        'secondary' => [ 'sharpe ratio formula', 'what is a good sharpe ratio', 'risk adjusted return calculator', 'portfolio risk calculator' ],
+        'title'     => 'Sharpe Ratio Calculator: Risk-Adjusted Return',
+        'meta'      => 'Free Sharpe ratio calculator: enter portfolio return, risk-free rate and standard deviation to see excess return and a Sharpe ratio rating.',
+        'excerpt'   => 'Measure how much return you earn for each unit of risk, using the Sharpe ratio.',
+        'answer'    => 'A portfolio returning 12% with a 4.5% risk-free rate and a 15% standard deviation has a Sharpe ratio of 0.5. Its excess return is 7.5%, which the calculator rates as Acceptable.',
+        'steps'     => [ 'Enter the portfolio’s return for the period.', 'Enter the risk-free rate, such as a Treasury bill yield.', 'Enter the portfolio’s standard deviation.', 'Read the Sharpe ratio, excess return and rating.' ],
+        'formula'   => '<p><strong>Sharpe ratio = (Portfolio return − Risk-free rate) ÷ Standard deviation of the portfolio’s returns.</strong></p>',
+        'example'   => '<p>12% return, 4.5% risk-free, 15% standard deviation:</p><ul><li>Excess return: <strong>7.5%</strong></li><li>Sharpe ratio: 7.5 ÷ 15 = <strong>0.500</strong></li></ul><p>Rating scale used here: below 0 poor, under 0.5 below average, 0.5 to 1 acceptable, 1 to 2 good, above 2 excellent.</p>',
+        'sections'  => [
+            [ 'How to read it', '<p>A higher Sharpe ratio means more return per unit of risk. Comparing the Sharpe ratios of two funds with similar goals shows which delivered returns more efficiently.</p>' ],
+            [ 'Where the inputs come from', '<p>Use returns and standard deviation over the same period (for example three years annualized), and a risk-free rate such as the yield on short-term Treasury bills.</p>' ],
+            [ 'Limitations', '<p>Standard deviation treats upside and downside swings alike and assumes returns follow a bell curve. Past ratios do not predict the future. The rating bands are rules of thumb, not official standards.</p>' ],
+        ],
+        'terms'     => [ [ 'Risk-free rate', 'The return on a safe investment such as a Treasury bill.' ], [ 'Standard deviation', 'A measure of how much returns vary around their average.' ], [ 'Excess return', 'Return above the risk-free rate.' ] ],
+        'faqs'      => [
+            [ 'What is a good Sharpe ratio?', 'Many investors treat 1 or above as good and 2 or above as very good, but compare it with similar funds over the same period.' ],
+            [ 'How do you calculate the Sharpe ratio?', 'Subtract the risk-free rate from the portfolio return and divide by the portfolio’s standard deviation.' ],
+            [ 'Can the Sharpe ratio be negative?', 'Yes, when the portfolio earns less than the risk-free rate.' ],
+            [ 'Is a higher Sharpe ratio always better?', 'Usually, but only if the inputs are measured over the same period and the return history is long enough to be meaningful.' ],
+        ],
+        'sources'   => [ [ 'U.S. Treasury: Interest rate statistics', 'https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics' ] ],
+        'related'   => [ 'portfolio-analyzer', 'roi-calculator', 'cagr-calculator', 'bond-yield-calculator' ],
+    ],
+
+    'options-profit-calculator' => [
+        'focus'     => 'options profit calculator',
+        'secondary' => [ 'call option calculator', 'put option calculator', 'options break even calculator', 'options p&l calculator' ],
+        'title'     => 'Options Profit Calculator: Calls and Puts at Expiry',
+        'meta'      => 'Free options profit calculator: enter strike, premium, contracts and a target price to see profit or loss, break-even and max loss at expiry for calls and puts.',
+        'excerpt'   => 'Estimate the profit, loss and break-even price of a long call or put held to expiration.',
+        'answer'    => 'Buying one call with a $155 strike for a $5 premium makes $500 if the stock is $165 at expiry. The break-even price is $160, the most you can lose is $500, and the return on the premium is 100%.',
+        'steps'     => [ 'Choose Call or Put.', 'Enter the current stock price, strike price and premium per share.', 'Enter the number of contracts (each covers 100 shares).', 'Enter a target price at expiry and read profit or loss, break-even, max loss and ROI.' ],
+        'formula'   => '<p><strong>Long call value at expiry = max(0, price − strike)</strong>; <strong>long put = max(0, strike − price)</strong>.</p><p><strong>Profit = (value − premium) × 100 × contracts.</strong> Break-even is strike + premium for a call and strike − premium for a put. Max loss is the premium paid × 100 × contracts.</p>',
+        'example'   => '<p>One call, strike $155, premium $5, target $165:</p><ul><li>Value at expiry: $165 − $155 = <strong>$10</strong></li><li>Profit: (10 − 5) × 100 = <strong>$500</strong></li><li>Break-even: <strong>$160</strong>; max loss <strong>$500</strong>; ROI <strong>100%</strong></li></ul>',
+        'sections'  => [
+            [ 'Calls and puts', '<p>A call gains when the stock rises above the strike plus premium. A put gains when it falls below the strike minus premium. Both lose the entire premium if they expire worthless.</p>' ],
+            [ 'What this calculator does not model', '<p>It shows the result at expiration only. Before expiry, option prices also depend on time left and volatility, and you can close the position early. It covers long positions, not spreads or short options, whose risk can be much larger.</p>' ],
+            [ 'Know the risks', '<p>Options can lose their entire value quickly. Read the Options Clearing Corporation’s “Characteristics and Risks of Standardized Options” before trading, and never risk money you cannot afford to lose.</p>' ],
+        ],
+        'terms'     => [ [ 'Strike price', 'The price at which the option can be exercised.' ], [ 'Premium', 'The price paid for the option, per share.' ], [ 'Contract', 'Normally covers 100 shares.' ], [ 'Intrinsic value', 'The amount an option is in the money at expiry.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate options profit?', 'Take the option’s value at expiry, subtract the premium, and multiply by 100 shares times the number of contracts.' ],
+            [ 'What is the break-even price of a call?', 'The strike price plus the premium paid.' ],
+            [ 'What is the most I can lose buying an option?', 'The premium you paid, times 100 shares per contract.' ],
+            [ 'Is this financial advice?', 'No. It is an educational estimate at expiry and ignores commissions, taxes and early exercise.' ],
+        ],
+        'sources'   => [ [ 'Options Industry Council: Education', 'https://www.optionseducation.org/' ], [ 'Investor.gov: Options', 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/options' ] ],
+        'related'   => [ 'roi-calculator', 'break-even-calculator', 'portfolio-analyzer', 'sharpe-ratio-calculator' ],
+    ],
+
+    'portfolio-analyzer' => [
+        'focus'     => 'portfolio analyzer',
+        'secondary' => [ 'portfolio allocation calculator', 'portfolio return calculator', 'asset allocation calculator', 'weighted average return calculator' ],
+        'title'     => 'Portfolio Analyzer: Allocation and Weighted Return',
+        'meta'      => 'Free portfolio analyzer: enter your holdings and returns to see total value, each asset’s share of the portfolio and your weighted average return.',
+        'excerpt'   => 'See how your money is split across assets and what your overall weighted return is.',
+        'answer'    => 'Add each holding’s value and return. For example, $30,000 returning 8%, $15,000 returning 20% and $5,000 returning 4% gives a $50,000 portfolio with a weighted return of 11.2%, and allocations of 60%, 30% and 10%.',
+        'steps'     => [ 'Enter the name, current value and return of each holding. Use Add Asset for more rows.', 'Click Analyze Portfolio.', 'Read the total value, weighted return and each holding’s share.' ],
+        'formula'   => '<p><strong>Weight = holding value ÷ total value.</strong> <strong>Weighted return = Σ (weight × holding return).</strong></p>',
+        'example'   => '<p>Three holdings:</p><ul><li>Fund A: $30,000 at 8% → weight <strong>60%</strong></li><li>Fund B: $15,000 at 20% → weight <strong>30%</strong></li><li>Fund C: $5,000 at 4% → weight <strong>10%</strong></li><li>Total: <strong>$50,000</strong>; weighted return: 0.6×8 + 0.3×20 + 0.1×4 = <strong>11.2%</strong></li></ul>',
+        'sections'  => [
+            [ 'Why allocation matters', '<p>How your money is spread between stocks, bonds, cash and other assets drives most of your portfolio’s risk. Seeing the percentages makes concentration obvious, such as one holding being half of everything you own.</p>' ],
+            [ 'Rebalancing', '<p>Over time winners grow into a larger share. Many investors rebalance yearly, or when an allocation drifts a few points from its target, by selling a little of what has grown and buying what has lagged. Taxes may apply when selling in a taxable account.</p>' ],
+            [ 'Diversification', '<p>Spreading across many assets that do not move together can reduce risk without necessarily lowering expected return. Broad index funds are a simple way to do this. Estimate risk-adjusted return with the Sharpe ratio calculator.</p>' ],
+        ],
+        'terms'     => [ [ 'Asset allocation', 'How a portfolio is divided between asset types.' ], [ 'Weighted return', 'Average return where each holding counts in proportion to its size.' ], [ 'Rebalancing', 'Adjusting holdings back to target percentages.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate a portfolio’s return?', 'Multiply each holding’s return by its share of the total value and add the results.' ],
+            [ 'What is a good asset allocation?', 'It depends on your age, goals and comfort with risk. A common rule of thumb is more stocks when you are younger and more bonds closer to retirement, but there is no single right answer.' ],
+            [ 'How often should I rebalance?', 'Many people rebalance once a year or when an asset class drifts several percentage points from target.' ],
+            [ 'Does this save my data?', 'No. The numbers stay in your browser and are not stored.' ],
+        ],
+        'sources'   => [ [ 'Investor.gov: Asset allocation', 'https://www.investor.gov/introduction-investing/investing-basics/glossary/asset-allocation' ] ],
+        'related'   => [ 'sharpe-ratio-calculator', 'roi-calculator', 'compound-interest-calculator', 'net-worth-calculator' ],
+    ],
+
+    'fire-calculator' => [
+        'focus'     => 'fire calculator',
+        'secondary' => [ 'financial independence calculator', 'retire early calculator', 'fire number calculator', '4 percent rule calculator' ],
+        'title'     => 'FIRE Calculator: Your Financial Independence Number',
+        'meta'      => 'Free FIRE calculator: find your FIRE number, the years until financial independence, your target year and your savings rate from expenses, savings and returns.',
+        'excerpt'   => 'Calculate how much you need to retire early and how many years of saving it would take.',
+        'answer'    => 'With $50,000 of yearly expenses and a 4% safe withdrawal rate, your FIRE number is $1,250,000. Starting from $100,000 and saving $40,000 a year at a 7% return, you would reach it in about 15 years. Your savings rate in this example is about 44.4%.',
+        'steps'     => [ 'Enter your annual expenses and current net worth.', 'Enter how much you save each year.', 'Enter the return you expect and a safe withdrawal rate.', 'Read your FIRE number, years to FIRE, target year and savings rate.' ],
+        'formula'   => '<p><strong>FIRE number = Annual expenses ÷ Safe withdrawal rate.</strong></p><p>Years to FIRE: each year the calculator grows the balance by your return and adds your savings, <strong>balance = balance × (1 + r) + savings</strong>, until it reaches the FIRE number. Savings rate = savings ÷ (savings + expenses).</p>',
+        'example'   => '<p>$50,000 expenses, $100,000 saved, $40,000 added yearly, 7% return, 4% withdrawal:</p><ul><li>FIRE number: <strong>$1,250,000</strong></li><li>Years to FIRE: <strong>15</strong> (balance about $1,281,000)</li><li>Savings rate: <strong>44.4%</strong></li></ul>',
+        'sections'  => [
+            [ 'The 4% rule', '<p>The 4% rule comes from research on historical U.S. returns and suggests withdrawing about 4% of your starting portfolio in the first year, then adjusting for inflation, has historically lasted about 30 years. People retiring earlier may use a lower rate such as 3% to 3.5% to be safer.</p>' ],
+            [ 'Savings rate is the lever', '<p>Reducing expenses helps twice: it lowers the amount you need and raises the amount you save. Try changing expenses and savings in the calculator to see the effect on your timeline.</p>' ],
+            [ 'What it leaves out', '<p>The model uses a constant return and ignores inflation changes, taxes, health insurance before Medicare, and market crashes early in retirement. Treat it as a planning estimate and review it every year. Also see our retirement savings calculator.</p>' ],
+        ],
+        'terms'     => [ [ 'FIRE', 'Financial independence, retire early.' ], [ 'Safe withdrawal rate', 'The share of your portfolio you can withdraw yearly with low risk of running out.' ], [ 'Savings rate', 'Share of income you save.' ] ],
+        'faqs'      => [
+            [ 'How do you calculate your FIRE number?', 'Divide your yearly expenses by your safe withdrawal rate. At 4%, multiply expenses by 25.' ],
+            [ 'Is the 4% rule safe?', 'It held up in historical U.S. data over 30-year periods, but it is not a guarantee, and longer retirements may need a lower rate.' ],
+            [ 'How long does it take to reach FIRE?', 'It depends mostly on your savings rate. In the example, saving about 44% of income takes about 15 years.' ],
+            [ 'Should I count my home?', 'Usually not unless you plan to sell it. Use investable assets.' ],
+        ],
+        'sources'   => [ [ 'Investor.gov: Save and invest', 'https://www.investor.gov/introduction-investing/investing-basics/save-and-invest' ] ],
+        'related'   => [ 'retirement-savings-calculator', '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator' ],
+    ],
+
+    ];
+}
