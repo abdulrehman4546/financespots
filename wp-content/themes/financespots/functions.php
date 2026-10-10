@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.5.5' );
+define( 'FINANCESPOTS_VERSION', '1.5.6' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
