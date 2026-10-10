@@ -511,6 +511,8 @@ function fs_tool_content_data() {
     $data = array_merge( $data, fs_tool_content_data_5() );
     require_once get_template_directory() . '/inc/tool-content-data-6.php';
     $data = array_merge( $data, fs_tool_content_data_6() );
+    require_once get_template_directory() . '/inc/tool-content-data-7.php';
+    $data = array_merge( $data, fs_tool_content_data_7() );
     /* the live site's slug for this tool differs from the local database's */
     $data['debt-to-income-ratio-calculator'] = $data['debt-to-income-ratio'];
 

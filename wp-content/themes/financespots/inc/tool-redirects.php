@@ -63,7 +63,8 @@ function fs_tool_redirect_map() {
 
 /** Tools with no matching calculator and no better target: keep reachable, ask Google not to index. */
 function fs_tool_noindex_slugs() {
-    return [ 'sales-tax-calculator', 'estate-tax-calculator', 'irs-penalty-calculator', 'gas-fee-calculator' ];
+    /* sales-tax, estate-tax, irs-penalty and gas-fee now have real calculators and content, so they are indexable again */
+    return [];
 }
 
 /* 301 to the replacement tool */

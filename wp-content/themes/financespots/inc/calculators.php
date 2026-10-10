@@ -43,6 +43,10 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'dividend-calculator'            => 'fs_calc2_dividend',
         'balance-transfer-calculator'    => 'fs_calc2_balance_transfer',
         'student-loan-rap-calculator'    => 'fs_calc2_student_rap',
+        'sales-tax-calculator'           => 'fs_calc2_sales_tax',
+        'estate-tax-calculator'          => 'fs_calc2_estate_tax',
+        'irs-penalty-calculator'         => 'fs_calc2_irs_penalty',
+        'gas-fee-calculator'             => 'fs_calc2_gas_fee',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {
