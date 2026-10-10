@@ -1046,11 +1046,11 @@ function fs_get_features() {
     };
     return [
         [ 'icon' => $svg('<path d="M13 2L4 14h7l-1 8 9-12h-7z"/>'), 'title' => 'Instant Results',       'desc' => 'Every calculation is instant -- no waiting, no server calls. Results update in real-time as you type.' ],
-        [ 'icon' => $svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'), 'title' => '100% Accurate',         'desc' => 'Our formulas are verified by certified financial professionals and updated with the latest regulations.' ],
+        [ 'icon' => $svg('<circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/>'), 'title' => 'Transparent Math',        'desc' => 'Every calculator shows its formula, a worked example and its sources, so you can check the result yourself.' ],
         [ 'icon' => $svg('<rect x="4" y="11" width="16" height="9" rx="2"/><path d="M8 11V7a4 4 0 018 0v4"/>'), 'title' => 'Completely Free',       'desc' => 'Every tool, every feature, every calculation -- completely free forever. No account required.' ],
         [ 'icon' => $svg('<rect x="6" y="2" width="12" height="20" rx="2"/><path d="M10 18h4"/>'), 'title' => 'Works Everywhere',      'desc' => 'Perfectly optimized for desktop, tablet, and mobile. Use our tools anywhere, anytime.' ],
-        [ 'icon' => $svg('<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>'), 'title' => 'Expert Verified',       'desc' => 'Built with input from CPAs, CFPs, and investment advisors to ensure professional-grade accuracy.' ],
-        [ 'icon' => $svg('<path d="M21 12a9 9 0 11-2.64-6.36"/><path d="M21 3v6h-6"/>'), 'title' => 'Always Updated',        'desc' => 'Tax rates, market data, and financial regulations updated automatically throughout the year.' ],
+        [ 'icon' => $svg('<path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6z"/><path d="M9 12l2 2 4-4"/>'), 'title' => 'Sourced from the Rules',  'desc' => 'Tax and loan figures follow published IRS, CFPB and Federal Student Aid guidance, linked on each tool page.' ],
+        [ 'icon' => $svg('<path d="M21 12a9 9 0 11-2.64-6.36"/><path d="M21 3v6h-6"/>'), 'title' => 'Always Updated',        'desc' => 'We review tax brackets and loan rules when they change and update the calculators.' ],
     ];
 }
 
