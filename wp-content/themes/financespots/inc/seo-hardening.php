@@ -20,7 +20,7 @@ add_action( 'send_headers', function () {
     $has_session = ! empty( $_COOKIE ) && (bool) preg_grep( '/^(wordpress_logged_in|wp-postpass|comment_author|fs_)/', array_keys( $_COOKIE ) );
     if ( 'GET' === ( $_SERVER['REQUEST_METHOD'] ?? '' ) && ! is_user_logged_in() && ! $has_session && ! is_404() && ! is_search() && ! is_preview() ) {
         header_remove( 'Cache-Control' );
-        header( 'Cache-Control: public, max-age=300, s-maxage=3600, stale-while-revalidate=86400' );
+        header( 'Cache-Control: public, max-age=60, s-maxage=300, stale-while-revalidate=30' );
     }
 }, 20 );
 
