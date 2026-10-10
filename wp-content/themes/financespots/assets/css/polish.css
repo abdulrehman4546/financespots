@@ -58,3 +58,6 @@
 .fst-content h2::after { content: ""; display: block; width: 46px; height: 3px; margin-top: 8px; border-radius: 3px; background: var(--fs-grad); }
 
 @media (prefers-reduced-motion: reduce) { .fs-btn--primary, .fsc-btn, .fs-btn--outline, .fs-btn--ghost { transition: none; } .fs-hero .fs-btn--primary { animation: none; } }
+
+/* Feature cards: keep the inline SVG icons at a sensible size (also guards against a stale style.css) */
+.fs-feature-card__icon svg { width: 40px !important; height: 40px !important; max-width: 40px; display: block; color: var(--fs-accent, #10b981); }
