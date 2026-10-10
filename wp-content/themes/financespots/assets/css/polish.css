@@ -61,3 +61,11 @@
 
 /* Feature cards: keep the inline SVG icons at a sensible size (also guards against a stale style.css) */
 .fs-feature-card__icon svg { width: 40px !important; height: 40px !important; max-width: 40px; display: block; color: var(--fs-accent, #10b981); }
+
+/* Category and popular-tool card icons: the inline SVG had no size and collapsed to 0x0 */
+.fs-cat-card__icon, .fs-tool-card__icon { display: inline-flex; align-items: center; justify-content: center; }
+.fs-cat-card__icon svg, .fs-tool-card__icon svg { width: 26px !important; height: 26px !important; max-width: none; flex: none; display: block; }
+.fs-cat-card--primary .fs-cat-card__icon { color: #059669; }
+.fs-cat-card--secondary .fs-cat-card__icon { color: #2563eb; }
+.fs-cat-card--gold .fs-cat-card__icon { color: #d97706; }
+.fs-tool-card__icon { color: #059669; }
