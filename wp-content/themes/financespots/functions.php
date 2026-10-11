@@ -3382,9 +3382,13 @@ function fs_ai_settings_page() {
 function fs_ai_chat_handler() {
     check_ajax_referer( 'fs_ai_chat_nonce', 'nonce' );
 
-    $message = isset( $_POST['message'] ) ? sanitize_textarea_field( wp_unslash( $_POST['message'] ) ) : '';
+    $message = isset( $_POST['message'] ) ? mb_substr( sanitize_textarea_field( wp_unslash( $_POST['message'] ) ), 0, 500 ) : '';
     if ( empty( $message ) ) {
         wp_send_json_error( [ 'reply' => 'Please type a question.' ] );
+    }
+    /* Public endpoint that spends API credit: cap usage per visitor and overall, then fall back to the free rule-based answer */
+    if ( ! fs_rate_allow( 'ai_ip_' . fs_client_ip(), 10, 10 * MINUTE_IN_SECONDS ) || ! fs_rate_allow( 'ai_global', 400, HOUR_IN_SECONDS ) ) {
+        wp_send_json_success( [ 'reply' => fs_ai_fallback_response( $message ) ] );
     }
 
     $api_key = get_option( 'fs_ai_api_key', '' );
@@ -3479,6 +3483,7 @@ function fs_rankmath_tool_desc( $desc, $post_id ) {
 add_filter( 'rank_math/description', 'fs_rankmath_tool_desc', 10, 2 );
 
 /* ── SEO hardening (headers, social image, meta limits, sitemap, schema) ── */
+require_once get_template_directory() . '/inc/security-hardening.php';
 require_once get_template_directory() . '/inc/seo-hardening.php';
 require_once get_template_directory() . '/inc/calculators-loans.php';
 require_once get_template_directory() . '/inc/calculators-loans-2.php';

@@ -41,8 +41,11 @@ add_action( 'wp_ajax_fs_register',        'fs_ajax_register' );
 
 function fs_ajax_register() {
     check_ajax_referer( 'fs_auth_nonce', 'nonce' );
+    if ( ! fs_rate_allow( 'reg_ip_' . fs_client_ip(), 5, HOUR_IN_SECONDS ) || ! fs_rate_allow( 'reg_global', 60, HOUR_IN_SECONDS ) ) {
+        wp_send_json_error( 'Too many sign-ups right now. Please try again later.' );
+    }
 
-    $name     = sanitize_text_field( wp_unslash( $_POST['name']     ?? '' ) );
+    $name     = mb_substr( sanitize_text_field( wp_unslash( $_POST['name']     ?? '' ) ), 0, 100 );
     $email    = sanitize_email(      wp_unslash( $_POST['email']    ?? '' ) );
     $password = wp_unslash( $_POST['password'] ?? '' );
 
@@ -52,8 +55,8 @@ function fs_ajax_register() {
     if ( ! is_email( $email ) ) {
         wp_send_json_error( 'Please enter a valid email address.' );
     }
-    if ( strlen( $password ) < 6 ) {
-        wp_send_json_error( 'Password must be at least 6 characters.' );
+    if ( strlen( $password ) < 8 || strlen( $password ) > 128 ) {
+        wp_send_json_error( 'Password must be 8 to 128 characters.' );
     }
     if ( email_exists( $email ) ) {
         wp_send_json_error( 'This email is already registered. Please sign in.' );
@@ -74,7 +77,7 @@ function fs_ajax_register() {
     }
 
     // Save display name
-    wp_update_user( [ 'ID' => $user_id, 'display_name' => $name, 'first_name' => $name ] );
+    wp_update_user( [ 'ID' => $user_id, 'display_name' => $name, 'first_name' => $name, 'role' => 'subscriber' ] );
 
     // Save lead in custom table
     global $wpdb;
@@ -112,26 +115,29 @@ function fs_ajax_login() {
         wp_send_json_error( 'Please enter your email and password.' );
     }
 
-    // Find user by email
+    /* Lock out repeated failures per address, per visitor and overall */
+    $b_acct = 'login_acct_' . md5( strtolower( $email ) );
+    $b_ip   = 'login_ip_' . fs_client_ip();
+    if ( fs_rate_count( $b_acct ) >= 5 || fs_rate_count( $b_ip ) >= 10 || fs_rate_count( 'login_global' ) >= 100 ) {
+        wp_send_json_error( 'Too many failed attempts. Please wait 15 minutes and try again.' );
+    }
+    $fail = function () use ( $b_acct, $b_ip ) {
+        fs_rate_hit( $b_acct, 15 * MINUTE_IN_SECONDS ); fs_rate_hit( $b_ip, 15 * MINUTE_IN_SECONDS ); fs_rate_hit( 'login_global', 15 * MINUTE_IN_SECONDS );
+        wp_send_json_error( 'Incorrect email or password.' );
+    };
+
+    /* Look up by email only. Accounts that can edit content sign in on wp-login.php instead. */
     $user = get_user_by( 'email', $email );
-    if ( ! $user ) {
-        // Try by login
-        $user = get_user_by( 'login', $email );
-    }
-    if ( ! $user ) {
-        wp_send_json_error( 'No account found with that email address.' );
-    }
+    if ( ! $user || user_can( $user, 'edit_posts' ) ) $fail();
 
     $result = wp_signon([
         'user_login'    => $user->user_login,
         'user_password' => $password,
         'remember'      => $remember,
-    ], false );
+    ], is_ssl() );
+    if ( is_wp_error( $result ) ) $fail();
 
-    if ( is_wp_error( $result ) ) {
-        wp_send_json_error( 'Incorrect password. Please try again.' );
-    }
-
+    fs_rate_clear( $b_acct );
     wp_send_json_success( [ 'redirect' => home_url( '/' ) ] );
 }
 
@@ -267,11 +273,14 @@ add_action( 'wp_ajax_fs_contact_submit',        'fs_ajax_contact_submit' );
 
 function fs_ajax_contact_submit() {
     check_ajax_referer( 'fs_contact_nonce', 'nonce' );
+    if ( ! fs_rate_allow( 'contact_ip_' . fs_client_ip(), 5, HOUR_IN_SECONDS ) || ! fs_rate_allow( 'contact_global', 60, HOUR_IN_SECONDS ) ) {
+        wp_send_json_error( 'You have sent several messages recently. Please try again later.' );
+    }
 
-    $name    = sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) );
+    $name    = mb_substr( sanitize_text_field( wp_unslash( $_POST['name']    ?? '' ) ), 0, 100 );
     $email   = sanitize_email(      wp_unslash( $_POST['email']   ?? '' ) );
     $subject = sanitize_text_field( wp_unslash( $_POST['subject'] ?? '' ) );
-    $message = sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) );
+    $message = mb_substr( sanitize_textarea_field( wp_unslash( $_POST['message'] ?? '' ) ), 0, 3000 );
 
     if ( ! $name || ! $email || ! $subject || ! $message ) {
         wp_send_json_error( 'Please fill in all required fields.' );
@@ -319,7 +328,7 @@ function fs_export_leads_csv() {
     header('Content-Disposition: attachment; filename=financespots-leads-' . date('Y-m-d') . '.csv');
     $out = fopen('php://output','w');
     fputcsv($out, ['Name','Email','Source','Status','Date']);
-    foreach($leads as $row) fputcsv($out, $row);
+    foreach($leads as $row) { foreach ( $row as $k => $v ) { if ( is_string( $v ) && preg_match( '/^[=+\-@\t\r]/', $v ) ) $row[ $k ] = "'" . $v; } fputcsv($out, $row); }
     fclose($out);
     exit;
 }

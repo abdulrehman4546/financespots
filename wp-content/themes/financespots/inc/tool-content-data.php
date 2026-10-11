@@ -77,7 +77,7 @@ function fs_tool_content_data() {
             [ 'CFPB: When can I remove PMI from my loan?', 'https://www.consumerfinance.gov/ask-cfpb/when-can-i-remove-private-mortgage-insurance-pmi-from-my-loan-en-202/' ],
             [ 'FHFA: 2026 conforming loan limit ($832,750)', 'https://www.fhfa.gov/news/news-release/fhfa-announces-conforming-loan-limit-values-for-2026' ],
         ],
-        'related'   => [ 'amortization-calculator', 'refinance-calculator', 'fha-loan-calculator', 'loan-comparison-calculator' ],
+        'related'   => [ 'amortization-calculator', 'refinance-calculator', 'fha-loan-calculator', 'loan-comparison-calculator', 'interest-only-calculator' ],
     ],
 
     /* ───────────────────────── AUTO LOAN ───────────────────────── */

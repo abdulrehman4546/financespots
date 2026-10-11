@@ -138,7 +138,7 @@ function fs_tool_content_data_5() {
             [ 'Can break-even be used for investments?', 'Yes, for example to find the price an asset must reach to cover fees or premiums.' ],
         ],
         'sources'   => [ [ 'U.S. Small Business Administration: Calculate your startup costs', 'https://www.sba.gov/business-guide/plan-your-business/calculate-your-startup-costs' ] ],
-        'related'   => [ 'roi-calculator', 'commercial-loan-calculator', 'monthly-budget-planner', 'cagr-calculator' ],
+        'related'   => [ 'roi-calculator', 'commercial-loan-calculator', 'monthly-budget-planner', 'cagr-calculator', 'options-profit-calculator' ],
     ],
 
     'dollar-cost-averaging' => [
@@ -164,7 +164,7 @@ function fs_tool_content_data_5() {
             [ 'What return should I enter?', 'Use a conservative assumption. Treat very high returns as a best case, not a plan.' ],
         ],
         'sources'   => [ [ 'Investor.gov: Dollar-cost averaging', 'https://www.investor.gov/introduction-investing/investing-basics/glossary/dollar-cost-averaging' ] ],
-        'related'   => [ 'compound-interest-calculator', 'roi-calculator', 'retirement-savings-calculator', 'cagr-calculator' ],
+        'related'   => [ 'compound-interest-calculator', 'roi-calculator', 'retirement-savings-calculator', 'cagr-calculator', 'risk-assessment-tool' ],
     ],
 
     'sharpe-ratio-calculator' => [
@@ -190,7 +190,7 @@ function fs_tool_content_data_5() {
             [ 'Is a higher Sharpe ratio always better?', 'Usually, but only if the inputs are measured over the same period and the return history is long enough to be meaningful.' ],
         ],
         'sources'   => [ [ 'U.S. Treasury: Interest rate statistics', 'https://home.treasury.gov/policy-issues/financing-the-government/interest-rate-statistics' ] ],
-        'related'   => [ 'portfolio-analyzer', 'roi-calculator', 'cagr-calculator', 'bond-yield-calculator' ],
+        'related'   => [ 'portfolio-analyzer', 'roi-calculator', 'cagr-calculator', 'bond-yield-calculator', 'options-profit-calculator' ],
     ],
 
     'options-profit-calculator' => [
@@ -242,7 +242,7 @@ function fs_tool_content_data_5() {
             [ 'Does this save my data?', 'No. The numbers stay in your browser and are not stored.' ],
         ],
         'sources'   => [ [ 'Investor.gov: Asset allocation', 'https://www.investor.gov/introduction-investing/investing-basics/glossary/asset-allocation' ] ],
-        'related'   => [ 'sharpe-ratio-calculator', 'roi-calculator', 'compound-interest-calculator', 'net-worth-calculator' ],
+        'related'   => [ 'sharpe-ratio-calculator', 'roi-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'options-profit-calculator', 'risk-assessment-tool' ],
     ],
 
     'fire-calculator' => [
@@ -268,7 +268,7 @@ function fs_tool_content_data_5() {
             [ 'Should I count my home?', 'Usually not unless you plan to sell it. Use investable assets.' ],
         ],
         'sources'   => [ [ 'Investor.gov: Save and invest', 'https://www.investor.gov/introduction-investing/investing-basics/save-and-invest' ] ],
-        'related'   => [ 'retirement-savings-calculator', '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator' ],
+        'related'   => [ 'retirement-savings-calculator', '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'risk-assessment-tool' ],
     ],
 
     ];

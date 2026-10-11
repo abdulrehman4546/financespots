@@ -186,18 +186,20 @@ function fs_stripe_webhook() {
     $sig       = $_SERVER['HTTP_STRIPE_SIGNATURE'] ?? '';
     $secret    = get_option('fs_stripe_webhook_secret', '');
 
-    // Verify signature if webhook secret is set
-    if ( $secret ) {
-        $parts = [];
-        foreach ( explode(',', $sig) as $part ) {
-            list($k,$v) = explode('=', $part, 2);
-            $parts[$k] = $v;
-        }
-        $signed = hash_hmac('sha256', $parts['t'] . '.' . $payload, $secret);
-        if ( ! hash_equals($signed, $parts['v1'] ?? '') ) {
-            status_header(400); exit('Invalid signature');
-        }
+    // Fail closed: without a webhook secret anyone could post a fake "payment completed" event
+    if ( ! $secret ) { status_header( 503 ); exit( 'Webhook not configured' ); }
+    $t = ''; $v1 = [];
+    foreach ( explode( ',', $sig ) as $part ) {
+        $kv = explode( '=', trim( $part ), 2 );
+        if ( 2 !== count( $kv ) ) continue;
+        if ( 't' === $kv[0] ) $t = $kv[1];
+        if ( 'v1' === $kv[0] ) $v1[] = $kv[1];
     }
+    if ( '' === $t || abs( time() - (int) $t ) > 300 ) { status_header( 400 ); exit( 'Invalid timestamp' ); }
+    $signed = hash_hmac( 'sha256', $t . '.' . $payload, $secret );
+    $valid  = false;
+    foreach ( $v1 as $candidate ) { if ( hash_equals( $signed, $candidate ) ) { $valid = true; break; } }
+    if ( ! $valid ) { status_header( 400 ); exit( 'Invalid signature' ); }
 
     $event = json_decode( $payload, true );
     $type  = $event['type'] ?? '';

@@ -61,7 +61,7 @@ function fs_tool_content_data_2() {
             [ 'SSA: 2026 Social Security wage base and COLA', 'https://www.ssa.gov/news/en/press/releases/2025-10-24.html' ],
             [ 'IRS Topic 409: Capital gains and losses', 'https://www.irs.gov/taxtopics/tc409' ],
         ],
-        'related'   => [ 'self-employment-tax-calculator', 'capital-gains-tax-calculator', '401k-calculator', 'net-worth-calculator' ],
+        'related'   => [ 'self-employment-tax-calculator', 'capital-gains-tax-calculator', '401k-calculator', 'net-worth-calculator', 'irs-penalty-calculator', 'sales-tax-calculator' ],
     ],
 
     /* ───────────────────────── CAPITAL GAINS ───────────────────────── */
@@ -111,7 +111,7 @@ function fs_tool_content_data_2() {
             [ 'IRS Topic 559: Net investment income tax', 'https://www.irs.gov/taxtopics/tc559' ],
             [ 'Tax Foundation: 2026 tax brackets', 'https://taxfoundation.org/data/all/federal/2026-tax-brackets/' ],
         ],
-        'related'   => [ 'income-tax-calculator', 'roi-calculator', 'net-worth-calculator', 'compound-interest-calculator' ],
+        'related'   => [ 'income-tax-calculator', 'roi-calculator', 'net-worth-calculator', 'compound-interest-calculator', 'irs-penalty-calculator' ],
     ],
 
     /* ───────────────────────── COMPOUND INTEREST ───────────────────────── */
@@ -206,7 +206,7 @@ function fs_tool_content_data_2() {
             [ 'IRS: 2026 401(k) and IRA limits', 'https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500' ],
             [ 'Investor.gov: Retirement planning', 'https://www.investor.gov/introduction-investing/getting-started/retirement-planning' ],
         ],
-        'related'   => [ '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'savings-goal-calculator' ],
+        'related'   => [ '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'savings-goal-calculator', 'risk-assessment-tool' ],
     ],
 
     /* ───────────────────────── 401(k) ───────────────────────── */
@@ -388,7 +388,7 @@ function fs_tool_content_data_2() {
             [ 'Investor.gov (SEC): Compound interest calculator', 'https://www.investor.gov/financial-tools-calculators/calculators/compound-interest-calculator' ],
             [ 'IRS Topic 409: Capital gains and losses', 'https://www.irs.gov/taxtopics/tc409' ],
         ],
-        'related'   => [ 'compound-interest-calculator', 'capital-gains-tax-calculator', 'net-worth-calculator', 'retirement-savings-calculator' ],
+        'related'   => [ 'compound-interest-calculator', 'capital-gains-tax-calculator', 'net-worth-calculator', 'retirement-savings-calculator', 'options-profit-calculator' ],
     ],
 
     /* ───────────────────────── NET WORTH ───────────────────────── */
@@ -526,7 +526,7 @@ function fs_tool_content_data_2() {
             [ 'Tax Foundation: Property taxes by state and county', 'https://taxfoundation.org/data/all/state/property-taxes-by-state-county/' ],
             [ 'IRS: Topic 503, Deductible taxes', 'https://www.irs.gov/taxtopics/tc503' ],
         ],
-        'related'   => [ 'mortgage-calculator', 'income-tax-calculator', 'refinance-calculator', 'net-worth-calculator' ],
+        'related'   => [ 'mortgage-calculator', 'income-tax-calculator', 'refinance-calculator', 'net-worth-calculator', 'sales-tax-calculator' ],
     ],
 
     /* ───────────────────────── IRA ───────────────────────── */

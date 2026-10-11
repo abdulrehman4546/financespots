@@ -116,3 +116,22 @@ add_filter( 'rank_math/frontend/robots', function ( $robots ) {
     }
     return $robots;
 } );
+
+/* Links inside post and page content that point at a redirected tool go straight to its replacement,
+   so visitors and crawlers skip the 301 hop. Also upgrades the one outbound http:// link to https. */
+add_filter( 'the_content', function ( $html ) {
+    if ( false === strpos( $html, '/tool/' ) && false === strpos( $html, 'http://www.aboutads.info' ) ) return $html;
+    $map = fs_tool_redirect_map() + [ 'debt-to-income-ratio' => 'debt-to-income-ratio-calculator' ];
+    $html = str_replace( 'http://www.aboutads.info', 'https://www.aboutads.info', $html );
+    return preg_replace_callback( '#(href=["\'])((?:https?://[^"\'/]+)?)/tool/([a-z0-9-]+)/?(["\'])#i', function ( $m ) use ( $map ) {
+        $slug = strtolower( $m[3] );
+        return isset( $map[ $slug ] ) ? $m[1] . $m[2] . '/tool/' . $map[ $slug ] . '/' . $m[4] : $m[0];
+    }, $html );
+}, 25 );
+
+/* The default Archives and Meta widgets add date-archive links (301 to the homepage) and a login link. */
+add_action( 'widgets_init', function () {
+    unregister_widget( 'WP_Widget_Archives' );
+    unregister_widget( 'WP_Widget_Meta' );
+    unregister_widget( 'WP_Widget_Recent_Comments' );
+}, 20 );

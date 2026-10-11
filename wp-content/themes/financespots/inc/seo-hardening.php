@@ -216,3 +216,24 @@ add_action( 'init', function () {
         update_option( 'rank-math-options-titles', $titles );
     }
 }, 95 );
+
+
+/* ── Tools archive and pricing page: honest, specific title, description and schema ── */
+add_filter( 'rank_math/frontend/title', function ( $title ) {
+    if ( is_post_type_archive( 'fs_tool' ) ) return 'Free Finance Calculators: ' . (int) wp_count_posts( 'fs_tool' )->publish . '+ Tools | FinanceSpots';
+    if ( is_page( 'pricing' ) && ! get_option( 'fs_pro_sales_enabled', 0 ) ) return 'Free Finance Calculators, No Sign-up | FinanceSpots';
+    return $title;
+}, 30 );
+add_filter( 'rank_math/frontend/description', function ( $desc ) {
+    if ( is_post_type_archive( 'fs_tool' ) ) return 'Browse free calculators for mortgages, loans, taxes, investing, retirement, crypto and budgeting. Formulas, worked examples and sources on every tool.';
+    if ( is_page( 'pricing' ) && ! get_option( 'fs_pro_sales_enabled', 0 ) ) return 'Every FinanceSpots calculator is free and needs no account. A PRO plan is planned but is not available yet.';
+    return $desc;
+}, 30 );
+add_filter( 'rank_math/json_ld', function ( $data ) {
+    if ( is_page( 'pricing' ) && ! get_option( 'fs_pro_sales_enabled', 0 ) ) {
+        foreach ( $data as $key => $entity ) {
+            if ( is_array( $entity ) && in_array( $entity['@type'] ?? '', [ 'Product', 'Offer', 'Brand' ], true ) ) unset( $data[ $key ] );
+        }
+    }
+    return $data;
+}, 99 );

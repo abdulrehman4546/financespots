@@ -226,7 +226,7 @@ function fs_tool_content_data_3() {
         'sources'   => [
             [ 'CFPB: Owning a home, tools and resources', 'https://www.consumerfinance.gov/owning-a-home/' ],
         ],
-        'related'   => [ 'home-equity-loan-calculator', 'mortgage-calculator', 'loan-comparison-calculator', 'refinance-calculator' ],
+        'related'   => [ 'home-equity-loan-calculator', 'mortgage-calculator', 'loan-comparison-calculator', 'refinance-calculator', 'interest-only-calculator' ],
     ],
 
     /* ───────────────────────── COMMERCIAL ───────────────────────── */
@@ -270,7 +270,7 @@ function fs_tool_content_data_3() {
             [ 'SBA: 504 loans', 'https://www.sba.gov/funding-programs/loans/504-loans' ],
             [ 'SBA: 7(a) loans', 'https://www.sba.gov/funding-programs/loans/7a-loans' ],
         ],
-        'related'   => [ 'balloon-loan-calculator', 'amortization-calculator', 'loan-comparison-calculator', 'refinance-calculator' ],
+        'related'   => [ 'balloon-loan-calculator', 'amortization-calculator', 'loan-comparison-calculator', 'refinance-calculator', 'interest-only-calculator' ],
     ],
 
     /* ───────────────────────── DTI ───────────────────────── */
@@ -359,7 +359,7 @@ function fs_tool_content_data_3() {
             [ 'IRS: Estimated taxes', 'https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes' ],
             [ 'SSA: 2026 Social Security wage base', 'https://www.ssa.gov/news/en/press/releases/2025-10-24.html' ],
         ],
-        'related'   => [ 'income-tax-calculator', 'retirement-savings-calculator', 'monthly-budget-planner', 'emergency-fund-calculator' ],
+        'related'   => [ 'income-tax-calculator', 'retirement-savings-calculator', 'monthly-budget-planner', 'emergency-fund-calculator', 'irs-penalty-calculator' ],
     ],
 
     /* ───────────────────────── BUDGET PLANNER ───────────────────────── */

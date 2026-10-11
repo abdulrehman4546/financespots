@@ -34,7 +34,7 @@ function fs_tool_content_data_7() {
             [ 'Is sales tax deductible?', 'It can be if you itemize and choose the sales tax deduction instead of state income tax, subject to the SALT limit.' ],
         ],
         'sources'   => [ [ 'IRS Topic 503: Deductible taxes', 'https://www.irs.gov/taxtopics/tc503' ], [ 'IRS: Sales tax deduction calculator', 'https://www.irs.gov/credits-deductions/individuals/sales-tax-deduction-calculator' ] ],
-        'related'   => [ 'income-tax-calculator', 'property-tax-calculator', 'monthly-budget-planner', 'self-employment-tax-calculator' ],
+        'related'   => [ 'income-tax-calculator', 'property-tax-calculator', 'monthly-budget-planner', 'self-employment-tax-calculator', 'irs-penalty-calculator' ],
     ],
 
     'estate-tax-calculator' => [
