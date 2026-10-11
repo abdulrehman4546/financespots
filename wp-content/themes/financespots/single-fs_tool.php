@@ -465,7 +465,15 @@ function fsDownloadPDF(){
     }
 
     if(typeof window.jspdf === 'undefined' && typeof window.jsPDF === 'undefined'){
-        alert('PDF library loadingâ€¦ please try again in a moment.');
+        /* the PDF library is loaded on demand, not with every tool page */
+        if(!window.__fsPdfLoading){
+            window.__fsPdfLoading = true;
+            var ps = document.createElement('script');
+            ps.src = 'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js';
+            ps.onload = function(){ window.__fsPdfLoading = false; fsDownloadPDF(); };
+            ps.onerror = function(){ window.__fsPdfLoading = false; alert('Could not load the PDF library. Please check your connection and try again.'); };
+            document.head.appendChild(ps);
+        }
         return;
     }
 

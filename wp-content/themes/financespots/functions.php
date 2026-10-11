@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.5.7' );
+define( 'FINANCESPOTS_VERSION', '1.5.8' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -65,12 +65,12 @@ add_action( 'after_setup_theme', 'financespots_setup' );
    2. ENQUEUE SCRIPTS & STYLES
    ========================================================= */
 function financespots_scripts() {
-    // Google Fonts
+    // Fonts are self-hosted (assets/fonts) so there is no render-blocking third-party stylesheet
     wp_enqueue_style(
         'financespots-fonts',
-        'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap',
+        FINANCESPOTS_URI . '/assets/css/fonts.css',
         [],
-        null
+        FINANCESPOTS_VERSION
     );
 
     // Main stylesheet
@@ -3318,7 +3318,6 @@ function fs_enqueue_tool_scripts() {
     if ( is_singular( 'fs_tool' ) ) {
         wp_enqueue_script( 'fs-loan-engine', get_template_directory_uri() . '/assets/js/fs-loan-engine.js', [], filemtime( get_template_directory() . '/assets/js/fs-loan-engine.js' ), true );
         wp_enqueue_script( 'chartjs', 'https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js', [], '4.4.0', true );
-        wp_enqueue_script( 'jspdf',   'https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js',  [], '2.5.1', true );
     }
     // Blog nav dropdown toggle (all pages)
     wp_add_inline_script( 'jquery', "
@@ -4687,3 +4686,11 @@ add_action( 'admin_init', function() {
 
     update_option( 'fs_blog_cluster_fix_v1', true );
 }, 42 );
+
+
+/* Preload the two main font files so text renders sooner */
+add_action( 'wp_head', function () {
+    foreach ( [ 'inter-latin', 'space-grotesk-latin' ] as $font ) {
+        echo '<link rel="preload" href="' . esc_url( FINANCESPOTS_URI . '/assets/fonts/' . $font . '.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
+    }
+}, 1 );
