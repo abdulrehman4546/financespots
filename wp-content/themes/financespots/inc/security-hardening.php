@@ -121,3 +121,26 @@ add_action( 'init', function () {
         update_option( 'fs_security_uploads_htaccess', 'ok' );
     }
 }, 99 );
+
+/* Feeds: no WordPress version in the generator tag */
+foreach ( [ 'rss2_head', 'commentsrss2_head', 'rss_head', 'rdf_header', 'atom_head', 'comments_atom_head', 'opml_head', 'app_head' ] as $fs_feed_hook ) {
+    remove_action( $fs_feed_hook, 'the_generator' );
+}
+
+/* Sidebar block widgets that print date-archive, comment or login links are not shown */
+add_filter( 'sidebars_widgets', function ( $sidebars ) {
+    if ( is_admin() || empty( $sidebars ) ) return $sidebars;
+    static $blocks = null;
+    if ( null === $blocks ) $blocks = (array) get_option( 'widget_block', [] );
+    foreach ( $sidebars as $area => $ids ) {
+        if ( ! is_array( $ids ) || 'wp_inactive_widgets' === $area ) continue;
+        foreach ( $ids as $i => $id ) {
+            if ( 0 !== strpos( $id, 'block-' ) ) continue;
+            $n = (int) substr( $id, 6 );
+            $content = isset( $blocks[ $n ]['content'] ) ? (string) $blocks[ $n ]['content'] : '';
+            if ( preg_match( '/wp:(archives|latest-comments|loginout|calendar)\b/', $content ) ) unset( $sidebars[ $area ][ $i ] );
+        }
+        $sidebars[ $area ] = array_values( $sidebars[ $area ] );
+    }
+    return $sidebars;
+} );

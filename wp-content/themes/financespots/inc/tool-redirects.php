@@ -135,3 +135,12 @@ add_action( 'widgets_init', function () {
     unregister_widget( 'WP_Widget_Meta' );
     unregister_widget( 'WP_Widget_Recent_Comments' );
 }, 20 );
+
+/* Public tool counts ("64+ tools") must not include the old duplicates that now redirect elsewhere. */
+add_filter( 'wp_count_posts', function ( $counts, $type ) {
+    if ( 'fs_tool' === $type && ! is_admin() && is_object( $counts ) && isset( $counts->publish ) ) {
+        $counts = clone $counts;
+        $counts->publish = max( 0, (int) $counts->publish - count( fs_redirected_tool_ids() ) );
+    }
+    return $counts;
+}, 10, 2 );
