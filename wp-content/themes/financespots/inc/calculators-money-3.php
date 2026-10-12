@@ -319,3 +319,127 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   NEGATIVE EQUITY CAR LOAN CALCULATOR (trading in a car you owe more on than it is worth)
+───────────────────────────────────────────── */
+function fs_calc2_negative_equity() { ?>
+<div class="fsc-wrap" id="fs-ne">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <h3 class="fsc-section-title">Your current car</h3>
+    <?php fsl_field( 'ne-val', 'Trade-in value ($)', 12000, [ 'min' => 0, 'step' => 100, 'hint' => 'What a dealer would give you, not the private-sale price.' ] ); ?>
+    <?php fsl_field( 'ne-pay', 'Loan payoff amount ($)', 16000, [ 'min' => 0, 'step' => 100, 'hint' => 'Ask your lender for the 10-day payoff figure.' ] ); ?>
+    <h3 class="fsc-section-title">The new car</h3>
+    <?php fsl_field( 'ne-price', 'New car price ($)', 28000, [ 'min' => 1000, 'step' => 500 ] ); ?>
+    <?php fsl_field( 'ne-down', 'Cash down payment ($)', 2000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <div class="fsl-row2">
+      <?php fsl_field( 'ne-tax', 'Sales tax (%)', 6, [ 'min' => 0, 'max' => 15, 'step' => 0.01 ] ); ?>
+      <?php fsl_field( 'ne-fees', 'Fees ($)', 500, [ 'min' => 0, 'step' => 50, 'hint' => 'Title, registration, documentation.' ] ); ?>
+    </div>
+    <div class="fsl-row2">
+      <?php fsl_field( 'ne-apr', 'Loan APR (%)', 7.5, [ 'min' => 0, 'max' => 30, 'step' => 0.01 ] ); ?>
+      <?php fsl_field( 'ne-term', 'Term (months)', 72, [ 'min' => 12, 'max' => 96, 'step' => 12 ] ); ?>
+    </div>
+    <button type="button" class="fsc-btn" id="ne-go">Calculate</button>
+    <p class="fsl-error" id="ne-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ne-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ne-eq', 'Equity in your current car', 'primary' );
+      fsl_card( 'ne-loan', 'New loan amount' );
+      fsl_card( 'ne-ltv', 'Loan as a share of the car’s price' );
+      fsl_card( 'ne-pay-v', 'Monthly payment', 'secondary' );
+      fsl_card( 'ne-extra', 'Extra per month from rolled-in debt', 'gold' );
+      fsl_card( 'ne-int', 'Total interest on the new loan' );
+      fsl_card( 'ne-cost', 'Extra paid over the loan because of it', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ne-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var val=$('ne-val'), pay=$('ne-pay'), price=$('ne-price'), down=$('ne-down'), tax=$('ne-tax')/100, fees=$('ne-fees'), apr=$('ne-apr')/1200, n=Math.max(1,Math.round($('ne-term')));
+    if(!FSL.valid(price>0,'ne-err','Enter the new car price.'))return;
+    var eq=val-pay, neg=Math.max(-eq,0), pos=Math.max(eq,0);
+    /* positive equity counts toward the down payment; negative equity is added to the loan */
+    var base=price*(1+tax)+fees-down-pos;
+    var loan=Math.max(base+neg,0), loan0=Math.max(base,0);
+    var p=FSL.pmt(loan,apr,n), p0=FSL.pmt(loan0,apr,n);
+    var interest=p*n-loan, extraMonth=p-p0, extraCost=(p-p0)*n;
+    FSL.set('ne-eq',(eq>=0?'+':'-')+M(Math.abs(eq)));
+    FSL.set('ne-loan',M(loan));FSL.set('ne-ltv',(loan/price*100).toFixed(0)+'%');FSL.set('ne-pay-v',M(p,2)+'/mo');
+    FSL.set('ne-extra',neg>0?M(extraMonth,2)+'/mo':'None');FSL.set('ne-int',M(interest));FSL.set('ne-cost',neg>0?M(extraCost):'None');
+    FSL.show('ne-results','grid');
+    var note;
+    if(neg>0)note='You owe '+M(neg)+' more than the car is worth. Rolling it into the new loan means you borrow '+M(loan)+' for a car priced at '+M(price)+' ('+(loan/price*100).toFixed(0)+'% of its price), so you start underwater again. It adds about '+M(extraMonth,2)+' a month and '+M(extraCost)+' over the loan. Paying the shortfall in cash, or waiting while you pay the loan down, avoids that.';
+    else note='Your car is worth '+M(pos)+' more than you owe, so that equity reduces what you need to borrow. There is nothing to roll over.';
+    FSL.set('ne-note',note);
+  }
+  FSL.el('ne-go').addEventListener('click',calc);FSL.bind('fs-ne',calc);calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   CASH-BACK REBATE vs LOW-APR FINANCING
+───────────────────────────────────────────── */
+function fs_calc2_cashback_vs_apr() { ?>
+<div class="fsc-wrap" id="fs-cb">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'cb-price', 'Car price before incentives ($)', 35000, [ 'min' => 1000, 'step' => 500 ] ); ?>
+    <?php fsl_field( 'cb-down', 'Down payment ($)', 3000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'cb-term', 'Loan term (months)', 60, [ 'min' => 12, 'max' => 96, 'step' => 12 ] ); ?>
+    <h3 class="fsc-section-title">Option A: take the cash rebate</h3>
+    <?php fsl_field( 'cb-reb', 'Cash-back rebate ($)', 3000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'cb-apr1', 'Your own loan APR (%)', 6.5, [ 'min' => 0, 'max' => 30, 'step' => 0.01, 'hint' => 'From your bank or credit union.' ] ); ?>
+    <h3 class="fsc-section-title">Option B: take the low-APR offer</h3>
+    <?php fsl_field( 'cb-apr2', 'Promotional APR (%)', 1.9, [ 'min' => 0, 'max' => 30, 'step' => 0.01 ] ); ?>
+    <button type="button" class="fsc-btn" id="cb-go">Compare</button>
+    <p class="fsl-error" id="cb-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="cb-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'cb-win', 'Cheaper option', 'primary' );
+      fsl_card( 'cb-save', 'You save' );
+      fsl_card( 'cb-pa', 'A: monthly payment (rebate)' );
+      fsl_card( 'cb-pb', 'B: monthly payment (low APR)', 'secondary' );
+      fsl_card( 'cb-ta', 'A: total of payments' );
+      fsl_card( 'cb-tb', 'B: total of payments' );
+      fsl_card( 'cb-be', 'Break-even promotional APR', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="cb-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var P=$('cb-price'), dn=$('cb-down'), n=Math.max(1,Math.round($('cb-term'))), reb=$('cb-reb'), a1=$('cb-apr1')/1200, a2=$('cb-apr2')/1200;
+    if(!FSL.valid(P>dn,'cb-err','The down payment must be less than the price.'))return;
+    var A=P-reb-dn, B=P-dn;
+    if(!FSL.valid(A>0,'cb-err','The rebate and down payment cannot be more than the price.'))return;
+    var pa=FSL.pmt(A,a1,n), pb=FSL.pmt(B,a2,n), ta=pa*n, tb=pb*n;
+    /* the promo rate at which both options cost the same in total */
+    var lo=0, hi=Math.max(a1,0.0001);
+    for(var i=0;i<60;i++){var m=(lo+hi)/2; if(FSL.pmt(B,m,n)*n>ta)hi=m; else lo=m;}
+    var be=lo*1200, diff=ta-tb;
+    FSL.set('cb-win',Math.abs(diff)<0.5?'About the same':(diff>0?'B: low APR':'A: cash rebate'));
+    FSL.set('cb-save',M(Math.abs(diff)));FSL.set('cb-pa',M(pa,2)+'/mo');FSL.set('cb-pb',M(pb,2)+'/mo');FSL.set('cb-ta',M(ta));FSL.set('cb-tb',M(tb));
+    FSL.set('cb-be',be.toFixed(2)+'%');
+    FSL.show('cb-results','grid');
+    FSL.set('cb-note',(diff>0?'The low-APR offer costs '+M(diff)+' less over the loan.':'Taking the rebate costs '+M(-diff)+' less over the loan.')+' The two options tie when the promotional rate is about '+be.toFixed(2)+'%: a lower promo rate than that favors the low-APR deal, a higher one favors the rebate. Compare with your own pre-approved loan rate, and check that the low-APR offer is available for your credit score and term.');
+  }
+  FSL.el('cb-go').addEventListener('click',calc);FSL.bind('fs-cb',calc);calc();
+});
+</script>
+<?php }

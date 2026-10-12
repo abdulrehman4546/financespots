@@ -125,7 +125,7 @@ function fs_tool_content_data() {
             [ 'Edmunds: average amount financed and APR, Q1 2026', 'https://www.globenewswire.com/news-release/2026/04/01/3266741/0/en/average-amount-financed-for-new-vehicle-purchases-hits-record-43-899-in-q1-2026-according-to-edmunds.html' ],
             [ 'GM Authority: Edmunds Q2 2026 loan term and APR data', 'https://gmauthority.com/blog/2026/07/new-car-buyers-stretching-out-loans-at-record-levels-in-q2-2026/' ],
         ],
-        'related'   => [ 'loan-comparison-calculator', 'personal-loan-calculator', 'amortization-calculator', 'refinance-calculator' ],
+        'related'   => [ 'loan-comparison-calculator', 'personal-loan-calculator', 'amortization-calculator', 'refinance-calculator', 'negative-equity-car-loan-calculator', 'cash-back-vs-low-apr-calculator' ],
     ],
 
     /* ───────────────────────── PERSONAL LOAN ───────────────────────── */
@@ -172,7 +172,7 @@ function fs_tool_content_data() {
             [ 'Federal Reserve G.19 Consumer Credit release (personal loan rates)', 'https://www.federalreserve.gov/releases/g19/current/' ],
             [ 'CFPB: Regulation Z, determination of the annual percentage rate', 'https://www.consumerfinance.gov/rules-policy/regulations/1026/22/' ],
         ],
-        'related'   => [ 'debt-consolidation-calculator', 'loan-comparison-calculator', 'amortization-calculator', 'auto-loan-calculator' ],
+        'related'   => [ 'debt-consolidation-calculator', 'loan-comparison-calculator', 'amortization-calculator', 'auto-loan-calculator', 'cash-back-vs-low-apr-calculator' ],
     ],
 
     /* ───────────────────────── STUDENT LOAN ───────────────────────── */
@@ -356,7 +356,7 @@ function fs_tool_content_data() {
         'sources'   => [
             [ 'CFPB: Regulation Z, determination of the annual percentage rate', 'https://www.consumerfinance.gov/rules-policy/regulations/1026/22/' ],
         ],
-        'related'   => [ 'personal-loan-calculator', 'auto-loan-calculator', 'mortgage-calculator', 'debt-consolidation-calculator' ],
+        'related'   => [ 'personal-loan-calculator', 'auto-loan-calculator', 'mortgage-calculator', 'debt-consolidation-calculator', 'cash-back-vs-low-apr-calculator' ],
     ],
 
     /* ───────────────────────── AMORTIZATION ───────────────────────── */
@@ -447,7 +447,7 @@ function fs_tool_content_data() {
             [ 'Freddie Mac weekly mortgage rates', 'https://www.freddiemac.com/pmms' ],
             [ 'CFPB: Owning a home tools and resources', 'https://www.consumerfinance.gov/owning-a-home/' ],
         ],
-        'related'   => [ 'mortgage-calculator', 'amortization-calculator', 'home-equity-loan-calculator', 'fha-loan-calculator' ],
+        'related'   => [ 'mortgage-calculator', 'amortization-calculator', 'home-equity-loan-calculator', 'fha-loan-calculator', 'negative-equity-car-loan-calculator' ],
     ],
 
     /* ───────────────────────── FHA ───────────────────────── */
@@ -513,6 +513,8 @@ function fs_tool_content_data() {
     $data = array_merge( $data, fs_tool_content_data_6() );
     require_once get_template_directory() . '/inc/tool-content-data-7.php';
     $data = array_merge( $data, fs_tool_content_data_7() );
+    require_once get_template_directory() . '/inc/tool-content-data-8.php';
+    $data = array_merge( $data, fs_tool_content_data_8() );
     /* the live site's slug for this tool differs from the local database's */
     $data['debt-to-income-ratio-calculator'] = $data['debt-to-income-ratio'];
 

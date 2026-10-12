@@ -52,7 +52,7 @@ function fs_tool_content_data_3() {
         'sources'   => [
             [ 'CFPB: Owning a home, mortgage tools and guides', 'https://www.consumerfinance.gov/owning-a-home/' ],
         ],
-        'related'   => [ 'amortization-calculator', 'refinance-calculator', 'mortgage-calculator', 'debt-consolidation-calculator' ],
+        'related'   => [ 'amortization-calculator', 'refinance-calculator', 'mortgage-calculator', 'debt-consolidation-calculator', 'negative-equity-car-loan-calculator' ],
     ],
 
     /* ───────────────────────── LOAN AFFORDABILITY ───────────────────────── */

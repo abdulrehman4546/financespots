@@ -82,18 +82,20 @@ function fs_new_content_guides() {
     ];
 }
 
+require_once get_template_directory() . '/inc/new-content-2.php';
+
 function fs_new_content_url( $slug ) {
     $p = get_page_by_path( $slug, OBJECT, 'fs_tool' );
     return $p ? get_permalink( $p ) : home_url( '/tools/' . $slug . '/' );
 }
 
 add_action( 'init', function () {
-    $version = '2026-10-10-a';
+    $version = '2026-10-12-a';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
     /* tools */
-    foreach ( fs_new_content_tools() as $slug => $t ) {
+    foreach ( array_merge( fs_new_content_tools(), fs_new_content_tools_2() ) as $slug => $t ) {
         if ( get_page_by_path( $slug, OBJECT, 'fs_tool' ) ) continue;
         $id = wp_insert_post( [
             'post_type' => 'fs_tool', 'post_title' => $t[0], 'post_name' => $slug,
@@ -108,7 +110,7 @@ add_action( 'init', function () {
     /* guides */
     $cat = get_term_by( 'name', 'Finance Tips', 'category' );
     $cat_id = $cat ? $cat->term_id : (int) get_option( 'default_category' );
-    foreach ( fs_new_content_guides() as $g ) {
+    foreach ( array_merge( fs_new_content_guides(), fs_new_content_guides_2() ) as $g ) {
         $html = str_replace( '{faq}', fs_new_content_faq( $g['faqs'] ), $g['content'] );
         $html = preg_replace_callback( '/\{tool:([a-z0-9-]+)\}/', function ( $m ) { return esc_url( fs_new_content_url( $m[1] ) ); }, $html );
         $ex = get_page_by_path( $g['slug'], OBJECT, 'post' );

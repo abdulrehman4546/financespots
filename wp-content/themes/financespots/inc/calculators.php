@@ -47,6 +47,8 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'estate-tax-calculator'          => 'fs_calc2_estate_tax',
         'irs-penalty-calculator'         => 'fs_calc2_irs_penalty',
         'gas-fee-calculator'             => 'fs_calc2_gas_fee',
+        'negative-equity-car-loan-calculator' => 'fs_calc2_negative_equity',
+        'cash-back-vs-low-apr-calculator' => 'fs_calc2_cashback_vs_apr',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {
