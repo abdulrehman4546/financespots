@@ -15,9 +15,10 @@ function fs_new_content_tools() {
 }
 
 function fs_new_content_faq( array $faqs ) {
+    /* Same Q./answer markup the theme's FAQPage schema parser looks for (see rank_math/json_ld in functions.php) */
     $o = '<h2>Frequently asked questions</h2>';
     foreach ( $faqs as $f ) {
-        $o .= '<h3>' . $f[0] . '</h3><p>' . $f[1] . '</p>';
+        $o .= '<div class="fs-faq-item"><p><strong><span>Q.</span> ' . $f[0] . '</strong></p><p>' . $f[1] . '</p></div>';
     }
     return $o;
 }
@@ -90,7 +91,7 @@ function fs_new_content_url( $slug ) {
 }
 
 add_action( 'init', function () {
-    $version = '2026-10-12-a';
+    $version = '2026-10-12-b';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
