@@ -237,3 +237,30 @@ add_filter( 'rank_math/json_ld', function ( $data ) {
     }
     return $data;
 }, 99 );
+
+/* ── Favicon: the site had no icon tags and /favicon.ico redirected to the WordPress logo ── */
+function fs_favicon_url( $file ) {
+    return get_template_directory_uri() . '/assets/images/favicon/' . $file;
+}
+add_action( 'wp_head', function () {
+    if ( function_exists( 'has_site_icon' ) && has_site_icon() ) return;   // an icon set in Settings wins
+    echo '<link rel="icon" href="' . esc_url( home_url( '/favicon.ico' ) ) . '" sizes="any">' . "\n";
+    foreach ( [ 48, 96, 192 ] as $s ) {
+        echo '<link rel="icon" type="image/png" sizes="' . $s . 'x' . $s . '" href="' . esc_url( fs_favicon_url( "favicon-{$s}.png" ) ) . '">' . "\n";
+    }
+    echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url( fs_favicon_url( 'apple-touch-icon.png' ) ) . '">' . "\n";
+}, 3 );
+remove_action( 'do_favicon', 'do_favicon' );
+add_action( 'do_favicon', function () {
+    if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
+        wp_safe_redirect( get_site_icon_url( 48 ), 301 );
+        exit;
+    }
+    $file = get_template_directory() . '/assets/images/favicon/favicon.ico';
+    if ( ! is_readable( $file ) ) { status_header( 404 ); exit; }
+    header( 'Content-Type: image/x-icon' );
+    header( 'Cache-Control: public, max-age=604800' );
+    header( 'Content-Length: ' . filesize( $file ) );
+    readfile( $file );
+    exit;
+} );
