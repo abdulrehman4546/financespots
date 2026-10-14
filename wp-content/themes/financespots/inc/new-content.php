@@ -37,6 +37,7 @@ function fs_new_content_guides() {
             . '<h2>Ways to consolidate and the credit impact</h2><table><thead><tr><th>Method</th><th>Typical cost</th><th>Credit effect</th><th>Best for</th></tr></thead><tbody><tr><td>Personal loan</td><td>Fixed rate, sometimes an origination fee</td><td>Hard inquiry, then lower utilization</td><td>Larger balances, a fixed payoff date</td></tr><tr><td>Balance transfer card</td><td>Transfer fee of 3% to 5%, 0% promo</td><td>Hard inquiry, new card</td><td>Balances you can clear within the promo (<a href="{tool:balance-transfer-calculator}">check with the calculator</a>)</td></tr><tr><td>HELOC or home equity loan</td><td>Lower rate, your home is collateral</td><td>Hard inquiry</td><td>Homeowners with equity who accept the risk</td></tr><tr><td>Debt management plan</td><td>Monthly fee through a nonprofit agency</td><td>Cards are usually closed</td><td>Borrowers who need structure</td></tr></tbody></table>'
             . '<h2>How to protect your score</h2><ol><li>Compare offers with soft-pull pre-qualification where available.</li><li>Keep paid-off cards open and unused.</li><li>Do not run the balances back up.</li><li>Make every payment on time; set up autopay.</li></ol>'
             . '<p>Check whether consolidating actually saves money with the <a href="{tool:debt-consolidation-calculator}">debt consolidation calculator</a>, and see what share of your income goes to debt with the <a href="{tool:debt-to-income-ratio-calculator}">debt-to-income ratio calculator</a>.</p>'
+            . '<p>Not consolidating? Compare the two best-known payoff strategies in our guide to the <a href="/debt-avalanche-vs-snowball/">debt avalanche vs debt snowball</a>.</p>'
             . '{faq}',
         'faqs'    => [
             [ 'Does debt consolidation hurt your credit score?', 'It can cause a small temporary dip from the hard inquiry and the new account, but lower utilization and on-time payments often lift the score over the following months.' ],
@@ -91,7 +92,7 @@ function fs_new_content_url( $slug ) {
 }
 
 add_action( 'init', function () {
-    $version = '2026-10-12-b';
+    $version = '2026-10-13-a';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
