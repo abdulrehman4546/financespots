@@ -242,14 +242,28 @@ add_filter( 'rank_math/json_ld', function ( $data ) {
 function fs_favicon_url( $file ) {
     return get_template_directory_uri() . '/assets/images/favicon/' . $file;
 }
-add_action( 'wp_head', function () {
+function fs_print_favicon_tags() {
     if ( function_exists( 'has_site_icon' ) && has_site_icon() ) return;   // an icon set in Settings wins
     echo '<link rel="icon" href="' . esc_url( home_url( '/favicon.ico' ) ) . '" sizes="any">' . "\n";
     foreach ( [ 48, 96, 192 ] as $s ) {
         echo '<link rel="icon" type="image/png" sizes="' . $s . 'x' . $s . '" href="' . esc_url( fs_favicon_url( "favicon-{$s}.png" ) ) . '">' . "\n";
     }
     echo '<link rel="apple-touch-icon" sizes="180x180" href="' . esc_url( fs_favicon_url( 'apple-touch-icon.png' ) ) . '">' . "\n";
-}, 3 );
+}
+add_action( 'wp_head', 'fs_print_favicon_tags', 3 );
+add_action( 'admin_head', 'fs_print_favicon_tags', 3 );   // wp-admin tabs
+add_action( 'login_head', 'fs_print_favicon_tags', 3 );   // wp-login.php tab
+
+/* wp-login.php: the site's own logo instead of the WordPress one */
+add_action( 'login_head', function () {
+    $logo = fs_favicon_url( 'favicon-192.png' );
+    echo '<style>body.login h1 a{background-image:url(' . esc_url( $logo ) . ');background-size:contain;background-position:center;width:96px;height:96px;margin:0 auto 24px}</style>' . "\n";
+} );
+add_filter( 'login_headerurl', function () { return home_url( '/' ); } );
+add_filter( 'login_headertext', function () { return get_bloginfo( 'name' ); } );
+
+/* Admin bar: no WordPress "W" menu */
+add_action( 'admin_bar_menu', function ( $bar ) { $bar->remove_node( 'wp-logo' ); }, 999 );
 remove_action( 'do_favicon', 'do_favicon' );
 add_action( 'do_favicon', function () {
     if ( function_exists( 'has_site_icon' ) && has_site_icon() ) {
