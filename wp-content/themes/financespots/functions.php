@@ -3491,6 +3491,7 @@ require_once get_template_directory() . '/inc/calculators-money.php';
 require_once get_template_directory() . '/inc/calculators-money-2.php';
 require_once get_template_directory() . '/inc/calculators-money-3.php';
 require_once get_template_directory() . '/inc/new-content.php';
+require_once get_template_directory() . '/inc/content-corrections.php';
 require_once get_template_directory() . '/inc/tool-content.php';
 require_once get_template_directory() . '/inc/tool-redirects.php';
 require_once get_template_directory() . '/inc/housekeeping.php';
