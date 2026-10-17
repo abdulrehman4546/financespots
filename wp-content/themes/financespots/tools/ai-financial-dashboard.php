@@ -1192,6 +1192,10 @@ function aiExportPDF(){
 window.addEventListener('load',function(){aiQuickCalc();});
 </script>
 
+<footer style="max-width:900px;margin:32px auto;padding:20px;text-align:center;font-size:.85rem;color:#94a3b8;border-top:1px solid rgba(255,255,255,.08)">
+  <p style="margin:0 0 8px">For education only; not financial, tax or legal advice. Do not enter personal identifiers in the chat.</p>
+  <p style="margin:0"><a href="<?php echo esc_url( home_url( '/' ) ); ?>" style="color:#10B981">Home</a> &middot; <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>" style="color:#10B981">About</a> &middot; <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" style="color:#10B981">Contact</a> &middot; <a href="<?php echo esc_url( home_url( '/privacy-policy/' ) ); ?>" style="color:#10B981">Privacy</a> &middot; <a href="<?php echo esc_url( home_url( '/terms-of-service/' ) ); ?>" style="color:#10B981">Terms</a> &middot; <a href="<?php echo esc_url( home_url( '/editorial-policy/' ) ); ?>" style="color:#10B981">Editorial Policy</a></p>
+</footer>
 <?php wp_footer(); ?>
 </body>
 </html>

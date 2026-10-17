@@ -13,12 +13,12 @@ get_header();
             <div class="fs-about-hero__inner">
                 <span class="fs-badge fs-badge--green">&#128075; Our Story</span>
                 <h1 class="fs-about-hero__title">We Make Financial<br><span class="fs-about-hero__accent">Clarity Simple</span></h1>
-                <p class="fs-about-hero__desc">FinanceSpots is a free platform built to give everyone -- regardless of income or background -- access to professional-grade financial tools and education.</p>
+                <p class="fs-about-hero__desc">FinanceSpots is a free platform built to give everyone -- regardless of income or background -- access to clear financial calculators and plain-English guides.</p>
                 <div class="fs-about-hero__stats">
                     <div class="fs-about-stat"><span class="fs-about-stat__num"><?php echo wp_count_posts('fs_tool')->publish; ?>+</span><span class="fs-about-stat__lbl">Free Tools</span></div>
-                    <div class="fs-about-stat"><span class="fs-about-stat__num">10+</span><span class="fs-about-stat__lbl">Expert Guides</span></div>
-                    <div class="fs-about-stat"><span class="fs-about-stat__num">100%</span><span class="fs-about-stat__lbl">Free Forever</span></div>
-                    <div class="fs-about-stat"><span class="fs-about-stat__num">No</span><span class="fs-about-stat__lbl">Display Ads</span></div>
+                    <div class="fs-about-stat"><span class="fs-about-stat__num"><?php echo (int) wp_count_posts('post')->publish; ?></span><span class="fs-about-stat__lbl">Guides</span></div>
+                    <div class="fs-about-stat"><span class="fs-about-stat__num">100%</span><span class="fs-about-stat__lbl">Free to Use</span></div>
+                    <div class="fs-about-stat"><span class="fs-about-stat__num">No</span><span class="fs-about-stat__lbl">Sign-up Needed</span></div>
                 </div>
             </div>
         </div>
@@ -33,16 +33,16 @@ get_header();
                     <h2>Financial Tools That Work For Everyone</h2>
                     <p>Most financial tools are either too expensive, too complicated, or hidden behind paywalls and aggressive upsells. We built FinanceSpots to change that.</p>
                     <p>Every calculator on our platform is completely free, runs instantly in your browser, and requires absolutely no account creation. We believe financial clarity is a right, not a premium feature.</p>
-                    <p>Whether you are calculating your first mortgage, trying to pay off credit card debt, or planning for retirement -- our tools give you the same analysis a financial advisor would charge hundreds of dollars for.</p>
+                    <p>Whether you are calculating your first mortgage, trying to pay off credit card debt, or planning for retirement -- you can run the same kind of math a planner would use and check the numbers for yourself. The site is supported by advertising, which is how we keep every tool free.</p>
                 </div>
                 <div class="fs-about-two-col__visual">
                     <div class="fs-about-mission-card">
                         <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No account required</span></div>
                         <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No hidden fees or subscriptions</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>No data sold to third parties</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>We do not sell the numbers you enter</span></div>
                         <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>All calculations run in your browser</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>Expert-written guides with every tool</span></div>
-                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>PDF export on every calculator</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>A plain-English guide with sources for every tool</span></div>
+                        <div class="fs-about-mission-item"><span class="fs-about-mission-icon">&#9989;</span><span>Print and PDF export on the tool pages</span></div>
                     </div>
                 </div>
             </div>
@@ -60,10 +60,7 @@ get_header();
                     <span class="fs-badge fs-badge--green">&#128075; Founder</span>
                     <h2 class="fs-about-founder__name">Abdul Rahman</h2>
                     <p class="fs-about-founder__role">Founder & Developer, FinanceSpots</p>
-                    <blockquote class="fs-about-founder__quote">
-                        "I built FinanceSpots because I was frustrated with financial tools that were either locked behind subscriptions or buried in confusing interfaces. Everyone deserves clear, instant answers to their money questions -- for free. That is the only promise this platform makes."
-                    </blockquote>
-                    <p>Abdul Rahman is the sole developer and creator behind FinanceSpots. With a passion for personal finance and web development, he designed every tool and wrote every guide on this platform with one goal: making your financial decisions easier and smarter.</p>
+                    <p>FinanceSpots is built and run by Abdul Rahman, who is responsible for the calculators, the guides and the site. Content is drafted with the help of AI writing tools and then checked against the primary sources cited on each page, and each calculator is tested against independent calculations. FinanceSpots is not a licensed financial adviser, tax professional or lender, and nothing here is personal advice. You can read how we write and correct content in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>.</p>
                     <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="fs-about-contact-btn">Get In Touch &rarr;</a>
                 </div>
             </div>
@@ -86,17 +83,17 @@ get_header();
                 <div class="fs-about-value-card">
                     <div class="fs-about-value-icon">&#9889;</div>
                     <h3>Speed & Simplicity</h3>
-                    <p>No loading screens, no signups, no complexity. Enter your numbers and get your answer in under 3 seconds.</p>
+                    <p>No signups and no complexity. Enter your numbers and the results update instantly as you type.</p>
                 </div>
                 <div class="fs-about-value-card">
                     <div class="fs-about-value-icon">&#128274;</div>
                     <h3>Your Privacy First</h3>
-                    <p>All calculations happen in your browser. We never see your financial data. Ever. No tracking, no profiling.</p>
+                    <p>The calculators run in your browser, so the numbers you enter are not sent to us. The site does use advertising cookies from Google, described in our Privacy Policy.</p>
                 </div>
                 <div class="fs-about-value-card">
                     <div class="fs-about-value-icon">&#127891;</div>
                     <h3>Education Built In</h3>
-                    <p>Every tool comes with an expert guide explaining the concept, the math, and the best strategies to apply it.</p>
+                    <p>Every tool comes with a plain-English guide that explains the concept, shows the formula and a worked example, and links to official sources.</p>
                 </div>
             </div>
         </div>

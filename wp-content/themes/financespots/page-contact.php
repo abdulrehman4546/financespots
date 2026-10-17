@@ -13,7 +13,7 @@ get_header();
             <div class="fs-contact-hero__inner">
                 <span class="fs-badge fs-badge--green">&#128172; Get In Touch</span>
                 <h1 class="fs-contact-hero__title">Contact Us</h1>
-                <p class="fs-contact-hero__desc">Have a question, suggestion, or just want to say hello? We would love to hear from you. We typically respond within 24 hours.</p>
+                <p class="fs-contact-hero__desc">Have a question, suggestion, or just want to say hello? We would love to hear from you. We aim to reply within two business days.</p>
             </div>
         </div>
     </section>
@@ -60,7 +60,7 @@ get_header();
                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </button>
                         <div class="fs-contact-success" id="fc-success" style="display:none;">
-                            <span>&#10003;</span> Thank you! Your message has been sent. We will reply within 24 hours.
+                            <span>&#10003;</span> Thank you! Your message has been sent. We will reply as soon as we can, usually within two business days.
                         </div>
                         <div class="fs-contact-error" id="fc-error" style="display:none;">
                             &#9888; Please fill in all required fields correctly.
@@ -78,7 +78,7 @@ get_header();
                             <div class="fs-contact-info-icon">&#9202;</div>
                             <div>
                                 <span class="fs-contact-info-label">Response Time</span>
-                                <span class="fs-contact-info-val">Within 24 hours</span>
+                                <span class="fs-contact-info-val">Usually within 2 business days</span>
                             </div>
                         </div>
 
@@ -108,7 +108,7 @@ get_header();
                                 Is my financial data saved?
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
-                            <div class="fs-faq-a">No. All calculations run entirely in your browser. We never see, store, or share your financial data.</div>
+                            <div class="fs-faq-a">No. All calculations run entirely in your browser. The numbers you type into a calculator are not sent to us or stored. (Text typed into the optional AI chat on the AI dashboard is sent to an AI provider; see our Privacy Policy.)</div>
                         </div>
 
                         <div class="fs-faq-item">
@@ -116,7 +116,7 @@ get_header();
                                 Can I suggest a new tool?
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
-                            <div class="fs-faq-a">Absolutely! Use the form on this page and select "Feature Suggestion". We read every message and add community-requested tools regularly.</div>
+                            <div class="fs-faq-a">Absolutely! Use the form on this page and select "Feature Suggestion". We read every message, and suggestions help decide which calculators we build next.</div>
                         </div>
 
                         <div class="fs-faq-item">
@@ -124,7 +124,7 @@ get_header();
                                 Who built FinanceSpots?
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
-                            <div class="fs-faq-a">FinanceSpots was built by Abdul Rahman, an independent developer passionate about making financial tools accessible to everyone.</div>
+                            <div class="fs-faq-a">FinanceSpots was built by Abdul Rahman, an independent developer. Read how content is written and checked in our editorial policy.</div>
                         </div>
                     </div>
 

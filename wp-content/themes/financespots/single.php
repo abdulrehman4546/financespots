@@ -175,6 +175,12 @@ get_header();
             </section>
             <?php endif; ?>
 
+            <aside class="fs-post-disclaimer" style="margin:32px 0;padding:16px 20px;border-left:4px solid #10B981;background:rgba(16,185,129,.07);border-radius:8px;font-size:.9rem;line-height:1.6">
+                <strong><?php esc_html_e( 'Educational information, not personal advice.', 'financespots' ); ?></strong>
+                <?php printf( esc_html__( 'FinanceSpots is not a licensed financial adviser, tax professional or lender. Limits, rates and rules change; this article was last updated on %s. Check the cited sources before you act, and read our', 'financespots' ), esc_html( get_the_modified_date() ) ); ?>
+                <a href="<?php echo esc_url( home_url( '/editorial-policy/' ) ); ?>"><?php esc_html_e( 'editorial policy', 'financespots' ); ?></a>.
+            </aside>
+
             <!-- Post Navigation -->
             <nav class="fs-post-nav" aria-label="<?php esc_attr_e( 'Post navigation', 'financespots' ); ?>">
                 <?php previous_post_link( '<div class="fs-post-nav__prev">%link</div>', '&larr; %title' ); ?>
