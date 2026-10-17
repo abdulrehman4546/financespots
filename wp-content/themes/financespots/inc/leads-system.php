@@ -314,7 +314,7 @@ function fs_ajax_contact_submit() {
         wp_send_json_error( 'Sorry, something went wrong sending your message. Please try again or email us directly.' );
     }
 
-    wp_send_json_success( [ 'message' => 'Thank you! Your message has been sent. We will reply within 24 hours.' ] );
+    wp_send_json_success( [ 'message' => 'Thank you! Your message has been sent. We will reply as soon as we can, usually within two business days.' ] );
 }
 
 /* ── 6. CSV Export ── */
