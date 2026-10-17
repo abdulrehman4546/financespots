@@ -278,3 +278,27 @@ add_action( 'do_favicon', function () {
     readfile( $file );
     exit;
 } );
+
+
+/* ── Article/BlogPosting: real headline and an image; utility pages are plain WebPages, not Articles ── */
+add_filter( 'rank_math/json_ld', function ( $data ) {
+    if ( is_singular( 'post' ) ) {
+        $id    = get_queried_object_id();
+        $img   = function_exists( 'fs_get_post_hero_image' ) ? fs_get_post_hero_image( $id ) : '';
+        $img   = $img ? $img : get_template_directory_uri() . '/assets/images/og-default.png';
+        $title = mb_substr( html_entity_decode( get_the_title( $id ), ENT_QUOTES, 'UTF-8' ), 0, 110 );
+        foreach ( $data as $k => $e ) {
+            if ( ! is_array( $e ) ) continue;
+            $types = (array) ( $e['@type'] ?? [] );
+            if ( in_array( 'BlogPosting', $types, true ) || in_array( 'Article', $types, true ) ) {
+                if ( empty( $e['image'] ) ) $data[ $k ]['image'] = $img;
+                $data[ $k ]['headline'] = $title;
+            }
+        }
+    } elseif ( is_page() && ! is_front_page() ) {
+        foreach ( $data as $k => $e ) {
+            if ( is_array( $e ) && 'Article' === ( $e['@type'] ?? '' ) ) unset( $data[ $k ] );
+        }
+    }
+    return $data;
+}, 100 );

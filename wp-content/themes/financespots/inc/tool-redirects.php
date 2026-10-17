@@ -144,3 +144,31 @@ add_filter( 'wp_count_posts', function ( $counts, $type ) {
     }
     return $counts;
 }, 10, 2 );
+
+/* Tool category counts shown on the site ("23 tools") skip the old duplicates that redirect elsewhere. */
+function fs_live_term_count( $term_taxonomy_id ) {
+    static $cache = [];
+    $term_taxonomy_id = (int) $term_taxonomy_id;
+    if ( isset( $cache[ $term_taxonomy_id ] ) ) return $cache[ $term_taxonomy_id ];
+    global $wpdb;
+    $ids  = fs_redirected_tool_ids();
+    $excl = $ids ? ' AND p.ID NOT IN (' . implode( ',', array_map( 'intval', $ids ) ) . ')' : '';
+    $cache[ $term_taxonomy_id ] = (int) $wpdb->get_var( $wpdb->prepare(
+        "SELECT COUNT(*) FROM {$wpdb->term_relationships} tr JOIN {$wpdb->posts} p ON p.ID = tr.object_id WHERE tr.term_taxonomy_id = %d AND p.post_type = 'fs_tool' AND p.post_status = 'publish'{$excl}",
+        $term_taxonomy_id
+    ) );
+    return $cache[ $term_taxonomy_id ];
+}
+add_filter( 'get_terms', function ( $terms, $taxonomies ) {
+    if ( is_admin() || ! in_array( 'fs_tool_cat', (array) $taxonomies, true ) ) return $terms;
+    foreach ( (array) $terms as $t ) {
+        if ( is_object( $t ) && isset( $t->taxonomy, $t->term_taxonomy_id ) && 'fs_tool_cat' === $t->taxonomy ) $t->count = fs_live_term_count( $t->term_taxonomy_id );
+    }
+    return $terms;
+}, 10, 2 );
+add_filter( 'get_term', function ( $term ) {
+    if ( ! is_admin() && is_object( $term ) && isset( $term->taxonomy, $term->term_taxonomy_id ) && 'fs_tool_cat' === $term->taxonomy ) {
+        $term->count = fs_live_term_count( $term->term_taxonomy_id );
+    }
+    return $term;
+} );

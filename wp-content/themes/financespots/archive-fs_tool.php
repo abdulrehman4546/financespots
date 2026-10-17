@@ -66,6 +66,10 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
     </div>
 </section>
 
+<section class="container" style="padding:28px 0 4px;max-width:900px">
+    <p style="font-size:1.05rem;line-height:1.7">Every calculator below is free, runs in your browser and needs no account. Each tool page shows the formula it uses, a worked example with real numbers, answers to common questions and links to official sources such as the IRS, the CFPB and Federal Student Aid, so you can check the result instead of just trusting it. Pick a category to browse, or use the search box to jump straight to a calculator. The results are estimates for planning, not financial, tax or legal advice.</p>
+</section>
+
 <!-- ── CATEGORIES GRID ── -->
 <section style="padding:3.5rem 0 5rem;background:var(--fs-bg)">
     <div class="container">

@@ -219,8 +219,8 @@ function fs_add_schema_markup() {
         if ( $faq_schema ) $schemas[] = $faq_schema;
     }
 
-    // ── Blog posts: Article ──────────────────────────────────
-    if ( is_singular('post') ) {
+    // ── Blog posts: Article (Rank Math already outputs a BlogPosting, so ours only runs without it) ──
+    if ( is_singular('post') && ! class_exists( 'RankMath' ) ) {
         $author_id  = get_post_field('post_author', get_the_ID());
         $author     = get_the_author_meta('display_name', $author_id) ?: 'Abdul Rahman';
         $schemas[] = [
@@ -241,8 +241,8 @@ function fs_add_schema_markup() {
         ];
     }
 
-    // ── Pricing page: Product ────────────────────────────────
-    if ( is_page('pricing') || ( is_page() && get_page_template_slug() === 'page-pricing.php' ) ) {
+    // ── Pricing page: Product (only while paid plans are on sale) ──
+    if ( get_option( 'fs_pro_sales_enabled', 0 ) && ( is_page('pricing') || ( is_page() && get_page_template_slug() === 'page-pricing.php' ) ) ) {
         $schemas[] = [
             '@context'    => 'https://schema.org',
             '@type'       => 'Product',
@@ -292,7 +292,7 @@ function fs_add_schema_markup() {
                 '@type'  => 'Organization',
                 'name'   => 'FinanceSpots',
                 'url'    => home_url('/'),
-                'founder' => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'email' => 'chabdulrehman4546@gmail.com' ],
+                'founder' => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'url' => home_url( '/about/' ) ],
             ],
         ];
     }
@@ -3492,6 +3492,7 @@ require_once get_template_directory() . '/inc/calculators-money-2.php';
 require_once get_template_directory() . '/inc/calculators-money-3.php';
 require_once get_template_directory() . '/inc/new-content.php';
 require_once get_template_directory() . '/inc/content-corrections.php';
+require_once get_template_directory() . '/inc/category-intros.php';
 require_once get_template_directory() . '/inc/tool-content.php';
 require_once get_template_directory() . '/inc/tool-redirects.php';
 require_once get_template_directory() . '/inc/housekeeping.php';
