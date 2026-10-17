@@ -441,7 +441,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                         <h3 class="fs-cat-card__name"><?php echo esc_html( $cat['name'] ); ?></h3>
                         <p class="fs-cat-card__desc"><?php echo esc_html( $cat['desc'] ); ?></p>
                         <span class="fs-cat-card__count">
-                            <?php echo esc_html( $cat['count'] ); ?> <?php esc_html_e( 'tools', 'financespots' ); ?>
+                            <?php echo esc_html( $cat['count'] ); ?> <?php echo 1 === (int) $cat['count'] ? esc_html__( 'tool', 'financespots' ) : esc_html__( 'tools', 'financespots' ); ?>
                             <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
                         </span>
                     </div>

@@ -95,7 +95,7 @@ $total_tools = array_sum( array_map( fn($c) => $c->count, is_array($categories) 
                 <p style="font-size:.875rem;color:var(--fs-text-muted);margin:0;line-height:1.5">
                     <?php echo esc_html( $desc ); ?>
                 </p>
-                <span class="fst-cat-card__count"><?php echo $cat->count; ?> tools &#x2192;</span>
+                <span class="fst-cat-card__count"><?php echo (int) $cat->count; ?> <?php echo 1 === (int) $cat->count ? 'tool' : 'tools'; ?> &#x2192;</span>
             </a>
             <?php endforeach; ?>
         </div>

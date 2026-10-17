@@ -57,7 +57,7 @@ get_header();
                         </div>
                         <div>
                             <h2 class="fs-cat-card__title"><?php echo esc_html( $term->name ); ?></h2>
-                            <span class="fs-cat-card__count"><?php echo intval( $term->count ); ?> tools</span>
+                            <span class="fs-cat-card__count"><?php echo intval( $term->count ); ?> <?php echo 1 === intval( $term->count ) ? 'tool' : 'tools'; ?></span>
                         </div>
                     </div>
                     <p class="fs-cat-card__desc"><?php echo esc_html( $meta['desc'] ); ?></p>
