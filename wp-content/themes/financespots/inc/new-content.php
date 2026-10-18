@@ -87,13 +87,72 @@ function fs_new_content_guides() {
 require_once get_template_directory() . '/inc/new-content-2.php';
 require_once get_template_directory() . '/inc/new-content-3.php';
 
+
+/** Quick answer (AEO) and key takeaways (GEO) for guides that do not carry them in their own definition. */
+function fs_guide_extras() {
+    return [
+        'does-debt-consolidation-hurt-your-credit' => [
+            'Debt consolidation can lower your credit score slightly at first, because of a hard inquiry and a new account, but it often helps over the following months by lowering credit utilization and making on-time payments easier. Keeping old cards open and paying every bill on time protects your score.',
+            [ 'A hard inquiry and a new account can cause a small, temporary dip.', 'Lower utilization and one fixed payment often lift the score over time.', 'Closing old cards can raise utilization and shorten your history.', 'Compare the real cost before you consolidate.' ],
+        ],
+        'balance-transfer-vs-personal-loan' => [
+            'A balance transfer card is usually cheaper if you can pay off the debt inside the 0% promotional period. A fixed-rate personal loan is usually better for larger balances or longer payoff times. Add the transfer fee, often 3% to 5%, to the cost before you compare.',
+            [ 'Balance transfers suit debts you can clear in under about two years.', 'Personal loans give a fixed rate and a set payoff date.', 'In the $8,000 example, the 0% card saved about $2,043 versus staying put.', 'Always check what the rate becomes after the promotion.' ],
+        ],
+        'rap-vs-tiered-standard-student-loan-plan' => [
+            'For federal student loans first disbursed on or after July 1, 2026, the Repayment Assistance Plan (RAP) sets a payment of 1% to 10% of adjusted gross income, while the Tiered Standard plan uses a fixed payment over 10 to 25 years depending on the balance. RAP is usually lower when income is modest.',
+            [ 'RAP payments follow your income, from a $10 minimum up to 10% of AGI.', 'Tiered Standard has a fixed payment and a set payoff date.', 'A lower payment can mean more interest over time.', 'Confirm your own figures in the Loan Simulator on studentaid.gov.' ],
+        ],
+        'negative-equity-car-loan-how-to-get-out' => [
+            'Negative equity means you owe more on your car loan than the car is worth. To find it, subtract the loan payoff amount from the trade-in value. Rolling it into a new loan adds the balance and its interest to the new loan, so paying extra, paying the gap in cash or waiting is usually cheaper.',
+            [ 'Equity = trade-in value minus loan payoff; a negative result is negative equity.', 'Rolling $4,000 into a new loan cost about $4,980 extra in the example.', 'GAP insurance covers a total loss, not a trade-in.', 'Extra principal payments and a larger down payment close the gap fastest.' ],
+        ],
+        'cash-back-or-low-apr-car-deal' => [
+            'Take the low APR when the promotional rate is below the break-even rate, and the cash rebate when it is above. In a $35,000 example with a $3,000 rebate, the break-even promotional rate is about 2.46%. Compare total payments over the whole loan, not just the monthly payment.',
+            [ 'The rebate lowers the amount you borrow; the low APR lowers the interest.', 'Longer terms favor the low rate; short terms often favor the rebate.', 'Get your own bank or credit union rate first.', 'Negotiate the price before discussing incentives.' ],
+        ],
+        'debt-avalanche-vs-snowball' => [
+            'The debt avalanche pays the highest-interest debt first and costs the least; the debt snowball pays the smallest balance first and gives quicker wins. In a $12,000 example, the avalanche saved about $685 in interest and finished one month sooner, while the snowball cleared its first debt in month 5.',
+            [ 'Both methods use the same extra payment and roll payments forward.', 'Avalanche saves the most interest; snowball builds momentum.', 'A hybrid approach starts small, then switches to highest rate.', 'Paying only minimums took about 50 months in the example.' ],
+        ],
+        'social-security-2027-cola-increase' => [
+            'The Social Security Administration announced a 3.6% cost-of-living adjustment for 2027 on October 14, 2026. Multiply your monthly benefit by 1.036 to find your new amount. The SSA estimates the average retired worker will get about $75 more a month, starting with January 2027 payments.',
+            [ 'The 2027 COLA is 3.6%, larger than the last three (3.2%, 2.5% and 2.8%).', 'Payments with the new amount begin in January 2027; SSI starts December 31, 2026.', 'The taxable maximum rises to $192,300.', 'Medicare premiums and taxes can make the net raise smaller.' ],
+        ],
+        'trump-accounts-explained' => [
+            'A Trump account is a new IRA-style account for children, invested in U.S. stock index funds. Children born 2025 to 2028 can receive a one-time $1,000 federal deposit, family and employers can contribute up to $5,000 a year in total, and money generally cannot be withdrawn before the year the child turns 18.',
+            [ 'The $1,000 deposit is for U.S. citizen children born 2025 through 2028.', 'Contributions are capped at $5,000 a year (employers up to $2,500 of that).', 'After 18 the account is generally treated like a traditional IRA.', 'Regulations are not final, so check IRS.gov and trumpaccounts.gov.' ],
+        ],
+    ];
+}
+
+/** Adds the quick-answer box before the lead and a key-takeaways list after it. */
+function fs_guide_with_extras( $slug, $html, $g = [] ) {
+    $x = fs_guide_extras();
+    $answer    = $g['answer']    ?? ( $x[ $slug ][0] ?? '' );
+    $takeaways = $g['takeaways'] ?? ( $x[ $slug ][1] ?? [] );
+    if ( ! $answer ) return $html;
+    $box = '<div class="fs-quick-answer" style="margin:0 0 24px;padding:16px 20px;border-left:4px solid #10B981;background:rgba(16,185,129,.08);border-radius:8px;line-height:1.65"><strong>Quick answer:</strong> ' . esc_html( $answer ) . '</div>';
+    $list = '';
+    if ( $takeaways ) {
+        $list = '<h2>Key takeaways</h2><ul class="fs-takeaways">';
+        foreach ( $takeaways as $t ) $list .= '<li>' . esc_html( $t ) . '</li>';
+        $list .= '</ul>';
+    }
+    $pos = strpos( $html, '</p>' );
+    if ( false !== $pos && 0 === strpos( ltrim( $html ), '<p class="lead">' ) ) {
+        return $box . substr( $html, 0, $pos + 4 ) . $list . substr( $html, $pos + 4 );
+    }
+    return $box . $list . $html;
+}
+
 function fs_new_content_url( $slug ) {
     $p = get_page_by_path( $slug, OBJECT, 'fs_tool' );
     return $p ? get_permalink( $p ) : home_url( '/tools/' . $slug . '/' );
 }
 
 add_action( 'init', function () {
-    $version = '2026-10-19-b';
+    $version = '2026-10-19-c';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
@@ -115,11 +174,22 @@ add_action( 'init', function () {
     $cat_id = $cat ? $cat->term_id : (int) get_option( 'default_category' );
     foreach ( array_merge( fs_new_content_guides(), fs_new_content_guides_2(), fs_new_content_guides_3() ) as $g ) {
         $html = str_replace( '{faq}', fs_new_content_faq( $g['faqs'] ), $g['content'] );
+        $html = fs_guide_with_extras( $g['slug'], $html, $g );
         $html = preg_replace_callback( '/\{tool:([a-z0-9-]+)\}/', function ( $m ) { return esc_url( fs_new_content_url( $m[1] ) ); }, $html );
         $ex = get_page_by_path( $g['slug'], OBJECT, 'post' );
         $args = [ 'post_title' => $g['title'], 'post_name' => $g['slug'], 'post_content' => $html, 'post_excerpt' => $g['excerpt'],
                   'post_status' => 'publish', 'post_type' => 'post', 'post_author' => 1, 'post_category' => [ $cat_id ] ];
-        if ( $ex ) { $args['ID'] = $ex->ID; $id = wp_update_post( $args ); } else { $id = wp_insert_post( $args ); }
+        /* publish_at ('Y-m-d H:i', site time) lets a whole batch be written once and released two a day */
+        if ( ! empty( $g['publish_at'] ) && ! $ex ) {
+            $local = $g['publish_at'] . ':00';                       // site time
+            $gmt   = get_gmt_from_date( $local );
+            if ( strtotime( $gmt . ' UTC' ) > time() ) {
+                $args['post_status']   = 'future';
+                $args['post_date']     = $local;
+                $args['post_date_gmt'] = $gmt;
+            }
+        }
+        if ( $ex ) { $args['ID'] = $ex->ID; unset( $args['post_status'] ); $id = wp_update_post( $args ); } else { $id = wp_insert_post( $args ); }
         if ( ! $id || is_wp_error( $id ) ) continue;
         update_post_meta( $id, 'rank_math_title', $g['title'] . ' | FinanceSpots' );
         update_post_meta( $id, 'rank_math_description', $g['desc'] );
