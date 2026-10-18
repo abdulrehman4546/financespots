@@ -78,6 +78,18 @@ function fs_render_tool_content( $c ) {
         }
     }
     if ( $links ) echo '<h2>Related calculators</h2><ul class="fst-related">' . implode( '', $links ) . '</ul>';
+
+    /* Guides that explain the same topic, so readers (and crawlers) can move from a calculator to its article */
+    $guides = [];
+    $map = fs_tool_guide_map();
+    $here = get_post_field( 'post_name', get_the_ID() );
+    foreach ( (array) ( $map[ $here ] ?? [] ) as $gslug ) {
+        $g = get_page_by_path( $gslug, OBJECT, 'post' );
+        if ( $g && 'publish' === $g->post_status ) {
+            $guides[] = '<li><a href="' . esc_url( get_permalink( $g ) ) . '">' . esc_html( get_the_title( $g ) ) . '</a></li>';
+        }
+    }
+    if ( $guides ) echo '<h2>Related guides</h2><ul class="fst-related">' . implode( '', $guides ) . '</ul>';
     ?>
     <p class="fst-content__disclaimer">Figures in the examples are illustrative and use the inputs shown. Market rates and program rules change; confirm current terms with your lender or the linked official sources before making a decision.</p>
   </div>
@@ -127,3 +139,62 @@ function fs_apply_tool_content_seo() {
     update_option( 'fs_tool_content_seo_hash', $hash, false );
 }
 add_action( 'init', 'fs_apply_tool_content_seo', 60 );
+
+
+/** Which blog guides belong with which calculator. */
+function fs_tool_guide_map() {
+    $debt  = [ 'debt-avalanche-vs-snowball', 'does-debt-consolidation-hurt-your-credit' ];
+    $car   = [ 'negative-equity-car-loan-how-to-get-out', 'cash-back-or-low-apr-car-deal' ];
+    $stud  = [ 'how-to-pay-off-student-loans-faster-2026', 'rap-vs-tiered-standard-student-loan-plan' ];
+    $inv   = [ 'index-fund-investing-beginners-guide-2026' ];
+    $ret   = [ 'retirement-planning-how-much-need-2026', 'index-fund-investing-beginners-guide-2026' ];
+    $save  = [ 'emergency-fund-how-much-where-to-keep-2026', 'how-to-save-10000-in-6-months-2026' ];
+    $home  = [ 'first-time-home-buyer-guide-2026', 'va-loan-benefits-complete-guide-veterans-2026' ];
+    $crypto = [ 'bitcoin-vs-gold-better-investment-2026' ];
+    return [
+        'debt-consolidation-calculator' => [ 'does-debt-consolidation-hurt-your-credit', 'balance-transfer-vs-personal-loan', 'debt-avalanche-vs-snowball' ],
+        'balance-transfer-calculator'   => [ 'balance-transfer-vs-personal-loan', 'does-debt-consolidation-hurt-your-credit', 'debt-avalanche-vs-snowball' ],
+        'loan-payoff-calculator'        => array_merge( [ 'debt-avalanche-vs-snowball' ], [ 'how-to-pay-off-student-loans-faster-2026' ] ),
+        'personal-loan-calculator'      => [ 'does-debt-consolidation-hurt-your-credit', 'balance-transfer-vs-personal-loan', 'how-to-improve-credit-score-fast-2026' ],
+        'debt-to-income-ratio-calculator' => [ 'how-to-improve-credit-score-fast-2026', 'first-time-home-buyer-guide-2026' ],
+        'student-loan-calculator'       => $stud,
+        'student-loan-rap-calculator'   => $stud,
+        'auto-loan-calculator'          => $car,
+        'negative-equity-car-loan-calculator' => $car,
+        'cash-back-vs-low-apr-calculator' => $car,
+        'refinance-calculator'          => [ 'negative-equity-car-loan-how-to-get-out', 'first-time-home-buyer-guide-2026' ],
+        'loan-comparison-calculator'    => [ 'cash-back-or-low-apr-car-deal', 'balance-transfer-vs-personal-loan' ],
+        'mortgage-calculator'           => $home,
+        'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],
+        'va-loan-calculator'            => [ 'va-loan-benefits-complete-guide-veterans-2026', 'first-time-home-buyer-guide-2026' ],
+        'va-loan-funding-fee-calculator' => [ 'va-loan-benefits-complete-guide-veterans-2026' ],
+        'loan-affordability-calculator' => [ 'first-time-home-buyer-guide-2026', 'how-to-improve-credit-score-fast-2026' ],
+        'home-equity-loan-calculator'   => [ 'first-time-home-buyer-guide-2026' ],
+        'retirement-savings-calculator' => $ret,
+        '401k-calculator'               => $ret,
+        'ira-calculator'                => $ret,
+        'fire-calculator'               => $ret,
+        'compound-interest-calculator'  => $inv,
+        'cagr-calculator'               => $inv,
+        'dollar-cost-averaging'         => $inv,
+        'portfolio-analyzer'            => $inv,
+        'roi-calculator'                => $inv,
+        'sharpe-ratio-calculator'       => $inv,
+        'dividend-calculator'           => $inv,
+        'risk-assessment-tool'          => $inv,
+        'emergency-fund-calculator'     => $save,
+        'savings-goal-calculator'       => $save,
+        '52-week-savings-challenge'     => $save,
+        'monthly-budget-planner'        => [ '50-30-20-budget-rule-guide-2026', 'how-to-save-10000-in-6-months-2026' ],
+        '50-30-20-budget-calculator'    => [ '50-30-20-budget-rule-guide-2026', 'emergency-fund-how-much-where-to-keep-2026' ],
+        'net-worth-calculator'          => [ 'retirement-planning-how-much-need-2026', 'emergency-fund-how-much-where-to-keep-2026' ],
+        'inflation-calculator'          => [ 'retirement-planning-how-much-need-2026', 'emergency-fund-how-much-where-to-keep-2026' ],
+        'present-value-calculator'      => $inv,
+        'crypto-converter'              => $crypto,
+        'crypto-pl-calculator'          => $crypto,
+        'staking-rewards-calculator'    => $crypto,
+        'mining-profitability-calculator' => $crypto,
+        'nft-roi-calculator'            => $crypto,
+        'income-tax-calculator'         => [ 'retirement-planning-how-much-need-2026' ],
+    ];
+}
