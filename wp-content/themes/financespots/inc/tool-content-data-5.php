@@ -215,7 +215,7 @@ function fs_tool_content_data_5() {
             [ 'What is the most I can lose buying an option?', 'The premium you paid, times 100 shares per contract.' ],
             [ 'Is this financial advice?', 'No. It is an educational estimate at expiry and ignores commissions, taxes and early exercise.' ],
         ],
-        'sources'   => [ [ 'Options Industry Council: Education', 'https://www.optionseducation.org/' ], [ 'Investor.gov: Options', 'https://www.investor.gov/introduction-investing/investing-basics/investment-products/options' ] ],
+        'sources'   => [ [ 'Options Industry Council: Education', 'https://www.optionseducation.org/' ], [ 'Investor.gov: Options', 'https://www.investor.gov/introduction-investing/investing-basics/glossary/options' ] ],
         'related'   => [ 'roi-calculator', 'break-even-calculator', 'portfolio-analyzer', 'sharpe-ratio-calculator' ],
     ],
 

@@ -3,6 +3,7 @@
 <!-- ===== SITE FOOTER ===== -->
 <footer class="fs-footer" role="contentinfo">
 
+    <?php /* Newsletter band removed: the form did not send anything and no newsletter exists. Re-add only with a real sign-up backend. */ if ( false ) : ?>
     <!-- Newsletter CTA Band -- Redesigned -->
     <section class="fs-nl2" aria-labelledby="newsletter-heading">
 
@@ -93,6 +94,7 @@
             </div>
         </div>
     </section>
+    <?php endif; ?>
 
     <style>
     /* ── Newsletter v2 ── */
@@ -156,22 +158,7 @@
     .fs-nl2__social-text strong{color:#94A3B8;}
     </style>
 
-    <script>
-    document.getElementById('fs-nl2-form').addEventListener('submit',function(e){
-        e.preventDefault();
-        var email = document.getElementById('fs-nl2-email').value.trim();
-        var btn   = document.getElementById('fs-nl2-btn');
-        var suc   = document.getElementById('fs-nl2-success');
-        if(!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) return;
-        btn.disabled = true;
-        btn.querySelector('.fs-nl2__btn-text').textContent = 'Subscribing...';
-        setTimeout(function(){
-            btn.style.display = 'none';
-            suc.style.display = 'block';
-            document.getElementById('fs-nl2-form').reset();
-        }, 1000);
-    });
-    </script>
+    
 
     <!-- ═══ MAIN FOOTER ═══ -->
     <footer class="fsf" role="contentinfo">
@@ -189,13 +176,13 @@
                             <span class="fsf__logo-dot"></span>
                             <span class="fsf__logo-light">finance</span><span class="fsf__logo-accent">spots</span>
                         </a>
-                        <p class="fsf__desc">Free, professional-grade financial calculators and tools -- no account required. Built by Abdul Rahman to make smart money decisions accessible to everyone.</p>
+                        <p class="fsf__desc">Free financial calculators and plain-English guides, with formulas and sources shown. No account required. Built and run by Abdul Rahman.</p>
 
                         <!-- Mini stats -->
                         <div class="fsf__mini-stats">
                             <div class="fsf__mini-stat"><span><?php echo wp_count_posts('fs_tool')->publish; ?>+</span> Free Tools</div>
                             <div class="fsf__mini-stat"><span>100%</span> Free</div>
-                            <div class="fsf__mini-stat"><span>0</span> Signups</div>
+                            <div class="fsf__mini-stat"><span>No</span> Sign-up needed</div>
                         </div>
                     </div>
 

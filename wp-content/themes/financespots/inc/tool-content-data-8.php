@@ -34,7 +34,7 @@ function fs_tool_content_data_8() {
             [ 'Does GAP insurance cover negative equity on a trade-in?', 'No. GAP covers the shortfall if the car is totaled or stolen, not the shortfall when you trade it in.' ],
             [ 'How much do cars depreciate?', 'New cars commonly lose a large share of their value in the first year, often around 20%, then continue to lose value each year. Actual figures vary a lot by model.' ],
         ],
-        'sources'   => [ [ 'CFPB: Auto loans', 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' ], [ 'FTC: Understanding vehicle financing', 'https://consumer.ftc.gov/articles/understanding-vehicle-financing' ] ],
+        'sources'   => [ [ 'CFPB: Auto loans', 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' ], [ 'FTC: Auto trade-ins and negative equity', 'https://consumer.ftc.gov/articles/auto-trade-ins-and-negative-equity-when-you-owe-more-your-car-worth' ] ],
         'related'   => [ 'auto-loan-calculator', 'loan-payoff-calculator', 'refinance-calculator', 'cash-back-vs-low-apr-calculator', 'loan-comparison-calculator' ],
     ],
 
@@ -61,7 +61,7 @@ function fs_tool_content_data_8() {
             [ 'Does a longer loan term change the answer?', 'Yes. Longer terms make interest costs bigger, which usually favors the low rate.' ],
             [ 'Is 0% financing always the best deal?', 'No. A large rebate with a decent outside rate can cost less than 0% financing with no rebate. Run the numbers.' ],
         ],
-        'sources'   => [ [ 'CFPB: Auto loans', 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' ], [ 'FTC: Understanding vehicle financing', 'https://consumer.ftc.gov/articles/understanding-vehicle-financing' ] ],
+        'sources'   => [ [ 'CFPB: Auto loans', 'https://www.consumerfinance.gov/consumer-tools/auto-loans/' ], [ 'FTC: Financing or leasing a car', 'https://consumer.ftc.gov/articles/financing-or-leasing-car' ] ],
         'related'   => [ 'auto-loan-calculator', 'negative-equity-car-loan-calculator', 'loan-comparison-calculator', 'personal-loan-calculator' ],
     ],
 

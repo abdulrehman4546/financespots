@@ -204,7 +204,7 @@ function fs_tool_content_data_2() {
         'sources'   => [
             [ 'SSA: 2026 cost-of-living adjustment and average benefit', 'https://www.ssa.gov/news/en/press/releases/2025-10-24.html' ],
             [ 'IRS: 2026 401(k) and IRA limits', 'https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500' ],
-            [ 'Investor.gov: Retirement planning', 'https://www.investor.gov/introduction-investing/getting-started/retirement-planning' ],
+            [ 'Investor.gov: Invest for your goals', 'https://www.investor.gov/introduction-investing/investing-basics/invest-your-goals' ],
         ],
         'related'   => [ '401k-calculator', 'compound-interest-calculator', 'net-worth-calculator', 'savings-goal-calculator', 'risk-assessment-tool' ],
     ],

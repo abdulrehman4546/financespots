@@ -302,3 +302,10 @@ add_filter( 'rank_math/json_ld', function ( $data ) {
     }
     return $data;
 }, 100 );
+
+
+/* Tag archives are thin lists of the same posts: keep them out of search results */
+add_filter( 'rank_math/frontend/robots', function ( $robots ) {
+    if ( is_tag() ) $robots['index'] = 'noindex';
+    return $robots;
+} );

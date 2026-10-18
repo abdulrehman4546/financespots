@@ -312,7 +312,7 @@ function fs_tool_content_data() {
             [ 'What if my minimum payments are too low to ever pay off the debt?', 'If a minimum payment barely covers the monthly interest, the balance barely falls. The calculator flags this, and a fixed-term loan or a higher payment can get you out of debt.' ],
         ],
         'sources'   => [
-            [ 'FTC: Coping with debt', 'https://consumer.ftc.gov/articles/coping-debt' ],
+            [ 'FTC: How to get out of debt', 'https://consumer.ftc.gov/articles/how-get-out-debt' ],
             [ 'CFPB: Regulation Z, determination of the annual percentage rate', 'https://www.consumerfinance.gov/rules-policy/regulations/1026/22/' ],
         ],
         'related'   => [ 'personal-loan-calculator', 'loan-comparison-calculator', 'home-equity-loan-calculator', 'amortization-calculator' ],

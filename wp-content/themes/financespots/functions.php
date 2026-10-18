@@ -3529,10 +3529,14 @@ function fs_adsense_id() {
 /* ── AdSense verification meta tag and loader (no ad units are placed here; ads appear only where AdSense or the slots below put them) ── */
 add_action( 'wp_head', function() {
     $adsense_id = fs_adsense_id();
-    if ( $adsense_id ) {
-        echo '<meta name="google-adsense-account" content="' . esc_attr($adsense_id) . '">' . "\n";
-        echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' . esc_attr($adsense_id) . '" crossorigin="anonymous"></script>' . "\n";
-    }
+    if ( ! $adsense_id ) return;
+    echo '<meta name="google-adsense-account" content="' . esc_attr( $adsense_id ) . '">' . "\n";
+    /* AdSense policy: no ads on screens without publisher content. Skip the loader on error, search, thin utility and app pages. */
+    $slug = is_singular() ? get_post_field( 'post_name', get_queried_object_id() ) : '';
+    if ( is_404() || is_search() || in_array( $slug, [ 'pricing', 'pro-success', 'ai-financial-dashboard' ], true ) ) return;
+    /* Until a visitor accepts the cookie banner, ask for non-personalized ads only */
+    echo '<script>try{if(localStorage.getItem("fs_cookie_consent")!=="accepted"){(window.adsbygoogle=window.adsbygoogle||[]).requestNonPersonalizedAds=1;}}catch(e){}</script>' . "\n";
+    echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' . esc_attr( $adsense_id ) . '" crossorigin="anonymous"></script>' . "\n";
 }, 1 );
 
 /* ── Cookie Consent Banner ── */
@@ -3545,7 +3549,7 @@ add_action( 'wp_footer', function() {
                 <span class="fs-cookie-banner__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="20" height="20"><circle cx="12" cy="12" r="9"/><circle cx="8.5" cy="10.5" r="1"/><circle cx="15" cy="9" r="1"/><circle cx="13" cy="15" r="1"/></svg></span>
                 <div>
                     <strong>We use cookies</strong>
-                    <span>We use cookies to improve your experience and show relevant ads. By continuing you agree to our <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a>.</span>
+                    <span>We use cookies to run the site and to show ads. Accept to allow personalized ads; Decline shows non-personalized ads only. Details are in our <a href="<?php echo esc_url(home_url('/privacy-policy/')); ?>">Privacy Policy</a>.</span>
                 </div>
             </div>
             <div class="fs-cookie-banner__actions">
@@ -3569,6 +3573,7 @@ add_action( 'wp_footer', function() {
     .fs-cookie-btn--accept:hover{background:#059669;}
     .fs-cookie-btn--decline{background:rgba(255,255,255,.08);color:#94A3B8;}
     .fs-cookie-btn--decline:hover{background:rgba(255,255,255,.12);}
+    @media(max-width:600px){.fs-cookie-banner{padding:0 8px 8px}.fs-cookie-banner__inner{padding:12px 14px;flex-direction:column;align-items:stretch;gap:10px}.fs-cookie-banner__icon{display:none}.fs-cookie-banner__text span{font-size:.76rem;line-height:1.4}.fs-cookie-banner__actions{justify-content:flex-end}.fs-cookie-btn{padding:8px 16px}}
     </style>
     <script>
     (function(){
