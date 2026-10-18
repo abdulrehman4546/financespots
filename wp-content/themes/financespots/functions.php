@@ -3494,6 +3494,7 @@ require_once get_template_directory() . '/inc/new-content.php';
 require_once get_template_directory() . '/inc/content-corrections.php';
 require_once get_template_directory() . '/inc/category-intros.php';
 require_once get_template_directory() . '/inc/trust-pages.php';
+require_once get_template_directory() . '/inc/legacy-urls.php';
 require_once get_template_directory() . '/inc/tool-content.php';
 require_once get_template_directory() . '/inc/tool-redirects.php';
 require_once get_template_directory() . '/inc/housekeeping.php';
