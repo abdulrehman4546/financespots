@@ -93,7 +93,7 @@ function fs_new_content_url( $slug ) {
 }
 
 add_action( 'init', function () {
-    $version = '2026-10-19-a';
+    $version = '2026-10-19-b';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
