@@ -42,7 +42,7 @@ add_action( 'init', function () {
 add_action( 'init', function () {
     $path = isset( $_SERVER['REQUEST_URI'] ) ? parse_url( wp_unslash( $_SERVER['REQUEST_URI'] ), PHP_URL_PATH ) : '';
     if ( '/ads.txt' !== $path ) return;
-    $id = trim( (string) get_option( 'fs_adsense_publisher_id', '' ) );
+    $id  = function_exists( 'fs_adsense_id' ) ? fs_adsense_id() : '';
     $pub = preg_replace( '/^ca-/', '', $id );
     if ( ! preg_match( '/^pub-\d{8,20}$/', $pub ) ) return;   // no valid ID yet: let WordPress answer 404
     status_header( 200 );

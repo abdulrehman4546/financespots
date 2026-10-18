@@ -3518,9 +3518,17 @@ require_once get_template_directory() . '/inc/pro-tools-gate.php';
    GOOGLE ADSENSE + COOKIE CONSENT + SEO
    ========================================================= */
 
-/* ── AdSense verification meta tag ── */
+/* ── AdSense publisher ID: public (it is printed in every page's source), so it lives in code; an ID saved under FS PRO > AdSense overrides it ── */
+define( 'FS_ADSENSE_DEFAULT_ID', 'ca-pub-4975350284184584' );
+function fs_adsense_id() {
+    $id = trim( (string) get_option( 'fs_adsense_publisher_id', '' ) );
+    if ( '' === $id ) $id = FS_ADSENSE_DEFAULT_ID;
+    return preg_match( '/^ca-pub-\d{8,20}$/', $id ) ? $id : FS_ADSENSE_DEFAULT_ID;
+}
+
+/* ── AdSense verification meta tag and loader (no ad units are placed here; ads appear only where AdSense or the slots below put them) ── */
 add_action( 'wp_head', function() {
-    $adsense_id = get_option('fs_adsense_publisher_id', '');
+    $adsense_id = fs_adsense_id();
     if ( $adsense_id ) {
         echo '<meta name="google-adsense-account" content="' . esc_attr($adsense_id) . '">' . "\n";
         echo '<script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=' . esc_attr($adsense_id) . '" crossorigin="anonymous"></script>' . "\n";
