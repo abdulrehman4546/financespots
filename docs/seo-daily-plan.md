@@ -83,3 +83,19 @@ Claude: run the checklist below with evidence.
 - [ ] Cookie consent working
 - [ ] No duplicate tool pages, no empty categories
 If fewer than 8 of 10 are green, wait one more week: a rejection forces a 1 to 2 week pause before re-applying.
+
+## Status on Sun 18 Oct 2026 (what was actually done)
+Done and live: 54 of 55 tools upgraded (AI dashboard excluded), 17 guides, 4 new calculators (sales tax, estate tax,
+IRS penalty, gas fee) plus negative equity and cash back vs APR; factual corrections in 9 older posts (2026 limits,
+SSA average, student loan rates and plans, SALT cap, HYSA rates); security hardening (rate limits, webhook fail-closed,
+REST users closed, CSP, htaccess); schema clean-up; favicon; Editorial Policy page; About, Terms, Contact and Privacy
+rewritten without unverifiable claims; fake newsletter form removed; AdSense code (ca-pub-4975350284184584) and ads.txt;
+non-personalized ads until the cookie banner is accepted; ads loader skipped on 404, search, pricing and the AI dashboard;
+Related guides block on 44 tool pages; sitemap resubmitted (86 URLs, 0 errors).
+
+Owner-only (needs account access): AdSense payments alert, Google consent message under Privacy and messaging, GSC manual
+actions check, Request indexing (about 10 URLs a day), WordPress updates (5 core/theme + 2 plugins), new admin account and
+2FA, hosting malware scan, rotate DB/FTP passwords and delete old GitHub tokens, author bio and photo for About.
+
+Known gaps: about 28 of 87 pages indexed on 17 Oct, near-zero clicks, tool pages about 680 words each (unique, below the
+1,400-word target), 17 guides against a target of 20.
