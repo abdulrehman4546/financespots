@@ -443,3 +443,94 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   SOCIAL SECURITY COLA CALCULATOR (2027 COLA is 3.6%)
+───────────────────────────────────────────── */
+function fs_calc2_ss_cola() { ?>
+<div class="fsc-wrap" id="fs-sc">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'sc-ben', 'Your monthly Social Security benefit before the raise ($)', 2000, [ 'min' => 0, 'step' => 10, 'hint' => 'Use the gross amount, before any Medicare premium is taken out.' ] ); ?>
+    <?php fsl_field( 'sc-cola', 'Cost-of-living adjustment (%)', 3.6, [ 'min' => 0, 'max' => 15, 'step' => 0.1, 'hint' => 'The 2027 COLA announced by the SSA on October 14, 2026 is 3.6%.' ] ); ?>
+    <?php fsl_field( 'sc-prem', 'Increase in your Medicare Part B premium ($ a month)', 0, [ 'min' => 0, 'step' => 0.1, 'hint' => 'Optional. Most beneficiaries pay Part B from their check. Enter the rise once the 2027 premium is announced.' ] ); ?>
+    <button type="button" class="fsc-btn" id="sc-go">Calculate</button>
+    <p class="fsl-error" id="sc-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="sc-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'sc-new', 'New monthly benefit', 'primary' );
+      fsl_card( 'sc-inc', 'Increase per month' );
+      fsl_card( 'sc-yr', 'Increase per year' );
+      fsl_card( 'sc-net', 'Net increase after the premium change', 'gold' );
+      fsl_card( 'sc-ann', 'New yearly benefit', 'secondary' );
+      ?>
+    </div>
+    <p class="fsl-note" id="sc-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var b=$('sc-ben'), c=$('sc-cola')/100, p=$('sc-prem');
+    if(!FSL.valid(b>0,'sc-err','Enter your monthly benefit.'))return;
+    var n=b*(1+c), inc=n-b;
+    FSL.set('sc-new',M(n,2));FSL.set('sc-inc',M(inc,2));FSL.set('sc-yr',M(inc*12,2));FSL.set('sc-net',M(inc-p,2)+'/mo');FSL.set('sc-ann',M(n*12,2));
+    FSL.show('sc-results','grid');
+    FSL.set('sc-note','A '+M(b,2)+' benefit with a '+($('sc-cola')).toFixed(1)+'% COLA becomes '+M(n,2)+' a month, '+M(inc,2)+' more. The SSA rounds each beneficiary’s new amount to the nearest dime, so your notice may differ by a few cents. If your Part B premium rises, the difference comes out of the increase.');
+  }
+  FSL.el('sc-go').addEventListener('click',calc);FSL.bind('fs-sc',calc);calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   TRUMP ACCOUNT GROWTH CALCULATOR (illustration only)
+───────────────────────────────────────────── */
+function fs_calc2_trump_account() { ?>
+<div class="fsc-wrap" id="fs-ta">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'ta-init', 'Starting deposit ($)', 1000, [ 'min' => 0, 'step' => 100, 'hint' => 'The federal pilot deposit is $1,000 for eligible children born 2025 to 2028. Enter 0 if your child does not qualify.' ] ); ?>
+    <?php fsl_field( 'ta-add', 'Contributions per year ($)', 600, [ 'min' => 0, 'max' => 5000, 'step' => 50, 'hint' => 'From family, friends or an employer. The annual limit is $5,000 in total for 2026 and 2027, and an employer can add up to $2,500 of that.' ] ); ?>
+    <?php fsl_field( 'ta-age', 'Child’s age today', 0, [ 'min' => 0, 'max' => 17, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'ta-ret', 'Assumed yearly return (%)', 7, [ 'min' => 0, 'max' => 15, 'step' => 0.5, 'hint' => 'An assumption, not a promise. The account must be invested in a U.S. stock index fund.' ] ); ?>
+    <?php fsl_field( 'ta-late', 'Check the balance at age', 65, [ 'min' => 18, 'max' => 80, 'step' => 1, 'hint' => 'After age 18 the calculator assumes no more contributions.' ] ); ?>
+    <button type="button" class="fsc-btn" id="ta-go">Calculate</button>
+    <p class="fsl-error" id="ta-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ta-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ta-18', 'Balance at age 18', 'primary' );
+      fsl_card( 'ta-paid', 'Total you put in by 18' );
+      fsl_card( 'ta-gain', 'Growth by 18' );
+      fsl_card( 'ta-old', 'Balance at the later age', 'gold' );
+      fsl_card( 'ta-lo', 'At 4% a year (age 18)' );
+      fsl_card( 'ta-hi', 'At 10% a year (age 18)', 'secondary' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ta-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function fv(P,r,n,c){return r===0?P+c*n:P*Math.pow(1+r,n)+c*((Math.pow(1+r,n)-1)/r);}
+  function calc(){
+    var P=$('ta-init'), c=$('ta-add'), a=Math.max(0,Math.min(17,Math.round($('ta-age')))), r=$('ta-ret')/100, late=Math.max(18,Math.round($('ta-late')));
+    var yrs=18-a, paid=P+c*yrs, b18=fv(P,r,yrs,c), bl=b18*Math.pow(1+r,late-18);
+    FSL.set('ta-18',M(b18));FSL.set('ta-paid',M(paid));FSL.set('ta-gain',M(b18-paid));FSL.set('ta-old',M(bl));
+    FSL.set('ta-lo',M(fv(P,0.04,yrs,c)));FSL.set('ta-hi',M(fv(P,0.10,yrs,c)));
+    FSL.show('ta-results','grid');
+    var warn=c>5000?' The $5,000 yearly limit would be exceeded, so this contribution is not allowed as entered.':'';
+    FSL.set('ta-note','Contributions are assumed at the end of each year, with a constant return and no fees or taxes. Real returns vary every year and can be negative, and after age 18 the account is generally treated like a traditional IRA, so withdrawals may be taxed. This is an illustration, not a forecast.'+warn);
+  }
+  FSL.el('ta-go').addEventListener('click',calc);FSL.bind('fs-ta',calc);calc();
+});
+</script>
+<?php }
