@@ -71,3 +71,17 @@ add_action( 'init', function () {
         exit;
     }
 }, 50 );
+
+/* ── Google Analytics 4 (G-H0MTYBC4FT) with consent mode: analytics cookies stay off until the cookie banner is accepted ── */
+define( 'FS_GA4_ID', 'G-H0MTYBC4FT' );
+add_action( 'wp_head', function () {
+    if ( is_admin() || is_user_logged_in() ) return;   // do not count the owner's own visits
+    $id = esc_attr( FS_GA4_ID );
+    echo '<script async src="https://www.googletagmanager.com/gtag/js?id=' . $id . '"></script>' . "\n";
+    echo '<script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}'
+       . 'var fsOk=false;try{fsOk=localStorage.getItem("fs_cookie_consent")==="accepted";}catch(e){}'
+       . 'gtag("consent","default",{analytics_storage:fsOk?"granted":"denied",ad_storage:fsOk?"granted":"denied",ad_user_data:fsOk?"granted":"denied",ad_personalization:fsOk?"granted":"denied"});'
+       . 'gtag("js",new Date());gtag("config","' . $id . '");'
+       . 'document.addEventListener("click",function(e){var b=e.target.closest&&e.target.closest("#fs-cookie-accept");if(b){gtag("consent","update",{analytics_storage:"granted",ad_storage:"granted",ad_user_data:"granted",ad_personalization:"granted"});}});'
+       . '</script>' . "\n";
+}, 2 );
