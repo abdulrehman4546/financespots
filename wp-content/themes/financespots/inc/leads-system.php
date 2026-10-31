@@ -299,7 +299,7 @@ function fs_ajax_contact_submit() {
     ];
     $subject_label = $subjects[ $subject ] ?? 'Other';
 
-    $to      = get_option( 'admin_email' );
+    $to      = 'info@financespots.com';
     $email_subject = sprintf( '[FinanceSpots Contact] %s — %s', $subject_label, $name );
     $body = "New message from the FinanceSpots contact form:\n\n"
           . "Name: {$name}\n"
