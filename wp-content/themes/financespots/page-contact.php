@@ -83,10 +83,26 @@ get_header();
                         </div>
 
                         <div class="fs-contact-info-item">
+                            <div class="fs-contact-info-icon">&#9993;</div>
+                            <div>
+                                <span class="fs-contact-info-label">Email</span>
+                                <a class="fs-contact-info-val" href="mailto:chabdulrehman4546@gmail.com">chabdulrehman4546@gmail.com</a>
+                            </div>
+                        </div>
+
+                        <div class="fs-contact-info-item">
                             <div class="fs-contact-info-icon">&#127760;</div>
                             <div>
                                 <span class="fs-contact-info-label">Website</span>
                                 <span class="fs-contact-info-val">financespots.com</span>
+                            </div>
+                        </div>
+
+                        <div class="fs-contact-info-item">
+                            <div class="fs-contact-info-icon">&#128205;</div>
+                            <div>
+                                <span class="fs-contact-info-label">Based in</span>
+                                <span class="fs-contact-info-val">Pakistan</span>
                             </div>
                         </div>
                     </div>
