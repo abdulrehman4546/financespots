@@ -86,7 +86,7 @@ get_header();
                             <div class="fs-contact-info-icon">&#9993;</div>
                             <div>
                                 <span class="fs-contact-info-label">Email</span>
-                                <a class="fs-contact-info-val" href="mailto:chabdulrehman4546@gmail.com">chabdulrehman4546@gmail.com</a>
+                                <a class="fs-contact-info-val" href="mailto:info@financespots.com">info@financespots.com</a>
                             </div>
                         </div>
 
