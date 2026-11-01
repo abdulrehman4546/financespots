@@ -1,0 +1,96 @@
+<?php
+/**
+ * Batch 5b for new-content.php: Trump Account withdrawal rules guide.
+ *
+ * Facts verified on 27 October 2026 against primary sources:
+ * - IRS Notice 2025-68 (irs.gov/pub/irs-drop/n-25-68.pdf): growth period, basis rules, contribution sources.
+ * - Instructions for Form 4547 (Rev. December 2025, irs.gov/instructions/i4547): growth period ends December 31
+ *   of the year before the child turns 18; after that, "most of the rules that apply to traditional IRAs will
+ *   generally apply to the Trump account"; distributions during the growth period limited to qualified rollovers,
+ *   qualified ABLE rollovers at age 17, excess-contribution distributions, and distributions on the beneficiary's
+ *   death; post-growth distributions "could be subject to the section 72(t) 10% additional tax on early
+ *   distributions," with exceptions such as higher education expenses or first home purchases; contributions from
+ *   family and other sources during the growth period create basis, while the $1,000 pilot deposit, qualified
+ *   general contributions and section 128 employer contributions do not create basis; refers to Publication 590-B
+ *   for how basis and distributions are taxed.
+ * - IRS Trump Accounts FAQ (irs.gov/faqs/trump-accounts-frequently-asked-questions): describes the account as "a
+ *   new type of individual retirement account (IRA) for eligible children"; does not address withdrawal taxation,
+ *   the 10% penalty, or required minimum distributions, and points to trumpaccounts.gov and the Trump Accounts
+ *   Help Center for program-level questions.
+ * - T.D. 10056 (IRB 2026-44): temporary regulations on auto-enrolled accounts; does not resolve RMD treatment.
+ * - IRS Publication 590-B (traditional IRA distribution rules, section 72(t) penalty exceptions): general
+ *   reference for how a traditional-IRA-style account is taxed after the growth period.
+ *
+ * UNRESOLVED / NOT YET FINALIZED AS OF OCTOBER 2026: The IRS has not published guidance specifically confirming
+ * (a) whether required minimum distributions apply to a Trump account and at what age, (b) the complete list of
+ * section 72(t) penalty exceptions that apply to a Trump account specifically (the instructions name higher
+ * education and first-home purchases but do not say the list is exhaustive), or (c) how the $1,000 pilot deposit
+ * and other no-basis money is taxed if withdrawn for a penalty-exception reason before age 59 1/2 but after the
+ * growth period. Regulations are temporary/proposed, not final. This guide flags each of these as unconfirmed and
+ * tells readers to check IRS.gov and Publication 590-B before acting.
+ *
+ * @package financespots
+ */
+defined( 'ABSPATH' ) || exit;
+
+function fs_new_content_guides_5b() {
+    return [
+    [
+        'slug'       => 'trump-account-withdrawal-rules',
+        'title'      => 'Trump Account Withdrawal Rules: When Can You Take Money Out?',
+        'keyword'    => 'trump account withdrawal rules',
+        'desc'       => 'Trump account withdrawal rules explained: the lockup until age 18, what is taxed, the 10% penalty exceptions and what happens at 18.',
+        'excerpt'    => 'A plain-English guide to Trump account withdrawal rules: the growth period lockup, what is taxed when money comes out, and the 10% penalty exceptions.',
+        'answer'     => 'A Trump account is generally locked until January 1 of the year the child turns 18 (so the child may still be 17). After that, it follows traditional IRA rules: family contributions come out tax-free, but earnings and money with no basis (the $1,000 deposit, employer money) are taxed as ordinary income, and a 10% early-withdrawal penalty can apply unless an exception such as higher education or a first home fits.',
+        'publish_at' => '2026-11-01 09:00',
+        'takeaways'  => [
+            'A Trump account is locked during the "growth period," which ends December 31 of the year before the child turns 18.',
+            'After the growth period, the account follows most traditional IRA rules, including taxable withdrawals and a possible 10% penalty.',
+            'Family contributions create basis and come back tax-free; the $1,000 pilot deposit, employer money and earnings do not and are taxed.',
+            'The IRS has not finalized every detail, including required minimum distributions, so check IRS.gov before relying on any single source.',
+        ],
+        'content'    => '<p class="lead">A key question families ask about this program is some version of <strong>trump account withdrawal rules</strong>: when can the money come out, and what happens to taxes when it does? The short answer is that a Trump account is locked for most of childhood, then turns into something close to a traditional IRA once the child turns 18. This guide walks through the growth period, what is taxed and what is not, the 10% early-withdrawal penalty and its exceptions, and what changes at 18. For the basics of the program, start with our <a href="/trump-accounts-explained/">Trump accounts explained</a> hub.</p>'
+            . '<p><em>Trump Account rules are set by IRS Notice 2025-68, the Form 4547 instructions and temporary and proposed regulations. Final regulations have not been issued, and the IRS has not yet published guidance on every withdrawal question, so confirm anything important on IRS.gov or with a tax professional.</em></p>'
+            . '<h2>What is the "growth period" and why does it block withdrawals?</h2><p>According to the Instructions for Form 4547, the growth period starts when the account is established and ends on December 31 of the year before the calendar year in which the child turns 18. During this stretch, the account is designed to sit untouched and grow. The instructions limit distributions during the growth period to a short list: qualified rollover contributions to another Trump account, a qualified ABLE rollover once the beneficiary turns 17, a return of an excess contribution, and a distribution after the account beneficiary’s death. There is no general hardship or emergency withdrawal option during the growth period under the guidance we reviewed. That means a family cannot pull money out early for a medical bill, a move or any other need before the child turns 18, even though some IRA-style emergency exceptions exist for adults after that point.</p>'
+            . '<h2>What happens when the child turns 18?</h2><p>Starting January 1 of the year the child turns 18, the Form 4547 instructions say "most of the rules that apply to traditional IRAs will generally apply to the Trump account." In practice, that means the account stops being a locked children’s account and starts behaving like an IRA the now-adult owns and controls. The money does not have to come out at 18; it can keep growing for retirement or any other goal. But once the account holder chooses to withdraw, traditional IRA tax rules apply, including the possibility of a 10% early-withdrawal penalty before age 59 1/2.</p>'
+            . '<h2>What part of a withdrawal is taxed, and what is tax-free?</h2><p>Not all the money in a Trump account is treated the same way. The difference comes down to basis, which is the part of the account made up of after-tax money you contributed without a deduction.</p>'
+            . '<table><thead><tr><th>Source of money</th><th>Creates basis?</th><th>Tax when withdrawn</th></tr></thead><tbody>'
+            . '<tr><td>Family, friends and the child’s own contributions</td><td>Yes</td><td>Comes out tax-free, pro rata with the rest of the account</td></tr>'
+            . '<tr><td>$1,000 federal pilot deposit</td><td>No</td><td>Taxed as ordinary income when withdrawn</td></tr>'
+            . '<tr><td>Employer (section 128) contributions</td><td>No</td><td>Taxed as ordinary income when withdrawn</td></tr>'
+            . '<tr><td>Qualified general contributions (states, governments, charities)</td><td>No</td><td>Taxed as ordinary income when withdrawn</td></tr>'
+            . '<tr><td>Investment earnings (growth on all of the above)</td><td>No</td><td>Taxed as ordinary income when withdrawn</td></tr>'
+            . '<tr><td>Qualified rollover contributions</td><td>Carries over prior basis</td><td>Follows the basis it brought with it</td></tr>'
+            . '</tbody></table>'
+            . '<p>The Form 4547 instructions state this directly: "Contributions from other sources during the growth period create basis in the Trump account," while the pilot program, qualified general, and section 128 employer contributions do not create basis. The instructions point to IRS Publication 590-B for the mechanics of how basis and distributions are calculated and taxed, the same publication that governs traditional IRA withdrawals generally. In short, the money a family put in after tax comes back without tax; everything else, including all the growth, is taxed as ordinary income in the year it comes out.</p>'
+            . '<h2>Is there a 10% early-withdrawal penalty?</h2><p>Yes, potentially. The Form 4547 instructions say that distributions after the growth period "could be subject to the section 72(t) 10% additional tax on early distributions," the same penalty that applies to a traditional IRA when the owner withdraws before age 59 1/2. The instructions specifically mention that exceptions exist, "such as distributions for higher education expenses or first home purchases."</p><p>Traditional IRA rules generally also allow penalty-free early withdrawals for a handful of other reasons, including a first-time home purchase (up to a $10,000 lifetime cap), unreimbursed medical expenses above a share of adjusted gross income, health insurance premiums during a period of unemployment, birth or adoption expenses (capped per child, within a year of the event), and a series of substantially equal periodic payments. <strong>The IRS has confirmed only higher education and first-home purchases as Trump-account exceptions so far.</strong> Whether the rest of the standard IRA exception list carries over has not been spelled out in Trump-account-specific guidance yet. Until the IRS or Treasury issues more specific guidance, check Publication 590-B and IRS.gov before counting on any other exception.</p>'
+            . '<h2>Are required minimum distributions (RMDs) required?</h2><p>This is still an open question. Traditional IRAs require the owner to start taking required minimum distributions at a set age under current law, and because a Trump account is explicitly built to convert into an account that follows traditional IRA rules, the same requirement at the standard IRA age is a reasonable expectation. But no IRS guidance as of October 2026 states the exact RMD age for Trump accounts. Watch IRS.gov for an update before making long-term withdrawal plans around it.</p>'
+            . '<h2>Worked example: withdrawing money at 18</h2><p>Assume a child born in 2026 who receives the $1,000 federal pilot deposit, plus $2,000 a year in family contributions for 18 years, invested at an average 7% a year. These are illustrations, not forecasts; real returns vary and can be negative.</p>'
+            . '<table><thead><tr><th>Item</th><th>Amount</th></tr></thead><tbody>'
+            . '<tr><td>Family contributions (basis)</td><td>$36,000</td></tr>'
+            . '<tr><td>$1,000 pilot deposit (no basis)</td><td>$1,000</td></tr>'
+            . '<tr><td>Balance at the end of the growth period (about age 18)</td><td>$71,378</td></tr>'
+            . '<tr><td>Tax-free portion if withdrawn (basis)</td><td>$36,000</td></tr>'
+            . '<tr><td>Taxable portion if withdrawn (earnings plus the $1,000)</td><td>About $35,378</td></tr>'
+            . '</tbody></table>'
+            . '<p>If the 18-year-old withdraws the entire balance to pay for college, the $35,378 taxable portion is added to that year’s income, though the 10% penalty would generally be waived under the higher-education exception named in the Form 4547 instructions. If the money instead pays for something outside a recognized exception, both the ordinary income tax and the 10% penalty could apply to that same $35,378. Leaving the money invested avoids both until a later withdrawal. You can run different contribution amounts and ages in the <a href="{tool:trump-account-calculator}">Trump account calculator</a>.</p>'
+            . '<h2>Can a withdrawal happen before age 18 for an emergency?</h2><p>Based on the guidance we reviewed, no. The growth-period distribution list in the Form 4547 instructions is short and specific: qualified rollovers, a qualified ABLE rollover at 17, excess-contribution returns, and distributions after the beneficiary’s death. There is no general hardship, medical emergency or financial-need exception listed for the growth period. A family that may need the money before the child turns 18 should treat a Trump account as money that is not accessible in the meantime, and consider a different account, such as a custodial UTMA account, for funds that might be needed sooner. See our comparison in <a href="/trump-account-vs-529/">Trump account vs 529</a>.</p>'
+            . '<h2>Does the withdrawal picture change the investment choice?</h2><p>Not directly, but it matters for planning. During the growth period a Trump account can hold only a mutual fund or ETF tracking a broad U.S. stock index, with no leverage and fees of 0.1% or less, under Notice 2025-68. Because there is no early-access option, the account is fully exposed to stock market swings for the entire childhood with no ability to shift to cash if markets fall shortly before the child turns 18. Families who want to open or review a Trump account can see the sign-up steps in <a href="/how-to-open-a-trump-account/">how to open a Trump account</a>, and learn more about the fund type itself in our <a href="/index-fund-investing-beginners-guide-2026/">index fund investing guide</a>.</p>'
+            . '<h2>Common mistakes about withdrawal rules</h2><ul><li><strong>Assuming any money can come out before 18.</strong> Outside the narrow rollover, ABLE, excess-contribution and death exceptions, nothing can be withdrawn during the growth period.</li><li><strong>Assuming all withdrawals after 18 are tax-free.</strong> Only the basis built from family contributions is tax-free; the $1,000 deposit, employer money, general contributions and all earnings are taxed as ordinary income.</li><li><strong>Assuming the 10% penalty never applies.</strong> It can apply the same way it applies to a traditional IRA, unless a recognized exception fits.</li><li><strong>Treating the account like a 529 for college.</strong> A 529 plan gives tax-free withdrawals for qualified education costs; a Trump account’s earnings are taxed even when used for education, though the 10% penalty may be waived.</li><li><strong>Assuming RMD rules are settled.</strong> The IRS has not published confirmation either way as of October 2026.</li></ul>'
+            . '<h2>Related guides</h2><ul><li><a href="/trump-accounts-explained/">Trump accounts explained: who qualifies, limits and how to open one</a></li><li><a href="/trump-account-vs-529/">Trump account vs 529: which is better for your child?</a></li><li><a href="/how-to-open-a-trump-account/">How to open a Trump account: Form 4547 step by step</a></li><li><a href="/trump-account-250-dell-employer/">Trump account $250: Dell gift and employer contributions</a></li></ul>'
+            . '<h2>Sources</h2><p>IRS <a href="https://www.irs.gov/pub/irs-drop/n-25-68.pdf" rel="noopener" target="_blank">Notice 2025-68</a>; <a href="https://www.irs.gov/instructions/i4547" rel="noopener" target="_blank">Instructions for Form 4547</a>; <a href="https://www.irs.gov/faqs/trump-accounts-frequently-asked-questions" rel="noopener" target="_blank">IRS Trump Accounts FAQ</a>; <a href="https://www.irs.gov/irb/2026-44_irb" rel="noopener" target="_blank">T.D. 10056 (IRB 2026-44)</a>; <a href="https://www.irs.gov/publications/p590b" rel="noopener" target="_blank">IRS Publication 590-B</a> (traditional IRA distribution rules). Growth figures are our own calculations at the stated returns.</p>'
+            . '<p>This guide is educational and not personal tax or financial advice.</p>'
+            . '{faq}',
+        'faqs'       => [
+            [ 'When can you withdraw money from a Trump account?', 'Generally not until January 1 of the year the child turns 18. During the "growth period" before that, the only distributions allowed are qualified rollovers to another Trump account, a qualified ABLE rollover at age 17, a return of an excess contribution, or a distribution after the beneficiary’s death.' ],
+            [ 'Is money from a Trump account taxed when withdrawn?', 'It depends on the source. Family contributions create basis and come out tax-free. The $1,000 federal pilot deposit, employer contributions, qualified general contributions and all investment earnings do not have basis, so that portion is taxed as ordinary income when withdrawn.' ],
+            [ 'Is there a penalty for withdrawing early from a Trump account?', 'Once the account follows traditional IRA rules after the growth period, a withdrawal before age 59 1/2 could be subject to the 10% early-withdrawal penalty under section 72(t), unless an exception applies. The Form 4547 instructions specifically name higher education expenses and first home purchases as examples.' ],
+            [ 'Can you withdraw from a Trump account for an emergency before age 18?', 'Based on current IRS guidance, no. The growth-period distribution list is narrow and does not include a general hardship or emergency exception. Only rollovers, an ABLE rollover at 17, excess-contribution returns and distributions after death are allowed before the child turns 18.' ],
+            [ 'What happens to a Trump account when the child turns 18?', 'Starting January 1 of the year the child turns 18, most traditional IRA rules apply. The account is no longer locked, but withdrawals are taxed based on basis, and a 10% early-withdrawal penalty can apply before age 59 1/2 unless an exception fits.' ],
+            [ 'Do Trump accounts have required minimum distributions?', 'This is not yet confirmed. The IRS guidance we reviewed, including the Trump Accounts FAQ, Notice 2025-68 and the Form 4547 instructions, does not state whether or at what age required minimum distributions apply to a Trump account. Check IRS.gov for updates before planning around this.' ],
+            [ 'Can you use a Trump account for a first home or education penalty-free?', 'The Form 4547 instructions list higher education expenses and first home purchases as examples of exceptions to the 10% early-withdrawal penalty. The taxable portion of the withdrawal, such as earnings or the $1,000 deposit, is still taxed as ordinary income even when the penalty is waived.' ],
+            [ 'Are Trump account withdrawal rules final?', 'No. As of October 2026, the IRS has issued temporary and proposed regulations, not final ones, and has not published complete guidance on every withdrawal question, including required minimum distributions and the full list of penalty exceptions. Confirm current rules on IRS.gov before acting.' ],
+        ],
+    ],
+    ];
+}
