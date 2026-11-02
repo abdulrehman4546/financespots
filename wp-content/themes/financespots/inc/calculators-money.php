@@ -811,3 +811,138 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   14. TAX & BONUS CALCULATOR (percentage vs aggregate method)
+───────────────────────────────────────────── */
+function fs_calc2_tax_bonus() { fs_tax_data_script(); ?>
+<div class="fsc-wrap" id="fs-bn">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'bn-bonus', 'Bonus amount ($)', 10000, [ 'min' => 0, 'step' => 100, 'hint' => 'How much a bonus is taxed depends on the method your employer uses.' ] ); ?>
+    <?php fsl_field( 'bn-pay', 'Regular salary this pay period ($)', 4000, [ 'min' => 0, 'step' => 50, 'hint' => 'Only used for the aggregate method, where the bonus is combined with one paycheck.' ] ); ?>
+    <?php fsl_select( 'bn-freq', 'Pay frequency', [ 52 => 'Weekly', 26 => 'Biweekly', 24 => 'Semi-monthly', 12 => 'Monthly' ], 26 ); ?>
+    <?php fsl_select( 'bn-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'hoh' => 'Head of household', 'mfs' => 'Married filing separately' ], 'single' ); ?>
+    <?php fsl_field( 'bn-ytd-income', 'Year-to-date gross income before this bonus ($)', 60000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Used for the Medicare surtax threshold check, and as a conservative stand-in for cumulative supplemental wages when checking the $1 million / 37% rule (the IRS rule technically applies to supplemental wages specifically, not total pay).' ] ); ?>
+    <?php fsl_field( 'bn-ytd-ss', 'Year-to-date Social Security wages ($)', 60000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Social Security tax stops once wages for the year reach the annual wage base.' ] ); ?>
+    <?php fsl_select( 'bn-state', 'State bonus withholding', [
+        'none' => 'No state income tax (AK, FL, NV, NH, SD, TN, TX, WA, WY)',
+        'az' => 'Arizona — flat 2.00% supplemental rate',
+        'ca' => 'California — flat 10.23% supplemental rate (bonuses/stock options)',
+        'co' => 'Colorado — flat 4.40% supplemental rate',
+        'ga' => 'Georgia — flat 5.39% supplemental rate',
+        'il' => 'Illinois — flat 4.95% supplemental rate',
+        'in' => 'Indiana — flat 3.05% supplemental rate',
+        'ky' => 'Kentucky — flat 4.00% supplemental rate',
+        'ma' => 'Massachusetts — flat 5.00% supplemental rate',
+        'mi' => 'Michigan — flat 4.25% supplemental rate',
+        'nj' => 'New Jersey — flat 5.525% supplemental rate',
+        'ny' => 'New York — flat 11.70% supplemental rate',
+        'nc' => 'North Carolina — flat 4.25% supplemental rate',
+        'pa' => 'Pennsylvania — flat 3.07% supplemental rate',
+        'other' => 'Other state — enter my own rate',
+    ], 'none', [ 'hint' => 'Flat supplemental-wage rates states publish for bonus withholding; your actual paycheck may differ. Confirm with your state revenue department.' ] ); ?>
+    <div class="fsc-field" id="bn-other-wrap" style="display:none">
+      <label for="bn-other-rate">State flat supplemental rate (%)</label>
+      <input type="number" id="bn-other-rate" value="5" min="0" max="15" step="0.01" inputmode="decimal">
+    </div>
+    <div class="fsl-row2">
+      <?php fsl_select( 'bn-method', 'Withholding method', [ 'percentage' => 'IRS percentage method (flat 22% / 37%)', 'aggregate' => 'Aggregate method (combined with a paycheck)' ], 'percentage', [ 'hint' => 'The percentage method is what most employers use for a bonus paid separately from regular wages.' ] ); ?>
+    </div>
+    <button type="button" class="fsc-btn" id="bn-go">Calculate Bonus Tax</button>
+    <p class="fsl-error" id="bn-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="bn-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'bn-net', 'Net take-home bonus', 'primary' );
+      fsl_card( 'bn-fed', 'Federal withholding on bonus' );
+      fsl_card( 'bn-fed-rate', 'Federal supplemental rate used' );
+      fsl_card( 'bn-ss', 'Social Security (6.2%)' );
+      fsl_card( 'bn-medicare', 'Medicare (1.45% + surtax)' );
+      fsl_card( 'bn-state-v', 'State withholding' );
+      fsl_card( 'bn-total', 'Total withheld', 'gold' );
+      fsl_card( 'bn-eff', 'Effective withholding rate' );
+      fsl_card( 'bn-compare', 'Other method would withhold', 'secondary' );
+      ?>
+    </div>
+    <p class="fsl-note" id="bn-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money, T=window.FSTAX;
+  var stateSel=FSL.el('bn-state'), otherWrap=FSL.el('bn-other-wrap');
+  stateSel.addEventListener('change',function(){ otherWrap.style.display = stateSel.value==='other' ? '' : 'none'; });
+
+  /* IRS Pub 15 "percentage method" bracket table for one payroll period, used by the aggregate method */
+  function aggregateFederalTax(taxablePerPeriod, periods, status){
+    var annual = taxablePerPeriod*periods;
+    var tax = T.tax(Math.max(annual - T.std[status],0), status);
+    return tax/periods;
+  }
+
+  function calc(){
+    var bonus=$('bn-bonus'), pay=$('bn-pay'), freq=parseInt(FSL.el('bn-freq').value,10), status=FSL.el('bn-status').value;
+    var ytdIncome=$('bn-ytd-income'), ytdSS=$('bn-ytd-ss'), method=FSL.el('bn-method').value;
+    var stateRates={az:0.02,ca:0.1023,co:0.044,ga:0.0539,il:0.0495,'in':0.0305,ky:0.04,ma:0.05,mi:0.0425,nj:0.05525,ny:0.117,nc:0.0425,pa:0.0307};
+    var stateVal=stateSel.value, stateRate = stateVal==='none' ? 0 : (stateVal==='other' ? ($('bn-other-rate')||0)/100 : (stateRates[stateVal]||0));
+    if(!FSL.valid(bonus>0,'bn-err','Enter the bonus amount.'))return;
+
+    /* Social Security: 6.2% up to the annual wage base, pro-rated by what's already been paid this year */
+    var ssRoom=Math.max(T.ssBase-ytdSS,0);
+    var ssWages=Math.min(bonus,ssRoom);
+    var ss=ssWages*0.062;
+
+    /* Medicare: 1.45% on all wages, plus 0.9% surtax above $200,000 of cumulative wages.
+       Employers must withhold the 0.9% surtax once an employee's wages from that employer
+       pass $200,000 in the year, regardless of filing status — the status-based thresholds
+       (250k MFJ, 125k MFS) only apply when the employee files their return, not at withholding. */
+    var addThresh=200000;
+    var medicareBase=bonus*0.0145;
+    var overBefore=Math.max(ytdIncome-addThresh,0), overAfter=Math.max(ytdIncome+bonus-addThresh,0);
+    var surtax=(overAfter-overBefore)*0.009;
+    var medicare=medicareBase+surtax;
+
+    var fedPct, fedAgg, fedRateLabel;
+    /* Percentage method: flat 22% up to $1M in supplemental wages for the year, 37% above */
+    var roomAt22=Math.max(1000000-ytdIncome,0);
+    var at22=Math.min(bonus,Math.max(roomAt22,0)), at37=Math.max(bonus-at22,0);
+    fedPct = at22*0.22+at37*0.37;
+    fedRateLabel = at37>0 ? '22% up to $1M, 37% above' : '22% flat';
+
+    /* Aggregate method: combine the bonus with one regular paycheck, withhold as if it were the normal wage for that period, then subtract the tax on the regular wage alone.
+       The mandatory flat 37% above $1M in cumulative supplemental wages still applies on top of this method, per IRS rules, so that portion is added separately below. */
+    var taxOnCombined=aggregateFederalTax(pay+bonus,freq,status);
+    var taxOnRegular=aggregateFederalTax(pay,freq,status);
+    fedAgg=Math.max(taxOnCombined-taxOnRegular,0);
+    if(at37>0){ fedAgg=Math.max(fedAgg,fedPct); }
+
+    var fedUsed = method==='aggregate' ? fedAgg : fedPct;
+    var fedOther = method==='aggregate' ? fedPct : fedAgg;
+
+    var stateTax=bonus*stateRate;
+    var total=fedUsed+ss+medicare+stateTax;
+    var net=bonus-total;
+
+    FSL.set('bn-net',M(net)); FSL.set('bn-fed',M(fedUsed));
+    FSL.set('bn-fed-rate', method==='aggregate' ? 'Aggregate (marginal rate on combined pay)' : fedRateLabel);
+    FSL.set('bn-ss',M(ss)); FSL.set('bn-medicare',M(medicare)); FSL.set('bn-state-v',M(stateTax));
+    FSL.set('bn-total',M(total)); FSL.set('bn-eff',FSL.pct(total/bonus*100,1));
+    FSL.set('bn-compare', M(fedOther+ss+medicare+stateTax)+' total ('+(method==='aggregate'?'percentage method':'aggregate method')+')');
+    FSL.show('bn-results','grid');
+
+    var n=[];
+    if(ssWages<bonus) n.push('Only '+M(ssWages)+' of this bonus is subject to Social Security tax because your year-to-date wages are near or above the '+M(T.ssBase)+' wage base.');
+    if(overAfter>overBefore) n.push('An extra 0.9% Medicare surtax applies to the part of this bonus that pushes your year-to-date wages over '+M(addThresh)+'.');
+    n.push(method==='percentage' ? 'The IRS percentage method withholds a flat 22% on supplemental wages up to $1 million for the year and 37% on any amount above that, regardless of your regular tax bracket.' : 'The aggregate method adds this bonus to one regular paycheck, calculates withholding on the combined amount using IRS tables, then subtracts what would have been withheld on the regular pay alone — the result can be higher or lower than the flat 22% depending on your bracket.');
+    n.push('This is withholding, not your final tax bill: the bonus is ordinary income on your tax return, and you may get some of the withholding back (or owe more) when you file.');
+    FSL.set('bn-note',n.join(' '));
+  }
+  FSL.el('bn-go').addEventListener('click',calc); FSL.bind('fs-bn',calc);
+  FSL.el('bn-method').addEventListener('change',calc);
+  calc();
+});
+</script>
+<?php }
