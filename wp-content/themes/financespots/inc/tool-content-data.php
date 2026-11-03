@@ -131,7 +131,7 @@ function fs_tool_content_data() {
     /* ───────────────────────── PERSONAL LOAN ───────────────────────── */
     'personal-loan-calculator' => [
         'focus'     => 'personal loan calculator',
-        'secondary' => [ 'personal loan payment calculator', 'personal loan APR calculator', 'personal loan calculator with origination fee', 'how much personal loan can I afford' ],
+        'secondary' => [ 'personal loan payment calculator', 'personal loan APR calculator', 'personal loan calculator with origination fee', 'how much personal loan can I afford', 'personal loan rate calculator', 'compare personal loans calculator' ],
         'title'     => 'Personal Loan Calculator with APR & Fees',
         'meta'      => 'Free personal loan calculator: get your monthly payment, total interest and true APR including origination fee, plus the largest loan your budget allows.',
         'excerpt'   => 'See your monthly payment, total interest and the true APR after the origination fee, and find the largest loan your budget supports.',
@@ -178,7 +178,7 @@ function fs_tool_content_data() {
     /* ───────────────────────── STUDENT LOAN ───────────────────────── */
     'student-loan-calculator' => [
         'focus'     => 'student loan calculator',
-        'secondary' => [ 'student loan payment calculator', 'student loan repayment calculator', 'student loan interest calculator', 'student loan calculator 2026', 'student loan grace period interest' ],
+        'secondary' => [ 'student loan payment calculator', 'student loan repayment calculator', 'student loan interest calculator', 'student loan calculator 2026', 'student loan grace period interest', 'school loan calculator', 'student loan estimator' ],
         'title'     => 'Student Loan Payment Calculator (2026 Rates)',
         'meta'      => 'Free student loan calculator: estimate monthly payments, interest and payoff date with 2026-27 federal rates, grace-period interest and extra payments.',
         'excerpt'   => 'Estimate your student loan payment, total interest and payoff date with current federal rates, grace-period interest and extra payments.',
@@ -216,6 +216,7 @@ function fs_tool_content_data() {
             [ 'Should I pay off student loans early?', 'If your rate is higher than what you would earn investing after taxes, paying extra can make sense, especially after building an emergency fund. Keep any employer retirement match first.' ],
             [ 'Is it worth refinancing student loans?', 'Refinancing with a private lender can lower your rate, but you lose federal benefits such as income-driven repayment and forgiveness. Refinance only if you have stable income and no need for those protections.' ],
             [ 'What happens to my payment if I choose a longer term?', 'The monthly payment falls, but you pay more total interest because the balance stays outstanding longer. The comparison table above shows the trade-off for your loan.' ],
+            [ 'Is a "school loan calculator" different from a student loan calculator?', 'No — school loan calculator and student loan estimator are just other names people search for the same tool. Enter your balance, rate and plan above to get the same payment and interest breakdown.' ],
         ],
         'sources'   => [
             [ 'Federal Student Aid: interest rates and fees', 'https://studentaid.gov/understand-aid/types/loans/interest-rates' ],
@@ -228,7 +229,7 @@ function fs_tool_content_data() {
     /* ───────────────────────── HOME EQUITY ───────────────────────── */
     'home-equity-loan-calculator' => [
         'focus'     => 'home equity loan calculator',
-        'secondary' => [ 'HELOC calculator', 'home equity line of credit calculator', 'how much equity can I borrow', 'home equity loan payment calculator', 'CLTV calculator' ],
+        'secondary' => [ 'HELOC calculator', 'home equity line of credit calculator', 'how much equity can I borrow', 'home equity loan payment calculator', 'CLTV calculator', 'home equity line loan calculator' ],
         'title'     => 'Home Equity Loan & HELOC Calculator',
         'meta'      => 'Free home equity loan and HELOC calculator: find how much you can borrow at 80–90% CLTV, your monthly payment, APR with closing costs and total interest.',
         'excerpt'   => 'Find out how much equity you can borrow, then compare the payment on a fixed home equity loan with an interest-only HELOC.',
@@ -275,7 +276,7 @@ function fs_tool_content_data() {
     /* ───────────────────────── DEBT CONSOLIDATION ───────────────────────── */
     'debt-consolidation-calculator' => [
         'focus'     => 'debt consolidation calculator',
-        'secondary' => [ 'debt consolidation loan calculator', 'should I consolidate my debt', 'debt consolidation savings calculator', 'is debt consolidation worth it', 'credit card consolidation calculator' ],
+        'secondary' => [ 'debt consolidation loan calculator', 'should I consolidate my debt', 'debt consolidation savings calculator', 'is debt consolidation worth it', 'credit card consolidation calculator', 'loan consolidation calculator', 'consolidate debt calculator', 'credit consolidation calculator' ],
         'title'     => 'Debt Consolidation Calculator: Compare & Save',
         'meta'      => 'Free debt consolidation calculator: enter your debts and a loan offer to see the real savings, true APR with fees and how long you will be in debt.',
         'excerpt'   => 'Enter up to ten debts and a consolidation loan offer to see whether combining them actually saves you money.',
@@ -310,6 +311,7 @@ function fs_tool_content_data() {
             [ 'Can I consolidate different types of debt?', 'Yes. Personal loans can combine credit cards, medical bills and other unsecured debts. Federal student loans have their own consolidation program, and converting them to a private loan removes federal protections.' ],
             [ 'What fees should I watch for?', 'Origination fees (1–10%), balance transfer fees (3–5%), prepayment penalties and closing costs on home equity products. The calculator includes the origination fee in the true APR.' ],
             [ 'What if my minimum payments are too low to ever pay off the debt?', 'If a minimum payment barely covers the monthly interest, the balance barely falls. The calculator flags this, and a fixed-term loan or a higher payment can get you out of debt.' ],
+            [ 'Is a "loan consolidation calculator" the same as a debt consolidation calculator?', 'Yes. People search for it as a loan consolidation calculator, a consolidate-debt calculator or a credit consolidation calculator, but all of them mean the same tool: enter your current debts and a new loan offer to see the real savings.' ],
         ],
         'sources'   => [
             [ 'FTC: How to get out of debt', 'https://consumer.ftc.gov/articles/how-get-out-debt' ],

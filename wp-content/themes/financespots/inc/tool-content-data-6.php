@@ -143,7 +143,7 @@ function fs_tool_content_data_6() {
 
     'staking-rewards-calculator' => [
         'focus'     => 'staking rewards calculator',
-        'secondary' => [ 'crypto staking calculator', 'staking apy calculator', 'crypto staking rewards', 'apy vs apr staking' ],
+        'secondary' => [ 'crypto staking calculator', 'staking apy calculator', 'crypto staking rewards', 'apy vs apr staking', 'crypto apy calculator', 'crypto interest calculator', 'crypto yield calculator' ],
         'title'     => 'Staking Rewards Calculator: Crypto APY Earnings',
         'meta'      => 'Free staking rewards calculator: enter the amount staked, APY, period and compounding to see total rewards, final value, monthly reward and effective APY.',
         'excerpt'   => 'Estimate what you could earn from staking crypto at a given yield, with compounding.',
@@ -162,6 +162,7 @@ function fs_tool_content_data_6() {
             [ 'What is a good staking APY?', 'Yields vary by coin and change over time. Very high advertised yields can signal higher risk.' ],
             [ 'Are staking rewards taxable?', 'In the U.S., rewards are generally treated as income when you receive control of them.' ],
             [ 'Can I lose money staking?', 'Yes. The coin’s price can fall, and some networks lock your funds or apply penalties.' ],
+            [ 'Is this the same as a crypto APY or crypto interest calculator?', 'Yes. Staking rewards calculator, crypto APY calculator and crypto interest calculator all describe the same math: growing a staked or deposited amount by a yield rate over time, with optional compounding. This tool works whether your yield comes from staking, an exchange savings product, or a DeFi lending platform.' ],
         ],
         'sources'   => [ [ 'IRS: Digital assets', 'https://www.irs.gov/filing/digital-assets' ] ],
         'related'   => [ 'crypto-pl-calculator', 'crypto-converter', 'compound-interest-calculator', 'mining-profitability-calculator' ],
