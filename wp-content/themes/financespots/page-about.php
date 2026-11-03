@@ -59,8 +59,8 @@ get_header();
                 <div class="fs-about-founder__content">
                     <span class="fs-badge fs-badge--green">&#128075; Founder</span>
                     <h2 class="fs-about-founder__name">Abdul Rahman</h2>
-                    <p class="fs-about-founder__role">Founder & Developer, FinanceSpots</p>
-                    <p>FinanceSpots is built and run by Abdul Rahman, who is responsible for the calculators, the guides and the site. Content is drafted with the help of AI writing tools and then checked against the primary sources cited on each page, and each calculator is tested against independent calculations. FinanceSpots is not a licensed financial adviser, tax professional or lender, and nothing here is personal advice. You can read how we write and correct content in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>.</p>
+                    <p class="fs-about-founder__role">Founder & Developer, FinanceSpots &middot; Pakistan</p>
+                    <p>FinanceSpots is built and run by Abdul Rahman, an independent developer based in Pakistan, who is responsible for the calculators, the guides and the site. Content is drafted with the help of AI writing tools and then checked against the primary sources cited on each page, and each calculator is tested against independent calculations. FinanceSpots is not a licensed financial adviser, tax professional or lender, and nothing here is personal advice. You can read how we write and correct content in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>, or reach out any time at <a href="mailto:info@financespots.com" style="color:#10B981;">info@financespots.com</a>.</p>
                     <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="fs-about-contact-btn">Get In Touch &rarr;</a>
                 </div>
             </div>
