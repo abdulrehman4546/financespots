@@ -86,24 +86,6 @@ function fs_new_content_guides() {
 
 require_once get_template_directory() . '/inc/new-content-2.php';
 require_once get_template_directory() . '/inc/new-content-3.php';
-foreach ( [ '4a', '4b', '4c', '4d', '5a', '5b', '5c', '5d', '6a' ] as $fs_batch ) {
-    require_once get_template_directory() . '/inc/new-content-' . $fs_batch . '.php';
-}
-
-/** Category for each engine guide (anything not listed stays in Finance Tips). Permalinks have no category, so moving is safe. */
-function fs_guide_category( $slug ) {
-    $map = [
-        'Loans'           => [ 'cash-back-or-low-apr-car-deal', 'negative-equity-car-loan-how-to-get-out', 'how-much-house-can-i-afford', 'how-much-house-can-i-afford-by-salary', 'mortgage-points-explained', 'should-i-refinance-my-mortgage', 'should-i-refinance-my-car' ],
-        'Debt Management' => [ 'debt-avalanche-vs-snowball', 'balance-transfer-vs-personal-loan', 'does-debt-consolidation-hurt-your-credit', 'rap-vs-tiered-standard-student-loan-plan' ],
-        'Retirement'      => [ 'social-security-2027-cola-increase', 'average-social-security-check-by-age', 'social-security-2027-cola-chart' ],
-        'Savings'         => [ 'trump-accounts-explained', 'trump-account-vs-529', 'how-to-open-a-trump-account', 'trump-account-250-dell-employer' ],
-        'Taxes'           => [ 'tax-loss-harvesting', 'year-end-tax-planning-checklist' ],
-    ];
-    foreach ( $map as $name => $slugs ) {
-        if ( in_array( $slug, $slugs, true ) ) return $name;
-    }
-    return 'Finance Tips';
-}
 
 
 /** Quick answer (AEO) and key takeaways (GEO) for guides that do not carry them in their own definition. */
@@ -170,7 +152,7 @@ function fs_new_content_url( $slug ) {
 }
 
 add_action( 'init', function () {
-    $version = '2026-11-04-a';
+    $version = '2026-10-19-c';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
@@ -188,13 +170,9 @@ add_action( 'init', function () {
     }
 
     /* guides */
-    $guides = array_merge( fs_new_content_guides(), fs_new_content_guides_2(), fs_new_content_guides_3(),
-        fs_new_content_guides_4a(), fs_new_content_guides_4b(), fs_new_content_guides_4c(), fs_new_content_guides_4d(),
-        fs_new_content_guides_5a(), fs_new_content_guides_5b(), fs_new_content_guides_5c(), fs_new_content_guides_5d(),
-        fs_new_content_guides_6a() );
-    foreach ( $guides as $g ) {
-        $cat    = get_term_by( 'name', fs_guide_category( $g['slug'] ), 'category' );
-        $cat_id = $cat ? $cat->term_id : (int) get_option( 'default_category' );
+    $cat = get_term_by( 'name', 'Finance Tips', 'category' );
+    $cat_id = $cat ? $cat->term_id : (int) get_option( 'default_category' );
+    foreach ( array_merge( fs_new_content_guides(), fs_new_content_guides_2(), fs_new_content_guides_3() ) as $g ) {
         $html = str_replace( '{faq}', fs_new_content_faq( $g['faqs'] ), $g['content'] );
         $html = fs_guide_with_extras( $g['slug'], $html, $g );
         $html = preg_replace_callback( '/\{tool:([a-z0-9-]+)\}/', function ( $m ) { return esc_url( fs_new_content_url( $m[1] ) ); }, $html );
@@ -220,13 +198,3 @@ add_action( 'init', function () {
     }
     delete_option( 'fs_tool_content_seo_hash' );
 }, 30 );
-
-/* Guides are scheduled two a day and link to each other, so a link to a sibling that is not live yet would 404.
-   Until the target is published, show its anchor text without the link. */
-add_filter( 'the_content', function ( $html ) {
-    if ( ! is_singular( 'post' ) || false === strpos( $html, 'href="/' ) ) return $html;
-    return preg_replace_callback( '#<a href="/([a-z0-9-]+)/"[^>]*>(.*?)</a>#s', function ( $m ) {
-        $p = get_page_by_path( $m[1], OBJECT, 'post' );
-        return ( $p && 'publish' !== $p->post_status ) ? $m[2] : $m[0];
-    }, $html );
-}, 9 );

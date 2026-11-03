@@ -14,7 +14,7 @@ defined( 'ABSPATH' ) || exit;
 function fs_nav_groups() {
     return [
         [ 'title' => 'Loans & Mortgages', 'cat' => 'loan-calculators', 'links' => [
-            [ 'Mortgage Calculator', 'mortgage-calculator' ], [ 'Home Loan Calculator', 'home-loan-calculator' ], [ 'Refinance Calculator', 'refinance-calculator' ],
+            [ 'Mortgage Calculator', 'mortgage-calculator' ], [ 'Refinance Calculator', 'refinance-calculator' ],
             [ 'FHA Loan Calculator', 'fha-loan-calculator' ], [ 'VA Loan Funding Fee', 'va-loan-funding-fee-calculator' ],
             [ 'Auto Loan Calculator', 'auto-loan-calculator' ], [ 'Personal Loan Calculator', 'personal-loan-calculator' ],
             [ 'Student Loan Calculator', 'student-loan-calculator' ], [ 'Home Equity & HELOC', 'home-equity-loan-calculator' ],
@@ -23,7 +23,7 @@ function fs_nav_groups() {
         [ 'title' => 'Taxes & Income', 'cat' => 'tax-calculators', 'links' => [
             [ 'Income Tax Calculator', 'income-tax-calculator' ], [ 'Self-Employment Tax', 'self-employment-tax-calculator' ],
             [ 'Capital Gains Tax', 'capital-gains-tax-calculator' ], [ 'Property Tax Calculator', 'property-tax-calculator' ],
-            [ 'Loan Affordability', 'loan-affordability-calculator' ], [ 'Tax & Bonus Calculator', 'tax-bonus-calculator' ],
+            [ 'Loan Affordability', 'loan-affordability-calculator' ],
         ] ],
         [ 'title' => 'Retirement & Savings', 'cat' => 'retirement-planning', 'links' => [
             [ 'Retirement Savings', 'retirement-savings-calculator' ], [ '401(k) Calculator', '401k-calculator' ],

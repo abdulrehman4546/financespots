@@ -51,8 +51,6 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'cash-back-vs-low-apr-calculator' => 'fs_calc2_cashback_vs_apr',
         'social-security-cola-calculator' => 'fs_calc2_ss_cola',
         'trump-account-calculator'       => 'fs_calc2_trump_account',
-        'home-loan-calculator'           => 'fs_calc2_mortgage',
-        'tax-bonus-calculator'           => 'fs_calc2_tax_bonus',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {

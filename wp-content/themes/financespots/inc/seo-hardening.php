@@ -43,9 +43,7 @@ add_filter( 'rank_math/frontend/title', function ( $title ) {
     $parts = preg_split( '/\s(?:--|—|–)\s/u', $title );
     $title = trim( $parts[0] ) . $brand;
     if ( mb_strlen( $title ) > 60 ) {
-        $cut = mb_substr( $title, 0, 60 );
-        $sp  = mb_strrpos( $cut, ' ' );
-        $title = rtrim( false !== $sp ? mb_substr( $cut, 0, $sp ) : $cut );
+        $title = rtrim( mb_substr( $title, 0, 57 ) ) . '...';
     }
     return $title;
 } );

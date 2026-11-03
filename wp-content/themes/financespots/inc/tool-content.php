@@ -165,8 +165,6 @@ function fs_tool_guide_map() {
         'refinance-calculator'          => [ 'negative-equity-car-loan-how-to-get-out', 'first-time-home-buyer-guide-2026' ],
         'loan-comparison-calculator'    => [ 'cash-back-or-low-apr-car-deal', 'balance-transfer-vs-personal-loan' ],
         'mortgage-calculator'           => $home,
-        'home-loan-calculator'          => array_merge( $home, [ 'should-i-refinance-my-mortgage', 'mortgage-points-explained' ] ),
-        'tax-bonus-calculator'          => [ 'year-end-tax-planning-checklist', 'tax-loss-harvesting' ],
         'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],
         'va-loan-calculator'            => [ 'va-loan-benefits-complete-guide-veterans-2026', 'first-time-home-buyer-guide-2026' ],
         'va-loan-funding-fee-calculator' => [ 'va-loan-benefits-complete-guide-veterans-2026' ],
