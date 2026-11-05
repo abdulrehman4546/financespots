@@ -13,6 +13,8 @@ function fs_new_content_tools_3() {
         'trump-account-calculator'        => [ 'Trump Account Calculator', 'trump_account', 'savings-planners' ],
         'home-loan-calculator'            => [ 'Home Loan Calculator', 'mortgage_calc', 'loan-calculators' ],
         'tax-bonus-calculator'            => [ 'Tax & Bonus Calculator', 'tax_bonus_calc', 'tax-calculators' ],
+        '401k-early-withdrawal-calculator' => [ '401(k) Early Withdrawal Calculator', '401k_withdrawal_calc', 'tax-calculators' ],
+        'retirement-withdrawal-calculator' => [ 'Retirement Withdrawal Calculator', 'retirement_withdrawal_calc', 'retirement-planning' ],
     ];
 }
 

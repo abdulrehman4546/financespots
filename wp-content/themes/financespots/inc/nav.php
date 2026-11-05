@@ -24,11 +24,13 @@ function fs_nav_groups() {
             [ 'Income Tax Calculator', 'income-tax-calculator' ], [ 'Self-Employment Tax', 'self-employment-tax-calculator' ],
             [ 'Capital Gains Tax', 'capital-gains-tax-calculator' ], [ 'Property Tax Calculator', 'property-tax-calculator' ],
             [ 'Loan Affordability', 'loan-affordability-calculator' ], [ 'Tax & Bonus Calculator', 'tax-bonus-calculator' ],
+            [ '401(k) Early Withdrawal Tax', '401k-early-withdrawal-calculator' ],
         ] ],
         [ 'title' => 'Retirement & Savings', 'cat' => 'retirement-planning', 'links' => [
             [ 'Retirement Savings', 'retirement-savings-calculator' ], [ '401(k) Calculator', '401k-calculator' ],
             [ 'IRA Calculator', 'ira-calculator' ], [ 'FIRE Calculator', 'fire-calculator' ],
             [ 'Savings Goal Calculator', 'savings-goal-calculator' ], [ 'Emergency Fund Calculator', 'emergency-fund-calculator' ],
+            [ 'Retirement Withdrawal Calculator', 'retirement-withdrawal-calculator' ],
         ] ],
         [ 'title' => 'Investing', 'cat' => 'investment-tools', 'links' => [
             [ 'Compound Interest', 'compound-interest-calculator' ], [ 'ROI Calculator', 'roi-calculator' ],

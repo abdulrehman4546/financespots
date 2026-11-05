@@ -946,3 +946,168 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   401(K) / IRA EARLY WITHDRAWAL TAX CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_401k_withdrawal() { fs_tax_data_script(); ?>
+<div class="fsc-wrap" id="fs-ew">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'ew-amount', 'Withdrawal amount ($)', 20000, [ 'min' => 0, 'step' => 500, 'hint' => 'The gross amount taken out of the traditional 401(k), 403(b) or IRA before any tax or penalty.' ] ); ?>
+    <?php fsl_field( 'ew-age', 'Your age at withdrawal', 45, [ 'min' => 18, 'max' => 100, 'step' => 1 ] ); ?>
+    <?php fsl_select( 'ew-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'hoh' => 'Head of household', 'mfs' => 'Married filing separately' ], 'single' ); ?>
+    <?php fsl_field( 'ew-other-income', 'Other taxable income this year, after deductions ($)', 50000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Your taxable income before this withdrawal — wages, self-employment, etc. This sets which tax brackets the withdrawal stacks on top of.' ] ); ?>
+    <?php fsl_select( 'ew-exception', '10% penalty exception', [
+        'none'        => 'None — early withdrawal, no exception applies',
+        'rule55'      => 'Rule of 55 — separated from this employer in/after the year you turned 55 (401k/403b only, not IRA)',
+        'disability'  => 'Total and permanent disability',
+        'sepp'        => 'Substantially equal periodic payments (SEPP / IRS Section 72(t))',
+        'medical'     => 'Unreimbursed medical expenses above 7.5% of AGI',
+        'qdro'        => 'Qualified domestic relations order (QDRO, 401k/403b only)',
+        'death'       => 'Death — distribution to a beneficiary',
+        'levy'        => 'IRS levy on the account',
+    ], 'none', [ 'hint' => 'These IRS exceptions waive the 10% penalty but not the regular income tax. Confirm your situation qualifies before relying on this.' ] ); ?>
+    <?php fsl_field( 'ew-state-rate', 'State income tax rate on this withdrawal (%, optional)', 0, [ 'min' => 0, 'max' => 15, 'step' => 0.1, 'hint' => 'Alaska, Florida, Nevada, New Hampshire, South Dakota, Tennessee, Texas, Washington and Wyoming have no state wage income tax; most other states tax a 401(k)/IRA withdrawal as ordinary income.' ] ); ?>
+    <button type="button" class="fsc-btn" id="ew-go">Calculate Withdrawal Tax</button>
+    <p class="fsl-error" id="ew-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ew-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ew-net', 'You actually keep', 'primary' );
+      fsl_card( 'ew-fed', 'Federal income tax on withdrawal' );
+      fsl_card( 'ew-penalty', '10% early withdrawal penalty' );
+      fsl_card( 'ew-state-v', 'State income tax' );
+      fsl_card( 'ew-total', 'Total tax and penalty', 'gold' );
+      fsl_card( 'ew-eff', 'Effective tax rate on withdrawal' );
+      fsl_card( 'ew-withhold', 'Mandatory 20% withheld at distribution', 'secondary' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ew-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money, T=window.FSTAX;
+
+  function calc(){
+    var amount=$('ew-amount'), age=$('ew-age'), status=FSL.el('ew-status').value;
+    var otherIncome=$('ew-other-income'), exception=FSL.el('ew-exception').value;
+    var stateRate=$('ew-state-rate')/100;
+    if(!FSL.valid(amount>0,'ew-err','Enter the withdrawal amount.'))return;
+
+    /* Federal tax: the withdrawal stacks on top of other taxable income (marginal effect) */
+    var taxWithout=T.tax(otherIncome,status);
+    var taxWith=T.tax(otherIncome+amount,status);
+    var fedTax=Math.max(taxWith-taxWithout,0);
+
+    /* 10% penalty applies unless 59.5+ or a qualifying IRS exception */
+    var penaltyFree = age>=59.5 || exception!=='none';
+    var penalty = penaltyFree ? 0 : amount*0.10;
+
+    var stateTax=amount*stateRate;
+    var total=fedTax+penalty+stateTax;
+    var net=amount-total;
+    var mandatoryWithhold=amount*0.20;
+
+    FSL.set('ew-net',M(net)); FSL.set('ew-fed',M(fedTax)); FSL.set('ew-penalty',M(penalty));
+    FSL.set('ew-state-v',M(stateTax)); FSL.set('ew-total',M(total)); FSL.set('ew-eff',FSL.pct(total/amount*100,1));
+    FSL.set('ew-withhold',M(mandatoryWithhold));
+    FSL.show('ew-results','grid');
+
+    var n=[];
+    if(age>=59.5) n.push('No early withdrawal penalty applies because you are 59½ or older.');
+    else if(exception!=='none') n.push('The 10% penalty is waived under the exception you selected, but the withdrawal is still taxed as ordinary income.');
+    else n.push('A 10% federal penalty applies because this is an early withdrawal (before 59½) with no exception selected.');
+    n.push('For a 401(k) or 403(b), the plan must withhold 20% for federal tax on an eligible rollover distribution paid directly to you, regardless of your actual tax bracket — that is shown separately above and is not the same as your real tax owed. IRAs generally default to 10% withholding, which you can adjust.');
+    n.push('The federal tax shown is the extra tax this withdrawal adds on top of your other income this year, not a flat rate — a larger withdrawal can push part of itself into a higher bracket.');
+    n.push('This is an estimate for a traditional (pre-tax) 401(k)/403(b)/IRA. Roth account withdrawals of your own contributions are generally tax- and penalty-free; only Roth earnings withdrawn early and non-qualified are taxed and penalized.');
+    FSL.set('ew-note',n.join(' '));
+  }
+  FSL.el('ew-go').addEventListener('click',calc); FSL.bind('fs-ew',calc);
+  calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   RETIREMENT WITHDRAWAL CALCULATOR (how long will my money last)
+───────────────────────────────────────────── */
+function fs_calc2_retirement_withdrawal() { ?>
+<div class="fsc-wrap" id="fs-rw">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'rw-savings', 'Current retirement savings ($)', 500000, [ 'min' => 0, 'step' => 5000 ] ); ?>
+    <?php fsl_field( 'rw-withdraw', 'Annual withdrawal, today\'s dollars ($)', 30000, [ 'min' => 0, 'step' => 500, 'hint' => 'The amount you plan to withdraw in the first year; later years rise with inflation so your buying power stays the same.' ] ); ?>
+    <?php fsl_field( 'rw-return', 'Expected annual return (%)', 6, [ 'min' => 0, 'max' => 15, 'step' => 0.1, 'hint' => 'A diversified stock/bond portfolio has historically averaged roughly 6-7% a year after inflation is removed from the return assumption below, or use a nominal return with inflation checked separately.' ] ); ?>
+    <?php fsl_field( 'rw-inflation', 'Inflation (%)', 3, [ 'min' => 0, 'max' => 10, 'step' => 0.1, 'hint' => 'Your withdrawal amount increases by this rate each year to keep the same purchasing power.' ] ); ?>
+    <?php fsl_field( 'rw-years', 'Show results up to this many years', 40, [ 'min' => 5, 'max' => 60, 'step' => 1 ] ); ?>
+    <button type="button" class="fsc-btn" id="rw-go">Calculate</button>
+    <p class="fsl-error" id="rw-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="rw-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'rw-lasts', 'Your money lasts', 'primary' );
+      fsl_card( 'rw-rate', 'First-year withdrawal rate' );
+      fsl_card( 'rw-4pct', '4% rule "safe" withdrawal' );
+      fsl_card( 'rw-balance10', 'Balance after 10 years' );
+      fsl_card( 'rw-balance20', 'Balance after 20 years' );
+      fsl_card( 'rw-balance30', 'Balance after 30 years', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="rw-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function simulate(savings,withdraw,returnRate,inflation,maxYears){
+    var balance=savings, w=withdraw, years=null, snapshots={};
+    for(var y=1;y<=maxYears;y++){
+      balance = balance*(1+returnRate) - w;
+      if(balance<=0){ years = y; balance = 0; }
+      if(y===10||y===20||y===30) snapshots[y]=Math.max(balance,0);
+      w = w*(1+inflation);
+      if(years!==null) break;
+    }
+    if(years===null){
+      /* still positive at maxYears: keep simulating lightly to fill 10/20/30 snapshots if beyond loop range already covered above */
+    }
+    return {years:years, snapshots:snapshots, finalBalance:balance};
+  }
+
+  function calc(){
+    var savings=$('rw-savings'), withdraw=$('rw-withdraw'), returnPct=$('rw-return'), inflPct=$('rw-inflation'), maxYears=$('rw-years');
+    if(!FSL.valid(savings>0,'rw-err','Enter your current retirement savings.'))return;
+    if(!FSL.valid(withdraw>0,'rw-err','Enter an annual withdrawal amount.'))return;
+    var returnRate=returnPct/100, inflation=inflPct/100;
+
+    var result=simulate(savings,withdraw,returnRate,inflation,Math.max(maxYears,30));
+    var firstYearRate=withdraw/savings*100;
+    var safeWithdraw=savings*0.04;
+
+    FSL.set('rw-lasts', result.years===null ? 'More than '+Math.max(maxYears,30)+' years' : result.years+' years');
+    FSL.set('rw-rate', FSL.pct(firstYearRate,2));
+    FSL.set('rw-4pct', M(safeWithdraw)+'/year');
+    FSL.set('rw-balance10', M(result.snapshots[10]!==undefined?result.snapshots[10]:0));
+    FSL.set('rw-balance20', M(result.snapshots[20]!==undefined?result.snapshots[20]:0));
+    FSL.set('rw-balance30', M(result.snapshots[30]!==undefined?result.snapshots[30]:0));
+    FSL.show('rw-results','grid');
+
+    var n=[];
+    if(firstYearRate>4.5) n.push('Your first-year withdrawal rate of '+FSL.pct(firstYearRate,1)+' is above the traditional "4% rule" guideline, which raises the risk of running out of money over a 30-year retirement.');
+    else if(firstYearRate<=4) n.push('Your first-year withdrawal rate of '+FSL.pct(firstYearRate,1)+' is at or below the traditional "4% rule" guideline, which was designed to have a high probability of lasting at least 30 years.');
+    n.push('This model grows the balance by a fixed annual return and increases the withdrawal with inflation every year — it does not account for market volatility, sequence-of-returns risk, taxes, Social Security, or required minimum distributions, all of which affect how long money actually lasts.');
+    n.push('A fixed assumed return is a simplification: real portfolios have good and bad years, and a few bad years early in retirement can deplete savings faster than this average-return model shows.');
+    FSL.set('rw-note',n.join(' '));
+  }
+  FSL.el('rw-go').addEventListener('click',calc); FSL.bind('fs-rw',calc);
+  calc();
+});
+</script>
+<?php }
