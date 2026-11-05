@@ -37,3 +37,5 @@ tools
 roth-conversion-before-year-end
 gift-tax-guide-2026
 how-long-will-my-money-last-in-retirement
+net-investment-income-tax-niit-guide
+home-equity-loan-vs-heloc-vs-line-of-credit

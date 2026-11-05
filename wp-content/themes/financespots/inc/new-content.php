@@ -86,7 +86,7 @@ function fs_new_content_guides() {
 
 require_once get_template_directory() . '/inc/new-content-2.php';
 require_once get_template_directory() . '/inc/new-content-3.php';
-foreach ( [ '4a', '4b', '4c', '4d', '5a', '5b', '5c', '5d', '6a', '6b' ] as $fs_batch ) {
+foreach ( [ '4a', '4b', '4c', '4d', '5a', '5b', '5c', '5d', '6a', '6b', '6c' ] as $fs_batch ) {
     require_once get_template_directory() . '/inc/new-content-' . $fs_batch . '.php';
 }
 
@@ -170,7 +170,7 @@ function fs_new_content_url( $slug ) {
 }
 
 add_action( 'init', function () {
-    $version = '2026-11-05-b';
+    $version = '2026-11-05-c';
     if ( get_option( 'fs_new_content_version' ) === $version ) return;
     update_option( 'fs_new_content_version', $version );
 
@@ -191,7 +191,7 @@ add_action( 'init', function () {
     $guides = array_merge( fs_new_content_guides(), fs_new_content_guides_2(), fs_new_content_guides_3(),
         fs_new_content_guides_4a(), fs_new_content_guides_4b(), fs_new_content_guides_4c(), fs_new_content_guides_4d(),
         fs_new_content_guides_5a(), fs_new_content_guides_5b(), fs_new_content_guides_5c(), fs_new_content_guides_5d(),
-        fs_new_content_guides_6a(), fs_new_content_guides_6b() );
+        fs_new_content_guides_6a(), fs_new_content_guides_6b(), fs_new_content_guides_6c() );
     foreach ( $guides as $g ) {
         $cat    = get_term_by( 'name', fs_guide_category( $g['slug'] ), 'category' );
         $cat_id = $cat ? $cat->term_id : (int) get_option( 'default_category' );
