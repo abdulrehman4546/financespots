@@ -39,7 +39,7 @@ function fs_tool_redirect_map() {
         /* retirement */
         'pension-calculator' => 'retirement-savings-calculator', 'social-security-calculator' => 'retirement-savings-calculator',
         'retirement-income-calculator' => 'retirement-savings-calculator', 'rmd-calculator' => 'retirement-savings-calculator',
-        'roth-conversion-calculator' => 'retirement-savings-calculator', 'retirement-withdrawal-calculator' => 'retirement-savings-calculator',
+        'roth-conversion-calculator' => 'retirement-savings-calculator',
         'early-retirement-calculator' => 'fire-calculator',
         /* currency */
         'historical-exchange-rate' => 'live-currency-converter', 'forex-pip-calculator' => 'live-currency-converter',
