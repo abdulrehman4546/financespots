@@ -41,13 +41,15 @@ add_filter( 'rank_math/frontend/title', function ( $title ) {
         $title = substr( $title, 0, -strlen( $brand ) );
     }
     $parts = preg_split( '/\s(?:--|—|–)\s/u', $title );
-    $title = trim( $parts[0] ) . $brand;
-    if ( mb_strlen( $title ) > 60 ) {
-        $cut = mb_substr( $title, 0, 60 );
+    $title = trim( $parts[0] );
+    /* Truncate only the body to a word boundary so the brand suffix is never clipped. */
+    $max_body = 60 - mb_strlen( $brand );
+    if ( mb_strlen( $title ) > $max_body ) {
+        $cut = mb_substr( $title, 0, max( $max_body, 0 ) );
         $sp  = mb_strrpos( $cut, ' ' );
         $title = rtrim( false !== $sp ? mb_substr( $cut, 0, $sp ) : $cut );
     }
-    return $title;
+    return $title . $brand;
 } );
 
 add_filter( 'rank_math/frontend/description', function ( $desc ) {
