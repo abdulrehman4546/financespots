@@ -66,3 +66,5 @@ trump-account-calculator
 home-loan-calculator
 401k-early-withdrawal-calculator
 retirement-withdrawal-calculator
+child-tax-credit-calculator
+salt-deduction-calculator

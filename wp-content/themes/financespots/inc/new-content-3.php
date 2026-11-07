@@ -15,6 +15,8 @@ function fs_new_content_tools_3() {
         'tax-bonus-calculator'            => [ 'Tax & Bonus Calculator', 'tax_bonus_calc', 'tax-calculators' ],
         '401k-early-withdrawal-calculator' => [ '401(k) Early Withdrawal Calculator', '401k_withdrawal_calc', 'tax-calculators' ],
         'retirement-withdrawal-calculator' => [ 'Retirement Withdrawal Calculator', 'retirement_withdrawal_calc', 'retirement-planning' ],
+        'child-tax-credit-calculator'      => [ 'Child Tax Credit Calculator', 'child_tax_credit_calc', 'tax-calculators' ],
+        'salt-deduction-calculator'         => [ 'SALT Deduction Calculator', 'salt_deduction_calc', 'tax-calculators' ],
     ];
 }
 

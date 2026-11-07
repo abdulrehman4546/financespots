@@ -55,6 +55,8 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'tax-bonus-calculator'           => 'fs_calc2_tax_bonus',
         '401k-early-withdrawal-calculator' => 'fs_calc2_401k_withdrawal',
         'retirement-withdrawal-calculator' => 'fs_calc2_retirement_withdrawal',
+        'child-tax-credit-calculator'      => 'fs_calc2_child_tax_credit',
+        'salt-deduction-calculator'         => 'fs_calc2_salt_deduction',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {

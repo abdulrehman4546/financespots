@@ -169,6 +169,8 @@ function fs_tool_guide_map() {
         'tax-bonus-calculator'          => [ 'year-end-tax-planning-checklist', 'tax-loss-harvesting' ],
         '401k-early-withdrawal-calculator' => [ 'roth-conversion-before-year-end', 'gift-tax-guide-2026' ],
         'retirement-withdrawal-calculator' => [ 'how-long-will-my-money-last-in-retirement', 'retirement-planning-how-much-need-2026' ],
+        'child-tax-credit-calculator'      => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
+        'salt-deduction-calculator'         => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
         'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],
         'va-loan-calculator'            => [ 'va-loan-benefits-complete-guide-veterans-2026', 'first-time-home-buyer-guide-2026' ],
         'va-loan-funding-fee-calculator' => [ 'va-loan-benefits-complete-guide-veterans-2026' ],

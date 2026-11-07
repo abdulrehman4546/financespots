@@ -25,6 +25,7 @@ function fs_nav_groups() {
             [ 'Capital Gains Tax', 'capital-gains-tax-calculator' ], [ 'Property Tax Calculator', 'property-tax-calculator' ],
             [ 'Loan Affordability', 'loan-affordability-calculator' ], [ 'Tax & Bonus Calculator', 'tax-bonus-calculator' ],
             [ '401(k) Early Withdrawal Tax', '401k-early-withdrawal-calculator' ],
+            [ 'Child Tax Credit Calculator', 'child-tax-credit-calculator' ], [ 'SALT Deduction Calculator', 'salt-deduction-calculator' ],
         ] ],
         [ 'title' => 'Retirement & Savings', 'cat' => 'retirement-planning', 'links' => [
             [ 'Retirement Savings', 'retirement-savings-calculator' ], [ '401(k) Calculator', '401k-calculator' ],

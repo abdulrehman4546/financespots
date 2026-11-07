@@ -1111,3 +1111,141 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   CHILD TAX CREDIT CALCULATOR (2026)
+───────────────────────────────────────────── */
+function fs_calc2_child_tax_credit() { ?>
+<div class="fsc-wrap" id="fs-ctc">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_select( 'ctc-status', 'Filing status', [ 'single' => 'Single / Head of household', 'mfj' => 'Married filing jointly', 'mfs' => 'Married filing separately' ], 'single' ); ?>
+    <?php fsl_field( 'ctc-magi', 'Modified adjusted gross income ($)', 150000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_field( 'ctc-kids', 'Qualifying children under 17', 2, [ 'min' => 0, 'max' => 15, 'step' => 1, 'hint' => 'A child must be under 17 at the end of the year, have a Social Security number, and be claimed as your dependent.' ] ); ?>
+    <?php fsl_field( 'ctc-other', 'Other dependents (not under 17)', 0, [ 'min' => 0, 'max' => 15, 'step' => 1, 'hint' => 'Older children, elderly parents, or other qualifying relatives you claim as dependents — these get a smaller $500 credit instead.' ] ); ?>
+    <?php fsl_field( 'ctc-earned', 'Earned income ($, for the refundable portion)', 150000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Wages, salary and self-employment income. Used to estimate how much of the credit could be refundable if it exceeds your tax owed.' ] ); ?>
+    <button type="button" class="fsc-btn" id="ctc-go">Calculate Child Tax Credit</button>
+    <p class="fsl-error" id="ctc-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ctc-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ctc-total', 'Total credit before phase-out', 'primary' );
+      fsl_card( 'ctc-reduction', 'Phase-out reduction' );
+      fsl_card( 'ctc-final', 'Your estimated credit', 'gold' );
+      fsl_card( 'ctc-refundable', 'Maximum refundable portion (ACTC)' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ctc-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var status=FSL.el('ctc-status').value, magi=$('ctc-magi'), kids=$('ctc-kids'), other=$('ctc-other'), earned=$('ctc-earned');
+    if(!FSL.valid(kids+other>0,'ctc-err','Enter at least one qualifying child or dependent.'))return;
+
+    var perChild=2200, perOther=500;
+    var totalCredit = kids*perChild + other*perOther;
+
+    /* Phase-out: $50 reduction per $1,000 (or part of $1,000) of MAGI above the threshold */
+    var threshold = status==='mfj' ? 400000 : (status==='mfs' ? 200000 : 200000);
+    var over = Math.max(magi-threshold, 0);
+    var steps = Math.ceil(over/1000);
+    var reduction = Math.min(steps*50, totalCredit);
+    var finalCredit = Math.max(totalCredit-reduction, 0);
+
+    /* ACTC: lesser of (up to $1,700 per qualifying child) or 15% of earned income above $2,500 */
+    var actcCap = kids*1700;
+    var earnedBase = Math.max(earned-2500, 0)*0.15;
+    var refundable = Math.min(actcCap, earnedBase, finalCredit);
+
+    FSL.set('ctc-total',M(totalCredit)); FSL.set('ctc-reduction',M(reduction));
+    FSL.set('ctc-final',M(finalCredit)); FSL.set('ctc-refundable',M(refundable));
+    FSL.show('ctc-results','grid');
+
+    var n=[];
+    if(reduction>0) n.push('Your MAGI is '+M(over)+' above the '+M(threshold)+' threshold, which reduces the credit by $50 for every $1,000 (or part of $1,000) over that line.');
+    else n.push('Your MAGI is under the '+M(threshold)+' threshold, so the full credit applies with no phase-out reduction.');
+    n.push('Up to $1,700 per qualifying child can be refundable through the Additional Child Tax Credit (ACTC) even if you owe no tax, limited to 15% of earned income above $2,500.');
+    n.push('This is a 2026 estimate using the $2,200 per-child credit made permanent by the One Big Beautiful Bill Act. Your actual credit depends on your full tax return — confirm with IRS Schedule 8812.');
+    FSL.set('ctc-note',n.join(' '));
+  }
+  FSL.el('ctc-go').addEventListener('click',calc); FSL.bind('fs-ctc',calc);
+  calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   SALT DEDUCTION CALCULATOR (2026)
+───────────────────────────────────────────── */
+function fs_calc2_salt_deduction() { ?>
+<div class="fsc-wrap" id="fs-salt">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_select( 'salt-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'hoh' => 'Head of household', 'mfs' => 'Married filing separately' ], 'single' ); ?>
+    <?php fsl_field( 'salt-magi', 'Modified adjusted gross income ($)', 350000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_field( 'salt-property', 'Property tax paid ($)', 9000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'salt-income-sales', 'State/local income OR sales tax paid ($)', 12000, [ 'min' => 0, 'step' => 100, 'hint' => 'Use whichever is larger for your state — most people use state income tax paid; residents of no-income-tax states use sales tax instead.' ] ); ?>
+    <label class="fsl-check"><input type="checkbox" id="salt-itemize" checked> <span>I am itemizing deductions (not taking the standard deduction)</span></label>
+    <button type="button" class="fsc-btn" id="salt-go">Calculate SALT Deduction</button>
+    <p class="fsl-error" id="salt-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="salt-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'salt-combined', 'Your total SALT paid' );
+      fsl_card( 'salt-cap', '2026 SALT cap for your income' );
+      fsl_card( 'salt-deduction', 'Your actual SALT deduction', 'primary' );
+      fsl_card( 'salt-lost', 'Amount capped out (not deductible)', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="salt-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var magi=$('salt-magi'), property=$('salt-property'), incomeSales=$('salt-income-sales');
+    var itemizing=FSL.el('salt-itemize').checked;
+    var combined = property+incomeSales;
+
+    /* 2026 SALT cap: $40,400 ($20,200 MFS), phased down 30% of MAGI over $505,000 (not below $10,000 / $5,000 MFS) */
+    var status=FSL.el('salt-status').value;
+    var baseCap = status==='mfs' ? 20200 : 40400;
+    var floor = status==='mfs' ? 5000 : 10000;
+    var phaseStart = 505000;
+    var cap = baseCap;
+    if(magi>phaseStart){
+      var reduction = (magi-phaseStart)*0.30;
+      cap = Math.max(baseCap-reduction, floor);
+    }
+
+    var deduction = itemizing ? Math.min(combined, cap) : 0;
+    var lost = itemizing ? Math.max(combined-cap, 0) : combined;
+
+    FSL.set('salt-combined',M(combined)); FSL.set('salt-cap',M(cap));
+    FSL.set('salt-deduction',M(deduction)); FSL.set('salt-lost',M(lost));
+    FSL.show('salt-results','grid');
+
+    var n=[];
+    if(!itemizing) n.push('You are not itemizing, so none of this is deducted — you are taking the standard deduction instead, which may still be the better choice. Compare both before deciding.');
+    else if(magi>phaseStart) n.push('Your MAGI is above the $505,000 phase-out start, so your cap is reduced by 30% of the amount over that line, down to a floor of '+M(floor)+'.');
+    else n.push('Your MAGI is under the $505,000 phase-out threshold, so you get the full '+M(baseCap)+' cap.');
+    n.push('The SALT deduction covers property tax plus either state/local income tax or sales tax (not both) — use whichever is larger for your situation.');
+    n.push('This reflects the 2026 SALT cap of $40,400 under the One Big Beautiful Bill Act. Confirm your state\'s specific rules and your total itemized deductions against the standard deduction before filing.');
+    FSL.set('salt-note',n.join(' '));
+  }
+  FSL.el('salt-go').addEventListener('click',calc); FSL.bind('fs-salt',calc);
+  FSL.el('salt-itemize').addEventListener('change',calc);
+  calc();
+});
+</script>
+<?php }
