@@ -456,3 +456,147 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   6. RV LOAN CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_rv_loan() { ?>
+<div class="fsc-wrap" id="fs-rv">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'rv-price', 'RV price ($)', 60000, [ 'min' => 2000, 'step' => 1000, 'hint' => 'Travel trailers often run $20k-$60k; Class A motorhomes can exceed $150k.' ] ); ?>
+    <?php fsl_field( 'rv-down', 'Cash down payment ($)', 9000, [ 'min' => 0, 'step' => 500, 'hint' => 'Most RV lenders want 10-20% down.' ] ); ?>
+    <?php fsl_field( 'rv-trade', 'Trade-in value ($)', 0, [ 'min' => 0, 'step' => 500 ] ); ?>
+    <?php fsl_field( 'rv-rate', 'Loan APR (%)', 8.5, [ 'min' => 0, 'max' => 25, 'step' => 0.1, 'hint' => 'RV loans typically run higher than auto loans, roughly 7-12% depending on credit and RV age.' ] ); ?>
+    <?php fsl_select( 'rv-term', 'Loan term', [ 60 => '5 years', 84 => '7 years', 120 => '10 years', 180 => '15 years', 240 => '20 years' ], 120, [ 'hint' => 'Larger motorhomes can qualify for terms up to 20 years, similar to a mortgage.' ] ); ?>
+    <?php fsl_field( 'rv-tax', 'Sales tax rate (%)', 7.0, [ 'min' => 0, 'max' => 15, 'step' => 0.05 ] ); ?>
+    <?php fsl_field( 'rv-fees', 'Title, registration &amp; doc fees ($)', 500, [ 'min' => 0, 'step' => 50 ] ); ?>
+    <?php fsl_check( 'rv-finfees', 'Roll tax and fees into the loan', true ); ?>
+    <?php fsl_field( 'rv-extra', 'Extra monthly payment ($, optional)', 0, [ 'min' => 0, 'step' => 25 ] ); ?>
+    <button type="button" class="fsc-btn" id="rv-go">Calculate payment</button>
+    <p class="fsl-error" id="rv-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="rv-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'rv-monthly', 'Monthly payment', 'primary' );
+      fsl_card( 'rv-financed', 'Amount financed' );
+      fsl_card( 'rv-interest', 'Total interest' );
+      fsl_card( 'rv-tax-amt', 'Sales tax' );
+      fsl_card( 'rv-due', 'Due at signing' );
+      fsl_card( 'rv-payoff', 'Payoff date' );
+      fsl_card( 'rv-saved', 'Interest saved by extra payments', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="rv-note"></p>
+  </div>
+</div>
+<div id="rv-compare" style="display:none;margin-top:1.5rem">
+  <h3 class="fsl-h3">How the loan term changes your cost</h3>
+  <div class="fsc-table-wrap" style="padding:0"><table class="fsc-table fsl-cmp"><thead><tr><th>Term</th><th>Monthly payment</th><th>Total interest</th><th>Total paid</th></tr></thead><tbody id="rv-cmp-body"></tbody></table></div>
+</div>
+<div id="rv-sched" style="display:none;margin-top:1.5rem"></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function calc(){
+    var price=$('rv-price'), down=$('rv-down'), trade=$('rv-trade');
+    var rate=$('rv-rate'), term=parseInt(FSL.el('rv-term').value,10), rt=$('rv-tax')/100, fees=$('rv-fees'), extra=$('rv-extra');
+    var tax=Math.max(price-trade,0)*rt, roll=FSL.el('rv-finfees').checked;
+    var P=price-down-trade+(roll?tax+fees:0);
+    if(!FSL.valid(price>0&&P>0,'rv-err','Your down payment and trade-in cover the full price, so no loan is needed.'))return;
+    var due=down+(roll?0:tax+fees);
+    function run(n,ex){return FSL.schedule({P:P,apr:rate,n:n,extra:ex||0});}
+    var base=run(term,0), plan=extra>0?run(term,extra):base;
+    FSL.set('rv-monthly',M(base.payment)+'/mo'+(extra>0?' + '+M(extra):''));
+    FSL.set('rv-financed',M(P));
+    FSL.set('rv-interest',M(plan.totalInterest));
+    FSL.set('rv-tax-amt',M(tax));
+    FSL.set('rv-due',M(due));
+    FSL.set('rv-payoff',FSL.dateText(plan.payoffDate)+' ('+FSL.monthsText(plan.months)+')');
+    FSL.set('rv-saved',extra>0?M(base.totalInterest-plan.totalInterest):'Add an extra payment');
+    FSL.show('rv-results','grid'); FSL.show('rv-compare');
+    var note='Interest adds '+M(plan.totalInterest)+' ('+Math.round(plan.totalInterest/P*100)+'% of the amount financed) over the life of the loan.';
+    if(term>=180)note+=' Terms this long usually outlast typical RV financing windows at most banks and are more common through the RV dealer or a specialty lender.';
+    FSL.set('rv-note',note);
+    var body='';
+    [60,84,120,180,240].forEach(function(t){var s=run(t,0);body+='<tr'+(t===term?' class="is-current"':'')+'><td><strong>'+(t/12)+' years</strong></td><td>'+M(s.payment)+'</td><td>'+M(s.totalInterest)+'</td><td>'+M(s.totalPaid)+'</td></tr>';});
+    FSL.el('rv-cmp-body').innerHTML=body;
+    FSL.renderSchedule('rv-sched',plan,{filename:'rv-loan-schedule'});
+  }
+  FSL.el('rv-go').addEventListener('click',calc); FSL.bind('fs-rv',calc); calc();
+});
+</script>
+<?php }
+
+/* ─────────────────────────────────────────────
+   7. GRAD PLUS LOAN CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_grad_plus_loan() { ?>
+<div class="fsc-wrap" id="fs-gp">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'gp-amount', 'Amount to borrow ($)', 20000, [ 'min' => 500, 'step' => 500, 'hint' => 'Grad PLUS can cover up to your full cost of attendance minus other aid.' ] ); ?>
+    <?php fsl_field( 'gp-rate', 'Interest rate (%)', 9.07, [ 'min' => 0, 'max' => 15, 'step' => 0.01, 'hint' => '2026-27 federal Grad PLUS rate is 9.07%, fixed for the life of the loan.' ] ); ?>
+    <?php fsl_field( 'gp-fee', 'Origination fee (%)', 4.228, [ 'min' => 0, 'max' => 10, 'step' => 0.001, 'hint' => 'Deducted from the disbursement, so you receive less than you borrow.' ] ); ?>
+    <?php fsl_select( 'gp-plan', 'Repayment plan', [
+        'standard' => 'Standard 10-year',
+        'extended' => 'Extended 25-year',
+        'custom'   => 'Custom term',
+    ], 'standard' ); ?>
+    <?php fsl_field( 'gp-custom', 'Custom term (years)', 15, [ 'min' => 1, 'max' => 30, 'wrap_id' => 'gp-custom-wrap' ] ); ?>
+    <?php fsl_field( 'gp-grace', 'Months before repayment starts', 6, [ 'min' => 0, 'max' => 72, 'step' => 1, 'hint' => 'Interest accrues from disbursement on PLUS loans; there is no subsidized grace period.' ] ); ?>
+    <?php fsl_field( 'gp-extra', 'Extra monthly payment ($, optional)', 0, [ 'min' => 0, 'step' => 25 ] ); ?>
+    <button type="button" class="fsc-btn" id="gp-go">Calculate repayment</button>
+    <p class="fsl-error" id="gp-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="gp-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'gp-disbursed', 'Net amount disbursed to you', 'secondary' );
+      fsl_card( 'gp-monthly', 'Monthly payment', 'primary' );
+      fsl_card( 'gp-start-bal', 'Balance when repayment starts' );
+      fsl_card( 'gp-interest', 'Total interest' );
+      fsl_card( 'gp-total', 'Total repaid' );
+      fsl_card( 'gp-payoff', 'Payoff date' );
+      fsl_card( 'gp-saved', 'Interest saved by extra payments', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="gp-note"></p>
+  </div>
+</div>
+<div id="gp-sched" style="display:none;margin-top:1.5rem"></div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  function termYears(plan){
+    if(plan==='standard')return 10;
+    if(plan==='extended')return 25;
+    return Math.max(1,Math.round($('gp-custom',15)));
+  }
+  function calc(){
+    var amount=$('gp-amount'), rate=$('gp-rate'), fee=$('gp-fee')/100, plan=FSL.el('gp-plan').value, grace=Math.max(0,Math.round($('gp-grace'))), extra=$('gp-extra');
+    if(!FSL.valid(amount>0,'gp-err','Enter a loan amount greater than zero.'))return;
+    FSL.el('gp-custom-wrap').style.display=plan==='custom'?'flex':'none';
+    var disbursed=amount*(1-fee), accrued=amount*rate/1200*grace, P=amount+accrued;
+    var yrs=termYears(plan), n=yrs*12;
+    var base=FSL.schedule({P:P,apr:rate,n:n,extra:0}), sched=extra>0?FSL.schedule({P:P,apr:rate,n:n,extra:extra}):base;
+    FSL.set('gp-disbursed',M(disbursed)+' (after '+M(amount-disbursed)+' origination fee)');
+    FSL.set('gp-monthly',M(base.payment)+'/mo'+(extra>0?' + '+M(extra):''));
+    FSL.set('gp-start-bal',M(P)+(accrued>0?' (incl. '+M(accrued)+' accrued interest)':''));
+    FSL.set('gp-interest',M(sched.totalInterest+accrued));
+    FSL.set('gp-total',M(sched.totalPaid));
+    FSL.set('gp-payoff',FSL.dateText(FSL.addMonths(sched.payoffDate,grace)));
+    FSL.set('gp-saved',extra>0?M(base.totalInterest-sched.totalInterest):'Add an extra payment');
+    FSL.show('gp-results','grid');
+    var note='The origination fee means you borrow '+M(amount)+' but only receive '+M(disbursed)+'. Interest still accrues on the full '+M(amount)+'.';
+    if(plan==='extended')note+=' A 25-year term lowers the monthly payment but can roughly double total interest versus the standard 10-year plan.';
+    FSL.set('gp-note',note);
+    FSL.renderSchedule('gp-sched',sched,{filename:'grad-plus-loan-schedule'});
+  }
+  FSL.el('gp-go').addEventListener('click',calc); FSL.bind('fs-gp',calc); calc();
+});
+</script>
+<?php }

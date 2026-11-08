@@ -19,6 +19,7 @@ function fs_nav_groups() {
             [ 'Auto Loan Calculator', 'auto-loan-calculator' ], [ 'Personal Loan Calculator', 'personal-loan-calculator' ],
             [ 'Student Loan Calculator', 'student-loan-calculator' ], [ 'Home Equity & HELOC', 'home-equity-loan-calculator' ],
             [ 'Loan Payoff Calculator', 'loan-payoff-calculator' ], [ 'Amortization Calculator', 'amortization-calculator' ],
+            [ 'RV Loan Calculator', 'rv-loan-calculator' ], [ 'Grad PLUS Loan Calculator', 'grad-plus-loan-calculator' ],
         ] ],
         [ 'title' => 'Taxes & Income', 'cat' => 'tax-calculators', 'links' => [
             [ 'Income Tax Calculator', 'income-tax-calculator' ], [ 'Self-Employment Tax', 'self-employment-tax-calculator' ],

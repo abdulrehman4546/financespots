@@ -17,6 +17,8 @@ function fs_new_content_tools_3() {
         'retirement-withdrawal-calculator' => [ 'Retirement Withdrawal Calculator', 'retirement_withdrawal_calc', 'retirement-planning' ],
         'child-tax-credit-calculator'      => [ 'Child Tax Credit Calculator', 'child_tax_credit_calc', 'tax-calculators' ],
         'salt-deduction-calculator'         => [ 'SALT Deduction Calculator', 'salt_deduction_calc', 'tax-calculators' ],
+        'rv-loan-calculator'                => [ 'RV Loan Calculator', 'rv_loan_calc', 'loan-calculators' ],
+        'grad-plus-loan-calculator'         => [ 'Grad PLUS Loan Calculator', 'grad_plus_loan_calc', 'loan-calculators' ],
     ];
 }
 

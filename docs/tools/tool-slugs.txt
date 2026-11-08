@@ -68,3 +68,5 @@ home-loan-calculator
 retirement-withdrawal-calculator
 child-tax-credit-calculator
 salt-deduction-calculator
+rv-loan-calculator
+grad-plus-loan-calculator
