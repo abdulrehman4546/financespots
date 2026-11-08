@@ -12,7 +12,7 @@ function fs_tool_content_data_13() {
     'rv-loan-calculator' => [
         'focus'     => 'rv loan calculator',
         'secondary' => [ 'rv loan rates', 'rv financing', 'motorhome loan calculator', 'travel trailer loan', 'rv loan terms' ],
-        'title'     => 'RV Loan Calculator: Monthly Payment & Interest',
+        'title'     => 'RV Loan Calculator: Payment & Interest',
         'meta'      => 'Free RV loan calculator: estimate your monthly payment, total interest, and sales tax for a travel trailer, fifth wheel, or motorhome.',
         'excerpt'   => 'Estimate your monthly RV payment, total interest, and how a longer loan term changes the real cost of financing a travel trailer or motorhome.',
         'answer'    => 'An RV loan payment is calculated the same way as an auto loan: the amount financed (price minus down payment and trade-in, plus any rolled-in tax and fees) is amortized over the loan term at your interest rate. RV loans typically carry higher rates than auto loans, roughly 7-12% depending on credit and the RV\'s age, and can stretch out to 15 or even 20 years for larger motorhomes.',
@@ -52,7 +52,7 @@ function fs_tool_content_data_13() {
     'grad-plus-loan-calculator' => [
         'focus'     => 'grad plus loan calculator',
         'secondary' => [ 'grad plus loan interest rate', 'grad plus loan origination fee', 'graduate plus loan repayment', 'direct plus loan calculator', 'grad school loan calculator' ],
-        'title'     => 'Grad PLUS Loan Calculator: Payment & Origination Fee',
+        'title'     => 'Grad PLUS Loan Calculator (2026)',
         'meta'      => 'Free Grad PLUS loan calculator: see your net disbursement after the origination fee, monthly payment, and total interest on your federal graduate loan.',
         'excerpt'   => 'See how much you actually receive after the Grad PLUS origination fee, plus your estimated monthly payment and total interest.',
         'answer'    => 'A Direct Grad PLUS loan is a federal, credit-based loan for graduate and professional students that can cover the full cost of attendance minus other aid. It carries a fixed interest rate set annually by Congress and an origination fee deducted directly from the amount disbursed, so the amount you actually receive is less than the amount you borrow. Interest accrues from the day the loan is disbursed — there is no interest-free grace period.',

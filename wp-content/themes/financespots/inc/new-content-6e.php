@@ -29,7 +29,7 @@ function fs_new_content_guides_6e() {
     return [
     [
         'slug'       => 'used-car-loan-guide',
-        'title'      => 'Used Car Loan: Rates, Terms & How to Qualify (2026)',
+        'title'      => 'Used Car Loan Rates & How to Qualify (2026)',
         'keyword'    => 'used car loan',
         'desc'       => 'Used car loan rates run well above new car rates in 2026. See typical APRs by credit tier, loan terms, and how to qualify for the best rate.',
         'excerpt'    => 'Why used car loans cost more than new car loans, what rate you can realistically expect by credit tier, and how to avoid the longest, most expensive terms.',
@@ -72,7 +72,7 @@ function fs_new_content_guides_6e() {
     ],
     [
         'slug'       => 'usda-home-loan-guide',
-        'title'      => 'USDA Home Loan: Requirements & How It Works (2026)',
+        'title'      => 'USDA Home Loan Requirements (2026)',
         'keyword'    => 'usda home loan requirements',
         'desc'       => 'USDA loans offer 0% down financing for eligible rural and suburban buyers. See the 2026 guarantee fees, credit guidelines, and eligibility rules.',
         'excerpt'    => 'How the USDA guaranteed loan program works, what it actually costs in fees, and how to check whether your income and location qualify.',
