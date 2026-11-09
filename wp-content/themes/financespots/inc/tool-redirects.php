@@ -64,7 +64,8 @@ function fs_tool_redirect_map() {
 /** Tools with no matching calculator and no better target: keep reachable, ask Google not to index. */
 function fs_tool_noindex_slugs() {
     /* sales-tax, estate-tax, irs-penalty and gas-fee now have real calculators and content, so they are indexable again */
-    return [];
+    /* ai-financial-dashboard has no editorial content record (interactive-only page) */
+    return [ 'ai-financial-dashboard' ];
 }
 
 /* 301 to the replacement tool */

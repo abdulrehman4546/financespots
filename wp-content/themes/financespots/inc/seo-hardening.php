@@ -94,7 +94,7 @@ add_filter( 'rank_math/sitemap/entry', function ( $url, $type, $object ) {
     if ( ( 'post' === $type || 'page' === $type ) && isset( $object->post_name ) && ( in_array( $object->post_name, $redirected, true ) || 'pro-success' === $object->post_name ) ) {
         return false;
     }
-    if ( 'term' === $type && isset( $object->count ) && (int) $object->count === 0 ) {
+    if ( 'term' === $type && isset( $object->count ) && (int) $object->count < 3 ) {
         return false;
     }
     return $url;
@@ -311,5 +311,16 @@ add_filter( 'rank_math/json_ld', function ( $data ) {
 /* Tag archives are thin lists of the same posts: keep them out of search results */
 add_filter( 'rank_math/frontend/robots', function ( $robots ) {
     if ( is_tag() ) $robots['index'] = 'noindex';
+    return $robots;
+} );
+
+/* Category archives with very few posts read as thin/low-value: noindex until they grow */
+add_filter( 'rank_math/frontend/robots', function ( $robots ) {
+    if ( is_category() ) {
+        $term = get_queried_object();
+        if ( $term && isset( $term->count ) && $term->count < 3 ) {
+            $robots['index'] = 'noindex';
+        }
+    }
     return $robots;
 } );

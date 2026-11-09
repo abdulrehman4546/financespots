@@ -1995,7 +1995,7 @@ function fs_create_ai_dashboard_tool() {
         update_post_meta( $existing->ID, 'rank_math_title',       'AI Financial Dashboard 2026 | FinanceSpots' );
         update_post_meta( $existing->ID, 'rank_math_description', 'Free AI-powered financial dashboard 2026. Analyze budget, net worth, debt, investments, retirement & taxes in one place. All features work instantly.' );
         update_post_meta( $existing->ID, 'rank_math_focus_keyword', 'ai financial dashboard' );
-        update_post_meta( $existing->ID, 'rank_math_robots',      [ 'index', 'follow' ] );
+        update_post_meta( $existing->ID, 'rank_math_robots',      [ 'noindex', 'follow' ] );
         update_option( 'fs_ai_dashboard_tool_v1', true );
         return;
     }
@@ -2024,7 +2024,7 @@ function fs_create_ai_dashboard_tool() {
         update_post_meta( $post_id, 'rank_math_title',          'AI Financial Dashboard 2026 | FinanceSpots' );
         update_post_meta( $post_id, 'rank_math_description',    'Free AI-powered financial dashboard 2026. Analyze budget, net worth, debt, investments, retirement & taxes in one place. All features work instantly.' );
         update_post_meta( $post_id, 'rank_math_focus_keyword',  'ai financial dashboard' );
-        update_post_meta( $post_id, 'rank_math_robots',         [ 'index', 'follow' ] );
+        update_post_meta( $post_id, 'rank_math_robots',         [ 'noindex', 'follow' ] );
         if ( $cat_id ) {
             wp_set_post_terms( $post_id, [ $cat_id ], 'fs_tool_cat' );
         }

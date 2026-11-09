@@ -66,7 +66,7 @@ function fs_tool_content_data_5() {
     'inflation-calculator' => [
         'focus'     => 'inflation calculator',
         'secondary' => [ 'purchasing power calculator', 'value of money over time', 'future value with inflation', 'how inflation affects savings' ],
-        'title'     => 'Inflation Calculator: Future Cost and Purchasing Power',
+        'title'     => 'Inflation Calculator (2026)',
         'meta'      => 'Free inflation calculator: see what today’s money will cost in the future and how much purchasing power you lose at a given inflation rate.',
         'excerpt'   => 'See how inflation raises prices over time and how much your money’s buying power shrinks.',
         'answer'    => 'At 3.5% inflation for 20 years, something that costs $10,000 today would cost about $19,897.89. Put the other way, $10,000 would only buy what $5,025.66 buys today, a purchasing-power loss of about 49.7%.',
@@ -118,7 +118,7 @@ function fs_tool_content_data_5() {
     'break-even-calculator' => [
         'focus'     => 'break even calculator',
         'secondary' => [ 'break even point calculator', 'break even analysis', 'break even formula', 'contribution margin calculator' ],
-        'title'     => 'Break-Even Calculator: Units and Revenue to Cover Costs',
+        'title'     => 'Break-Even Calculator',
         'meta'      => 'Free break-even calculator: enter fixed costs, variable cost and price per unit to find the break-even units, revenue and contribution margin.',
         'excerpt'   => 'Find how many units you must sell, and how much revenue you need, before a product or business makes a profit.',
         'answer'    => 'With $10,000 of fixed costs, $25 variable cost and a $50 price per unit, the contribution margin is $25 a unit. You break even at 400 units, or $20,000 of revenue.',
