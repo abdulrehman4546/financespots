@@ -441,7 +441,7 @@ function fsDownloadPDF(){
     cards.forEach(function(c){
         var lbl = c.querySelector('.fsc-result-label');
         var val = c.querySelector('.fsc-result-value');
-        if(lbl && val && val.textContent.trim() !== 'â€"'){
+        if(lbl && val && val.textContent.trim() !== '--'){
             rows.push([lbl.textContent.trim(), val.textContent.trim()]);
         }
     });
