@@ -24,6 +24,26 @@ function fs_render_tool_quick_answer( $c ) {
     echo '<div class="fst-answer" id="quick-answer"><strong class="fst-answer__label">Quick answer</strong><p>' . esc_html( $c['answer'] ) . '</p></div>';
 }
 
+/**
+ * wp_kses_post() plus the small set of static SVG elements used for inline
+ * diagrams in tool content sections (no scripts, no event handlers, no hrefs).
+ */
+function fs_tool_kses( $html ) {
+    static $allowed = null;
+    if ( null === $allowed ) {
+        $shape   = [ 'fill' => true, 'stroke' => true, 'stroke-width' => true, 'stroke-dasharray' => true, 'opacity' => true, 'class' => true ];
+        $allowed = wp_kses_allowed_html( 'post' );
+        $allowed['svg']   = [ 'viewbox' => true, 'width' => true, 'height' => true, 'role' => true, 'aria-labelledby' => true, 'focusable' => true, 'class' => true, 'preserveaspectratio' => true ];
+        $allowed['title'] = [ 'id' => true ];
+        $allowed['desc']  = [ 'id' => true ];
+        $allowed['g']     = $shape + [ 'text-anchor' => true, 'font-size' => true, 'font-weight' => true ];
+        $allowed['rect']  = $shape + [ 'x' => true, 'y' => true, 'width' => true, 'height' => true, 'rx' => true ];
+        $allowed['line']  = $shape + [ 'x1' => true, 'y1' => true, 'x2' => true, 'y2' => true ];
+        $allowed['text']  = $shape + [ 'x' => true, 'y' => true, 'text-anchor' => true, 'font-size' => true, 'font-weight' => true ];
+    }
+    return wp_kses( $html, $allowed );
+}
+
 /** Full article-style content below the calculator. */
 function fs_render_tool_content( $c ) {
     $post_id = get_the_ID();
@@ -46,7 +66,7 @@ function fs_render_tool_content( $c ) {
 
     <?php foreach ( $c['sections'] as $sec ) : ?>
       <h2><?php echo esc_html( $sec[0] ); ?></h2>
-      <?php echo wp_kses_post( $sec[1] ); ?>
+      <?php echo fs_tool_kses( $sec[1] ); ?>
     <?php endforeach; ?>
 
     <h2>Key terms</h2>
