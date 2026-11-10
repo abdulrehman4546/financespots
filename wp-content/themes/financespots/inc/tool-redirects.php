@@ -81,6 +81,39 @@ add_action( 'template_redirect', function () {
     }
 }, 1 );
 
+/* 301 for old URLs that 404 outright: legacy /tools/ (plural) paths, and
+   consolidated old slugs that never had their own post (so the hook above,
+   which requires is_singular('fs_tool'), never runs for them). Google's
+   Search Console flagged these as real 404s from old inbound links. */
+add_action( 'template_redirect', function () {
+    if ( ! is_404() ) return;
+    $path = trim( (string) parse_url( $_SERVER['REQUEST_URI'] ?? '', PHP_URL_PATH ), '/' );
+    $parts = explode( '/', $path );
+    if ( count( $parts ) < 2 || ! in_array( $parts[0], [ 'tool', 'tools' ], true ) ) return;
+    $slug = sanitize_title( $parts[1] );
+
+    $target_slug = null;
+    $map = fs_tool_redirect_map();
+    if ( isset( $map[ $slug ] ) ) {
+        $target_slug = $map[ $slug ];
+    } elseif ( get_page_by_path( $slug, OBJECT, 'fs_tool' ) ) {
+        $target_slug = $slug; /* real tool, just hit via the old /tools/ (plural) prefix */
+    } else {
+        /* old slugs with no 1:1 current tool but a clear closest match */
+        $aliases = [
+            'dividend-reinvestment-calculator' => 'dividend-calculator',
+            'investment-return-calculator'     => 'roi-calculator',
+        ];
+        if ( isset( $aliases[ $slug ] ) ) $target_slug = $aliases[ $slug ];
+    }
+    if ( ! $target_slug ) return;
+    $target = get_page_by_path( $target_slug, OBJECT, 'fs_tool' );
+    if ( $target && 'publish' === $target->post_status ) {
+        wp_safe_redirect( get_permalink( $target ), 301 );
+        exit;
+    }
+}, 0 );
+
 /* IDs of redirected tools (cached per request) */
 function fs_redirected_tool_ids() {
     static $ids = null;
