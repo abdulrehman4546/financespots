@@ -355,10 +355,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--primary"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.4 6.5L21 11l-6.6 2.5L12 20l-2.4-6.5L3 11l6.6-2.5z"/></svg> <?php esc_html_e( 'Why FinanceSpots', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="features-heading">
-                <?php esc_html_e( 'Built Different. Built Better.', 'financespots' ); ?>
+                <?php esc_html_e( 'Free Financial Calculators Built on Real Formulas', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'Free calculators with the formula, a worked example and the sources shown, so you can check every result.', 'financespots' ); ?>
+                <?php esc_html_e( 'Every interest rate calculator, loan calculator and retirement calculator on this site shows its formula, a worked example and the source, so you can check every result yourself.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -385,10 +385,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <?php printf( esc_html__( '%d+ Tools Available', 'financespots' ), wp_count_posts('fs_tool')->publish ); ?></span>
             <h2 class="fs-section-title" id="categories-heading">
-                <?php esc_html_e( 'Explore by Category', 'financespots' ); ?>
+                <?php esc_html_e( 'Explore Financial Calculators by Category', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'Every financial tool you\'ll ever need, organized for instant discovery.', 'financespots' ); ?>
+                <?php esc_html_e( 'Loan calculators, tax calculators, retirement calculators and more, organized so you can find the right one fast.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -467,10 +467,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> <?php esc_html_e( 'Top Rated', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="tools-heading">
-                <?php esc_html_e( 'Most Popular Tools', 'financespots' ); ?>
+                <?php esc_html_e( 'Most Popular Financial Calculators', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'The finance tools our users love most -- handpicked, expert-verified, and AI-enhanced.', 'financespots' ); ?>
+                <?php esc_html_e( 'The mortgage calculator, retirement calculator and loan calculator our users reach for most -- handpicked, expert-verified, and AI-enhanced.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -533,10 +533,10 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M9 20l-6 2V6l6-2 6 2 6-2v16l-6 2-6-2z"/><path d="M9 4v16M15 6v16"/></svg> <?php esc_html_e( 'Simple Process', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="hiw-heading">
-                <?php esc_html_e( 'How FinanceSpots Works', 'financespots' ); ?>
+                <?php esc_html_e( 'How Our Financial Calculators Work', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'Get professional-grade financial insights in four simple steps.', 'financespots' ); ?>
+                <?php esc_html_e( 'Pick a calculator, enter your numbers and get a professional-grade result in four simple steps -- no signup required.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -725,10 +725,10 @@ if ( $blog_query->have_posts() ) :
         <div class="fs-section-header" data-animate="fade-up">
             <span class="fs-badge fs-badge--secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 013 3L7 19l-4 1 1-4z"/></svg> <?php esc_html_e( 'Finance Insights', 'financespots' ); ?></span>
             <h2 class="fs-section-title" id="blog-heading">
-                <?php esc_html_e( 'Latest from the Blog', 'financespots' ); ?>
+                <?php esc_html_e( 'Latest Personal Finance Guides & Tips', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'Expert analysis, tips, and guides to help you make smarter money moves.', 'financespots' ); ?>
+                <?php esc_html_e( 'Loan, tax, retirement and crypto guides with sources you can check, to help you make smarter money moves.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -799,6 +799,9 @@ if ( $blog_query->have_posts() ) :
             <a href="<?php echo esc_url(home_url('/tool/income-tax-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF7ED;border:1px solid #FED7AA;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#C2410C;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M6 2h12v20l-3-2-3 2-3-2-3 2z"/><path d="M9 7h6M9 11h6"/></svg> Tax Calculator</a>
             <a href="<?php echo esc_url(home_url('/tool/monthly-budget-planner/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0F9FF;border:1px solid #BAE6FD;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0369A1;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="6" y="4" width="12" height="18" rx="2"/><path d="M9 2h6v4H9z"/><path d="M9 11h6M9 15h6"/></svg> Budget Planner</a>
             <a href="<?php echo esc_url(home_url('/tool/loan-payoff-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FFF1F2;border:1px solid #FECDD3;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#BE123C;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Debt Payoff Tool</a>
+            <a href="<?php echo esc_url(home_url('/tool/loan-affordability-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F7FEE7;border:1px solid #D9F99D;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#4D7C0F;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><path d="M3 11l9-8 9 8"/><path d="M5 10v10h14V10"/></svg> How Much House Can I Afford</a>
+            <a href="<?php echo esc_url(home_url('/tool/debt-consolidation-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#FDF4FF;border:1px solid #F0ABFC;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#A21CAF;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><rect x="2" y="5" width="20" height="14" rx="2"/><path d="M2 10h20"/></svg> Debt Consolidation Calculator</a>
+            <a href="<?php echo esc_url(home_url('/tool/auto-loan-calculator/')); ?>" style="display:inline-flex;align-items:center;gap:.35rem;background:#F0FDFA;border:1px solid #99F6E4;border-radius:8px;padding:.5rem .9rem;font-size:.83rem;font-weight:600;color:#0F766E;text-decoration:none;"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="14" height="14" style="vertical-align:-2px" aria-hidden="true"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.5"/></svg> Auto Loan Calculator</a>
         </div>
     </div>
 </section>
