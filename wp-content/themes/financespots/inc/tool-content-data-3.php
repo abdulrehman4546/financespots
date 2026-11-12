@@ -62,7 +62,7 @@ function fs_tool_content_data_3() {
     /* ───────────────────────── LOAN AFFORDABILITY ───────────────────────── */
     'loan-affordability-calculator' => [
         'focus'     => 'loan affordability calculator',
-        'secondary' => [ 'how much house can i afford calculator', 'how much house can i afford with my salary', 'home loan affordability calculator', 'how much can i borrow', 'debt-to-income loan calculator', 'how much house do i qualify for' ],
+        'secondary' => [ 'how much house can i afford calculator', 'home price mortgage calculator', 'how much house can i afford with my salary', 'home loan affordability calculator', 'how much can i borrow', 'mortgage checker how much can i borrow', 'how much house do i qualify for' ],
         'title'     => 'Loan Affordability Calculator by DTI',
         'meta'      => 'Free calculator: how much house can you afford? Find the most you can borrow from your income, debts and a DTI limit, including mortgage tax and insurance.',
         'excerpt'   => 'Find the largest loan or house you can afford from your income, existing debts and a debt-to-income limit.',
@@ -99,6 +99,7 @@ function fs_tool_content_data_3() {
             [ 'How much house can I afford with a $150k salary?', 'Using the 28% housing-payment guideline at a 7% rate over 30 years, a $150,000 salary supports a housing budget of about $3,500 a month, which translates to roughly a $526,000 loan before your down payment, property tax and insurance are factored in. Enter your real numbers above for an exact figure.' ],
             [ 'How much house can I afford with a $120k salary?', 'At the same 28% guideline and 7% rate, a $120,000 salary supports about $2,800 a month in housing costs, or roughly a $421,000 loan before taxes, insurance and your down payment.' ],
             [ 'How much house can I afford with a $100k salary?', 'At 28% of gross income and a 7% rate, a $100,000 salary supports about $2,333 a month in housing costs, or roughly a $350,000 loan before taxes, insurance and your down payment.' ],
+            [ 'How do I find the home price a mortgage checker says I can borrow?', 'Add your down payment to the maximum loan amount this calculator gives you. For example, a $350,000 loan plus a $40,000 down payment supports a roughly $390,000 home price before closing costs.' ],
         ],
         'sources'   => [
             [ 'CFPB: What is a debt-to-income ratio?', 'https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-why-is-the-43-debt-to-income-ratio-important-en-1791/' ],
