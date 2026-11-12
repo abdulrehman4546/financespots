@@ -136,14 +136,20 @@ function fs_tool_content_faq_schema( $c ) {
  */
 function fs_apply_tool_content_seo() {
     $all  = fs_tool_content_data();
-    $hash = md5( wp_json_encode( $all ) );
+    /* Bump this salt whenever the title/meta-building LOGIC below changes
+       (not just the data array), so cached postmeta gets regenerated. */
+    $logic_version = 'v2-60char-title-cap';
+    $hash = md5( $logic_version . wp_json_encode( $all ) );
     if ( get_option( 'fs_tool_content_seo_hash' ) === $hash ) return;
 
     foreach ( $all as $slug => $c ) {
         $post = get_page_by_path( $slug, OBJECT, 'fs_tool' );
         if ( ! $post ) continue;
         $id    = $post->ID;
-        $title = $c['title'] . ' | FinanceSpots';
+        /* Keep the visible title at 60 chars or less. Only add the brand
+           suffix if the body already leaves room for it; a 55-60 char
+           keyword-rich body on its own is worth more than a clipped one. */
+        $title = ( mb_strlen( $c['title'] ) <= 45 ) ? $c['title'] . ' | FinanceSpots' : $c['title'];
         $kw    = implode( ',', array_slice( array_merge( [ $c['focus'] ], $c['secondary'] ), 0, 5 ) );
         update_post_meta( $id, 'rank_math_title', $title );
         update_post_meta( $id, 'rank_math_description', $c['meta'] );
