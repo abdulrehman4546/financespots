@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.6.1' );
+define( 'FINANCESPOTS_VERSION', '1.6.2' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -4737,6 +4737,24 @@ add_action( 'init', function () {
         update_post_meta( $post->ID, 'rank_math_og_description', 'Save $10K in 6 months at $1,667 a month ($385/week). See where the money comes from, a month-by-month schedule, and where to keep it.' );
     }
     update_option( 'fs_save10k_seo_v1', true );
+}, 50 );
+
+/* One-off: the credit score guide was rewritten (rapid rescore, rent
+   reporting, exact dispute timeline, custom SVG infographics replacing
+   stock photos), but rank_math_* meta isn't REST-exposed, so set it
+   directly here once. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_credit209_seo_v1' ) ) return;
+    $post = get_page_by_path( 'how-to-improve-credit-score-fast-2026', OBJECT, 'post' );
+    if ( $post ) {
+        $title = 'How to Improve Your Credit Score Fast: 9 Proven Strategies';
+        $desc  = 'Pay utilization under 10% for a 50-80 point gain in 30-45 days. See the exact timeline, dispute process, rapid rescore trick, and 9 strategies that actually move your score.';
+        update_post_meta( $post->ID, 'rank_math_title',          $title );
+        update_post_meta( $post->ID, 'rank_math_description',    $desc );
+        update_post_meta( $post->ID, 'rank_math_og_title',       $title );
+        update_post_meta( $post->ID, 'rank_math_og_description', $desc );
+    }
+    update_option( 'fs_credit209_seo_v1', true );
 }, 50 );
 
 /* Preload the two main font files so text renders sooner */
