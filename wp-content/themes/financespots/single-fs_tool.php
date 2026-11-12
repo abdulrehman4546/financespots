@@ -80,6 +80,12 @@ while ( have_posts() ) : the_post();
     </div>
 </section>
 
+<?php $fs_content = fs_tool_content_for( get_the_ID() ); if ( $fs_content ) : ?>
+<section class="container" style="padding-top:1.25rem">
+    <?php fs_render_tool_quick_answer( $fs_content ); ?>
+</section>
+<?php endif; ?>
+
 <section class="fst-tool-body section">
     <div class="container">
         <div class="fst-tool-layout">
@@ -105,7 +111,6 @@ while ( have_posts() ) : the_post();
                         </div>
                     </div>
                 </div>
-            <?php $fs_content = fs_tool_content_for( get_the_ID() ); if ( $fs_content ) fs_render_tool_quick_answer( $fs_content ); ?>
             </div>
 
             <!-- Sidebar -->

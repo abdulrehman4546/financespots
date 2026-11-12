@@ -18,7 +18,7 @@ function fs_tool_content_for( $post_id = null ) {
     return $all[ $post->post_name ] ?? null;
 }
 
-/** Short direct answer, shown right under the calculator (AEO). */
+/** Short direct answer, shown right under the H1, before the calculator (AEO/GEO: the answer a crawler or AI Overview sees first). */
 function fs_render_tool_quick_answer( $c ) {
     if ( empty( $c['answer'] ) ) return;
     echo '<div class="fst-answer" id="quick-answer"><strong class="fst-answer__label">Quick answer</strong><p>' . esc_html( $c['answer'] ) . '</p></div>';
