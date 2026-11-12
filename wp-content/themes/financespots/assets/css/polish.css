@@ -45,8 +45,7 @@
     -webkit-text-fill-color: transparent; color: transparent;
 }
 .fsc-result-card--primary .fsc-result-value {
-    background: var(--fs-grad); -webkit-background-clip: text; background-clip: text;
-    -webkit-text-fill-color: transparent; color: transparent;
+    color: #00A87E;
 }
 .fs-logo-word--accent { background: var(--fs-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
