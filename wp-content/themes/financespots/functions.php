@@ -1646,24 +1646,21 @@ add_action( 'init',       'fs_loan_tools_seo', 45 );
    MAIN PAGES SEO -- Homepage, About, Pricing, Tools, Blog
    ========================================================= */
 function fs_main_pages_seo() {
-    if ( get_option( 'fs_main_pages_seo_v2' ) ) return;
+    if ( get_option( 'fs_main_pages_seo_v3' ) ) return;
 
     $pages = [
         // slug => [ title, description, focus_keyword ]
-        ''           => [
-            'title' => 'Free Financial Calculators & Tools 2026 | FinanceSpots',
-            'desc'  => 'FinanceSpots offers 55+ free financial calculators for mortgages, VA loans, taxes, investments, retirement, crypto & more. Instant results with PDF export. No signup needed.',
-            'kw'    => 'free financial calculators',
-        ],
+        // Note: '' (homepage) is intentionally not listed here -- inc/homepage-seo.php
+        // owns the homepage's title/description so the two don't fight each other.
         'all-tools'  => [
-            'title' => 'All Financial Tools & Calculators 2026 | FinanceSpots',
-            'desc'  => 'Browse 55+ free finance tools: mortgage calculators, investment analyzers, tax estimators, retirement planners, crypto tools and more. Built for US investors & homebuyers.',
+            'title' => 'All Financial Tools & Calculators | FinanceSpots',
+            'desc'  => 'Browse 70+ free finance tools: mortgage calculators, investment analyzers, tax estimators, retirement planners, crypto tools and more. Built for US investors & homebuyers.',
             'kw'    => 'financial tools online',
         ],
         'blog'       => [
-            'title' => 'Personal Finance Blog 2026 -- Tips, Guides & Insights | FinanceSpots',
+            'title' => 'Personal Finance Blog -- Tips, Guides & Insights | FinanceSpots',
             'desc'  => 'Expert personal finance tips, mortgage guides, investment strategies, tax advice and money-saving insights. Weekly updates from the FinanceSpots team.',
-            'kw'    => 'personal finance tips 2026',
+            'kw'    => 'personal finance tips',
         ],
         'about'      => [
             'title' => 'About FinanceSpots -- Free Finance Tools Built for Everyone',
@@ -1676,7 +1673,7 @@ function fs_main_pages_seo() {
             'kw'    => 'contact financespots',
         ],
         'pricing'    => [
-            'title' => 'FinanceSpots PRO Plans & Pricing 2026 -- Upgrade for $9/mo',
+            'title' => 'FinanceSpots PRO Plans & Pricing -- Upgrade for $9/mo',
             'desc'  => 'Upgrade to FinanceSpots PRO for unlimited calculation history, PDF exports, advanced mortgage scenarios, portfolio tracker and ad-free experience. Start at $9/month.',
             'kw'    => 'financial calculator pro plan',
         ],
@@ -1690,7 +1687,7 @@ function fs_main_pages_seo() {
         // showing an unrelated site's title/description). See SEO audit notes.
         'privacy-policy' => [
             'title' => 'FinanceSpots Privacy Policy: How We Protect Your Data',
-            'desc'  => 'Read how FinanceSpots collects, uses, and protects your personal information when you use our 55+ free financial calculators and tools.',
+            'desc'  => 'Read how FinanceSpots collects, uses, and protects your personal information when you use our 70+ free financial calculators and tools.',
             'kw'    => 'financespots privacy policy',
         ],
         'terms-of-service' => [
@@ -1721,9 +1718,10 @@ function fs_main_pages_seo() {
         update_post_meta( $page_id, 'rank_math_og_description',$seo['desc'] );
     }
 
-    update_option( 'fs_main_pages_seo_v2', true );
+    update_option( 'fs_main_pages_seo_v3', true );
 }
 add_action( 'admin_init', 'fs_main_pages_seo', 20 );
+add_action( 'init',       'fs_main_pages_seo', 45 );
 add_action( 'init',       'fs_main_pages_seo', 40 );
 
 /* =========================================================
