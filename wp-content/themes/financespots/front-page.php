@@ -709,46 +709,75 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
 <!-- ============================================================
      SECTION 8.5: FINANCIAL CALCULATORS BY TOPIC (full internal link index)
      ============================================================ -->
-<section class="container" style="padding:2.5rem 0 1rem;">
-    <h2 style="font-size:1.5rem;font-weight:800;color:#0F172A;margin:0 0 1.25rem;text-align:center;">Financial Calculators by Topic</h2>
-    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem;">
-        <?php
-        $fs_topic_cats = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true ] );
-        if ( ! is_wp_error( $fs_topic_cats ) ) :
-            foreach ( $fs_topic_cats as $fs_cat ) :
-                $fs_tools_in_cat = get_posts( [
-                    'post_type'      => 'fs_tool',
-                    'posts_per_page' => -1,
-                    'post_status'    => 'publish',
-                    'orderby'        => 'title',
-                    'order'          => 'ASC',
-                    'tax_query'      => [ [ 'taxonomy' => 'fs_tool_cat', 'field' => 'term_id', 'terms' => $fs_cat->term_id ] ],
-                ] );
-                if ( empty( $fs_tools_in_cat ) ) continue;
-        ?>
-        <div>
-            <h3 style="font-size:1rem;font-weight:700;color:#0F172A;margin:0 0 .6rem;"><?php echo esc_html( $fs_cat->name ); ?> <span style="font-weight:500;color:#94A3B8;font-size:.85rem;">(<?php echo (int) count( $fs_tools_in_cat ); ?>)</span></h3>
-            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem;">
-                <?php foreach ( $fs_tools_in_cat as $fs_t ) : ?>
-                <li><a href="<?php echo esc_url( get_permalink( $fs_t ) ); ?>" style="font-size:.86rem;color:#475569;text-decoration:none;"><?php echo esc_html( get_the_title( $fs_t ) ); ?></a></li>
-                <?php endforeach; ?>
-            </ul>
+<section class="fs-features" id="topic-index" aria-labelledby="topic-index-heading">
+    <div class="container">
+        <div class="fs-section-header" data-animate="fade-up">
+            <span class="fs-badge fs-badge--secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg> <?php esc_html_e( 'Full Index', 'financespots' ); ?></span>
+            <h2 class="fs-section-title" id="topic-index-heading">
+                <?php esc_html_e( 'Financial Calculators by Topic', 'financespots' ); ?>
+            </h2>
+            <p class="fs-section-desc">
+                <?php esc_html_e( 'Every calculator on FinanceSpots, grouped by topic so you can jump straight to the one you need.', 'financespots' ); ?>
+            </p>
         </div>
-        <?php
-            endforeach;
-        endif;
-        ?>
+
+        <div class="fs-features__grid">
+            <?php
+            $fs_topic_cats = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true ] );
+            if ( ! is_wp_error( $fs_topic_cats ) ) :
+                foreach ( $fs_topic_cats as $fs_cat ) :
+                    $fs_tools_in_cat = get_posts( [
+                        'post_type'      => 'fs_tool',
+                        'posts_per_page' => -1,
+                        'post_status'    => 'publish',
+                        'orderby'        => 'title',
+                        'order'          => 'ASC',
+                        'tax_query'      => [ [ 'taxonomy' => 'fs_tool_cat', 'field' => 'term_id', 'terms' => $fs_cat->term_id ] ],
+                    ] );
+                    if ( empty( $fs_tools_in_cat ) ) continue;
+            ?>
+            <article class="fs-feature-card">
+                <h3 class="fs-feature-card__title" style="display:flex;align-items:center;justify-content:space-between;">
+                    <?php echo esc_html( $fs_cat->name ); ?>
+                    <span style="font-size:.78rem;font-weight:600;color:var(--fs-text-muted);background:var(--fs-bg,#F1F5F9);border-radius:999px;padding:2px 10px;"><?php echo (int) count( $fs_tools_in_cat ); ?></span>
+                </h3>
+                <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.55rem;">
+                    <?php foreach ( $fs_tools_in_cat as $fs_t ) : ?>
+                    <li><a href="<?php echo esc_url( get_permalink( $fs_t ) ); ?>" style="font-size:.88rem;font-weight:500;color:var(--fs-text-muted);text-decoration:none;transition:color .2s;" onmouseover="this.style.color='var(--fs-primary-dark,#059669)'" onmouseout="this.style.color='var(--fs-text-muted)'"><?php echo esc_html( get_the_title( $fs_t ) ); ?></a></li>
+                    <?php endforeach; ?>
+                </ul>
+            </article>
+            <?php
+                endforeach;
+            endif;
+            ?>
+        </div>
     </div>
 </section>
 
 <!-- ============================================================
      SECTION 8.6: ABOUT FINANCESPOTS (homepage intro copy)
      ============================================================ -->
-<section class="container" style="padding:2.5rem 0 1rem;max-width:820px;margin-left:auto;margin-right:auto;">
-    <h2 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin:0 0 .75rem;">About FinanceSpots</h2>
-    <p style="font-size:.95rem;line-height:1.7;color:#475569;">
-        FinanceSpots is a free library of <?php echo (int) wp_count_posts( 'fs_tool' )->publish; ?>+ financial calculators covering mortgages, auto and personal loans, federal income tax, retirement planning and cryptocurrency, built for U.S. filers and borrowers. Every calculator shows its formula and a worked example, and the tax, loan and retirement figures are checked against primary sources such as the IRS, the CFPB and the Federal Reserve. There is no sign-up and no cost to use any tool. If you spot a figure that looks wrong, <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" style="color:#10B981;">let us know</a> -- see our <a href="<?php echo esc_url( home_url( '/editorial-policy/' ) ); ?>" style="color:#10B981;">editorial policy</a> for how we fact-check and correct our content.
-    </p>
+<section class="fs-features" id="about-home" aria-labelledby="about-home-heading" style="background:var(--fs-card-bg,#fff);">
+    <div class="container" style="max-width:780px;">
+        <div class="fs-section-header" data-animate="fade-up" style="margin-bottom:24px;">
+            <span class="fs-badge fs-badge--primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="13" height="13" style="vertical-align:-2px"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg> <?php esc_html_e( 'About Us', 'financespots' ); ?></span>
+            <h2 class="fs-section-title" id="about-home-heading" style="font-size:clamp(1.5rem,2.8vw,2rem);">
+                <?php esc_html_e( 'About FinanceSpots', 'financespots' ); ?>
+            </h2>
+        </div>
+        <p class="fs-section-desc" style="max-width:100%;text-align:left;margin:0 auto;">
+            <?php printf(
+                esc_html__( 'FinanceSpots is a free library of %d+ financial calculators covering mortgages, auto and personal loans, federal income tax, retirement planning and cryptocurrency, built for U.S. filers and borrowers. Every calculator shows its formula and a worked example, and the tax, loan and retirement figures are checked against primary sources such as the IRS, the CFPB and the Federal Reserve. There is no sign-up and no cost to use any tool.', 'financespots' ),
+                (int) wp_count_posts( 'fs_tool' )->publish
+            ); ?>
+            <?php printf(
+                wp_kses_post( __( 'If you spot a figure that looks wrong, <a href="%1$s" style="color:var(--fs-primary-dark,#059669);font-weight:600;">let us know</a> -- see our <a href="%2$s" style="color:var(--fs-primary-dark,#059669);font-weight:600;">editorial policy</a> for how we fact-check and correct our content.', 'financespots' ) ),
+                esc_url( home_url( '/contact/' ) ),
+                esc_url( home_url( '/editorial-policy/' ) )
+            ); ?>
+        </p>
+    </div>
 </section>
 
 <!-- ============================================================
@@ -763,18 +792,32 @@ $fs_home_faqs = [
     [ 'How often are the tax and rate figures updated?', 'Tax brackets, contribution limits and similar figures are updated for each new tax year as the IRS and other agencies publish them. Market rates shown as examples are illustrative and not live rate quotes.' ],
 ];
 ?>
-<section class="container" style="padding:1rem 0 2.5rem;max-width:820px;margin-left:auto;margin-right:auto;">
-    <h2 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin:0 0 1rem;">Frequently Asked Questions</h2>
-    <div itemscope itemtype="https://schema.org/FAQPage">
-        <?php foreach ( $fs_home_faqs as $fs_faq ) : ?>
-        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #E2E8F0;">
-            <h3 itemprop="name" style="font-size:.95rem;font-weight:700;color:#0F172A;margin:0 0 .4rem;"><?php echo esc_html( $fs_faq[0] ); ?></h3>
-            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
-                <p itemprop="text" style="font-size:.88rem;color:#475569;margin:0;line-height:1.6;"><?php echo esc_html( $fs_faq[1] ); ?></p>
-            </div>
+<style>
+#faq-home summary{outline:none}
+#faq-home summary::-webkit-details-marker{display:none}
+#faq-home summary::after{content:'+';float:right;font-size:1.3rem;font-weight:400;color:var(--fs-text-muted);transition:transform .2s}
+#faq-home details[open] summary::after{transform:rotate(45deg)}
+</style>
+<section class="fs-features" id="faq-home" aria-labelledby="faq-home-heading">
+    <div class="container" style="max-width:780px;">
+        <div class="fs-section-header" data-animate="fade-up" style="margin-bottom:24px;">
+            <span class="fs-badge fs-badge--gold"><svg viewBox="0 0 24 24" fill="currentColor" width="13" height="13" style="vertical-align:-2px"><path d="M12 2l2.9 6.3 6.9.8-5.1 4.8 1.4 6.8L12 17.5l-6.1 3.2 1.4-6.8-5.1-4.8 6.9-.8z"/></svg> <?php esc_html_e( 'FAQ', 'financespots' ); ?></span>
+            <h2 class="fs-section-title" id="faq-home-heading" style="font-size:clamp(1.5rem,2.8vw,2rem);">
+                <?php esc_html_e( 'Frequently Asked Questions', 'financespots' ); ?>
+            </h2>
         </div>
-        <?php endforeach; ?>
-    </div>
+        <div itemscope itemtype="https://schema.org/FAQPage" style="display:flex;flex-direction:column;gap:14px;">
+            <?php foreach ( $fs_home_faqs as $fs_faq ) : ?>
+            <details itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" class="fs-feature-card" style="padding:18px 24px;cursor:pointer;">
+                <summary itemprop="name" style="font-size:1rem;font-weight:700;color:inherit;list-style:none;">
+                    <?php echo esc_html( $fs_faq[0] ); ?>
+                </summary>
+                <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                    <p itemprop="text" class="fs-feature-card__desc" style="margin:12px 0 0;"><?php echo esc_html( $fs_faq[1] ); ?></p>
+                </div>
+            </details>
+            <?php endforeach; ?>
+        </div>
 </section>
 
 <!-- ============================================================
