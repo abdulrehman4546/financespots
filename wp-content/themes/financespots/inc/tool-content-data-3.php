@@ -62,10 +62,10 @@ function fs_tool_content_data_3() {
     /* ───────────────────────── LOAN AFFORDABILITY ───────────────────────── */
     'loan-affordability-calculator' => [
         'focus'     => 'loan affordability calculator',
-        'secondary' => [ 'how much loan can I afford', 'how much can I borrow', 'debt-to-income loan calculator', 'maximum loan amount calculator', 'how much house can I afford' ],
+        'secondary' => [ 'how much house can i afford calculator', 'how much house can i afford with my salary', 'home loan affordability calculator', 'how much can i borrow', 'debt-to-income loan calculator', 'how much house do i qualify for' ],
         'title'     => 'Loan Affordability Calculator by DTI',
-        'meta'      => 'Free loan affordability calculator: find the most you can borrow from your income, debts and a DTI limit, including mortgage tax and insurance.',
-        'excerpt'   => 'Find the largest loan you can afford from your income, existing debts and a debt-to-income limit.',
+        'meta'      => 'Free calculator: how much house can you afford? Find the most you can borrow from your income, debts and a DTI limit, including mortgage tax and insurance.',
+        'excerpt'   => 'Find the largest loan or house you can afford from your income, existing debts and a debt-to-income limit.',
         'answer'    => 'With $7,500 of gross monthly income, $600 of existing debt payments and a 36% debt-to-income limit, you can add up to $2,100 a month in new payments. At 7% over 30 years that supports a loan of about $315,646. At a 43% limit it rises to about $394,557, but stretching leaves less room for emergencies.',
         'steps'     => [
             'Enter your gross (before-tax) monthly income.',
@@ -81,6 +81,7 @@ function fs_tool_content_data_3() {
             [ 'Affordable is not the same as approved', '<p>A lender may approve more than you can comfortably repay. Your own budget includes costs the DTI ratio ignores: taxes, groceries, childcare, insurance, savings. Use the 28% figure as a comfortable payment and the 36% or 43% figure as a ceiling.</p>' ],
             [ 'How to borrow more safely', '<ul><li>Pay down credit card balances and car loans to free room in your DTI.</li><li>Make a larger down payment to reduce the loan and the payment.</li><li>Improve your credit score to qualify for a lower rate, which raises the loan a given payment supports.</li><li>Choose a longer term only if you can handle the extra interest.</li></ul>' ],
             [ 'Buying a home: include taxes and insurance', '<p>For a mortgage, property tax and homeowners insurance count toward your housing payment. Enter them so the calculator subtracts them before sizing the loan. Our mortgage calculator then shows the full payment, including PMI.</p>' ],
+            [ 'How much house can I afford by salary?', '<p>A common starting point is the 28% rule: keep your housing payment at or below 28% of gross monthly income. At a 7% rate over 30 years, here is roughly how much home loan that supports (principal and interest only — property tax, insurance and any down payment change the final number, so treat these as a starting estimate, not a quote):</p><table><thead><tr><th>Annual salary</th><th>28% monthly housing budget</th><th>Approximate loan supported</th></tr></thead><tbody><tr><td>$100,000</td><td>$2,333</td><td>~$350,000</td></tr><tr><td>$120,000</td><td>$2,800</td><td>~$421,000</td></tr><tr><td>$150,000</td><td>$3,500</td><td>~$526,000</td></tr></tbody></table><p>Add your actual down payment to the loan amount to get the home price you can afford, and enter your real property tax and insurance estimate in the calculator above for a precise number — these are simplified starting figures, not a lender\'s quote.</p>' ],
         ],
         'terms'     => [
             [ 'DTI', 'Debt-to-income ratio: monthly debt payments divided by gross monthly income.' ],
@@ -95,6 +96,9 @@ function fs_tool_content_data_3() {
             [ 'Does a longer term let me borrow more?', 'Yes, because the payment is spread out, but you pay much more interest in total. The calculator shows the total interest.' ],
             [ 'How can I qualify for a bigger loan?', 'Lower existing debts, raise income, increase your down payment or improve your credit for a lower rate.' ],
             [ 'Does this work for car and personal loans?', 'Yes. Leave tax and insurance at 0 and choose the loan term, such as 5 years for a car.' ],
+            [ 'How much house can I afford with a $150k salary?', 'Using the 28% housing-payment guideline at a 7% rate over 30 years, a $150,000 salary supports a housing budget of about $3,500 a month, which translates to roughly a $526,000 loan before your down payment, property tax and insurance are factored in. Enter your real numbers above for an exact figure.' ],
+            [ 'How much house can I afford with a $120k salary?', 'At the same 28% guideline and 7% rate, a $120,000 salary supports about $2,800 a month in housing costs, or roughly a $421,000 loan before taxes, insurance and your down payment.' ],
+            [ 'How much house can I afford with a $100k salary?', 'At 28% of gross income and a 7% rate, a $100,000 salary supports about $2,333 a month in housing costs, or roughly a $350,000 loan before taxes, insurance and your down payment.' ],
         ],
         'sources'   => [
             [ 'CFPB: What is a debt-to-income ratio?', 'https://www.consumerfinance.gov/ask-cfpb/what-is-a-debt-to-income-ratio-why-is-the-43-debt-to-income-ratio-important-en-1791/' ],
