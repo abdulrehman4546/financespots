@@ -3515,6 +3515,7 @@ require_once get_template_directory() . '/inc/pro-system.php';
 
 /* ── PRO Tools Gate ── */
 require_once get_template_directory() . '/inc/pro-tools-gate.php';
+require_once get_template_directory() . '/inc/homepage-seo.php';
 
 /* =========================================================
    GOOGLE ADSENSE + COOKIE CONSENT + SEO

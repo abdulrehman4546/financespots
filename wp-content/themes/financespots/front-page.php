@@ -38,32 +38,32 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <div class="fs-hero__badge" role="note">
                     <span class="fs-hero__badge-pulse" aria-hidden="true"></span>
                     <span class="fs-hero__badge-text">
-                        <?php echo fs_mod( 'fs_hero_badge', 'AI-POWERED FINANCE PLATFORM 2026' ); ?>
+                        <?php echo fs_mod( 'fs_hero_badge', 'AI-POWERED FINANCE PLATFORM' ); ?>
                     </span>
                 </div>
 
                 <!-- Main Headline -->
                 <h1 class="fs-hero__title" id="hero-heading">
                     <span class="fs-hero__title-line fs-hero__title-line--white">
-                        <?php echo fs_mod( 'fs_hero_title_1', 'Smart Financial' ); ?>
+                        <?php echo fs_mod( 'fs_hero_title_1', 'Free Financial' ); ?>
                     </span>
                     <span class="fs-hero__title-line fs-hero__title-line--white">
-                        <?php echo fs_mod( 'fs_hero_title_2', 'Tools' ); ?>
+                        <?php echo fs_mod( 'fs_hero_title_2', 'Calculators' ); ?>
                     </span>
                     <span class="fs-hero__title-line fs-hero__title-line--mixed">
                         <?php esc_html_e( 'for', 'financespots' ); ?>
                         <span class="fs-hero__title-accent">
-                            <?php echo fs_mod( 'fs_hero_title_3', 'Intelligent' ); ?>
+                            <?php echo fs_mod( 'fs_hero_title_3', 'Smarter' ); ?>
                         </span>
                     </span>
                     <span class="fs-hero__title-line fs-hero__title-line--white">
-                        <?php echo fs_mod( 'fs_hero_title_4', 'Investing' ); ?>
+                        <?php echo fs_mod( 'fs_hero_title_4', 'Money Decisions' ); ?>
                     </span>
                 </h1>
 
                 <!-- Subtitle -->
                 <p class="fs-hero__sub">
-                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial tools powered by AI -- from portfolio analysis to tax optimization. 55+ tools, completely free.' ); ?>
+                    <?php echo fs_mod( 'fs_hero_sub', 'Professional-grade financial calculators powered by AI -- covering loans, mortgages, taxes, retirement and crypto. 70+ tools, completely free.' ); ?>
                 </p>
 
                 <!-- CTA Row -->
