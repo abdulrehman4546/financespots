@@ -1722,7 +1722,21 @@ function fs_main_pages_seo() {
 }
 add_action( 'admin_init', 'fs_main_pages_seo', 20 );
 add_action( 'init',       'fs_main_pages_seo', 45 );
-add_action( 'init',       'fs_main_pages_seo', 40 );
+
+/* One-off: the VA loan benefits guide's SEO title/description were rewritten
+   for the "10 VA Loan Benefits" numbered-list angle, but rank_math_* meta
+   isn't REST-exposed, so set it directly here once. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_va_guide_seo_v1' ) ) return;
+    $post = get_page_by_path( 'va-loan-benefits-complete-guide-veterans-2026', OBJECT, 'post' );
+    if ( $post ) {
+        update_post_meta( $post->ID, 'rank_math_title',          '10 VA Loan Benefits Every Veteran Should Know' );
+        update_post_meta( $post->ID, 'rank_math_description',    'Zero down payment, no PMI, lower rates and reusable benefits -- see the 10 biggest VA loan benefits for veterans, plus how they compare to FHA and conventional loans.' );
+        update_post_meta( $post->ID, 'rank_math_og_title',       '10 VA Loan Benefits Every Veteran Should Know' );
+        update_post_meta( $post->ID, 'rank_math_og_description', 'Zero down payment, no PMI, lower rates and reusable benefits -- see the 10 biggest VA loan benefits for veterans, plus how they compare to FHA and conventional loans.' );
+    }
+    update_option( 'fs_va_guide_seo_v1', true );
+}, 50 );
 
 /* =========================================================
    VA LOAN FUNDING FEE CALCULATOR -- Advanced Page + SEO
