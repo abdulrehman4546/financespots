@@ -84,7 +84,7 @@ p { margin: 0; }
     word-wrap: normal;
 }
 
-.fs-prose { max-width: 72ch; }
+.fs-prose { max-width: 100%; }
 .fs-prose p + p { margin-top: 1em; }
 .fs-prose h2, .fs-prose h3 { margin-top: 1.8em; margin-bottom: .5em; }
 .fs-prose ul, .fs-prose ol { margin: .8em 0 .8em 1.5em; }
