@@ -470,7 +470,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <?php esc_html_e( 'Most Popular Financial Calculators', 'financespots' ); ?>
             </h2>
             <p class="fs-section-desc">
-                <?php esc_html_e( 'The mortgage calculator, retirement calculator and loan calculator our users reach for most -- handpicked, expert-verified, and AI-enhanced.', 'financespots' ); ?>
+                <?php esc_html_e( 'The mortgage calculator, retirement calculator and loan calculator our users reach for most -- handpicked, formula-tested, and AI-enhanced.', 'financespots' ); ?>
             </p>
         </div>
 
@@ -705,6 +705,77 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
     </div>
 </section>
 <?php endif; ?>
+
+<!-- ============================================================
+     SECTION 8.5: FINANCIAL CALCULATORS BY TOPIC (full internal link index)
+     ============================================================ -->
+<section class="container" style="padding:2.5rem 0 1rem;">
+    <h2 style="font-size:1.5rem;font-weight:800;color:#0F172A;margin:0 0 1.25rem;text-align:center;">Financial Calculators by Topic</h2>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:1.75rem;">
+        <?php
+        $fs_topic_cats = get_terms( [ 'taxonomy' => 'fs_tool_cat', 'hide_empty' => true ] );
+        if ( ! is_wp_error( $fs_topic_cats ) ) :
+            foreach ( $fs_topic_cats as $fs_cat ) :
+                $fs_tools_in_cat = get_posts( [
+                    'post_type'      => 'fs_tool',
+                    'posts_per_page' => -1,
+                    'post_status'    => 'publish',
+                    'orderby'        => 'title',
+                    'order'          => 'ASC',
+                    'tax_query'      => [ [ 'taxonomy' => 'fs_tool_cat', 'field' => 'term_id', 'terms' => $fs_cat->term_id ] ],
+                ] );
+                if ( empty( $fs_tools_in_cat ) ) continue;
+        ?>
+        <div>
+            <h3 style="font-size:1rem;font-weight:700;color:#0F172A;margin:0 0 .6rem;"><?php echo esc_html( $fs_cat->name ); ?> <span style="font-weight:500;color:#94A3B8;font-size:.85rem;">(<?php echo (int) count( $fs_tools_in_cat ); ?>)</span></h3>
+            <ul style="list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:.4rem;">
+                <?php foreach ( $fs_tools_in_cat as $fs_t ) : ?>
+                <li><a href="<?php echo esc_url( get_permalink( $fs_t ) ); ?>" style="font-size:.86rem;color:#475569;text-decoration:none;"><?php echo esc_html( get_the_title( $fs_t ) ); ?></a></li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php
+            endforeach;
+        endif;
+        ?>
+    </div>
+</section>
+
+<!-- ============================================================
+     SECTION 8.6: ABOUT FINANCESPOTS (homepage intro copy)
+     ============================================================ -->
+<section class="container" style="padding:2.5rem 0 1rem;max-width:820px;margin-left:auto;margin-right:auto;">
+    <h2 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin:0 0 .75rem;">About FinanceSpots</h2>
+    <p style="font-size:.95rem;line-height:1.7;color:#475569;">
+        FinanceSpots is a free library of <?php echo (int) wp_count_posts( 'fs_tool' )->publish; ?>+ financial calculators covering mortgages, auto and personal loans, federal income tax, retirement planning and cryptocurrency, built for U.S. filers and borrowers. Every calculator shows its formula and a worked example, and the tax, loan and retirement figures are checked against primary sources such as the IRS, the CFPB and the Federal Reserve. There is no sign-up and no cost to use any tool. If you spot a figure that looks wrong, <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>" style="color:#10B981;">let us know</a> -- see our <a href="<?php echo esc_url( home_url( '/editorial-policy/' ) ); ?>" style="color:#10B981;">editorial policy</a> for how we fact-check and correct our content.
+    </p>
+</section>
+
+<!-- ============================================================
+     SECTION 8.7: HOMEPAGE FAQ (FAQPage schema)
+     ============================================================ -->
+<?php
+$fs_home_faqs = [
+    [ 'Are FinanceSpots calculators really free?', 'Yes. Every calculator on FinanceSpots is free to use, with no sign-up and no limit on how many times you use it.' ],
+    [ 'How accurate are the results?', 'Each calculator uses the standard published formula for that calculation, and results are checked against hand-worked examples before publishing. Tax brackets, loan limits and similar figures are sourced from the IRS, the CFPB and other primary sources and are updated when those figures change, but you should confirm time-sensitive numbers against the original source before relying on them for a real decision.' ],
+    [ 'Is my data stored when I use a calculator?', 'No. The calculations run in your own browser -- the numbers you enter are not sent to or stored on our servers.' ],
+    [ 'Are the calculators specific to the United States?', 'Most are, especially the tax, retirement and government-loan (FHA/VA/USDA) calculators, which use U.S. rules and figures. General calculators like compound interest or loan payoff are not country-specific.' ],
+    [ 'How often are the tax and rate figures updated?', 'Tax brackets, contribution limits and similar figures are updated for each new tax year as the IRS and other agencies publish them. Market rates shown as examples are illustrative and not live rate quotes.' ],
+];
+?>
+<section class="container" style="padding:1rem 0 2.5rem;max-width:820px;margin-left:auto;margin-right:auto;">
+    <h2 style="font-size:1.3rem;font-weight:800;color:#0F172A;margin:0 0 1rem;">Frequently Asked Questions</h2>
+    <div itemscope itemtype="https://schema.org/FAQPage">
+        <?php foreach ( $fs_home_faqs as $fs_faq ) : ?>
+        <div itemscope itemprop="mainEntity" itemtype="https://schema.org/Question" style="margin-bottom:1rem;padding-bottom:1rem;border-bottom:1px solid #E2E8F0;">
+            <h3 itemprop="name" style="font-size:.95rem;font-weight:700;color:#0F172A;margin:0 0 .4rem;"><?php echo esc_html( $fs_faq[0] ); ?></h3>
+            <div itemscope itemprop="acceptedAnswer" itemtype="https://schema.org/Answer">
+                <p itemprop="text" style="font-size:.88rem;color:#475569;margin:0;line-height:1.6;"><?php echo esc_html( $fs_faq[1] ); ?></p>
+            </div>
+        </div>
+        <?php endforeach; ?>
+    </div>
+</section>
 
 <!-- ============================================================
      SECTION 9: BLOG POSTS (latest 3)
