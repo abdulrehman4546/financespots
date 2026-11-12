@@ -66,7 +66,7 @@ function fs_tool_content_data_3() {
         'title'     => 'Loan Affordability Calculator by DTI',
         'meta'      => 'Free calculator: how much house can you afford? Find the most you can borrow from your income, debts and a DTI limit, including mortgage tax and insurance.',
         'excerpt'   => 'Find the largest loan or house you can afford from your income, existing debts and a debt-to-income limit.',
-        'answer'    => 'With $7,500 of gross monthly income, $600 of existing debt payments and a 36% debt-to-income limit, you can add up to $2,100 a month in new payments. At 7% over 30 years that supports a loan of about $315,646. At a 43% limit it rises to about $394,557, but stretching leaves less room for emergencies.',
+        'answer'    => 'A common rule of thumb is to keep your housing payment at or below 28% of your gross monthly income. On a $100,000 salary, that is about $2,333 a month, supporting roughly a $350,000 loan at a 7% rate over 30 years. Lenders themselves usually allow a higher debt-to-income ratio of 36-43% for all debts combined, which raises the maximum loan further but leaves less room for savings and emergencies — use the calculator below with your own income, debts and rate for an exact number.',
         'steps'     => [
             'Enter your gross (before-tax) monthly income.',
             'Enter your current monthly debt payments, not including the new loan.',
