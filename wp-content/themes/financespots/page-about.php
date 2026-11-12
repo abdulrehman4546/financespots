@@ -58,9 +58,9 @@ get_header();
                 </div>
                 <div class="fs-about-founder__content">
                     <span class="fs-badge fs-badge--green">&#128075; Founder</span>
-                    <h2 class="fs-about-founder__name">Abdul Rahman</h2>
-                    <p class="fs-about-founder__role">Founder & Developer, FinanceSpots &middot; Pakistan</p>
-                    <p>FinanceSpots is built and run by Abdul Rahman, who is personally responsible for every calculator, every guide and every number published on this site. Every figure is checked directly against a primary source — IRS publications and revenue procedures, the Social Security Administration, the CFPB, and current Treasury and Federal Reserve data — and every calculator is tested against independent, hand-worked examples before it goes live. FinanceSpots is not a licensed financial adviser, tax professional or lender, and nothing here is personal advice. You can read our full fact-checking and correction process in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>, or reach out any time at <a href="mailto:info@financespots.com" style="color:#10B981;">info@financespots.com</a>.</p>
+                    <h2 class="fs-about-founder__name">Abdul</h2>
+                    <p class="fs-about-founder__role">Founder & Developer, FinanceSpots &middot; United States</p>
+                    <p>FinanceSpots is built and run by Abdul, who is personally responsible for every calculator, every guide and every number published on this site. Every figure is checked directly against a primary source — IRS publications and revenue procedures, the Social Security Administration, the CFPB, and current Treasury and Federal Reserve data — and every calculator is tested against independent, hand-worked examples before it goes live. FinanceSpots is not a licensed financial adviser, tax professional or lender, and nothing here is personal advice. You can read our full fact-checking and correction process in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>, or reach out any time at <a href="mailto:info@financespots.com" style="color:#10B981;">info@financespots.com</a>.</p>
                     <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="fs-about-contact-btn">Get In Touch &rarr;</a>
                 </div>
             </div>

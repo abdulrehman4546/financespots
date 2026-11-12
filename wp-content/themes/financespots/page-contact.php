@@ -102,7 +102,7 @@ get_header();
                             <div class="fs-contact-info-icon">&#128205;</div>
                             <div>
                                 <span class="fs-contact-info-label">Based in</span>
-                                <span class="fs-contact-info-val">Pakistan</span>
+                                <span class="fs-contact-info-val">United States</span>
                             </div>
                         </div>
                     </div>
@@ -140,7 +140,7 @@ get_header();
                                 Who built FinanceSpots?
                                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M6 9l6 6 6-6"/></svg>
                             </button>
-                            <div class="fs-faq-a">FinanceSpots was built by Abdul Rahman, an independent developer. Read how content is written and checked in our editorial policy.</div>
+                            <div class="fs-faq-a">FinanceSpots was built by Abdul, an independent developer. Read how content is written and checked in our editorial policy.</div>
                         </div>
                     </div>
 
