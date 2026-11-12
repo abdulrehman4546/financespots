@@ -244,8 +244,8 @@ function fs_tool_content_data() {
     'home-equity-loan-calculator' => [
         'focus'     => 'home equity loan calculator',
         'secondary' => [ 'HELOC calculator', 'home equity line of credit calculator', 'how much equity can I borrow', 'home equity loan payment calculator', 'CLTV calculator', 'home equity line loan calculator' ],
-        'title'     => 'Home Equity Loan & HELOC Calculator',
-        'meta'      => 'Free home equity loan and HELOC calculator: find how much you can borrow at 80–90% CLTV, your monthly payment, APR with closing costs and total interest.',
+        'title'     => 'Home Equity Loan and HELOC Calculator: Rates, CLTV & Payment',
+        'meta'      => 'Free home equity loan and HELOC calculator: see how much you can borrow at 80-90% CLTV, your monthly payment, APR with closing costs, and total interest paid.',
         'excerpt'   => 'Find out how much equity you can borrow, then compare the payment on a fixed home equity loan with an interest-only HELOC.',
         'answer'    => 'Most lenders let you borrow up to 80–90% of your home’s value minus your mortgage. On a $500,000 home with a $300,000 mortgage at 85% CLTV, you can borrow up to $125,000. A $60,000 home equity loan at 8.5% over 15 years costs about $591 a month and $46,352 in interest.',
         'steps'     => [
@@ -398,8 +398,8 @@ function fs_tool_content_data() {
     'amortization-calculator' => [
         'focus'     => 'amortization calculator',
         'secondary' => [ 'amortization schedule calculator', 'loan amortization calculator', 'amortization calculator with extra payments', 'loan payoff schedule', 'how does amortization work' ],
-        'title'     => 'Amortization Calculator with Extra Payments',
-        'meta'      => 'Free amortization calculator: build a full monthly or annual schedule, add extra payments, see interest saved, and download the table as CSV.',
+        'title'     => 'Amortization Calculator with Extra Payments & Full Schedule',
+        'meta'      => 'Free amortization calculator: see the full payment schedule, principal vs interest each month, and exactly how much extra payments save in time and interest.',
         'excerpt'   => 'Build a full amortization schedule for any fixed-rate loan, add extra payments and see the interest and time you save.',
         'answer'    => 'Amortization is paying off a loan in equal installments that split between interest and principal. On a $250,000 loan at 7% for 30 years, the payment is $1,663.26 a month and total interest is $348,772. In the first payment, $1,458 is interest and only $205 reduces the balance.',
         'steps'     => [
@@ -444,8 +444,8 @@ function fs_tool_content_data() {
     'refinance-calculator' => [
         'focus'     => 'refinance calculator',
         'secondary' => [ 'mortgage refinance calculator', 'refinance break even calculator', 'should I refinance my mortgage', 'cash out refinance calculator', 'refinance closing costs' ],
-        'title'     => 'Refinance Calculator: Break-Even & Savings',
-        'meta'      => 'Free mortgage refinance calculator: see your new payment, break-even month, net savings after closing costs and points, and the effect of cash-out.',
+        'title'     => 'Mortgage Refinance Calculator: Break-Even Point & Savings',
+        'meta'      => 'Free mortgage refinance calculator: see your new payment, the exact break-even month, net savings after closing costs and points, and the cash-out impact.',
         'excerpt'   => 'Find your new payment, break-even point and real savings after closing costs, points and a longer loan term.',
         'answer'    => 'Refinancing pays off when the savings after closing costs are positive for as long as you keep the loan. Refinancing a $250,000 balance from 7.25% with 27 years left to 6.0% over 30 years with $4,500 in costs cuts the payment by $262 a month and breaks even in 18 months, for about $16,117 net savings after 7 years.',
         'steps'     => [
@@ -491,8 +491,8 @@ function fs_tool_content_data() {
     'fha-loan-calculator' => [
         'focus'     => 'FHA loan calculator',
         'secondary' => [ 'FHA mortgage calculator', 'FHA MIP calculator', 'FHA loan limits 2026', 'FHA down payment', 'FHA mortgage insurance premium' ],
-        'title'     => 'FHA Loan Calculator with MIP & PITI (2026)',
-        'meta'      => 'Free FHA loan calculator: monthly payment with upfront and annual MIP, taxes and insurance, 2026 loan limits, down payment options and cash to close.',
+        'title'     => 'FHA Loan Calculator with MIP, PITI and 2026 Loan Limits',
+        'meta'      => 'Free FHA loan calculator: full monthly payment with upfront and annual MIP, property tax, insurance, the 2026 county loan limits, and cash needed to close.',
         'excerpt'   => 'Estimate your full FHA payment with upfront and annual MIP, taxes and insurance, and see how your down payment changes the cost.',
         'answer'    => 'An FHA loan allows 3.5% down with a 580+ credit score, but charges an upfront mortgage insurance premium of 1.75% and an annual MIP. On a $350,000 home with 3.5% down at 6.75%, the loan is $343,661 with financed MIP and the total payment is about $2,884 a month including taxes and insurance.',
         'steps'     => [

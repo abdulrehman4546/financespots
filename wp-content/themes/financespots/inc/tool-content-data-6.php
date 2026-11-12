@@ -241,8 +241,8 @@ function fs_tool_content_data_6() {
     'va-loan-calculator' => [
         'focus'     => 'va loan calculator',
         'secondary' => [ 'va mortgage calculator', 'va home loan calculator', 'va loan payment calculator', 'va loan vs conventional' ],
-        'title'     => 'VA Loan Calculator (2026)',
-        'meta'      => 'Free VA loan calculator: estimate your monthly payment with the VA funding fee, taxes and insurance, and compare a VA loan with a conventional mortgage.',
+        'title'     => 'VA Loan Calculator: Payment, Funding Fee and Entitlement',
+        'meta'      => 'Free VA loan calculator: monthly payment, VA funding fee by use and down payment, zero down and no PMI, and a full comparison to a conventional loan today.',
         'excerpt'   => 'Estimate your VA home loan payment, including the funding fee, and compare it with a conventional loan.',
         'answer'    => 'On a $400,000 home with no down payment, a first-use VA loan has a 2.15% funding fee of $8,600. Financed, the loan becomes $408,600, and at 6.5% over 30 years the principal-and-interest payment is about $2,582.63 a month, compared with $2,528.27 without the fee. There is no monthly mortgage insurance on a VA loan.',
         'steps'     => [ 'Enter the home price and your down payment.', 'Choose the loan type, your military category and whether you have used your benefit before.', 'Enter the interest rate and loan term.', 'Read the funding fee, total loan amount and monthly payment, and compare with a conventional loan.' ],
