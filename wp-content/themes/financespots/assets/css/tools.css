@@ -60,11 +60,7 @@
 .fst-tool-hero__desc    { color: rgba(255,255,255,.6); font-size: 1rem; margin: 0; }
 
 .fst-tool-body { padding: 3rem 0 5rem; background: #F8FAFC; }
-.fst-tool-layout { display: grid; grid-template-columns: 1fr 320px; gap: 2rem; align-items: start; }
-@media (max-width: 900px) {
-    .fst-tool-layout { grid-template-columns: 1fr; }
-    .fst-tool-sidebar { display: none; }
-}
+.fst-tool-layout { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; max-width: 860px; margin: 0 auto; }
 
 .fst-tool-card { background: #fff; border: 1px solid #E2E8F0; border-radius: 20px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,.06); }
 .fst-tool-card__header { background: linear-gradient(135deg,#090E1C,#0D1428); padding: 1.5rem 2rem; }

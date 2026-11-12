@@ -113,37 +113,6 @@ while ( have_posts() ) : the_post();
                 </div>
             </div>
 
-            <!-- Sidebar -->
-            <aside class="fst-tool-sidebar">
-                <div class="fst-sidebar-card">
-                    <h3 class="fst-sidebar-card__title">About This Tool</h3>
-                    <p class="fst-sidebar-card__text"><?php echo esc_html( get_the_excerpt() ); ?></p>
-                </div>
-
-                <?php if ( $cat ) :
-                    $related = get_posts( [
-                        'post_type'      => 'fs_tool',
-                        'posts_per_page' => 5,
-                        'post__not_in'   => [ get_the_ID() ],
-                        'tax_query'      => [ [ 'taxonomy' => 'fs_tool_cat', 'terms' => $cat->term_id ] ],
-                    ] );
-                    if ( $related ) : ?>
-                <div class="fst-sidebar-card">
-                    <h3 class="fst-sidebar-card__title">More <?php echo esc_html( $cat->name ); ?></h3>
-                    <ul class="fst-related-list">
-                        <?php foreach ( $related as $r ) : ?>
-                        <li><a href="<?php echo esc_url( get_permalink( $r ) ); ?>"><?php echo esc_html( $r->post_title ); ?> &#x2192;</a></li>
-                        <?php endforeach; ?>
-                    </ul>
-                </div>
-                    <?php endif; endif; ?>
-
-                <div class="fst-sidebar-card fst-sidebar-card--cta">
-                    <h3 class="fst-sidebar-card__title">Explore All Tools</h3>
-                    <a href="<?php echo esc_url( home_url( '/tools/' ) ); ?>" class="fsc-btn" style="width:100%;text-align:center">Browse 55+ Tools</a>
-                </div>
-            </aside>
-
         </div>
     </div>
 </section>
