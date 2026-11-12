@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.6.0' );
+define( 'FINANCESPOTS_VERSION', '1.6.1' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -4723,6 +4723,21 @@ add_action( 'admin_init', function() {
     update_option( 'fs_blog_cluster_fix_v1', true );
 }, 42 );
 
+
+/* One-off: the Save $10K guide was rewritten (corrected math, custom SVG
+   infographics replacing stock photos, competitor-informed H1), but
+   rank_math_* meta isn't REST-exposed, so set it directly here once. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_save10k_seo_v1' ) ) return;
+    $post = get_page_by_path( 'how-to-save-10000-in-6-months-2026', OBJECT, 'post' );
+    if ( $post ) {
+        update_post_meta( $post->ID, 'rank_math_title',          'How to Save $10,000 in 6 Months: A Realistic Plan' );
+        update_post_meta( $post->ID, 'rank_math_description',    'Save $10K in 6 months at $1,667 a month ($385/week). See where the money comes from, a month-by-month schedule, and where to keep it.' );
+        update_post_meta( $post->ID, 'rank_math_og_title',       'How to Save $10,000 in 6 Months: A Realistic Plan' );
+        update_post_meta( $post->ID, 'rank_math_og_description', 'Save $10K in 6 months at $1,667 a month ($385/week). See where the money comes from, a month-by-month schedule, and where to keep it.' );
+    }
+    update_option( 'fs_save10k_seo_v1', true );
+}, 50 );
 
 /* Preload the two main font files so text renders sooner */
 add_action( 'wp_head', function () {
