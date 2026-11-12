@@ -49,9 +49,11 @@
 }
 .fs-logo-word--accent { background: var(--fs-grad); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent; }
 
-/* result cards get a thin gradient edge */
-.fsc-result-card--primary { border: 1.5px solid transparent !important;
-    background: linear-gradient(135deg, rgba(0,200,150,.10), rgba(59,130,246,.08)) padding-box, var(--fs-grad) border-box !important; }
+/* result cards: solid light fill + solid border (avoids cross-browser gradient-border bleed) */
+.fsc-result-card--primary {
+    background: #ECFDF5 !important;
+    border: 1.5px solid #00C896 !important;
+}
 
 /* gradient divider under tool and section headings */
 .fst-content h2::after { content: ""; display: block; width: 46px; height: 3px; margin-top: 8px; border-radius: 3px; background: var(--fs-grad); }
