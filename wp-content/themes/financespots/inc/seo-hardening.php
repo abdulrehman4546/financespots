@@ -34,7 +34,11 @@ add_filter( 'rank_math/opengraph/twitter/image',  'fs_default_social_image' );
 /* ── Title / meta description length limits ── */
 add_filter( 'rank_math/frontend/title', function ( $title ) {
     $title = html_entity_decode( $title, ENT_QUOTES, 'UTF-8' );
-    if ( mb_strlen( $title ) <= 60 ) return $title;
+    /* Budget: ~60 chars for the title body itself (the Google pixel-width sweet
+       spot), plus room for the " | FinanceSpots" brand suffix on top -- not a
+       combined 60, which was clipping deliberately-sized 55-60 char titles. */
+    $max_total = 78;
+    if ( mb_strlen( $title ) <= $max_total ) return $title;
     $brand = '';
     if ( preg_match( '/\s\|\s[^|]+$/u', $title, $m ) ) {
         $brand = $m[0];
@@ -43,7 +47,7 @@ add_filter( 'rank_math/frontend/title', function ( $title ) {
     $parts = preg_split( '/\s(?:--|—|–)\s/u', $title );
     $title = trim( $parts[0] );
     /* Truncate only the body to a word boundary so the brand suffix is never clipped. */
-    $max_body = 60 - mb_strlen( $brand );
+    $max_body = $max_total - mb_strlen( $brand );
     if ( mb_strlen( $title ) > $max_body ) {
         $cut = mb_substr( $title, 0, max( $max_body, 0 ) );
         $sp  = mb_strrpos( $cut, ' ' );
