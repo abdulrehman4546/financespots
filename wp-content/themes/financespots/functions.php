@@ -4757,13 +4757,6 @@ add_action( 'init', function () {
     update_option( 'fs_credit209_seo_v1', true );
 }, 50 );
 
-/* Internal strategy page (SEO cluster plan) — noindex, not for public search */
-add_action( 'wp_head', function () {
-    if ( is_page( 'internal-seo-cluster-plan' ) ) {
-        echo '<meta name="robots" content="noindex,nofollow">' . "\n";
-    }
-}, 1 );
-
 /* Preload the two main font files so text renders sooner */
 add_action( 'wp_head', function () {
     foreach ( [ 'inter-latin', 'space-grotesk-latin' ] as $font ) {
