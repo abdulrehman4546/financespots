@@ -183,7 +183,7 @@ add_filter( 'the_content', function ( $content ) {
  * the FTP method) and records the version first, so it can never retry in a loop.
  */
 add_action( 'init', function () {
-    $version = '2026-11-12-b';
+    $version = '2026-11-13-a';
     if ( get_option( 'fs_sitemap_flush_version' ) === $version ) return;
     update_option( 'fs_sitemap_flush_version', $version, false );
     try {
