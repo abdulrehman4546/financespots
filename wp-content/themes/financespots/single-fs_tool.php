@@ -398,7 +398,7 @@ $suggested = array_values($suggested);
 <section style="padding:1.5rem 0 2rem;background:#fff;border-top:1px solid #E2E8F0;">
     <div class="container" style="max-width:860px;">
         <p style="font-size:.85rem;color:#475569;margin:0 0 .5rem;">
-            <strong>Built by</strong> <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">Abdul Rahman</a>
+            <strong>Built by</strong> <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">Abdul</a>
             &middot; <strong>Last reviewed:</strong> <time datetime="<?php echo esc_attr( get_the_modified_date( 'c' ) ); ?>"><?php echo esc_html( get_the_modified_date( 'F j, Y' ) ); ?></time>
             &middot; <a href="<?php echo esc_url( home_url( '/contact/' ) ); ?>">Report an error</a>
         </p>

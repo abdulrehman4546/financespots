@@ -55,7 +55,7 @@
                         <div class="fs-nl2__card-header">
                             <div class="fs-nl2__card-avatar">AR</div>
                             <div>
-                                <div class="fs-nl2__card-name">Abdul Rahman</div>
+                                <div class="fs-nl2__card-name">Abdul</div>
                                 <div class="fs-nl2__card-role">FinanceSpots Founder</div>
                             </div>
                             <div class="fs-nl2__card-live"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg> Weekly</div>
@@ -176,7 +176,7 @@
                             <span class="fsf__logo-dot"></span>
                             <span class="fsf__logo-light">finance</span><span class="fsf__logo-accent">spots</span>
                         </a>
-                        <p class="fsf__desc">Free financial calculators and plain-English guides, with formulas and sources shown. No account required. Built and run by Abdul Rahman.</p>
+                        <p class="fsf__desc">Free financial calculators and plain-English guides, with formulas and sources shown. No account required. Built and run by Abdul.</p>
 
                         <!-- Mini stats -->
                         <div class="fsf__mini-stats">
@@ -248,7 +248,7 @@
         <div class="fsf__bottom">
             <div class="container">
                 <div class="fsf__bottom-inner">
-                    <p class="fsf__copy">© <?php echo date('Y'); ?> <strong>FinanceSpots</strong> by Abdul Rahman · All rights reserved · For informational purposes only, not financial advice.</p>
+                    <p class="fsf__copy">© <?php echo date('Y'); ?> <strong>FinanceSpots</strong> by Abdul · All rights reserved · For informational purposes only, not financial advice.</p>
                     <a href="<?php echo esc_url(home_url('/')); ?>" class="fsf__back-home">
                         <span class="fsf__logo-dot" style="width:8px;height:8px;"></span>
                         finance<span style="color:#10B981">spots</span>

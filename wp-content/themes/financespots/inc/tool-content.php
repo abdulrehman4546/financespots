@@ -51,7 +51,7 @@ function fs_render_tool_content( $c ) {
     ?>
 <section class="fst-content" aria-label="About this calculator">
   <div class="container fst-content__inner">
-    <p class="fst-content__meta">By <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">Abdul Rahman</a> &middot; Updated <time datetime="<?php echo esc_attr( get_the_modified_date( 'c', $post_id ) ); ?>"><?php echo esc_html( get_the_modified_date( 'F j, Y', $post_id ) ); ?></time></p>
+    <p class="fst-content__meta">By <a href="<?php echo esc_url( home_url( '/about/' ) ); ?>">Abdul</a> &middot; Updated <time datetime="<?php echo esc_attr( get_the_modified_date( 'c', $post_id ) ); ?>"><?php echo esc_html( get_the_modified_date( 'F j, Y', $post_id ) ); ?></time></p>
 
     <h2>How to use this <?php echo esc_html( $focus ); ?></h2>
     <ol class="fst-steps">

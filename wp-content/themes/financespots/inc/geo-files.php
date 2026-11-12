@@ -11,7 +11,7 @@ function fs_build_llms_txt() {
     $site = home_url( '/' );
     $o  = "# FinanceSpots\n\n";
     $o .= "> Free calculators and plain-English guides on loans, taxes, saving, investing and retirement. Every tool shows its formula, a worked example and its sources. Figures are checked against official sources (IRS, SSA, CFPB, Federal Student Aid) and each guide shows the date it was last updated. Educational content, not personal financial advice.\n\n";
-    $o .= "## About\n\n- Site: {$site}\n- Publisher: Abdul Rahman\n- How content is written and corrected: " . home_url( '/editorial-policy/' ) . "\n- Contact form: " . home_url( '/contact/' ) . "\n- Content is drafted with AI writing tools and checked against primary sources; see the editorial policy.\n\n";
+    $o .= "## About\n\n- Site: {$site}\n- Publisher: Abdul\n- How content is written and corrected: " . home_url( '/editorial-policy/' ) . "\n- Contact form: " . home_url( '/contact/' ) . "\n- Content is drafted with AI writing tools and checked against primary sources; see the editorial policy.\n\n";
     $guides = get_posts( [ 'post_type' => 'post', 'post_status' => 'publish', 'numberposts' => 200, 'orderby' => 'modified', 'order' => 'DESC' ] );
     if ( $guides ) {
         $o .= "## Guides\n\n";

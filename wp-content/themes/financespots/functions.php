@@ -202,7 +202,7 @@ function fs_add_schema_markup() {
             'inLanguage'          => 'en-US',
             'isAccessibleForFree' => true,
             'offers'              => [ '@type' => 'Offer', 'price' => '0', 'priceCurrency' => 'USD' ],
-            'author'              => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'url' => home_url( '/about/' ) ],
+            'author'              => [ '@type' => 'Person', 'name' => 'Abdul', 'url' => home_url( '/about/' ) ],
             'publisher'           => [ '@type' => 'Organization', 'name' => 'FinanceSpots', 'url' => home_url( '/' ) ],
             'dateModified'        => get_the_modified_date( 'c' ),
         ];
@@ -222,7 +222,7 @@ function fs_add_schema_markup() {
     // ── Blog posts: Article (Rank Math already outputs a BlogPosting, so ours only runs without it) ──
     if ( is_singular('post') && ! class_exists( 'RankMath' ) ) {
         $author_id  = get_post_field('post_author', get_the_ID());
-        $author     = get_the_author_meta('display_name', $author_id) ?: 'Abdul Rahman';
+        $author     = get_the_author_meta('display_name', $author_id) ?: 'Abdul';
         $schemas[] = [
             '@context'      => 'https://schema.org',
             '@type'         => 'Article',
@@ -286,13 +286,13 @@ function fs_add_schema_markup() {
             '@context'    => 'https://schema.org',
             '@type'       => 'AboutPage',
             'name'        => 'About FinanceSpots',
-            'description' => 'FinanceSpots is a free platform built by Abdul Rahman to give everyone access to professional-grade financial tools and education.',
+            'description' => 'FinanceSpots is a free platform built by Abdul to give everyone access to professional-grade financial tools and education.',
             'url'         => home_url('/about/'),
             'mainEntity'  => [
                 '@type'  => 'Organization',
                 'name'   => 'FinanceSpots',
                 'url'    => home_url('/'),
-                'founder' => [ '@type' => 'Person', 'name' => 'Abdul Rahman', 'url' => home_url( '/about/' ) ],
+                'founder' => [ '@type' => 'Person', 'name' => 'Abdul', 'url' => home_url( '/about/' ) ],
             ],
         ];
     }
@@ -1667,7 +1667,7 @@ function fs_main_pages_seo() {
         ],
         'about'      => [
             'title' => 'About FinanceSpots -- Free Finance Tools Built for Everyone',
-            'desc'  => 'FinanceSpots was built by Abdul Rahman to make professional-grade financial tools free and accessible to everyone. Learn about our mission, tools and team.',
+            'desc'  => 'FinanceSpots was built by Abdul to make professional-grade financial tools free and accessible to everyone. Learn about our mission, tools and team.',
             'kw'    => 'about financespots',
         ],
         'contact'    => [
@@ -2244,20 +2244,20 @@ add_filter( 'robots_txt', function( $output, $public ) {
     return $output;
 }, 99, 2 );
 
-/* ── Fix author display name from "admin" to "Abdul Rahman" ── */
+/* ── Fix author display name from "admin" to "Abdul" ── */
 add_action( 'init', function() {
-    if ( get_option( 'fs_author_name_fixed' ) ) return;
+    if ( get_option( 'fs_author_name_fixed' ) === 'v2' ) return;
     $user = get_user_by( 'login', 'admin' );
     if ( $user ) {
         wp_update_user( [
             'ID'           => $user->ID,
-            'display_name' => 'Abdul Rahman',
+            'display_name' => 'Abdul',
             'first_name'   => 'Abdul',
-            'last_name'    => 'Rahman',
+            'last_name'    => '',
         ] );
-        update_user_meta( $user->ID, 'description', 'Abdul Rahman is the founder of FinanceSpots — a free platform offering 55+ professional financial calculators for mortgages, VA loans, investments, taxes, and more.' );
+        update_user_meta( $user->ID, 'description', 'Abdul is the founder of FinanceSpots — a free platform offering 70+ professional financial calculators for mortgages, VA loans, investments, taxes, and more.' );
     }
-    update_option( 'fs_author_name_fixed', true );
+    update_option( 'fs_author_name_fixed', 'v2' );
 }, 15 );
 
 /* ── Remove WordPress emoji scripts (stops JS file crawling) ── */
@@ -3400,7 +3400,7 @@ function fs_ai_chat_handler() {
     $body = wp_json_encode( [
         'model'      => 'claude-haiku-4-5-20261001',
         'max_tokens' => 400,
-        'system'     => 'You are an expert personal finance advisor for FinanceSpots.com, a free financial tools website owned by Abdul Rahman. Give concise, actionable, and accurate financial advice. Focus on: budgeting, saving, investing, debt payoff, taxes, retirement, and emergency funds. Use US context (2026 tax laws). Keep answers under 120 words. Do not give legal advice. Start responses with a relevant emoji.',
+        'system'     => 'You are an expert personal finance advisor for FinanceSpots.com, a free financial tools website owned by Abdul. Give concise, actionable, and accurate financial advice. Focus on: budgeting, saving, investing, debt payoff, taxes, retirement, and emergency funds. Use US context (2026 tax laws). Keep answers under 120 words. Do not give legal advice. Start responses with a relevant emoji.',
         'messages'   => [
             [ 'role' => 'user', 'content' => $message ],
         ],

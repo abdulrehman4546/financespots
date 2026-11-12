@@ -263,7 +263,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                 <span class="accent">AI Financial Advisor</span>
             </h2>
             <p class="fs-ai-promo__desc">
-                One dashboard that analyzes your complete financial life -- budget, debt, investments, taxes, retirement, and net worth. All powered by real AI, completely free. Built by Abdul Rahman for FinanceSpots.
+                One dashboard that analyzes your complete financial life -- budget, debt, investments, taxes, retirement, and net worth. All powered by real AI, completely free. Built by Abdul for FinanceSpots.
             </p>
             <div class="fs-ai-promo__features">
                 <div class="fs-ai-promo__feature">
@@ -336,7 +336,7 @@ $ai_dash_url  = $ai_dash_post ? get_permalink( $ai_dash_post->ID ) : home_url( '
                     </div>
                     <!-- AI Chat preview -->
                     <div class="fs-ai-chat-preview">
-                        <div class="fs-ai-chat-preview__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg> AI Advisor -- Abdul Rahman's Dashboard</div>
+                        <div class="fs-ai-chat-preview__label"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="12" height="12" style="vertical-align:-1px"><rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9 2v3M15 2v3M9 19v3M15 19v3M2 9h3M2 15h3M19 9h3M19 15h3"/></svg> AI Advisor -- Abdul's Dashboard</div>
                         <div class="fs-ai-chat-preview__msg">Your debt-to-income ratio of 28% is healthy. I recommend increasing your 401k contribution by $300/month to reach the IRS limit -- this saves you $792/year in taxes at your 22% bracket.</div>
                     </div>
                 </div>

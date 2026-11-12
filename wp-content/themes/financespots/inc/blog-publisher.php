@@ -2160,7 +2160,7 @@ function fs_get_blog_data() {
 <p>The greatest investment strategy is the one you actually follow consistently for decades. Simple, low-cost, diversified, automated -- this combination builds extraordinary wealth over time. Start today with our <a href="' . $tool_base . 'investment-calculator/">investment calculator</a> and see exactly where your financial journey leads.</p>
 
 <hr>
-<p><em>FinanceSpots provides free, expert-designed financial tools to help you make smarter money decisions. Explore our full <a href="' . $site . 'tools/">suite of financial calculators</a> -- all free, all designed by Abdul Rahman to give you the financial clarity you deserve.</em></p>
+<p><em>FinanceSpots provides free, expert-designed financial tools to help you make smarter money decisions. Explore our full <a href="' . $site . 'tools/">suite of financial calculators</a> -- all free, all designed by Abdul to give you the financial clarity you deserve.</em></p>
 ',
 ],
 
