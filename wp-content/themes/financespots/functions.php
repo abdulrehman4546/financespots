@@ -8,7 +8,7 @@
 
 if ( ! defined( 'ABSPATH' ) ) exit;
 
-define( 'FINANCESPOTS_VERSION', '1.7.5' );
+define( 'FINANCESPOTS_VERSION', '1.7.6' );
 
 define( 'FINANCESPOTS_DIR', get_template_directory() );
 define( 'FINANCESPOTS_URI', get_template_directory_uri() );
@@ -4763,3 +4763,18 @@ add_action( 'wp_head', function () {
         echo '<link rel="preload" href="' . esc_url( FINANCESPOTS_URI . '/assets/fonts/' . $font . '.woff2' ) . '" as="font" type="font/woff2" crossorigin>' . "\n";
     }
 }, 1 );
+
+/* One-off: the VA loan guide's og:image/twitter:image meta was still pointing
+   at a leftover Unsplash stock photo URL from before the content rewrite,
+   even though the article body was already cleaned up. Point it at our own
+   generated cover image instead. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_va_guide_ogimage_v1' ) ) return;
+    $post = get_page_by_path( 'va-loan-benefits-complete-guide-veterans-2026', OBJECT, 'post' );
+    if ( $post ) {
+        $cover = content_url( '/uploads/2026/10/va-loan-benefits-complete-guide-veterans-2026-cover.jpg' );
+        update_post_meta( $post->ID, 'rank_math_facebook_image', $cover );
+        update_post_meta( $post->ID, 'rank_math_twitter_image',  $cover );
+    }
+    update_option( 'fs_va_guide_ogimage_v1', true );
+}, 50 );
