@@ -4840,3 +4840,21 @@ add_action( 'init', function () {
     update_post_meta( 435, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post435_seo_v1', true );
 }, 50 );
+
+/* One-off: set rank_math SEO title/description for the new
+   50/30/20 vs 60/20/20 vs 75/15/10 budget-rule comparison post (ID 555),
+   published 2026-11-14 to fill a flagged keyword opportunity. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post555_seo_v1' ) ) return;
+    $title = '50/30/20 vs 60/20/20 vs 75/15/10 | FinanceSpots';
+    $desc  = 'Compare the 50/30/20, 60/20/20, and 75/15/10 budget rules side by side, with a worked $5,000 example and a simple framework for picking the one that fits you.';
+    update_post_meta( 555, 'rank_math_title',             $title );
+    update_post_meta( 555, 'rank_math_description',       $desc );
+    update_post_meta( 555, 'rank_math_focus_keyword',     '60/20/20 rule, 75/15/10 rule' );
+    update_post_meta( 555, 'rank_math_robots',            [ 'index', 'follow' ] );
+    update_post_meta( 555, 'rank_math_og_title',          $title );
+    update_post_meta( 555, 'rank_math_og_description',    $desc );
+    update_post_meta( 555, 'rank_math_twitter_title',     $title );
+    update_post_meta( 555, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post555_seo_v1', true );
+}, 50 );
