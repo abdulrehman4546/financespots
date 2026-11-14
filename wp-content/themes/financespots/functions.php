@@ -4793,3 +4793,19 @@ add_action( 'init', function () {
     update_post_meta( 355, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post355_seo_v2', true );
 }, 50 );
+
+/* One-off: set rank_math SEO title/description for the cash-back-vs-low-APR
+   car-deal post (ID 365) after the 2026-11-14 content expansion -- the
+   default title was getting title-cased and truncated past "Car Deal". */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post365_seo_v1' ) ) return;
+    $title = 'Cash Back vs Low APR: Which Saves More? | FinanceSpots';
+    $desc  = 'Compare cash back vs a low-APR car loan with real numbers and a break-even calculator — see which one actually saves more on a $35,000 car over 60 months.';
+    update_post_meta( 365, 'rank_math_title',             $title );
+    update_post_meta( 365, 'rank_math_description',       $desc );
+    update_post_meta( 365, 'rank_math_og_title',          $title );
+    update_post_meta( 365, 'rank_math_og_description',    $desc );
+    update_post_meta( 365, 'rank_math_twitter_title',     $title );
+    update_post_meta( 365, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post365_seo_v1', true );
+}, 50 );
