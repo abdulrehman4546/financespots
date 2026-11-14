@@ -4824,3 +4824,19 @@ add_action( 'init', function () {
     update_post_meta( 372, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post372_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for social-security-earnings-limit-2027
+   (ID 435) -- the default 67-char title was being badly truncated, dropping
+   "How Much You Can Work and Earn" entirely from the SERP title. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post435_seo_v1' ) ) return;
+    $title = 'Social Security Earnings Limit 2027 | FinanceSpots';
+    $desc  = 'Social Security earnings limit for 2027: the $25,560 and $67,920 thresholds, how $1-for-$2 and $1-for-$3 withholding works, with a full worked example.';
+    update_post_meta( 435, 'rank_math_title',             $title );
+    update_post_meta( 435, 'rank_math_description',       $desc );
+    update_post_meta( 435, 'rank_math_og_title',          $title );
+    update_post_meta( 435, 'rank_math_og_description',    $desc );
+    update_post_meta( 435, 'rank_math_twitter_title',     $title );
+    update_post_meta( 435, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post435_seo_v1', true );
+}, 50 );
