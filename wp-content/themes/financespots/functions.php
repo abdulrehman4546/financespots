@@ -4778,3 +4778,18 @@ add_action( 'init', function () {
     }
     update_option( 'fs_va_guide_ogimage_v1', true );
 }, 50 );
+
+/* One-off: set rank_math SEO title/description for the debt-consolidation
+   credit-score post (ID 355) after the 2026-11-14 content expansion. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post355_seo_v1' ) ) return;
+    $title = 'Does Debt Consolidation Hurt Your Credit? | FinanceSpots';
+    $desc  = 'Debt consolidation can dip your score briefly from a hard inquiry, then raise it as utilization drops and payments stay on time — see the numbers and timeline.';
+    update_post_meta( 355, 'rank_math_title',             $title );
+    update_post_meta( 355, 'rank_math_description',       $desc );
+    update_post_meta( 355, 'rank_math_og_title',          $title );
+    update_post_meta( 355, 'rank_math_og_description',    $desc );
+    update_post_meta( 355, 'rank_math_twitter_title',     $title );
+    update_post_meta( 355, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post355_seo_v1', true );
+}, 50 );
