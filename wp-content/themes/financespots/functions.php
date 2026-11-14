@@ -4809,3 +4809,18 @@ add_action( 'init', function () {
     update_post_meta( 365, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post365_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for debt-avalanche-vs-snowball (ID 372) --
+   same title-case + 60-char truncation pattern dropped "Debt Faster?". */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post372_seo_v1' ) ) return;
+    $title = 'Debt Avalanche vs Snowball: Which Wins? | FinanceSpots';
+    $desc  = 'Debt avalanche or debt snowball? See how each method works, a side-by-side example with real numbers, and how to choose the one you will actually finish.';
+    update_post_meta( 372, 'rank_math_title',             $title );
+    update_post_meta( 372, 'rank_math_description',       $desc );
+    update_post_meta( 372, 'rank_math_og_title',          $title );
+    update_post_meta( 372, 'rank_math_og_description',    $desc );
+    update_post_meta( 372, 'rank_math_twitter_title',     $title );
+    update_post_meta( 372, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post372_seo_v1', true );
+}, 50 );
