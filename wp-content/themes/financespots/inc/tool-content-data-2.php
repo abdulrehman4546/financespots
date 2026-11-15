@@ -587,6 +587,7 @@ function fs_tool_content_data_2() {
             [ 'Can I have both a 401(k) and an IRA?', 'Yes. The limits are separate, but a workplace plan can reduce your Traditional IRA deduction at higher incomes.' ],
             [ 'When do I have to take withdrawals from an IRA?', 'Traditional IRAs require minimum distributions starting at age 73. Roth IRAs have no required distributions for the original owner.' ],
             [ 'Can I take money out of my IRA early?', 'You can, but earnings withdrawn before age 59½ are usually taxed with a 10% penalty, with some exceptions. Roth contributions can be withdrawn anytime without tax or penalty.' ],
+            [ 'Does this IRA calculator account for taxes?', 'Yes. Unlike a plain IRA computation that only projects a balance, this calculator applies your own marginal tax rate today and your expected retirement tax rate to show the real after-tax value of a Roth versus a Traditional IRA, not just the raw growth number.' ],
         ],
         'sources'   => [
             [ 'IRS: 401(k) limit increases to $24,500 and IRA limit to $7,500 for 2026', 'https://www.irs.gov/newsroom/401k-limit-increases-to-24500-for-2026-ira-limit-increases-to-7500' ],
