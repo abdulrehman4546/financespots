@@ -4874,3 +4874,19 @@ add_action( 'init', function () {
     update_post_meta( 386, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post386_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for 2026-federal-tax-brackets
+   (ID 513) -- the default 51-char title + brand suffix hit 64 chars, over the
+   60-char hardening cap, so the SERP title was getting truncated. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post513_seo_v1' ) ) return;
+    $title = '2026 Tax Brackets: Rates by Filing Status | FinanceSpots';
+    $desc  = 'See the 2026 federal income tax brackets and standard deduction for all four filing statuses, plus a full worked example of how marginal rates actually work.';
+    update_post_meta( 513, 'rank_math_title',             $title );
+    update_post_meta( 513, 'rank_math_description',       $desc );
+    update_post_meta( 513, 'rank_math_og_title',          $title );
+    update_post_meta( 513, 'rank_math_og_description',    $desc );
+    update_post_meta( 513, 'rank_math_twitter_title',     $title );
+    update_post_meta( 513, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post513_seo_v1', true );
+}, 50 );
