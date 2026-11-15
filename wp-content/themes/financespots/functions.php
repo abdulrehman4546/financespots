@@ -4858,3 +4858,19 @@ add_action( 'init', function () {
     update_post_meta( 555, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post555_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for social-security-2027-cola-increase
+   (ID 386) -- the default 59-char title + brand suffix hit 70 chars, over the
+   60-char hardening cap, so the SERP title was getting truncated. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post386_seo_v1' ) ) return;
+    $title = 'Social Security 2027 COLA: 3.6% Raise | FinanceSpots';
+    $desc  = 'The SSA announced a 3.6% Social Security COLA for 2027 -- about $75 more a month on average. See what it means for your check, taxes, and Medicare.';
+    update_post_meta( 386, 'rank_math_title',             $title );
+    update_post_meta( 386, 'rank_math_description',       $desc );
+    update_post_meta( 386, 'rank_math_og_title',          $title );
+    update_post_meta( 386, 'rank_math_og_description',    $desc );
+    update_post_meta( 386, 'rank_math_twitter_title',     $title );
+    update_post_meta( 386, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post386_seo_v1', true );
+}, 50 );
