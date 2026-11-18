@@ -4916,3 +4916,19 @@ add_filter( 'get_avatar', function ( $avatar, $id_or_email, $size, $default, $al
     }
     return $avatar;
 }, 10, 5 );
+
+/* One-off: shorten rank_math title for 6000-senior-tax-deduction-2026
+   (ID 574) -- the default 68-char title + brand suffix hit 72 chars, over
+   the 60-char hardening cap, so the SERP title was getting truncated. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post574_seo_v1' ) ) return;
+    $title = 'The $6,000 Senior Tax Deduction Explained | FinanceSpots';
+    $desc  = 'The new OBBBA $6,000 senior tax deduction explained: who qualifies, how the income phase-out works, and worked examples of your real savings.';
+    update_post_meta( 574, 'rank_math_title',             $title );
+    update_post_meta( 574, 'rank_math_description',       $desc );
+    update_post_meta( 574, 'rank_math_og_title',          $title );
+    update_post_meta( 574, 'rank_math_og_description',    $desc );
+    update_post_meta( 574, 'rank_math_twitter_title',     $title );
+    update_post_meta( 574, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post574_seo_v1', true );
+}, 50 );
