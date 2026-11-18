@@ -1249,3 +1249,85 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   SENIOR $6,000 BONUS DEDUCTION CALCULATOR (2026)
+───────────────────────────────────────────── */
+function fs_calc2_senior_deduction() { ?>
+<div class="fsc-wrap" id="fs-senior">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_select( 'senior-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'hoh' => 'Head of household', 'mfs' => 'Married filing separately', 'qss' => 'Qualifying surviving spouse' ], 'single' ); ?>
+    <?php fsl_check( 'senior-self', 'I am 65 or older by December 31, 2026', true ); ?>
+    <div id="senior-spouse-wrap" style="display:none">
+      <?php fsl_check( 'senior-spouse', 'My spouse is also 65 or older by December 31, 2026', false ); ?>
+    </div>
+    <?php fsl_field( 'senior-magi', 'Modified adjusted gross income ($)', 60000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <button type="button" class="fsc-btn" id="senior-go">Calculate My Senior Deduction</button>
+    <p class="fsl-error" id="senior-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="senior-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'senior-base', 'Full senior bonus deduction before phase-out' );
+      fsl_card( 'senior-reduction', 'Phase-out reduction' );
+      fsl_card( 'senior-final', 'Your actual senior bonus deduction', 'primary' );
+      fsl_card( 'senior-savings', 'Estimated tax savings (at your bracket)', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="senior-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function toggleSpouse(){
+    var status=FSL.el('senior-status').value;
+    FSL.el('senior-spouse-wrap').style.display = (status==='mfj'||status==='qss') ? '' : 'none';
+    if(status!=='mfj' && status!=='qss') FSL.el('senior-spouse').checked=false;
+  }
+
+  function calc(){
+    var magi=$('senior-magi');
+    var status=FSL.el('senior-status').value;
+    var self65=FSL.el('senior-self').checked;
+    var spouse65=(status==='mfj'||status==='qss') && FSL.el('senior-spouse').checked;
+    var qualifyingPeople = (self65?1:0) + (spouse65?1:0);
+    var base = qualifyingPeople * 6000;
+
+    /* OBBBA, 26 U.S.C. §151(d)(5)(C): $6,000 per qualifying person 65+, tax years 2025-2028.
+       Phases out 6% of MAGI over $75,000 (single/HOH/MFS) or $150,000 (MFJ/QSS), per person's
+       own threshold -- so a joint return with both spouses 65+ doesn't fully phase out until
+       a higher combined MAGI than a return with only one qualifying spouse. */
+    var perPersonThreshold = (status==='mfj'||status==='qss') ? 150000 : 75000;
+    var excess = Math.max(magi - perPersonThreshold, 0);
+    var reduction = qualifyingPeople>0 ? Math.min(excess*0.06, base) : 0;
+    var finalDeduction = Math.max(base - reduction, 0);
+
+    var bracket = magi<=12400?0.10 : magi<=50400?0.12 : magi<=105700?0.22 : magi<=201775?0.24 : magi<=256225?0.32 : magi<=640600?0.35 : 0.37;
+    var savings = finalDeduction * bracket;
+
+    FSL.set('senior-base',M(base)); FSL.set('senior-reduction',M(reduction));
+    FSL.set('senior-final',M(finalDeduction)); FSL.set('senior-savings',M(savings));
+    FSL.show('senior-results','grid');
+
+    var n=[];
+    if(qualifyingPeople===0){ n.push('Neither filer is 65 or older, so this deduction does not apply to you yet.'); }
+    else {
+      n.push('This is '+qualifyingPeople+' qualifying person'+(qualifyingPeople>1?'s':'')+' x $6,000 = '+M(base)+' before any phase-out.');
+      if(excess>0) n.push('Your MAGI is '+M(excess)+' over the '+M(perPersonThreshold)+' threshold, which reduces the deduction by 6% of that amount ('+M(reduction)+'), down to '+M(finalDeduction)+'.');
+      else n.push('Your MAGI is under the '+M(perPersonThreshold)+' phase-out threshold, so you get the full amount with no reduction.');
+      n.push('This is a separate, additional deduction on top of the regular extra standard deduction that filers 65+ already receive -- it does not replace it. It applies for tax years 2025 through 2028 only and is scheduled to expire after 2028 unless Congress extends it.');
+    }
+    FSL.set('senior-note',n.join(' '));
+  }
+  FSL.el('senior-go').addEventListener('click',calc);
+  FSL.el('senior-status').addEventListener('change',function(){toggleSpouse();calc();});
+  FSL.el('senior-self').addEventListener('change',calc);
+  FSL.bind('fs-senior',calc);
+  toggleSpouse(); calc();
+});
+</script>
+<?php }

@@ -197,6 +197,7 @@ function fs_tool_guide_map() {
         'retirement-withdrawal-calculator' => [ 'how-long-will-my-money-last-in-retirement', 'retirement-planning-how-much-need-2026' ],
         'child-tax-credit-calculator'      => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
         'salt-deduction-calculator'         => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
+        'senior-deduction-calculator'       => [ '2026-federal-tax-brackets', 'retirement-planning-how-much-need-2026' ],
         'rv-loan-calculator'                => [ 'used-car-loan-guide', 'cash-back-or-low-apr-car-deal' ],
         'grad-plus-loan-calculator'          => [ 'how-to-pay-off-student-loans-faster-2026', 'rap-vs-tiered-standard-student-loan-plan' ],
         'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],
