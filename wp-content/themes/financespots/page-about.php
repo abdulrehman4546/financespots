@@ -67,6 +67,24 @@ get_header();
         </div>
     </section>
 
+    <!-- Contributing writer -->
+    <section class="fs-about-section fs-about-section--dark">
+        <div class="container">
+            <div class="fs-about-founder">
+                <div class="fs-about-founder__avatar">
+                    <div class="fs-about-founder__initials">KL</div>
+                </div>
+                <div class="fs-about-founder__content">
+                    <span class="fs-badge fs-badge--green">&#128221; Contributing Writer</span>
+                    <h2 class="fs-about-founder__name">Keira Lake</h2>
+                    <p class="fs-about-founder__role">Financial Content Reviewer &middot; Dorchester, England, UK</p>
+                    <p>Keira Lake contributes to FinanceSpots' guides and reviews the numeric worked examples on our calculator pages for accuracy. She is AAT (Association of Accounting Technicians) Level 2 qualified and currently training toward AAT Level 3, and works professionally as a Financial Assistant at Dorchester Town Council and as a Bookkeeper and Internal Auditor at Fluid Financial Services, where her day-to-day work includes bank reconciliations, invoicing, VAT checks, and financial audits for UK local-government bodies. She is also a Co-Founder of Young Voices of AAT and serves as an AAT Advocate.</p>
+                    <p>Keira is not a licensed U.S. tax professional or financial adviser; her role at FinanceSpots is checking that the arithmetic and worked examples on each page are correct and reproducible, not providing personal financial advice. All U.S.-specific figures (tax brackets, contribution limits, benefit amounts) are still sourced and checked directly against primary agencies such as the IRS, Social Security Administration, and CFPB, as described in our <a href="<?php echo esc_url(home_url('/editorial-policy/')); ?>" style="color:#10B981;">editorial policy</a>.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Values -->
     <section class="fs-about-section">
         <div class="container">
@@ -188,5 +206,35 @@ get_header();
 .fs-about-cta__inner h2{font-size:1.9rem;font-weight:800;color:#fff;margin-bottom:12px;}
 .fs-about-cta__inner p{color:#94A3B8;font-size:1rem;line-height:1.7;margin-bottom:28px;}
 </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Person",
+      "name": "Abdul Rahman",
+      "jobTitle": "Founder & Developer",
+      "worksFor": { "@type": "Organization", "name": "FinanceSpots" },
+      "url": "<?php echo esc_url( home_url( '/about/' ) ); ?>",
+      "description": "Founder and developer of FinanceSpots, responsible for every calculator, guide and published figure on the site."
+    },
+    {
+      "@type": "Person",
+      "name": "Keira Lake",
+      "jobTitle": "Financial Content Reviewer",
+      "worksFor": { "@type": "Organization", "name": "FinanceSpots" },
+      "url": "<?php echo esc_url( home_url( '/about/' ) ); ?>",
+      "description": "Contributing writer and financial content reviewer at FinanceSpots. AAT Level 2 qualified, training toward AAT Level 3. Works as a Financial Assistant at Dorchester Town Council and as a Bookkeeper and Internal Auditor at Fluid Financial Services.",
+      "alumniOf": { "@type": "EducationalOrganization", "name": "AAT (Association of Accounting Technicians)" },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "AAT Level 2 Accounting Qualification",
+        "recognizedBy": { "@type": "Organization", "name": "Association of Accounting Technicians (AAT)" }
+      }
+    }
+  ]
+}
+</script>
 
 <?php get_footer(); ?>
