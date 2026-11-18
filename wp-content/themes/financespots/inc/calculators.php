@@ -58,6 +58,7 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'child-tax-credit-calculator'      => 'fs_calc2_child_tax_credit',
         'salt-deduction-calculator'         => 'fs_calc2_salt_deduction',
         'senior-deduction-calculator'       => 'fs_calc2_senior_deduction',
+        'auto-loan-interest-deduction-calculator' => 'fs_calc2_auto_interest_deduction',
         'rv-loan-calculator'                => 'fs_calc2_rv_loan',
         'grad-plus-loan-calculator'         => 'fs_calc2_grad_plus_loan',
     ];

@@ -1332,6 +1332,80 @@ document.addEventListener('DOMContentLoaded',function(){
 </script>
 <?php }
 
-/* cache-bust touch 1794992120: force opcache/FTP revalidation of this file */
-/* retry deploy trigger 1794993297 */
-/* retry deploy trigger 1794993578, FTP re-enabled */
+/* ─────────────────────────────────────────────
+   AUTO LOAN INTEREST DEDUCTION CALCULATOR (OBBBA, 2025-2028)
+───────────────────────────────────────────── */
+function fs_calc2_auto_interest_deduction() { ?>
+<div class="fsc-wrap" id="fs-autoint">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_select( 'autoint-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'hoh' => 'Head of household', 'mfs' => 'Married filing separately', 'qss' => 'Qualifying surviving spouse' ], 'single' ); ?>
+    <?php fsl_field( 'autoint-interest', 'Auto loan interest paid this year ($)', 3500, [ 'min' => 0, 'step' => 50 ] ); ?>
+    <?php fsl_field( 'autoint-magi', 'Modified adjusted gross income ($)', 85000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_check( 'autoint-new', 'The vehicle was new (not used) when I bought it', true ); ?>
+    <?php fsl_check( 'autoint-personal', 'I use the vehicle for personal use (not a business/fleet)', true ); ?>
+    <?php fsl_check( 'autoint-assembly', 'Final assembly was in the United States', true ); ?>
+    <?php fsl_check( 'autoint-weight', 'Gross vehicle weight rating is under 14,000 lbs', true ); ?>
+    <?php fsl_check( 'autoint-date', 'The loan originated after December 31, 2024', true ); ?>
+    <button type="button" class="fsc-btn" id="autoint-go">Calculate My Deduction</button>
+    <p class="fsl-error" id="autoint-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="autoint-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'autoint-eligible', 'Interest eligible before phase-out (capped at $10,000)' );
+      fsl_card( 'autoint-reduction', 'Phase-out reduction' );
+      fsl_card( 'autoint-final', 'Your actual deduction', 'primary' );
+      fsl_card( 'autoint-savings', 'Estimated tax savings (at your bracket)', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="autoint-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var interest=$('autoint-interest'), magi=$('autoint-magi');
+    var status=FSL.el('autoint-status').value;
+    var ok = FSL.el('autoint-new').checked && FSL.el('autoint-personal').checked && FSL.el('autoint-assembly').checked && FSL.el('autoint-weight').checked && FSL.el('autoint-date').checked;
+
+    /* OBBBA auto loan interest deduction: above-the-line, cap $10,000/yr interest,
+       tax years 2025-2028. Phases out $200 per $1,000 (or part) of MAGI over
+       $100,000 single/HoH/MFS or $200,000 MFJ/QSS -- fully gone at $150,000 /
+       $250,000 respectively. Requires: new (not used) vehicle, personal use,
+       final assembly in the US, GVWR under 14,000 lbs, loan after 12/31/2024,
+       and the VIN reported on Schedule 1-A. */
+    var threshold = (status==='mfj'||status==='qss') ? 200000 : 100000;
+    var capped = Math.min(interest, 10000);
+    var excess = Math.max(magi - threshold, 0);
+    var steps = Math.ceil(excess/1000);
+    var reduction = ok ? Math.min(steps*200, capped) : capped;
+    var finalDeduction = ok ? Math.max(capped - reduction, 0) : 0;
+
+    var bracket = magi<=12400?0.10 : magi<=50400?0.12 : magi<=105700?0.22 : magi<=201775?0.24 : magi<=256225?0.32 : magi<=640600?0.35 : 0.37;
+    var savings = finalDeduction * bracket;
+
+    FSL.set('autoint-eligible',M(capped)); FSL.set('autoint-reduction',M(ok?reduction:capped));
+    FSL.set('autoint-final',M(finalDeduction)); FSL.set('autoint-savings',M(savings));
+    FSL.show('autoint-results','grid');
+
+    var n=[];
+    if(!ok){ n.push('Based on the boxes you unchecked, this vehicle/loan does not meet the eligibility rules (new U.S.-assembled personal vehicle under 14,000 lbs GVWR, loan originated after December 31, 2024), so none of the interest qualifies for this deduction -- though it may still be deductible elsewhere if used for business.'); }
+    else {
+      n.push('Interest paid, capped at the $10,000/year maximum: '+M(capped)+'.');
+      if(excess>0) n.push('Your MAGI is '+M(excess)+' over the '+M(threshold)+' threshold ('+steps+' step'+(steps>1?'s':'')+' of $1,000), reducing the deduction by $200 per step ('+M(Math.min(steps*200,capped))+'), down to '+M(finalDeduction)+'.');
+      else n.push('Your MAGI is under the '+M(threshold)+' phase-out threshold, so none of it is reduced.');
+      n.push('This is an above-the-line deduction -- you can claim it whether you itemize or take the standard deduction -- and it applies for tax years 2025 through 2028 only. Your lender will report the interest on Form 1098-VLI, and you report the vehicle\'s VIN on Schedule 1-A.');
+    }
+    FSL.set('autoint-note',n.join(' '));
+  }
+  FSL.el('autoint-go').addEventListener('click',calc);
+  ['autoint-status','autoint-new','autoint-personal','autoint-assembly','autoint-weight','autoint-date'].forEach(function(id){FSL.el(id).addEventListener('change',calc);});
+  FSL.bind('fs-autoint',calc);
+  calc();
+});
+</script>
+<?php }

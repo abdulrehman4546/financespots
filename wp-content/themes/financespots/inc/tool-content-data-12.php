@@ -139,5 +139,54 @@ function fs_tool_content_data_12() {
         'related'   => [ 'income-tax-calculator', 'social-security-earnings-limit-2027', '401k-early-withdrawal-calculator', 'retirement-savings-calculator' ],
     ],
 
+    'auto-loan-interest-deduction-calculator' => [
+        'focus'     => 'auto loan interest deduction calculator',
+        'secondary' => [ 'car loan interest deduction 2026', 'OBBBA auto loan deduction', 'new car loan tax deduction', 'auto loan interest deduction phase out', 'is car loan interest tax deductible' ],
+        'title'     => 'Auto Loan Interest Deduction Calculator (2026)',
+        'meta'      => 'Free auto loan interest deduction calculator: see your 2026 OBBBA car loan interest deduction, the $10,000 cap, eligibility rules, and real tax savings.',
+        'excerpt'   => 'Enter your auto loan interest, income and vehicle details to see your 2026 car loan interest deduction and the income phase-out.',
+        'answer'    => 'For tax years 2025 through 2028, interest paid on a loan for a new, personal-use vehicle with final U.S. assembly can be deducted up to $10,000 per year, whether or not you itemize. It phases out $200 for every $1,000 of MAGI above $100,000 (single) or $200,000 (married filing jointly), reaching zero at $150,000 and $250,000.',
+        'steps'     => [
+            'Enter your filing status and the auto loan interest you paid this year.',
+            'Enter your modified adjusted gross income (MAGI).',
+            'Check the eligibility boxes: new vehicle, personal use, U.S. final assembly, under 14,000 lbs, loan originated after December 31, 2024.',
+            'Review your eligible interest, the phase-out, your final deduction and estimated tax savings.',
+        ],
+        'formula'   => '<p><strong>Eligible interest = the smaller of interest actually paid or $10,000</strong> per year.</p><p><strong>Phase-out = $200 x number of $1,000 increments</strong> (or part of one) that your MAGI is above the threshold — $100,000 for single/head of household/married filing separately, $200,000 for married filing jointly/qualifying surviving spouse.</p><p><strong>Your deduction = eligible interest − phase-out</strong>, floored at $0, and only if the vehicle and loan meet all five eligibility rules.</p>',
+        'example'   => '<p>Single filer, $115,000 MAGI, $4,200 of auto loan interest paid on an eligible new, U.S.-assembled vehicle:</p><ul><li>Eligible interest (under the $10,000 cap): <strong>$4,200</strong></li><li>Excess over the $100,000 threshold: $115,000 − $100,000 = $15,000, which is 15 increments of $1,000</li><li>Phase-out: 15 x $200 = <strong>$3,000</strong></li><li>Final deduction: $4,200 − $3,000 = <strong>$1,200</strong></li></ul><p>At a 24% marginal rate, that $1,200 deduction saves about <strong>$288</strong> in tax. A married couple filing jointly with the same $115,000 combined MAGI would be well under their $200,000 threshold and would deduct the full $4,200 interest instead.</p>',
+        'sections'  => [
+            [ 'This is new for 2025 — most people have never claimed it before', '<p>Before the One Big Beautiful Bill Act, personal auto loan interest was essentially never deductible — only interest on loans used for a business vehicle was. This new deduction, for tax years 2025 through 2028 only, is a genuine exception carved out for personal-use vehicle loans, but it comes with five conditions that all have to be true at once, not just one or two.</p>' ],
+            [ 'All five eligibility rules, and why each one trips people up', '<ul><li><strong>The vehicle must be new, not used.</strong> A certified pre-owned or used car loan does not qualify, even from a dealer.</li><li><strong>Personal use, not business or fleet.</strong> A vehicle used primarily for business already has its interest handled under separate business-expense rules and does not get this deduction too.</li><li><strong>Final assembly must be in the United States.</strong> This is about where the vehicle was physically assembled, not where the brand is headquartered — a foreign-badged vehicle assembled at a U.S. plant can qualify, and a domestic-badged vehicle assembled abroad cannot. Check the vehicle\'s VIN against NHTSA\'s decoder if you are not sure.</li><li><strong>Gross vehicle weight rating under 14,000 lbs.</strong> This covers the vast majority of cars, SUVs and pickup trucks, but excludes heavy-duty commercial trucks.</li><li><strong>The loan must have originated after December 31, 2024.</strong> Refinancing an older loan does not reset this date in your favor if the original loan predates the cutoff — check your specific refinance terms, since treatment of refinanced loans has been a genuinely disputed point among tax professionals.</li></ul>' ],
+            [ 'Leases do not qualify — a common and costly mix-up', '<p>This deduction is for loan interest on a vehicle you are financing to own. A lease payment is not loan interest, even though a monthly lease payment can look similar to a loan payment on paper, so lease payments get none of this deduction. If you are choosing between leasing and financing a new vehicle for this reason alone, run the full cost comparison rather than assuming the tax deduction tips the decision — $10,000 of interest at a 24% bracket is worth roughly $2,400, which is real money but rarely large enough by itself to make financing better than a lease that otherwise suits you better.</p>' ],
+            [ 'Reporting: Form 1098-VLI and the VIN on Schedule 1-A', '<p>Your lender is required to report the qualifying interest to you (and the IRS) on Form 1098-VLI, similar to how mortgage interest is reported on Form 1098. You then report the vehicle\'s VIN alongside the interest amount on Schedule 1-A when you file. Keep your loan documents and the 1098-VLI together with your other tax records for the year.</p>' ],
+            [ 'This stacks with other vehicle costs, but does not replace them', '<p>This deduction is about loan interest only — it has nothing to do with sales tax, registration fees, depreciation, or any EV tax credit you may also be eligible for on the same purchase. If you are buying a new vehicle and financing it, run the numbers on your <a href="/tool/auto-loan-calculator/">auto loan calculator</a> for the payment itself, then use this tool separately to estimate the interest deduction on top of that.</p>' ],
+        ],
+        'terms'     => [
+            [ 'MAGI', 'Modified adjusted gross income — your AGI with certain deductions added back; used to test the phase-out threshold.' ],
+            [ 'Above-the-line deduction', 'A deduction available whether you itemize or take the standard deduction.' ],
+            [ 'Final assembly', 'Where a vehicle was physically put together, verifiable through its VIN — not the same as where the manufacturer is headquartered.' ],
+            [ 'Form 1098-VLI', 'The form your lender issues reporting qualifying vehicle loan interest paid during the year.' ],
+        ],
+        'faqs'      => [
+            [ 'Is car loan interest tax deductible in 2026?', 'Yes, for a new, personal-use vehicle with U.S. final assembly, financed with a loan originated after December 31, 2024, up to $10,000 of interest per year — subject to a phase-out above $100,000 MAGI (single) or $200,000 (married filing jointly). This is new for tax years 2025 through 2028 under the One Big Beautiful Bill Act.' ],
+            [ 'Does a used car loan qualify?', 'No. The deduction only applies to loans for new vehicles — certified pre-owned and used vehicles do not qualify, regardless of lender or dealer.' ],
+            [ 'Do I need to itemize to claim this deduction?', 'No. It is an above-the-line deduction, available whether you itemize or take the standard deduction.' ],
+            [ 'What does "final assembly in the United States" mean?', 'It refers to where the vehicle was physically assembled, which you can verify through its VIN, not the brand\'s country of origin. A foreign automaker\'s U.S.-built model can qualify; a model built entirely overseas cannot, even from a U.S. automaker.' ],
+            [ 'Does leasing a car qualify for this deduction?', 'No. Only interest on a loan to purchase the vehicle qualifies — lease payments are not loan interest and get no deduction under this provision.' ],
+            [ 'At what income does the deduction disappear completely?', 'For single, head of household, or married filing separately, it phases out completely at $150,000 MAGI. For married filing jointly or a qualifying surviving spouse, it phases out completely at $250,000 MAGI.' ],
+            [ 'Does this deduction expire?', 'Yes. It applies only to tax years 2025 through 2028 and will not be available for 2029 and later unless Congress extends it.' ],
+            [ 'What if my loan originated before 2025?', 'A loan that originated on or before December 31, 2024 generally does not qualify. Treatment of loans refinanced after that date is a genuinely debated point among tax professionals — ask a tax preparer about your specific situation if you refinanced.' ],
+            [ 'Is there a maximum vehicle price for this deduction?', 'The deduction is based on interest paid and capped at $10,000 per year, with no separate vehicle-price limit — but weight (under 14,000 lbs GVWR) and the other four eligibility rules still apply regardless of price.' ],
+            [ 'How do I report this on my taxes?', 'Your lender reports qualifying interest on Form 1098-VLI. You report the vehicle\'s VIN along with the interest amount on Schedule 1-A when filing your return.' ],
+            [ 'Can I claim this deduction on a vehicle used for work?', 'Only if the vehicle is for personal use. A vehicle used primarily for business follows separate business-expense deduction rules instead, not this provision.' ],
+            [ 'Does this apply to electric vehicles?', 'Yes, as long as the EV meets the same five rules — new, personal use, U.S. final assembly, under 14,000 lbs GVWR, and a loan originated after December 31, 2024. This deduction is separate from, and can potentially combine with, any EV purchase tax credit for the same vehicle.' ],
+        ],
+        'sources'   => [
+            [ 'IRS: forms and instructions (Schedule 1-A)', 'https://www.irs.gov/forms-instructions' ],
+            [ 'NHTSA: VIN decoder', 'https://vpic.nhtsa.dot.gov/decoder/' ],
+        ],
+        'related'   => [ 'auto-loan-calculator', 'used-car-loan-guide', 'income-tax-calculator', 'cash-back-vs-low-apr-calculator' ],
+    ],
+
     ];
 }
