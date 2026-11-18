@@ -4890,3 +4890,29 @@ add_action( 'init', function () {
     update_post_meta( 513, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post513_seo_v1', true );
 }, 50 );
+
+/* Show Keira Lake's real uploaded photo as her author avatar instead of
+   falling back to Gravatar's mystery-man, since she doesn't have a Gravatar
+   account tied to her site email. */
+add_filter( 'get_avatar', function ( $avatar, $id_or_email, $size, $default, $alt ) {
+    $user = false;
+    if ( is_numeric( $id_or_email ) ) {
+        $user = get_user_by( 'id', $id_or_email );
+    } elseif ( is_object( $id_or_email ) && isset( $id_or_email->user_id ) ) {
+        $user = get_user_by( 'id', $id_or_email->user_id );
+    } elseif ( is_string( $id_or_email ) ) {
+        $user = get_user_by( 'email', $id_or_email );
+    }
+    if ( $user && 'keiralake' === $user->user_login ) {
+        $url = 'https://financespots.com/wp-content/uploads/2026/11/keira-lake-author-photo.png';
+        return sprintf(
+            '<img alt="%s" src="%s" class="avatar avatar-%d photo" height="%d" width="%d" style="object-fit:cover;border-radius:50%%" />',
+            esc_attr( $alt ? $alt : $user->display_name ),
+            esc_url( $url ),
+            (int) $size,
+            (int) $size,
+            (int) $size
+        );
+    }
+    return $avatar;
+}, 10, 5 );

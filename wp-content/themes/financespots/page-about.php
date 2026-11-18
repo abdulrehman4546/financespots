@@ -72,7 +72,7 @@ get_header();
         <div class="container">
             <div class="fs-about-founder">
                 <div class="fs-about-founder__avatar">
-                    <div class="fs-about-founder__initials">KL</div>
+                    <img src="https://financespots.com/wp-content/uploads/2026/11/keira-lake-author-photo.png" alt="Keira Lake" style="width:100%;height:100%;object-fit:cover;border-radius:50%;">
                 </div>
                 <div class="fs-about-founder__content">
                     <span class="fs-badge fs-badge--green">&#128221; Contributing Writer</span>
