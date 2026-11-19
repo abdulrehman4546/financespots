@@ -1451,9 +1451,9 @@ document.addEventListener('DOMContentLoaded',function(){
   var reportsData = {
     'affirm':         { reports: true,  label: 'Likely yes -- Affirm reports most loans to Experian and TransUnion.' },
     'klarna-monthly':  { reports: true,  label: 'Yes, if it is the longer-term "Monthly financing" product.' },
-    'klarna-pay4':     { reports: false, label: 'No -- Klarna does not report Pay in 4 / Pay in 30 to the bureaus.' },
-    'afterpay':        { reports: false, label: 'No, not broadly, as of this writing.' },
-    'paypal':          { reports: false, label: 'No, not broadly, as of this writing.' },
+    'klarna-pay4':     { reports: false, label: 'Mostly no as of this writing -- Klarna\'s Pay in 4 / Pay in 30 historically was not reported, though some 2026 reporting suggests this is starting to expand. Check your own report to be sure.' },
+    'afterpay':        { reports: false, label: 'No, not broadly, as of this writing -- the clearest holdout among major providers.' },
+    'paypal':          { reports: false, label: 'PayPal has not stated that it reports Pay in 4 data, but this is not independently confirmed either way -- check your own report.' },
     'other':           { reports: false, label: 'Unknown -- check your own credit report at each bureau to see.' }
   };
 
@@ -1471,7 +1471,7 @@ document.addEventListener('DOMContentLoaded',function(){
       var perLoan = ontime ? 10 : -25;
       var totalPts = Math.min(Math.abs(perLoan*Math.min(loans,3)), 30);
       estimate = ontime
-        ? ('Roughly +0 to -'+Math.round(totalPts/2)+' points if a lender pulls a BNPL-aware score -- FICO\'s own study found about 10 points of movement for most users opening a new BNPL loan, and multiple open loans are grouped together rather than stacked one by one.')
+        ? ('Roughly +0 to -'+Math.round(totalPts/2)+' points if a lender pulls a BNPL-aware score -- FICO\'s own simulated study (modeling scores on existing Affirm data, not live production scores) found about 10 points of movement for most users opening a new BNPL loan, and multiple open loans are grouped together rather than stacked one by one.')
         : ('Potentially -'+totalPts+' points or more if a lender pulls a BNPL-aware score and sees missed payments -- late BNPL payments can be reported as delinquencies just like any other account.');
     }
     FSL.set('bnpl-estimate', estimate);
