@@ -4932,3 +4932,19 @@ add_action( 'init', function () {
     update_post_meta( 574, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post574_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for no-tax-on-overtime-2026 (ID 580) --
+   the default 69-char title + brand suffix hit 83 chars, badly over the
+   60-char hardening cap, so the SERP title was getting truncated mid-word. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post580_seo_v1' ) ) return;
+    $title = 'No Tax on Overtime 2026: What Qualifies | FinanceSpots';
+    $desc  = 'Only the overtime premium is deductible under OBBBA, not your full overtime pay -- here is the correct calculation, caps, and phase-out.';
+    update_post_meta( 580, 'rank_math_title',             $title );
+    update_post_meta( 580, 'rank_math_description',       $desc );
+    update_post_meta( 580, 'rank_math_og_title',          $title );
+    update_post_meta( 580, 'rank_math_og_description',    $desc );
+    update_post_meta( 580, 'rank_math_twitter_title',     $title );
+    update_post_meta( 580, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post580_seo_v1', true );
+}, 50 );
