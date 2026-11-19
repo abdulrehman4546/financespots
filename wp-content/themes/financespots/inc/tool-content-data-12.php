@@ -188,5 +188,50 @@ function fs_tool_content_data_12() {
         'related'   => [ 'auto-loan-calculator', 'used-car-loan-guide', 'income-tax-calculator', 'cash-back-vs-low-apr-calculator' ],
     ],
 
+    'bnpl-credit-score-impact-calculator' => [
+        'focus'     => 'BNPL credit score impact calculator',
+        'secondary' => [ 'does buy now pay later affect credit score', 'FICO 10 BNPL', 'does Klarna report to credit bureaus', 'does Affirm report to credit bureaus', 'buy now pay later credit score 2026' ],
+        'title'     => 'BNPL Credit Score Impact Calculator (2026)',
+        'meta'      => 'Free BNPL credit score calculator: see whether Affirm, Klarna, Afterpay or PayPal Pay in 4 actually report to credit bureaus, and your real score impact.',
+        'excerpt'   => 'Check whether your BNPL provider reports to the credit bureaus yet, and estimate the real effect open buy-now-pay-later loans could have on your score.',
+        'answer'    => 'Most buy-now-pay-later loans still do not affect your credit score, because most providers do not report short-term installment data to the bureaus and most lenders still pull older scoring models that ignore BNPL even when it is reported. Affirm is the main exception: it reports to Experian and TransUnion, and FICO found its new BNPL-aware score moved by about 10 points for most users after opening a new Affirm loan.',
+        'steps'     => [
+            'Select your main BNPL provider.',
+            'Enter how many BNPL loans you currently have open.',
+            'Confirm whether you have paid on time so far.',
+            'Tell us if you are about to apply for other credit, so we can flag the specific risk that matters for your situation.',
+        ],
+        'formula'   => '<p>There is no single public formula for FICO 10 BNPL, since FICO has not released the exact scoring weights. What is known: a <strong>new BNPL loan moved scores by about 10 points for over 85% of users</strong> in FICO\'s own study of Affirm data, and <strong>multiple open BNPL loans are grouped together</strong> in the model rather than counted one by one, so opening a second or third loan does not simply multiply the effect.</p><p>Before any of that matters, two conditions both have to be true: <strong>your provider has to report your loan to a credit bureau</strong>, and <strong>your lender has to pull a scoring model that reads BNPL data</strong> (FICO 10 BNPL, FICO 10 T BNPL, or VantageScore 4.0) instead of an older model.</p>',
+        'example'   => '<p>Two scenarios using the same facts: you have 2 open Affirm loans, paid on time.</p><ul><li><strong>Your mortgage lender</strong> pulls an older FICO model (2, 4, or 5), which is standard for mortgage underwriting as of 2026 — your BNPL loans have <strong>no effect at all</strong> on that score, even though Affirm reported them.</li><li><strong>An auto lender or fintech personal-loan lender</strong> pulls a newer, BNPL-aware score — your two loans are grouped together and could move that specific score by roughly <strong>5-10 points</strong>, based on FICO\'s published study.</li></ul><p>Same loans, same payment history, two different real-world outcomes — because the scoring model, not just the loan itself, decides whether it counts.</p>',
+        'sections'  => [
+            [ 'Which BNPL providers actually report to the bureaus right now', '<table><thead><tr><th>Provider</th><th>Reports to bureaus?</th></tr></thead><tbody><tr><td>Affirm</td><td>Yes — reports most loans to Experian and TransUnion</td></tr><tr><td>Klarna (Monthly financing)</td><td>Yes, for this longer-term product specifically</td></tr><tr><td>Klarna (Pay in 4 / Pay in 30 / Pay in Full)</td><td>No, these short-term products are not reported</td></tr><tr><td>Afterpay</td><td>Not broadly, as of this writing</td></tr><tr><td>PayPal Pay in 4</td><td>Not broadly, as of this writing</td></tr></tbody></table><p>This table reflects provider practices as of late 2026 and can change — BNPL credit reporting is actively evolving, and the CFPB has previously noted that most providers do not report. If you are unsure, pull your own credit report from each bureau (annualcreditreport.com) and look for the account directly rather than guessing.</p>' ],
+            [ 'Reporting is only half the story — the scoring model matters just as much', '<p>Even a loan that is reported to the bureaus does nothing to a score unless the lender pulls a scoring model built to read it. FICO released FICO® Score 10 BNPL and FICO® Score 10 T BNPL in mid-2025, offered alongside its existing models at no extra cost — but each lender independently chooses which version to use, and most mortgage lenders in particular still rely on older FICO 2, 4, or 5 models for underwriting, which were not built to read BNPL data at all. This is the single most misunderstood part of BNPL and credit: the loan can be fully reported and still invisible to a specific lender\'s pull.</p>' ],
+            [ 'The real risk is rarely the score — it is losing track of payments', '<p>Because each individual BNPL payment is small, it is easy to stack several loans across different retailers without noticing the combined monthly obligation. A missed BNPL payment can be sent to collections and reported as a delinquency exactly like a missed credit card payment, which does real, lasting damage regardless of which scoring model anyone uses. If you are juggling multiple BNPL plans, our <a href="/debt-avalanche-vs-snowball/">debt avalanche vs. snowball guide</a> applies just as well to BNPL balances as to credit cards.</p>' ],
+            [ 'If you are about to apply for a mortgage or auto loan', '<p>Ask your loan officer directly which score version they pull. Most mortgage underwriting in 2026 still uses older FICO models that ignore BNPL entirely, so an open Affirm loan paid on time is unlikely to hurt a mortgage application — but some auto lenders and newer fintech personal-loan lenders have already adopted BNPL-aware scoring. If you are also considering consolidating other debt before a big application, see whether that helps or hurts using our <a href="/does-debt-consolidation-hurt-your-credit/">guide to debt consolidation and your credit score</a>.</p>' ],
+        ],
+        'terms'     => [
+            [ 'BNPL', 'Buy now, pay later — a short-term installment loan, typically splitting a purchase into 4 payments over about 6 weeks.' ],
+            [ 'FICO 10 BNPL', 'A FICO scoring model released in 2025 that reads buy-now-pay-later account data; lenders must specifically choose to use it.' ],
+            [ 'Credit bureau', 'One of the three major consumer reporting agencies — Experian, Equifax, and TransUnion — that compile the data credit scores are built from.' ],
+        ],
+        'faqs'      => [
+            [ 'Does buy now pay later affect your credit score?', 'It can, but only if two things are both true: your BNPL provider reports the loan to a credit bureau, and the lender checking your credit pulls a scoring model built to read that data. Most BNPL activity today still does not meet both conditions.' ],
+            [ 'Does Klarna report to credit bureaus?', 'Only for its longer-term "Monthly financing" product. Klarna\'s short-term Pay in 4, Pay in 30, and Pay in Full plans are not reported to Experian or TransUnion.' ],
+            [ 'Does Affirm report to credit bureaus?', 'Yes, Affirm reports most of its loans to Experian and TransUnion, making it one of the few major BNPL providers whose activity can actually reach your credit file.' ],
+            [ 'Does Afterpay affect your credit score?', 'Not broadly, as of this writing — Afterpay does not widely report short-term installment data to the major credit bureaus.' ],
+            [ 'What is FICO 10 BNPL?', 'A credit scoring model FICO released in 2025 specifically designed to read buy-now-pay-later account data. It is optional — each lender decides whether to use it or an older model that ignores BNPL.' ],
+            [ 'Will BNPL hurt my chances of getting a mortgage?', 'Probably not directly, since most mortgage underwriting in 2026 still uses older FICO models that do not read BNPL data. Ask your loan officer which score they pull to confirm for your specific application.' ],
+            [ 'How many points can a BNPL loan affect my score?', 'FICO\'s own study found roughly a 10-point movement for most users after a new BNPL loan, when using its BNPL-aware score. Multiple open loans are grouped together in the calculation rather than stacked individually.' ],
+            [ 'Does missing a BNPL payment hurt my credit?', 'Yes — a missed payment can be sent to collections and reported as a delinquency just like any other account, regardless of which scoring model a lender uses. This is a bigger risk than the BNPL loan simply existing.' ],
+            [ 'How do I know if my BNPL loan is on my credit report?', 'Pull your free credit report from each bureau at annualcreditreport.com and look for the provider\'s name directly. Reporting practices vary by provider and can change, so checking your own report is more reliable than general guidance.' ],
+        ],
+        'sources'   => [
+            [ 'FICO: Unveils Credit Scores That Incorporate Buy Now, Pay Later Data', 'https://investors.fico.com/news-releases/news-release-details/fico-unveils-groundbreaking-credit-scores-incorporate-buy-now' ],
+            [ 'Consumer Financial Protection Bureau: Buy Now, Pay Later', 'https://www.consumerfinance.gov/consumer-tools/buy-now-pay-later/' ],
+            [ 'AnnualCreditReport.com (official free credit report site)', 'https://www.annualcreditreport.com' ],
+        ],
+        'related'   => [ 'debt-avalanche-vs-snowball', 'does-debt-consolidation-hurt-your-credit', 'net-worth-calculator', 'debt-to-income-ratio-calculator' ],
+    ],
+
     ];
 }

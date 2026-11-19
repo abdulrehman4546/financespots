@@ -1409,3 +1409,84 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   BNPL CREDIT SCORE IMPACT CALCULATOR (2026)
+───────────────────────────────────────────── */
+function fs_calc2_bnpl_credit_impact() { ?>
+<div class="fsc-wrap" id="fs-bnpl">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_select( 'bnpl-provider', 'Main BNPL provider you use', [ 'affirm' => 'Affirm', 'klarna-monthly' => 'Klarna (monthly financing plan)', 'klarna-pay4' => 'Klarna Pay in 4 / Pay in 30', 'afterpay' => 'Afterpay', 'paypal' => 'PayPal Pay in 4', 'other' => 'Other / not sure' ], 'affirm' ); ?>
+    <?php fsl_field( 'bnpl-loans', 'Number of BNPL loans currently open', 2, [ 'min' => 0, 'max' => 20, 'step' => 1 ] ); ?>
+    <?php fsl_check( 'bnpl-ontime', 'I have paid all my BNPL installments on time so far', true ); ?>
+    <?php fsl_select( 'bnpl-lender-check', 'Are you about to apply for a mortgage, auto loan or other credit?', [ 'no' => 'No, just curious', 'soon' => 'Yes, in the next few months' ], 'no' ); ?>
+    <button type="button" class="fsc-btn" id="bnpl-go">Estimate My Credit Impact</button>
+    <p class="fsl-error" id="bnpl-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="bnpl-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'bnpl-reports', 'Does this provider currently report to the bureaus?' );
+      fsl_card( 'bnpl-estimate', 'Estimated score effect of your open loans', 'primary' );
+      fsl_card( 'bnpl-risk', 'Biggest risk to watch', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="bnpl-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num;
+
+  /* As of late 2026: Affirm reports most loan data to Experian and TransUnion.
+     Klarna reports its longer-term "monthly financing" product, but NOT Pay in
+     4, Pay in 30, or Pay in Full. Afterpay and PayPal Pay in 4 do not broadly
+     report short-term installment data to the bureaus as of this writing.
+     Even when a provider reports, your score only moves if your lender pulls
+     a FICO 10 BNPL / FICO 10 T BNPL or VantageScore 4.0 model that reads it --
+     older FICO 8/9 and most mortgage-scoring models used today ignore it
+     entirely. This is why BNPL's real-world score impact is inconsistent. */
+  var reportsData = {
+    'affirm':         { reports: true,  label: 'Likely yes -- Affirm reports most loans to Experian and TransUnion.' },
+    'klarna-monthly':  { reports: true,  label: 'Yes, if it is the longer-term "Monthly financing" product.' },
+    'klarna-pay4':     { reports: false, label: 'No -- Klarna does not report Pay in 4 / Pay in 30 to the bureaus.' },
+    'afterpay':        { reports: false, label: 'No, not broadly, as of this writing.' },
+    'paypal':          { reports: false, label: 'No, not broadly, as of this writing.' },
+    'other':           { reports: false, label: 'Unknown -- check your own credit report at each bureau to see.' }
+  };
+
+  function calc(){
+    var provider=FSL.el('bnpl-provider').value, loans=$('bnpl-loans'), ontime=FSL.el('bnpl-ontime').checked;
+    var soon = FSL.el('bnpl-lender-check').value==='soon';
+    var info = reportsData[provider];
+
+    FSL.set('bnpl-reports', info.label);
+
+    var estimate;
+    if(!info.reports || loans===0){
+      estimate = 'Little to none -- this provider\'s data most likely is not reaching your score yet.';
+    } else {
+      var perLoan = ontime ? 10 : -25;
+      var totalPts = Math.min(Math.abs(perLoan*Math.min(loans,3)), 30);
+      estimate = ontime
+        ? ('Roughly +0 to -'+Math.round(totalPts/2)+' points if a lender pulls a BNPL-aware score -- FICO\'s own study found about 10 points of movement for most users opening a new BNPL loan, and multiple open loans are grouped together rather than stacked one by one.')
+        : ('Potentially -'+totalPts+' points or more if a lender pulls a BNPL-aware score and sees missed payments -- late BNPL payments can be reported as delinquencies just like any other account.');
+    }
+    FSL.set('bnpl-estimate', estimate);
+
+    var risk;
+    if(soon && info.reports) risk = 'Before applying, know that most mortgage lenders still use older FICO models (2, 4, or 5) that do NOT read BNPL data at all -- but some auto and personal-loan lenders have already adopted BNPL-aware scores. Ask your lender which score they pull.';
+    else if(!ontime) risk = 'A missed BNPL payment can be sent to collections and reported like any other delinquent account, which hurts far more than simply having the loan open.';
+    else risk = 'The real risk is stacking several BNPL loans across different retailers at once -- it is easy to lose track of total monthly obligations even if each individual payment looks small.';
+    FSL.set('bnpl-risk', risk);
+    FSL.show('bnpl-results','grid');
+  }
+  FSL.el('bnpl-go').addEventListener('click',calc);
+  ['bnpl-provider','bnpl-ontime','bnpl-lender-check'].forEach(function(id){FSL.el(id).addEventListener('change',calc);});
+  FSL.bind('fs-bnpl',calc);
+  calc();
+});
+</script>
+<?php }

@@ -199,6 +199,7 @@ function fs_tool_guide_map() {
         'salt-deduction-calculator'         => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
         'senior-deduction-calculator'       => [ '6000-senior-tax-deduction-2026', '2026-federal-tax-brackets', 'retirement-planning-how-much-need-2026' ],
         'auto-loan-interest-deduction-calculator' => [ '2026-federal-tax-brackets', 'used-car-loan-guide' ],
+        'bnpl-credit-score-impact-calculator' => [ 'debt-avalanche-vs-snowball', 'does-debt-consolidation-hurt-your-credit' ],
         'rv-loan-calculator'                => [ 'used-car-loan-guide', 'cash-back-or-low-apr-car-deal' ],
         'grad-plus-loan-calculator'          => [ 'how-to-pay-off-student-loans-faster-2026', 'rap-vs-tiered-standard-student-loan-plan' ],
         'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],
