@@ -1490,3 +1490,80 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   ESTIMATED TAX UNDERPAYMENT PENALTY CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_estimated_tax_penalty() { ?>
+<div class="fsc-wrap" id="fs-estpen">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'estpen-tax', 'Your estimated total tax for this year ($)', 18000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'estpen-paid', 'Total withholding + estimated payments made so far ($)', 12000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'estpen-lastyear-tax', 'Last year\'s total tax (from last year\'s return) ($)', 15000, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'estpen-lastyear-agi', 'Last year\'s adjusted gross income (AGI) ($)', 95000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <button type="button" class="fsc-btn" id="estpen-go">Check My Safe Harbor</button>
+    <p class="fsl-error" id="estpen-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="estpen-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'estpen-target', 'Your safe harbor target' );
+      fsl_card( 'estpen-status', 'Are you covered?', 'primary' );
+      fsl_card( 'estpen-shortfall', 'Shortfall if any' );
+      fsl_card( 'estpen-penalty', 'Rough penalty estimate', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="estpen-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var tax=$('estpen-tax'), paid=$('estpen-paid'), lyTax=$('estpen-lastyear-tax'), lyAgi=$('estpen-lastyear-agi');
+
+    /* Safe harbor: withholding + timely estimated payments must reach the
+       SMALLER of 90% of this year's tax, or 100% of last year's tax
+       (110% if last year's AGI was over $150,000). Owing under $1,000
+       after withholding/credits also avoids the penalty entirely. */
+    var pct = lyAgi > 150000 ? 1.10 : 1.00;
+    var currentYearTarget = tax * 0.90;
+    var priorYearTarget = lyTax * pct;
+    var target = Math.min(currentYearTarget, priorYearTarget);
+    var owedAfterPaid = tax - paid;
+    var covered = paid >= target || owedAfterPaid < 1000;
+    var shortfall = covered ? 0 : (target - paid);
+
+    /* Rough illustrative estimate only: IRS rate is the federal short-term
+       rate + 3 points, set quarterly, applied per-installment on a
+       daily-interest basis via Form 2210 -- not a single flat rate for the
+       whole year. We assume a representative ~7% annual rate and an average
+       of roughly 6 months the shortfall was outstanding across the year's
+       installments, purely to give an illustrative ballpark. */
+    var assumedRate = 0.07;
+    var roughPenalty = shortfall * assumedRate * 0.5;
+
+    FSL.set('estpen-target', M(target) + ' (the smaller of ' + M(currentYearTarget) + ' [90% this year] or ' + M(priorYearTarget) + ' [' + (pct===1.10?'110%':'100%') + ' last year])');
+    FSL.set('estpen-status', covered ? 'Yes — you are covered by the safe harbor.' : 'No — you are short of the safe harbor target.');
+    FSL.set('estpen-shortfall', M(shortfall));
+    FSL.set('estpen-penalty', covered ? '$0' : ('roughly ' + M(roughPenalty) + ' (illustrative only)'));
+    FSL.show('estpen-results','grid');
+
+    var n=[];
+    if(covered) n.push('Based on what you entered, your withholding and payments so far meet the safe harbor, so you should not owe an underpayment penalty even if you owe additional tax when you file.');
+    else {
+      n.push('You are roughly ' + M(shortfall) + ' short of the safe harbor target. Making a Q4 estimated payment (due January 15 for the prior tax year) to close some or all of this gap reduces or eliminates the penalty for the period it covers.');
+      n.push('The penalty estimate above is illustrative only — the IRS calculates it per quarterly installment, using the federal short-term rate plus 3 percentage points (set quarterly and subject to change), applied as simple daily interest on each period\'s specific shortfall via Form 2210. Your real number could be meaningfully higher or lower depending on which quarter(s) you underpaid and the actual rate in effect each quarter.');
+    }
+    n.push('Owing less than $1,000 in tax after subtracting withholding and credits avoids the penalty regardless of the safe harbor percentages.');
+    FSL.set('estpen-note', n.join(' '));
+  }
+  FSL.el('estpen-go').addEventListener('click',calc);
+  FSL.bind('fs-estpen',calc);
+  calc();
+});
+</script>
+<?php }

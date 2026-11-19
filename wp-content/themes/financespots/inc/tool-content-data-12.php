@@ -136,7 +136,7 @@ function fs_tool_content_data_12() {
             [ 'Statute: 26 U.S.C. §151(d)(5)(C)', 'https://uscode.house.gov/view.xhtml?req=granuleid:USC-prelim-title26-section151' ],
             [ 'IRS: forms and instructions', 'https://www.irs.gov/forms-instructions' ],
         ],
-        'related'   => [ 'income-tax-calculator', 'social-security-earnings-limit-2027', '401k-early-withdrawal-calculator', 'retirement-savings-calculator' ],
+        'related'   => [ 'income-tax-calculator', 'social-security-cola-calculator', '401k-early-withdrawal-calculator', 'retirement-savings-calculator' ],
     ],
 
     'auto-loan-interest-deduction-calculator' => [
@@ -185,7 +185,7 @@ function fs_tool_content_data_12() {
             [ 'IRS: forms and instructions (Schedule 1-A)', 'https://www.irs.gov/forms-instructions' ],
             [ 'NHTSA: VIN decoder', 'https://vpic.nhtsa.dot.gov/decoder/' ],
         ],
-        'related'   => [ 'auto-loan-calculator', 'used-car-loan-guide', 'income-tax-calculator', 'cash-back-vs-low-apr-calculator' ],
+        'related'   => [ 'auto-loan-calculator', 'loan-comparison-calculator', 'income-tax-calculator', 'cash-back-vs-low-apr-calculator' ],
     ],
 
     'bnpl-credit-score-impact-calculator' => [
@@ -230,7 +230,53 @@ function fs_tool_content_data_12() {
             [ 'Consumer Financial Protection Bureau: Buy Now, Pay Later', 'https://www.consumerfinance.gov/consumer-tools/buy-now-pay-later/' ],
             [ 'AnnualCreditReport.com (official free credit report site)', 'https://www.annualcreditreport.com' ],
         ],
-        'related'   => [ 'debt-avalanche-vs-snowball', 'does-debt-consolidation-hurt-your-credit', 'net-worth-calculator', 'debt-to-income-ratio-calculator' ],
+        'related'   => [ 'debt-consolidation-calculator', 'personal-loan-calculator', 'net-worth-calculator', 'debt-to-income-ratio-calculator' ],
+    ],
+
+    'estimated-tax-penalty-calculator' => [
+        'focus'     => 'estimated tax penalty calculator',
+        'secondary' => [ 'underpayment penalty calculator', 'IRS safe harbor rule', 'Form 2210 calculator', 'quarterly estimated tax penalty', '1099 estimated tax penalty' ],
+        'title'     => 'Estimated Tax Underpayment Penalty Calculator',
+        'meta'      => 'Free estimated tax penalty calculator: check the IRS safe harbor rule, see if you owe an underpayment penalty, and estimate the cost before the Q4 deadline.',
+        'excerpt'   => 'Check whether your withholding and estimated payments meet the IRS safe harbor, and estimate your underpayment penalty before the January 15 Q4 deadline.',
+        'answer'    => 'You generally avoid the underpayment penalty if your withholding plus timely estimated payments reach the smaller of 90% of this year\'s total tax, or 100% of last year\'s tax (110% if last year\'s AGI was over $150,000). Owing less than $1,000 after withholding and credits avoids the penalty regardless of those percentages.',
+        'steps'     => [
+            'Enter your estimated total tax for this year.',
+            'Enter your total withholding plus estimated payments made so far.',
+            'Enter last year\'s total tax and last year\'s AGI.',
+            'See your safe harbor target, whether you are covered, and a rough penalty estimate if you are short.',
+        ],
+        'formula'   => '<p><strong>Safe harbor target = the smaller of (90% x this year\'s tax) or (100% or 110% x last year\'s tax)</strong>. Use 110% of last year\'s tax if last year\'s AGI was over $150,000; otherwise use 100%.</p><p>If your withholding plus timely estimated payments meet or exceed that target, or if you owe less than $1,000 after withholding and credits, you owe no penalty. Otherwise, the IRS calculates the penalty <strong>per quarterly installment</strong>, as simple daily interest on that period\'s specific shortfall, at the federal short-term rate plus 3 percentage points (set and published quarterly) — via Form 2210, not a single flat annual number.</p>',
+        'example'   => '<p>A freelancer expects to owe $18,000 in total tax this year, has paid $12,000 through estimated payments so far, and last year owed $15,000 total tax on an AGI of $95,000 (under $150,000, so the 100% test applies):</p><ul><li>90% of this year\'s tax: $18,000 x 0.90 = <strong>$16,200</strong></li><li>100% of last year\'s tax: <strong>$15,000</strong></li><li>Safe harbor target: the smaller of the two = <strong>$15,000</strong></li><li>Paid so far: $12,000 — short of the $15,000 target by <strong>$3,000</strong></li></ul><p>This filer is not covered by the safe harbor and should make a Q4 payment to close some or all of the $3,000 gap before the January 15 deadline — the sooner the gap closes, the less the per-installment penalty accrues.</p>',
+        'sections'  => [
+            [ 'Why this hits 1099 and gig workers hardest', '<p>Employees generally avoid this entirely because their employer withholds tax throughout the year automatically. Freelancers, gig workers, and anyone with significant 1099 income are responsible for estimating and paying their own tax four times a year — and it is easy to underestimate, especially in a first full year of self-employment when there is no prior-year baseline to compare against. If you are also unsure how self-employment tax itself is calculated separately from this penalty, see our <a href="/tool/self-employment-tax-calculator/">self-employment tax calculator</a> first — the penalty calculator here assumes you already know your total tax liability.</p>' ],
+            [ 'The 90/100/110 rule, explained plainly', '<p>The IRS gives you two ways to avoid the penalty, and you only need to hit one of them. The "90% rule" looks forward: pay at least 90% of what you will actually owe this year. The "100%/110% rule" looks backward: pay at least as much as last year\'s total tax (110% if you were a higher earner last year), regardless of how this year turns out. The backward-looking rule is often easier to plan around, since last year\'s number is already known at the start of the year — many self-employed people set their quarterly payments based on last year\'s tax bill specifically because it is a known, fixed target.</p>' ],
+            [ 'The $1,000 de minimis rule is an easy win for smaller shortfalls', '<p>Regardless of the percentage tests, if your total shortfall after withholding and credits is under $1,000, there is no penalty at all. This matters most for people with a mix of W-2 withholding and smaller side income — if the side income is modest enough, normal W-2 withholding can sometimes keep the total shortfall under this threshold without any separate estimated payments.</p>' ],
+            [ 'Why the "penalty" is really just interest, and why it is not one flat number', '<p>Despite the name, the underpayment penalty functions as interest on money the IRS considers it should have had earlier, calculated separately for each of the four payment periods, not as one number applied to the whole year. If you underpaid Q1 but caught up by Q3, you still owe something for the Q1–Q3 period specifically, even though your year-end numbers might look fine overall. This is why the calculator above gives an illustrative estimate rather than an exact figure — the true number depends on exactly when each shortfall occurred and the specific quarterly rate in effect at the time, and should be confirmed on IRS Form 2210 or by your tax software.</p>' ],
+            [ 'What to do before the Q4 deadline', '<p>The fourth and final estimated payment of the year is due January 15 of the following year. If this calculator shows you are short of the safe harbor, making a larger Q4 payment is the most direct fix available before filing — it cannot undo penalty already accruing on earlier quarters, but it stops the Q4 period\'s shortfall from growing further and reduces what you owe when you file. If you consistently underpay each year, consider raising your regular quarterly payment amount going forward, or ask an employer-side spouse to increase W-2 withholding instead, since withholding is treated as paid evenly throughout the year regardless of when it actually happens.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Safe harbor', 'A rule that protects you from a penalty as long as you meet a specific payment threshold, even if you end up owing more tax than expected.' ],
+            [ 'AGI', 'Adjusted gross income — your income after certain above-the-line deductions, used to determine whether the 100% or 110% prior-year test applies.' ],
+            [ 'Form 2210', 'The IRS form used to calculate the exact underpayment penalty, if any, for a given tax year.' ],
+            [ 'De minimis threshold', 'The $1,000 shortfall amount under which no underpayment penalty applies, regardless of the safe harbor percentages.' ],
+        ],
+        'faqs'      => [
+            [ 'How do I avoid the estimated tax underpayment penalty?', 'Pay, through withholding and/or timely estimated payments, at least the smaller of 90% of this year\'s total tax or 100% of last year\'s tax (110% if last year\'s AGI was over $150,000). Owing under $1,000 after withholding also avoids it.' ],
+            [ 'What is the safe harbor rule for estimated taxes?', 'It is the IRS rule described above — meeting either the 90%-of-this-year or 100%/110%-of-last-year threshold protects you from the underpayment penalty even if you end up owing significant additional tax when you file.' ],
+            [ 'When is the Q4 estimated tax payment due?', 'January 15 of the year following the tax year — for example, January 15, 2027 for the 2026 tax year.' ],
+            [ 'What if I owe less than $1,000?', 'No underpayment penalty applies if your total shortfall after withholding and credits, for the year, is under $1,000 — regardless of the percentage safe harbor tests.' ],
+            [ 'How is the underpayment penalty calculated?', 'As simple daily interest on each quarterly installment\'s specific shortfall, at the federal short-term rate plus 3 percentage points (a rate set and published quarterly, not fixed for the whole year), using IRS Form 2210.' ],
+            [ 'Does this apply to W-2 employees?', 'Rarely, since employer withholding is treated as paid evenly throughout the year and usually covers the safe harbor automatically. It mainly affects people with significant 1099, gig, freelance, rental, or investment income with no withholding.' ],
+            [ 'Is 100% or 110% the right test for me?', 'Use 110% of last year\'s total tax if last year\'s AGI was over $150,000 ($75,000 if married filing separately); otherwise use 100%.' ],
+            [ 'Can I fix an earlier underpaid quarter by overpaying Q4?', 'Partially. A larger Q4 payment stops that period\'s shortfall from growing, but it does not erase penalty interest that already accrued on an earlier quarter\'s shortfall — only paying that specific quarter on time would have avoided it.' ],
+            [ 'Does this calculator give my exact penalty amount?', 'No — it gives an illustrative estimate only. The exact figure depends on the specific timing of each quarter\'s shortfall and the IRS rate in effect each quarter; use IRS Form 2210 or your tax software for the precise number.' ],
+        ],
+        'sources'   => [
+            [ 'IRS: Form 2210, Underpayment of Estimated Tax', 'https://www.irs.gov/forms-pubs/about-form-2210' ],
+            [ 'IRS: Estimated taxes', 'https://www.irs.gov/businesses/small-businesses-self-employed/estimated-taxes' ],
+        ],
+        'related'   => [ 'self-employment-tax-calculator', 'income-tax-calculator', 'tax-bonus-calculator' ],
     ],
 
     ];
