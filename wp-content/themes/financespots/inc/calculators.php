@@ -61,6 +61,7 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'auto-loan-interest-deduction-calculator' => 'fs_calc2_auto_interest_deduction',
         'bnpl-credit-score-impact-calculator' => 'fs_calc2_bnpl_credit_impact',
         'estimated-tax-penalty-calculator' => 'fs_calc2_estimated_tax_penalty',
+        'student-loan-401k-match-calculator' => 'fs_calc2_secure2_student_loan_match',
         'rv-loan-calculator'                => 'fs_calc2_rv_loan',
         'grad-plus-loan-calculator'         => 'fs_calc2_grad_plus_loan',
     ];

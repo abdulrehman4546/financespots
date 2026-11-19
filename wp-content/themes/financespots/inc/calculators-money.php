@@ -1567,3 +1567,69 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   SECURE 2.0 STUDENT LOAN 401(k) MATCH CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_secure2_student_loan_match() { ?>
+<div class="fsc-wrap" id="fs-slmatch">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'slmatch-salary', 'Your annual salary ($)', 65000, [ 'min' => 0, 'step' => 1000 ] ); ?>
+    <?php fsl_field( 'slmatch-loan-payments', 'Your qualified student loan payments this year ($)', 4800, [ 'min' => 0, 'step' => 100 ] ); ?>
+    <?php fsl_field( 'slmatch-pct', 'Your employer\'s match rate (%)', 50, [ 'min' => 0, 'max' => 100, 'step' => 1, 'hint' => 'Example: a "50% match up to 5% of salary" plan enters 50 here and 5 below.' ] ); ?>
+    <?php fsl_field( 'slmatch-cap-pct', 'Match cap, as % of salary', 5, [ 'min' => 0, 'max' => 100, 'step' => 0.5 ] ); ?>
+    <?php fsl_field( 'slmatch-years', 'Years until you expect to retire', 25, [ 'min' => 1, 'max' => 50, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'slmatch-return', 'Expected average annual return (%)', 7, [ 'min' => 0, 'max' => 15, 'step' => 0.5 ] ); ?>
+    <button type="button" class="fsc-btn" id="slmatch-go">Estimate My Match</button>
+    <p class="fsl-error" id="slmatch-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="slmatch-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'slmatch-cap-dollar', 'Your plan\'s maximum match this year' );
+      fsl_card( 'slmatch-this-year', 'Estimated match you actually earn this year', 'primary' );
+      fsl_card( 'slmatch-future', 'If invested, roughly worth at retirement', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="slmatch-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var salary=$('slmatch-salary'), payments=$('slmatch-loan-payments'), pct=$('slmatch-pct')/100, capPct=$('slmatch-cap-pct')/100, years=$('slmatch-years'), ret=$('slmatch-return')/100;
+
+    /* SECURE 2.0 Section 110: an employer MAY (not must) treat qualified
+       student loan payments as if they were 401(k) deferrals for matching
+       purposes. The match still follows the plan's normal match formula and
+       cap -- it is not a new, separate benefit amount, just a new way to
+       EARN the existing match without contributing to the 401(k) yourself.
+       The match itself goes into your retirement account, not toward your
+       loan balance. */
+    var capDollar = salary * capPct;
+    var matchFromPayments = Math.min(payments, salary*capPct/pct) * pct;
+    var thisYearMatch = Math.min(matchFromPayments, capDollar);
+    var futureValue = thisYearMatch * Math.pow(1+ret, years);
+
+    FSL.set('slmatch-cap-dollar', M(capDollar) + ' per year (your plan\'s match cap)');
+    FSL.set('slmatch-this-year', M(thisYearMatch));
+    FSL.set('slmatch-future', M(futureValue) + ' (assuming this single year\'s match alone grows untouched)');
+    FSL.show('slmatch-results','grid');
+
+    var n=[];
+    if(thisYearMatch >= capDollar) n.push('Your loan payments alone are enough to earn your plan\'s full match cap for the year -- the same as if you had contributed enough to your 401(k) directly, except the money went to your loans instead.');
+    else n.push('Your loan payments earn you ' + M(thisYearMatch) + ' of a possible ' + M(capDollar) + ' match cap. You could still contribute directly to your 401(k) on top of this to capture the rest of the match, if your plan allows combining both.');
+    n.push('This benefit is optional for employers -- not every 401(k) plan offers it. Ask your HR or plan administrator whether your specific plan has adopted SECURE 2.0 Section 110 student loan matching, since the law only permits it, it does not require it.');
+    n.push('The match goes into your retirement account as an employer contribution, not toward paying down your loan balance -- the two benefits are separate.');
+    FSL.set('slmatch-note', n.join(' '));
+  }
+  FSL.el('slmatch-go').addEventListener('click',calc);
+  FSL.bind('fs-slmatch',calc);
+  calc();
+});
+</script>
+<?php }

@@ -279,5 +279,46 @@ function fs_tool_content_data_12() {
         'related'   => [ 'self-employment-tax-calculator', 'income-tax-calculator', 'tax-bonus-calculator' ],
     ],
 
+    'student-loan-401k-match-calculator' => [
+        'focus'     => 'student loan 401k match calculator',
+        'secondary' => [ 'SECURE 2.0 student loan match', 'Section 110 student loan 401k', 'employer match student loan payments', 'student loan retirement match 2026' ],
+        'title'     => 'Student Loan 401(k) Match Calculator (SECURE 2.0)',
+        'meta'      => 'Free SECURE 2.0 student loan 401(k) match calculator: estimate the employer retirement match your student loan payments can earn you in 2026.',
+        'excerpt'   => 'See how much employer 401(k) match your student loan payments could earn you under SECURE 2.0, and what that match could be worth by retirement.',
+        'answer'    => 'Under SECURE 2.0 Section 110, an employer can choose to treat your qualified student loan payments as if they were 401(k) contributions for matching purposes — so you can earn your employer\'s match without contributing to your 401(k) yourself. The match follows your plan\'s normal formula and cap; it is a new way to earn the existing match, not a separate new benefit amount.',
+        'steps'     => [
+            'Enter your annual salary and your qualified student loan payments for the year.',
+            'Enter your employer\'s match percentage and cap (check your plan documents or ask HR).',
+            'Enter how many years until retirement and an expected average return.',
+            'Review your estimated match for this year and its rough projected value at retirement.',
+        ],
+        'formula'   => '<p><strong>Match cap = salary x your plan\'s match cap percentage.</strong> <strong>Match earned = the smaller of (loan payments x match rate) or the match cap.</strong> This mirrors exactly how a normal 401(k) match works — the loan payments simply substitute for your own contribution in the formula, dollar for dollar, up to your plan\'s normal limits.</p>',
+        'example'   => '<p>$65,000 salary, a plan that matches 50% up to 5% of salary (a $1,625 match cap), and $4,800 in qualified student loan payments for the year:</p><ul><li>Match cap: $65,000 x 5% = <strong>$3,250</strong> is the contribution level needed to earn the max, and the match itself caps at 50% of that = <strong>$1,625</strong></li><li>Loan payments ($4,800) exceed the $3,250 needed, so the full cap is earned</li><li>Match earned this year: <strong>$1,625</strong>, deposited into the 401(k) as an employer contribution</li></ul><p>Over 25 years at a 7% average return, that single year\'s $1,625 match alone — left untouched and compounding — would grow to roughly <strong>$8,800</strong>, without the employee putting a single additional dollar into the 401(k) that year.</p>',
+        'sections'  => [
+            [ 'This is optional for employers — check whether your plan actually offers it', '<p>SECURE 2.0 Section 110 gives employers the ABILITY to offer this matching feature; it does not require any employer to adopt it. Many plans, especially smaller ones, have not yet implemented it, partly because the IRS only issued interim guidance in August 2024 (Notice 2024-63) and some plan sponsors are still waiting on further clarity before amending their documents. Before assuming this applies to you, confirm directly with HR or your plan administrator whether your specific 401(k) plan has adopted student loan matching — the calculator above shows what you COULD earn if it has, not a guarantee that it does.</p>' ],
+            [ 'The match goes to your retirement account, not your loan balance', '<p>This is the single most common misunderstanding about this benefit. Making a student loan payment does not reduce your loan balance any faster because of this provision — you are still paying your loan exactly as you otherwise would. What changes is that your employer ALSO deposits a matching contribution into your 401(k), calculated as if your loan payment had been a retirement contribution instead. You get the retirement savings boost without having to choose between paying down debt and saving for retirement with the same dollar.</p>' ],
+            [ 'Everyone eligible for the regular match must be eligible for this too', '<p>Employers cannot offer this feature selectively — if your plan adopts it, every employee eligible to make regular 401(k) deferrals must also be eligible for the student loan match version, under the same nondiscrimination rules that apply to the regular match. It only covers your own qualified education loans, not a spouse\'s or dependent\'s, and you generally need to certify your loan payments to your employer each year for the match to be applied.</p>' ],
+            [ 'Can you get both the loan match and a regular 401(k) match in the same year?', '<p>Potentially, depending on your plan\'s design and your own cash flow — if your loan payments do not use up your full match cap, you can often still contribute directly to the 401(k) to capture the remainder, as shown in the "not quite capped" note in the calculator above. Whether your specific plan allows combining both in the same year is a plan-design detail worth confirming with HR rather than assuming either way.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Section 110', 'The SECURE 2.0 Act provision letting employers match qualified student loan payments as if they were 401(k) contributions.' ],
+            [ 'Qualified student loan payment', 'A payment toward a loan taken out solely to pay for the employee\'s own qualified higher-education expenses.' ],
+            [ 'Match cap', 'The maximum percentage of salary an employer will match, regardless of how much is contributed or paid toward a qualifying loan.' ],
+        ],
+        'faqs'      => [
+            [ 'What is the SECURE 2.0 student loan 401(k) match?', 'A provision (Section 110) letting employers treat an employee\'s qualified student loan payments as if they were 401(k) contributions for matching purposes, so the employee can earn the employer match without contributing to the 401(k) directly.' ],
+            [ 'Does my employer have to offer this benefit?', 'No. It is optional. Employers may choose to adopt student loan matching, but many plans — especially smaller employers — have not implemented it. Confirm with your HR department or plan administrator.' ],
+            [ 'Does the match pay down my student loan?', 'No. The employer match is deposited into your 401(k) retirement account as a normal employer contribution — it has no effect on your loan balance, which you continue paying exactly as before.' ],
+            [ 'Can I use this for my spouse\'s or child\'s student loans?', 'No. It only applies to qualified loans taken out for the employee\'s own education, not a spouse\'s or dependent\'s loans.' ],
+            [ 'Do I need to tell my employer about my loan payments?', 'Generally yes — most plans require you to certify your qualified student loan payments annually for the match to be applied correctly.' ],
+            [ 'Can I get the match from my loan payments and also contribute to my 401(k)?', 'Depending on your plan\'s design, yes — if your loan payments do not use your full match cap, direct 401(k) contributions can often capture the remainder. Confirm with HR whether your specific plan allows combining both.' ],
+        ],
+        'sources'   => [
+            [ 'IRS: Notice 2024-63 (interim guidance on student loan payment matching)', 'https://www.irs.gov/pub/irs-drop/n-24-63.pdf' ],
+            [ 'IRS: SECURE 2.0 Act provisions', 'https://www.irs.gov/retirement-plans/secure-2-0-act-of-2022' ],
+        ],
+        'related'   => [ '401k-calculator', 'retirement-savings-calculator', 'student-loan-calculator', 'compound-interest-calculator' ],
+    ],
+
     ];
 }
