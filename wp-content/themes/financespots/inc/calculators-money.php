@@ -1644,6 +1644,10 @@ function fs_calc2_2027_contribution_limits() { ?>
     <?php fsl_field( 'contrib27-age', 'Your age by December 31, 2027', 52, [ 'min' => 18, 'max' => 100, 'step' => 1 ] ); ?>
     <?php fsl_field( 'contrib27-wages', 'Your prior-year (2026) FICA wages ($)', 90000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Box 3 of your W-2 -- this determines whether your catch-up must go to Roth.' ] ); ?>
     <?php fsl_select( 'contrib27-plan', 'Plan type', [ '401k' => '401(k) / 403(b) / governmental 457 / TSP', 'ira' => 'Traditional or Roth IRA' ], '401k' ); ?>
+    <div id="contrib27-ira-fields" style="display:none">
+      <?php fsl_select( 'contrib27-filing', 'Filing status', [ 'single' => 'Single / Head of household', 'mfj' => 'Married filing jointly', 'mfs' => 'Married filing separately' ], 'single' ); ?>
+      <?php fsl_field( 'contrib27-magi', 'Your 2027 modified AGI ($)', 100000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Used only to check Roth IRA eligibility -- not needed for the contribution limit itself.' ] ); ?>
+    </div>
     <button type="button" class="fsc-btn" id="contrib27-go">Calculate My 2027 Limit</button>
     <p class="fsl-error" id="contrib27-err" role="alert" style="display:none"></p>
   </div>
@@ -1656,6 +1660,9 @@ function fs_calc2_2027_contribution_limits() { ?>
       fsl_card( 'contrib27-roth-flag', 'Catch-up tax treatment', 'gold' );
       ?>
     </div>
+    <div id="contrib27-roth-elig-wrap" style="display:none">
+      <?php fsl_card( 'contrib27-roth-elig', 'Roth IRA eligibility at your income' ); ?>
+    </div>
     <p class="fsl-note" id="contrib27-note"></p>
   </div>
 </div>
@@ -1664,8 +1671,14 @@ function fs_calc2_2027_contribution_limits() { ?>
 document.addEventListener('DOMContentLoaded',function(){
   var $=FSL.num, M=FSL.money;
 
+  function toggleIraFields(){
+    var plan = FSL.el('contrib27-plan').value;
+    FSL.el('contrib27-ira-fields').style.display = plan === 'ira' ? '' : 'none';
+  }
+
   function calc(){
     var age=$('contrib27-age'), wages=$('contrib27-wages'), plan=FSL.el('contrib27-plan').value;
+    var filing = FSL.el('contrib27-filing').value, magi = $('contrib27-magi');
 
     /* IRS Notice 2026-66 (Nov 12, 2026), effective tax year 2027:
        401(k)/403(b)/gov 457/TSP base: $25,500. Age 50+ catch-up: $8,500
@@ -1697,6 +1710,27 @@ document.addEventListener('DOMContentLoaded',function(){
     FSL.set('contrib27-roth-flag', catchup === 0 ? 'Not applicable' : (rothRequired ? 'Must be Roth (after-tax)' : 'Pre-tax or Roth, your choice'));
     FSL.show('contrib27-results','grid');
 
+    /* 2027 Roth IRA MAGI phase-out (IRS Notice 2026-66): single/HoH
+       $158,000-$173,000; MFJ $250,000-$260,000; MFS $0-$10,000 (not
+       inflation-adjusted). Below the range: full $7,500/$8,600
+       contribution allowed. Within range: reduced amount. Above: $0
+       direct Roth IRA contribution (a "backdoor" Roth may still be
+       possible but is a separate topic). */
+    if (plan === 'ira') {
+      FSL.el('contrib27-roth-elig-wrap').style.display = '';
+      var lo, hi;
+      if (filing === 'mfj') { lo = 250000; hi = 260000; }
+      else if (filing === 'mfs') { lo = 0; hi = 10000; }
+      else { lo = 158000; hi = 173000; }
+      var elig;
+      if (magi < lo) elig = 'Full amount allowed (' + M(total) + ') -- your MAGI is under the ' + M(lo) + ' phase-out start.';
+      else if (magi >= hi) elig = 'Not eligible to contribute directly to a Roth IRA at this income (MAGI at or above ' + M(hi) + '). A Traditional IRA (possibly non-deductible) or a "backdoor" Roth conversion may still be an option -- that is a separate strategy, not a direct contribution.';
+      else elig = 'Partial contribution only -- your MAGI falls inside the ' + M(lo) + '-' + M(hi) + ' phase-out range, so your allowed Roth IRA contribution is reduced below ' + M(total) + '.';
+      FSL.set('contrib27-roth-elig', elig);
+    } else {
+      FSL.el('contrib27-roth-elig-wrap').style.display = 'none';
+    }
+
     var n = [];
     n.push('For 2027, the IRS set the ' + (plan==='401k' ? '401(k)/403(b)/457/TSP' : 'IRA') + ' base limit at ' + M(base) + '.');
     if (catchup > 0) n.push('At your age, you qualify for ' + tier + ' of ' + M(catchup) + ', bringing your total to ' + M(total) + '.');
@@ -1708,8 +1742,10 @@ document.addEventListener('DOMContentLoaded',function(){
     FSL.set('contrib27-note', n.join(' '));
   }
   FSL.el('contrib27-go').addEventListener('click',calc);
-  FSL.el('contrib27-plan').addEventListener('change',calc);
+  FSL.el('contrib27-plan').addEventListener('change',function(){toggleIraFields();calc();});
+  FSL.el('contrib27-filing').addEventListener('change',calc);
   FSL.bind('fs-contrib27',calc);
+  toggleIraFields();
   calc();
 });
 </script>
