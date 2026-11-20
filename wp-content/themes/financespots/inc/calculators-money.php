@@ -1633,3 +1633,84 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   2027 401(K) & IRA CONTRIBUTION LIMIT CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_2027_contribution_limits() { ?>
+<div class="fsc-wrap" id="fs-contrib27">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'contrib27-age', 'Your age by December 31, 2027', 52, [ 'min' => 18, 'max' => 100, 'step' => 1 ] ); ?>
+    <?php fsl_field( 'contrib27-wages', 'Your prior-year (2026) FICA wages ($)', 90000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Box 3 of your W-2 -- this determines whether your catch-up must go to Roth.' ] ); ?>
+    <?php fsl_select( 'contrib27-plan', 'Plan type', [ '401k' => '401(k) / 403(b) / governmental 457 / TSP', 'ira' => 'Traditional or Roth IRA' ], '401k' ); ?>
+    <button type="button" class="fsc-btn" id="contrib27-go">Calculate My 2027 Limit</button>
+    <p class="fsl-error" id="contrib27-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="contrib27-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'contrib27-base', 'Base 2027 limit (under 50)' );
+      fsl_card( 'contrib27-catchup', 'Your catch-up amount' );
+      fsl_card( 'contrib27-total', 'Your total 2027 limit', 'primary' );
+      fsl_card( 'contrib27-roth-flag', 'Catch-up tax treatment', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="contrib27-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  function calc(){
+    var age=$('contrib27-age'), wages=$('contrib27-wages'), plan=FSL.el('contrib27-plan').value;
+
+    /* IRS Notice 2026-66 (Nov 12, 2026), effective tax year 2027:
+       401(k)/403(b)/gov 457/TSP base: $25,500. Age 50+ catch-up: $8,500
+       (total $34,000). Age 60-63 "super" catch-up (SECURE 2.0): $11,750
+       (total $37,250) -- note this higher tier applies ONLY to ages 60,
+       61, 62 and 63, reverting to the regular $8,500 catch-up at 64+.
+       IRA: base $7,500 (unchanged), catch-up $1,100 (unchanged), total
+       $8,600 for 50+, no special 60-63 tier for IRAs.
+       Mandatory Roth catch-up: anyone whose PRIOR-YEAR FICA wages (not
+       current-year gross income) exceeded $155,000 must have their
+       entire catch-up contribution treated as Roth (after-tax), not
+       pre-tax -- a frequently-missed 2026+ requirement under SECURE 2.0
+       Section 603 for 401(k)/403(b)/457 plans. */
+    var base, catchup = 0, tier = '';
+    if (plan === '401k') {
+      base = 25500;
+      if (age >= 60 && age <= 63) { catchup = 11750; tier = 'the age 60-63 "super" catch-up'; }
+      else if (age >= 50) { catchup = 8500; tier = 'the standard age-50+ catch-up'; }
+    } else {
+      base = 7500;
+      if (age >= 50) { catchup = 1100; tier = 'the IRA age-50+ catch-up (no special 60-63 tier for IRAs)'; }
+    }
+    var total = base + catchup;
+    var rothRequired = plan === '401k' && catchup > 0 && wages > 155000;
+
+    FSL.set('contrib27-base', M(base));
+    FSL.set('contrib27-catchup', catchup > 0 ? (M(catchup) + ' (' + tier + ')') : '$0 (not yet eligible for a catch-up)');
+    FSL.set('contrib27-total', M(total));
+    FSL.set('contrib27-roth-flag', catchup === 0 ? 'Not applicable' : (rothRequired ? 'Must be Roth (after-tax)' : 'Pre-tax or Roth, your choice'));
+    FSL.show('contrib27-results','grid');
+
+    var n = [];
+    n.push('For 2027, the IRS set the ' + (plan==='401k' ? '401(k)/403(b)/457/TSP' : 'IRA') + ' base limit at ' + M(base) + '.');
+    if (catchup > 0) n.push('At your age, you qualify for ' + tier + ' of ' + M(catchup) + ', bringing your total to ' + M(total) + '.');
+    if (plan === '401k') {
+      if (rothRequired) n.push('Because your 2026 FICA wages were over $155,000, IRS rules require your entire catch-up contribution to be made as Roth (after-tax) starting in 2027 -- you cannot elect pre-tax for the catch-up portion, even if the rest of your plan is pre-tax.');
+      else if (catchup > 0) n.push('Your 2026 FICA wages were under the $155,000 threshold, so you can still choose pre-tax or Roth for your catch-up contribution.');
+      if (age === 64) n.push('Note: the higher "super" catch-up only applies through age 63 -- at 64 you drop back to the standard catch-up amount.');
+    }
+    FSL.set('contrib27-note', n.join(' '));
+  }
+  FSL.el('contrib27-go').addEventListener('click',calc);
+  FSL.el('contrib27-plan').addEventListener('change',calc);
+  FSL.bind('fs-contrib27',calc);
+  calc();
+});
+</script>
+<?php }

@@ -202,6 +202,7 @@ function fs_tool_guide_map() {
         'bnpl-credit-score-impact-calculator' => [ 'debt-avalanche-vs-snowball', 'does-debt-consolidation-hurt-your-credit' ],
         'estimated-tax-penalty-calculator' => [ '2026-federal-tax-brackets', 'year-end-tax-planning-checklist' ],
         'student-loan-401k-match-calculator' => [ 'year-end-tax-planning-checklist' ],
+        '2027-401k-ira-contribution-limit-calculator' => [ '2026-federal-tax-brackets', 'retirement-planning-how-much-need-2026' ],
         'rv-loan-calculator'                => [ 'used-car-loan-guide', 'cash-back-or-low-apr-car-deal' ],
         'grad-plus-loan-calculator'          => [ 'how-to-pay-off-student-loans-faster-2026', 'rap-vs-tiered-standard-student-loan-plan' ],
         'fha-loan-calculator'           => [ 'first-time-home-buyer-guide-2026' ],

@@ -320,5 +320,48 @@ function fs_tool_content_data_12() {
         'related'   => [ '401k-calculator', 'retirement-savings-calculator', 'student-loan-calculator', 'compound-interest-calculator' ],
     ],
 
+    '2027-401k-ira-contribution-limit-calculator' => [
+        'focus'     => '2027 401k contribution limit calculator',
+        'secondary' => [ '2027 IRA contribution limit', '401k catch-up 2027', 'age 60 to 63 super catch-up', 'IRS Notice 2026-66', 'mandatory Roth catch-up 2027' ],
+        'title'     => '2027 401(k) & IRA Contribution Limit Calculator',
+        'meta'      => 'Free 2027 401(k) and IRA contribution limit calculator: your exact limit by age, including the 60-63 super catch-up and the mandatory Roth catch-up rule.',
+        'excerpt'   => 'Enter your age and prior-year wages to see your exact 2027 401(k) or IRA contribution limit, including catch-up tiers and the mandatory Roth catch-up rule.',
+        'answer'    => 'For 2027, the IRS set the 401(k)/403(b)/governmental 457/TSP limit at $25,500, with an $8,500 catch-up at age 50+ ($34,000 total) and a higher $11,750 "super" catch-up for ages 60-63 only ($37,250 total). The IRA limit stays at $7,500, with a $1,100 catch-up at 50+. If your 2026 FICA wages topped $155,000, your entire catch-up must be made as Roth (after-tax), not pre-tax.',
+        'steps'     => [
+            'Enter your age as of December 31, 2027.',
+            'Enter your 2026 FICA wages (Box 3 of your W-2) — this determines the mandatory Roth catch-up rule.',
+            'Select your plan type: 401(k)/403(b)/457/TSP, or IRA.',
+            'See your exact base limit, catch-up amount, total limit, and whether your catch-up must be Roth.',
+        ],
+        'formula'   => '<p><strong>401(k)/403(b)/457/TSP 2027:</strong> base $25,500. Age 50-59 or 64+: +$8,500 catch-up ($34,000 total). Age 60-63 only: +$11,750 "super" catch-up ($37,250 total), per SECURE 2.0.</p><p><strong>IRA 2027:</strong> base $7,500. Age 50+: +$1,100 catch-up ($8,600 total) — no special 60-63 tier for IRAs.</p><p><strong>Mandatory Roth catch-up:</strong> if your prior-year FICA wages (not current income) exceeded $155,000, your entire catch-up contribution must be designated Roth, under SECURE 2.0 Section 603.</p>',
+        'example'   => '<p>A 61-year-old 401(k) participant with $168,000 in 2026 FICA wages:</p><ul><li>Base 2027 limit: <strong>$25,500</strong></li><li>Age 60-63 "super" catch-up: <strong>$11,750</strong> (not the regular $8,500, since they are 60-63)</li><li>Total 2027 limit: <strong>$37,250</strong></li><li>FICA wages ($168,000) exceed the $155,000 threshold, so the full $11,750 catch-up must be contributed as <strong>Roth</strong>, not pre-tax</li></ul><p>Compare that to a 61-year-old earning $95,000: same $37,250 total limit, but their catch-up can still go in pre-tax, since they are under the $155,000 threshold.</p>',
+        'sections'  => [
+            [ 'The 60-63 "super" catch-up is narrower than most people realize', '<p>This enhanced catch-up, created by SECURE 2.0, is not available to everyone 60 and older — it applies <strong>only</strong> to the calendar years in which you turn 60, 61, 62, or 63. At 64, the catch-up drops back down to the standard $8,500 amount. If you are 59 turning 60 mid-year, you still get the higher catch-up for the full year, since the test is your age by the end of the year — but if you turn 64 mid-year, you lose it for that year, which catches some people off guard right when they were counting on the bigger number.</p>' ],
+            [ 'The mandatory Roth catch-up rule that trips up high earners', '<p>Starting with tax years affected by SECURE 2.0 Section 603, anyone whose <strong>prior-year FICA wages</strong> (reported in Box 3 of your W-2 — not your current salary, bonus, or this year\'s income) exceeded $155,000 for 2027 must have their <em>entire</em> catch-up contribution made as Roth, meaning after-tax, with no pre-tax option for that portion. This is a genuinely confusing rule because: it looks backward at last year\'s wages, not this year\'s; it uses FICA wages specifically, not AGI or taxable income; and it applies to the whole catch-up amount, not just the portion above the threshold. Many payroll systems handle this automatically once you cross the line, but it is worth confirming with your plan administrator rather than assuming your contribution election will work as expected.</p>' ],
+            [ 'Why IRAs do not get the same 60-63 boost', '<p>The enhanced "super" catch-up created by SECURE 2.0 applies specifically to employer-sponsored plans — 401(k), 403(b), governmental 457, and the federal Thrift Savings Plan. IRAs were left out of this enhancement entirely; the IRA catch-up has been a flat $1,000 historically and is now inflation-indexed to $1,100, with no special boost at any age. If you are 60-63 and want to maximize retirement savings using the higher catch-up, it has to go through an employer plan, not an IRA.</p>' ],
+            [ 'Can you max out both a 401(k) and an IRA in 2027?', '<p>Yes — the two limits are entirely separate. A 61-year-old could contribute the full $37,250 to a 401(k) and also the full $8,600 to an IRA in the same year, for $45,850 in total tax-advantaged retirement savings, subject to income limits on IRA deductibility or Roth IRA eligibility. See our <a href="/retirement-planning-how-much-need-2026/">retirement planning guide</a> for how these pieces fit into an overall savings target.</p>' ],
+        ],
+        'terms'     => [
+            [ 'FICA wages', 'Your Social Security/Medicare taxable wages, shown in Box 3 of your W-2 — the figure used to test the $155,000 mandatory Roth catch-up threshold.' ],
+            [ 'Super catch-up', 'The enhanced $11,750 catch-up contribution available only to 401(k)/403(b)/457/TSP participants aged 60, 61, 62, or 63.' ],
+            [ 'Roth catch-up', 'A catch-up contribution made with after-tax dollars rather than pre-tax, mandatory for higher earners under SECURE 2.0.' ],
+        ],
+        'faqs'      => [
+            [ 'What is the 401(k) contribution limit for 2027?', '$25,500 for employees under 50. With the age-50+ catch-up it is $34,000, and for ages 60-63 specifically, the enhanced catch-up brings the total to $37,250.' ],
+            [ 'What is the IRA contribution limit for 2027?', '$7,500, or $8,600 if you are 50 or older. This limit applies across all your Traditional and Roth IRAs combined.' ],
+            [ 'What is the age 60-63 super catch-up?', 'An enhanced $11,750 catch-up contribution (for 2027) available only to 401(k)/403(b)/governmental 457/TSP participants in the specific calendar years they are 60, 61, 62, or 63 — reverting to the standard $8,500 catch-up at 64.' ],
+            [ 'Who has to make their catch-up contribution as Roth?', 'Anyone whose prior-year FICA wages (Box 3 of their W-2) exceeded $155,000 for 2027 must have their entire catch-up contribution designated as Roth (after-tax), with no pre-tax option, under SECURE 2.0 Section 603.' ],
+            [ 'Does the $155,000 threshold use my current income or last year\'s?', 'Last year\'s FICA wages. The test looks backward at your prior-year W-2 Box 3 amount, not your current salary or this year\'s projected income.' ],
+            [ 'Can I use the super catch-up in an IRA?', 'No. The enhanced 60-63 catch-up only applies to employer-sponsored plans (401(k), 403(b), governmental 457, TSP). IRAs get the standard $1,100 catch-up at age 50+ with no special boost at any age.' ],
+            [ 'What happens to my catch-up when I turn 64?', 'It drops from the $11,750 super catch-up back down to the standard $8,500 catch-up amount, since the enhanced tier only applies through age 63.' ],
+            [ 'Can I contribute to both a 401(k) and an IRA in 2027?', 'Yes, the limits are separate. You could contribute up to your full 401(k) limit and your full IRA limit in the same year, subject to income-based limits on IRA deductibility or Roth IRA eligibility.' ],
+        ],
+        'sources'   => [
+            [ 'IRS: Notice 2026-66, 2027 retirement plan limits', 'https://www.irs.gov/newsroom/401k-limit-increases-to-25500-for-2027-ira-limit-remains-7500' ],
+            [ 'IRS: Retirement topics — catch-up contributions', 'https://www.irs.gov/retirement-plans/plan-participant-employee/retirement-topics-catch-up-contributions' ],
+        ],
+        'related'   => [ '401k-calculator', 'ira-calculator', 'retirement-savings-calculator', 'student-loan-401k-match-calculator' ],
+    ],
+
     ];
 }
