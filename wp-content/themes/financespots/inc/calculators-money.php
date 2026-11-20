@@ -1644,6 +1644,7 @@ function fs_calc2_2027_contribution_limits() { ?>
     <?php fsl_field( 'contrib27-age', 'Your age by December 31, 2027', 52, [ 'min' => 18, 'max' => 100, 'step' => 1 ] ); ?>
     <?php fsl_field( 'contrib27-wages', 'Your prior-year (2026) FICA wages ($)', 90000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Box 3 of your W-2 -- this determines whether your catch-up must go to Roth.' ] ); ?>
     <?php fsl_select( 'contrib27-plan', 'Plan type', [ '401k' => '401(k) / 403(b) / governmental 457 / TSP', 'ira' => 'Traditional or Roth IRA' ], '401k' ); ?>
+    <?php fsl_field( 'contrib27-pay-periods', 'Pay periods remaining in the year', 26, [ 'min' => 1, 'max' => 52, 'step' => 1, 'hint' => 'E.g. 26 for biweekly starting Jan 1, 12 for monthly, or fewer if you are starting mid-year.' ] ); ?>
     <div id="contrib27-ira-fields" style="display:none">
       <?php fsl_select( 'contrib27-filing', 'Filing status', [ 'single' => 'Single / Head of household', 'mfj' => 'Married filing jointly', 'mfs' => 'Married filing separately' ], 'single' ); ?>
       <?php fsl_field( 'contrib27-magi', 'Your 2027 modified AGI ($)', 100000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Used only to check Roth IRA eligibility -- not needed for the contribution limit itself.' ] ); ?>
@@ -1658,6 +1659,8 @@ function fs_calc2_2027_contribution_limits() { ?>
       fsl_card( 'contrib27-catchup', 'Your catch-up amount' );
       fsl_card( 'contrib27-total', 'Your total 2027 limit', 'primary' );
       fsl_card( 'contrib27-roth-flag', 'Catch-up tax treatment', 'gold' );
+      fsl_card( 'contrib27-per-paycheck', 'Needed per paycheck to hit the max', 'primary' );
+      fsl_card( 'contrib27-monthly', 'Needed per month to hit the max' );
       ?>
     </div>
     <div id="contrib27-roth-elig-wrap" style="display:none">
@@ -1679,6 +1682,7 @@ document.addEventListener('DOMContentLoaded',function(){
   function calc(){
     var age=$('contrib27-age'), wages=$('contrib27-wages'), plan=FSL.el('contrib27-plan').value;
     var filing = FSL.el('contrib27-filing').value, magi = $('contrib27-magi');
+    var payPeriods = Math.max($('contrib27-pay-periods'), 1);
 
     /* IRS Notice 2026-66 (Nov 12, 2026), effective tax year 2027:
        401(k)/403(b)/gov 457/TSP base: $25,500. Age 50+ catch-up: $8,500
@@ -1708,6 +1712,14 @@ document.addEventListener('DOMContentLoaded',function(){
     FSL.set('contrib27-catchup', catchup > 0 ? (M(catchup) + ' (' + tier + ')') : '$0 (not yet eligible for a catch-up)');
     FSL.set('contrib27-total', M(total));
     FSL.set('contrib27-roth-flag', catchup === 0 ? 'Not applicable' : (rothRequired ? 'Must be Roth (after-tax)' : 'Pre-tax or Roth, your choice'));
+
+    /* Per-paycheck and per-month pacing, based on how many pay periods
+       remain in the year -- most "limit" pages stop at the annual
+       dollar figure and never show what that means per paycheck. */
+    var perPaycheck = total / payPeriods;
+    var perMonth = total / 12;
+    FSL.set('contrib27-per-paycheck', M(perPaycheck) + ' per pay period (over ' + payPeriods + ' remaining)');
+    FSL.set('contrib27-monthly', M(perMonth) + ' per month');
     FSL.show('contrib27-results','grid');
 
     /* 2027 Roth IRA MAGI phase-out (IRS Notice 2026-66): single/HoH
@@ -1744,6 +1756,7 @@ document.addEventListener('DOMContentLoaded',function(){
   FSL.el('contrib27-go').addEventListener('click',calc);
   FSL.el('contrib27-plan').addEventListener('change',function(){toggleIraFields();calc();});
   FSL.el('contrib27-filing').addEventListener('change',calc);
+  FSL.el('contrib27-pay-periods').addEventListener('change',calc);
   FSL.bind('fs-contrib27',calc);
   toggleIraFields();
   calc();
