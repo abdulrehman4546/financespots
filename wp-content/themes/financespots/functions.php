@@ -4948,3 +4948,18 @@ add_action( 'init', function () {
     update_post_meta( 580, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post580_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for 2027-tax-brackets-explained (ID 625) --
+   the default 66-char title + brand suffix would truncate in the SERP. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post625_seo_v1' ) ) return;
+    $title = '2027 Tax Brackets Explained | FinanceSpots';
+    $desc  = 'IRS Rev. Proc. 2026-35 set the official 2027 tax brackets Nov 5, 2026 -- the exact standard deduction and bracket numbers, and where early projections got it wrong.';
+    update_post_meta( 625, 'rank_math_title',             $title );
+    update_post_meta( 625, 'rank_math_description',       $desc );
+    update_post_meta( 625, 'rank_math_og_title',          $title );
+    update_post_meta( 625, 'rank_math_og_description',    $desc );
+    update_post_meta( 625, 'rank_math_twitter_title',     $title );
+    update_post_meta( 625, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post625_seo_v1', true );
+}, 50 );
