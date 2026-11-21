@@ -1763,3 +1763,152 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   2027 STANDARD DEDUCTION & TAX BRACKET CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_2027_tax_brackets() { ?>
+<div class="fsc-wrap" id="fs-brk27">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'brk27-income', 'Income before the standard deduction ($)', 85000, [ 'min' => 0, 'step' => 1000, 'hint' => 'Your gross income after any pre-tax deductions like 401(k) or HSA, but before the standard deduction.' ] ); ?>
+    <?php fsl_select( 'brk27-status', 'Filing status', [ 'single' => 'Single', 'mfj' => 'Married filing jointly', 'mfs' => 'Married filing separately', 'hoh' => 'Head of household' ], 'single' ); ?>
+    <?php fsl_check( 'brk27-65', 'I am 65 or older by January 1, 2028', false ); ?>
+    <?php fsl_check( 'brk27-blind', 'I am legally blind', false ); ?>
+    <div id="brk27-spouse-wrap" style="display:none">
+      <?php fsl_check( 'brk27-65-sp', 'My spouse is 65 or older by January 1, 2028', false ); ?>
+      <?php fsl_check( 'brk27-blind-sp', 'My spouse is legally blind', false ); ?>
+    </div>
+    <?php fsl_field( 'brk27-kids', 'Qualifying children under 17 (for Child Tax Credit estimate)', 0, [ 'min' => 0, 'max' => 15, 'step' => 1 ] ); ?>
+    <button type="button" class="fsc-btn" id="brk27-go">Calculate my 2027 tax</button>
+    <p class="fsl-error" id="brk27-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="brk27-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'brk27-std', 'Your 2027 standard deduction' );
+      fsl_card( 'brk27-ti', 'Taxable income after deduction' );
+      fsl_card( 'brk27-marg', 'Your marginal tax bracket' );
+      fsl_card( 'brk27-eff', 'Your effective tax rate' );
+      fsl_card( 'brk27-tax', 'Estimated 2027 federal tax', 'primary' );
+      fsl_card( 'brk27-ctc', 'Estimated Child Tax Credit', 'gold' );
+      ?>
+    </div>
+    <p class="fsl-note" id="brk27-note"></p>
+  </div>
+</div>
+<div id="brk27-table-wrap" style="display:none;margin-top:1.5rem">
+  <h3 class="fsl-h3">Your 2027 tax by bracket</h3>
+  <div class="fsc-table-wrap" style="padding:0"><table class="fsc-table fsl-cmp"><thead><tr><th>Rate</th><th>Income in this bracket</th><th>Tax from this bracket</th></tr></thead><tbody id="brk27-table-body"></tbody></table></div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+
+  /* Source: IRS Rev. Proc. 2026-35 (released Nov 5, 2026), tax year 2027.
+     Brackets are stored as [top-of-bracket, rate]; the last entry's "top"
+     is a placeholder (Infinity) representing the 37% top rate.
+     Single, MFJ and HOH thresholds come directly from the IRS release.
+     MFS is not published as a full table every year -- by long-standing
+     IRS practice MFS brackets equal exactly half of the MFJ brackets at
+     every tier (confirmed for the 10-32% tiers, where MFS = Single =
+     half of MFJ here too), so the 35%/37% MFS thresholds below are
+     derived as half of the published MFJ figures, not pulled verbatim
+     from a published MFS table -- flagged here for anyone double-checking
+     this file against Rev. Proc. 2026-35 directly. */
+  var BRACKETS = {
+    single: [ [12800,0.10], [52025,0.12], [109125,0.22], [208325,0.24], [264550,0.32], [661375,0.35], [Infinity,0.37] ],
+    mfj:    [ [25600,0.10], [104050,0.12], [218250,0.22], [416650,0.24], [529100,0.32], [793650,0.35], [Infinity,0.37] ],
+    hoh:    [ [18250,0.10], [69650,0.12], [109100,0.22], [208300,0.24], [264550,0.32], [661350,0.35], [Infinity,0.37] ],
+    mfs:    [ [12800,0.10], [52025,0.12], [109125,0.22], [208325,0.24], [264550,0.32], [396825,0.35], [Infinity,0.37] ]
+  };
+  /* 2027 standard deduction: MFJ $33,200, Single/MFS $16,600, HOH $24,925.
+     Additional amount for 65+/blind: $2,100 (single/HOH), $1,700 per
+     married person (MFJ/MFS), each one stacking independently. */
+  var STD = { single:16600, mfj:33200, mfs:16600, hoh:24925 };
+  var ADD_SINGLE_HOH = 2100, ADD_MARRIED = 1700;
+  var CTC_PER_CHILD = 2300;
+
+  function toggleSpouse(){
+    var status = FSL.el('brk27-status').value;
+    FSL.el('brk27-spouse-wrap').style.display = (status === 'mfj' || status === 'mfs') ? '' : 'none';
+  }
+
+  function taxFor(ti, status){
+    var b = BRACKETS[status], prev = 0, tax = 0;
+    for (var i=0;i<b.length;i++){
+      var top = b[i][0], rate = b[i][1];
+      var amt = Math.max(Math.min(ti, top) - prev, 0);
+      tax += amt * rate;
+      if (ti <= top) break;
+      prev = top;
+    }
+    return tax;
+  }
+  function marginalFor(ti, status){
+    var b = BRACKETS[status];
+    for (var i=0;i<b.length;i++){ if (ti <= b[i][0]) return b[i][1]; }
+    return b[b.length-1][1];
+  }
+
+  function calc(){
+    var income = $('brk27-income'), status = FSL.el('brk27-status').value;
+    var kids = $('brk27-kids');
+    if (!FSL.valid(income >= 0, 'brk27-err', 'Enter your income.')) return;
+
+    var isMarried = (status === 'mfj' || status === 'mfs');
+    var addPerPerson = isMarried ? ADD_MARRIED : ADD_SINGLE_HOH;
+    var extras = 0;
+    if (FSL.el('brk27-65').checked) extras += addPerPerson;
+    if (FSL.el('brk27-blind').checked) extras += addPerPerson;
+    if (isMarried) {
+      if (FSL.el('brk27-65-sp').checked) extras += addPerPerson;
+      if (FSL.el('brk27-blind-sp').checked) extras += addPerPerson;
+    }
+    var std = STD[status] + extras;
+    var ti = Math.max(income - std, 0);
+    var tax = taxFor(ti, status);
+    var marg = marginalFor(ti, status);
+    var eff = income > 0 ? (tax / income) * 100 : 0;
+    var ctc = Math.max(kids, 0) * CTC_PER_CHILD;
+
+    FSL.set('brk27-std', M(std));
+    FSL.set('brk27-ti', M(ti));
+    FSL.set('brk27-marg', (marg*100) + '%');
+    FSL.set('brk27-eff', FSL.pct(eff, 1));
+    FSL.set('brk27-tax', M(tax));
+    FSL.set('brk27-ctc', kids > 0 ? M(ctc) + (kids === 1 ? '' : (' total for ' + kids + ' children')) : '$0 (no children entered)');
+    FSL.show('brk27-results', 'grid');
+    FSL.show('brk27-table-wrap');
+
+    var body = '', prev = 0, b = BRACKETS[status];
+    for (var i=0;i<b.length;i++){
+      var top = b[i][0], rate = b[i][1];
+      var amt = Math.max(Math.min(ti, top) - prev, 0);
+      if (amt > 0) body += '<tr><td><strong>' + (rate*100) + '%</strong></td><td>' + M(amt) + '</td><td>' + M(amt*rate) + '</td></tr>';
+      if (ti <= top) break;
+      prev = top;
+    }
+    FSL.el('brk27-table-body').innerHTML = body || '<tr><td colspan="3">No taxable income after your standard deduction.</td></tr>';
+
+    var n = [];
+    n.push('For 2027, your ' + { single:'single', mfj:'married filing jointly', mfs:'married filing separately', hoh:'head of household' }[status] + ' standard deduction is ' + M(std) + (extras > 0 ? ' (including ' + M(extras) + ' in additional age-65/blind amounts)' : '') + '.');
+    n.push('That leaves ' + M(ti) + ' in taxable income, taxed at a top marginal rate of ' + (marg*100) + '%, for an effective rate of ' + FSL.pct(eff,1) + ' on your total income.');
+    if (kids > 0) n.push('The Child Tax Credit estimate above uses the 2027 maximum of ' + M(CTC_PER_CHILD) + ' per qualifying child under 17 -- it does not account for income phase-outs or the refundable-portion limit, so treat it as a ceiling, not a guarantee.');
+    n.push('This is a federal estimate only -- it leaves out credits besides the Child Tax Credit, state income tax, self-employment tax, and the newer no-tax-on-tips, no-tax-on-overtime and senior deductions, which can lower what you actually owe.');
+    FSL.set('brk27-note', n.join(' '));
+  }
+
+  FSL.el('brk27-go').addEventListener('click', calc);
+  FSL.el('brk27-status').addEventListener('change', function(){ toggleSpouse(); calc(); });
+  FSL.el('brk27-65').addEventListener('change', calc);
+  FSL.el('brk27-blind').addEventListener('change', calc);
+  FSL.el('brk27-65-sp').addEventListener('change', calc);
+  FSL.el('brk27-blind-sp').addEventListener('change', calc);
+  FSL.bind('fs-brk27', calc);
+  toggleSpouse();
+  calc();
+});
+</script>
+<?php }
