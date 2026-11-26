@@ -4978,3 +4978,18 @@ add_action( 'init', function () {
     update_post_meta( 630, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post630_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for how-does-polkadot-staking-work (ID 634) --
+   the 53-char title + brand suffix would truncate in the SERP. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post634_seo_v1' ) ) return;
+    $title = 'Polkadot Staking: The 28-Day Wait | FinanceSpots';
+    $desc  = "Polkadot staking pays roughly 2.8%-5.4% a year, but unbonding takes a fixed 28 days -- here's how nomination, pools, and the wait actually work.";
+    update_post_meta( 634, 'rank_math_title',             $title );
+    update_post_meta( 634, 'rank_math_description',       $desc );
+    update_post_meta( 634, 'rank_math_og_title',          $title );
+    update_post_meta( 634, 'rank_math_og_description',    $desc );
+    update_post_meta( 634, 'rank_math_twitter_title',     $title );
+    update_post_meta( 634, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post634_seo_v1', true );
+}, 50 );
