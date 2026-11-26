@@ -1912,3 +1912,76 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   CARDANO (ADA) STAKING CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_cardano_staking() { ?>
+<div class="fsc-wrap" id="fs-ada">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'ada-amount', 'ADA you plan to stake (delegate)', 1000, [ 'min' => 0, 'step' => 10, 'hint' => 'There is no minimum amount to delegate ADA — unlike Ethereum\'s 32 ETH validator requirement, you can stake any amount, even a few ADA, through a stake pool.' ] ); ?>
+    <?php fsl_field( 'ada-rate', 'Expected annual reward rate (%)', 3, [ 'min' => 0, 'max' => 20, 'step' => 0.1, 'hint' => 'Cardano\'s network-wide reward rate has recently run roughly 2%-3% a year (StakingRewards.com measured about 2.1%-2.7% in early October 2026); it moves with how much total ADA is staked and the pool you pick. Edit this if you are tracking a different live figure.' ] ); ?>
+    <?php fsl_field( 'ada-fee', 'Stake pool margin / fee (%)', 2, [ 'min' => 0, 'max' => 10, 'step' => 0.1, 'hint' => 'Most Cardano stake pools charge a 0%-5% margin on your rewards, plus a small fixed per-epoch fee the protocol deducts before splitting rewards (currently a 170 ADA minimum pool cost) — the pool\'s own page shows its exact margin.' ] ); ?>
+    <?php fsl_field( 'ada-price', 'ADA price today ($ per ADA)', 0.45, [ 'min' => 0, 'step' => 0.01, 'hint' => 'ADA\'s USD price changes constantly — enter today\'s price from an exchange or price tracker to convert your rewards to dollars.' ] ); ?>
+    <?php fsl_field( 'ada-months', 'Staking period (months)', 12, [ 'min' => 1, 'max' => 120, 'step' => 1 ] ); ?>
+    <button type="button" class="fsc-btn" id="ada-go">Calculate Staking Rewards</button>
+    <p class="fsl-error" id="ada-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="ada-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'ada-rewards', 'Estimated ADA rewards', 'primary' );
+      fsl_card( 'ada-rewards-usd', 'Rewards in USD (at today\'s price)' );
+      fsl_card( 'ada-eff-apy', 'Effective APY after pool fees', 'gold' );
+      fsl_card( 'ada-final-ada', 'Your ADA balance at the end' );
+      fsl_card( 'ada-compound-bonus', 'Extra ADA earned from auto-compounding', 'secondary' );
+      fsl_card( 'ada-epochs', 'Epochs in this period' );
+      ?>
+    </div>
+    <p class="fsl-note" id="ada-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  var EPOCHS_PER_YEAR = 365/5; /* Cardano epochs are a fixed 5 days long */
+
+  function calc(){
+    var ada=$('ada-amount'), rate=$('ada-rate')/100, fee=$('ada-fee')/100, price=$('ada-price'), months=$('ada-months');
+    if(!FSL.valid(ada>0,'ada-err','Enter the amount of ADA you plan to stake.'))return;
+    var years = months/12;
+    var netAnnualRate = Math.max(rate*(1-fee),0);
+    /* Cardano rewards are paid every epoch (5 days) and are automatically
+       re-delegated with your stake, so they compound roughly every epoch
+       rather than once a year -- this is a built-in feature of the protocol,
+       not something you have to opt into like a traditional savings account. */
+    var perEpochRate = netAnnualRate/EPOCHS_PER_YEAR;
+    var epochs = Math.max(Math.round(years*EPOCHS_PER_YEAR),1);
+    var finalAda = ada*Math.pow(1+perEpochRate,epochs);
+    var rewardsAda = finalAda-ada;
+    var simpleFinalAda = ada+ada*netAnnualRate*years;
+    var compoundBonus = Math.max(finalAda-simpleFinalAda,0);
+    var effApy = (Math.pow(1+perEpochRate,EPOCHS_PER_YEAR)-1)*100;
+
+    FSL.set('ada-rewards', rewardsAda.toFixed(2)+' ADA');
+    FSL.set('ada-rewards-usd', M(rewardsAda*price));
+    FSL.set('ada-eff-apy', FSL.pct(effApy,2));
+    FSL.set('ada-final-ada', finalAda.toFixed(2)+' ADA ('+M(finalAda*price)+')');
+    FSL.set('ada-compound-bonus', compoundBonus.toFixed(3)+' ADA');
+    FSL.set('ada-epochs', epochs+' epochs ('+(epochs*5)+' days)');
+    FSL.show('ada-results','grid');
+
+    var n=[];
+    n.push('This assumes a steady '+(rate*100)+'% gross annual reward rate and a '+(fee*100)+'% pool margin, giving a net rate of about '+FSL.pct(netAnnualRate*100,2)+' a year, compounded every 5-day epoch because Cardano automatically re-delegates your rewards with your original stake.');
+    n.push('There is no minimum ADA required to delegate -- you can stake any amount through a stake pool without running your own node, unlike proof-of-stake networks such as Ethereum that require 32 ETH to run a solo validator.');
+    n.push('Staking reward rates are not fixed: they move with total ADA staked across the network, the specific pool\'s saturation and performance, and protocol parameters that can change over time. Treat the rate above as an editable estimate, not a guarantee, and check a live source like StakingRewards.com before relying on it for a decision.');
+    n.push('ADA stays liquid while delegated -- there is no lock-up period, and you can switch pools or stop delegating at any time without penalty, though a change only takes effect after a short delay of one to two epochs.');
+    FSL.set('ada-note', n.join(' '));
+  }
+  FSL.el('ada-go').addEventListener('click',calc); FSL.bind('fs-ada',calc);
+  calc();
+});
+</script>
+<?php }

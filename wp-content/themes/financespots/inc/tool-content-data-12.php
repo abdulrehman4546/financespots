@@ -416,5 +416,50 @@ function fs_tool_content_data_12() {
         'related'   => [ 'income-tax-calculator', 'child-tax-credit-calculator', 'salt-deduction-calculator', 'senior-deduction-calculator' ],
     ],
 
+    'cardano-staking-calculator' => [
+        'focus'     => 'cardano staking calculator',
+        'secondary' => [ 'ADA staking rewards calculator', 'how much can you earn staking Cardano', 'Cardano staking APY', 'ADA delegation calculator', 'Cardano stake pool fees' ],
+        'title'     => 'Cardano (ADA) Staking Calculator',
+        'meta'      => 'Free Cardano staking calculator: estimate your ADA rewards, USD value, and effective APY after stake pool fees, with auto-compounding every epoch.',
+        'excerpt'   => 'Enter how much ADA you plan to delegate to see your estimated staking rewards, their USD value, and your effective APY after stake pool fees.',
+        'answer'    => 'Cardano (ADA) staking has recently paid roughly 2%-3% a year network-wide, based on StakingRewards.com data from early October 2026 — down from the 3%-4% many sources cited earlier in 2026, since the rate falls as more ADA gets staked. There is no minimum amount to delegate, and most stake pools charge a 0%-5% margin on top of a small fixed per-epoch fee, so your actual take-home rate depends on the pool you choose.',
+        'steps'     => [
+            'Enter how much ADA you plan to stake (delegate) — there is no minimum amount required.',
+            'Enter the expected annual reward rate; the default reflects a recent network-wide estimate, but edit it if you are tracking a specific pool or a more current figure.',
+            'Enter your chosen stake pool\'s margin/fee percentage.',
+            'Enter today\'s ADA price in USD and how many months you plan to stake.',
+            'Review your estimated ADA rewards, their USD value, your effective APY after fees, and how much extra you earn from automatic compounding.',
+        ],
+        'formula'   => '<p><strong>Net annual rate = gross reward rate x (1 − pool margin)</strong>.</p><p>Cardano pays rewards every epoch (a fixed <strong>5-day period</strong>, about 73 epochs a year) and automatically re-delegates them along with your original stake, so your balance compounds roughly every 5 days rather than once a year: <strong>per-epoch rate = net annual rate / 73</strong>, and <strong>final ADA = staked ADA × (1 + per-epoch rate)^(number of epochs)</strong>. The effective APY shown is what that epoch-by-epoch compounding works out to over a full year.</p>',
+        'example'   => '<p>Staking 1,000 ADA for 12 months at a 3% gross annual reward rate through a pool with a 2% margin:</p><ul><li>Net annual rate: 3% × (1 − 2%) ≈ <strong>2.94%</strong></li><li>Spread across roughly 73 epochs and compounded each time, that works out to an effective APY of about <strong>2.98%</strong> — slightly higher than the simple net rate, because of compounding</li><li>Estimated rewards after one year: roughly <strong>29.8 ADA</strong></li><li>At an example price of $0.45/ADA, that is about <strong>$13.40</strong> in rewards for the year</li></ul><p>Rewards and ADA price both move constantly — rerun the calculator with your pool\'s actual margin and the current ADA price for a live estimate.</p>',
+        'sections'  => [
+            [ 'There is no minimum amount of ADA to stake', '<p>Unlike Ethereum, where running your own validator requires locking up 32 ETH, Cardano has no minimum delegation amount at all. You delegate your ADA to an existing stake pool — you never send the pool your coins, you keep full custody in your own wallet, and you can stake anywhere from a few ADA to a large holding through the same process. This is one of the most beginner-friendly features of Cardano\'s proof-of-stake design.</p>' ],
+            [ 'Why the reward rate keeps drifting lower', '<p>Cardano\'s protocol reward rate is not a fixed number set by anyone — it depends on how much of the total ADA supply is actively staked across the network. As more ADA gets delegated, the same pool of rewards gets split among more participants, so the rate per staker drifts down. StakingRewards.com measured Cardano\'s actual reward rate at roughly 2.1%-2.7% in early October 2026, lower than the 3%-4% figures some sources were citing earlier in the year, reflecting exactly this dynamic. Always check a live source rather than relying on an older published number.</p>' ],
+            [ 'How stake pool fees actually work', '<p>Every Cardano stake pool sets two separate costs: a small <strong>fixed fee per epoch</strong> (a protocol-level minimum, commonly around 170 ADA, that covers the pool operator\'s running costs and is deducted before rewards are split) and a <strong>variable margin</strong>, typically 0%-5% of the remaining rewards, that the operator keeps as their profit. A pool advertising "0% margin" still takes the fixed per-epoch fee — it just skips the extra percentage cut. Compare a few pools\' published margins before delegating, since a 1-2 percentage point difference compounds meaningfully over several years.</p>' ],
+            [ 'Rewards compound automatically — you do not have to do anything', '<p>Unlike a savings account where you might have to manually reinvest interest, Cardano epoch rewards are automatically added to your delegated stake, so next epoch\'s reward calculation already includes the ADA you just earned. This is true "set it and forget it" compounding, paid out every 5-day epoch instead of once a year, which is why the calculator above shows a slightly higher effective APY than the plain net rate you entered.</p>' ],
+            [ 'Your ADA stays liquid the whole time', '<p>Staking on Cardano involves no lock-up period and no slashing risk for the delegator. You can switch pools, stop delegating, or spend your ADA at any time — a change in delegation typically takes effect after one to two epochs (roughly 5-10 days) rather than instantly, but there is no penalty or waiting period like some other proof-of-stake networks require for unstaking.</p>' ],
+        ],
+        'terms'     => [
+            [ 'Delegation', 'Assigning your ADA\'s staking weight to a stake pool without transferring custody — you keep your coins in your own wallet the whole time.' ],
+            [ 'Epoch', 'Cardano\'s fixed 5-day accounting period; staking rewards are calculated and paid out once per epoch.' ],
+            [ 'Stake pool margin', 'The percentage of rewards a pool operator keeps as profit, on top of a small fixed per-epoch fee.' ],
+            [ 'Saturation', 'The point at which a stake pool has attracted so much delegated ADA that rewards per delegator start to shrink, encouraging delegators to spread stake across pools.' ],
+        ],
+        'faqs'      => [
+            [ 'How much can you earn staking Cardano?', 'Recently, roughly 2%-3% a year network-wide before pool fees, based on StakingRewards.com data from early October 2026. Your actual return depends on your pool\'s margin and how much total ADA is staked across the network at the time, so treat any single number as an estimate that changes.' ],
+            [ 'Is there a minimum amount of ADA required to stake?', 'No. Cardano has no minimum delegation amount — you can stake any amount of ADA through a stake pool, unlike Ethereum, which requires 32 ETH to run a solo validator.' ],
+            [ 'How often are Cardano staking rewards paid?', 'Once per epoch, a fixed 5-day period, which works out to roughly 73 times a year. Rewards are automatically re-delegated with your existing stake, so they compound without any action on your part.' ],
+            [ 'Do I lose custody of my ADA when I stake it?', 'No. Delegating assigns your stake\'s voting/reward weight to a pool, but your ADA stays in your own wallet the entire time — the pool never takes custody of your coins.' ],
+            [ 'What fees do Cardano stake pools charge?', 'Most pools charge a small fixed per-epoch fee (commonly around 170 ADA, a protocol-level minimum) plus a variable margin, typically 0%-5% of the remaining rewards, which the pool operator keeps.' ],
+            [ 'Can I unstake my ADA at any time?', 'Yes. There is no lock-up period or penalty for changing or stopping delegation, though a change typically takes effect after one to two epochs (about 5-10 days), not instantly.' ],
+            [ 'Why does my actual staking rate look lower than a figure I saw months ago?', 'Cardano\'s reward rate depends on the total ADA staked network-wide — as more ADA gets delegated over time, the rate per staker tends to drift down. Check a live source like StakingRewards.com for the current figure rather than an older article.' ],
+        ],
+        'sources'   => [
+            [ 'StakingRewards.com: Cardano (ADA) overview', 'https://www.stakingrewards.com/earn/cardano/overview' ],
+            [ 'Cardano Docs: Delegating and stake pools', 'https://docs.cardano.org/about-cardano/explore-more/stake-pools/' ],
+        ],
+        'related'   => [ 'staking-rewards-calculator', 'crypto-pl-calculator', 'crypto-converter' ],
+    ],
+
     ];
 }
