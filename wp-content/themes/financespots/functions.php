@@ -4963,3 +4963,18 @@ add_action( 'init', function () {
     update_post_meta( 625, 'rank_math_twitter_description', $desc );
     update_option( 'fs_post625_seo_v1', true );
 }, 50 );
+
+/* One-off: shorten rank_math title for how-does-cardano-staking-work (ID 630) --
+   the 53-char title + brand suffix would truncate in the SERP. */
+add_action( 'init', function () {
+    if ( get_option( 'fs_post630_seo_v1' ) ) return;
+    $title = 'How Does Cardano Staking Work? | FinanceSpots';
+    $desc  = "Cardano staking rewards have drifted to roughly 2-3% a year through 2026. How delegation actually works, what sets your rate, and whether it's worth it.";
+    update_post_meta( 630, 'rank_math_title',             $title );
+    update_post_meta( 630, 'rank_math_description',       $desc );
+    update_post_meta( 630, 'rank_math_og_title',          $title );
+    update_post_meta( 630, 'rank_math_og_description',    $desc );
+    update_post_meta( 630, 'rank_math_twitter_title',     $title );
+    update_post_meta( 630, 'rank_math_twitter_description', $desc );
+    update_option( 'fs_post630_seo_v1', true );
+}, 50 );
