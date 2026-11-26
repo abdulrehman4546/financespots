@@ -237,6 +237,7 @@ function fs_tool_guide_map() {
         'mining-profitability-calculator' => $crypto,
         'nft-roi-calculator'            => $crypto,
         'cardano-staking-calculator'    => array_merge( [ 'how-does-cardano-staking-work' ], $crypto ),
+        'polkadot-staking-calculator'   => array_merge( [ 'how-does-polkadot-staking-work' ], $crypto ),
         'income-tax-calculator'         => [ 'retirement-planning-how-much-need-2026', 'social-security-2027-cola-increase' ],
         'social-security-cola-calculator' => [ 'social-security-2027-cola-increase', 'retirement-planning-how-much-need-2026' ],
         'trump-account-calculator'      => [ 'trump-accounts-explained', 'index-fund-investing-beginners-guide-2026' ],

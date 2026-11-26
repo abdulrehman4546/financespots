@@ -67,6 +67,7 @@ function fs_render_calculator( $tool_type, $tool_title ) {
         'rv-loan-calculator'                => 'fs_calc2_rv_loan',
         'grad-plus-loan-calculator'         => 'fs_calc2_grad_plus_loan',
         'cardano-staking-calculator'        => 'fs_calc2_cardano_staking',
+        'polkadot-staking-calculator'       => 'fs_calc2_polkadot_staking',
     ];
     $slug = is_singular( 'fs_tool' ) ? get_post_field( 'post_name', get_the_ID() ) : '';
     if ( $slug && isset( $v2_by_slug[ $slug ] ) && function_exists( $v2_by_slug[ $slug ] ) ) {

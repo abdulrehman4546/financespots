@@ -49,6 +49,7 @@ function fs_nav_groups() {
             [ 'Crypto Profit & Loss', 'crypto-pl-calculator' ], [ 'Staking Rewards', 'staking-rewards-calculator' ],
             [ 'NFT ROI Calculator', 'nft-roi-calculator' ], [ 'Mining Profitability', 'mining-profitability-calculator' ],
             [ 'Cardano Staking Calculator', 'cardano-staking-calculator' ],
+            [ 'Polkadot Staking Calculator', 'polkadot-staking-calculator' ],
         ] ],
     ];
 }

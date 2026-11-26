@@ -1985,3 +1985,81 @@ document.addEventListener('DOMContentLoaded',function(){
 });
 </script>
 <?php }
+
+/* ─────────────────────────────────────────────
+   POLKADOT (DOT) STAKING CALCULATOR
+───────────────────────────────────────────── */
+function fs_calc2_polkadot_staking() { ?>
+<div class="fsc-wrap" id="fs-dot">
+<div class="fsc-grid">
+  <div class="fsc-inputs">
+    <?php fsl_field( 'dot-amount', 'DOT you plan to stake', 100, [ 'min' => 0, 'step' => 1, 'hint' => 'Nominating a validator directly has a dynamic minimum bond (it moves every era and has recently sat in the low hundreds of DOT); nomination pools let you join with as little as 1 DOT. This calculator works for either route.' ] ); ?>
+    <?php fsl_field( 'dot-rate', 'Expected annual reward rate (%)', 4.5, [ 'min' => 0, 'max' => 25, 'step' => 0.1, 'hint' => 'Polkadot moved to a new, lower-and-steadier inflation model in 2024-2025, and staking APY has recently been quoted anywhere from about 2.8% to 5.4% depending on the source and the moment measured (Kraken and CoinStats data, Oct-Nov 2026). Edit this to match a live figure from your staking dashboard.' ] ); ?>
+    <?php fsl_field( 'dot-fee', 'Validator / nomination pool commission (%)', 5, [ 'min' => 0, 'max' => 50, 'step' => 0.5, 'hint' => 'Validators and nomination pools each set their own commission, commonly in the 1%-10% range (some charge 0%, some much more) — check the specific validator or pool you\'re nominating before you commit.' ] ); ?>
+    <?php fsl_field( 'dot-price', 'DOT price today ($ per DOT)', 4, [ 'min' => 0, 'step' => 0.01 ] ); ?>
+    <?php fsl_field( 'dot-months', 'Staking period (months)', 12, [ 'min' => 1, 'max' => 120, 'step' => 1 ] ); ?>
+    <button type="button" class="fsc-btn" id="dot-go">Calculate Staking Rewards</button>
+    <p class="fsl-error" id="dot-err" role="alert" style="display:none"></p>
+  </div>
+  <div>
+    <div class="fsc-results" id="dot-results" style="display:none" aria-live="polite">
+      <?php
+      fsl_card( 'dot-rewards', 'Estimated DOT rewards', 'primary' );
+      fsl_card( 'dot-rewards-usd', 'Rewards in USD (at today\'s price)' );
+      fsl_card( 'dot-eff-apy', 'Effective APY after commission', 'gold' );
+      fsl_card( 'dot-final-dot', 'Your DOT balance at the end' );
+      fsl_card( 'dot-eras', 'Eras in this period' );
+      ?>
+    </div>
+    <div class="fsc-result-card fsc-result-card--secondary" id="dot-unbond-card" style="display:none;margin-top:1rem;border:2px solid #F59E0B">
+      <div class="fsc-result-label">⚠️ Unbonding period if you stop staking</div>
+      <div class="fsc-result-value" id="dot-unbond-value">28 days</div>
+    </div>
+    <p class="fsl-note" id="dot-note"></p>
+  </div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+  var $=FSL.num, M=FSL.money;
+  var UNBONDING_DAYS = 28; /* Polkadot's unbonding period for direct nominators is a fixed 28 days -- one of the longest of any major proof-of-stake network */
+  var ERA_HOURS = 24; /* a Polkadot era is a fixed 24-hour period */
+
+  function calc(){
+    var dot=$('dot-amount'), rate=$('dot-rate')/100, fee=$('dot-fee')/100, price=$('dot-price'), months=$('dot-months');
+    if(!FSL.valid(dot>0,'dot-err','Enter the amount of DOT you plan to stake.'))return;
+    var years = months/12;
+    var days = months*30.4375;
+    var netAnnualRate = Math.max(rate*(1-fee),0);
+    /* Unlike Cardano's auto-compounding epochs, Polkadot rewards for direct
+       nominators are credited to your free balance each era and are NOT
+       automatically re-staked -- you have to manually bond them again if you
+       want to compound. Nomination pools can auto-compound, but plenty of
+       nominators just let rewards sit, so this calculator uses simple
+       (non-compounding) interest as the realistic default. */
+    var rewardsDot = dot*netAnnualRate*years;
+    var finalDot = dot+rewardsDot;
+    var effApy = netAnnualRate*100;
+    var eras = Math.max(Math.round(days*24/ERA_HOURS),1);
+
+    FSL.set('dot-rewards', rewardsDot.toFixed(3)+' DOT');
+    FSL.set('dot-rewards-usd', M(rewardsDot*price));
+    FSL.set('dot-eff-apy', FSL.pct(effApy,2));
+    FSL.set('dot-final-dot', finalDot.toFixed(3)+' DOT ('+M(finalDot*price)+')');
+    FSL.set('dot-eras', eras+' eras ('+Math.round(days)+' days, at 1 era per 24 hours)');
+    FSL.show('dot-results','grid');
+    FSL.el('dot-unbond-card').style.display='block';
+
+    var n=[];
+    n.push('This assumes a steady '+(rate*100)+'% gross annual reward rate and a '+(fee*100)+'% validator/pool commission, giving a net rate of about '+FSL.pct(netAnnualRate*100,2)+' a year.');
+    n.push('Unlike Cardano, Polkadot rewards for a direct nominator land in your free balance each era but are not auto-restaked, so this estimate uses simple (non-compounding) interest -- a realistic baseline unless you actively re-bond your rewards or use a nomination pool with auto-compounding turned on.');
+    n.push('Direct nomination has a dynamic minimum bond that moves every era with network demand (it has recently sat in the low hundreds of DOT); nomination pools let you start with as little as 1 DOT if you are below that threshold.');
+    n.push('The 28-day unbonding period above applies once you decide to stop staking and want your DOT back -- your DOT keeps earning nothing during those 28 days, and you cannot cancel the wait once it starts (though you can usually re-bond before it finishes if you change your mind). Plan around this before you commit funds you might need on short notice.');
+    n.push('Staking reward rates are not fixed: they move with total DOT staked, the validator or pool you pick, and Polkadot\'s own inflation parameters, which changed in 2024-2025 to a lower, more predictable model than the network used before. Treat the rate above as an editable estimate and check a live source like your staking dashboard before relying on it.');
+    FSL.set('dot-note', n.join(' '));
+  }
+  FSL.el('dot-go').addEventListener('click',calc); FSL.bind('fs-dot',calc);
+  calc();
+});
+</script>
+<?php }
